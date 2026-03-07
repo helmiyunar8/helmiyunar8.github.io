@@ -1,176 +1,95 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>LMS TKJ SMKN 7 LUWU</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LMS TKJ - Helmi Yunar</title>
 
 <style>
 
 body{
-font-family:Arial;
-background:#0f2a44;
-color:white;
-text-align:center;
-padding:30px;
+font-family:Arial, sans-serif;
+background:#f2f2f2;
 margin:0;
+text-align:center;
 }
 
-/* NAVBAR */
+.header{
+background:#2c7a4b;
+color:white;
+padding:20px;
+}
 
-.navbar{
-background:#f3f3f3;
+.header img{
+width:70px;
+}
+
+.container{
+padding:20px;
+}
+
+.menu{
+display:block;
+background:white;
+margin:12px auto;
 padding:15px;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
-
-.navbar-title{
-font-weight:bold;
-margin-bottom:8px;
-color:#222;
-}
-
-.nav-links a{
+width:90%;
+max-width:300px;
+border-radius:10px;
 text-decoration:none;
 color:#333;
-font-weight:bold;
-margin:0 12px;
-}
-
-.nav-links a:hover{
-color:#007bff;
-}
-
-/* LOGO */
-
-.logo{
-width:100px;
-margin-top:25px;
-}
-
-/* JUDUL */
-
-h1{
-font-size:40px;
-margin-bottom:5px;
-}
-
-h2{
-margin-top:0;
-}
-
-/* MENU UTAMA */
-
-/* DASHBOARD KOTAK */
-
-.dashboard{
-display:grid;
-grid-template-columns:repeat(3,180px);
-gap:20px;
-justify-content:center;
-margin-top:40px;
-}
-
-.card{
-background:#1f4f6a;
-padding:25px;
-border-radius:12px;
-text-decoration:none;
-color:white;
 font-size:18px;
-transition:0.3s;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
-.card:hover{
-background:#ffd166;
-color:black;
-transform:scale(1.05);
+.menu:hover{
+background:#e8f5e9;
 }
-
-/* WATERMARK */
 
 .footer{
-margin-top:60px;
-font-size:14px;
-color:#ccc;
-opacity:0.8;
-}
-
-.main-menu a:hover{
-background:#ffd166;
-color:black;
+margin-top:30px;
+font-size:12px;
+color:#777;
 }
 
 </style>
-
-<script>
-
-function tanggal(){
-var hari = new Date();
-document.getElementById("tanggal").innerHTML =
-hari.toLocaleDateString();
-}
-
-</script>
-
 </head>
 
-<body onload="tanggal()">
+<body>
 
-<!-- NAVBAR -->
+<div class="header">
 
-<div class="navbar">
+<img src="asset/logo.png">
 
-<div class="navbar-title">SMK LMS PORTAL</div>
-
-<div class="nav-links">
-
-<a href="index.html">🏠 Beranda</a>
-
-<a href="materi.html">📚 Materi</a>
-
-<a href="quiz.html">🧠 Quiz</a>
-
-<a href="tryout.html">📝 Tryout</a>
-
-<a href="ranking_minggu2.html">🏆 Ranking</a>
+<h2>LMS TKJ</h2>
+<p>SMK - Helmi Yunar</p>
 
 </div>
 
+<div class="container">
+
+<a class="menu" href="materi/kelas10/pertemuan1.html">
+📚 Materi Pembelajaran
+</a>
+
+<a class="menu" href="tryout/minggu1.html">
+📝 Tryout TKJ
+</a>
+
+<a class="menu" href="lkpd/lkpd1.html">
+📄 LKPD
+</a>
+
+<a class="menu" href="tryout/ranking.html">
+🏆 Ranking Siswa
+</a>
+
 </div>
 
-<!-- LOGO -->
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" class="logo">
-
-<h1>LMS TKJ</h1>
-<h2>SMKN 7 LUWU</h2>
-
-<p>Guru : Helmi Yunar</p>
-
-<p id="tanggal"></p>
-
-<!-- MENU UTAMA -->
-
-<div class="dashboard">
-
-<a href="materi.html" class="card">📚<br>Materi</a>
-
-<a href="quiz10.html" class="card">🧠<br>Quiz</a>
-
-<a href="tryout.html" class="card">📝<br>Tryout</a>
-
-<a href="absensi.html" class="card">📋<br>Absensi</a>
-
-<a href="ranking.html" class="card">🏆<br>Ranking</a>
-
-<a href="sertifikat.html" class="card">🎓<br>Sertifikat</a>
-
+<div class="footer">
+© 2025 LMS TKJ - Helmi Yunar
 </div>
 
 </body>
-  <div class="footer">
-© 2025 LMS TKJ | Developed by Helmi Yunar
-</div>
-
 </html>
