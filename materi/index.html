@@ -2,108 +2,81 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Materi TKJ</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
 font-family:Arial;
+background:#eef2f3;
 margin:0;
-background:#f2f2f2;
 text-align:center;
 }
 
 /* NAVBAR */
-
 .navbar{
-background:#2c7a4b;
-padding:10px;
+background:#2e7d32;
+padding:12px;
 }
 
 .navbar a{
 color:white;
 text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
+margin:8px;
 font-size:14px;
 }
 
-/* JUDUL */
-
-.header{
-background:white;
-padding:20px;
-}
-
-/* MENU KELAS */
-
+/* CONTENT */
 .container{
-padding:20px;
+padding:30px;
 }
 
-.menu{
-display:block;
+.card{
 background:white;
+width:260px;
 margin:12px auto;
-padding:15px;
-width:90%;
-max-width:320px;
+padding:16px;
 border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.card a{
 text-decoration:none;
 color:#333;
-font-size:18px;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
-
-.menu:hover{
-background:#e8f5e9;
+font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
 <div class="navbar">
-
-<a href="../index.html">🏠 Beranda</a>
-<a href="index.html">📚 Materi</a>
-<a href="../tryout/minggu1.html">📝 Tryout</a>
-<a href="../lkpd/lkpd1.html">📄 LKPD</a>
-<a href="../tryout/ranking.html">🏆 Ranking</a>
-
+<a href="/index.html">🏠 Beranda</a>
+<a href="/materi/index.html">📚 Materi</a>
+<a href="/tryout/minggu1.html">📝 Tryout</a>
+<a href="/lkpd/lkpd1.html">📄 LKPD</a>
+<a href="/tryout/ranking.html">🏆 Ranking</a>
 </div>
 
-<!-- HEADER -->
-
-<div class="header">
+<div class="container">
 
 <h2>📚 Materi TKJ</h2>
 <p>Pilih kelas untuk melihat materi</p>
 
+<div class="card">
+<a href="/materi/kelas10/index.html">🎓 Materi Kelas X</a>
 </div>
 
-<!-- MENU KELAS -->
+<div class="card">
+<a href="/materi/kelas11/index.html">🎓 Materi Kelas XI</a>
+</div>
 
-<div class="container">
-
-<a class="menu" href="kelas10/index.html">
-🎓 Materi Kelas X
-</a>
-
-<a class="menu" href="kelas11/pertemuan1.html">
-🎓 Materi Kelas XI
-</a>
-
-<a class="menu" href="kelas12/pertemuan1.html">
-🎓 Materi Kelas XII
-</a>
+<div class="card">
+<a href="/materi/kelas12/index.html">🎓 Materi Kelas XII</a>
+</div>
 
 </div>
 
