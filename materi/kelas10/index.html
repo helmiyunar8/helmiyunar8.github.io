@@ -1,72 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Materi Kelas X</title>
 
 <style>
-
 body{
 font-family:Arial;
+background:#f0f2f5;
 margin:0;
-background:#f2f2f2;
 text-align:center;
 }
 
+/* NAVBAR */
 .navbar{
-background:#2c7a4b;
-padding:10px;
+background:#2e7d32;
+padding:12px;
 }
 
 .navbar a{
 color:white;
 text-decoration:none;
-margin:6px;
+margin:10px;
 font-size:14px;
 }
 
-.menu{
-display:block;
+/* CONTAINER */
+.container{
+padding:30px;
+}
+
+.card{
 background:white;
 margin:12px auto;
 padding:15px;
-width:90%;
-max-width:320px;
+width:260px;
 border-radius:10px;
-text-decoration:none;
-color:#333;
-font-size:18px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
 }
 
-</style>
+.card a{
+text-decoration:none;
+color:#333;
+font-weight:bold;
+}
 
+.card:hover{
+background:#f5f5f5;
+}
+</style>
 </head>
 
 <body>
 
 <div class="navbar">
-
 <a href="/index.html">🏠 Beranda</a>
 <a href="/materi/index.html">📚 Materi</a>
 <a href="/tryout/minggu1.html">📝 Tryout</a>
 <a href="/lkpd/lkpd1.html">📄 LKPD</a>
 <a href="/tryout/ranking.html">🏆 Ranking</a>
-
 </div>
 
-<h2>📚 Materi TKJ</h2>
-<h3>Kelas X</h3>
+<div class="container">
 
-<a class="menu" href="pertemuan1.html">
-Pertemuan 1
-</a>
+<h2>📚 Materi TKJ Kelas X</h2>
 
-<a class="menu" href="pertemuan2.html">
-Pertemuan 2
-</a>
+<div class="card">
+<a href="pertemuan1.html">Pertemuan 1</a>
+</div>
+
+<div class="card">
+<a href="pertemuan2.html">Pertemuan 2</a>
+</div>
+
+<div class="card">
+<a href="pertemuan3.html">Pertemuan 3</a>
+</div>
+
+<div class="card">
+<a href="pertemuan4.html">Pertemuan 4</a>
+</div>
+
+</div>
 
 </body>
 </html>
