@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Absen Selfie TKJ</title>
+
+<style>
+body{
+font-family:Arial;
+background:#eef5ff;
+text-align:center;
+padding:20px;
+}
+
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+max-width:400px;
+margin:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+video{
+width:100%;
+border-radius:10px;
+}
+
+button{
+background:#2c7be5;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:5px;
+margin-top:10px;
+font-size:16px;
+}
+
+input,select{
+width:90%;
+padding:8px;
+margin:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>ABSEN SELFIE TKJ</h2>
+
+<input id="nama" placeholder="Nama Siswa">
+
+<br>
+
+<select id="kelas">
+<option>X TKJ</option>
+<option>XI TKJ</option>
+<option>XII TKJ</option>
+</select>
+
+<br><br>
+
+<video id="camera" autoplay></video>
+
+<br>
+
+<button onclick="ambilFoto()">Ambil Selfie</button>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<br>
+
+<button onclick="kirimData()">Kirim Absen</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+let fotoData="";
+
+navigator.mediaDevices.getUserMedia({video:true})
+.then(stream=>{
+document.getElementById("camera").srcObject=stream;
+});
+
+function ambilFoto(){
+
+let video=document.getElementById("camera");
+let canvas=document.getElementById("canvas");
+let ctx=canvas.getContext("2d");
+
+canvas.width=video.videoWidth;
+canvas.height=video.videoHeight;
+
+ctx.drawImage(video,0,0);
+
+fotoData=canvas.toDataURL("image/png");
+
+alert("Selfie berhasil diambil");
+
+}
+
+function kirimData(){
+
+let nama=document.getElementById("nama").value;
+let kelas=document.getElementById("kelas").value;
+
+document.getElementById("status").innerHTML="Mengirim absen...";
+
+fetch("https://script.google.com/macros/s/AKfycbxG_mu9ICFQOTs5l_WsEro7xDpCBtXDGAxsFwUInRedJIqe-JsudlxqKh3mpr6rdQKv/exec",{
+
+method:"POST",
+
+body:new URLSearchParams({
+
+nama:nama,
+kelas:kelas,
+foto:fotoData
+
+})
+
+})
+
+.then(res=>res.text())
+.then(data=>{
+
+document.getElementById("status").innerHTML="Absen berhasil";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
