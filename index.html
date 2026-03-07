@@ -1,19 +1,176 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>LMS TKJ</title>
+<title>LMS TKJ SMKN 7 LUWU</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f2a44;
+color:white;
+text-align:center;
+padding:30px;
+margin:0;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#f3f3f3;
+padding:15px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.navbar-title{
+font-weight:bold;
+margin-bottom:8px;
+color:#222;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#333;
+font-weight:bold;
+margin:0 12px;
+}
+
+.nav-links a:hover{
+color:#007bff;
+}
+
+/* LOGO */
+
+.logo{
+width:100px;
+margin-top:25px;
+}
+
+/* JUDUL */
+
+h1{
+font-size:40px;
+margin-bottom:5px;
+}
+
+h2{
+margin-top:0;
+}
+
+/* MENU UTAMA */
+
+/* DASHBOARD KOTAK */
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(3,180px);
+gap:20px;
+justify-content:center;
+margin-top:40px;
+}
+
+.card{
+background:#1f4f6a;
+padding:25px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:0.3s;
+box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+background:#ffd166;
+color:black;
+transform:scale(1.05);
+}
+
+/* WATERMARK */
+
+.footer{
+margin-top:60px;
+font-size:14px;
+color:#ccc;
+opacity:0.8;
+}
+
+.main-menu a:hover{
+background:#ffd166;
+color:black;
+}
+
+</style>
+
+<script>
+
+function tanggal(){
+var hari = new Date();
+document.getElementById("tanggal").innerHTML =
+hari.toLocaleDateString();
+}
+
+</script>
+
 </head>
 
-<body style="font-family:Arial;text-align:center;background:#eef5ee">
+<body onload="tanggal()">
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="navbar-title">SMK LMS PORTAL</div>
+
+<div class="nav-links">
+
+<a href="index.html">🏠 Beranda</a>
+
+<a href="materi.html">📚 Materi</a>
+
+<a href="quiz.html">🧠 Quiz</a>
+
+<a href="tryout.html">📝 Tryout</a>
+
+<a href="ranking_minggu2.html">🏆 Ranking</a>
+
+</div>
+
+</div>
+
+<!-- LOGO -->
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" class="logo">
 
 <h1>LMS TKJ</h1>
-<h2>Helmi Yunar</h2>
+<h2>SMKN 7 LUWU</h2>
 
-<p>Selamat datang di LMS TKJ</p>
+<p>Guru : Helmi Yunar</p>
 
-<a href="#">📚 Materi</a><br><br>
-<a href="#">📝 Tryout</a><br><br>
-<a href="#">📄 LKPD</a>
+<p id="tanggal"></p>
+
+<!-- MENU UTAMA -->
+
+<div class="dashboard">
+
+<a href="materi.html" class="card">📚<br>Materi</a>
+
+<a href="quiz10.html" class="card">🧠<br>Quiz</a>
+
+<a href="tryout.html" class="card">📝<br>Tryout</a>
+
+<a href="absensi.html" class="card">📋<br>Absensi</a>
+
+<a href="ranking.html" class="card">🏆<br>Ranking</a>
+
+<a href="sertifikat.html" class="card">🎓<br>Sertifikat</a>
+
+</div>
 
 </body>
+  <div class="footer">
+© 2025 LMS TKJ | Developed by Helmi Yunar
+</div>
+
 </html>
