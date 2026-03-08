@@ -112,25 +112,19 @@ let kelas=document.getElementById("kelas").value;
 document.getElementById("status").innerHTML="Mengirim absen...";
 
 fetch("https://script.google.com/macros/s/AKfycbz0--JNytBo6dPfjvxVehxvWeYBESgwhWWsV-cVTPx75XxJh2yOdCIYx15c1SZLVt70/exec",{
-mode:"no-cors",
 
 method:"POST",
 
-body:new URLSearchParams({
-
+body: JSON.stringify({
 nama:nama,
 kelas:kelas,
 foto:fotoData
-
 })
 
 })
-
 .then(res=>res.text())
 .then(data=>{
-
 document.getElementById("status").innerHTML="Absen berhasil";
-
 });
 
 }
