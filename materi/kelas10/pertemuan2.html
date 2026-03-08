@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pertemuan 2 - Media & Telekomunikasi</title>
+<title>Pertemuan 2 - Media Transmisi</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:#f4f6f8;
+background:#f2f6f3;
 margin:0;
-padding:0;
 }
 
 .container{
 max-width:900px;
 margin:auto;
 background:white;
-padding:30px;
+padding:35px;
 margin-top:30px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+margin-bottom:40px;
+border-radius:12px;
+box-shadow:0 5px 12px rgba(0,0,0,0.08);
 }
 
 h1{
@@ -32,123 +32,140 @@ margin-top:30px;
 }
 
 p{
-line-height:1.7;
+line-height:1.8;
 color:#444;
 }
 
-.nav{
-background:#2c7a2c;
-padding:12px;
+.navtop{
+margin-bottom:20px;
 }
 
-.nav a{
-color:white;
+.navtop a{
 text-decoration:none;
-margin-right:15px;
-font-weight:bold;
-}
-
-.btn{
-display:inline-block;
-padding:8px 14px;
-background:#e9eef3;
+background:#e8edf2;
+padding:8px 12px;
 border-radius:6px;
-text-decoration:none;
+margin-right:8px;
 color:#333;
-margin-right:10px;
-}
-
-.btn:hover{
-background:#d5dde5;
+font-size:14px;
 }
 
 .box{
-background:#eef5ee;
-padding:15px;
-border-left:5px solid #2c7a2c;
+background:#eef7ee;
+padding:18px;
+border-left:6px solid #2c7a2c;
 margin-top:20px;
+border-radius:6px;
+}
+
+.summary{
+background:#fff6d9;
+padding:18px;
+border-left:6px solid #e0b300;
+margin-top:30px;
+border-radius:6px;
+}
+
+.quiz{
+background:#eef3ff;
+padding:20px;
+border-radius:8px;
+margin-top:30px;
+}
+
+button{
+background:#2c7a2c;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#256b25;
 }
 
 </style>
+
+<script>
+
+function cekJawaban(){
+let benar = 0;
+
+if(document.getElementById("q1b").checked) benar++;
+if(document.getElementById("q2a").checked) benar++;
+if(document.getElementById("q3c").checked) benar++;
+
+alert("Skor kamu : " + benar + " / 3");
+}
+
+</script>
+
 </head>
 
 <body>
 
-<div class="nav">
-<a href="../../index.html">🏠 Beranda</a>
-<a href="../index.html">📚 Materi</a>
-<a href="../../tryout/index.html">📝 Tryout</a>
-<a href="../../lkpd/index.html">📄 LKPD</a>
-<a href="../../ranking/index.html">🏆 Ranking</a>
-</div>
-
 <div class="container">
 
-<a class="btn" href="index.html">⬅ Daftar Pertemuan</a>
+<div class="navtop">
+<a href="index.html">📚 Daftar Pertemuan</a>
+</div>
 
 <h1>📡 Pertemuan 2</h1>
 <h2>Media Transmisi Pada Jaringan Telekomunikasi</h2>
 
 <p>
-Dalam sistem jaringan komputer dan telekomunikasi, data tidak bisa berpindah
-dengan sendirinya. Agar informasi dapat dikirim dari satu perangkat ke perangkat
-lain, dibutuhkan suatu jalur atau media yang disebut dengan <b>media transmisi</b>.
+Pada sistem jaringan komputer, data tidak dapat berpindah sendiri dari satu perangkat ke perangkat lain.
+Diperlukan suatu jalur atau media yang berfungsi sebagai perantara pengiriman informasi. Jalur ini disebut
+<b>media transmisi</b>.
 </p>
 
 <p>
-Media transmisi adalah sarana atau perantara yang digunakan untuk mengirimkan
-data dari pengirim ke penerima. Data tersebut dapat berupa teks, gambar, suara,
-video, maupun berbagai jenis file digital lainnya.
-</p>
-
-<p>
-Contohnya ketika seorang siswa mengirim pesan melalui aplikasi chat di
-smartphone, data tersebut akan melewati berbagai jaringan sebelum sampai
-ke perangkat penerima.
+Media transmisi memungkinkan data digital seperti teks, gambar, suara, dan video dikirim dari perangkat
+pengirim menuju perangkat penerima melalui jaringan komunikasi.
 </p>
 
 <div class="box">
+
 <b>Contoh aktivitas yang menggunakan media transmisi:</b>
+
 <ul>
 <li>Mengirim pesan WhatsApp</li>
 <li>Menonton video YouTube</li>
 <li>Bermain game online</li>
-<li>Mengirim file melalui internet</li>
-<li>Video call dengan teman</li>
+<li>Mengirim email</li>
+<li>Video call dengan keluarga</li>
 </ul>
+
 </div>
 
 <h2>Jenis Media Transmisi</h2>
 
 <p>
-Secara umum media transmisi dalam jaringan komputer dibagi menjadi dua jenis
-utama yaitu media transmisi kabel dan media transmisi tanpa kabel
-(wireless).
+Secara umum media transmisi dibagi menjadi dua jenis utama yaitu media kabel
+dan media nirkabel (wireless).
 </p>
 
-<h2>1. Media Transmisi Kabel</h2>
+<h2>1️⃣ Media Transmisi Kabel</h2>
 
 <p>
-Media transmisi kabel adalah media yang menggunakan kabel fisik sebagai jalur
-untuk mengirimkan data. Pada media ini data biasanya dikirim dalam bentuk
-sinyal listrik atau cahaya.
+Media transmisi kabel menggunakan kabel fisik sebagai jalur pengiriman data.
+Data biasanya dikirim dalam bentuk sinyal listrik atau cahaya yang berjalan
+di dalam kabel.
 </p>
 
 <h3>Kabel Twisted Pair</h3>
 
 <p>
-Kabel twisted pair merupakan jenis kabel yang paling sering digunakan dalam
-jaringan komputer lokal (LAN). Kabel ini terdiri dari beberapa pasangan kabel
-yang dipilin untuk mengurangi gangguan sinyal.
+Kabel twisted pair adalah kabel yang paling sering digunakan dalam jaringan
+komputer lokal (LAN). Kabel ini terdiri dari pasangan kabel yang dipilin untuk
+mengurangi gangguan sinyal.
 </p>
 
 <p>
-Contoh penggunaan kabel ini banyak ditemukan pada jaringan komputer di sekolah,
-kantor, dan rumah.
-</p>
-
-<p>
-Jenis kabel twisted pair yang umum digunakan adalah:
+Jenis kabel twisted pair:
 </p>
 
 <ul>
@@ -157,82 +174,65 @@ Jenis kabel twisted pair yang umum digunakan adalah:
 </ul>
 
 <p>
-Kabel ini biasanya menggunakan konektor RJ45 untuk menghubungkannya
-dengan perangkat jaringan seperti komputer, switch, atau router.
+Kabel ini biasanya menggunakan konektor <b>RJ45</b> untuk menghubungkan perangkat
+seperti komputer, switch, atau router.
 </p>
 
 <h3>Kabel Coaxial</h3>
 
 <p>
-Kabel coaxial adalah kabel yang memiliki lapisan pelindung tambahan
-sehingga lebih tahan terhadap gangguan sinyal. Kabel ini dulu banyak
-digunakan pada jaringan komputer generasi awal.
+Kabel coaxial memiliki lapisan pelindung tambahan yang membuatnya lebih tahan
+terhadap gangguan sinyal. Kabel ini dulu banyak digunakan pada jaringan komputer
+lama dan televisi kabel.
 </p>
 
-<p>
-Saat ini kabel coaxial lebih sering digunakan untuk televisi kabel
-atau antena televisi.
-</p>
-
-<h3>Kabel Fiber Optik</h3>
+<h3>Fiber Optik</h3>
 
 <p>
-Fiber optik merupakan teknologi kabel yang menggunakan cahaya untuk
-mengirimkan data. Kabel ini terbuat dari serat kaca yang sangat halus
-dan mampu mentransmisikan data dengan kecepatan yang sangat tinggi.
-</p>
-
-<p>
-Fiber optik biasanya digunakan oleh penyedia layanan internet untuk
-menghubungkan jaringan antar kota bahkan antar negara.
+Fiber optik merupakan kabel yang menggunakan cahaya untuk mengirim data.
+Teknologi ini mampu mengirimkan data dengan kecepatan sangat tinggi dan
+digunakan oleh penyedia layanan internet modern.
 </p>
 
 <div class="box">
+
 <b>Kelebihan Fiber Optik:</b>
+
 <ul>
 <li>Kecepatan sangat tinggi</li>
 <li>Jarak transmisi sangat jauh</li>
-<li>Tahan gangguan elektromagnetik</li>
+<li>Tidak mudah terganggu sinyal listrik</li>
 <li>Kapasitas data sangat besar</li>
 </ul>
+
 </div>
 
-<h2>2. Media Transmisi Wireless</h2>
+<h2>2️⃣ Media Transmisi Wireless</h2>
 
 <p>
-Media transmisi wireless adalah media yang tidak menggunakan kabel.
-Data dikirim melalui gelombang elektromagnetik yang merambat melalui udara.
-</p>
-
-<p>
-Teknologi ini sangat populer karena memudahkan perangkat untuk
-terhubung tanpa harus menggunakan kabel fisik.
+Media transmisi wireless tidak menggunakan kabel. Data dikirim melalui
+gelombang elektromagnetik yang merambat melalui udara.
 </p>
 
 <h3>WiFi</h3>
 
 <p>
-WiFi merupakan teknologi jaringan yang memungkinkan perangkat seperti
-laptop, smartphone, dan tablet untuk terhubung ke internet secara
-nirkabel.
+WiFi memungkinkan perangkat seperti laptop dan smartphone terhubung
+ke internet tanpa menggunakan kabel.
 </p>
 
 <h3>Bluetooth</h3>
 
 <p>
-Bluetooth digunakan untuk komunikasi jarak dekat antar perangkat,
-misalnya menghubungkan headset wireless dengan smartphone.
+Bluetooth digunakan untuk komunikasi jarak dekat seperti menghubungkan
+headset wireless dengan smartphone.
 </p>
 
 <h3>Jaringan Seluler</h3>
 
 <p>
-Jaringan seluler digunakan oleh operator telekomunikasi untuk
-memberikan layanan komunikasi seperti telepon, SMS, dan internet.
-</p>
-
-<p>
-Contoh teknologi jaringan seluler antara lain:
+Jaringan seluler digunakan oleh operator telekomunikasi untuk menyediakan
+layanan komunikasi seperti telepon dan internet.
 </p>
 
 <ul>
@@ -241,19 +241,49 @@ Contoh teknologi jaringan seluler antara lain:
 <li>5G</li>
 </ul>
 
-<h2>Kesimpulan</h2>
+<div class="summary">
+
+<b>📌 Ringkasan Materi</b>
 
 <p>
-Media transmisi merupakan bagian penting dalam sistem telekomunikasi
-dan jaringan komputer. Tanpa adanya media transmisi, proses pengiriman
-data dari satu perangkat ke perangkat lain tidak dapat terjadi.
+Media transmisi adalah jalur yang digunakan untuk mengirimkan data dari satu
+perangkat ke perangkat lain dalam sistem jaringan komputer dan telekomunikasi.
 </p>
 
 <p>
-Media transmisi dibagi menjadi dua jenis utama yaitu media kabel dan
-media wireless. Masing-masing memiliki kelebihan dan kekurangan serta
-digunakan sesuai dengan kebutuhan jaringan.
+Media transmisi dibagi menjadi dua jenis yaitu media kabel dan media wireless.
+Masing-masing memiliki kelebihan serta digunakan sesuai kebutuhan jaringan.
 </p>
+
+</div>
+
+<div class="quiz">
+
+<h2>📝 Latihan Soal</h2>
+
+<p>1. Media yang digunakan untuk mengirimkan data disebut...</p>
+
+<input type="radio" name="q1"> Perangkat keras<br>
+<input type="radio" id="q1b" name="q1"> Media transmisi<br>
+<input type="radio" name="q1"> Sistem operasi<br>
+
+<p>2. Kabel yang paling sering digunakan dalam jaringan LAN adalah...</p>
+
+<input type="radio" id="q2a" name="q2"> Twisted Pair<br>
+<input type="radio" name="q2"> Fiber optik<br>
+<input type="radio" name="q2"> HDMI<br>
+
+<p>3. Teknologi jaringan tanpa kabel disebut...</p>
+
+<input type="radio" name="q3"> LAN<br>
+<input type="radio" name="q3"> Kabel<br>
+<input type="radio" id="q3c" name="q3"> Wireless<br>
+
+<br>
+
+<button onclick="cekJawaban()">Cek Jawaban</button>
+
+</div>
 
 </div>
 
