@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 
 <html>
 <head>
@@ -19,11 +18,11 @@ margin:0;
 max-width:900px;
 margin:auto;
 background:white;
-padding:30px;
+padding:28px;
 margin-top:20px;
 margin-bottom:40px;
 border-radius:12px;
-box-shadow:0 5px 12px rgba(0,0,0,0.08);
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
 h1{
@@ -31,7 +30,6 @@ color:#2c7a2c;
 }
 
 h2{
-color:#333;
 margin-top:30px;
 }
 
@@ -40,24 +38,47 @@ line-height:1.8;
 color:#444;
 }
 
-img{
-width:100%;
-max-width:500px;
-border-radius:10px;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
-}
-
 .center{
 text-align:center;
 margin:25px 0;
 }
 
+img{
+width:100%;
+max-width:420px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
 .box{
 background:#eef7ee;
-padding:18px;
+padding:16px;
 border-left:6px solid #2c7a2c;
 margin-top:20px;
 border-radius:6px;
+}
+
+.quiz{
+background:#eef3ff;
+padding:18px;
+margin-top:30px;
+border-radius:8px;
+}
+
+button{
+background:#2c7a2c;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+iframe{
+width:100%;
+height:250px;
+border-radius:10px;
+margin-top:10px;
 }
 
 .next{
@@ -73,14 +94,21 @@ border-radius:6px;
 text-decoration:none;
 }
 
-iframe{
-width:100%;
-height:300px;
-border-radius:10px;
-margin-top:15px;
+</style>
+
+<script>
+
+function cek(){
+let benar=0;
+
+if(document.getElementById("q1a").checked) benar++;
+if(document.getElementById("q2b").checked) benar++;
+
+alert("Skor kamu: "+benar+" / 2");
+
 }
 
-</style>
+</script>
 
 </head>
 
@@ -92,43 +120,28 @@ margin-top:15px;
 <h2>Pengenalan Jaringan Komputer</h2>
 
 <p>
-Dalam kehidupan modern saat ini, teknologi jaringan komputer memiliki
-peran yang sangat penting dalam berbagai aktivitas manusia. Jaringan
-komputer memungkinkan perangkat seperti komputer, laptop, smartphone,
-dan server untuk saling terhubung sehingga dapat bertukar informasi
-dengan cepat.
+Jaringan komputer adalah sekumpulan dua atau lebih perangkat yang saling
+terhubung untuk berbagi data, informasi, dan sumber daya. Dalam dunia
+modern, hampir semua aktivitas digital memanfaatkan jaringan komputer.
 </p>
 
 <p>
-Tanpa adanya jaringan komputer, kita tidak akan bisa menggunakan
-internet, mengirim email, menonton video online, atau berkomunikasi
-melalui aplikasi seperti WhatsApp dan Zoom.
+Contohnya ketika kita mengakses internet, mengirim email, menonton video
+online, atau bermain game online. Semua aktivitas tersebut memerlukan
+jaringan komputer agar perangkat dapat saling berkomunikasi.
 </p>
 
 <div class="center">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Network_diagram.png">
 
-<p><i>Contoh jaringan komputer yang menghubungkan beberapa perangkat</i></p>
+<p><i>Contoh jaringan komputer</i></p>
 
 </div>
 
-<h2>Apa itu Jaringan Komputer?</h2>
-
-<p>
-Jaringan komputer adalah sekumpulan dua atau lebih perangkat komputer
-yang saling terhubung satu sama lain dengan tujuan untuk berbagi data,
-informasi, dan sumber daya.
-</p>
-
-<p>
-Perangkat yang terhubung dalam jaringan dapat berupa komputer,
-printer, server, smartphone, atau perangkat jaringan lainnya.
-</p>
-
 <div class="box">
 
-<b>Contoh manfaat jaringan komputer:</b>
+<b>Manfaat jaringan komputer:</b>
 
 <ul>
 
@@ -136,9 +149,7 @@ printer, server, smartphone, atau perangkat jaringan lainnya.
 
 <li>Berbagi file dan dokumen</li>
 
-<li>Komunikasi melalui email atau chat</li>
-
-<li>Mengakses server atau database</li>
+<li>Komunikasi jarak jauh</li>
 
 <li>Mendukung pembelajaran online</li>
 
@@ -149,34 +160,17 @@ printer, server, smartphone, atau perangkat jaringan lainnya.
 <h2>Topologi Jaringan</h2>
 
 <p>
-Topologi jaringan adalah bentuk atau pola hubungan antara perangkat
-dalam suatu jaringan komputer. Topologi menentukan bagaimana perangkat
-dihubungkan dan bagaimana data mengalir dalam jaringan tersebut.
-</p>
-
-<div class="center">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/97/NetworkTopologies.svg">
-
-<p><i>Beberapa jenis topologi jaringan komputer</i></p>
-
-</div>
-
-<h2>Jenis Topologi Jaringan</h2>
-
-<p>
-Beberapa topologi jaringan yang sering digunakan dalam dunia teknologi
-informasi antara lain:
-</p>
-
-<h3>Topologi Bus</h3>
-
-<p>
-Topologi bus adalah topologi jaringan yang menggunakan satu kabel utama
-sebagai jalur komunikasi. Semua perangkat terhubung ke kabel tersebut.
+Topologi jaringan adalah bentuk atau pola hubungan antar perangkat
+dalam jaringan komputer.
 </p>
 
 <h3>Topologi Star</h3>
+
+<div class="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Star_network_topology.png">
+
+</div>
 
 <p>
 Topologi star adalah topologi yang paling banyak digunakan saat ini.
@@ -184,28 +178,37 @@ Pada topologi ini semua perangkat terhubung ke satu perangkat pusat
 seperti switch atau hub.
 </p>
 
-<h3>Topologi Ring</h3>
+<h3>Topologi Bus</h3>
+
+<div class="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/BusNetwork.svg">
+
+</div>
 
 <p>
-Topologi ring memiliki bentuk seperti lingkaran dimana setiap perangkat
-terhubung dengan perangkat lainnya membentuk jalur melingkar.
+Topologi bus menggunakan satu kabel utama sebagai jalur komunikasi
+yang menghubungkan semua perangkat dalam jaringan.
 </p>
 
-<h3>Topologi Mesh</h3>
+<h3>Topologi Ring</h3>
+
+<div class="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Ring_network.png">
+
+</div>
 
 <p>
-Topologi mesh adalah topologi dimana setiap perangkat terhubung langsung
-dengan perangkat lainnya. Topologi ini memiliki tingkat keandalan yang
-tinggi tetapi biaya implementasinya cukup mahal.
+Pada topologi ring, setiap perangkat terhubung membentuk lingkaran
+sehingga data mengalir dari satu perangkat ke perangkat lain.
 </p>
 
 <h2>Teknologi WiFi</h2>
 
 <p>
 WiFi adalah teknologi jaringan nirkabel yang memungkinkan perangkat
-terhubung ke internet tanpa menggunakan kabel. Teknologi ini bekerja
-dengan menggunakan gelombang radio untuk mengirimkan data antar
-perangkat.
+terhubung ke internet tanpa menggunakan kabel.
 </p>
 
 <div class="center">
@@ -215,8 +218,8 @@ perangkat.
 </div>
 
 <p>
-Saat ini WiFi banyak digunakan di rumah, sekolah, kantor, kampus,
-dan tempat umum seperti kafe atau bandara.
+WiFi bekerja menggunakan gelombang radio untuk mengirimkan data
+antar perangkat seperti laptop, smartphone, dan access point.
 </p>
 
 <div class="box">
@@ -231,7 +234,7 @@ dan tempat umum seperti kafe atau bandara.
 
 <li>Mendukung perangkat mobile</li>
 
-<li>Fleksibel untuk berbagai lokasi</li>
+<li>Fleksibel untuk berbagai tempat</li>
 
 </ul>
 
@@ -239,12 +242,25 @@ dan tempat umum seperti kafe atau bandara.
 
 <h2>Video Pembelajaran</h2>
 
-<p>
-Agar lebih memahami konsep jaringan komputer dan topologi jaringan,
-silakan tonton video pembelajaran berikut.
-</p>
-
 <iframe src="https://www.youtube.com/embed/3QhU9jd03a0"></iframe>
+
+<div class="quiz">
+
+<h2>📝 Mini Quiz</h2>
+
+<p>1. Jaringan komputer digunakan untuk...</p>
+
+<input type="radio" id="q1a" name="q1"> Menghubungkan perangkat<br> <input type="radio" name="q1"> Mematikan komputer<br>
+
+<p>2. Topologi yang paling banyak digunakan adalah...</p>
+
+<input type="radio" name="q2"> Ring<br> <input type="radio" id="q2b" name="q2"> Star<br>
+
+<br><br>
+
+<button onclick="cek()">Cek Jawaban</button>
+
+</div>
 
 <div class="next">
 
@@ -256,6 +272,7 @@ silakan tonton video pembelajaran berikut.
 
 </body>
 </html>
+
 
  <hr>
 
