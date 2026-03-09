@@ -26,6 +26,7 @@ box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
 h1{color:#2c7a2c;}
+
 h2{margin-top:30px;}
 
 p{
@@ -33,75 +34,106 @@ line-height:1.8;
 color:#444;
 }
 
-.navtop{
-margin-bottom:20px;
+img{
+width:100%;
+max-width:420px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
-.navtop a{
-text-decoration:none;
-background:#e8edf2;
-padding:8px 12px;
-border-radius:6px;
-margin-right:8px;
-color:#333;
-font-size:14px;
+.center{
+text-align:center;
+margin:25px 0;
 }
 
 .box{
 background:#eef7ee;
-padding:18px;
+padding:16px;
 border-left:6px solid #2c7a2c;
 margin-top:20px;
 border-radius:6px;
 }
 
-.bottomnav{
-display:flex;
-justify-content:space-between;
-margin-top:40px;
-}
-
-.bottomnav a{
-text-decoration:none;
-padding:10px 16px;
+.summary{
+background:#fff6d9;
+padding:16px;
+border-left:6px solid #e0b300;
+margin-top:30px;
 border-radius:6px;
 }
 
-.prev{
-background:#e8edf2;
-color:#333;
+.quiz{
+background:#eef3ff;
+padding:18px;
+margin-top:30px;
+border-radius:8px;
 }
 
-.next{
+button{
 background:#2c7a2c;
 color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
 }
 
-table{
+iframe{
 width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-td,th{
-border:1px solid #ccc;
-padding:8px;
-text-align:center;
+height:260px;
+border-radius:10px;
+margin-top:10px;
 }
 
 </style>
+
+<script>
+
+function cek(){
+let benar=0;
+
+if(document.getElementById("q1b").checked) benar++;
+if(document.getElementById("q2a").checked) benar++;
+if(document.getElementById("q3c").checked) benar++;
+
+alert("Skor kamu : "+benar+" / 3");
+
+}
+
+</script>
 
 </head>
 
 <body>
 
 <div class="container">
+<div style="margin-bottom:20px;">
 
-<div class="navtop">
-<a href="index.html">⬅ Daftar Pertemuan</a>
+<a href="index.html"
+style="
+background:#e8edf2;
+padding:8px 12px;
+border-radius:6px;
+text-decoration:none;
+color:#333;
+font-size:14px;
+">
+
+⬅ Kembali ke Daftar Pertemuan
+
+</a>
+
 </div>
+<h1>📡 Pertemuan 3</h1>
+<h2>Media Transmisi Wireless</h2>
 
-<h1>C. MEDIA TRANSMISI WIRELESS</h1>
+<p>
+Media transmisi wireless adalah media pengiriman data yang tidak
+menggunakan kabel dalam proses transmisinya. Teknologi ini memanfaatkan
+gelombang elektromagnetik yang dipancarkan oleh antena pemancar dan
+diterima oleh antena penerima.
+</p>
+<p>Penjelasan lainnya, Media transmisi wireless atau yang disebut juga unguided transmission Adalah suatu media transmisi data yang tidak memerlukan kabel dalam proses transmisinya, media unguided / wireless ini memanfaatkan sebuah antena untuk transmisi di udara, ruang hampa udara, atau air. Untuk transmisi, Antena menyebarkan energy elektromagnetik ke dalam media (biasanya udara), sedangkan untuk penerimaan sinyal, antena menangkap gelombanvg elektromagnetikdarimedia.</p>
 <div class="center">
 
 <img src="../img/wireless.png">
@@ -110,187 +142,131 @@ text-align:center;
 
 </div>
 
-<p>
-Media transmisi wireless atau yang disebut juga unguided transmission adalah suatu media transmisi data yang tidak memerlukan kabel dalam proses transmisinya. Media unguided / wireless ini memanfaatkan sebuah antena untuk transmisi di udara, ruang hampa udara, atau air.
-</p>
+<h2>Konfigurasi Transmisi Wireless terbagi menjadi 2 jenis,yaitu:</h2>
+
+<h3>1) Transmisi Searah</h3>
 
 <p>
-Untuk transmisi, antena menyebarkan energi elektromagnetik ke dalam media (biasanya udara), sedangkan untuk penerimaan sinyal antena menangkap gelombang elektromagnetik dari media tersebut.
+Pada konfigurasi ini antena pemancar memfokuskan sinyal ke satu arah
+menuju antena penerima. Biasanya digunakan pada komunikasi jarak jauh
+seperti komunikasi antar menara telekomunikasi.
 </p>
+
+<h3>2) Transmisi Segala Arah</h3>
 
 <p>
-Pada dasarnya terdapat dua jenis konfigurasi untuk transmisi wireless yaitu:
+Pada konfigurasi ini sinyal disebarkan ke segala arah sehingga dapat
+diterima oleh banyak perangkat sekaligus.
 </p>
 
-<h2>1. Searah</h2>
+<h2>Jenis Media Transmisi Wireless</h2>
 
-<p>
-Untuk konfigurasi searah, antena pentransmisi mengeluarkan sinyal elektromagnetik yang terpusat. Antena pentransmisi dan antena penerima harus disejajarkan dengan hati-hati. Umumnya semakin tinggi frekuensi sinyal maka semakin mungkin menfokuskannya ke dalam sinar searah.
-</p>
+<h3>1. Gelombang Mikro</h3>
 
-<h2>2. Segala Arah</h2>
+<div class="center">
 
-<p>
-Untuk konfigurasi segala arah, sinyal yang ditransmisikan menyebar luas ke segala penjuru dan diterima oleh banyak antena.
-</p>
-
-<h2>Jenis-jenis Media Transmisi Wireless</h2>
-
-<h3>a. Gelombang Mikro Terrestrial</h3>
-
-<p>
-Tipe antena gelombang mikro yang paling umum adalah parabola (dish). Antena pengirim memfokuskan sinar pendek agar mencapai transmisi garis pandang menuju antena penerima.
-</p>
-
-<p>
-Antena gelombang mikro biasanya ditempatkan pada ketinggian tertentu di atas tanah untuk memperluas jarak antar antena.
-</p>
-
-<p>
-Untuk mencapai transmisi jarak jauh diperlukan beberapa menara relay gelombang mikro yang dipasang pada jarak tertentu.
-</p>
-
-<h3>b. Gelombang Mikro Satelit</h3>
-
-<p>
-Satelit komunikasi merupakan stasiun relay gelombang mikro yang digunakan untuk menghubungkan dua atau lebih transmitter atau receiver gelombang mikro di bumi.
-</p>
-
-<p>
-Satelit menerima transmisi pada satu frekuensi kemudian memperkuat dan memancarkan kembali sinyal tersebut ke frekuensi lain.
-</p>
-
-<p>
-Teknologi satelit banyak digunakan untuk siaran televisi dan komunikasi jarak jauh.
-</p>
-
-<h3>c. Gelombang Microwave</h3>
-
-<p>
-Microwave merupakan bagian dari Radio Frequency dengan frekuensi sekitar 1 – 30 GHz.
-</p>
-
-<div class="box">
-
-Hal yang perlu diperhatikan dalam transmisi microwave:
-
-<ul>
-<li>Alokasi frekuensi</li>
-<li>Interference dan keamanan</li>
-<li>Harus menggunakan line of sight</li>
-<li>Jarak tanpa repeater sekitar 10 – 100 km</li>
-</ul>
+<img src="../img/microwave.jpg">
 
 </div>
 
 <p>
-Ada dua jenis spektrum gelombang yang digunakan yaitu:
+Gelombang mikro digunakan dalam komunikasi jarak jauh seperti jaringan
+telekomunikasi dan komunikasi antar menara BTS.
 </p>
 
-<ul>
-<li>Frequency Hopping Spread Spectrum (FHSS)</li>
-<li>Direct Sequence Spread Spectrum (DSSS)</li>
-</ul>
+<h3>2. Infrared</h3>
 
-<h3>d. Infrared</h3>
+<div class="center">
 
-<p>
-Infrared merupakan teknologi koneksi nirkabel yang digunakan pada perangkat mobile seperti remote televisi dan transfer data antar perangkat.
-</p>
-
-<div class="box">
-
-<b>Kelebihan inframerah:</b>
-
-<ul>
-<li>Tidak membutuhkan sinyal khusus</li>
-<li>Perangkat sederhana</li>
-<li>Dapat digunakan kapan saja</li>
-</ul>
-
-<b>Kelemahan inframerah:</b>
-
-<ul>
-<li>Perangkat harus saling berhadapan</li>
-<li>Transfer data kurang fleksibel</li>
-<li>Dapat berbahaya bagi mata</li>
-</ul>
+<img src="../img/infrared.jpg">
 
 </div>
 
-<h3>e. Bluetooth</h3>
+<p>
+Infrared digunakan untuk komunikasi jarak dekat seperti remote TV
+dan beberapa perangkat elektronik.
+</p>
+
+<h3>3. Bluetooth</h3>
+
+<div class="center">
+
+<img src="../img/bluetooth.png">
+
+</div>
 
 <p>
-Bluetooth adalah teknologi komunikasi wireless yang bekerja pada frekuensi 2.4 GHz dengan jangkauan sekitar 10 meter.
+Bluetooth merupakan teknologi komunikasi nirkabel dengan frekuensi
+2.4 GHz yang biasanya digunakan untuk perangkat seperti headset,
+speaker, dan smartphone.
+</p>
+
+<h3>4. Wi-Fi</h3>
+
+<div class="center">
+
+<img src="../img/wifi2.png">
+
+</div>
+
+<p>
+Wi-Fi adalah teknologi jaringan nirkabel yang digunakan untuk
+menghubungkan perangkat seperti laptop, smartphone, dan komputer
+ke internet melalui access point.
+</p>
+
+<h3>5. Satelit</h3>
+
+<div class="center">
+
+<img src="../img/satelit.jpg">
+
+</div>
+
+<p>
+Satelit komunikasi digunakan untuk menghubungkan jaringan komunikasi
+jarak sangat jauh seperti antar negara dan wilayah terpencil.
+</p>
+
+<h2>Video Pembelajaran</h2>
+
+<iframe src="https://www.youtube.com/embed/4y8n2L8VhJk"></iframe>
+
+<div class="summary">
+
+<b>📌 Ringkasan Materi</b>
+
+<p>
+Media transmisi wireless memungkinkan komunikasi tanpa menggunakan
+kabel dengan memanfaatkan gelombang elektromagnetik.
 </p>
 
 <p>
-Bluetooth digunakan untuk menghubungkan perangkat seperti headset, smartphone, laptop dan perangkat lainnya.
+Teknologi wireless yang umum digunakan antara lain microwave,
+infrared, bluetooth, Wi-Fi, dan satelit.
 </p>
 
-<h3>f. Wi-Fi</h3>
+</div>
 
-<p>
-Wi-Fi adalah teknologi jaringan nirkabel yang memungkinkan perangkat terhubung ke jaringan internet tanpa menggunakan kabel.
-</p>
+<div class="quiz">
 
-<table>
+<h2>Mini Quiz</h2>
 
-<tr>
-<th>Standar</th>
-<th>Kecepatan</th>
-<th>Frekuensi</th>
-</tr>
+<p>1. Media transmisi tanpa kabel disebut...</p>
 
-<tr>
-<td>802.11b</td>
-<td>11 Mbps</td>
-<td>2.4 GHz</td>
-</tr>
+<input type="radio" name="q1"> Kabel<br> <input type="radio" id="q1b" name="q1"> Wireless<br>
 
-<tr>
-<td>802.11a</td>
-<td>54 Mbps</td>
-<td>5 GHz</td>
-</tr>
+<p>2. Teknologi jaringan untuk internet tanpa kabel adalah...</p>
 
-<tr>
-<td>802.11g</td>
-<td>54 Mbps</td>
-<td>2.4 GHz</td>
-</tr>
+<input type="radio" id="q2a" name="q2"> Wi-Fi<br> <input type="radio" name="q2"> HDMI<br>
 
-<tr>
-<td>802.11n</td>
-<td>100 Mbps</td>
-<td>2.4 GHz</td>
-</tr>
+<p>3. Teknologi wireless jarak dekat untuk headset adalah...</p>
 
-</table>
+<input type="radio" name="q3"> Infrared<br> <input type="radio" id="q3c" name="q3"> Bluetooth<br>
 
-<h3>g. Satelit</h3>
+<br><br>
 
-<p>
-Satelit adalah alat elektronik yang mengorbit bumi dan berfungsi sebagai repeater untuk menerima dan memancarkan kembali sinyal komunikasi.
-</p>
-
-<div class="box">
-
-<b>Kelebihan satelit:</b>
-
-<ul>
-<li>Jangkauan sangat luas</li>
-<li>Dapat menjangkau daerah terpencil</li>
-<li>Mendukung komunikasi global</li>
-</ul>
-
-<b>Kekurangan satelit:</b>
-
-<ul>
-<li>Biaya relatif mahal</li>
-<li>Delay propagasi besar</li>
-<li>Rentan terhadap pengaruh atmosfer</li>
-</ul>
+<button onclick="cek()">Cek Jawaban</button>
 
 </div>
 
