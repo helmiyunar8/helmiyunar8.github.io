@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Pertemuan 3 - Media Transmisi Wireless (lanjutan pertemuan 2)</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f2f6f3;
+margin:0;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+margin-top:20px;
+margin-bottom:40px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+h1{color:#2c7a2c;}
+
+p{
+line-height:1.8;
+color:#444;
+}
+
+img{
+width:100%;
+max-width:420px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+.center{
+text-align:center;
+margin:25px 0;
+}
+
+.box{
+background:#eef7ee;
+padding:16px;
+border-left:6px solid #2c7a2c;
+margin-top:20px;
+border-radius:6px;
+}
+
+.summary{
+background:#fff6d9;
+padding:16px;
+border-left:6px solid #e0b300;
+margin-top:30px;
+border-radius:6px;
+}
+
+.quiz{
+background:#eef3ff;
+padding:18px;
+margin-top:30px;
+border-radius:8px;
+}
+
+button{
+background:#2c7a2c;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+iframe{
+width:100%;
+height:260px;
+border-radius:10px;
+margin-top:10px;
+}
+
+</style>
+
+<script>
+
+function cek(){
+let benar=0;
+
+if(document.getElementById("q1b").checked) benar++;
+if(document.getElementById("q2a").checked) benar++;
+
+alert("Skor kamu: "+benar+" / 2");
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📡 Pertemuan 3</h1>
+<h2>Media Transmisi Wireless</h2>
+
+<p>
+Media transmisi wireless adalah media pengiriman data yang tidak
+menggunakan kabel. Data dikirim menggunakan gelombang elektromagnetik
+melalui udara dengan bantuan antena pemancar dan penerima.
+</p>
+
+<p>
+Teknologi ini memungkinkan perangkat seperti smartphone, laptop,
+dan komputer dapat saling terhubung tanpa harus menggunakan kabel.
+</p>
+
+<div class="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Wireless_network_diagram.png">
+
+<p><i>Contoh jaringan wireless</i></p>
+
+</div>
+
+<h2>Konfigurasi Transmisi Wireless</h2>
+
+<p>
+Pada dasarnya terdapat dua jenis konfigurasi transmisi wireless.
+</p>
+
+<h3>1. Transmisi Searah</h3>
+
+<p>
+Pada konfigurasi ini antena pemancar memfokuskan sinyal ke satu arah
+menuju antena penerima. Biasanya digunakan untuk komunikasi jarak jauh.
+</p>
+
+<h3>2. Transmisi Segala Arah</h3>
+
+<p>
+Pada konfigurasi ini sinyal disebarkan ke segala arah sehingga
+dapat diterima oleh banyak perangkat sekaligus.
+</p>
+
+<h2>Jenis Media Transmisi Wireless</h2>
+
+<h3>Gelombang Mikro</h3>
+
+<p>
+Gelombang mikro (microwave) digunakan dalam komunikasi jarak jauh
+seperti komunikasi antar menara telekomunikasi.
+</p>
+
+<h3>Infrared</h3>
+
+<p>
+Infrared merupakan teknologi nirkabel yang digunakan untuk
+komunikasi jarak dekat. Contohnya adalah remote televisi.
+</p>
+
+<h3>Bluetooth</h3>
+
+<p>
+Bluetooth adalah teknologi wireless yang bekerja pada frekuensi
+2.4 GHz dan biasanya digunakan untuk komunikasi antar perangkat
+dalam jarak dekat seperti headset, smartphone, atau laptop.
+</p>
+
+<h3>Wi-Fi</h3>
+
+<p>
+Wi-Fi adalah teknologi jaringan nirkabel yang paling sering
+digunakan saat ini untuk mengakses internet.
+</p>
+
+<div class="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Wi-Fi_Logo.png">
+
+</div>
+
+<p>
+Wi-Fi bekerja berdasarkan standar IEEE 802.11 yang memungkinkan
+perangkat terhubung ke jaringan lokal tanpa menggunakan kabel.
+</p>
+
+<h3>Satelit</h3>
+
+<p>
+Satelit komunikasi digunakan untuk menghubungkan jaringan
+komunikasi jarak sangat jauh seperti antar negara atau
+wilayah terpencil.
+</p>
+
+<div class="box">
+
+<b>Kelebihan media wireless:</b>
+
+<ul>
+
+<li>Tidak memerlukan kabel</li>
+
+<li>Fleksibel dan mudah digunakan</li>
+
+<li>Dapat menjangkau area luas</li>
+
+</ul>
+
+</div>
+
+<h2>Video Pembelajaran</h2>
+
+<iframe src="https://www.youtube.com/embed/4y8n2L8VhJk"></iframe>
+
+<div class="summary">
+
+<b>📌 Ringkasan Materi</b>
+
+<p>
+Media transmisi wireless adalah teknologi pengiriman data tanpa kabel
+yang menggunakan gelombang elektromagnetik.
+</p>
+
+<p>
+Contoh teknologi wireless antara lain microwave, infrared, bluetooth,
+Wi-Fi, dan satelit.
+</p>
+
+</div>
+
+<div class="quiz">
+
+<h2>Mini Quiz</h2>
+
+<p>1. Media transmisi tanpa kabel disebut...</p>
+
+<input type="radio" name="q1"> Kabel<br> <input type="radio" id="q1b" name="q1"> Wireless<br>
+
+<p>2. Teknologi jaringan nirkabel untuk internet adalah...</p>
+
+<input type="radio" id="q2a" name="q2"> Wi-Fi<br> <input type="radio" name="q2"> USB<br>
+
+<br><br>
+
+<button onclick="cek()">Cek Jawaban</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
