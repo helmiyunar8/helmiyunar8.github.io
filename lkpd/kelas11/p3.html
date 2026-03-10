@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LKPD XI Pertemuan 3</title>
+
+<style>
+body{
+font-family:Arial;
+margin:0;
+background:#eef5ee;
+}
+
+header{
+background:#2e7d32;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+padding:15px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.timer{
+color:red;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+button{
+background:#2e7d32;
+color:white;
+border:none;
+padding:10px;
+border-radius:6px;
+margin-top:10px;
+width:100%;
+}
+
+.nav{
+display:flex;
+gap:10px;
+}
+
+.nomor{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:6px;
+margin-top:15px;
+}
+
+.nomor div{
+background:#c8e6c9;
+padding:8px;
+text-align:center;
+border-radius:4px;
+cursor:pointer;
+}
+
+.nomor div.jawab{
+background:#2e7d32;
+color:white;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h3>LKPD XI</h3>
+PERTEMUAN 3
+</header>
+
+<div class="container">
+
+<div id="login" class="card">
+Nama<br>
+<input id="nama" style="width:100%"><br><br>
+
+Kelas<br>
+<select id="kelas" style="width:100%">
+<option>XI TKJ</option>
+</select>
+
+<button onclick="mulai()">Mulai LKPD</button>
+</div>
+
+<div id="ujian" style="display:none">
+
+<div class="card">
+<div class="timer" id="timer"></div>
+
+<h3 id="pertanyaan"></h3>
+
+<div id="opsi"></div>
+
+<div class="nav">
+<button onclick="prev()">Sebelumnya</button>
+<button onclick="next()">Selanjutnya</button>
+</div>
+
+<button onclick="selesai()">Selesai</button>
+
+</div>
+
+<div class="card nomor" id="nomor"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let scriptURL="https://script.google.com/macros/s/AKfycbzRNmacavBedzKd5gGVXfeW0_4nydnlqWOexH9WOXt2b04oO6jKqX89ne6kf37815xsbg/exec"
+
+let bankSoal=[
+
+{t:"Desain produk dalam dunia industri sering disebut dengan istilah...",img:"",o:["Industrial Network","Industrial Design","Computer Design","Digital Design","Product Network"],a:1},
+
+{t:"Tujuan utama dari desain produk adalah...",img:"",o:["Mengurangi kualitas produk","Menentukan bentuk fungsi dan bahan produk","Mengurangi biaya pemasaran","Meningkatkan berat produk","Mengurangi bahan baku"],a:1},
+
+{t:"Berikut ini yang termasuk fungsi desain produk adalah...",img:"",o:["Menurunkan kualitas produk","Sebagai identitas produk","Menghilangkan fungsi produk","Mengurangi biaya tenaga kerja","Mengurangi bahan baku"],a:1},
+
+{t:"Unsur utama dalam desain produk terdiri dari...",img:"",o:["Bentuk fungsi bahan","Harga promosi ukuran","Bahan biaya keuntungan","Bentuk warna promosi","Harga bahan promosi"],a:0},
+
+{t:"Bentuk produk dapat berupa beberapa jenis salah satunya adalah...",img:"",o:["Cair","Gas","Kotak","Plasma","Cahaya"],a:2},
+
+{t:"Fungsi produk dalam bidang TKJ contohnya adalah...",img:"",o:["Rak router untuk menaruh perangkat jaringan","Keyboard untuk memasak","Speaker untuk mengetik","Mouse untuk menyimpan data","Monitor untuk memasak"],a:0},
+
+{t:"Bahan yang digunakan dalam desain produk TKJ biasanya berasal dari...",img:"",o:["Barang bekas komputer","Bahan makanan","Kain tekstil","Kertas bekas","Bahan plastik cair"],a:0},
+
+{t:"Jika desain produk terlalu rumit maka proses produksi akan...",img:"",o:["Lebih cepat","Lebih mudah","Lebih lama dan biaya lebih besar","Tidak berubah","Lebih ringan"],a:2},
+
+{t:"Desain yang sederhana dalam proses produksi biasanya akan...",img:"",o:["Menyulitkan produksi","Meningkatkan biaya produksi","Mempermudah produksi dan lebih hemat","Mengurangi fungsi produk","Mengurangi nilai jual"],a:2},
+
+{t:"Desain produk yang baik dapat membuat produk...",img:"",o:["Lebih menarik bagi pembeli","Lebih sulit digunakan","Lebih mahal dibuat","Lebih berat digunakan","Lebih sulit diproduksi"],a:0}
+
+]
+
+let soal=bankSoal
+let pos=0
+let jawab=[]
+let waktu=20*60
+
+function mulai(){
+login.style.display="none"
+ujian.style.display="block"
+buatNomor()
+tampil()
+timer()
+}
+
+function timer(){
+setInterval(function(){
+let m=Math.floor(waktu/60)
+let s=waktu%60
+timer.innerHTML="Sisa waktu : "+m+":"+s
+waktu--
+if(waktu<0){selesai()}
+},1000)
+}
+
+function buatNomor(){
+let html=""
+for(let i=0;i<soal.length;i++){
+html+=`<div onclick="lompat(${i})">${i+1}</div>`
+}
+nomor.innerHTML=html
+}
+
+function tampil(){
+
+let s=soal[pos]
+
+pertanyaan.innerHTML=(pos+1)+". "+s.t
+
+let html=""
+
+s.o.forEach((o,i)=>{
+
+html+=`
+<label>
+<input type="radio" name="opsi" value="${i}"
+${jawab[pos]==i?"checked":""}
+onchange="pilih(${i})">
+${String.fromCharCode(65+i)}. ${o}
+</label><br>
+`
+
+})
+
+opsi.innerHTML=html
+}
+
+function pilih(i){
+jawab[pos]=i
+let kotak=document.querySelectorAll("#nomor div")
+kotak[pos].classList.add("jawab")
+}
+
+function next(){ if(pos<soal.length-1){pos++; tampil()} }
+function prev(){ if(pos>0){pos--; tampil()} }
+function lompat(i){ pos=i; tampil() }
+
+function selesai(){
+
+let benar=0
+
+soal.forEach((s,i)=>{
+if(jawab[i]==s.a) benar++
+})
+
+let nilai=Math.round((benar/soal.length)*100)
+
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({
+nama:nama.value,
+kelas:kelas.value,
+nilai:nilai
+})
+})
+
+alert("Nilai Anda : "+nilai)
+
+location.reload()
+
+}
+
+</script>
+
+</body>
+</html>
