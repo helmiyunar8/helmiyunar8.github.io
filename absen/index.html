@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -12,6 +13,34 @@ body{
 font-family:Arial;
 text-align:center;
 background:#eef5ee;
+margin:0;
+padding:0;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#2c7a4b;
+padding:12px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin:6px;
+padding:8px 12px;
+display:inline-block;
+font-size:14px;
+border-radius:6px;
+}
+
+.navbar a:hover{
+background:#1e5b37;
+}
+
+/* KONTEN */
+
+.container{
 padding:20px;
 }
 
@@ -43,51 +72,16 @@ margin:8px;
 </head>
 
 <body>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ABSEN SELFIE TKJ</title>
+<!-- NAVBAR LMS -->
 
-<style>
+<div class="navbar">
 
-body{
-font-family:Arial;
-text-align:center;
-background:#eef5ee;
-padding:20px;
-}
+<a href="/index.html">🏠 Beranda</a> <a href="/materi/index.html">📚 Materi</a> <a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a> <a href="/lkpd/index.html">📄 LKPD</a> <a href="/absen/index.html">📷 Absen</a> <a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
 
-video,canvas{
-width:90%;
-max-width:350px;
-border-radius:10px;
-margin:10px;
-}
+</div>
 
-button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:12px;
-margin:10px;
-border-radius:6px;
-width:200px;
-}
-
-input,select{
-padding:10px;
-width:220px;
-margin:8px;
-}
-
-</style>
-
-</head>
-
-<body>
+<div class="container">
 
 <h2>📸 ABSEN SELFIE TKJ</h2>
 
@@ -102,8 +96,7 @@ margin:8px;
 
 <br>
 
-<video id="kamera" autoplay></video>
-<br>
+<video id="kamera" autoplay></video> <br>
 
 <button onclick="foto()">Ambil Foto</button>
 
@@ -113,78 +106,7 @@ margin:8px;
 
 <button onclick="kirim()">Kirim Absen</button>
 
-<script>
-
-let video=document.getElementById("kamera")
-
-navigator.mediaDevices.getUserMedia({video:true})
-.then(stream=>{
-video.srcObject=stream
-})
-
-function foto(){
-
-let canvas=document.getElementById("canvas")
-let ctx=canvas.getContext("2d")
-
-canvas.width=video.videoWidth
-canvas.height=video.videoHeight
-
-ctx.drawImage(video,0,0)
-
-canvas.style.display="block"
-
-}
-
-function kirim(){
-
-let canvas=document.getElementById("canvas")
-
-let foto=canvas.toDataURL("image/png")
-
-fetch("https://script.google.com/macros/s/AKfycbxa-Q5et-qCRyhrYepZDlEnToSuY-UYaw7yv0dzYbKPvjF6bUL4_cTN2J0RJ1lnR3U/exec",{
-
-method:"POST",
-
-body:JSON.stringify({
-nama:nama.value,
-kelas:kelas.value,
-foto:foto
-})
-
-})
-
-alert("Absen berhasil")
-
-}
-
-</script>
-
-</body>
-</html>
-<h2>📸 ABSEN SELFIE TKJ</h2>
-
-<input id="nama" placeholder="Nama"><br>
-
-<select id="kelas">
-<option value="">Pilih Kelas</option>
-<option>X TKJ</option>
-<option>XI TKJ</option>
-<option>XII TKJ</option>
-</select>
-
-<br>
-
-<video id="kamera" autoplay></video>
-<br>
-
-<button onclick="foto()">Ambil Foto</button>
-
-<canvas id="canvas" style="display:none"></canvas>
-
-<br>
-
-<button onclick="kirim()">Kirim Absen</button>
+</div>
 
 <script>
 
