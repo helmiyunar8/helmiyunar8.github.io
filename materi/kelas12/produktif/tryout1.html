@@ -42,30 +42,25 @@ padding:25px;
 
 .container{
 width:90%;
-max-width:600px;
+max-width:700px;
 margin:auto;
 }
 
-/* TOMBOL SOAL */
+/* KOTAK SOAL */
 
 .soal{
-display:block;
 background:white;
-padding:14px;
-margin:10px 0;
+padding:15px;
+margin-bottom:15px;
 border-radius:10px;
-text-decoration:none;
-color:black;
-font-weight:bold;
 box-shadow:0 3px 6px rgba(0,0,0,0.15);
 }
 
-/* VIDEO */
-
-.video{
-display:none;
-margin-top:10px;
+h3{
+margin-top:0;
 }
+
+/* VIDEO */
 
 iframe{
 width:100%;
@@ -74,44 +69,29 @@ border:none;
 border-radius:8px;
 }
 
-/* TOMBOL */
+/* NAVIGASI HALAMAN */
 
-.kembali{
+.halaman{
 text-align:center;
 margin:30px;
 }
 
-.kembali a{
+.halaman a{
 background:#2e7d32;
 color:white;
-padding:12px 18px;
+padding:10px 16px;
 border-radius:8px;
 text-decoration:none;
+margin:5px;
 }
 
 </style>
-
-
-<script>
-
-function buka(id){
-var x = document.getElementById(id);
-
-if(x.style.display === "none"){
-x.style.display = "block";
-}else{
-x.style.display = "none";
-}
-
-}
-
-</script>
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAVDAR -->
 
 <nav>
 
@@ -124,10 +104,11 @@ x.style.display = "none";
 
 </nav>
 
+
 <header>
 
 <h1>🏆 Pembahasan Tryout TKJ</h1>
-<p>Klik nomor soal untuk melihat video pembahasan</p>
+<p>Halaman 1 (Soal 1 - 10)</p>
 
 </header>
 
@@ -136,191 +117,158 @@ x.style.display = "none";
 
 <!-- SOAL 1 -->
 
-<div class="soal" onclick="buka('v1')">Soal 1 ▶ Video</div>
+<div class="soal">
 
-<div id="v1" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 1</h3>
+
+<p>
+Perintah untuk melihat konfigurasi IP pada Windows adalah <b>ipconfig</b>.
+Perintah ini digunakan untuk menampilkan alamat IP, subnet mask,
+dan gateway dari perangkat jaringan.
+</p>
+
 </div>
 
 
 <!-- SOAL 2 -->
 
-<div class="soal" onclick="buka('v2')">Soal 2 ▶ Video</div>
+<div class="soal">
 
-<div id="v2" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 2</h3>
+
+<p>
+Fungsi dari <b>router</b> adalah menghubungkan dua jaringan yang berbeda
+dan menentukan jalur terbaik untuk mengirimkan paket data.
+</p>
+
 </div>
 
 
 <!-- SOAL 3 -->
 
-<div class="soal" onclick="buka('v3')">Soal 3 ▶ Video</div>
+<div class="soal">
 
-<div id="v3" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 3</h3>
+
+<p>
+Alamat IP versi 4 terdiri dari <b>32 bit</b> yang biasanya
+dituliskan dalam bentuk empat blok angka desimal.
+Contoh: 192.168.1.1
+</p>
+
 </div>
 
 
 <!-- SOAL 4 -->
 
-<div class="soal" onclick="buka('v4')">Soal 4 ▶ Video</div>
+<div class="soal">
 
-<div id="v4" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 4</h3>
+
+<p>
+Perangkat yang digunakan untuk menghubungkan banyak komputer
+dalam satu jaringan lokal adalah <b>Switch</b>.
+</p>
+
 </div>
 
 
 <!-- SOAL 5 -->
 
-<div class="soal" onclick="buka('v5')">Soal 5 ▶ Video</div>
+<div class="soal">
 
-<div id="v5" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 5</h3>
+
+<p>
+DNS (Domain Name System) berfungsi untuk menerjemahkan
+nama domain menjadi alamat IP agar dapat dikenali oleh jaringan.
+</p>
+
 </div>
 
 
 <!-- SOAL 6 -->
 
-<div class="soal" onclick="buka('v6')">Soal 6 ▶ Video</div>
+<div class="soal">
 
-<div id="v6" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 6</h3>
+
+<p>
+Perintah <b>ping</b> digunakan untuk menguji koneksi jaringan
+antara dua perangkat dan mengetahui apakah host dapat dijangkau.
+</p>
+
 </div>
 
 
 <!-- SOAL 7 -->
 
-<div class="soal" onclick="buka('v7')">Soal 7 ▶ Video</div>
+<div class="soal">
 
-<div id="v7" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 7</h3>
+
+<p>
+Topologi jaringan yang menggunakan satu kabel utama
+disebut <b>Topologi Bus</b>.
+</p>
+
 </div>
 
 
 <!-- SOAL 8 -->
 
-<div class="soal" onclick="buka('v8')">Soal 8 ▶ Video</div>
+<div class="soal">
 
-<div id="v8" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 8</h3>
+
+<p>
+Perangkat yang berfungsi menguatkan sinyal jaringan
+agar dapat menjangkau area lebih luas disebut <b>Repeater</b>.
+</p>
+
 </div>
 
 
 <!-- SOAL 9 -->
 
-<div class="soal" onclick="buka('v9')">Soal 9 ▶ Video</div>
+<div class="soal">
 
-<div id="v9" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 9</h3>
+
+<p>
+Alamat IP kelas C biasanya digunakan untuk jaringan kecil
+dengan rentang 192.0.0.0 sampai 223.255.255.255.
+</p>
+
 </div>
 
 
 <!-- SOAL 10 -->
 
-<div class="soal" onclick="buka('v10')">Soal 10 ▶ Video</div>
+<div class="soal">
 
-<div id="v10" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+<h3>Soal 10</h3>
+
+<p>
+Subnet mask digunakan untuk menentukan bagian
+network dan host pada sebuah alamat IP.
+</p>
+
 </div>
-
-
-<!-- SOAL 11 -->
-
-<div class="soal" onclick="buka('v11')">Soal 11 ▶ Video</div>
-
-<div id="v11" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 12 -->
-
-<div class="soal" onclick="buka('v12')">Soal 12 ▶ Video</div>
-
-<div id="v12" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 13 -->
-
-<div class="soal" onclick="buka('v13')">Soal 13 ▶ Video</div>
-
-<div id="v13" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 14 -->
-
-<div class="soal" onclick="buka('v14')">Soal 14 ▶ Video</div>
-
-<div id="v14" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 15 -->
-
-<div class="soal" onclick="buka('v15')">Soal 15 ▶ Video</div>
-
-<div id="v15" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 16 -->
-
-<div class="soal" onclick="buka('v16')">Soal 16 ▶ Video</div>
-
-<div id="v16" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 17 -->
-
-<div class="soal" onclick="buka('v17')">Soal 17 ▶ Video</div>
-
-<div id="v17" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 18 -->
-
-<div class="soal" onclick="buka('v18')">Soal 18 ▶ Video</div>
-
-<div id="v18" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 19 -->
-
-<div class="soal" onclick="buka('v19')">Soal 19 ▶ Video</div>
-
-<div id="v19" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 20 -->
-
-<div class="soal" onclick="buka('v20')">Soal 20 ▶ Video</div>
-
-<div id="v20" class="video">
-<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-</div>
-
-
-<!-- SOAL 21 - 40 tinggal copy pola yang sama -->
 
 </div>
 
 
-<div class="kembali">
-<a href="index.html">⬅ Kembali ke Tryout</a>
+<!-- NAVIGASI -->
+
+<div class="halaman">
+
+<span>Halaman 1 / 4</span>
+
+<br><br>
+
+<a href="tryout1_page2.html">➡ Halaman Berikutnya</a>
+
 </div>
 
 
