@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pembahasan Tryout 1</title>
+<title>Pembahasan Tryout TKJ</title>
 
 <style>
 
@@ -42,21 +42,30 @@ padding:25px;
 
 .container{
 width:90%;
-max-width:700px;
+max-width:600px;
 margin:auto;
 }
 
-/* BOX SOAL */
+/* TOMBOL SOAL */
 
 .soal{
+display:block;
 background:white;
-padding:15px;
-margin-bottom:18px;
+padding:14px;
+margin:10px 0;
 border-radius:10px;
+text-decoration:none;
+color:black;
+font-weight:bold;
 box-shadow:0 3px 6px rgba(0,0,0,0.15);
 }
 
 /* VIDEO */
+
+.video{
+display:none;
+margin-top:10px;
+}
 
 iframe{
 width:100%;
@@ -68,7 +77,6 @@ border-radius:8px;
 /* TOMBOL */
 
 .kembali{
-display:block;
 text-align:center;
 margin:30px;
 }
@@ -82,6 +90,22 @@ text-decoration:none;
 }
 
 </style>
+
+
+<script>
+
+function buka(id){
+var x = document.getElementById(id);
+
+if(x.style.display === "none"){
+x.style.display = "block";
+}else{
+x.style.display = "none";
+}
+
+}
+
+</script>
 
 </head>
 
@@ -100,11 +124,10 @@ text-decoration:none;
 
 </nav>
 
-
 <header>
 
-<h1>🏆 Pembahasan Tryout 1</h1>
-<p>Materi Produktif TKJ</p>
+<h1>🏆 Pembahasan Tryout TKJ</h1>
+<p>Klik nomor soal untuk melihat video pembahasan</p>
 
 </header>
 
@@ -113,50 +136,191 @@ text-decoration:none;
 
 <!-- SOAL 1 -->
 
-<div class="soal">
+<div class="soal" onclick="buka('v1')">Soal 1 ▶ Video</div>
 
-<h3>Soal 1</h3>
-
-<p>Penjelasan soal atau ringkasan soal di sini.</p>
-
+<div id="v1" class="video">
 <iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-
 </div>
 
 
 <!-- SOAL 2 -->
 
-<div class="soal">
+<div class="soal" onclick="buka('v2')">Soal 2 ▶ Video</div>
 
-<h3>Soal 2</h3>
-
-<p>Penjelasan soal atau ringkasan soal di sini.</p>
-
+<div id="v2" class="video">
 <iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-
 </div>
 
 
 <!-- SOAL 3 -->
 
-<div class="soal">
+<div class="soal" onclick="buka('v3')">Soal 3 ▶ Video</div>
 
-<h3>Soal 3</h3>
-
-<p>Penjelasan soal atau ringkasan soal di sini.</p>
-
+<div id="v3" class="video">
 <iframe src="LINK_VIDEO_YOUTUBE"></iframe>
-
 </div>
 
+
+<!-- SOAL 4 -->
+
+<div class="soal" onclick="buka('v4')">Soal 4 ▶ Video</div>
+
+<div id="v4" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 5 -->
+
+<div class="soal" onclick="buka('v5')">Soal 5 ▶ Video</div>
+
+<div id="v5" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 6 -->
+
+<div class="soal" onclick="buka('v6')">Soal 6 ▶ Video</div>
+
+<div id="v6" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 7 -->
+
+<div class="soal" onclick="buka('v7')">Soal 7 ▶ Video</div>
+
+<div id="v7" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 8 -->
+
+<div class="soal" onclick="buka('v8')">Soal 8 ▶ Video</div>
+
+<div id="v8" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 9 -->
+
+<div class="soal" onclick="buka('v9')">Soal 9 ▶ Video</div>
+
+<div id="v9" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 10 -->
+
+<div class="soal" onclick="buka('v10')">Soal 10 ▶ Video</div>
+
+<div id="v10" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 11 -->
+
+<div class="soal" onclick="buka('v11')">Soal 11 ▶ Video</div>
+
+<div id="v11" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 12 -->
+
+<div class="soal" onclick="buka('v12')">Soal 12 ▶ Video</div>
+
+<div id="v12" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 13 -->
+
+<div class="soal" onclick="buka('v13')">Soal 13 ▶ Video</div>
+
+<div id="v13" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 14 -->
+
+<div class="soal" onclick="buka('v14')">Soal 14 ▶ Video</div>
+
+<div id="v14" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 15 -->
+
+<div class="soal" onclick="buka('v15')">Soal 15 ▶ Video</div>
+
+<div id="v15" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 16 -->
+
+<div class="soal" onclick="buka('v16')">Soal 16 ▶ Video</div>
+
+<div id="v16" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 17 -->
+
+<div class="soal" onclick="buka('v17')">Soal 17 ▶ Video</div>
+
+<div id="v17" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 18 -->
+
+<div class="soal" onclick="buka('v18')">Soal 18 ▶ Video</div>
+
+<div id="v18" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 19 -->
+
+<div class="soal" onclick="buka('v19')">Soal 19 ▶ Video</div>
+
+<div id="v19" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 20 -->
+
+<div class="soal" onclick="buka('v20')">Soal 20 ▶ Video</div>
+
+<div id="v20" class="video">
+<iframe src="LINK_VIDEO_YOUTUBE"></iframe>
+</div>
+
+
+<!-- SOAL 21 - 40 tinggal copy pola yang sama -->
 
 </div>
 
 
 <div class="kembali">
-
 <a href="index.html">⬅ Kembali ke Tryout</a>
-
 </div>
 
 
