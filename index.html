@@ -7,7 +7,30 @@
 <title>LMS TKJ - Helmi Yunar</title>
 
 <style>
+.menu{
+max-width:400px;
+margin:30px auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+padding:10px;
+}
 
+.menu-btn{
+display:block;
+background:white;
+padding:16px;
+border-radius:12px;
+text-decoration:none;
+font-size:16px;
+color:#333;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+transition:0.2s;
+}
+
+.menu-btn:hover{
+background:#f1f1f1;
+}
 body{
 font-family:Arial, sans-serif;
 margin:0;
@@ -145,22 +168,16 @@ background:#1e5b37;
 
 <!-- MENU UTAMA -->
 
-<div class="container">
+<div class="menu">
+<a href="Materi-TKJ/index.html" class="menu-btn">📚 Materi Pembelajaran</a>
 
-<a class="menu" href="materi/index.html">
-📚 Materi Pembelajaran
-</a>
+<a href="tryout/index.html" class="menu-btn">📝 Tryout TKJ XII</a>
 
-<a class="menu" href="/menu-utama-TKJ/tryout.html">
-📝 Tryout TKJ XII
-</a>
+<a href="LKPD/index.html" class="menu-btn">📄 LKPD Siswa</a>
 
-<a class="menu" href="lkpd/index.html">📄 LKPD Siswa</a>
+<a href="absen/index.html" class="menu-btn">📸 Absen Selfie</a>
 
-<a class="menu" href="/tryout-tkj-XII-2026/ranking_minggu2.html">
-🏆 Ranking Tryout soal TKJ kelas XII
-</a>
-
+<a href="ranking/index.html" class="menu-btn">🏆 Ranking Tryout TKJ</a>
 </div>
 
 <div class="footer">
