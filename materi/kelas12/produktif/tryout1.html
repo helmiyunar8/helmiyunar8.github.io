@@ -16,48 +16,53 @@ margin:0;
 background:#eef5ee;
 }
 
-/* NAVBAR */
+/* NAVDAR */
 
-nav{
-background:#2e7d32;
+.navbar{
+background:#2c7a4b;
 padding:12px;
 text-align:center;
 }
 
-nav a{
+.navbar a{
 color:white;
 text-decoration:none;
-margin:8px;
+margin:6px;
+padding:8px 12px;
+display:inline-block;
 font-size:14px;
+border-radius:6px;
 }
 
-/* JUDUL */
+.navbar a:hover{
+background:#1e5b37;
+}
+
+/* HEADER */
 
 header{
+background:#2e7d32;
+color:white;
 text-align:center;
-padding:25px;
+padding:15px;
 }
 
 /* CONTAINER */
 
 .container{
-width:90%;
 max-width:700px;
 margin:auto;
+padding:15px;
 }
 
-/* KOTAK SOAL */
+/* KARTU SOAL */
 
-.soal{
+.card{
 background:white;
 padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
 margin-bottom:15px;
-border-radius:10px;
-box-shadow:0 3px 6px rgba(0,0,0,0.15);
-}
-
-h3{
-margin-top:0;
 }
 
 /* VIDEO */
@@ -66,21 +71,22 @@ iframe{
 width:100%;
 height:200px;
 border:none;
-border-radius:8px;
+border-radius:6px;
+margin-top:10px;
 }
 
-/* NAVIGASI HALAMAN */
+/* NAV HALAMAN */
 
-.halaman{
+.page{
 text-align:center;
-margin:30px;
+margin:20px;
 }
 
-.halaman a{
+.page a{
 background:#2e7d32;
 color:white;
-padding:10px 16px;
-border-radius:8px;
+padding:8px 14px;
+border-radius:6px;
 text-decoration:none;
 margin:5px;
 }
@@ -93,181 +99,172 @@ margin:5px;
 
 <!-- NAVDAR -->
 
-<nav>
+<div class="navbar">
 
-<a href="https://helmiyunar8.github.io/">🏠 Beranda</a>
-<a href="https://helmiyunar8.github.io/materi/">📚 Materi</a>
-<a href="https://helmiyunar8.github.io/tryout/">📝 Tryout</a>
-<a href="https://helmiyunar8.github.io/lkpd/">📄 LKPD</a>
-<a href="https://helmiyunar8.github.io/absen/">📷 Absen</a>
-<a href="https://helmiyunar8.github.io/ranking/">🏆 Ranking</a>
+<a href="/index.html">🏠 Beranda</a>
+<a href="/materi/index.html">📚 Materi</a>
+<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
+<a href="/lkpd/index.html">📄 LKPD</a>
+<a href="/absen/index.html">📷 Absen</a>
+<a href="/ranking/index.html">🏆 Ranking</a>
 
-</nav>
-
+</div>
 
 <header>
 
-<h1>🏆 Pembahasan Tryout TKJ</h1>
-<p>Halaman 1 (Soal 1 - 10)</p>
+<h2>Pembahasan Tryout TKJ</h2>
+Halaman 1 (Soal 1 - 10)
 
 </header>
 
-
 <div class="container">
 
-<!-- SOAL 1 -->
 
-<div class="soal">
+<div class="card">
 
-<h3>Soal 1</h3>
+<b>1. Apa yang dimaksud routing?</b><br><br>
 
-<p>
-Perintah untuk melihat konfigurasi IP pada Windows adalah <b>ipconfig</b>.
-Perintah ini digunakan untuk menampilkan alamat IP, subnet mask,
-dan gateway dari perangkat jaringan.
-</p>
+<b>Jawaban Benar:</b> Perangkat menghubungkan dua jaringan<br><br>
 
-</div>
-
-
-<!-- SOAL 2 -->
-
-<div class="soal">
-
-<h3>Soal 2</h3>
-
-<p>
-Fungsi dari <b>router</b> adalah menghubungkan dua jaringan yang berbeda
-dan menentukan jalur terbaik untuk mengirimkan paket data.
-</p>
+<b>Pembahasan:</b><br>
+Routing adalah proses menentukan jalur terbaik untuk mengirim paket data
+antar jaringan. Perangkat yang melakukan proses ini adalah router.
 
 </div>
 
 
-<!-- SOAL 3 -->
+<div class="card">
 
-<div class="soal">
+<b>2. Perangkat yang menghubungkan komputer dalam jaringan</b><br><br>
 
-<h3>Soal 3</h3>
+<b>Jawaban Benar:</b> Switch<br><br>
 
-<p>
-Alamat IP versi 4 terdiri dari <b>32 bit</b> yang biasanya
-dituliskan dalam bentuk empat blok angka desimal.
-Contoh: 192.168.1.1
-</p>
+<b>Pembahasan:</b><br>
+Switch digunakan dalam jaringan LAN untuk menghubungkan banyak komputer
+dan meneruskan data berdasarkan alamat MAC.
 
 </div>
 
 
-<!-- SOAL 4 -->
+<div class="card">
 
-<div class="soal">
+<b>3. Perangkat PCB untuk koneksi jaringan</b><br><br>
 
-<h3>Soal 4</h3>
+<b>Jawaban Benar:</b> NIC<br><br>
 
-<p>
-Perangkat yang digunakan untuk menghubungkan banyak komputer
-dalam satu jaringan lokal adalah <b>Switch</b>.
-</p>
-
-</div>
-
-
-<!-- SOAL 5 -->
-
-<div class="soal">
-
-<h3>Soal 5</h3>
-
-<p>
-DNS (Domain Name System) berfungsi untuk menerjemahkan
-nama domain menjadi alamat IP agar dapat dikenali oleh jaringan.
-</p>
+<b>Pembahasan:</b><br>
+NIC (Network Interface Card) adalah kartu jaringan yang dipasang
+pada motherboard komputer agar dapat terhubung ke jaringan.
 
 </div>
 
 
-<!-- SOAL 6 -->
+<div class="card">
 
-<div class="soal">
+<b>4. Perangkat yang bukan hardware jaringan</b><br><br>
 
-<h3>Soal 6</h3>
+<b>Jawaban Benar:</b> Gateway<br><br>
 
-<p>
-Perintah <b>ping</b> digunakan untuk menguji koneksi jaringan
-antara dua perangkat dan mengetahui apakah host dapat dijangkau.
-</p>
-
-</div>
-
-
-<!-- SOAL 7 -->
-
-<div class="soal">
-
-<h3>Soal 7</h3>
-
-<p>
-Topologi jaringan yang menggunakan satu kabel utama
-disebut <b>Topologi Bus</b>.
-</p>
+<b>Pembahasan:</b><br>
+Gateway adalah konsep penghubung jaringan yang menggunakan
+protokol berbeda, tidak selalu berupa perangkat fisik.
 
 </div>
 
 
-<!-- SOAL 8 -->
+<div class="card">
 
-<div class="soal">
+<b>5. Perangkat yang meneruskan paket data</b><br><br>
 
-<h3>Soal 8</h3>
+<b>Jawaban Benar:</b> Router<br><br>
 
-<p>
-Perangkat yang berfungsi menguatkan sinyal jaringan
-agar dapat menjangkau area lebih luas disebut <b>Repeater</b>.
-</p>
-
-</div>
-
-
-<!-- SOAL 9 -->
-
-<div class="soal">
-
-<h3>Soal 9</h3>
-
-<p>
-Alamat IP kelas C biasanya digunakan untuk jaringan kecil
-dengan rentang 192.0.0.0 sampai 223.255.255.255.
-</p>
+<b>Pembahasan:</b><br>
+Router berfungsi meneruskan paket data dari satu jaringan
+ke jaringan lain menggunakan tabel routing.
 
 </div>
 
 
-<!-- SOAL 10 -->
+<div class="card">
 
-<div class="soal">
+<b>6. Perangkat menyalurkan data ke tujuan saja</b><br><br>
 
-<h3>Soal 10</h3>
+<b>Jawaban Benar:</b> Switch<br><br>
 
-<p>
-Subnet mask digunakan untuk menentukan bagian
-network dan host pada sebuah alamat IP.
-</p>
-
-</div>
+<b>Pembahasan:</b><br>
+Switch hanya mengirim data ke port tujuan sesuai alamat MAC
+sehingga lebih efisien dibanding hub.
 
 </div>
 
 
-<!-- NAVIGASI -->
+<div class="card">
 
-<div class="halaman">
+<b>7. Cara kerja server melayani client disebut</b><br><br>
 
-<span>Halaman 1 / 4</span>
+<img src="gambar/clientserver.png" style="max-width:100%"><br><br>
+
+<b>Jawaban Benar:</b> Client Server<br><br>
+
+<b>Pembahasan:</b><br>
+Model client-server adalah sistem dimana server menyediakan layanan
+dan client meminta layanan melalui jaringan.
+
+</div>
+
+
+<div class="card">
+
+<b>8. Perangkat jaringan pada gambar</b><br><br>
+
+<img src="gambar/router.png" style="max-width:100%"><br><br>
+
+<b>Jawaban Benar:</b> Router<br><br>
+
+<b>Pembahasan:</b><br>
+Router menghubungkan dua atau lebih jaringan dan menentukan
+jalur pengiriman paket data.
+
+</div>
+
+
+<div class="card">
+
+<b>9. Jumlah layer OSI</b><br><br>
+
+<b>Jawaban Benar:</b> 7 Layer<br><br>
+
+<b>Pembahasan:</b><br>
+Model OSI memiliki 7 lapisan yaitu:
+Physical, Data Link, Network, Transport,
+Session, Presentation, dan Application.
+
+</div>
+
+
+<div class="card">
+
+<b>10. Urutan warna kabel UTP</b><br><br>
+
+<b>Jawaban Benar:</b> Standar T568B<br><br>
+
+<b>Pembahasan:</b><br>
+Putih Orange – Orange – Putih Hijau – Biru –
+Putih Biru – Hijau – Putih Coklat – Coklat.
+
+</div>
+
+
+</div>
+
+
+<div class="page">
+
+Halaman 1 / 5
 
 <br><br>
 
-<a href="tryout1_page2.html">➡ Halaman Berikutnya</a>
+<a href="tryout1_page2.html">Halaman Berikutnya ➜</a>
 
 </div>
 
