@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>USBN SMKN 7 LUWU</title>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
 body {
+    font-family: Arial;
     margin: 0;
-    font-family: Arial, sans-serif;
     background: #ffffff;
     text-align: center;
 }
@@ -18,21 +20,17 @@ body {
 }
 
 .logo {
-    width: 120px;
+    width: 90px;
 }
 
 h1 {
     color: #f4b400;
-    margin: 10px 0 0;
-}
-
-.sub {
-    color: #777;
+    margin: 10px 0;
 }
 
 .card {
-    background: #fff8e1;
-    margin: 20px;
+    background: #fff9e6;
+    margin: 15px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -41,11 +39,10 @@ h1 {
 button {
     width: 90%;
     padding: 15px;
-    margin: 10px;
+    margin: 8px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
     font-size: 16px;
-    cursor: pointer;
 }
 
 .primary {
@@ -60,21 +57,15 @@ button {
 }
 
 input {
-    width: 85%;
-    padding: 10px;
-    margin: 10px;
+    width: 90%;
+    padding: 12px;
+    margin: 8px;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
 
 .hidden {
     display: none;
-}
-
-.footer {
-    margin-top: 30px;
-    font-size: 12px;
-    color: #777;
 }
 </style>
 </head>
@@ -84,141 +75,172 @@ input {
 <div class="header">
     <img src="logo.png" class="logo">
     <h1>USBN SMKN 7 LUWU</h1>
-    <div class="sub">Browser Ujian Anti Nyontek</div>
 </div>
 
+<!-- HOME -->
 <div id="home">
     <div class="card">
         <h2 id="jam"></h2>
     </div>
 
-    <button class="primary" onclick="showBuat()">Mulai / Buat Ujian</button>
+    <button class="primary" onclick="show('mulai')">🎓 Mulai Ujian</button>
+    <button class="secondary" onclick="show('buat')">✏️ Buat Ujian</button>
 </div>
 
+<!-- BUAT -->
 <div id="buat" class="hidden">
+
     <h2>Buat Ujian</h2>
 
     <input id="mapel" placeholder="Nama Ujian">
-    <input id="link" placeholder="Link Google Form">
+    <input id="link" placeholder="Link Ujian (Google Form / Quizizz)">
     <input id="pin" placeholder="PIN Siswa">
     <input id="durasi" placeholder="Durasi (menit)">
 
-    <button class="primary" onclick="generateToken()">Generate Token</button>
+    <button class="primary" onclick="generate()">Generate Token</button>
 
     <div class="card">
-        <div>Token:</div>
+        <h3>Token:</h3>
         <h2 id="token"></h2>
+        <button onclick="copyToken()">📋 Salin Token</button>
     </div>
 
-    <input id="inputToken" placeholder="Masukkan Token">
-    <button class="secondary" onclick="masukUjian()">Masuk Ujian</button>
+    <div class="card">
+        <h3>QR Code:</h3>
+        <div id="qrcode"></div>
+    </div>
 
-    <br><br>
-    <button onclick="kembali()">⬅ Kembali</button>
+    <button onclick="back()">⬅ Kembali</button>
 </div>
 
+<!-- MULAI -->
+<div id="mulai" class="hidden">
+
+    <h2>Masuk Ujian</h2>
+
+    <input id="tokenInput" placeholder="Masukkan Token">
+    <input id="pinInput" placeholder="Masukkan PIN">
+
+    <button class="primary" onclick="masuk()">Masuk Ujian</button>
+
+    <button onclick="back()">⬅ Kembali</button>
+</div>
+
+<!-- UJIAN -->
 <div id="ujian" class="hidden">
-    <h2 id="judulUjian"></h2>
+    <h2 id="judul"></h2>
     <h3 id="timer"></h3>
 
     <iframe id="frame" width="100%" height="500px"></iframe>
 </div>
 
-<div class="footer">
-    Developed by Helmi Yunar
-</div>
-
 <script>
+
 // JAM
 setInterval(()=>{
-    let d = new Date();
-    document.getElementById("jam").innerText = d.toLocaleString();
+    document.getElementById("jam").innerText = new Date().toLocaleString();
 },1000);
 
 // NAV
-function showBuat(){
+function show(id){
     document.getElementById("home").classList.add("hidden");
-    document.getElementById("buat").classList.remove("hidden");
+    document.getElementById(id).classList.remove("hidden");
 }
 
-function kembali(){
+function back(){
     location.reload();
 }
 
-// TOKEN
-function generateToken(){
+// GENERATE
+function generate(){
     let token = Math.random().toString(36).substr(2,6).toUpperCase();
+
     localStorage.setItem("token", token);
-    localStorage.setItem("mapel", document.getElementById("mapel").value);
-    localStorage.setItem("link", document.getElementById("link").value);
-    localStorage.setItem("pin", document.getElementById("pin").value);
-    localStorage.setItem("durasi", document.getElementById("durasi").value);
+    localStorage.setItem("mapel", mapel.value);
+    localStorage.setItem("link", link.value);
+    localStorage.setItem("pin", pin.value);
+    localStorage.setItem("durasi", durasi.value);
 
     document.getElementById("token").innerText = token;
+
+    // QR
+    document.getElementById("qrcode").innerHTML = "";
+    new QRCode(document.getElementById("qrcode"), {
+        text: location.href,
+        width: 150,
+        height: 150
+    });
+}
+
+// COPY
+function copyToken(){
+    navigator.clipboard.writeText(localStorage.getItem("token"));
+    alert("Token disalin!");
 }
 
 // MASUK
-function masukUjian(){
-    let t = document.getElementById("inputToken").value;
-    let saved = localStorage.getItem("token");
+function masuk(){
+    let t = tokenInput.value;
+    let p = pinInput.value;
 
-    if(t !== saved){
-        alert("Token salah!");
+    if(t !== localStorage.getItem("token") || p !== localStorage.getItem("pin")){
+        alert("Token / PIN salah!");
         return;
     }
 
-    document.getElementById("buat").classList.add("hidden");
+    document.getElementById("mulai").classList.add("hidden");
     document.getElementById("ujian").classList.remove("hidden");
 
-    document.getElementById("judulUjian").innerText = localStorage.getItem("mapel");
-    document.getElementById("frame").src = localStorage.getItem("link");
+    document.getElementById("judul").innerText = localStorage.getItem("mapel");
+    frame.src = localStorage.getItem("link");
 
-    startTimer();
-    antiCurang();
+    timer();
+    anti();
 }
 
 // TIMER
-function startTimer(){
-    let durasi = localStorage.getItem("durasi") * 60;
-    let timer = setInterval(()=>{
-        let m = Math.floor(durasi/60);
-        let s = durasi%60;
+function timer(){
+    let s = localStorage.getItem("durasi") * 60;
 
-        document.getElementById("timer").innerText = m+":"+s;
+    let t = setInterval(()=>{
+        let m = Math.floor(s/60);
+        let sec = s%60;
 
-        durasi--;
-        if(durasi < 0){
-            clearInterval(timer);
+        document.getElementById("timer").innerText = m+":"+sec;
+
+        s--;
+        if(s < 0){
+            clearInterval(t);
             alert("Waktu habis!");
             location.reload();
         }
     },1000);
 }
 
-// ANTI CURANG
-function antiCurang(){
-    let pelanggaran = 0;
+// ANTI
+function anti(){
+    let pel = 0;
 
     document.addEventListener("visibilitychange", ()=>{
         if(document.hidden){
-            pelanggaran++;
+            pel++;
             alert("Jangan pindah tab!");
-            if(pelanggaran >= 3){
-                alert("Anda dikeluarkan!");
+            if(pel >= 3){
+                alert("Dikeluarkan!");
                 location.reload();
             }
         }
     });
 
-    document.addEventListener("contextmenu", e=>e.preventDefault());
-
-    document.onkeydown = function(e){
-        if(e.ctrlKey) return false;
-        if(e.key === "F12") return false;
+    document.onkeydown = e=>{
+        if(e.ctrlKey || e.key === "F12") return false;
     };
+
+    document.addEventListener("contextmenu", e=>e.preventDefault());
 
     document.documentElement.requestFullscreen();
 }
+
 </script>
 
 </body>
