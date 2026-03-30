@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USBN SMKN 7 LUWU</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    text-align: center;
+}
+
+.header {
+    padding: 20px;
+}
+
+.logo {
+    width: 120px;
+}
+
+h1 {
+    color: #f4b400;
+    margin: 10px 0 0;
+}
+
+.sub {
+    color: #777;
+}
+
+.card {
+    background: #fff8e1;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+button {
+    width: 90%;
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.primary {
+    background: #f4b400;
+    color: white;
+}
+
+.secondary {
+    border: 2px solid #f4b400;
+    background: white;
+    color: #f4b400;
+}
+
+input {
+    width: 85%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="logo.png" class="logo">
+    <h1>USBN SMKN 7 LUWU</h1>
+    <div class="sub">Browser Ujian Anti Nyontek</div>
+</div>
+
+<div id="home">
+    <div class="card">
+        <h2 id="jam"></h2>
+    </div>
+
+    <button class="primary" onclick="showBuat()">Mulai / Buat Ujian</button>
+</div>
+
+<div id="buat" class="hidden">
+    <h2>Buat Ujian</h2>
+
+    <input id="mapel" placeholder="Nama Ujian">
+    <input id="link" placeholder="Link Google Form">
+    <input id="pin" placeholder="PIN Siswa">
+    <input id="durasi" placeholder="Durasi (menit)">
+
+    <button class="primary" onclick="generateToken()">Generate Token</button>
+
+    <div class="card">
+        <div>Token:</div>
+        <h2 id="token"></h2>
+    </div>
+
+    <input id="inputToken" placeholder="Masukkan Token">
+    <button class="secondary" onclick="masukUjian()">Masuk Ujian</button>
+
+    <br><br>
+    <button onclick="kembali()">⬅ Kembali</button>
+</div>
+
+<div id="ujian" class="hidden">
+    <h2 id="judulUjian"></h2>
+    <h3 id="timer"></h3>
+
+    <iframe id="frame" width="100%" height="500px"></iframe>
+</div>
+
+<div class="footer">
+    Developed by Helmi Yunar
+</div>
+
+<script>
+// JAM
+setInterval(()=>{
+    let d = new Date();
+    document.getElementById("jam").innerText = d.toLocaleString();
+},1000);
+
+// NAV
+function showBuat(){
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("buat").classList.remove("hidden");
+}
+
+function kembali(){
+    location.reload();
+}
+
+// TOKEN
+function generateToken(){
+    let token = Math.random().toString(36).substr(2,6).toUpperCase();
+    localStorage.setItem("token", token);
+    localStorage.setItem("mapel", document.getElementById("mapel").value);
+    localStorage.setItem("link", document.getElementById("link").value);
+    localStorage.setItem("pin", document.getElementById("pin").value);
+    localStorage.setItem("durasi", document.getElementById("durasi").value);
+
+    document.getElementById("token").innerText = token;
+}
+
+// MASUK
+function masukUjian(){
+    let t = document.getElementById("inputToken").value;
+    let saved = localStorage.getItem("token");
+
+    if(t !== saved){
+        alert("Token salah!");
+        return;
+    }
+
+    document.getElementById("buat").classList.add("hidden");
+    document.getElementById("ujian").classList.remove("hidden");
+
+    document.getElementById("judulUjian").innerText = localStorage.getItem("mapel");
+    document.getElementById("frame").src = localStorage.getItem("link");
+
+    startTimer();
+    antiCurang();
+}
+
+// TIMER
+function startTimer(){
+    let durasi = localStorage.getItem("durasi") * 60;
+    let timer = setInterval(()=>{
+        let m = Math.floor(durasi/60);
+        let s = durasi%60;
+
+        document.getElementById("timer").innerText = m+":"+s;
+
+        durasi--;
+        if(durasi < 0){
+            clearInterval(timer);
+            alert("Waktu habis!");
+            location.reload();
+        }
+    },1000);
+}
+
+// ANTI CURANG
+function antiCurang(){
+    let pelanggaran = 0;
+
+    document.addEventListener("visibilitychange", ()=>{
+        if(document.hidden){
+            pelanggaran++;
+            alert("Jangan pindah tab!");
+            if(pelanggaran >= 3){
+                alert("Anda dikeluarkan!");
+                location.reload();
+            }
+        }
+    });
+
+    document.addEventListener("contextmenu", e=>e.preventDefault());
+
+    document.onkeydown = function(e){
+        if(e.ctrlKey) return false;
+        if(e.key === "F12") return false;
+    };
+
+    document.documentElement.requestFullscreen();
+}
+</script>
+
+</body>
+</html>
