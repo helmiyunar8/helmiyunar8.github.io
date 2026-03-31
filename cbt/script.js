@@ -83,7 +83,7 @@ async function loadSoal() {
 
 // ▶️ MULAI UJIAN
 async function mulai() {
-  let namaInput = document.getElementById("nama").value.toLowerCase();
+  let namaInput = document.getElementById("nama").value.toLowerCase().trim();
   let tokenInput = document.getElementById("token").value;
 
   let siswaValid = daftarSiswa.find(s => s.nama === namaInput);
