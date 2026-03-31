@@ -5,7 +5,7 @@ let waktu = 300;
 let pelanggaran = 0;
 
 // 🔗 GANTI DENGAN LINK CSV GOOGLE SHEETS KAMU
-let sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8lXdXqpyMTmMMenknQyMlZmwMGHwTYXGRdKWpyRg3Jp7a2_m5BnflmLnhm4xAONoI8W2f9ngXieNJ/pub?output=csv";
+let sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTWXU6hHbJQ9CYu-zY2-AqAd2inuaeCgNljA5ohiWKRSzRM_g4MscGgVkAKxboiw4bqfNxRX_qgDAKD/pub?output=csv";
 
 // 🔐 DATA SISWA
 let daftarSiswa = [
