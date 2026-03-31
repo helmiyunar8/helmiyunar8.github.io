@@ -110,7 +110,7 @@ async function mulai() {
   startTimer();
 }
 
-// 📄 TAMPILKAN SOAL
+// 📄 TAMPILKAN SOAL (FIX KLIK)
 function tampilSoal() {
   let s = soal[index];
   document.getElementById("soal").innerText = s.tanya;
@@ -118,10 +118,24 @@ function tampilSoal() {
   let html = "";
   s.opsi.forEach((o, i) => {
     let huruf = ["A","B","C","D","E"][i];
-    html += `<button onclick="pilih('${huruf}')">${huruf}. ${o}</button><br>`;
+
+    html += `<button class="opsi" data-pilihan="${huruf}">
+      ${huruf}. ${o}
+    </button>`;
   });
 
   document.getElementById("opsi").innerHTML = html;
+
+  // 🔥 INI KUNCINYA (EVENT LISTENER)
+  document.querySelectorAll(".opsi").forEach(btn => {
+    btn.addEventListener("click", function() {
+      pilih(this.dataset.pilihan);
+
+      // warna pilihan
+      document.querySelectorAll(".opsi").forEach(b => b.style.background = "#f9f9f9");
+      this.style.background = "#c8e6c9";
+    });
+  });
 }
 
 // ✔ PILIH JAWABAN
