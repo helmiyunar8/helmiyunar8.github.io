@@ -86,7 +86,7 @@ async function mulai() {
   let namaInput = document.getElementById("nama").value.toLowerCase().trim();
   let tokenInput = document.getElementById("token").value;
 
-  let siswaValid = daftarSiswa.find(s => s.nama === namaInput);
+  let siswaValid = daftarSiswa.find(s => s.nama.trim() === namaInput);
 
   if(!siswaValid) {
     alert("❌ Nama tidak terdaftar!");
