@@ -9,14 +9,14 @@ let sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ8lXdXqpyMTmMMe
 
 // 🔐 DATA SISWA
 let daftarSiswa = [
-  {nama: "CAHYANI"},
-  {nama: "MUH. REGIL"},
-  {nama: "REHAN"},
-  {nama: "SYAHRUL RAMADHAN"},
-  {nama: "SELFI"},
-  {nama: "WULAN RAMADHANI"},
-  {nama: "TASYA"},
-  {nama: "ZALZA BILA"},
+  {nama: "cahyani"},
+  {nama: "muh.regil"},
+  {nama: "rehan"},
+  {nama: "syahrul ramadhan"},
+  {nama: "selfi"},
+  {nama: "wulan ramadhani"},
+  {nama: "tasya"},
+  {nama: "zalza bila"},
   
 ];
 
