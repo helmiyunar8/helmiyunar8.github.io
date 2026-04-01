@@ -1,159 +1,250 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absen Selfie TKJ - SMKN 7 LUWU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --gold: #D4AF37;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+        }
 
-<title>ABSEN SELFIE TKJ</title>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-<style>
+        body {
+            background-color: var(--bg-soft);
+            background: linear-gradient(135deg, #f4f7f6 0%, #e8f5e9 100%);
+            min-height: 100vh;
+            color: #333;
+        }
 
-body{
-font-family:Arial;
-text-align:center;
-background:#eef5ee;
-margin:0;
-padding:0;
-}
+        /* NAVBAR MEWAH */
+        .navbar {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-/* NAVBAR */
+        .navbar a {
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
 
-.navbar{
-background:#2c7a4b;
-padding:12px;
-}
+        .navbar a:hover { background: var(--primary-green); color: white; }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
-font-size:14px;
-border-radius:6px;
-}
+        /* MAIN CONTAINER */
+        .absen-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-.navbar a:hover{
-background:#1e5b37;
-}
+        .card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 6px solid var(--gold);
+        }
 
-/* KONTEN */
+        .card i.main-icon {
+            font-size: 50px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
 
-.container{
-padding:20px;
-}
+        h2 { color: var(--primary-green); font-weight: 800; margin-bottom: 5px; }
+        p.subtitle { font-size: 14px; color: #888; margin-bottom: 25px; }
 
-video,canvas{
-width:90%;
-max-width:350px;
-border-radius:10px;
-margin:10px;
-}
+        /* INPUTS */
+        .input-box { text-align: left; margin-bottom: 15px; }
+        .input-box label { font-size: 12px; font-weight: 800; color: #555; text-transform: uppercase; margin-left: 5px; }
+        input, select {
+            width: 100%; padding: 12px; margin-top: 5px;
+            border: 2px solid #eee; border-radius: 12px;
+            font-size: 15px; transition: 0.3s;
+        }
+        input:focus, select:focus { border-color: var(--primary-green); outline: none; }
 
-button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:12px;
-margin:10px;
-border-radius:6px;
-width:200px;
-}
+        /* CAMERA AREA */
+        .viewfinder {
+            position: relative;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            aspect-ratio: 4/3;
+        }
 
-input,select{
-padding:10px;
-width:220px;
-margin:8px;
-}
+        video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+        canvas { width: 100%; border-radius: 15px; margin-top: 15px; border: 3px solid var(--gold); display: none; }
 
-</style>
+        .scan-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--gold); opacity: 0.5;
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+        }
 
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        /* BUTTONS */
+        .btn {
+            width: 100%; padding: 15px; border: none; border-radius: 15px;
+            font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s;
+            margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+
+        .btn-photo { background: #f0f0f0; color: #444; }
+        .btn-photo:hover { background: #e0e0e0; }
+
+        .btn-send { background: var(--primary-green); color: white; }
+        .btn-send:hover { background: var(--dark-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2); }
+
+        #status-msg { margin-top: 15px; font-weight: 700; font-size: 14px; color: var(--primary-green); display: none; }
+
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR LMS -->
+    <nav class="navbar">
+        <a href="/index.html">🏠 BERANDA</a>
+        <a href="/materi/index.html">📚 MATERI</a>
+        <a href="/menu-utama-TKJ/tryout.html">📝 TRYOUT</a>
+        <a href="/lkpd/index.html">📄 LKPD</a>
+        <a href="/absen/index.html">📷 ABSEN</a>
+    </nav>
 
-<div class="navbar">
+    <div class="absen-container">
+        <div class="card">
+            <i class="fas fa-camera-retro main-icon"></i>
+            <h2>ABSENSI SELFIE</h2>
+            <p class="subtitle">Silakan ambil foto untuk verifikasi kehadiran.</p>
 
-<a href="/index.html">🏠 Beranda</a> <a href="/materi/index.html">📚 Materi</a> <a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a> <a href="/lkpd/index.html">📄 LKPD</a> <a href="/absen/index.html">📷 Absen</a> <a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+            <div class="input-box">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Masukkan nama Anda...">
+            </div>
 
-</div>
+            <div class="input-box">
+                <label>Pilih Kelas</label>
+                <select id="kelas">
+                    <option value="">-- Pilih Kelas --</option>
+                    <option>X TKJ</option>
+                    <option>XI TKJ</option>
+                    <option>XII TKJ</option>
+                </select>
+            </div>
 
-<div class="container">
+            <div class="viewfinder">
+                <video id="kamera" autoplay playsinline></video>
+                <div class="scan-line"></div>
+            </div>
 
-<h2>📸 ABSEN SELFIE TKJ</h2>
+            <button class="btn btn-photo" onclick="foto()">
+                <i class="fas fa-camera"></i> AMBIL FOTO
+            </button>
 
-<input id="nama" placeholder="Nama"><br>
+            <canvas id="canvas"></canvas>
 
-<select id="kelas">
-<option value="">Pilih Kelas</option>
-<option>X TKJ</option>
-<option>XI TKJ</option>
-<option>XII TKJ</option>
-</select>
+            <button class="btn btn-send" onclick="kirim()" style="margin-top: 15px;">
+                <i class="fas fa-paper-plane"></i> KIRIM ABSENSI
+            </button>
 
-<br>
+            <p id="status-msg"></p>
+        </div>
+    </div>
 
-<video id="kamera" autoplay></video> <br>
+    <script>
+        let video = document.getElementById("kamera");
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
 
-<button onclick="foto()">Ambil Foto</button>
+        // Meminta Izin Kamera
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            alert("Kamera tidak dapat diakses. Pastikan izin kamera sudah diberikan.");
+        });
 
-<canvas id="canvas" style="display:none"></canvas>
+        function foto() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            // Mirroring agar hasil foto tidak terbalik (sesuai tampilan video)
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+            
+            ctx.drawImage(video, 0, 0);
+            canvas.style.display = "block";
+            
+            // Berikan getaran pendek (haptic feedback) jika didukung mobile
+            if (navigator.vibrate) navigator.vibrate(50);
+            alert("📸 Foto berhasil diambil!");
+        }
 
-<br>
+        function kirim() {
+            let nama = document.getElementById("nama").value;
+            let kelas = document.getElementById("kelas").value;
+            let status = document.getElementById("status-msg");
 
-<button onclick="kirim()">Kirim Absen</button>
+            if (!nama || !kelas || canvas.style.display === "none") {
+                alert("Lengkapi data: Nama, Kelas, dan Ambil Foto terlebih dahulu!");
+                return;
+            }
 
-</div>
+            status.style.display = "block";
+            status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sedang mengirim data...';
 
-<script>
+            let fotoData = canvas.toDataURL("image/png");
 
-let video=document.getElementById("kamera")
-
-navigator.mediaDevices.getUserMedia({video:true})
-.then(stream=>{
-video.srcObject=stream
-})
-
-function foto(){
-
-let canvas=document.getElementById("canvas")
-let ctx=canvas.getContext("2d")
-
-canvas.width=video.videoWidth
-canvas.height=video.videoHeight
-
-ctx.drawImage(video,0,0)
-
-canvas.style.display="block"
-
-}
-
-function kirim(){
-
-let canvas=document.getElementById("canvas")
-
-let foto=canvas.toDataURL("image/png")
-
-fetch("https://script.google.com/macros/s/AKfycbxa-Q5et-qCRyhrYepZDlEnToSuY-UYaw7yv0dzYbKPvjF6bUL4_cTN2J0RJ1lnR3U/exec",{
-
-method:"POST",
-
-body:JSON.stringify({
-nama:nama.value,
-kelas:kelas.value,
-foto:foto
-})
-
-})
-
-alert("Absen berhasil")
-
-}
-
-</script>
+            fetch("https://script.google.com/macros/s/AKfycbxa-Q5et-qCRyhrYepZDlEnToSuY-UYaw7yv0dzYbKPvjF6bUL4_cTN2J0RJ1lnR3U/exec", {
+                method: "POST",
+                mode: "no-cors", // Penting untuk Google Apps Script
+                body: JSON.stringify({
+                    nama: nama,
+                    kelas: kelas,
+                    foto: fotoData
+                })
+            })
+            .then(() => {
+                status.innerHTML = '<i class="fas fa-check-circle"></i> Absensi Berhasil Dikirim!';
+                status.style.color = "var(--primary-green)";
+                alert("Absen berhasil!");
+                setTimeout(() => { location.reload(); }, 2000);
+            })
+            .catch(err => {
+                status.innerHTML = "❌ Gagal mengirim. Coba lagi.";
+                status.style.color = "red";
+            });
+        }
+    </script>
 
 </body>
 </html>
