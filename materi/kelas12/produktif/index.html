@@ -26,9 +26,34 @@
             position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
             z-index: 1000; display: flex; flex-direction: column;
         }
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+        
+        /* --- PERBAIKAN HEADER SIDEBAR (SAMA DENGAN BERANDA) --- */
+        .sidebar-header { 
+            padding: 25px 20px; 
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+        .sidebar-header img { 
+            width: 60px; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-header h3 { 
+            font-size: 22px; 
+            color: var(--gold); 
+            font-weight: 800; 
+            letter-spacing: -0.5px; /* Jarak huruf rapat sesuai Gambar 1 */
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .sidebar-header p {
+            font-size: 11px;
+            color: #999;
+            font-weight: 700;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* ----------------------------------------------------- */
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
@@ -38,7 +63,6 @@
         .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
         .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-        /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
         .topbar {
@@ -47,12 +71,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
         }
 
-        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 40px; }
         .header-section h2 { font-size: 30px; color: var(--dark-green); font-weight: 800; }
         .header-section p { color: #888; font-size: 15px; margin-top: 5px; }
 
-        /* EXAM GRID */
         .exam-grid {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -100,7 +122,6 @@
         }
         .back-link:hover { color: var(--gold); transform: translateX(-5px); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
@@ -113,8 +134,9 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../../../logo.png" alt="Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
+            <p>SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
             <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
