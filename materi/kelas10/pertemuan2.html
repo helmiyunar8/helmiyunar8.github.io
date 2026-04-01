@@ -1,347 +1,357 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>Pertemuan 2 - Media Transmisi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 2 - Media Transmisi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<style>
-.navbawah{
-display:flex;
-justify-content:space-between;
-margin-top:40px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-.btnprev{
-background:#e8edf2;
-padding:10px 16px;
-border-radius:6px;
-text-decoration:none;
-color:#333;
-}
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-.btnnext{
-background:#2c7a2c;
-color:white;
-padding:10px 16px;
-border-radius:6px;
-text-decoration:none;
-}
-body{
-font-family:Arial;
-background:#f2f6f3;
-margin:0;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-padding:35px;
-margin-top:30px;
-margin-bottom:40px;
-border-radius:12px;
-box-shadow:0 5px 12px rgba(0,0,0,0.08);
-}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-h1{
-color:#2c7a2c;
-}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-h2{
-color:#333;
-margin-top:30px;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-p{
-line-height:1.8;
-color:#444;
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-.navtop{
-margin-bottom:20px;
-}
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
 
-.navtop a{
-text-decoration:none;
-background:#e8edf2;
-padding:8px 12px;
-border-radius:6px;
-margin-right:8px;
-color:#333;
-font-size:14px;
-}
+        /* AREA MATERI */
+        .materi-container {
+            background: var(--white);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
 
-.box{
-background:#eef7ee;
-padding:18px;
-border-left:6px solid #2c7a2c;
-margin-top:20px;
-border-radius:6px;
-}
+        h1 { color: var(--dark-gold); font-size: 32px; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: var(--text-dark); margin: 35px 0 15px; font-size: 24px; position: relative; padding-left: 15px; }
+        h2::before { content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: var(--gold); border-radius: 3px; }
+        h3 { margin: 25px 0 10px; color: #555; font-size: 20px; }
+        
+        p { line-height: 1.8; color: #444; font-size: 18px; margin-bottom: 20px; text-align: justify; }
 
-.summary{
-background:#fff6d9;
-padding:18px;
-border-left:6px solid #e0b300;
-margin-top:30px;
-border-radius:6px;
-}
+        .center { text-align: center; margin: 30px 0; }
+        img { width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 3px solid #fff; }
+        p i { font-size: 14px; color: #888; display: block; margin-top: 10px; }
 
-.quiz{
-background:#eef3ff;
-padding:20px;
-border-radius:8px;
-margin-top:30px;
-}
+        .box {
+            background: #fffdf5;
+            padding: 25px;
+            border-left: 6px solid var(--gold);
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .box ul, .box ol { margin-left: 25px; margin-top: 10px; }
+        .box li { margin-bottom: 8px; }
 
-button{
-background:#2c7a2c;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:6px;
-cursor:pointer;
-margin-top:10px;
-}
+        /* RINGKASAN */
+        .summary {
+            background: #fff9e6;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #ffeeba;
+            margin: 40px 0;
+        }
+        .summary h4 { color: #856404; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
-button:hover{
-background:#256b25;
-}
+        /* QUIZ */
+        .quiz {
+            background: #fdfdfd;
+            border: 2px dashed var(--gold);
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+        .quiz h2::before { display: none; }
+        .quiz p { font-weight: bold; margin-bottom: 10px; }
+        .quiz label { display: block; margin-bottom: 12px; cursor: pointer; font-size: 17px; }
+        .quiz input { margin-right: 10px; transform: scale(1.2); }
+        
+        .btn-cek {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn-cek:hover { background: var(--dark-gold); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
 
-</style>
+        /* NAVIGASI BAWAH */
+        .nav-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .btn-nav {
+            background: #f1f1f1;
+            color: #444;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-nav.next { background: var(--gold); color: white; }
+        .btn-nav:hover { transform: translateY(-3px); }
 
-<script>
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
-function cekJawaban(){
-let benar = 0;
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .materi-container { padding: 20px; }
+            h1 { font-size: 24px; }
+            p { font-size: 16px; }
+            .nav-bottom { flex-direction: column; gap: 15px; }
+            .btn-nav { justify-content: center; }
+        }
+    </style>
 
-if(document.getElementById("q1b").checked) benar++;
-if(document.getElementById("q2a").checked) benar++;
-if(document.getElementById("q3c").checked) benar++;
-
-alert("Skor kamu : " + benar + " / 3");
-}
-
-</script>
-
+    <script>
+        function cekJawaban(){
+            let benar = 0;
+            if(document.getElementById("q1b").checked) benar++;
+            if(document.getElementById("q2a").checked) benar++;
+            if(document.getElementById("q3c").checked) benar++;
+            alert("Hasil Latihan Pak Helmi\n----------------------\nSkor kamu: " + benar + " / 3");
+        }
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </head>
-
 <body>
 
-<div class="container">
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<div class="navtop">
-<a href="index.html">📚 Daftar Pertemuan</a>
-</div>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">KELAS X: PERTEMUAN 2</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<h1>📡 Pertemuan 2</h1>
-<h2>Media Transmisi Pada Jaringan Telekomunikasi</h2>
-  <div style="text-align:center;margin-top:25px;margin-bottom:25px">
+        <div class="materi-container">
+            <h1>📡 Pertemuan 2</h1>
+            <p style="color:var(--gold); font-weight:bold; margin-top:-10px;">Media Transmisi Pada Jaringan Telekomunikasi</p>
 
-<img src="../img/jaringan.png"
-style="width:90%;max-width:500px;border-radius:10px">
+            <div class="center">
+                <img src="../img/jaringan.png">
+                <p><i>Ilustrasi media yang menghubungkan antar perangkat</i></p>
+            </div>
 
-<p style="font-size:14px;color:#666">
-Ilustrasi jaringan komputer yang saling terhubung
-</p>
+            <p>
+                Pada sistem jaringan komputer, data tidak dapat berpindah sendiri dari satu perangkat ke perangkat lain.
+                Diperlukan suatu jalur atau media yang berfungsi sebagai perantara pengiriman informasi. Jalur ini disebut
+                <b>media transmisi</b>.
+            </p>
 
-</div>
+            <p>
+                Media transmisi memungkinkan data digital seperti teks, gambar, suara, dan video dikirim dari perangkat
+                pengirim menuju perangkat penerima melalui jaringan komunikasi.
+            </p>
 
-<p>
-Pada sistem jaringan komputer, data tidak dapat berpindah sendiri dari satu perangkat ke perangkat lain.
-Diperlukan suatu jalur atau media yang berfungsi sebagai perantara pengiriman informasi. Jalur ini disebut
-<b>media transmisi</b>.
-</p>
+            <div class="box">
+                <i class="fas fa-lightbulb" style="color:var(--gold)"></i> <b>Contoh aktivitas penggunaan:</b>
+                <ul>
+                    <li>Mengirim pesan WhatsApp</li>
+                    <li>Menonton video YouTube</li>
+                    <li>Bermain game online</li>
+                    <li>Video call dengan keluarga</li>
+                </ul>
+            </div>
 
-<p>
-Media transmisi memungkinkan data digital seperti teks, gambar, suara, dan video dikirim dari perangkat
-pengirim menuju perangkat penerima melalui jaringan komunikasi.
-</p>
+            <h2>Jenis Media Transmisi</h2>
+            <p>
+                Secara umum media transmisi dibagi menjadi dua jenis utama yaitu media kabel
+                (Guided) dan media nirkabel (Unguided/Wireless).
+            </p>
 
-<div class="box">
+            <h2>1️⃣ Media Transmisi Kabel</h2>
+            <p>
+                Media transmisi kabel menggunakan kabel fisik sebagai jalur pengiriman data.
+                Data biasanya dikirim dalam bentuk sinyal listrik atau cahaya di dalam kabel.
+            </p>
 
-<b>Contoh aktivitas yang menggunakan media transmisi:</b>
+            <h3>A. Kabel Twisted Pair</h3>
+            <p>
+                Kabel ini paling sering digunakan dalam jaringan lokal (LAN). Terdiri dari pasangan kabel yang dipilin untuk
+                mengurangi gangguan sinyal (noise).
+            </p>
+            <div class="center">
+                <img src="../img/utp.png">
+                <p><i>Konektor RJ45 dan Kabel UTP</i></p>
+            </div>
+            <p>Jenis kabel twisted pair yang populer: <b>UTP</b> (Unshielded) dan <b>STP</b> (Shielded).</p>
 
-<ul>
-<li>Mengirim pesan WhatsApp</li>
-<li>Menonton video YouTube</li>
-<li>Bermain game online</li>
-<li>Mengirim email</li>
-<li>Video call dengan keluarga</li>
-</ul>
+            <h3>B. Kabel Coaxial</h3>
+            <p>
+                Memiliki lapisan pelindung tambahan. Dulu banyak digunakan pada jaringan komputer lama dan televisi kabel.
+            </p>
 
-</div>
+            <h3>C. Fiber Optik (Serat Optik)</h3>
+            <p>
+                Menggunakan <b>cahaya</b> untuk mengirim data. Teknologi ini mampu mengirimkan data dengan kecepatan sangat tinggi.
+            </p>
+            <div class="center">
+                <img src="../img/fiber.png">
+            </div>
+            <div class="box">
+                <b>Kelebihan Fiber Optik:</b>
+                <ul>
+                    <li>Kecepatan sangat tinggi & Kapasitas besar</li>
+                    <li>Jarak transmisi sangat jauh</li>
+                    <li>Tidak terganggu induksi listrik</li>
+                </ul>
+            </div>
 
-<h2>Jenis Media Transmisi</h2>
+            <h2>2️⃣ Media Transmisi Wireless</h2>
+            <p>
+                Media nirkabel tidak menggunakan kabel. Data dikirim melalui gelombang elektromagnetik di udara.
+            </p>
 
-<p>
-Secara umum media transmisi dibagi menjadi dua jenis utama yaitu media kabel
-dan media nirkabel (wireless).
-</p>
+            <div class="box" style="background:#f0f7ff; border-left-color: #2196f3;">
+                <p><b>Contoh Media Wireless:</b></p>
+                <ul>
+                    <li><b>WiFi:</b> Koneksi internet tanpa kabel untuk HP/Laptop.</li>
+                    <li><b>Bluetooth:</b> Komunikasi jarak dekat (Headset/Transfer file).</li>
+                    <li><b>Jaringan Seluler:</b> Teknologi 3G, 4G, dan 5G.</li>
+                </ul>
+            </div>
 
-<h2>1️⃣ Media Transmisi Kabel</h2>
+            <div class="summary">
+                <h4><i class="fas fa-sticky-note"></i> Ringkasan Materi</h4>
+                <p style="font-size: 16px; margin-bottom: 0;">
+                    Media transmisi adalah perantara untuk mengirimkan data dalam jaringan. 
+                    Pilih <b>Kabel</b> untuk stabilitas tinggi, atau <b>Wireless</b> untuk fleksibilitas mobilitas.
+                </p>
+            </div>
 
-<p>
-Media transmisi kabel menggunakan kabel fisik sebagai jalur pengiriman data.
-Data biasanya dikirim dalam bentuk sinyal listrik atau cahaya yang berjalan
-di dalam kabel.
-</p>
+            <div class="quiz">
+                <h2 style="margin-top:0;"><i class="fas fa-edit" style="color:var(--gold); margin-right:10px;"></i> Latihan Soal</h2>
+                <p>1. Media yang digunakan untuk mengirimkan data disebut...</p>
+                <label><input type="radio" name="q1"> Perangkat keras</label>
+                <label><input type="radio" id="q1b" name="q1"> Media transmisi</label>
+                <label><input type="radio" name="q1"> Sistem operasi</label>
 
-<h3>Kabel Twisted Pair</h3>
-  
-<p>
-Kabel twisted pair adalah kabel yang paling sering digunakan dalam jaringan
-komputer lokal (LAN). Kabel ini terdiri dari pasangan kabel yang dipilin untuk
-mengurangi gangguan sinyal.
-</p>
-<div style="text-align:center;margin:25px 0">
+                <p style="margin-top:20px;">2. Kabel yang paling sering digunakan dalam jaringan LAN adalah...</p>
+                <label><input type="radio" id="q2a" name="q2"> Twisted Pair</label>
+                <label><input type="radio" name="q2"> Fiber optik</label>
+                <label><input type="radio" name="q2"> HDMI</label>
 
-<img src="../img/utp.png"
-style="width:80%;max-width:420px;border-radius:8px">
+                <p style="margin-top:20px;">3. Teknologi jaringan tanpa kabel disebut...</p>
+                <label><input type="radio" name="q3"> LAN</label>
+                <label><input type="radio" name="q3"> Kabel</label>
+                <label><input type="radio" id="q3c" name="q3"> Wireless</label>
 
-<p style="font-size:14px;color:#666">
-Contoh kabel UTP yang digunakan pada jaringan LAN
-</p>
+                <button class="btn-cek" onclick="cekJawaban()">Cek Jawaban <i class="fas fa-paper-plane"></i></button>
+            </div>
 
-</div>
-<p>
-Jenis kabel twisted pair:
-</p>
-
-<ul>
-<li>UTP (Unshielded Twisted Pair)</li>
-<li>STP (Shielded Twisted Pair)</li>
-</ul>
-
-<p>
-Kabel ini biasanya menggunakan konektor <b>RJ45</b> untuk menghubungkan perangkat
-seperti komputer, switch, atau router.
-</p>
-
-<h3>Kabel Coaxial</h3>
-
-<p>
-Kabel coaxial memiliki lapisan pelindung tambahan yang membuatnya lebih tahan
-terhadap gangguan sinyal. Kabel ini dulu banyak digunakan pada jaringan komputer
-lama dan televisi kabel.
-</p>
-
-<h3>Fiber Optik</h3>
-
-<p>
-Fiber optik merupakan kabel yang menggunakan cahaya untuk mengirim data.
-Teknologi ini mampu mengirimkan data dengan kecepatan sangat tinggi dan
-digunakan oleh penyedia layanan internet modern.
-</p>
-<div style="text-align:center;margin:25px 0">
-
-<img src="../img/fiber.png"
-style="width:80%;max-width:420px;border-radius:8px">
-
-<p style="font-size:14px;color:#666">
-Kabel fiber optik yang digunakan pada jaringan internet modern
-</p>
-
-</div>
-<div class="box">
-
-<b>Kelebihan Fiber Optik:</b>
-
-<ul>
-<li>Kecepatan sangat tinggi</li>
-<li>Jarak transmisi sangat jauh</li>
-<li>Tidak mudah terganggu sinyal listrik</li>
-<li>Kapasitas data sangat besar</li>
-</ul>
-
-</div>
-
-<h2>2️⃣ Media Transmisi Wireless</h2>
-
-<p>
-Media transmisi wireless tidak menggunakan kabel. Data dikirim melalui
-gelombang elektromagnetik yang merambat melalui udara.
-</p>
-
-<h3>WiFi</h3>
-
-<p>
-WiFi memungkinkan perangkat seperti laptop dan smartphone terhubung
-ke internet tanpa menggunakan kabel.
-</p>
-
-<h3>Bluetooth</h3>
-
-<p>
-Bluetooth digunakan untuk komunikasi jarak dekat seperti menghubungkan
-headset wireless dengan smartphone.
-</p>
-
-<h3>Jaringan Seluler</h3>
-
-<p>
-Jaringan seluler digunakan oleh operator telekomunikasi untuk menyediakan
-layanan komunikasi seperti telepon dan internet.
-</p>
-
-<ul>
-<li>3G</li>
-<li>4G</li>
-<li>5G</li>
-</ul>
-
-<div class="summary">
-
-<b>📌 Ringkasan Materi</b>
-
-<p>
-Media transmisi adalah jalur yang digunakan untuk mengirimkan data dari satu
-perangkat ke perangkat lain dalam sistem jaringan komputer dan telekomunikasi.
-</p>
-
-<p>
-Media transmisi dibagi menjadi dua jenis yaitu media kabel dan media wireless.
-Masing-masing memiliki kelebihan serta digunakan sesuai kebutuhan jaringan.
-</p>
-
-</div>
-
-<div class="quiz">
-
-<h2>📝 Latihan Soal</h2>
-
-<p>1. Media yang digunakan untuk mengirimkan data disebut...</p>
-
-<input type="radio" name="q1"> Perangkat keras<br>
-<input type="radio" id="q1b" name="q1"> Media transmisi<br>
-<input type="radio" name="q1"> Sistem operasi<br>
-
-<p>2. Kabel yang paling sering digunakan dalam jaringan LAN adalah...</p>
-
-<input type="radio" id="q2a" name="q2"> Twisted Pair<br>
-<input type="radio" name="q2"> Fiber optik<br>
-<input type="radio" name="q2"> HDMI<br>
-
-<p>3. Teknologi jaringan tanpa kabel disebut...</p>
-
-<input type="radio" name="q3"> LAN<br>
-<input type="radio" name="q3"> Kabel<br>
-<input type="radio" id="q3c" name="q3"> Wireless<br>
-
-<br>
-
-<button onclick="cekJawaban()">Cek Jawaban</button>
-
-</div>
-
-<div class="navbawah">
-
-<a href="pertemuan1.html" class="btnprev">⬅ Pertemuan 1</a>
-
-<a href="pertemuan3.html" class="btnnext">Pertemuan 3 ➜</a>
-
-</div>
-
-</div>
+            <div class="nav-bottom">
+                <a href="pertemuan1.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Pertemuan 1</a>
+                <a href="pertemuan3.html" class="btn-nav next">Pertemuan 3 <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
