@@ -3,71 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARSIP DIGITAL - SMKN 7 LUWU</title>
+    <title>ARSIP DIGITAL - SMKN 7 LUWU (Premium White & Gold)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --gold: #D4AF37;
+            --gold: #D4AF37; /* Emas Standar Blueprint */
             --white: #ffffff;
-            --bg-light: #f4f7f6;
+            --bg-light: #f9fafb; /* Abu-abu sangat muda agar kartu putih terlihat menonjol */
+            --text-main: #333;
             --sidebar-width: 280px;
-            --box-blue: #4A77C2; /* Biru sesuai gambar Bapak */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: var(--bg-light); display: flex; min-height: 100vh; }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-main); }
 
-        /* SIDEBAR SYNC */
-        .sidebar { width: var(--sidebar-width); background: var(--white); height: 100vh; position: fixed; border-right: 1px solid #ddd; display: flex; flex-direction: column; }
+        /* --- SIDEBAR (SYNC WITH INDEX.HTML) --- */
+        .sidebar { width: var(--sidebar-width); background: var(--white); height: 100vh; position: fixed; border-right: 1px solid #eee; display: flex; flex-direction: column; z-index: 1000; }
         .sidebar-header { padding: 35px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
         .sidebar-header img { width: 75px; margin-bottom: 12px; }
         .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
+        
         .nav-menu { padding: 25px 0; flex-grow: 1; }
         .nav-item { display: flex; align-items: center; padding: 18px 25px; color: #444; text-decoration: none; font-size: 18px; font-weight: 500; transition: 0.3s; }
-        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; color: #777; }
         
-        /* Menu Arsip Aktif */
-        .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold); }
-
-        /* CONTENT AREA */
-        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
-        .topbar { background: var(--white); padding: 18px 30px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
-        
-        /* GRID KOTAK BIRU ARSIP */
-        .arsip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        
-        .box-arsip { 
-            background: var(--box-blue); 
-            padding: 40px 20px; 
-            border-radius: 20px; 
-            text-align: center; 
-            color: white; 
-            transition: 0.3s; 
-            min-height: 220px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
-            box-shadow: 0 8px 20px rgba(74, 119, 194, 0.2);
-        }
-        
-        .box-arsip:hover { transform: translateY(-8px); border: 2px solid var(--gold); }
-        .box-arsip i { font-size: 40px; margin-bottom: 15px; }
-        .box-arsip h4 { font-size: 18px; font-weight: 700; text-transform: uppercase; line-height: 1.4; }
-        
-        .btn-download { 
-            margin-top: 20px; 
-            background: var(--gold); 
-            color: white; 
-            padding: 8px 20px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px; 
-        }
+        /* Menu Arsip Aktif - Sesuai Blueprint */
+        .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold); font-weight: 700; }
+        .nav-item.active i { color: var(--gold); }
 
         .footer-dev { padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5; }
+
+        /* --- CONTENT AREA --- */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 30px; width: 100%; }
+        
+        /* TOPBAR (SYNC) */
+        .topbar { background: var(--white); padding: 20px 30px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 30px; border: 1px solid #f0f0f0; }
+        .title-bar { font-weight: 800; color: var(--gold); font-size: 22px; }
+        .user-prof { font-weight: 700; display: flex; align-items: center; gap: 10px; font-size: 17px; }
+        
+        /* --- ARSIP GRID: PREMIUM WHITE & GOLD --- */
+        .arsip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        /* Kartu Putih Bersih */
+        .card-arsip { 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 20px; 
+            text-align: center; 
+            color: var(--text-main); 
+            transition: all 0.3s ease-in-out; 
+            min-height: 250px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0;
+        }
+        
+        /* EFEK HOVER BLUEPRINT (Naik & Muncul Aksen Emas) */
+        .card-arsip:hover { 
+            transform: translateY(-8px); 
+            border: 1px solid var(--gold); 
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); 
+        }
+        
+        /* Icon Emas Besar */
+        .card-arsip i { font-size: 45px; color: var(--gold); margin-bottom: 20px; }
+        
+        /* Teks Judul Card */
+        .card-arsip h4 { 
+            font-size: 18px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            line-height: 1.4; 
+            color: #444; 
+            margin-bottom: 15px;
+            flex-grow: 1; /* Agar teks mengisi ruang */
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Tombol Emas Mewah */
+        .btn-premium { 
+            display: inline-block;
+            margin-top: auto; /* Memastikan tombol di paling bawah */
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); /* Gradient Emas Blueprint */
+            color: white; 
+            padding: 12px 25px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 14px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(184, 134, 11, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-premium:hover {
+            box-shadow: 0 6px 15px rgba(184, 134, 11, 0.5);
+            background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%); /* Balik Gradient saat Hover */
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; width: 250px; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .arsip-grid { grid-template-columns: 1fr; }
+            .topbar { padding: 15px; }
+            .title-bar { font-size: 18px; }
+        }
     </style>
 </head>
 <body>
@@ -88,46 +135,48 @@
 
     <div class="main-content">
         <div class="topbar">
-            <div style="font-weight: 800; color: var(--gold); font-size: 20px;">SMKN 7 LUWU / HALAMAN ARSIP</div>
-            <div style="font-weight: 700;">Helmi Yunar <i class="fas fa-user-circle" style="color: var(--gold); font-size: 25px; margin-left: 10px;"></i></div>
+            <div class="title-bar">SMKN 7 LUWU / ARSIP</div>
+            <div class="user-prof">Helmi Yunar <i class="fas fa-user-circle" style="color: var(--gold); font-size: 30px;"></i></div>
         </div>
 
         <div class="arsip-grid">
-            <div class="box-arsip">
-                <i class="fas fa-file-invoice"></i>
+            
+            <div class="card-arsip">
+                <i class="fas fa-file-contract"></i>
                 <h4>SPTJM DAPODIK SMKN 7 LUWU</h4>
-                <a href="arsip/sptjm.pdf" class="btn-download">DOWNLOAD PDF</a>
+                <a href="arsip/sptjm.pdf" class="btn-premium">BUKA & DOWNLOAD PDF</a>
             </div>
 
-            <div class="box-arsip">
-                <i class="fas fa-users-viewfinder"></i>
+            <div class="card-arsip">
+                <i class="fas fa-users"></i>
                 <h4>REKAP ABSENSI SISWA KELAS X TKJ</h4>
-                <a href="#" class="btn-download">LIHAT DATA</a>
+                <a href="#" class="btn-premium">LIHAT REKAP</a>
             </div>
 
-            <div class="box-arsip">
-                <i class="fas fa-check-double"></i>
+            <div class="card-arsip">
+                <i class="fas fa-id-card"></i>
                 <h4>INFO GTK VALID</h4>
-                <a href="#" class="btn-download">CEK VALIDASI</a>
+                <a href="#" class="btn-premium">CEK DATA</a>
             </div>
 
-            <div class="box-arsip">
+            <div class="card-arsip">
                 <i class="fas fa-folder-open"></i>
                 <h4>SK YANG SEMPAT TEREKAP</h4>
-                <a href="#" class="btn-download">BUKA ARSIP</a>
+                <a href="#" class="btn-premium">BUKA ARSIP</a>
             </div>
 
-            <div class="box-arsip">
+            <div class="card-arsip">
                 <i class="fas fa-users-rectangle"></i>
                 <h4>REKAP ABSENSI SISWA KELAS XI TKJ</h4>
-                <a href="#" class="btn-download">LIHAT DATA</a>
+                <a href="#" class="btn-premium">LIHAT REKAP</a>
             </div>
 
-            <div class="box-arsip">
-                <i class="fas fa-user-tie"></i>
+            <div class="card-arsip">
+                <i class="fas fa-chalkboard-teacher"></i>
                 <h4>DATA GURU</h4>
-                <a href="#" class="btn-download">BUKA</a>
+                <a href="#" class="btn-premium">BUKA</a>
             </div>
+            
         </div>
     </div>
 
