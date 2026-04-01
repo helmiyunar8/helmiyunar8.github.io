@@ -1,126 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Materi Kelas X</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Kelas X - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<style>
-<style>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-body{
-font-family:Arial;
-background:#0f2a44;
-color:white;
-text-align:center;
-padding:40px;
-}
+        /* SIDEBAR (MENU SAMPING) */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* NAVBAR */
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-.navbar{
-background:#2c7a4b;
-padding:12px;
-text-align:center;
-}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
-font-size:14px;
-border-radius:6px;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0;
+            color: var(--gold);
+            border-left: 6px solid var(--gold);
+        }
 
-.navbar a:hover{
-background:#1e5b37;
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-table{
-margin:auto;
-border-collapse:collapse;
-width:420px;
-}
-body{
-font-family:Arial;
-background:#eef2f3;
-margin:0;
-text-align:center;
-}
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 18px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
 
-.navbar{
-background:#2e7d32;
-padding:12px;
-}
+        /* LIST PERTEMUAN */
+        .list-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-}
+        .pertemuan-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            padding: 20px 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            border-left: 5px solid var(--gold);
+        }
 
-.container{
-padding:30px;
-}
+        .pertemuan-item:hover {
+            transform: translateX(10px);
+            background: #fffdf5;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
 
-.card{
-background:white;
-width:260px;
-margin:12px auto;
-padding:16px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
+        .pertemuan-number {
+            background: var(--gold);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
 
-.card a{
-text-decoration:none;
-color:#333;
-font-weight:bold;
-}
+        .pertemuan-text h4 {
+            font-size: 20px;
+            font-weight: 700;
+        }
 
-</style>
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .pertemuan-item { padding: 15px; }
+            .pertemuan-text h4 { font-size: 17px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<div class="navbar">
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">MATERI KELAS X</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 26px;">Daftar Pertemuan</h2>
+            <p style="color: #666;">Klik pada pertemuan untuk melihat isi materi</p>
+        </div>
 
-</div>
+        <div class="list-container">
+            
+            <a href="pertemuan1.html" class="pertemuan-item">
+                <div class="pertemuan-number">1</div>
+                <div class="pertemuan-text">
+                    <h4>Materi Pertemuan 1</h4>
+                </div>
+            </a>
 
-<div class="container">
+            <a href="pertemuan2.html" class="pertemuan-item">
+                <div class="pertemuan-number">2</div>
+                <div class="pertemuan-text">
+                    <h4>Materi Pertemuan 2</h4>
+                </div>
+            </a>
 
-<h2>📚 Materi TKJ Kelas X</h2>
+            <a href="pertemuan3.html" class="pertemuan-item">
+                <div class="pertemuan-number">3</div>
+                <div class="pertemuan-text">
+                    <h4>Materi Pertemuan 3</h4>
+                </div>
+            </a>
 
-<div class="card">
-<a href="/materi/kelas10/pertemuan1.html">Pertemuan 1</a>
-</div>
+            <a href="pertemuan4.html" class="pertemuan-item">
+                <div class="pertemuan-number">4</div>
+                <div class="pertemuan-text">
+                    <h4>Materi Pertemuan 4</h4>
+                </div>
+            </a>
 
-<div class="card">
-<a href="/materi/kelas10/pertemuan2.html">Pertemuan 2</a>
-</div>
+        </div>
+    </div>
 
-<div class="card">
-<a href="/materi/kelas10/pertemuan3.html">Pertemuan 3</a>
-</div>
-
-<div class="card">
-<a href="/materi/kelas10/pertemuan4.html">Pertemuan 4</a>
-</div>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
