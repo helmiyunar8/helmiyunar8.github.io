@@ -1,132 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Kelas XI - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<title>Materi Kelas XI</title>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-<style>
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-text-align:center;
-}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-/* NAVBAR */
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-nav{
-background:#2e7d32;
-padding:12px;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-/* JUDUL */
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
 
-h1{
-margin-top:30px;
-}
+        /* CARD MAPEL */
+        .mapel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-/* CONTAINER */
+        .mapel-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
 
-.container{
-max-width:400px;
-margin:auto;
-padding:20px;
-}
+        .mapel-card:hover:not(.kosong) {
+            transform: translateY(-5px);
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
 
-/* CARD */
+        .mapel-card.kosong {
+            opacity: 0.7;
+            background: #fafafa;
+            cursor: not-allowed;
+        }
 
-.card{
-background:white;
-padding:16px;
-margin:12px;
-border-radius:12px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
+        .mapel-card i {
+            font-size: 35px;
+            color: var(--gold);
+            margin-right: 20px;
+            width: 45px;
+            text-align: center;
+        }
 
-.card a{
-text-decoration:none;
-color:#333;
-font-size:16px;
-display:block;
-}
+        .mapel-info h4 {
+            font-size: 19px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
 
-/* TOMBOL KEMBALI */
+        .mapel-info p {
+            font-size: 14px;
+            color: #888;
+        }
 
-.back{
-margin-top:20px;
-display:inline-block;
-padding:10px 16px;
-background:#2e7d32;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-size:14px;
-}
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
-</style>
-
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .mapel-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<nav>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">MATERI KELAS XI</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<a href="https://helmiyunar8.github.io">🏠 Beranda</a>
+        <div style="text-align: center; margin-bottom: 35px;">
+            <h2 style="font-size: 26px;">Pilih Mata Pelajaran</h2>
+            <p style="color: #666; font-size: 17px;">Kurikulum Teknik Jaringan Komputer & Telekomunikasi</p>
+        </div>
 
-<a href="https://helmiyunar8.github.io/materi">📚 Materi</a>
+        <div class="mapel-grid">
+            
+            <a href="kik/index.html" class="mapel-card">
+                <i class="fas fa-laptop-code"></i>
+                <div class="mapel-info">
+                    <h4>KIK</h4>
+                    <p>Komputer & Jaringan Dasar</p>
+                </div>
+            </a>
 
-<a href="https://helmiyunar8.github.io/tryout">📝 Tryout</a>
+            <a href="#" class="mapel-card kosong">
+                <i class="fas fa-server"></i>
+                <div class="mapel-info">
+                    <h4>ASJ</h4>
+                    <p>Administrasi Sistem Jaringan (Kosong)</p>
+                </div>
+            </a>
 
-<a href="https://helmiyunar8.github.io/lkpd">📄 LKPD</a>
+            <a href="#" class="mapel-card kosong">
+                <i class="fas fa-network-wired"></i>
+                <div class="mapel-info">
+                    <h4>TLJ</h4>
+                    <p>Teknologi Layanan Jaringan (Kosong)</p>
+                </div>
+            </a>
 
-<a href="https://helmiyunar8.github.io/absen">📷 Absen</a>
+            <a href="#" class="mapel-card kosong">
+                <i class="fas fa-tools"></i>
+                <div class="mapel-info">
+                    <h4>AIJ</h4>
+                    <p>Admin Infrastruktur Jaringan (Kosong)</p>
+                </div>
+            </a>
 
-<a href="https://helmiyunar8.github.io/ranking">🏆 Ranking</a>
+            <a href="#" class="mapel-card kosong">
+                <i class="fas fa-broadcast-tower"></i>
+                <div class="mapel-info">
+                    <h4>WAN</h4>
+                    <p>Teknologi Jaringan Luas (Kosong)</p>
+                </div>
+            </a>
 
-</nav>
+        </div>
+    </div>
 
-<h1>📚 Materi TKJ Kelas XI</h1>
-
-<p>Pilih Mata Pelajaran</p>
-
-<div class="container">
-
-<div class="card">
-<a href="kik">💻 KIK (Komputer & Jaringan)</a>
-</div>
-
-<div class="card">
-<a href="asn">🖥️ ASJ (masih_KOSONG😴)</a>
-</div>
-
-<div class="card">
-<a href="tlj">🌐 TLJ (masih_KOSONG😴)</a>
-</div>
-
-<div class="card">
-<a href="aij">🔧 AIJ (masih_KOSONG😴)</a>
-</div>
-
-<div class="card">
-<a href="wan">📡 WAN (masih_KOSONG😴)</a>
-</div>
-
-</div>
-
-<a class="back" href="https://helmiyunar8.github.io/materi">⬅ Kembali ke Materi</a>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
