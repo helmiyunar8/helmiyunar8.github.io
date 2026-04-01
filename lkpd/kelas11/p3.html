@@ -1,284 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LKPD XI Pertemuan 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD XI Pertemuan 3 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+        }
 
-<style>
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-}
-/* NAVBAR */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-.navbar{
-background:#2c7a4b;
-padding:12px;
-text-align:center;
-}
+        body { background-color: var(--bg-soft); color: #333; min-height: 100vh; }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
-font-size:14px;
-border-radius:6px;
-}
+        /* NAVBAR */
+        .navbar {
+            background: var(--white); padding: 12px 5%; display: flex;
+            justify-content: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .navbar a { color: var(--primary-green); text-decoration: none; font-weight: 700; font-size: 13px; padding: 8px 15px; border-radius: 8px; transition: 0.3s; }
+        .navbar a:hover { background: var(--primary-green); color: white; }
 
-.navbar a:hover{
-background:#1e5b37;
-}
+        /* HEADER */
+        header { background: var(--primary-green); color: white; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header h2 { font-size: 24px; letter-spacing: 1px; }
 
-table{
-margin:auto;
-border-collapse:collapse;
-width:420px;
-}
-header{
-background:#2e7d32;
-color:white;
-text-align:center;
-padding:15px;
-}
+        .container { max-width: 800px; margin: 25px auto; padding: 0 20px; }
 
-.container{
-max-width:500px;
-margin:auto;
-padding:15px;
-}
+        /* LOGIN BOX */
+        #login {
+            background: white; padding: 40px; border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center;
+            border-top: 8px solid var(--gold);
+        }
+        #login h3 { margin-bottom: 25px; color: var(--primary-green); }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 14px; }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 10px; font-size: 15px; }
 
-.card{
-background:white;
-padding:15px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
+        /* EXAM AREA */
+        #ujian { display: none; flex-direction: column; gap: 20px; }
 
-.timer{
-color:red;
-font-weight:bold;
-margin-bottom:10px;
-}
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
 
-button{
-background:#2e7d32;
-color:white;
-border:none;
-padding:10px;
-border-radius:6px;
-margin-top:10px;
-width:100%;
-}
+        .timer-badge {
+            float: right; background: #ffebee; color: #c62828; padding: 8px 20px;
+            border-radius: 50px; font-weight: 800; border: 1px solid #ffcdd2;
+        }
 
-.nav{
-display:flex;
-gap:10px;
-}
+        #pertanyaan { font-size: 19px; color: var(--dark-green); margin: 40px 0 25px; line-height: 1.6; }
 
-.nomor{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:6px;
-margin-top:15px;
-}
+        .opsi-container { display: flex; flex-direction: column; gap: 12px; }
+        .opsi-label {
+            display: block; padding: 15px 20px; background: #f9f9f9; border: 2px solid #eee;
+            border-radius: 12px; cursor: pointer; transition: 0.3s; font-weight: 500;
+        }
+        .opsi-label:hover { background: #fffcf0; border-color: var(--gold); }
+        .opsi-label input { margin-right: 15px; transform: scale(1.2); }
+        .opsi-label.selected { background: #e8f5e9; border-color: var(--primary-green); color: var(--dark-green); font-weight: 700; }
 
-.nomor div{
-background:#c8e6c9;
-padding:8px;
-text-align:center;
-border-radius:4px;
-cursor:pointer;
-}
+        /* NOMOR GRID */
+        .nomor-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 20px; }
+        .no-box {
+            padding: 12px; background: #eee; text-align: center; border-radius: 10px;
+            cursor: pointer; font-weight: 700; transition: 0.3s;
+        }
+        .no-box.aktif { background: var(--gold) !important; color: white; }
+        .no-box.jawab { background: var(--primary-green); color: white; }
 
-.nomor div.jawab{
-background:#2e7d32;
-color:white;
-font-weight:bold;
-}
-</style>
+        /* NAV BUTTONS */
+        .nav-btns { display: flex; justify-content: space-between; gap: 10px; margin-top: 30px; }
+        button {
+            padding: 12px 25px; border: none; border-radius: 10px; font-weight: 700;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn-action { background: var(--primary-green); color: white; }
+        .btn-finish { background: #c62828; color: white; width: 100%; margin-top: 15px; }
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
 
+        @media (max-width: 600px) {
+            .container { padding: 0 10px; }
+            .no-box { padding: 8px; font-size: 12px; }
+        }
+    </style>
 </head>
-
 <body>
-<!-- NAVBAR -->
 
-<div class="navbar">
+    <div class="navbar">
+        <a href="/index.html">🏠 BERANDA</a>
+        <a href="/materi/index.html">📚 MATERI</a>
+        <a href="/menu-utama-TKJ/tryout.html">📝 TRYOUT</a>
+        <a href="/lkpd/index.html">📄 LKPD</a>
+    </div>
 
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+    <header>
+        <h2>LKPD XI: PERTEMUAN 3</h2>
+        <p style="font-size: 14px; opacity: 0.9;">SMKN 7 LUWU • Jaringan Komputer & Telekomunikasi</p>
+    </header>
 
-</div>
+    <div class="container">
+        <div id="login">
+            <i class="fas fa-user-edit" style="font-size: 50px; color: var(--gold); margin-bottom: 15px;"></i>
+            <h3>Identitas Siswa</h3>
+            <div class="input-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="nama" placeholder="Masukkan nama...">
+            </div>
+            <div class="input-group">
+                <label>Kelas</label>
+                <select id="kelas">
+                    <option>XI TKJ</option>
+                </select>
+            </div>
+            <button onclick="mulai()" class="btn-action" style="width: 100%; background: var(--gold); margin-top: 10px;">MULAI PENGERJAAN</button>
+        </div>
 
-<header>
-<h3>LKPD XI</h3>
-PERTEMUAN 3
-</header>
+        <div id="ujian">
+            <div class="card">
+                <div class="timer-badge" id="timer">Sisa waktu : 20:00</div>
+                <div style="color: var(--gold); font-weight: 800; font-size: 14px;">PERTANYAAN</div>
+                <h3 id="pertanyaan"></h3>
+                <div id="opsi" class="opsi-container"></div>
 
-<div class="container">
+                <div class="nav-btns">
+                    <button class="btn-action" style="background:#6c757d" onclick="prev()"><i class="fas fa-chevron-left"></i> SEBELUMNYA</button>
+                    <button class="btn-action" onclick="next()">SELANJUTNYA <i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <button class="btn-finish" onclick="selesai()"><i class="fas fa-check-double"></i> SELESAI & KIRIM</button>
+            </div>
 
-<div id="login" class="card">
-Nama<br>
-<input id="nama" style="width:100%"><br><br>
+            <div class="card">
+                <h4 style="font-size: 14px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">NAVIGASI NOMOR</h4>
+                <div class="nomor-grid" id="nomor"></div>
+            </div>
+        </div>
+    </div>
 
-Kelas<br>
-<select id="kelas" style="width:100%">
-<option>XI TKJ</option>
-</select>
+    <script>
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzRNmacavBedzKd5gGVXfeW0_4nydnlqWOexH9WOXt2b04oO6jKqX89ne6kf37815xsbg/exec";
 
-<button onclick="mulai()">Mulai LKPD</button>
-</div>
+        const bankSoal = [
+            {t:"Desain produk dalam dunia industri sering disebut dengan istilah...",o:["Industrial Network","Industrial Design","Computer Design","Digital Design","Product Network"],a:1},
+            {t:"Tujuan utama dari desain produk adalah...",o:["Mengurangi kualitas produk","Menentukan bentuk fungsi dan bahan produk","Mengurangi biaya pemasaran","Meningkatkan berat produk","Mengurangi bahan baku"],a:1},
+            {t:"Berikut ini yang termasuk fungsi desain produk adalah...",o:["Menurunkan kualitas produk","Sebagai identitas produk","Menghilangkan fungsi produk","Mengurangi biaya tenaga kerja","Mengurangi bahan baku"],a:1},
+            {t:"Unsur utama dalam desain produk terdiri dari...",o:["Bentuk fungsi bahan","Harga promosi ukuran","Bahan biaya keuntungan","Bentuk warna promosi","Harga bahan promosi"],a:0},
+            {t:"Bentuk produk dapat berupa beberapa jenis salah satunya adalah...",o:["Cair","Gas","Kotak","Plasma","Cahaya"],a:2},
+            {t:"Fungsi produk dalam bidang TKJ contohnya adalah...",o:["Rak router untuk menaruh perangkat jaringan","Keyboard untuk memasak","Speaker untuk mengetik","Mouse untuk menyimpan data","Monitor untuk memasak"],a:0},
+            {t:"Bahan yang digunakan dalam desain produk TKJ biasanya berasal dari...",o:["Barang bekas komputer","Bahan makanan","Kain tekstil","Kertas bekas","Bahan plastik cair"],a:0},
+            {t:"Jika desain produk terlalu rumit maka proses produksi akan...",o:["Lebih cepat","Lebih mudah","Lebih lama dan biaya lebih besar","Tidak berubah","Lebih ringan"],a:2},
+            {t:"Desain yang sederhana dalam proses produksi biasanya akan...",o:["Menyulitkan produksi","Meningkatkan biaya produksi","Mempermudah produksi dan lebih hemat","Mengurangi fungsi produk","Mengurangi nilai jual"],a:2},
+            {t:"Desain produk yang baik dapat membuat produk...",o:["Lebih menarik bagi pembeli","Lebih sulit digunakan","Lebih mahal dibuat","Lebih berat digunakan","Lebih sulit diproduksi"],a:0}
+        ];
 
-<div id="ujian" style="display:none">
+        let soal = bankSoal;
+        let pos = 0;
+        let jawab = [];
+        let waktu = 20 * 60;
+        let timerInterval;
 
-<div class="card">
-<div class="timer" id="timer"></div>
+        function mulai() {
+            if(document.getElementById("nama").value == "") return alert("Masukkan Nama Anda!");
+            document.getElementById("login").style.display = "none";
+            document.getElementById("ujian").style.display = "flex";
+            buatNomor();
+            tampil();
+            startTimer();
+        }
 
-<h3 id="pertanyaan"></h3>
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                let m = Math.floor(waktu / 60);
+                let s = waktu % 60;
+                document.getElementById("timer").innerHTML = "⌛ Sisa waktu : " + m + ":" + (s < 10 ? '0'+s : s);
+                if (waktu <= 60) document.getElementById("timer").style.color = "red";
+                waktu--;
+                if (waktu < 0) { clearInterval(timerInterval); selesai(); }
+            }, 1000);
+        }
 
-<div id="opsi"></div>
+        function buatNomor() {
+            let html = "";
+            for (let i = 0; i < soal.length; i++) {
+                html += `<div class="no-box" id="no_${i}" onclick="lompat(${i})">${i + 1}</div>`;
+            }
+            document.getElementById("nomor").innerHTML = html;
+        }
 
-<div class="nav">
-<button onclick="prev()">Sebelumnya</button>
-<button onclick="next()">Selanjutnya</button>
-</div>
+        function tampil() {
+            let s = soal[pos];
+            document.getElementById("pertanyaan").innerHTML = (pos + 1) + ". " + s.t;
 
-<button onclick="selesai()">Selesai</button>
+            let html = "";
+            s.o.forEach((o, i) => {
+                let isChecked = jawab[pos] == i ? "checked" : "";
+                let classSelected = jawab[pos] == i ? "selected" : "";
+                html += `
+                    <label class="opsi-label ${classSelected}">
+                        <input type="radio" name="opsi" value="${i}" onchange="pilih(${i})" ${isChecked}>
+                        ${String.fromCharCode(65 + i)}. ${o}
+                    </label>`;
+            });
+            document.getElementById("opsi").innerHTML = html;
 
-</div>
+            document.querySelectorAll(".no-box").forEach(el => el.classList.remove("aktif"));
+            document.getElementById("no_" + pos).classList.add("aktif");
+        }
 
-<div class="card nomor" id="nomor"></div>
+        function pilih(i) {
+            jawab[pos] = i;
+            document.getElementById("no_" + pos).classList.add("jawab");
+            tampil();
+        }
 
-</div>
+        function next() { if (pos < soal.length - 1) { pos++; tampil(); } }
+        function prev() { if (pos > 0) { pos--; tampil(); } }
+        function lompat(i) { pos = i; tampil(); }
 
-</div>
+        function selesai() {
+            clearInterval(timerInterval);
+            let benar = 0;
+            soal.forEach((s, i) => { if (jawab[i] == s.a) benar++; });
+            let nilai = Math.round((benar / soal.length) * 100);
 
-<script>
+            fetch(scriptURL, {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify({
+                    nama: document.getElementById("nama").value,
+                    kelas: document.getElementById("kelas").value,
+                    nilai: nilai
+                })
+            });
 
-let scriptURL="https://script.google.com/macros/s/AKfycbzRNmacavBedzKd5gGVXfeW0_4nydnlqWOexH9WOXt2b04oO6jKqX89ne6kf37815xsbg/exec"
-
-let bankSoal=[
-
-{t:"Desain produk dalam dunia industri sering disebut dengan istilah...",img:"",o:["Industrial Network","Industrial Design","Computer Design","Digital Design","Product Network"],a:1},
-
-{t:"Tujuan utama dari desain produk adalah...",img:"",o:["Mengurangi kualitas produk","Menentukan bentuk fungsi dan bahan produk","Mengurangi biaya pemasaran","Meningkatkan berat produk","Mengurangi bahan baku"],a:1},
-
-{t:"Berikut ini yang termasuk fungsi desain produk adalah...",img:"",o:["Menurunkan kualitas produk","Sebagai identitas produk","Menghilangkan fungsi produk","Mengurangi biaya tenaga kerja","Mengurangi bahan baku"],a:1},
-
-{t:"Unsur utama dalam desain produk terdiri dari...",img:"",o:["Bentuk fungsi bahan","Harga promosi ukuran","Bahan biaya keuntungan","Bentuk warna promosi","Harga bahan promosi"],a:0},
-
-{t:"Bentuk produk dapat berupa beberapa jenis salah satunya adalah...",img:"",o:["Cair","Gas","Kotak","Plasma","Cahaya"],a:2},
-
-{t:"Fungsi produk dalam bidang TKJ contohnya adalah...",img:"",o:["Rak router untuk menaruh perangkat jaringan","Keyboard untuk memasak","Speaker untuk mengetik","Mouse untuk menyimpan data","Monitor untuk memasak"],a:0},
-
-{t:"Bahan yang digunakan dalam desain produk TKJ biasanya berasal dari...",img:"",o:["Barang bekas komputer","Bahan makanan","Kain tekstil","Kertas bekas","Bahan plastik cair"],a:0},
-
-{t:"Jika desain produk terlalu rumit maka proses produksi akan...",img:"",o:["Lebih cepat","Lebih mudah","Lebih lama dan biaya lebih besar","Tidak berubah","Lebih ringan"],a:2},
-
-{t:"Desain yang sederhana dalam proses produksi biasanya akan...",img:"",o:["Menyulitkan produksi","Meningkatkan biaya produksi","Mempermudah produksi dan lebih hemat","Mengurangi fungsi produk","Mengurangi nilai jual"],a:2},
-
-{t:"Desain produk yang baik dapat membuat produk...",img:"",o:["Lebih menarik bagi pembeli","Lebih sulit digunakan","Lebih mahal dibuat","Lebih berat digunakan","Lebih sulit diproduksi"],a:0}
-
-]
-
-let soal=bankSoal
-let pos=0
-let jawab=[]
-let waktu=20*60
-
-function mulai(){
-login.style.display="none"
-ujian.style.display="block"
-buatNomor()
-tampil()
-timer()
-}
-
-function timer(){
-setInterval(function(){
-let m=Math.floor(waktu/60)
-let s=waktu%60
-timer.innerHTML="Sisa waktu : "+m+":"+s
-waktu--
-if(waktu<0){selesai()}
-},1000)
-}
-
-function buatNomor(){
-let html=""
-for(let i=0;i<soal.length;i++){
-html+=`<div onclick="lompat(${i})">${i+1}</div>`
-}
-nomor.innerHTML=html
-}
-
-function tampil(){
-
-let s=soal[pos]
-
-pertanyaan.innerHTML=(pos+1)+". "+s.t
-
-let html=""
-
-s.o.forEach((o,i)=>{
-
-html+=`
-<label>
-<input type="radio" name="opsi" value="${i}"
-${jawab[pos]==i?"checked":""}
-onchange="pilih(${i})">
-${String.fromCharCode(65+i)}. ${o}
-</label><br>
-`
-
-})
-
-opsi.innerHTML=html
-}
-
-function pilih(i){
-jawab[pos]=i
-let kotak=document.querySelectorAll("#nomor div")
-kotak[pos].classList.add("jawab")
-}
-
-function next(){ if(pos<soal.length-1){pos++; tampil()} }
-function prev(){ if(pos>0){pos--; tampil()} }
-function lompat(i){ pos=i; tampil() }
-
-function selesai(){
-
-let benar=0
-
-soal.forEach((s,i)=>{
-if(jawab[i]==s.a) benar++
-})
-
-let nilai=Math.round((benar/soal.length)*100)
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-nama:nama.value,
-kelas:kelas.value,
-nilai:nilai
-})
-})
-
-alert("Nilai Anda : "+nilai)
-
-location.reload()
-
-}
-
-</script>
-
+            alert("Tugas Terkirim! Nilai Anda : " + nilai);
+            location.reload();
+        }
+    </script>
 </body>
 </html>
