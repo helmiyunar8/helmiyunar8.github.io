@@ -27,23 +27,33 @@
             z-index: 1000; display: flex; flex-direction: column;
         }
         
-        /* PERBAIKAN UKURAN FONT & HEADER SIDEBAR */
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 70px; margin-bottom: 10px; }
+        /* --- PERBAIKAN HEADER SIDEBAR AGAR SAMA DENGAN BERANDA --- */
+        .sidebar-header { 
+            padding: 25px 20px; 
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+        .sidebar-header img { 
+            width: 60px; /* Ukuran disesuaikan agar proporsional */
+            margin-bottom: 8px; 
+        }
         .sidebar-header h3 { 
-            font-size: 26px; /* Ukuran font diperbesar sesuai Beranda */
+            font-size: 22px; /* Ukuran ini yang pas dengan Gambar 1 */
             color: var(--gold); 
             font-weight: 800; 
-            letter-spacing: -1px;
+            letter-spacing: -0.5px; /* Jarak huruf dirapatkan agar tidak melebar */
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 1.2;
         }
         .sidebar-header p {
-            font-size: 14px;
-            color: #777;
-            font-weight: 600;
-            margin-top: 5px;
+            font-size: 11px; /* Teks SMKN 7 LUWU dibuat lebih kecil & elegan */
+            color: #999;
+            font-weight: 700;
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        /* -------------------------------------------------------- */
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
@@ -53,7 +63,6 @@
         .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
         .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-        /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
         .topbar {
@@ -62,12 +71,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
         }
 
-        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 40px; }
         .header-section h2 { font-size: 32px; color: var(--dark-green); font-weight: 800; }
         .header-section p { color: #888; font-size: 16px; margin-top: 5px; }
 
-        /* SUBJECT GRID */
         .subject-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px; max-width: 1100px; margin: 0 auto;
@@ -96,7 +103,6 @@
         .subject-card .status-tag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; background: #f0f0f0; color: #999; }
         .subject-card.ready .status-tag { background: #e8f5e9; color: #2e7d32; }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
