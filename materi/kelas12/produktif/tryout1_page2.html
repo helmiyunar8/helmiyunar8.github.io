@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembahasan Tryout Hal 2 - Helmi Yunar</title>
+    <title>Pembahasan Tryout Hal 2 - SMKN 7 LUWU</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -13,68 +13,38 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px; /* Sesuai Blueprint */
+            --bg-active: #fffcf0;
+            --sidebar-width: 280px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR - BLUEPRINT STANDARD */
+        /* --- SIDEBAR STANDAR BAKU SMKN 7 LUWU --- */
         .sidebar {
-            width: var(--sidebar-width); 
-            background: var(--white); 
-            height: 100vh;
-            position: fixed; 
-            border-right: 1px solid #ddd; 
-            transition: 0.3s;
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: column;
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
         }
-
-        .sidebar-header { 
-            padding: 35px 20px; /* Sesuai Blueprint */
-            text-align: center; 
-            border-bottom: 2px solid #f9f9f9; 
-        }
-
-        .sidebar-header img { 
-            width: 75px; /* Sesuai Blueprint */
-            margin-bottom: 15px; 
-        }
-
-        .sidebar-header h3 { 
-            font-size: 22px; /* Sesuai Blueprint */
-            color: var(--gold); 
-            font-weight: 800; 
-            text-transform: uppercase;
-        }
+        .sidebar-header { padding: 35px 25px; text-align: center; }
+        .sidebar-header img { width: 75px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--primary-green); font-weight: 800; }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
-
         .nav-item {
-            display: flex; 
-            align-items: center; 
-            padding: 18px 25px; /* Sesuai Blueprint */
-            color: #444; 
-            text-decoration: none; 
-            font-size: 18px; /* Sesuai Blueprint */
-            font-weight: 600; 
-            transition: 0.3s;
+            display: flex; align-items: center; padding: 18px 25px;
+            color: #444; text-decoration: none; font-size: 18px; font-weight: 600; transition: 0.3s;
         }
-
         .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
-
-        /* State Aktif Sesuai Blueprint */
         .nav-item:hover, .nav-item.active { 
-            background: #fffcf0; 
+            background: var(--bg-active); 
             color: var(--gold); 
             border-left: 6px solid var(--gold); 
         }
 
-        /* MAIN CONTENT */
-        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 30px; width: 100%; }
 
         .topbar {
             background: var(--white); padding: 15px 30px; border-radius: 15px;
@@ -82,69 +52,47 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
         }
 
-        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 30px; }
         .header-section h2 { font-size: 28px; color: var(--dark-green); font-weight: 800; }
-        .header-section p { color: var(--gold); font-weight: 600; font-size: 14px; text-transform: uppercase; }
+        .header-section p { color: var(--gold); font-weight: 700; font-size: 15px; text-transform: uppercase; margin-bottom: 5px; }
 
-        /* DISCUSSION CARD */
-        .discussion-container { max-width: 850px; margin: 0 auto; }
+        /* --- DISCUSSION CARDS --- */
+        .discussion-container { max-width: 900px; margin: 0 auto; }
         
         .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            border: 1px solid #eee;
-            position: relative;
-            overflow: hidden;
+            background: var(--white); padding: 30px; border-radius: 20px;
+            margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border-left: 8px solid var(--primary-green); position: relative;
         }
 
-        .card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; 
-            background: var(--primary-green);
-        }
-
-        .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
+        .question-text { font-size: 19px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
         
         .answer-box {
-            background: #e8f5e9;
-            padding: 12px 20px;
-            border-radius: 10px;
-            color: #2e7d32;
-            font-weight: 700;
-            margin: 10px 0 15px 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border-left: 4px solid #2e7d32;
+            background: #e8f5e9; padding: 12px 20px; border-radius: 10px;
+            color: #2e7d32; font-weight: 700; margin: 15px 0;
+            display: inline-flex; align-items: center; gap: 10px; border: 1px solid #c8e6c9;
         }
 
         .explanation {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #666;
-            background: #fdfdfd;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px dashed #ddd;
+            font-size: 15.5px; line-height: 1.7; color: #555;
+            background: #fafafa; padding: 18px; border-radius: 12px;
+            border: 1px dashed #ccc; margin-top: 10px;
         }
 
-        /* PAGINATION */
+        /* --- PAGINATION --- */
         .pagination {
-            display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; padding: 20px;
+            display: flex; justify-content: center; align-items: center; gap: 20px; 
+            margin-top: 40px; padding-bottom: 40px;
         }
         .page-info { font-weight: 700; color: #888; }
         .btn-page {
-            background: var(--primary-green); color: white; padding: 10px 20px;
+            background: var(--primary-green); color: white; padding: 12px 25px;
             border-radius: 50px; text-decoration: none; font-weight: 700;
-            transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 14px;
+            transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 15px;
         }
         .btn-prev { background: #6c757d; }
-        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
@@ -157,7 +105,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="../asset/logo.png" alt="Logo SMKN 7 LUWU">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo SMKN 7">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
@@ -172,10 +120,10 @@
 
     <div class="main-content">
         <div class="topbar">
-            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer; font-size: 18px;" onclick="toggleSidebar()">
                 <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
             </div>
-            <div style="font-size: 14px; font-weight: 600;">Arsip Pembahasan</div>
+            <div style="font-size: 14px; font-weight: 600; color: #666;">Tryout 1: Produktif TKJ</div>
         </div>
 
         <div class="header-section">
@@ -188,7 +136,7 @@
                 <span class="question-text">11. Konektor kabel LAN?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: RJ45</div>
                 <div class="explanation">
-                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP untuk membangun jaringan komputer lokal (LAN).
+                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP (Unshielded Twisted Pair) untuk membangun jaringan komputer lokal (LAN).
                 </div>
             </div>
 
@@ -196,7 +144,71 @@
                 <span class="question-text">12. Server pembatas akses internet?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Proxy Server</div>
                 <div class="explanation">
-                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol dan membatasi akses.
+                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol, memfilter, dan membatasi akses internet bagi pengguna di dalam jaringan.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">13. Perangkat pada gambar? (Switch)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
+                <div class="explanation">
+                    <b>Switch</b> menghubungkan banyak perangkat dalam jaringan LAN dan bekerja lebih cerdas dibandingkan Hub dengan mengatur lalu lintas data berdasarkan alamat MAC.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">14. Perangkat jaringan pada gambar? (Modem)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Modem</div>
+                <div class="explanation">
+                    <b>Modem</b> (Modulator-Demodulator) digunakan untuk mengubah sinyal digital dari komputer menjadi analog agar dapat dikirim melalui jalur penyedia layanan internet (ISP).
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">15. Penguat sinyal jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Repeater</div>
+                <div class="explanation">
+                    <b>Repeater</b> adalah alat yang bertugas menangkap sinyal lemah dan memancarkannya kembali dengan kekuatan penuh agar jangkauan jaringan bisa lebih luas.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">16. Internet sebagai media informasi?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Media Informasi</div>
+                <div class="explanation">
+                    Internet mempermudah akses dan penyebaran informasi secara instan dan global, menjadikannya salah satu media informasi paling utama saat ini.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">17. Dampak negatif internet?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Konten Negatif</div>
+                <div class="explanation">
+                    Kemudahan akses informasi di internet juga membawa risiko paparan <b>konten negatif</b>, berita bohong (hoax), hingga kejahatan siber jika tidak digunakan secara bijak.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">18. Jaringan menggunakan media kabel disebut?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Wireline</div>
+                <div class="explanation">
+                    <b>Wireline</b> adalah sistem komunikasi atau jaringan yang menggunakan media fisik berupa kabel (tembaga atau fiber) untuk mentransmisikan data.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">19. Perawatan hardware VoIP?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, C, dan D Benar</div>
+                <div class="explanation">
+                    Perawatan VoIP meliputi: (A) Pengecekan perangkat secara berkala, (C) Membersihkan debu agar tidak panas, dan (D) Memeriksa kondisi fisik periferal pendukung.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">20. Layanan penyimpanan website?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Web Hosting</div>
+                <div class="explanation">
+                    <b>Web hosting</b> adalah layanan penyewaan ruang di server agar file-file website dapat disimpan dan diakses oleh orang lain melalui jaringan internet 24 jam non-stop.
                 </div>
             </div>
 
