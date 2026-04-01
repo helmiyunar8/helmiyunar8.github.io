@@ -1,300 +1,331 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-<title>Pertemuan 3 - Media Transmisi Wireless</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 3 - Media Transmisi Wireless</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<style>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-body{
-font-family:Arial;
-background:#f2f6f3;
-margin:0;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-.container{
-max-width:900px;
-margin:auto;
-background:white;
-padding:30px;
-margin-top:20px;
-margin-bottom:40px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-h1{color:#2c7a2c;}
-h2{margin-top:30px;}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-p{
-line-height:1.8;
-color:#444;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-img{
-width:100%;
-max-width:420px;
-border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,0.15);
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-.center{
-text-align:center;
-margin:25px 0;
-}
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
 
-.box{
-background:#eef7ee;
-padding:16px;
-border-left:6px solid #2c7a2c;
-margin-top:20px;
-border-radius:6px;
-}
+        /* AREA MATERI */
+        .materi-container {
+            background: var(--white);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
 
-.summary{
-background:#fff6d9;
-padding:16px;
-border-left:6px solid #e0b300;
-margin-top:30px;
-border-radius:6px;
-}
+        h1 { color: var(--dark-gold); font-size: 32px; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: var(--text-dark); margin: 35px 0 15px; font-size: 24px; position: relative; padding-left: 15px; }
+        h2::before { content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: var(--gold); border-radius: 3px; }
+        h3 { margin: 25px 0 10px; color: var(--gold); font-size: 20px; font-weight: 700; }
+        
+        p { line-height: 1.8; color: #444; font-size: 18px; margin-bottom: 20px; text-align: justify; }
 
-.quiz{
-background:#eef3ff;
-padding:18px;
-margin-top:30px;
-border-radius:8px;
-}
+        .center { text-align: center; margin: 30px 0; }
+        img { width: 100%; max-width: 500px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border: 3px solid #fff; }
+        p i { font-size: 14px; color: #888; display: block; margin-top: 10px; }
 
-button{
-background:#2c7a2c;
-color:white;
-border:none;
-padding:10px 16px;
-border-radius:6px;
-cursor:pointer;
-}
+        .box {
+            background: #fffdf5;
+            padding: 25px;
+            border-left: 6px solid var(--gold);
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+        .box ul { margin-left: 20px; margin-top: 10px; list-style-type: none; }
+        .box li { margin-bottom: 10px; position: relative; padding-left: 25px; }
+        .box li::before { content: "\f058"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: var(--gold); }
 
-iframe{
-width:100%;
-height:260px;
-border-radius:10px;
-margin-top:10px;
-}
+        /* VIDEO */
+        .video-container { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-.navatas{
-margin-bottom:20px;
-}
+        /* QUIZ */
+        .quiz {
+            background: #fdfdfd;
+            border: 2px dashed var(--gold);
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+        .quiz h2::before { display: none; }
+        .quiz p { font-weight: bold; margin-bottom: 10px; }
+        .quiz label { display: block; margin-bottom: 12px; cursor: pointer; font-size: 17px; padding: 10px; border-radius: 8px; transition: 0.2s; }
+        .quiz label:hover { background: #fffcf0; }
+        .quiz input { margin-right: 10px; transform: scale(1.2); }
+        
+        .btn-cek {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-cek:hover { background: var(--dark-gold); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
 
-.navatas a{
-background:#e8edf2;
-padding:8px 12px;
-border-radius:6px;
-text-decoration:none;
-color:#333;
-font-size:14px;
-}
+        /* NAVIGASI BAWAH */
+        .nav-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .btn-nav {
+            background: #f1f1f1;
+            color: #444;
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-nav.next { background: var(--gold); color: white; }
+        .btn-nav:hover { transform: translateY(-3px); }
 
-.navbawah{
-display:flex;
-justify-content:space-between;
-margin-top:40px;
-}
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
-.btnprev{
-background:#e8edf2;
-padding:10px 16px;
-border-radius:6px;
-text-decoration:none;
-color:#333;
-}
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .materi-container { padding: 20px; }
+            h1 { font-size: 24px; }
+            p { font-size: 16px; }
+            .nav-bottom { flex-direction: column; gap: 15px; }
+            .btn-nav { justify-content: center; }
+        }
+    </style>
 
-.btnnext{
-background:#2c7a2c;
-color:white;
-padding:10px 16px;
-border-radius:6px;
-text-decoration:none;
-}
-
-</style>
-
-<script>
-
-function cek(){
-let benar=0;
-
-if(document.getElementById("q1b").checked) benar++;
-if(document.getElementById("q2a").checked) benar++;
-if(document.getElementById("q3c").checked) benar++;
-
-alert("Skor kamu : "+benar+" / 3");
-
-}
-
-</script>
-
+    <script>
+        function cek(){
+            let benar=0;
+            if(document.getElementById("q1b").checked) benar++;
+            if(document.getElementById("q2a").checked) benar++;
+            if(document.getElementById("q3c").checked) benar++;
+            alert("Hasil Quiz Pak Helmi\n----------------------\nSkor kamu: " + benar + " / 3");
+        }
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </head>
-
 <body>
 
-<div class="container">
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<div class="navatas">
-<a href="index.html">⬅ Kembali ke Daftar Pertemuan</a>
-</div>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">KELAS X: PERTEMUAN 3</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<h1>📡 Pertemuan 3</h1>
-<h2>Media Transmisi Wireless</h2>
+        <div class="materi-container">
+            <h1>📡 Pertemuan 3</h1>
+            <p style="color:var(--gold); font-weight:bold; margin-top:-10px;">Media Transmisi Wireless (Tanpa Kabel)</p>
 
-<p>
-Media transmisi wireless adalah media pengiriman data yang tidak menggunakan kabel dalam proses transmisinya. Teknologi ini memanfaatkan gelombang elektromagnetik yang dipancarkan oleh antena pemancar dan diterima oleh antena penerima.
-</p>
+            <p>
+                Media transmisi wireless adalah media pengiriman data yang tidak menggunakan kabel dalam proses transmisinya. Teknologi ini memanfaatkan <b>gelombang elektromagnetik</b> yang dipancarkan oleh antena pemancar dan diterima oleh antena penerima.
+            </p>
 
-<p>
-Penjelasan lainnya, media transmisi wireless atau yang disebut juga unguided transmission adalah suatu media transmisi data yang tidak memerlukan kabel dalam proses transmisinya. Media ini memanfaatkan antena untuk transmisi di udara, ruang hampa udara, atau air.
-</p>
+            <div class="center">
+                <img src="../img/wireless.png">
+                <p><i>Ilustrasi komunikasi jaringan wireless (Unguided)</i></p>
+            </div>
 
-<div class="center">
-<img src="../img/wireless.png">
-<p><i>Ilustrasi komunikasi jaringan wireless</i></p>
-</div>
+            <h2>Konfigurasi Transmisi Wireless</h2>
+            <div class="box">
+                <p><b>1. Transmisi Searah:</b> Antena pemancar memfokuskan sinyal ke satu arah menuju antena penerima (Point-to-Point).</p>
+                <p style="margin-top:10px;"><b>2. Transmisi Segala Arah:</b> Sinyal disebarkan ke segala penjuru sehingga dapat diterima oleh banyak perangkat sekaligus.</p>
+            </div>
 
-<h2>Konfigurasi Transmisi Wireless terbagi menjadi 2 jenis:</h2>
+            <h2>Jenis-Jenis Media Wireless</h2>
 
-<h3>1) Transmisi Searah</h3>
+            <h3>1. Gelombang Mikro (Microwave)</h3>
+            <div class="center">
+                <img src="../img/microwave.jpg">
+            </div>
+            <p>Digunakan dalam komunikasi jarak jauh seperti jaringan telekomunikasi dan antar menara BTS.</p>
 
-<p>
-Pada konfigurasi ini antena pemancar memfokuskan sinyal ke satu arah menuju antena penerima.
-</p>
+            <h3>2. Infrared (Infra Merah)</h3>
+            <div class="center">
+                <img src="../img/infrared.jpg">
+            </div>
+            <p>
+                Digunakan untuk komunikasi jarak dekat. Bekerja dengan radiasi gelombang elektromagnetis yang tidak tampak oleh mata. Contoh paling umum adalah pada remote televisi.
+            </p>
+            <div class="box">
+                <b>Kelebihan & Kelemahan Infrared:</b>
+                <ul>
+                    <li>Mudah digunakan dan tidak butuh lisensi frekuensi.</li>
+                    <li>Sinyal tidak bisa menembus dinding (aman dari interferensi tetangga).</li>
+                    <li>Wajib berhadapan langsung (jalur pandang) agar koneksi lancar.</li>
+                </ul>
+            </div>
 
-<h3>2) Transmisi Segala Arah</h3>
+            <h3>3. Bluetooth</h3>
+            <div class="center">
+                <img src="../img/bluetooth.png">
+            </div>
+            <p>Teknologi nirkabel frekuensi 2.4 GHz untuk perangkat seperti headset, speaker, dan transfer data antar HP.</p>
 
-<p>
-Pada konfigurasi ini sinyal disebarkan ke segala arah sehingga dapat diterima oleh banyak perangkat.
-</p>
+            <h3>4. Wi-Fi</h3>
+            <div class="center">
+                <img src="../img/wifi2.png">
+            </div>
+            <p>Teknologi standar untuk internetan tanpa kabel melalui Access Point atau Router.</p>
 
-<h2>Jenis Media Transmisi Wireless</h2>
+            <h3>5. Satelit</h3>
+            <div class="center">
+                <img src="../img/satelit.jpg">
+            </div>
+            <p>Menghubungkan komunikasi antar negara atau wilayah terpencil yang tidak terjangkau kabel bawah laut.</p>
 
-<h3>1. Gelombang Mikro</h3>
+            <h2>Video Pembelajaran</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/1_oO38y6-X4"></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/7z034jHXbLM"></iframe>
+                </div>
+            </div>
 
-<div class="center">
-<img src="../img/microwave.jpg">
-</div>
+            <div class="quiz">
+                <h2 style="margin-top:0;"><i class="fas fa-pencil-alt" style="color:var(--gold); margin-right:10px;"></i> Mini Quiz</h2>
+                <p>1. Media transmisi tanpa kabel disebut...</p>
+                <label><input type="radio" name="q1"> Kabel</label> 
+                <label><input type="radio" id="q1b" name="q1"> Wireless</label>
 
-<p>
-Gelombang mikro digunakan dalam komunikasi jarak jauh seperti jaringan telekomunikasi dan komunikasi antar menara BTS.
-</p>
+                <p style="margin-top:20px;">2. Teknologi jaringan untuk internet tanpa kabel adalah...</p>
+                <label><input type="radio" id="q2a" name="q2"> Wi-Fi</label> 
+                <label><input type="radio" name="q2"> HDMI</label>
 
-<h3>2. Infrared</h3>
+                <p style="margin-top:20px;">3. Teknologi wireless jarak dekat untuk headset adalah...</p>
+                <label><input type="radio" name="q3"> Infrared</label> 
+                <label><input type="radio" id="q3c" name="q3"> Bluetooth</label>
 
-<div class="center">
-<img src="../img/infrared.jpg">
-</div>
+                <button class="btn-cek" onclick="cek()">Cek Jawaban <i class="fas fa-check-double"></i></button>
+            </div>
 
-<p>
-Infrared digunakan untuk komunikasi jarak dekat seperti remote TV dan perangkat elektronik lainnya. Infrared adalah generasi pertama dari teknologi koneksi nirkabel yang digunakan untuk perangkat mobile. InfraRed sendiri, merupakan sebuah radiasi gelombang elektromagnetis dengan panjang gelombang lebih panjang dari gelombang merah, namun lebih pendek dari gelombang radio, yakni 0,7 mikrom sampai dengan 1 milimeter. Sinar infra merah memiliki jangkauan frekuensi 1011 Hz sampai 1014 Hz atau daerah panjang gelombang 10-4 cm. 
-</p>
-<p>Proses koneksi infrared bekerja dengan cara yang sangat sederhana. Ketika terjadi pertemuan di antara dua buah device dengan interkoneksi tersebut, maka akan terjadi sebuah pengenalan secara anonim diantara kedua device tersebut. </p>
-  <p>Pengenalan ini kemudian berlanjut ke arah yang lebih dalam lagi dimana kedua device tersebut meyetujui untuk memberi “nama sementara” pada masing-masing device sehingga protokol infrared mengenali kedua belah pihak dan melakukan transfer data atau untuk sekedar mempertahankan koneksihingga perintah terakhir dijalankan. Tentunya hal ini memudahkan koneksi untuk device dengan interkoneksi infrared karena tidak diperlukannya proses pairing yang merepotkan. </p>
-<p>Komunikasi infra merah dicapai dengan menggunakan transmitter/receiver (transceiver) yang modulasi cahaya yang koheren. Transceiver harus berada dalam jalur pandang maupun melalui pantulan dari permukaan berwarna terang misalnya langit-langit rumah. Satu perbedaan penting antara transmisi infra merah dan gelombang mikro adalah transmisi infra merah tidak dapat melakukan penetrasi terhadap dinding, sehingga masalah-masalah pengamanan dan interferensi yang ditemui dalam gelombang mikro tidak terjadi. Selanjutnya, tidak ada hal-hal yang berkaitan dengan pengalokasian frekuensi dengan infra merah, karena tidak diperlukan lisensi untuk itu. Pada handphone dan PC, media infra merah ini digunakan untuk mentransfer data tetapi dengan suatu standar atau protocol tersendiri yaitu protocol IrDA. Cahaya infra merah merupakan cahaya yang tidak tampak. Jika dilihat dengan spektroskop cahaya maka radiasi cahaya infra merah akan nampak pada spektrum elektromagnetik dengan panjang gelombang diatas panjang gelombang cahaya merah</p>
-  <p>Dalam kehidupan sehari-hari sinar inframerah digunakan pada remote televisi. Remote TV mentransmisikan kode instruksi yang dibawa oleh sinar inframerah yang nantinya akan diterjemahkan oleh receiver dalam TV. </p>
- 
-  <div class="box">
-<b>Kelebihan inframerah dalam pengiriman data:</b>
-<ul>
-<li>-	Pengiriman data dengan infra merah dapat dilakukan kapan saja, karena pengiriman dengan inframerah tidak membutuhkan sinyal.</li>
-<li>-	Pengiriman data dengan infra merah dapat dikatakan mudah karena termasuk alat yang sederhana.</li>
-</ul>
-    <b>Kelemahan inframerah dalam pengiriman data:</b>
-<ul>
-<li>-	Pada pengiriman data dengan inframerah, kedua lubang infra merah harus berhadapan satu sama lain. Hal ini agak menyulitkan kita dalam mentransfer data karena caranya yang merepotkan</li>
-<li>-	Inframerah sangat berbahaya bagi mata, sehingga jangan sekalipun sorotan infra merah mengenai mata.</li>
-</ul>
-</div>
+            <div class="nav-bottom">
+                <a href="pertemuan2.html" class="btn-nav"><i class="fas fa-chevron-left"></i> Pertemuan 2</a>
+                <a href="pertemuan4.html" class="btn-nav next">Pertemuan 4 <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
 
-  <h3>3. Bluetooth</h3>
-
-<div class="center">
-<img src="../img/bluetooth.png">
-</div>
-
-<p>
-Bluetooth merupakan teknologi komunikasi nirkabel dengan frekuensi 2.4 GHz yang biasanya digunakan untuk perangkat seperti headset, speaker, dan smartphone.
-</p>
-
-<h3>4. Wi-Fi</h3>
-
-<div class="center">
-<img src="../img/wifi2.png">
-</div>
-
-<p>
-Wi-Fi adalah teknologi jaringan nirkabel yang digunakan untuk menghubungkan perangkat seperti laptop, smartphone, dan komputer ke internet melalui access point.
-</p>
-
-<h3>5. Satelit</h3>
-
-<div class="center">
-<img src="../img/satelit.jpg">
-</div>
-
-<p>
-Satelit komunikasi digunakan untuk menghubungkan jaringan komunikasi jarak sangat jauh seperti antar negara dan wilayah terpencil.
-</p>
-
-<h2>Video Pembelajaran</h2>
-
-<iframe src="https://www.youtube.com/embed/1_oO38y6-X4"></iframe>
-  <iframe src="https://www.youtube.com/embed/7z034jHXbLM"></iframe>
-
-<div class="summary">
-
-<b>📌 Ringkasan Materi</b>
-
-<p>
-Media transmisi wireless memungkinkan komunikasi tanpa menggunakan kabel dengan memanfaatkan gelombang elektromagnetik.
-</p>
-
-<p>
-Teknologi wireless yang umum digunakan antara lain microwave, infrared, bluetooth, Wi-Fi, dan satelit.
-</p>
-
-</div>
-
-<div class="quiz">
-
-<h2>Mini Quiz</h2>
-
-<p>1. Media transmisi tanpa kabel disebut...</p>
-
-<input type="radio" name="q1"> Kabel<br> <input type="radio" id="q1b" name="q1"> Wireless<br>
-
-<p>2. Teknologi jaringan untuk internet tanpa kabel adalah...</p>
-
-<input type="radio" id="q2a" name="q2"> Wi-Fi<br> <input type="radio" name="q2"> HDMI<br>
-
-<p>3. Teknologi wireless jarak dekat untuk headset adalah...</p>
-
-<input type="radio" name="q3"> Infrared<br> <input type="radio" id="q3c" name="q3"> Bluetooth<br>
-
-<br><br>
-
-<button onclick="cek()">Cek Jawaban</button>
-
-</div>
-
-<div class="navbawah">
-
-<a href="pertemuan2.html" class="btnprev">⬅ Pertemuan 2</a>
-
-<a href="pertemuan4.html" class="btnnext">Pertemuan 4 ➜</a>
-
-</div>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
