@@ -13,30 +13,65 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px;
+            --sidebar-width: 280px; /* Sesuai Blueprint */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR */
+        /* SIDEBAR - BLUEPRINT STANDARD */
         .sidebar {
-            width: var(--sidebar-width); background: var(--white); height: 100vh;
-            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
-            z-index: 1000; display: flex; flex-direction: column;
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh;
+            position: fixed; 
+            border-right: 1px solid #ddd; 
+            transition: 0.3s;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column;
         }
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .sidebar-header { 
+            padding: 35px 20px; /* Sesuai Blueprint */
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+
+        .sidebar-header img { 
+            width: 75px; /* Sesuai Blueprint */
+            margin-bottom: 15px; 
+        }
+
+        .sidebar-header h3 { 
+            font-size: 22px; /* Sesuai Blueprint */
+            color: var(--gold); 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
+
         .nav-item {
-            display: flex; align-items: center; padding: 15px 25px;
-            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            padding: 18px 25px; /* Sesuai Blueprint */
+            color: #444; 
+            text-decoration: none; 
+            font-size: 18px; /* Sesuai Blueprint */
+            font-weight: 600; 
+            transition: 0.3s;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
-        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+
+        .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
+
+        /* Warna Aktif Sesuai Blueprint */
+        .nav-item:hover, .nav-item.active { 
+            background: #fffcf0; 
+            color: var(--gold); 
+            border-left: 6px solid var(--gold); 
+        }
 
         /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
@@ -47,7 +82,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
         }
 
-        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 40px; }
         .header-section h2 { font-size: 28px; color: var(--dark-green); font-weight: 800; }
         .header-section span { color: var(--gold); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
@@ -86,7 +120,6 @@
         .arrow-icon { color: #ccc; transition: 0.3s; }
         .pertemuan-card:hover .arrow-icon { color: var(--gold); transform: translateX(5px); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
@@ -98,7 +131,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../asset/logo.png" alt="Logo SMKN 7 LUWU">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
