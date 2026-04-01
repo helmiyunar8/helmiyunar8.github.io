@@ -12,13 +12,13 @@
             --dark-gold: #B8860B;
             --white: #ffffff;
             --bg-light: #f4f7f6;
-            --text-dark: #333;
-            --sidebar-width: 260px;
+            --text-dark: #222;
+            --sidebar-width: 280px; /* Diperlebar sedikit agar tulisan menu lega */
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-        body { background-color: var(--bg-light); display: flex; min-height: 100vh; }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
         /* SIDEBAR */
         .sidebar {
@@ -26,7 +26,7 @@
             background: var(--white);
             height: 100vh;
             position: fixed;
-            border-right: 1px solid #eee;
+            border-right: 1px solid #ddd;
             transition: all 0.3s;
             z-index: 1000;
             display: flex;
@@ -34,105 +34,112 @@
         }
 
         .sidebar-header {
-            padding: 30px 20px;
+            padding: 35px 20px;
             text-align: center;
-            border-bottom: 1px solid #f9f9f9;
+            border-bottom: 2px solid #f9f9f9;
         }
 
-        .sidebar-header img { width: 60px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 18px; color: var(--gold); }
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
         .nav-item {
             display: flex;
             align-items: center;
-            padding: 15px 25px;
-            color: #666;
+            padding: 18px 25px; /* Padding diperbesar agar klik lebih mudah */
+            color: #444;
             text-decoration: none;
             transition: 0.3s;
+            font-size: 18px; /* TULISAN MENU DIPERBESAR */
+            font-weight: 500;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
         .nav-item:hover, .nav-item.active {
-            background: #fffdf5;
+            background: #fffcf0;
             color: var(--gold);
-            border-left: 4px solid var(--gold);
+            border-left: 6px solid var(--gold);
         }
 
         /* MAIN CONTENT */
         .main-content {
             flex-grow: 1;
             margin-left: var(--sidebar-width);
-            padding: 20px;
+            padding: 25px;
             width: 100%;
         }
 
         /* TOPBAR */
         .topbar {
             background: var(--white);
-            padding: 15px 30px;
+            padding: 18px 30px;
             border-radius: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin-bottom: 30px;
         }
 
-        .user-profile { display: flex; align-items: center; gap: 10px; }
-        .user-profile span { font-weight: 600; color: var(--text-dark); }
+        .user-profile { display: flex; align-items: center; gap: 12px; font-size: 17px; }
+        .user-profile span { font-weight: 700; color: var(--text-dark); }
 
         /* DASHBOARD CARDS */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
             margin-bottom: 30px;
         }
 
         .card {
             background: var(--white);
-            padding: 25px;
+            padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
-            border-bottom: 4px solid transparent;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+            border-bottom: 5px solid transparent;
             transition: 0.3s;
         }
-        .card:hover { border-bottom: 4px solid var(--gold); transform: translateY(-5px); }
-        .card i { font-size: 30px; color: var(--gold); margin-bottom: 15px; }
-        .card h4 { margin-bottom: 10px; color: #555; }
-        .card .value { font-size: 24px; font-weight: bold; color: var(--text-dark); }
+        .card:hover { border-bottom: 5px solid var(--gold); transform: translateY(-8px); }
+        .card i { font-size: 35px; color: var(--gold); margin-bottom: 20px; }
+        .card h4 { margin-bottom: 12px; color: #666; font-size: 18px; font-weight: 600; }
+        .card .value { font-size: 26px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
         
         .btn-buka {
             display: inline-block;
             margin-top: 15px;
-            padding: 8px 20px;
+            padding: 12px 25px;
             background: var(--gold);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 16px; /* TOMBOL DIPERBESAR */
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
 
         /* BANNER */
         .banner {
             background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            padding: 40px;
+            padding: 50px 40px;
             border-radius: 25px;
             color: white;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 20px rgba(184, 134, 11, 0.2);
         }
+        .banner h1 { font-size: 32px; margin-bottom: 10px; }
+        .banner p { font-size: 18px; opacity: 0.9; }
 
         /* RESPONSIVE */
-        .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
             .menu-toggle { display: block; }
             .dashboard-grid { grid-template-columns: 1fr; }
+            .banner h1 { font-size: 26px; }
+            .banner p { font-size: 16px; }
         }
     </style>
 </head>
@@ -142,20 +149,20 @@
         <div class="sidebar-header">
             <img src="asset/logo.png" alt="Logo">
             <h3>LMS TKJ</h3>
-            <p style="font-size: 12px; color: #999;">SMKN 7 LUWU</p>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
             <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Beranda</a>
-            <a href="materi/index.html" class="nav-item"><i class="fas fa-book"></i> Materi</a>
+            <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
             <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
-            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
-            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
-            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-trophy"></i> Ranking</a>
-            <a href="cbt/index.html" class="nav-item"><i class="fas fa-flask"></i> CBT Ujian</a>
-            <a href="#" class="nav-item"><i class="fas fa-circle-notch"></i> (Kosong)</a>
+            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="#" class="nav-item" style="color: #ccc;"><i class="fas fa-plus-circle"></i> (Menu Kosong)</a>
         </div>
-        <div style="padding: 20px; font-size: 10px; color: #ccc; text-align: center;">
-            ©2025 Developed by Helmi Yunar
+        <div style="padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5;">
+            ©2025 Developed by<br><strong>Helmi Yunar</strong>
         </div>
     </nav>
 
@@ -164,35 +171,35 @@
             <div class="menu-toggle" onclick="toggleSidebar()">
                 <i class="fas fa-bars"></i>
             </div>
-            <div style="font-weight: bold; color: var(--gold);">SMKN 7 LUWU</div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 20px;">SMKN 7 LUWU</div>
             <div class="user-profile">
                 <span>Helmi Yunar</span>
-                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+                <i class="fas fa-user-circle" style="font-size: 35px; color: var(--gold);"></i>
             </div>
         </div>
 
         <div class="banner">
             <h1>Selamat Datang Kembali!</h1>
-            <p>Aplikasi LMS TKJ - Mari belajar dan raih prestasi terbaik hari ini.</p>
+            <p>Portal Pembelajaran Digital Jurusan TKJ & TJKT. Mari raih masa depan gemilang.</p>
         </div>
 
         <div class="dashboard-grid">
             <div class="card">
-                <i class="fas fa-layer-group"></i>
+                <i class="fas fa-cubes"></i>
                 <h4>Ringkasan Materi</h4>
                 <div class="value">Materi TKJ Lengkap</div>
-                <a href="materi/index.html" class="btn-buka">Lihat Materi</a>
+                <a href="materi/index.html" class="btn-buka">Buka Materi <i class="fas fa-arrow-right" style="font-size: 12px; color: white; margin: 0 0 0 5px;"></i></a>
             </div>
 
             <div class="card">
-                <i class="fas fa-bullhorn"></i>
+                <i class="fas fa-bell"></i>
                 <h4>Pengumuman Terbaru</h4>
-                <div class="value" style="font-size: 16px; font-weight: normal;">Cek jadwal Tryout dan Absensi harian di sini.</div>
-                <a href="absen/index.html" class="btn-buka">Cek Absen</a>
+                <div class="value" style="font-size: 18px; font-weight: 500; color: #555;">Pantau informasi ujian dan kehadiran siswa di sini.</div>
+                <a href="absen/index.html" class="btn-buka">Isi Absensi</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-medal"></i>
                 <h4>Nilai Tertinggi</h4>
                 <div class="value">Ranking Minggu ke-2</div>
                 <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="btn-buka">Lihat Ranking</a>
