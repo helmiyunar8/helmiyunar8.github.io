@@ -13,30 +13,65 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px;
+            --sidebar-width: 280px; /* Sesuai Blueprint */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR KONSISTEN */
+        /* SIDEBAR - BLUEPRINT STANDARD */
         .sidebar {
-            width: var(--sidebar-width); background: var(--white); height: 100vh;
-            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
-            z-index: 1000; display: flex; flex-direction: column;
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh;
+            position: fixed; 
+            border-right: 1px solid #ddd; 
+            transition: 0.3s;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column;
         }
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .sidebar-header { 
+            padding: 35px 20px; /* Sesuai Blueprint */
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+
+        .sidebar-header img { 
+            width: 75px; /* Sesuai Blueprint */
+            margin-bottom: 15px; 
+        }
+
+        .sidebar-header h3 { 
+            font-size: 22px; /* Sesuai Blueprint */
+            color: var(--gold); 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
+
         .nav-item {
-            display: flex; align-items: center; padding: 15px 25px;
-            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            padding: 18px 25px; /* Sesuai Blueprint */
+            color: #444; 
+            text-decoration: none; 
+            font-size: 18px; /* Sesuai Blueprint */
+            font-weight: 600; 
+            transition: 0.3s;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
-        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+
+        .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
+
+        /* State Aktif Sesuai Blueprint */
+        .nav-item:hover, .nav-item.active { 
+            background: #fffcf0; 
+            color: var(--gold); 
+            border-left: 6px solid var(--gold); 
+        }
 
         /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
@@ -63,11 +98,12 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
             border: 1px solid #eee;
             position: relative;
+            overflow: hidden;
         }
 
         .card::before {
             content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; 
-            background: var(--primary-green); border-radius: 20px 0 0 20px;
+            background: var(--primary-green);
         }
 
         .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
@@ -121,7 +157,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../asset/logo.png" alt="Logo SMKN 7 LUWU">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
@@ -152,7 +188,7 @@
                 <span class="question-text">11. Konektor kabel LAN?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: RJ45</div>
                 <div class="explanation">
-                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP (Unshielded Twisted Pair) untuk membangun jaringan komputer lokal (LAN).
+                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP untuk membangun jaringan komputer lokal (LAN).
                 </div>
             </div>
 
@@ -160,71 +196,7 @@
                 <span class="question-text">12. Server pembatas akses internet?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Proxy Server</div>
                 <div class="explanation">
-                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol, memfilter, dan membatasi akses internet bagi pengguna di dalam jaringan.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">13. Perangkat pada gambar? (Switch)</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
-                <div class="explanation">
-                    <b>Switch</b> menghubungkan banyak perangkat dalam jaringan LAN dan bekerja lebih cerdas dibandingkan Hub dengan mengatur lalu lintas data berdasarkan alamat MAC.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">14. Perangkat jaringan pada gambar? (Modem)</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Modem</div>
-                <div class="explanation">
-                    <b>Modem</b> (Modulator-Demodulator) digunakan untuk mengubah sinyal digital dari komputer menjadi analog agar dapat dikirim melalui jalur penyedia layanan internet (ISP).
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">15. Penguat sinyal jaringan?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Repeater</div>
-                <div class="explanation">
-                    <b>Repeater</b> adalah alat yang bertugas menangkap sinyal lemah dan memancarkannya kembali dengan kekuatan penuh agar jangkauan jaringan bisa lebih luas.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">16. Internet sebagai media informasi?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Media Informasi</div>
-                <div class="explanation">
-                    Internet mempermudah akses dan penyebaran informasi secara instan dan global, menjadikannya salah satu media informasi paling utama saat ini.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">17. Dampak negatif internet?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Konten Negatif</div>
-                <div class="explanation">
-                    Kemudahan akses informasi di internet juga membawa risiko paparan <b>konten negatif</b>, berita bohong (hoax), hingga kejahatan siber jika tidak digunakan secara bijak.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">18. Jaringan menggunakan media kabel disebut?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Wireline</div>
-                <div class="explanation">
-                    <b>Wireline</b> adalah sistem komunikasi atau jaringan yang menggunakan media fisik berupa kabel (tembaga atau fiber) untuk mentransmisikan data.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">19. Perawatan hardware VoIP?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, C, dan D Benar</div>
-                <div class="explanation">
-                    Perawatan VoIP meliputi: (A) Pengecekan perangkat secara berkala, (C) Membersihkan debu agar tidak panas, dan (D) Memeriksa kondisi fisik periferal pendukung.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">20. Layanan penyimpanan website?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Web Hosting</div>
-                <div class="explanation">
-                    <b>Web hosting</b> adalah layanan penyewaan ruang di server agar file-file website dapat disimpan dan diakses oleh orang lain melalui jaringan internet 24 jam non-stop.
+                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol dan membatasi akses.
                 </div>
             </div>
 
