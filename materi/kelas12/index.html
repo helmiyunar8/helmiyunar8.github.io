@@ -26,9 +26,24 @@
             position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
             z-index: 1000; display: flex; flex-direction: column;
         }
+        
+        /* PERBAIKAN UKURAN FONT & HEADER SIDEBAR */
         .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+        .sidebar-header img { width: 70px; margin-bottom: 10px; }
+        .sidebar-header h3 { 
+            font-size: 26px; /* Ukuran font diperbesar sesuai Beranda */
+            color: var(--gold); 
+            font-weight: 800; 
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .sidebar-header p {
+            font-size: 14px;
+            color: #777;
+            font-weight: 600;
+            margin-top: 5px;
+        }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
@@ -93,8 +108,9 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../../logo.png" alt="Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
+            <p>SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
             <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
