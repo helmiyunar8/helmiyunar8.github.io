@@ -1,105 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Materi TKJ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi TKJ - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<style>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-body{
-font-family:Arial;
-background:#eef2f3;
-margin:0;
-text-align:center;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* CONTENT */
-.container{
-padding:30px;
-}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-.card{
-background:white;
-width:260px;
-margin:12px auto;
-padding:16px;
-border-radius:10px;
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-.card a{
-text-decoration:none;
-color:#333;
-font-weight:bold;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0;
+            color: var(--gold);
+            border-left: 6px solid var(--gold);
+        }
 
-</style>
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 18px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        /* CARD MATERI */
+        .materi-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .materi-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .materi-card:hover {
+            transform: scale(1.02);
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .materi-card i {
+            font-size: 40px;
+            color: var(--gold);
+            margin-right: 25px;
+        }
+
+        .materi-info h4 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .materi-info p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .materi-card { padding: 20px; }
+            .materi-info h4 { font-size: 18px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR GLOBAL LMS -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+        <div style="padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5;">
+            ©2025 Developed by<br><strong>Helmi Yunar</strong>
+        </div>
+    </nav>
 
-<style>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 20px;">MATERI PEMBELAJARAN</div>
+            <div class="user-profile">
+                <span>Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 35px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-.navbar{
-background:#2c7a4b;
-padding:12px;
-text-align:center;
-}
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 28px; margin-bottom: 10px;">Pilih Kelas</h2>
+            <p style="color: #666; font-size: 18px;">Silakan pilih kelas untuk mengakses materi pembelajaran TKJ</p>
+        </div>
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
-font-size:14px;
-border-radius:6px;
-}
+        <div class="materi-grid">
+            
+            <a href="kelas10/index.html" class="materi-card">
+                <i class="fas fa-graduation-cap"></i>
+                <div class="materi-info">
+                    <h4>Materi Kelas X</h4>
+                    <p>Dasar-Dasar Teknik Jaringan & Telekomunikasi</p>
+                </div>
+            </a>
 
-.navbar a:hover{
-background:#1e5b37;
-}
+            <a href="kelas11/index.html" class="materi-card">
+                <i class="fas fa-user-graduate"></i>
+                <div class="materi-info">
+                    <h4>Materi Kelas XI</h4>
+                    <p>Teknik Jaringan Komputer & Telekomunikasi</p>
+                </div>
+            </a>
 
-</style>
+            <a href="kelas12/index.html" class="materi-card">
+                <i class="fas fa-user-tie"></i>
+                <div class="materi-info">
+                    <h4>Materi Kelas XII</h4>
+                    <p>Administrasi Sistem & Jaringan Lanjut</p>
+                </div>
+            </a>
 
-<div class="navbar">
+        </div>
+    </div>
 
-<a href="/index.html">🏠 Beranda</a>
-
-<a href="/materi/index.html">📚 Materi</a>
-
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-
-<a href="/lkpd/index.html">📄 LKPD</a>
-
-<a href="/absen/index.html">📷 Absen</a>
-
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-
-</div>
-
-<div class="container">
-
-<h2>📚 Materi TKJ</h2>
-<p>Pilih kelas untuk melihat materi</p>
-
-<div class="card">
-<a href="/materi/kelas10/index.html">🎓 Materi Kelas X</a>
-</div>
-
-<div class="card">
-<a href="/materi/kelas11/index.html">🎓 Materi Kelas XI</a>
-</div>
-
-<div class="card">
-<a href="/materi/kelas12/index.html">🎓 Materi Kelas XII</a>
-</div>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
