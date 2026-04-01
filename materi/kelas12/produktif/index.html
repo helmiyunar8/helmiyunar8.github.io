@@ -1,142 +1,194 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembahasan Produktif - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+            --sidebar-width: 280px;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-<title>Pembahasan Tryout TKJ</title>
+        body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-<style>
+        /* SIDEBAR KONSISTEN */
+        .sidebar {
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 65px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-text-align:center;
-}
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px;
+            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-/* NAVBAR */
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
-nav{
-background:#2e7d32;
-padding:12px;
-}
+        .topbar {
+            background: var(--white); padding: 15px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-}
+        /* HEADER SECTION */
+        .header-section { text-align: center; margin-bottom: 40px; }
+        .header-section h2 { font-size: 30px; color: var(--dark-green); font-weight: 800; }
+        .header-section p { color: #888; font-size: 15px; margin-top: 5px; }
 
-/* JUDUL */
+        /* EXAM GRID */
+        .exam-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; 
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
 
-h1{
-margin-top:35px;
-}
+        .exam-card {
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
 
-/* CONTAINER */
+        .exam-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
 
-.container{
-width:90%;
-max-width:500px;
-margin:auto;
-margin-top:20px;
-}
+        .exam-card i { font-size: 24px; color: #ccc; }
+        .exam-card.active i { color: var(--gold); }
+        
+        .exam-card h4 { font-size: 15px; color: #444; font-weight: 700; }
+        .status-badge { font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 50px; background: #f5f5f5; color: #bbb; }
+        
+        .exam-card.active .status-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
 
-/* GRID 2 KOLOM */
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 40px; text-decoration: none; color: #888;
+            font-weight: 600; transition: 0.3s;
+        }
+        .back-link:hover { color: var(--gold); transform: translateX(-5px); }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
-/* TOMBOL */
-
-.menu{
-display:block;
-background:white;
-padding:15px;
-border-radius:10px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-box-shadow:0 3px 6px rgba(0,0,0,0.15);
-}
-
-.menu:hover{
-background:#f1f1f1;
-}
-
-/* TOMBOL BAWAH */
-
-.tombol{
-display:inline-block;
-margin-top:25px;
-padding:12px 18px;
-border-radius:8px;
-text-decoration:none;
-color:white;
-background:#2e7d32;
-}
-
-</style>
-
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; }
+            .exam-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="/materi/index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
+            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        </div>
+    </nav>
 
-<nav>
+    <div class="main-content">
+        <div class="topbar">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
+            </div>
+            <div style="font-size: 14px; font-weight: 600;">Arsip Pembahasan</div>
+        </div>
 
-<a href="/index.html">🏠 Beranda</a>
+        <div class="header-section">
+            <h2>🏆 Pembahasan Produktif</h2>
+            <p>Pilih paket tryout untuk melihat pembahasan lengkap.</p>
+        </div>
 
-<a href="/materi/index.html">📚 Materi</a>
+        <div class="exam-grid">
+            <a href="tryout1.html" class="exam-card active">
+                <i class="fas fa-file-video"></i>
+                <h4>Minggu 2</h4>
+                <div class="status-badge">TERSEDIA</div>
+            </a>
 
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 1</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 2</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 3</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 4</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 5</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+            <a href="#" class="exam-card">
+                <i class="fas fa-file-circle-minus"></i>
+                <h4>Tryout 6</h4>
+                <div class="status-badge">KOSONG</div>
+            </a>
+        </div>
 
-<a href="/lkpd/index.html">📄 LKPD</a>
+        <div style="text-align: center;">
+            <a href="../" class="back-link">
+                <i class="fas fa-arrow-left"></i> Kembali ke Mapel Kelas XII
+            </a>
+        </div>
+    </div>
 
-<a href="/absen/index.html">📷 Absen</a>
-
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-
-</nav>
-
-
-<h1>🏆 Pembahasan Tryout TKJ</h1>
-
-<p>Pilih Tryout</p>
-
-
-<div class="container">
-
-<div class="grid">
-
-<a class="menu" href="tryout1.html">Tryout 1 (masih_KOSONG😴)</a>
-
-<a class="menu" href="tryout2.html">Tryout 2 (masih_KOSONG😴)</a>
-
-<a class="menu" href="tryout3.html">Tryout 3 (masih_KOSONG😴)</a>
-
-<a class="menu" href="tryout4.html">Tryout 4(masih_KOSONG😴)</a>
-
-<a class="menu" href="tryout5.html">Tryout 5 (masih_KOSONG😴)</a>
-
-<a class="menu" href="tryout6.html">Tryout 6 (masih_KOSONG😴)</a>
-<a class="menu" href="tryout1.html">Pembahasan Tryout Minggu 2</a>
-
-</div>
-
-
-<a class="tombol" href="../">⬅ Kembali ke Mapel</a>
-
-</div>
-
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
