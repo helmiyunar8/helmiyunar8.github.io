@@ -13,30 +13,65 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px;
+            --sidebar-width: 280px; /* Sesuai Blueprint */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR KONSISTEN */
+        /* SIDEBAR - BLUEPRINT STANDARD */
         .sidebar {
-            width: var(--sidebar-width); background: var(--white); height: 100vh;
-            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
-            z-index: 1000; display: flex; flex-direction: column;
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh;
+            position: fixed; 
+            border-right: 1px solid #ddd; 
+            transition: 0.3s;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column;
         }
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .sidebar-header { 
+            padding: 35px 20px; /* Sesuai Blueprint */
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+
+        .sidebar-header img { 
+            width: 75px; /* Sesuai Blueprint */
+            margin-bottom: 15px; 
+        }
+
+        .sidebar-header h3 { 
+            font-size: 22px; /* Sesuai Blueprint */
+            color: var(--gold); 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
+
         .nav-item {
-            display: flex; align-items: center; padding: 15px 25px;
-            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            padding: 18px 25px; /* Sesuai Blueprint */
+            color: #444; 
+            text-decoration: none; 
+            font-size: 18px; /* Sesuai Blueprint */
+            font-weight: 600; 
+            transition: 0.3s;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
-        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+
+        .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
+
+        /* Warna Aktif Sesuai Blueprint */
+        .nav-item:hover, .nav-item.active { 
+            background: #fffcf0; 
+            color: var(--gold); 
+            border-left: 6px solid var(--gold); 
+        }
 
         /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
@@ -119,7 +154,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../asset/logo.png" alt="Logo">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
@@ -159,72 +194,6 @@
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
                 <div class="explanation">
                     Switch menghubungkan beberapa komputer dalam jaringan LAN dan mengirimkan data langsung ke perangkat tujuan menggunakan alamat MAC.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">3. Perangkat PCB untuk koneksi jaringan?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: NIC</div>
-                <div class="explanation">
-                    NIC (Network Interface Card) adalah kartu jaringan yang dipasang pada komputer agar dapat terhubung ke jaringan.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">4. Perangkat yang bukan hardware jaringan?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gateway</div>
-                <div class="explanation">
-                    Gateway merupakan konsep penghubung antar jaringan yang menggunakan protokol berbeda. Biasanya berupa software atau konfigurasi pada router.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">5. Perangkat yang meneruskan paket data?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
-                <div class="explanation">
-                    Router bertugas meneruskan paket data dari satu jaringan ke jaringan lain menggunakan tabel routing sebagai panduan.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">6. Perangkat menyalurkan data ke tujuan saja?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
-                <div class="explanation">
-                    Berbeda dengan Hub yang membroadcast data, Switch mengirimkan data hanya ke perangkat tujuan sehingga lalu lintas jaringan lebih efisien.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">7. Cara kerja server melayani client disebut?</span>
-                <img src="../../img/clientserver.png" alt="Arsitektur Client Server">
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Client Server</div>
-                <div class="explanation">
-                    Model client-server adalah arsitektur jaringan dimana server menyediakan layanan/sumber daya dan client meminta layanan tersebut.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">8. Perangkat jaringan pada gambar?</span>
-                <img src="../../img/router.png" alt="Router Cisco">
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
-                <div class="explanation">
-                    Router digunakan untuk menghubungkan dua jaringan atau lebih dan menentukan jalur pengiriman data tercepat (routing).
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">9. Jumlah layer OSI?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: 7 Layer</div>
-                <div class="explanation">
-                    Model OSI terdiri dari 7 lapisan: <b>Physical, Data Link, Network, Transport, Session, Presentation, Application</b>.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">10. Urutan warna kabel UTP (Standar T568B)?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: T568B</div>
-                <div class="explanation">
-                    Putih Orange – Orange – Putih Hijau – Biru – Putih Biru – Hijau – Putih Coklat – Coklat.
                 </div>
             </div>
 
