@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pembahasan Tryout - Helmi Yunar</title>
+    <title>Pembahasan Tryout 1 - SMKN 7 LUWU</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -13,68 +13,38 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px; /* Sesuai Blueprint */
+            --bg-active: #fffcf0;
+            --sidebar-width: 280px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR - BLUEPRINT STANDARD */
+        /* --- SIDEBAR STANDAR BAKU SMKN 7 LUWU --- */
         .sidebar {
-            width: var(--sidebar-width); 
-            background: var(--white); 
-            height: 100vh;
-            position: fixed; 
-            border-right: 1px solid #ddd; 
-            transition: 0.3s;
-            z-index: 1000; 
-            display: flex; 
-            flex-direction: column;
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
         }
-
-        .sidebar-header { 
-            padding: 35px 20px; /* Sesuai Blueprint */
-            text-align: center; 
-            border-bottom: 2px solid #f9f9f9; 
-        }
-
-        .sidebar-header img { 
-            width: 75px; /* Sesuai Blueprint */
-            margin-bottom: 15px; 
-        }
-
-        .sidebar-header h3 { 
-            font-size: 22px; /* Sesuai Blueprint */
-            color: var(--gold); 
-            font-weight: 800; 
-            text-transform: uppercase;
-        }
+        .sidebar-header { padding: 35px 25px; text-align: center; }
+        .sidebar-header img { width: 75px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--primary-green); font-weight: 800; }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
-
         .nav-item {
-            display: flex; 
-            align-items: center; 
-            padding: 18px 25px; /* Sesuai Blueprint */
-            color: #444; 
-            text-decoration: none; 
-            font-size: 18px; /* Sesuai Blueprint */
-            font-weight: 600; 
-            transition: 0.3s;
+            display: flex; align-items: center; padding: 18px 25px;
+            color: #444; text-decoration: none; font-size: 18px; font-weight: 600; transition: 0.3s;
         }
-
         .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
-
-        /* Warna Aktif Sesuai Blueprint */
         .nav-item:hover, .nav-item.active { 
-            background: #fffcf0; 
+            background: var(--bg-active); 
             color: var(--gold); 
             border-left: 6px solid var(--gold); 
         }
 
-        /* MAIN CONTENT */
-        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 30px; width: 100%; }
 
         .topbar {
             background: var(--white); padding: 15px 30px; border-radius: 15px;
@@ -82,67 +52,48 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
         }
 
-        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 30px; }
         .header-section h2 { font-size: 28px; color: var(--dark-green); font-weight: 800; }
-        .header-section p { color: var(--gold); font-weight: 600; font-size: 14px; text-transform: uppercase; }
+        .header-section p { color: var(--gold); font-weight: 700; font-size: 15px; text-transform: uppercase; margin-bottom: 5px; }
 
-        /* DISCUSSION CARD */
-        .discussion-container { max-width: 850px; margin: 0 auto; }
+        /* --- DISCUSSION CARDS --- */
+        .discussion-container { max-width: 900px; margin: 0 auto; }
         
         .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            border: 1px solid #eee;
-            position: relative;
-            overflow: hidden;
+            background: var(--white); padding: 30px; border-radius: 20px;
+            margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border-left: 8px solid var(--primary-green); position: relative;
         }
 
-        .card::before {
-            content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--primary-green);
-        }
-
-        .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
+        .question-text { font-size: 19px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
         
         .answer-box {
-            background: #e8f5e9;
-            padding: 12px 20px;
-            border-radius: 10px;
-            color: #2e7d32;
-            font-weight: 700;
-            margin: 15px 0;
-            display: inline-block;
-            border-left: 4px solid #2e7d32;
+            background: #e8f5e9; padding: 12px 20px; border-radius: 10px;
+            color: #2e7d32; font-weight: 700; margin: 15px 0;
+            display: inline-block; border: 1px solid #c8e6c9;
         }
 
         .explanation {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #666;
-            background: #fdfdfd;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px dashed #ddd;
+            font-size: 15.5px; line-height: 1.7; color: #555;
+            background: #fafafa; padding: 18px; border-radius: 12px;
+            border: 1px dashed #ccc; margin-top: 10px;
         }
 
-        .card img { max-width: 100%; border-radius: 15px; margin: 15px 0; border: 1px solid #eee; }
+        .card img { max-width: 100%; border-radius: 15px; margin: 15px 0; border: 2px solid #eee; }
 
-        /* PAGINATION */
+        /* --- PAGINATION --- */
         .pagination {
-            display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 40px; padding: 20px;
+            display: flex; justify-content: center; align-items: center; gap: 20px; 
+            margin-top: 40px; padding-bottom: 40px;
         }
         .page-info { font-weight: 700; color: #888; }
         .btn-page {
-            background: var(--primary-green); color: white; padding: 10px 25px;
+            background: var(--primary-green); color: white; padding: 12px 30px;
             border-radius: 50px; text-decoration: none; font-weight: 700;
             transition: 0.3s; display: flex; align-items: center; gap: 10px;
         }
-        .btn-page:hover { background: var(--dark-green); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-page:hover { background: var(--dark-green); transform: translateY(-3px); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0; }
@@ -154,7 +105,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="../asset/logo.png" alt="Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo SMKN 7">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
@@ -169,10 +120,10 @@
 
     <div class="main-content">
         <div class="topbar">
-            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer; font-size: 18px;" onclick="toggleSidebar()">
                 <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
             </div>
-            <div style="font-size: 14px; font-weight: 600;">Arsip Pembahasan</div>
+            <div style="font-size: 14px; font-weight: 600; color: #666;">Tryout 1: Produktif TKJ</div>
         </div>
 
         <div class="header-section">
@@ -194,6 +145,72 @@
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
                 <div class="explanation">
                     Switch menghubungkan beberapa komputer dalam jaringan LAN dan mengirimkan data langsung ke perangkat tujuan menggunakan alamat MAC.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">3. Perangkat PCB untuk koneksi jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: NIC</div>
+                <div class="explanation">
+                    NIC (Network Interface Card) adalah kartu jaringan yang dipasang pada komputer agar dapat terhubung ke jaringan.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">4. Perangkat yang bukan hardware jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gateway</div>
+                <div class="explanation">
+                    Gateway merupakan konsep penghubung antar jaringan yang menggunakan protokol berbeda. Biasanya berupa software atau konfigurasi pada router.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">5. Perangkat yang meneruskan paket data?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
+                <div class="explanation">
+                    Router bertugas meneruskan paket data dari satu jaringan ke jaringan lain menggunakan tabel routing sebagai panduan.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">6. Perangkat menyalurkan data ke tujuan saja?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
+                <div class="explanation">
+                    Berbeda dengan Hub yang membroadcast data, Switch mengirimkan data hanya ke perangkat tujuan sehingga lalu lintas jaringan lebih efisien.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">7. Cara kerja server melayani client disebut?</span>
+                <img src="../../img/clientserver.png" alt="Arsitektur Client Server">
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Client Server</div>
+                <div class="explanation">
+                    Model client-server adalah arsitektur jaringan dimana server menyediakan layanan/sumber daya dan client meminta layanan tersebut.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">8. Perangkat jaringan pada gambar?</span>
+                <img src="../../img/router.png" alt="Router Cisco">
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
+                <div class="explanation">
+                    Router digunakan untuk menghubungkan dua jaringan atau lebih dan menentukan jalur pengiriman data tercepat (routing).
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">9. Jumlah layer OSI?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: 7 Layer</div>
+                <div class="explanation">
+                    Model OSI terdiri dari 7 lapisan: <b>Physical, Data Link, Network, Transport, Session, Presentation, Application</b>.
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">10. Urutan warna kabel UTP (Standar T568B)?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: T568B</div>
+                <div class="explanation">
+                    Putih Orange – Orange – Putih Hijau – Biru – Putih Biru – Hijau – Putih Coklat – Coklat.
                 </div>
             </div>
 
