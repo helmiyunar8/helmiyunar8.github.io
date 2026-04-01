@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi TKJ - Helmi Yunar</title>
+    <title>Materi TKJ - Ibu Helmi Yunar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -17,8 +17,18 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); overflow-x: hidden; }
 
-        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
+        /* OVERLAY GELAP SMKN 7 */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .sidebar-overlay.active { display: block; }
 
         /* SIDEBAR */
         .sidebar {
@@ -27,22 +37,34 @@
             height: 100vh;
             position: fixed;
             border-right: 1px solid #ddd;
-            transition: all 0.3s;
-            z-index: 1000;
+            transition: all 0.3s ease;
+            z-index: 1001;
             display: flex;
             flex-direction: column;
+        }
+
+        /* TOMBOL CLOSE (X) */
+        .close-sidebar {
+            display: none;
+            position: absolute;
+            top: 15px; right: 15px;
+            font-size: 28px;
+            color: var(--gold);
+            cursor: pointer;
+            z-index: 1002;
         }
 
         .sidebar-header {
             padding: 35px 20px;
             text-align: center;
             border-bottom: 2px solid #f9f9f9;
+            position: relative;
         }
 
         .sidebar-header img { width: 75px; margin-bottom: 12px; }
         .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-menu { padding: 25px 0; flex-grow: 1; overflow-y: auto; }
         .nav-item {
             display: flex;
             align-items: center;
@@ -51,7 +73,7 @@
             text-decoration: none;
             transition: 0.3s;
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 600;
         }
         .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
         .nav-item:hover, .nav-item.active {
@@ -66,9 +88,10 @@
             margin-left: var(--sidebar-width);
             padding: 25px;
             width: 100%;
+            transition: 0.3s;
         }
 
-        /* TOPBAR */
+        /* TOPBAR HAMBURGER */
         .topbar {
             background: var(--white);
             padding: 18px 30px;
@@ -80,7 +103,12 @@
             margin-bottom: 30px;
         }
 
-        /* CARD MATERI */
+        .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: var(--gold); margin-right: 15px; }
+
+        .user-profile { display: flex; align-items: center; gap: 12px; font-size: 17px; }
+        .user-profile span { font-weight: 700; color: var(--text-dark); }
+
+        /* CARD MATERI STYLE */
         .materi-grid {
             display: flex;
             flex-direction: column;
@@ -118,6 +146,7 @@
             font-size: 22px;
             font-weight: 800;
             margin-bottom: 5px;
+            color: #444;
         }
 
         .materi-info p {
@@ -126,23 +155,24 @@
         }
 
         /* RESPONSIVE */
-        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
-
         @media (max-width: 768px) {
-            .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
+            .menu-toggle, .close-sidebar { display: block; }
+            .sidebar { left: -100%; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 15px; }
-            .menu-toggle { display: block; }
-            .materi-card { padding: 20px; }
             .materi-info h4 { font-size: 18px; }
+            .user-profile span { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
     <nav class="sidebar" id="sidebar">
+        <div class="close-sidebar" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
         <div class="sidebar-header">
-            <img src="../asset/logo.png" alt="Logo">
+            <img src="../asset/logo.png" alt="Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
             <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
         </div>
@@ -154,31 +184,31 @@
             <a href="../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
             <a href="../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
             <a href="../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
         <div style="padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5;">
-            ©2025 Developed by<br><strong>Helmi Yunar</strong>
+            ©2025 Developed by<br><strong>Ibu Helmi Yunar</strong>
         </div>
     </nav>
 
     <div class="main-content">
         <div class="topbar">
-            <div class="menu-toggle" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
+            <div style="display: flex; align-items: center;">
+                <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+                <div style="font-weight: 800; color: var(--gold); font-size: 20px;">MATERI PEMBELAJARAN</div>
             </div>
-            <div style="font-weight: 800; color: var(--gold); font-size: 20px;">MATERI PEMBELAJARAN</div>
             <div class="user-profile">
-                <span>Helmi Yunar</span>
+                <span>Ibu Helmi Yunar</span>
                 <i class="fas fa-user-circle" style="font-size: 35px; color: var(--gold);"></i>
             </div>
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-size: 28px; margin-bottom: 10px;">Pilih Kelas</h2>
+            <h2 style="font-size: 28px; margin-bottom: 10px; color: var(--gold); font-weight: 800;">PILIH KELAS</h2>
             <p style="color: #666; font-size: 18px;">Silakan pilih kelas untuk mengakses materi pembelajaran TKJ</p>
         </div>
 
         <div class="materi-grid">
-            
             <a href="kelas10/index.html" class="materi-card">
                 <i class="fas fa-graduation-cap"></i>
                 <div class="materi-info">
@@ -202,13 +232,15 @@
                     <p>Administrasi Sistem & Jaringan Lanjut</p>
                 </div>
             </a>
-
         </div>
     </div>
 
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
     </script>
 </body>
