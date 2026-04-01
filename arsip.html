@@ -18,28 +18,41 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-main); overflow-x: hidden; }
 
-        /* OVERLAY (Latar Gelap saat Menu Buka di HP) */
+        /* OVERLAY - Latar belakang gelap saat sidebar aktif di HP */
         .sidebar-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 1000;
+            z-index: 1000; /* Di bawah sidebar */
         }
         .sidebar-overlay.active { display: block; }
 
-        /* SIDEBAR NAVIGATION */
-        .sidebar { width: var(--sidebar-width); background: var(--white); height: 100vh; position: fixed; border-right: 1px solid #eee; display: flex; flex-direction: column; z-index: 1001; transition: 0.3s ease; }
+        /* SIDEBAR */
+        .sidebar { 
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh; 
+            position: fixed; 
+            border-right: 1px solid #eee; 
+            display: flex; 
+            flex-direction: column; 
+            z-index: 1001; /* Paling atas */
+            transition: 0.3s ease; 
+        }
         
-        /* TOMBOL CLOSE DI SIDEBAR (Hanya muncul di Mobile) */
+        /* TOMBOL CLOSE (X) - Muncul hanya di HP */
         .close-sidebar {
-            display: none;
+            display: none; /* Default sembunyi di Desktop */
             position: absolute;
-            top: 15px; right: 15px;
-            font-size: 24px;
+            top: 15px; 
+            right: 15px;
+            font-size: 28px;
             color: var(--gold);
             cursor: pointer;
+            z-index: 1002;
+            padding: 5px;
         }
 
         .sidebar-header { padding: 35px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
@@ -54,16 +67,14 @@
 
         .footer-dev { padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5; }
 
-        /* CONTENT AREA */
+        /* CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 30px; width: 100%; transition: 0.3s; }
-        
-        /* TOPBAR */
         .topbar { background: var(--white); padding: 20px 30px; border-radius: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 30px; border: 1px solid #f0f0f0; }
         .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: var(--gold); margin-right: 15px; }
         .title-bar { font-weight: 800; color: var(--gold); font-size: 22px; flex-grow: 1; }
         .user-prof { font-weight: 700; display: flex; align-items: center; gap: 10px; font-size: 17px; }
         
-        /* GRID ARSIP */
+        /* GRID */
         .arsip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card-arsip { background: var(--white); padding: 40px; border-radius: 20px; text-align: center; transition: all 0.3s ease; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; box-shadow: 0 6px 18px rgba(0,0,0,0.02); border: 1px solid #f0f0f0; }
         .card-arsip:hover { transform: translateY(-8px); border: 1px solid var(--gold); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15); }
@@ -71,12 +82,12 @@
         .card-arsip h4 { font-size: 18px; font-weight: 700; text-transform: uppercase; color: #444; margin-bottom: 15px; flex-grow: 1; display: flex; align-items: center; }
         .btn-premium { background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); color: white; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 14px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(184, 134, 11, 0.3); transition: 0.3s; }
 
-        /* RESPONSIVE MOBILE */
+        /* --- PERBAIKAN RESPONSIVE --- */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
-            .close-sidebar { display: block; } /* Munculkan tombol X di HP */
-            .sidebar { left: -100%; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
-            .sidebar.active { left: 0; }
+            .close-sidebar { display: block; } /* PAKSA MUNCUL DI HP */
+            .sidebar { left: -100%; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
+            .sidebar.active { left: 0 !important; } /* PAKSA GESER KE KANAN */
             .main-content { margin-left: 0; padding: 15px; }
             .arsip-grid { grid-template-columns: 1fr; }
             .title-bar { font-size: 18px; }
@@ -129,37 +140,31 @@
                 <h4>SPTJM DAPODIK SMKN 7 LUWU</h4>
                 <a href="arsip/sptjm.pdf" class="btn-premium">BUKA & DOWNLOAD PDF</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-users"></i>
                 <h4>REKAP ABSENSI SISWA KELAS X TKJ</h4>
                 <a href="#" class="btn-premium">LIHAT REKAP</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-id-card"></i>
                 <h4>INFO GTK VALID</h4>
                 <a href="#" class="btn-premium">CEK DATA</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-folder-open"></i>
                 <h4>SK YANG SEMPAT TEREKAP</h4>
                 <a href="#" class="btn-premium">BUKA ARSIP</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-users-rectangle"></i>
                 <h4>REKAP ABSENSI SISWA KELAS XI TKJ</h4>
                 <a href="#" class="btn-premium">LIHAT REKAP</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-users-gear"></i>
                 <h4>REKAP ABSENSI SISWA KELAS XII TKJ</h4>
                 <a href="#" class="btn-premium">LIHAT REKAP</a>
             </div>
-
             <div class="card-arsip">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <h4>DATA GURU</h4>
@@ -173,6 +178,7 @@
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
             
+            // Menggunakan toggle untuk menambah/menghapus class active
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
         }
