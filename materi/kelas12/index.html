@@ -1,113 +1,166 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Kelas XII - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+            --sidebar-width: 280px;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-<title>Materi TKJ Kelas XII</title>
+        body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-<style>
+        /* SIDEBAR KONSISTEN */
+        .sidebar {
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 65px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-text-align:center;
-}
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px;
+            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-/* NAVBAR */
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
-nav{
-background:#2e7d32;
-padding:12px;
-}
+        .topbar {
+            background: var(--white); padding: 15px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-}
+        /* HEADER SECTION */
+        .header-section { text-align: center; margin-bottom: 40px; }
+        .header-section h2 { font-size: 32px; color: var(--dark-green); font-weight: 800; }
+        .header-section p { color: #888; font-size: 16px; margin-top: 5px; }
 
-/* JUDUL */
+        /* SUBJECT GRID */
+        .subject-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; max-width: 1100px; margin: 0 auto;
+        }
 
-h1{
-margin-top:35px;
-}
+        .subject-card {
+            background: var(--white); padding: 30px 20px; border-radius: 25px;
+            text-decoration: none; color: inherit; text-align: center;
+            border: 1px solid #eee; transition: 0.3s; display: flex;
+            flex-direction: column; align-items: center; gap: 15px;
+        }
 
-/* CONTAINER */
+        .subject-card:hover {
+            transform: translateY(-10px); border-color: var(--gold);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+        }
 
-.container{
-width:90%;
-max-width:500px;
-margin:auto;
-margin-top:20px;
-}
+        .icon-circle {
+            width: 70px; height: 70px; background: #f0f4f1; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; color: var(--primary-green); transition: 0.3s;
+        }
+        .subject-card:hover .icon-circle { background: var(--gold); color: white; transform: rotate(10deg); }
 
-/* TOMBOL MAPEL */
+        .subject-card h4 { font-size: 18px; color: var(--dark-green); font-weight: 800; }
+        .subject-card .status-tag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; background: #f0f0f0; color: #999; }
+        .subject-card.ready .status-tag { background: #e8f5e9; color: #2e7d32; }
 
-.menu{
-display:block;
-background:white;
-padding:15px;
-margin:12px 0;
-border-radius:10px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-box-shadow:0 3px 6px rgba(0,0,0,0.15);
-}
-
-.menu:hover{
-background:#f1f1f1;
-}
-
-</style>
-
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="/materi/index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
+            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        </div>
+    </nav>
 
-<nav>
+    <div class="main-content">
+        <div class="topbar">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
+            </div>
+            <div style="font-size: 14px; font-weight: 600;">Materi Kelas XII</div>
+        </div>
 
-<a href="/index.html">🏠 Beranda</a>
+        <div class="header-section">
+            <h2>📚 Materi Pelajaran</h2>
+            <p>Silakan pilih mata pelajaran untuk memulai belajar.</p>
+        </div>
 
-<a href="/materi/index.html">📚 Materi</a>
+        <div class="subject-grid">
+            <a href="aij/" class="subject-card">
+                <div class="icon-circle"><i class="fas fa-network-wired"></i></div>
+                <h4>AIJ</h4>
+                <p style="font-size: 12px; color: #888;">Adm. Infrastruktur Jaringan</p>
+                <div class="status-tag">BELUM TERSEDIA</div>
+            </a>
 
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
+            <a href="asj/" class="subject-card">
+                <div class="icon-circle"><i class="fas fa-server"></i></div>
+                <h4>ASJ</h4>
+                <p style="font-size: 12px; color: #888;">Adm. Sistem Jaringan</p>
+                <div class="status-tag">BELUM TERSEDIA</div>
+            </a>
 
-<a href="/lkpd/index.html">📄 LKPD</a>
+            <a href="kik/" class="subject-card">
+                <div class="icon-circle"><i class="fas fa-laptop-code"></i></div>
+                <h4>KIK</h4>
+                <p style="font-size: 12px; color: #888;">Kreatif & Kewirausahaan</p>
+                <div class="status-tag">BELUM TERSEDIA</div>
+            </a>
 
-<a href="/absen/index.html">📷 Absen</a>
+            <a href="tlj/" class="subject-card">
+                <div class="icon-circle"><i class="fas fa-phone-volume"></i></div>
+                <h4>TLJ</h4>
+                <p style="font-size: 12px; color: #888;">Teknologi Layanan Jaringan</p>
+                <div class="status-tag">BELUM TERSEDIA</div>
+            </a>
 
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+            <a href="produktif/" class="subject-card ready">
+                <div class="icon-circle"><i class="fas fa-award"></i></div>
+                <h4>Produktif TKJ</h4>
+                <p style="font-size: 12px; color: #888;">Pembahasan Soal USBN</p>
+                <div class="status-tag">SIAP BELAJAR</div>
+            </a>
+        </div>
+    </div>
 
-</nav>
-
-
-<h1>📚 Materi TKJ Kelas XII</h1>
-
-<p>Pilih Mata Pelajaran</p>
-
-
-<div class="container">
-
-<a class="menu" href="aij/">📡 AIJ (masih_KOSONG😴)</a>
-
-<a class="menu" href="asj/">🖥 ASJ(masih_KOSONG😴)</a>
-
-<a class="menu" href="kik/">💻 KIK(masih_KOSONG😴)</a>
-
-<a class="menu" href="tlj/">🌐 TLJ(masih_KOSONG😴)</a>
-
-<a class="menu" href="produktif/">🏆 All Produktif TKJ (PEmbahasan Soal USBN)</a>
-
-</div>
-
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
