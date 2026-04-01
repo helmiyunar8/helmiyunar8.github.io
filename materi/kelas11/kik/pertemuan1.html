@@ -1,217 +1,274 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIK Kelas XI - Pertemuan 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<title>KIK Kelas XI - Pertemuan 1</title>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-<style>
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-line-height:1.6;
-}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-/* NAVBAR */
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-nav{
-background:#2e7d32;
-padding:12px;
-text-align:center;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-font-weight:bold;
-}
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-/* CONTAINER */
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
 
-.container{
-max-width:700px;
-margin:auto;
-padding:20px;
-background:white;
-}
+        /* AREA MATERI */
+        .materi-container {
+            background: var(--white);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
 
-/* JUDUL */
+        h1 { color: var(--dark-gold); font-size: 32px; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        h2 { color: var(--text-dark); margin: 35px 0 15px; font-size: 24px; position: relative; padding-left: 15px; }
+        h2::before { content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: var(--gold); border-radius: 3px; }
+        
+        p { line-height: 1.8; color: #444; font-size: 18px; margin-bottom: 20px; text-align: justify; }
 
-h1{
-text-align:center;
-color:#2e7d32;
-}
+        /* BOX KHUSUS */
+        .box {
+            background: #fffdf5;
+            padding: 25px;
+            border-left: 6px solid var(--gold);
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .box b { color: var(--dark-gold); display: block; margin-bottom: 10px; }
+        .box ul, .box ol { margin-left: 20px; margin-top: 10px; }
+        .box li { margin-bottom: 10px; }
 
-h2{
-color:#2e7d32;
-margin-top:30px;
-}
+        /* SWOT STYLING */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .swot-item {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .swot-item b { color: var(--gold); }
 
-/* BOX MATERI */
+        /* TUGAS AREA */
+        .tugas {
+            background: #f0f4f8;
+            border: 2px dashed #ccc;
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+        .tugas h2::before { background: #444; }
 
-.box{
-background:#f4f4f4;
-padding:15px;
-border-radius:10px;
-margin-top:10px;
-}
+        /* NAVIGASI BAWAH */
+        .nav-bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .btn-nav {
+            background: var(--gold);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-nav:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
 
-/* TOMBOL */
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
-.btn{
-display:inline-block;
-padding:10px 15px;
-background:#2e7d32;
-color:white;
-text-decoration:none;
-border-radius:8px;
-margin-top:20px;
-}
-
-</style>
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .materi-container { padding: 20px; }
+            .swot-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 24px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-</nav>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<div class="container">
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">KIK KELAS XI: PERTEMUAN 1</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<h1>📘 KIK Kelas XI</h1>
-<p align="center"><b>Pertemuan 1</b></p>
+        <div class="materi-container">
+            <h1>📘 Peluang Usaha</h1>
+            <p style="color:var(--gold); font-weight:bold; margin-top:-10px;">Produk Kreatif & Kewirausahaan</p>
 
-<h2>Peluang Usaha</h2>
+            <div class="box">
+                <b><i class="fas fa-bullseye"></i> Tujuan Pembelajaran:</b>
+                <ul>
+                    <li>Memahami peluang usaha produk barang dan jasa.</li>
+                    <li>Menentukan faktor keberhasilan dan kegagalan usaha.</li>
+                    <li>Menganalisis kemungkinan keberhasilan usaha.</li>
+                    <li>Menciptakan peluang usaha secara kreatif dan inovatif.</li>
+                </ul>
+            </div>
 
-<div class="box">
+            <h2>A. Pengertian Peluang Usaha</h2>
+            <p>
+                Peluang usaha merupakan kesempatan yang dimiliki seseorang untuk mencapai tujuan dengan memanfaatkan sumber daya yang dimiliki seperti modal, pengetahuan, keterampilan, dan relasi.
+            </p>
+            <p>
+                Untuk mencapai tujuan tersebut, seorang wirausaha harus cermat memanfaatkan aset yang ada, baik itu uang, skill teknis TKJ, maupun pengalaman lapangan.
+            </p>
 
-<b>Tujuan Pembelajaran:</b>
+            <h2>B. Ciri Peluang Usaha yang Baik</h2>
+            <div class="box">
+                <ul>
+                    <li><b>Orisinil:</b> Bukan sekadar meniru orang lain.</li>
+                    <li><b>Adaptif:</b> Mampu mengikuti perubahan pasar dan teknologi.</li>
+                    <li><b>Layak:</b> Benar-benar bisa diwujudkan secara nyata (bukan ambisi semata).</li>
+                    <li><b>Potensial:</b> Memiliki nilai jual dan mampu bertahan lama.</li>
+                </ul>
+            </div>
 
-<ul>
-<li>Memahami peluang usaha produk barang dan jasa</li>
-<li>Menentukan faktor keberhasilan dan kegagalan usaha</li>
-<li>Menganalisis kemungkinan keberhasilan usaha</li>
-<li>Menyajikan bentuk peluang usaha</li>
-<li>Menciptakan peluang usaha secara kreatif dan inovatif</li>
-</ul>
+            <h2>C. Analisis Peluang Usaha</h2>
+            <p>
+                Proses menilai apakah sebuah usaha layak dijalankan. Dibutuhkan sikap berpikir positif, semangat kerja tinggi, dan kemampuan komunikasi yang baik untuk melihat peluang di tengah tantangan.
+            </p>
 
-</div>
+            <h2>D. Analisis SWOT</h2>
+            <p>Metode sistematis untuk mengevaluasi posisi usaha Anda:</p>
+            <div class="swot-grid">
+                <div class="swot-item"><i class="fas fa-fist-raised"></i> <b>Strength:</b> Kekuatan</div>
+                <div class="swot-item"><i class="fas fa-search-minus"></i> <b>Weakness:</b> Kelemahan</div>
+                <div class="swot-item"><i class="fas fa-chart-line"></i> <b>Opportunity:</b> Peluang</div>
+                <div class="swot-item"><i class="fas fa-exclamation-triangle"></i> <b>Threat:</b> Ancaman</div>
+            </div>
 
-<h2>A. Pengertian Peluang Usaha</h2>
+            <div class="tugas">
+                <h2 style="margin-top:0;"><i class="fas fa-tasks" style="margin-right:10px;"></i> Tugas Mandiri</h2>
+                <p style="font-size: 16px; margin-bottom: 10px;">Kerjakan pertanyaan berikut di buku tugas Anda:</p>
+                <ol>
+                    <li>Jelaskan apa yang dimaksud dengan peluang usaha!</li>
+                    <li>Sebutkan 3 faktor utama keberhasilan sebuah usaha!</li>
+                    <li>Bagaimana cara memanfaatkan peluang usaha secara kreatif di bidang TKJ?</li>
+                    <li>Jelaskan elemen-elemen dalam analisis SWOT!</li>
+                </ol>
+            </div>
 
-<div class="box">
+            <div class="nav-bottom">
+                <a href="index.html" class="btn-nav"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Pertemuan</a>
+            </div>
+        </div>
+    </div>
 
-Peluang usaha merupakan kesempatan yang dimiliki seseorang
-untuk mencapai tujuan dengan memanfaatkan sumber daya yang
-dimiliki seperti modal, pengetahuan, keterampilan dan relasi.
-
-Tujuan usaha bisa berupa:
-<ul>
-<li>Keuntungan</li>
-<li>Kepuasan</li>
-<li>Status sosial</li>
-<li>Popularitas</li>
-</ul>
-Untuk mencapai tujuan tersebut seseorang dapat memanfaatkan sumber daya yang dimiliki. 
-Sumber daya itu dapat berupa uang/modal, pengetahuan, skill, relasi yang luas, 
-pengalaman dan lain-lain. Artinya sumber daya ini mencakup segala sesuatu yang bisa 
-dimanfaatkan untuk menunjang kegiatan usaha. Seorang wirausaha harus berfikir tentang 
-seperti apa peluang usaha yang baik itu. 
-</div>
-
-<h2>B. Ciri Peluang Usaha yang Baik</h2>
-
-<div class="box">
-
-<ul>
-<li>Bersifat orisinil</li>
-<li>Mampu mengikuti perubahan pasar</li>
-<li>Sesuai minat</li>
-<li>Memiliki kelayakan usaha</li>
-<li>Bersifat kreatif</li>
-<li>Ada keyakinan untuk mewujudkan</li>
-<li>Menyenangkan saat dijalankan</li>
-</ul>
-Dalam kenyataannya peluang yang baik saja tidak cukup, tapi juga harus potensial. 
-Banyaknya peluang usaha di sekitar kita, mengharuskan seorang wirausaha untuk 
-cermat dalam mengkaji mana peluang usaha yang potensial.
-<ul>
-<li>Memiliki nilai jual</li>
-<li>Usaha bukan hanya ambisi pribadi semata, dan bersifat nyata</li>
-<li>Usaha tersebut mamapu bertahan lama di pasar</li>
-<li>Tidak menghabiskan modal, karena terlalu besar investasinya</li>
-<li>Bisa ditingkatkan skalanya menjadi industri</li>
-</ul>
-  
-</div>
-
-<h2>C. Analisis Peluang Usaha</h2>
-
-<div class="box">
-
-Analisis peluang usaha adalah proses menilai apakah sebuah
-peluang usaha layak dijalankan atau tidak.
-
-Sikap yang diperlukan:
-
-<ul>
-<li>Berpikir positif</li>
-<li>Menerima ide baru</li>
-<li>Semangat kerja tinggi</li>
-<li>Mampu berkomunikasi</li>
-<li>Mendengarkan saran orang lain</li>
-</ul>
-
-</div>
-
-<h2>D. Analisis SWOT</h2>
-
-<div class="box">
-
-SWOT digunakan untuk menganalisis usaha:
-
-<ul>
-<li><b>Strength</b> : kekuatan usaha</li>
-<li><b>Weakness</b> : kelemahan usaha</li>
-<li><b>Opportunity</b> : peluang usaha</li>
-<li><b>Threat</b> : ancaman usaha</li>
-</ul>
-
-</div>
-
-<h2>Tugas</h2>
-
-<div class="box">
-
-Jawablah pertanyaan berikut:
-
-<ol>
-<li>Apa yang dimaksud peluang usaha?</li>
-<li>Sebutkan faktor keberhasilan usaha!</li>
-<li>Sebutkan penyebab kegagalan usaha!</li>
-<li>Bagaimana memanfaatkan peluang usaha secara kreatif?</li>
-<li>Jelaskan peluang usaha yang potensial!</li>
-</ol>
-
-</div>
-
-<center>
-<a class="btn kembali" href="index.html">⬅ Kembali ke Daftar Pertemuan</a>
-</center>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
