@@ -1,154 +1,230 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi KIK Kelas XI - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<title>Materi KIK Kelas XI</title>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-<style>
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-body{
-font-family:Arial;
-margin:0;
-background:#eef5ee;
-text-align:center;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-/* NAVBAR */
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-nav{
-background:#2e7d32;
-padding:12px;
-}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:8px;
-font-size:14px;
-font-weight:bold;
-}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-/* CONTAINER */
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
-.container{
-max-width:500px;
-margin:auto;
-padding:20px;
-}
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
 
-/* GRID PERTEMUAN */
+        /* GRID PERTEMUAN */
+        .pertemuan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-.pertemuan-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:20px;
-}
+        .pertemuan-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-/* TOMBOL PERTEMUAN */
+        .pertemuan-card i { color: var(--gold); font-size: 20px; }
 
-.pertemuan{
-background:#e0e0e0;
-padding:12px;
-border-radius:10px;
-box-shadow:0 2px 4px rgba(0,0,0,0.2);
-text-decoration:none;
-color:black;
-font-size:14px;
-}
+        .pertemuan-card:hover:not(.kosong) {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            background: #fffdf5;
+        }
 
-/* TOMBOL BAWAH */
+        .pertemuan-card.kosong {
+            opacity: 0.5;
+            background: #f9f9f9;
+            font-weight: normal;
+            font-size: 12px;
+            cursor: not-allowed;
+        }
 
-.tombol-bawah{
-margin-top:30px;
-}
+        /* TOMBOL AKSI BAWAH */
+        .aksi-bawah {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
 
-.btn{
-display:inline-block;
-padding:10px 16px;
-border-radius:8px;
-text-decoration:none;
-color:white;
-font-size:14px;
-margin:5px;
-}
+        .btn-aksi {
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
 
-.video{
-background:#1976d2;
-}
+        .btn-video { background: #d9534f; } /* Merah YouTube */
+        .btn-download { background: #f0ad4e; } /* Orange */
+        .btn-kembali { background: #444; }
 
-.download{
-background:#ef6c00;
-}
+        .btn-aksi:hover { transform: scale(1.05); opacity: 0.9; }
 
-.kembali{
-background:#2e7d32;
-}
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
-</style>
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .pertemuan-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<nav>
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-</nav>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">MAPEL: KIK KELAS XI</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-<div class="container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 26px;">Pertemuan Komputer & Jaringan</h2>
+            <p style="color: #666;">Silakan pilih materi pertemuan di bawah ini</p>
+        </div>
 
-<h2>💻 Materi KIK Kelas XI</h2>
-<p>Pilih Pertemuan</p>
+        <div class="pertemuan-grid">
+            <a href="pertemuan1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 1</a>
+            <a href="pertemuan2-1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 2</a>
+            <a href="pertemuan3-1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 3</a>
+            <a href="pertemuan4-1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 4</a>
+            <a href="pertemuan5-1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 5</a>
+            <a href="pertemuan6-1.html" class="pertemuan-card"><i class="fas fa-folder-open"></i> Pertemuan 6</a>
+            
+            <a href="#" class="pertemuan-card kosong">Pertemuan 7<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 8<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 9<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 10<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 11<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 12<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 13<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 14<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 15<br>(Kosong)</a>
+            <a href="#" class="pertemuan-card kosong">Pertemuan 16<br>(Kosong)</a>
+        </div>
 
-<div class="pertemuan-grid">
+        <div class="aksi-bawah">
+            <a href="#" class="btn-aksi btn-video"><i class="fab fa-youtube"></i> Video Belajar</a>
+            <a href="#" class="btn-aksi btn-download"><i class="fas fa-download"></i> Download Modul</a>
+            <a href="../index.html" class="btn-aksi btn-kembali"><i class="fas fa-arrow-left"></i> Kembali ke Mapel XI</a>
+        </div>
+    </div>
 
-<a class="pertemuan" href="pertemuan1.html">Pertemuan 1</a>
-<a class="pertemuan" href="pertemuan2-1.html">Pertemuan 2</a>
-
-<a class="pertemuan" href="pertemuan3-1.html">Pertemuan 3</a>
-<a class="pertemuan" href="pertemuan4-1.html">Pertemuan 4</a>
-
-<a class="pertemuan" href="pertemuan5-1.html">Pertemuan 5</a>
-<a class="pertemuan" href="pertemuan6-1.html">Pertemuan 6</a>
-
-<a class="pertemuan" href="pertemuan7.html">Pertemuan 7(masihKOSONG😴💤)</a>
-<a class="pertemuan" href="pertemuan8.html">Pertemuan 8(masihKOSONG😴💤)</a>
-
-<a class="pertemuan" href="pertemuan9.html">Pertemuan 9(masihKOSONG😴💤)</a>
-<a class="pertemuan" href="pertemuan10.html">Pertemuan 10(masihKOSONG😴💤)</a>
-
-<a class="pertemuan" href="pertemuan11.html">Pertemuan 11(masihKOSONG😴💤)</a>
-<a class="pertemuan" href="pertemuan12.html">Pertemuan 12(masihKOSONG😴💤)</a>
-
-<a class="pertemuan" href="pertemuan13.html">Pertemuan 13(masihKOSONG😴💤)</a>
-<a class="pertemuan" href="pertemuan14.html">Pertemuan 14(masihKOSONG😴💤)</a>
-
-<a class="pertemuan" href="pertemuan15.html">Pertemuan 15(masihKOSONG😴💤)</a>
-<a class="pertemuan" href="pertemuan16.html">Pertemuan 16 (masihKOSONG😴💤)</a>
-
-</div>
-
-<div class="tombol-bawah">
-
-<a class="btn video" href="#">🎥 Video Pembelajaran(masihKOSONG😴💤)</a>
-<a class="btn download" href="#">📥 Download Materi(masihKOSONG😴💤)</a>
-
-<br><br>
-
-<a class="btn kembali" href="/kelas11/index.html">⬅ Kembali ke Mapel XI</a>
-
-</div>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
