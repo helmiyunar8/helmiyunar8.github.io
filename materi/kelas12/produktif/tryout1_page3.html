@@ -13,30 +13,65 @@
             --dark-green: #1b5e20;
             --white: #ffffff;
             --bg-soft: #f4f7f6;
-            --sidebar-width: 280px;
+            --sidebar-width: 280px; /* Sesuai Blueprint */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-        /* SIDEBAR KONSISTEN */
+        /* SIDEBAR - BLUEPRINT STANDARD SMKN 7 LUWU */
         .sidebar {
-            width: var(--sidebar-width); background: var(--white); height: 100vh;
-            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
-            z-index: 1000; display: flex; flex-direction: column;
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh;
+            position: fixed; 
+            border-right: 1px solid #ddd; 
+            transition: 0.3s;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column;
         }
-        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
-        .sidebar-header img { width: 65px; margin-bottom: 10px; }
-        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .sidebar-header { 
+            padding: 35px 20px; /* Sesuai Blueprint */
+            text-align: center; 
+            border-bottom: 2px solid #f9f9f9; 
+        }
+
+        .sidebar-header img { 
+            width: 75px; /* Sesuai Blueprint */
+            margin-bottom: 15px; 
+        }
+
+        .sidebar-header h3 { 
+            font-size: 22px; /* Sesuai Blueprint */
+            color: var(--gold); 
+            font-weight: 800; 
+            text-transform: uppercase;
+        }
 
         .nav-menu { padding: 20px 0; flex-grow: 1; }
+
         .nav-item {
-            display: flex; align-items: center; padding: 15px 25px;
-            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            padding: 18px 25px; /* Sesuai Blueprint */
+            color: #444; 
+            text-decoration: none; 
+            font-size: 18px; /* Sesuai Blueprint */
+            font-weight: 600; 
+            transition: 0.3s;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
-        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+
+        .nav-item i { margin-right: 15px; width: 25px; text-align: center; }
+
+        /* State Aktif Sesuai Blueprint */
+        .nav-item:hover, .nav-item.active { 
+            background: #fffcf0; 
+            color: var(--gold); 
+            border-left: 6px solid var(--gold); 
+        }
 
         /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
@@ -63,11 +98,12 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.03);
             border: 1px solid #eee;
             position: relative;
+            overflow: hidden;
         }
 
         .card::before {
             content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; 
-            background: var(--primary-green); border-radius: 20px 0 0 20px;
+            background: var(--primary-green);
         }
 
         .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
@@ -121,7 +157,7 @@
 
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <img src="../asset/logo.png" alt="Logo SMKN 7 LUWU">
             <h3>LMS TKJ</h3>
         </div>
         <div class="nav-menu">
@@ -152,7 +188,7 @@
                 <span class="question-text">21. Data hosting website?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Database HTML</div>
                 <div class="explanation">
-                    Website di internet disimpan dalam bentuk <b>file HTML</b> (untuk struktur) dan <b>Database</b> (untuk data dinamis) pada media penyimpanan server hosting.
+                    Website di internet disimpan dalam bentuk <b>file HTML</b> dan <b>Database</b> pada media penyimpanan server hosting.
                 </div>
             </div>
 
@@ -161,70 +197,6 @@
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: bilacilasila</div>
                 <div class="explanation">
                     <b>SLD (Second Level Domain)</b> adalah nama unik yang Anda buat sendiri. Dalam contoh ini, 'bilacilasila' adalah SLD-nya.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">23. TLD pada blogspot.com?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: .com</div>
-                <div class="explanation">
-                    <b>TLD (Top Level Domain)</b> adalah akhiran dari nama domain. Contoh umum adalah .com, .net, .org, atau .id.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">24. Struktur domain blogspot?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: D</div>
-                <div class="explanation">
-                    Struktur domain yang lengkap biasanya terdiri dari <b>Subdomain</b> (contoh: www), <b>Domain Utama</b> (SLD), dan <b>TLD</b>.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">25. Pengertian domain?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Domain</div>
-                <div class="explanation">
-                    <b>Domain</b> adalah nama unik yang diberikan untuk mengidentifikasi alamat IP server komputer (seperti web server atau email server) di jaringan internet.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">26. Hosting satu server banyak domain?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Shared Hosting</div>
-                <div class="explanation">
-                    <b>Shared Hosting</b> adalah layanan hosting di mana satu server digunakan bersama-sama oleh banyak pengguna/website untuk menekan biaya.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">27. Server dititip di data center?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Colocation</div>
-                <div class="explanation">
-                    <b>Colocation Hosting</b> adalah layanan di mana pelanggan menitipkan server miliknya sendiri di gedung Data Center yang memiliki standar keamanan dan koneksi tinggi.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">28. Fungsi Plesk?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, B, D Benar</div>
-                <div class="explanation">
-                    <b>Plesk</b> adalah control panel hosting yang berfungsi untuk: (A) Mengelola hosting, (B) Bisa berjalan di Linux/Windows, dan (D) Mengotomatisasi tugas server.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">29. Domain .gov digunakan untuk?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Pemerintah</div>
-                <div class="explanation">
-                    Domain <b>.gov</b> (Government) dikhususkan untuk situs-situs resmi milik lembaga pemerintah atau instansi negara.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">30. Domain .edu digunakan untuk?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Pendidikan</div>
-                <div class="explanation">
-                    Domain <b>.edu</b> (Education) digunakan secara eksklusif oleh institusi pendidikan seperti universitas atau lembaga riset.
                 </div>
             </div>
 
