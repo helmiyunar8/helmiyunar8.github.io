@@ -1,66 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>LKPD Pertemuan 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD Pertemuan 3 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+            --sidebar-width: 280px;
+        }
 
-<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-body{
-font-family:Arial;
-background:#f4f7fa;
-padding:30px;
-}
-  /* NAVBAR */
+        body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-.navbar{
-background:#2c7a4b;
-padding:12px;
-text-align:center;
-}
+        /* SIDEBAR KONSISTEN */
+        .sidebar {
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 65px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-.navbar a{
-color:white;
-text-decoration:none;
-margin:6px;
-padding:8px 12px;
-display:inline-block;
-font-size:14px;
-border-radius:6px;
-}
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px;
+            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-.navbar a:hover{
-background:#1e5b37;
-}
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
-table{
-margin:auto;
-border-collapse:collapse;
-width:420px;
-}
+        .topbar {
+            background: var(--white); padding: 15px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+        }
 
-</style>
+        /* HEADER SECTION */
+        .header-section { text-align: center; margin-bottom: 30px; }
+        .header-section h2 { font-size: 26px; color: var(--dark-green); font-weight: 800; }
+        .header-section p { color: var(--gold); font-weight: 600; font-size: 14px; }
 
+        /* FORMS CONTAINER */
+        .forms-container {
+            background: var(--white);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Menghilangkan scrollbar pada container tapi tetap bisa scroll iframe */
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 900px; /* Sesuaikan dengan tinggi form Bapak */
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 25px; text-decoration: none; color: #888;
+            font-weight: 600; transition: 0.3s;
+        }
+        .back-btn:hover { color: var(--gold); transform: translateX(-5px); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .iframe-wrapper { height: 700px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="/materi/index.html" class="nav-item"><i class="fas fa-book"></i> Materi</a>
+            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="/lkpd/index.html" class="nav-item active"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        </div>
+    </nav>
 
-<div class="navbar">
+    <div class="main-content">
+        <div class="topbar">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
+            </div>
+            <div style="font-size: 14px; font-weight: 600;">Lembar Kerja Peserta Didik</div>
+        </div>
 
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+        <div class="header-section">
+            <p><i class="fas fa-pencil-alt"></i> TUGAS MANDIRI</p>
+            <h2>LKPD Pertemuan 3</h2>
+        </div>
 
+        <div class="forms-container">
+            <div class="iframe-wrapper">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe8OaEDGwckvrNUqaiRGuMIAd8Apx6mvXvvcM1w-XFxvRwAjA/viewform?embedded=true">
+                    Memuat…
+                </iframe>
+            </div>
+        </div>
 
-</div>
+        <div style="text-align: center;">
+            <a href="javascript:history.back()" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Kembali ke Daftar Pertemuan
+            </a>
+        </div>
+    </div>
 
-<h2>LKPD Pertemuan 3</h2>
-
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe8OaEDGwckvrNUqaiRGuMIAd8Apx6mvXvvcM1w-XFxvRwAjA/viewform?embedded=true" width="640" height="923" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
