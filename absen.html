@@ -1,135 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Absen Selfie TKJ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absen Selfie TKJ - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2c7be5;
+            --success: #2e7d32;
+            --gold: #D4AF37;
+            --white: #ffffff;
+            --bg: #f0f4f8;
+        }
 
-<style>
-body{
-font-family:Arial;
-background:#eef5ff;
-text-align:center;
-padding:20px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-.container{
-background:white;
-padding:20px;
-border-radius:10px;
-max-width:400px;
-margin:auto;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
-}
+        body {
+            background: linear-gradient(135deg, #eef5ff 0%, #e8f5e9 100%);
+            min-height: 100vh;
+            color: #333;
+        }
 
-video{
-width:100%;
-border-radius:10px;
-}
+        /* NAVBAR MEWAH */
+        .navbar {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin-bottom: 30px;
+        }
 
-button{
-background:#2c7be5;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:5px;
-margin-top:10px;
-font-size:16px;
-}
+        .navbar a {
+            color: var(--primary);
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
 
-input,select{
-width:90%;
-padding:8px;
-margin:5px;
-}
-</style>
+        .navbar a:hover { background: var(--primary); color: white; }
+
+        /* ABSEN CONTAINER */
+        .absen-card {
+            background: var(--white);
+            max-width: 450px;
+            margin: 0 auto 50px;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 6px solid var(--primary);
+        }
+
+        .absen-card h2 { color: var(--primary); font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+        .absen-card p { font-size: 14px; color: #777; margin-bottom: 25px; }
+
+        .input-group { text-align: left; margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 5px; text-transform: uppercase; }
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 12px; font-size: 15px; transition: 0.3s;
+        }
+        .input-group input:focus { border-color: var(--primary); outline: none; }
+
+        /* CAMERA AREA */
+        .camera-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 4px solid #eee;
+        }
+
+        video { width: 100%; height: 100%; object-fit: cover; }
+
+        .camera-overlay {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%; height: 70%;
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* BUTTONS */
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-capture { background: var(--gold); color: #444; }
+        .btn-send { background: var(--primary); color: white; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn:active { transform: scale(0.98); }
+
+        #status {
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .loading { background: #e3f2fd; color: var(--primary); }
+        .success { background: #e8f5e9; color: var(--success); }
+
+        @media (max-width: 500px) {
+            .absen-card { width: 92%; padding: 25px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <nav class="navbar">
+        <a href="/index.html">🏠 BERANDA</a>
+        <a href="/materi/index.html">📚 MATERI</a>
+        <a href="/menu-utama-TKJ/tryout.html">📝 TRYOUT</a>
+        <a href="/lkpd/index.html">📄 LKPD</a>
+        <a href="/absen/index.html">📷 ABSEN</a>
+    </nav>
 
-<h2>ABSEN SELFIE TKJ</h2>
+    <div class="absen-card">
+        <i class="fas fa-camera-retro" style="font-size: 40px; color: var(--gold); margin-bottom: 15px;"></i>
+        <h2>ABSENSI SELFIE</h2>
+        <p>SMKN 7 LUWU • Jurusan TKJ</p>
 
-<input id="nama" placeholder="Nama Siswa">
+        <div class="input-group">
+            <label>Nama Siswa</label>
+            <input type="text" id="nama" placeholder="Ketik nama lengkap Anda...">
+        </div>
 
-<br>
+        <div class="input-group">
+            <label>Pilih Kelas</label>
+            <select id="kelas">
+                <option>X TKJ</option>
+                <option>XI TKJ</option>
+                <option>XII TKJ</option>
+            </select>
+        </div>
 
-<select id="kelas">
-<option>X TKJ</option>
-<option>XI TKJ</option>
-<option>XII TKJ</option>
-</select>
+        <div class="camera-container">
+            <video id="camera" autoplay playsinline></video>
+            <div class="camera-overlay"></div>
+        </div>
 
-<br><br>
+        <button class="btn btn-capture" onclick="ambilFoto()">
+            <i class="fas fa-camera"></i> AMBIL FOTO
+        </button>
 
-<video id="camera" autoplay></video>
+        <button class="btn btn-send" onclick="kirimData()">
+            <i class="fas fa-paper-plane"></i> KIRIM KEHADIRAN
+        </button>
 
-<br>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <p id="status"></p>
+    </div>
 
-<button onclick="ambilFoto()">Ambil Selfie</button>
+    <script>
+        let fotoData = "";
+        const statusEl = document.getElementById("status");
 
-<canvas id="canvas" style="display:none;"></canvas>
+        // Akses Kamera
+        navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: "user" } 
+        })
+        .then(stream => {
+            document.getElementById("camera").srcObject = stream;
+        })
+        .catch(err => {
+            alert("Gagal mengakses kamera. Pastikan izin kamera sudah diaktifkan.");
+        });
 
-<br>
+        function ambilFoto() {
+            const video = document.getElementById("camera");
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
 
-<button onclick="kirimData()">Kirim Absen</button>
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            
+            // Mirroring (opsional untuk selfie agar tidak terbalik)
+            ctx.translate(canvas.width, 0);
+            ctx.scale(-1, 1);
+            
+            ctx.drawImage(video, 0, 0);
+            fotoData = canvas.toDataURL("image/png");
 
-<p id="status"></p>
+            alert("✅ Foto berhasil diambil! Silakan klik 'Kirim Kehadiran'");
+        }
 
-</div>
+        function kirimData() {
+            const nama = document.getElementById("nama").value;
+            const kelas = document.getElementById("kelas").value;
 
-<script>
+            if (!nama || !fotoData) {
+                alert("Harap isi nama dan ambil foto terlebih dahulu!");
+                return;
+            }
 
-let fotoData="";
+            statusEl.style.display = "block";
+            statusEl.className = "loading";
+            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sedang mengirim data...';
 
-navigator.mediaDevices.getUserMedia({video:true})
-.then(stream=>{
-document.getElementById("camera").srcObject=stream;
-});
-
-function ambilFoto(){
-
-let video=document.getElementById("camera");
-let canvas=document.getElementById("canvas");
-let ctx=canvas.getContext("2d");
-
-canvas.width=video.videoWidth;
-canvas.height=video.videoHeight;
-
-ctx.drawImage(video,0,0);
-
-fotoData=canvas.toDataURL("image/png");
-
-alert("Selfie berhasil diambil");
-
-}
-
-function kirimData(){
-
-let nama=document.getElementById("nama").value;
-let kelas=document.getElementById("kelas").value;
-
-document.getElementById("status").innerHTML="Mengirim absen...";
-
-fetch("https://script.google.com/macros/s/AKfycbz0--JNytBo6dPfjvxVehxvWeYBESgwhWWsV-cVTPx75XxJh2yOdCIYx15c1SZLVt70/exec",{
-
-method:"POST",
-
-body: JSON.stringify({
-nama:nama,
-kelas:kelas,
-foto:fotoData
-})
-
-})
-.then(res=>res.text())
-.then(data=>{
-document.getElementById("status").innerHTML="Absen berhasil";
-});
-
-}
-
-</script>
+            fetch("https://script.google.com/macros/s/AKfycbz0--JNytBo6dPfjvxVehxvWeYBESgwhWWsV-cVTPx75XxJh2yOdCIYx15c1SZLVt70/exec", {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify({
+                    nama: nama,
+                    kelas: kelas,
+                    foto: fotoData
+                })
+            })
+            .then(() => {
+                statusEl.className = "success";
+                statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Absen Berhasil Terkirim!';
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            })
+            .catch(err => {
+                statusEl.innerHTML = "❌ Gagal mengirim. Coba lagi.";
+                console.error(err);
+            });
+        }
+    </script>
 
 </body>
 </html>
