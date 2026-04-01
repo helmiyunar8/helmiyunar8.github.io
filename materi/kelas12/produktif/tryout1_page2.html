@@ -1,114 +1,245 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pembahasan Tryout TKJ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembahasan Tryout Hal 2 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+            --sidebar-width: 280px;
+        }
 
-<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-body{font-family:Arial;margin:0;background:#eef5ee;}
+        body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-.navbar{background:#2c7a4b;padding:12px;text-align:center;}
-.navbar a{color:white;text-decoration:none;margin:6px;padding:8px 12px;display:inline-block;border-radius:6px;}
+        /* SIDEBAR KONSISTEN */
+        .sidebar {
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 65px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-header{background:#2e7d32;color:white;text-align:center;padding:15px;}
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px;
+            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-.container{max-width:700px;margin:auto;padding:15px;}
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
-.card{background:white;padding:15px;border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);margin-bottom:15px;}
+        .topbar {
+            background: var(--white); padding: 15px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+        }
 
-.page{text-align:center;margin:20px;}
+        /* HEADER SECTION */
+        .header-section { text-align: center; margin-bottom: 30px; }
+        .header-section h2 { font-size: 28px; color: var(--dark-green); font-weight: 800; }
+        .header-section p { color: var(--gold); font-weight: 600; font-size: 14px; text-transform: uppercase; }
 
-.page a{
-background:#2e7d32;
-color:white;
-padding:8px 14px;
-border-radius:6px;
-text-decoration:none;
-margin:5px;
-}
+        /* DISCUSSION CARD */
+        .discussion-container { max-width: 850px; margin: 0 auto; }
+        
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            position: relative;
+        }
 
-</style>
+        .card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; 
+            background: var(--primary-green); border-radius: 20px 0 0 20px;
+        }
 
+        .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
+        
+        .answer-box {
+            background: #e8f5e9;
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: #2e7d32;
+            font-weight: 700;
+            margin: 10px 0 15px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .explanation {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed #ddd;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; padding: 20px;
+        }
+        .page-info { font-weight: 700; color: #888; }
+        .btn-page {
+            background: var(--primary-green); color: white; padding: 10px 20px;
+            border-radius: 50px; text-decoration: none; font-weight: 700;
+            transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 14px;
+        }
+        .btn-prev { background: #6c757d; }
+        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .pagination { flex-direction: column; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-</div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="/materi/index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
+            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        </div>
+    </nav>
 
-<header>
-<h2>Pembahasan Tryout TKJ</h2>
-Halaman 2 (Soal 11–20)
-</header>
+    <div class="main-content">
+        <div class="topbar">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
+            </div>
+            <div style="font-size: 14px; font-weight: 600;">Arsip Pembahasan</div>
+        </div>
 
-<div class="container">
+        <div class="header-section">
+            <p>Halaman 2 (Soal 11 - 20)</p>
+            <h2>🏆 Pembahasan Tryout TKJ</h2>
+        </div>
 
-<div class="card"><b>11. Konektor kabel LAN</b><br><br>
-<b>Jawaban:</b> RJ45<br><br>
-RJ45 adalah konektor yang digunakan pada kabel UTP untuk jaringan LAN.
-</div>
+        <div class="discussion-container">
+            <div class="card">
+                <span class="question-text">11. Konektor kabel LAN?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: RJ45</div>
+                <div class="explanation">
+                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP (Unshielded Twisted Pair) untuk membangun jaringan komputer lokal (LAN).
+                </div>
+            </div>
 
-<div class="card"><b>12. Server pembatas akses internet</b><br><br>
-<b>Jawaban:</b> Proxy Server<br><br>
-Proxy server berfungsi mengontrol dan membatasi akses internet pengguna.
-</div>
+            <div class="card">
+                <span class="question-text">12. Server pembatas akses internet?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Proxy Server</div>
+                <div class="explanation">
+                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol, memfilter, dan membatasi akses internet bagi pengguna di dalam jaringan.
+                </div>
+            </div>
 
-<div class="card"><b>13. Perangkat pada gambar</b><br><br>
-<b>Jawaban:</b> Switch<br><br>
-Switch menghubungkan perangkat dalam jaringan LAN dan mengatur lalu lintas data.
-</div>
+            <div class="card">
+                <span class="question-text">13. Perangkat pada gambar? (Switch)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
+                <div class="explanation">
+                    <b>Switch</b> menghubungkan banyak perangkat dalam jaringan LAN dan bekerja lebih cerdas dibandingkan Hub dengan mengatur lalu lintas data berdasarkan alamat MAC.
+                </div>
+            </div>
 
-<div class="card"><b>14. Perangkat jaringan pada gambar</b><br><br>
-<b>Jawaban:</b> Modem<br><br>
-Modem digunakan untuk mengubah sinyal digital menjadi analog agar dapat dikirim melalui jaringan ISP.
-</div>
+            <div class="card">
+                <span class="question-text">14. Perangkat jaringan pada gambar? (Modem)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Modem</div>
+                <div class="explanation">
+                    <b>Modem</b> (Modulator-Demodulator) digunakan untuk mengubah sinyal digital dari komputer menjadi analog agar dapat dikirim melalui jalur penyedia layanan internet (ISP).
+                </div>
+            </div>
 
-<div class="card"><b>15. Penguat sinyal jaringan</b><br><br>
-<b>Jawaban:</b> Repeater<br><br>
-Repeater digunakan untuk memperkuat sinyal jaringan agar dapat menjangkau jarak lebih jauh.
-</div>
+            <div class="card">
+                <span class="question-text">15. Penguat sinyal jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Repeater</div>
+                <div class="explanation">
+                    <b>Repeater</b> adalah alat yang bertugas menangkap sinyal lemah dan memancarkannya kembali dengan kekuatan penuh agar jangkauan jaringan bisa lebih luas.
+                </div>
+            </div>
 
-<div class="card"><b>16. Internet sebagai media informasi</b><br><br>
-<b>Jawaban:</b> Media informasi<br><br>
-Internet mempermudah penyebaran informasi secara global.
-</div>
+            <div class="card">
+                <span class="question-text">16. Internet sebagai media informasi?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Media Informasi</div>
+                <div class="explanation">
+                    Internet mempermudah akses dan penyebaran informasi secara instan dan global, menjadikannya salah satu media informasi paling utama saat ini.
+                </div>
+            </div>
 
-<div class="card"><b>17. Dampak negatif internet</b><br><br>
-<b>Jawaban:</b> Konten negatif<br><br>
-Internet dapat memberikan dampak negatif jika tidak digunakan secara bijak.
-</div>
+            <div class="card">
+                <span class="question-text">17. Dampak negatif internet?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Konten Negatif</div>
+                <div class="explanation">
+                    Kemudahan akses informasi di internet juga membawa risiko paparan <b>konten negatif</b>, berita bohong (hoax), hingga kejahatan siber jika tidak digunakan secara bijak.
+                </div>
+            </div>
 
-<div class="card"><b>18. Jaringan menggunakan kabel disebut</b><br><br>
-<b>Jawaban:</b> Wireline<br><br>
-Wireline adalah jaringan yang menggunakan media kabel.
-</div>
+            <div class="card">
+                <span class="question-text">18. Jaringan menggunakan media kabel disebut?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Wireline</div>
+                <div class="explanation">
+                    <b>Wireline</b> adalah sistem komunikasi atau jaringan yang menggunakan media fisik berupa kabel (tembaga atau fiber) untuk mentransmisikan data.
+                </div>
+            </div>
 
-<div class="card"><b>19. Perawatan hardware VoIP</b><br><br>
-<b>Jawaban:</b> A,C,D benar<br><br>
-Perawatan meliputi pengecekan perangkat, membersihkan debu, dan memeriksa periferal.
-</div>
+            <div class="card">
+                <span class="question-text">19. Perawatan hardware VoIP?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, C, dan D Benar</div>
+                <div class="explanation">
+                    Perawatan VoIP meliputi: (A) Pengecekan perangkat secara berkala, (C) Membersihkan debu agar tidak panas, dan (D) Memeriksa kondisi fisik periferal pendukung.
+                </div>
+            </div>
 
-<div class="card"><b>20. Layanan penyimpanan website</b><br><br>
-<b>Jawaban:</b> Web Hosting<br><br>
-Web hosting adalah layanan penyimpanan file website agar dapat diakses melalui internet.
-</div>
+            <div class="card">
+                <span class="question-text">20. Layanan penyimpanan website?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Web Hosting</div>
+                <div class="explanation">
+                    <b>Web hosting</b> adalah layanan penyewaan ruang di server agar file-file website dapat disimpan dan diakses oleh orang lain melalui jaringan internet 24 jam non-stop.
+                </div>
+            </div>
 
-</div>
+            <div class="pagination">
+                <a href="tryout1.html" class="btn-page btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <span class="page-info">Hal 2 / 5</span>
+                <a href="tryout1_page3.html" class="btn-page">Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
 
-<div class="page">
-<a href="tryout1.html">⬅ Halaman Sebelumnya</a>
-<a href="tryout1_page3.html">Halaman Berikutnya ➜</a>
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
