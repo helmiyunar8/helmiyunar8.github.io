@@ -1,73 +1,209 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pertemuan 6 - Halaman 2</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 6 - Halaman 2 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --white: #ffffff;
+            --bg-light: #f4f7f6;
+            --text-dark: #222;
+            --sidebar-width: 280px;
+        }
 
-<style>
-body{font-family:Arial;margin:0;background:#eef5ee;text-align:center;}
-.navbar{background:#2e7d32;padding:12px;}
-.navbar a{color:white;margin:0 8px;text-decoration:none;font-weight:bold;font-size:14px;}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:20px;
-}
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
 
-img{
-width:100%;
-max-width:800px;
-border-radius:10px;
-}
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            transition: all 0.3s;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
 
-.navbtn{margin-top:20px;}
+        .sidebar-header {
+            padding: 35px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
 
-.btn{
-display:inline-block;
-padding:10px 18px;
-margin:5px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-color:white;
-font-size:14px;
-}
+        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
 
-.prev{background:#6c757d;}
-.next{background:#1976d2;}
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            color: #444;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
+        .nav-item:hover, .nav-item.active {
+            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        }
 
-</style>
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            width: 100%;
+        }
 
+        /* TOPBAR */
+        .topbar {
+            background: var(--white);
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        /* AREA SLIDE */
+        .slide-container {
+            background: var(--white);
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+
+        .page-indicator {
+            background: #f8f9fa;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        h2 { color: var(--text-dark); margin-bottom: 20px; font-size: 24px; }
+
+        .materi-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+        }
+
+        .caption { color: #666; font-style: italic; margin-bottom: 30px; display: block; }
+
+        /* NAVIGASI TOMBOL */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-slide {
+            padding: 12px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-prev { background: #6c757d; color: white; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn-slide:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* RESPONSIVE */
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .menu-toggle { display: block; }
+            .slide-container { padding: 15px; }
+            .btn-slide { width: 100%; justify-content: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="../../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../../index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        </div>
+    </nav>
 
-<a href="/index.html">🏠 Beranda</a> <a href="/materi/index.html">📚 Materi</a> <a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a> <a href="/lkpd/index.html">📄 LKPD</a> <a href="/absen/index.html">📷 Absen</a> <a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+    <div class="main-content">
+        <div class="topbar">
+            <div class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">KIK KELAS XI: PERTEMUAN 6</div>
+            <div class="user-profile">
+                <span style="font-size: 14px;">Helmi Yunar</span>
+                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+            </div>
+        </div>
 
-</div>
+        <div class="slide-container">
+            <div class="page-indicator">Halaman 2 / 6</div>
+            <h2>Ilustrasi Kemasan Produk</h2>
 
-<div class="container">
+            <img src="img/kemasan-produk1.jpg" class="materi-img" alt="Ilustrasi Kemasan">
+            <span class="caption">Gambar: Contoh kemasan produk kreatif</span>
 
-<h2>Ilustrasi Kemasan Produk</h2>
+            <div class="nav-buttons">
+                <a href="pertemuan6-1.html" class="btn-slide btn-prev">
+                    <i class="fas fa-arrow-left"></i> Sebelumnya
+                </a>
+                <a href="pertemuan6-3.html" class="btn-slide btn-next">
+                    Berikutnya <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
-<img src="img/kemasan-produk1.jpg">
-
-<p style="text-align:center;">Gambar kemasan produk</p>
-
-<div class="navbtn">
-
-<a class="btn prev" href="pertemuan6-1.html">⬅ Sebelumnya</a>
-
-<a class="btn next" href="pertemuan6-3.html">Berikutnya ➜</a>
-
-</div>
-
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
