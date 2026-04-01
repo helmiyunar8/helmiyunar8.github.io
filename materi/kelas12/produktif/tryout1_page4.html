@@ -1,117 +1,245 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pembahasan Tryout TKJ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembahasan Tryout Hal 4 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --primary-green: #2e7d32;
+            --dark-green: #1b5e20;
+            --white: #ffffff;
+            --bg-soft: #f4f7f6;
+            --sidebar-width: 280px;
+        }
 
-<style>
-body{font-family:Arial;margin:0;background:#eef5ee;}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
 
-.navbar{background:#2c7a4b;padding:12px;text-align:center;}
-.navbar a{color:white;text-decoration:none;margin:6px;padding:8px 12px;border-radius:6px;}
+        body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; }
 
-header{background:#2e7d32;color:white;text-align:center;padding:15px;}
+        /* SIDEBAR KONSISTEN */
+        .sidebar {
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
+            z-index: 1000; display: flex; flex-direction: column;
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 65px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-.container{max-width:700px;margin:auto;padding:15px;}
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px;
+            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-.card{
-background:white;
-padding:15px;
-border-radius:8px;
-margin-bottom:15px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
-}
+        /* MAIN CONTENT */
+        .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
-.page{text-align:center;margin:20px;}
+        .topbar {
+            background: var(--white); padding: 15px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+        }
 
-.page a{
-background:#2e7d32;
-color:white;
-padding:8px 14px;
-border-radius:6px;
-text-decoration:none;
-margin:5px;
-}
-</style>
+        /* HEADER SECTION */
+        .header-section { text-align: center; margin-bottom: 30px; }
+        .header-section h2 { font-size: 28px; color: var(--dark-green); font-weight: 800; }
+        .header-section p { color: var(--gold); font-weight: 600; font-size: 14px; text-transform: uppercase; }
 
+        /* DISCUSSION CARD */
+        .discussion-container { max-width: 850px; margin: 0 auto; }
+        
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 6px; height: 100%; 
+            background: var(--primary-green); border-radius: 20px 0 0 20px;
+        }
+
+        .question-text { font-size: 18px; font-weight: 700; color: var(--dark-green); margin-bottom: 15px; display: block; }
+        
+        .answer-box {
+            background: #e8f5e9;
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: #2e7d32;
+            font-weight: 700;
+            margin: 10px 0 15px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .explanation {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #666;
+            background: #fdfdfd;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed #ddd;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; padding: 20px;
+        }
+        .page-info { font-weight: 700; color: #888; }
+        .btn-page {
+            background: var(--primary-green); color: white; padding: 10px 20px;
+            border-radius: 50px; text-decoration: none; font-weight: 700;
+            transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 14px;
+        }
+        .btn-prev { background: #6c757d; }
+        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { left: -100%; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; }
+            .pagination { flex-direction: column; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
-<a href="/index.html">🏠 Beranda</a>
-<a href="/materi/index.html">📚 Materi</a>
-<a href="/menu-utama-TKJ/tryout.html">📝 Tryout</a>
-<a href="/lkpd/index.html">📄 LKPD</a>
-<a href="/absen/index.html">📷 Absen</a>
-<a href="/tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
-</div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+        </div>
+        <div class="nav-menu">
+            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="/materi/index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
+            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        </div>
+    </nav>
 
-<header>
-<h2>Pembahasan Tryout TKJ</h2>
-Halaman 4 (Soal 31–40)
-</header>
+    <div class="main-content">
+        <div class="topbar">
+            <div style="font-weight: 800; color: var(--gold); cursor:pointer;" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="margin-right: 10px;"></i> SMKN 7 LUWU
+            </div>
+            <div style="font-size: 14px; font-weight: 600;">Arsip Pembahasan</div>
+        </div>
 
-<div class="container">
+        <div class="header-section">
+            <p>Halaman 4 (Soal 31 - 40)</p>
+            <h2>🏆 Pembahasan Tryout TKJ</h2>
+        </div>
 
-<div class="card"><b>31. VLAN</b><br><br>
-<b>Jawaban:</b> Virtual LAN<br><br>
-VLAN adalah teknologi jaringan yang memungkinkan pembagian jaringan secara logis dalam satu switch.
-</div>
+        <div class="discussion-container">
+            <div class="card">
+                <span class="question-text">31. Apa yang dimaksud dengan VLAN?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Virtual LAN</div>
+                <div class="explanation">
+                    <b>VLAN</b> adalah teknologi yang memungkinkan administrator jaringan untuk membagi satu switch fisik menjadi beberapa jaringan logis yang berbeda, meningkatkan efisiensi dan keamanan.
+                </div>
+            </div>
 
-<div class="card"><b>32. VLAN untuk data user</b><br><br>
-<b>Jawaban:</b> Data VLAN<br><br>
-Data VLAN digunakan untuk lalu lintas data normal dari pengguna jaringan.
-</div>
+            <div class="card">
+                <span class="question-text">32. VLAN yang dikonfigurasi untuk membawa lalu lintas data pengguna?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Data VLAN</div>
+                <div class="explanation">
+                    <b>Data VLAN</b> dirancang khusus untuk memisahkan lalu lintas data pengguna (user traffic) dari lalu lintas manajemen atau suara (voice).
+                </div>
+            </div>
 
-<div class="card"><b>33. VLAN manajemen switch</b><br><br>
-<b>Jawaban:</b> Management VLAN<br><br>
-Management VLAN digunakan untuk konfigurasi dan pengelolaan perangkat jaringan.
-</div>
+            <div class="card">
+                <span class="question-text">33. VLAN yang digunakan untuk mengelola/manajemen switch?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Management VLAN</div>
+                <div class="explanation">
+                    <b>Management VLAN</b> adalah VLAN yang digunakan oleh administrator untuk mengakses fungsi manajemen perangkat (seperti melalui HTTP, Telnet, atau SSH).
+                </div>
+            </div>
 
-<div class="card"><b>34. Routing statis</b><br><br>
-<b>Jawaban:</b> Manual<br><br>
-Routing statis adalah metode routing yang dikonfigurasi secara manual oleh administrator jaringan.
-</div>
+            <div class="card">
+                <span class="question-text">34. Metode routing yang diinput secara manual?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Manual (Routing Statis)</div>
+                <div class="explanation">
+                    <b>Routing Statis</b> mengharuskan administrator jaringan untuk memasukkan rute ke dalam tabel routing secara manual satu per satu.
+                </div>
+            </div>
 
-<div class="card"><b>35. Dynamic routing</b><br><br>
-<b>Jawaban:</b> Router membuat tabel routing otomatis<br><br>
-Dynamic routing menggunakan protokol seperti RIP atau OSPF untuk memperbarui tabel routing.
-</div>
+            <div class="card">
+                <span class="question-text">35. Pengertian Dynamic Routing?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router membuat tabel routing otomatis</div>
+                <div class="explanation">
+                    <b>Dynamic Routing</b> menggunakan protokol (seperti RIP, OSPF, EIGRP) yang memungkinkan router saling bertukar informasi dan memperbarui tabel routing secara otomatis jika ada perubahan topologi.
+                </div>
+            </div>
 
-<div class="card"><b>36. Gateway adalah</b><br><br>
-<b>Jawaban:</b> Gerbang jaringan<br><br>
-Gateway adalah perangkat yang menghubungkan dua jaringan dengan protokol berbeda.
-</div>
+            <div class="card">
+                <span class="question-text">36. Apa fungsi utama dari Gateway?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gerbang Jaringan</div>
+                <div class="explanation">
+                    <b>Gateway</b> adalah titik keluar masuknya data yang menghubungkan dua jaringan yang seringkali menggunakan protokol komunikasi yang berbeda.
+                </div>
+            </div>
 
-<div class="card"><b>37. Firewall adalah</b><br><br>
-<b>Jawaban:</b> Keamanan jaringan<br><br>
-Firewall berfungsi melindungi jaringan dengan memfilter lalu lintas data masuk dan keluar.
-</div>
+            <div class="card">
+                <span class="question-text">37. Perangkat/sistem keamanan jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Firewall</div>
+                <div class="explanation">
+                    <b>Firewall</b> berfungsi sebagai pelindung jaringan dengan cara memantau dan mengontrol lalu lintas data masuk serta keluar berdasarkan aturan keamanan yang telah ditetapkan.
+                </div>
+            </div>
 
-<div class="card"><b>38. QoS</b><br><br>
-<b>Jawaban:</b> Quality of Service<br><br>
-QoS digunakan untuk mengatur prioritas lalu lintas jaringan agar layanan penting tetap stabil.
-</div>
+            <div class="card">
+                <span class="question-text">38. Apa kepanjangan dari QoS?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Quality of Service</div>
+                <div class="explanation">
+                    <b>QoS</b> digunakan untuk memberikan prioritas pada jenis lalu lintas data tertentu (seperti video call atau VoIP) agar tetap stabil meskipun jaringan sedang padat.
+                </div>
+            </div>
 
-<div class="card"><b>39. Load Balancing</b><br><br>
-<b>Jawaban:</b> Distribusi trafik<br><br>
-Load balancing membagi beban jaringan ke beberapa server agar kinerja lebih stabil.
-</div>
+            <div class="card">
+                <span class="question-text">39. Apa tujuan dari Load Balancing?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Distribusi Trafik</div>
+                <div class="explanation">
+                    <b>Load Balancing</b> berfungsi membagi beban lalu lintas jaringan secara merata ke beberapa server atau jalur komunikasi agar kinerja sistem tetap optimal dan tidak overload.
+                </div>
+            </div>
 
-<div class="card"><b>40. Fungsi Firewall</b><br><br>
-<b>Jawaban:</b> Filter trafik<br><br>
-Firewall menyaring paket data yang masuk dan keluar dari jaringan untuk menjaga keamanan.
-</div>
+            <div class="card">
+                <span class="question-text">40. Fungsi utama Firewall dalam menyaring data?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Filter Trafik</div>
+                <div class="explanation">
+                    Fungsi utama <b>Firewall</b> adalah melakukan penyaringan (filtering) terhadap setiap paket data yang lewat untuk memastikan hanya data yang aman yang diperbolehkan masuk atau keluar.
+                </div>
+            </div>
 
-</div>
+            <div class="pagination">
+                <a href="tryout1_page3.html" class="btn-page btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <span class="page-info">Hal 4 / 5</span>
+                <a href="tryout1_page5.html" class="btn-page">Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
 
-<div class="page">
-<a href="tryout1_page3.html">⬅ Halaman Sebelumnya</a>
-<a href="tryout1_page5.html">Halaman Berikutnya ➜</a>
-</div>
-
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
