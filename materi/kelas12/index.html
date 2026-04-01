@@ -22,80 +22,125 @@
 
         /* SIDEBAR KONSISTEN */
         .sidebar {
-            width: var(--sidebar-width); background: var(--white); height: 100vh;
-            position: fixed; border-right: 1px solid #ddd; transition: 0.3s;
-            z-index: 1000; display: flex; flex-direction: column;
+            width: var(--sidebar-width); 
+            background: var(--white); 
+            height: 100vh;
+            position: fixed; 
+            border-right: 1px solid #ddd; 
+            transition: 0.3s;
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column;
         }
         
-        /* --- PERBAIKAN HEADER SIDEBAR AGAR SAMA DENGAN BERANDA --- */
+        /* HEADER SIDEBAR DISAMAKAN DENGAN KELAS XI & BERANDA */
         .sidebar-header { 
-            padding: 25px 20px; 
+            padding: 35px 20px; 
             text-align: center; 
             border-bottom: 2px solid #f9f9f9; 
         }
         .sidebar-header img { 
-            width: 60px; /* Ukuran disesuaikan agar proporsional */
-            margin-bottom: 8px; 
+            width: 75px; 
+            margin-bottom: 12px; 
         }
         .sidebar-header h3 { 
-            font-size: 22px; /* Ukuran ini yang pas dengan Gambar 1 */
+            font-size: 22px; 
             color: var(--gold); 
             font-weight: 800; 
-            letter-spacing: -0.5px; /* Jarak huruf dirapatkan agar tidak melebar */
+            letter-spacing: -0.5px;
             text-transform: uppercase;
-            line-height: 1.2;
         }
         .sidebar-header p {
-            font-size: 11px; /* Teks SMKN 7 LUWU dibuat lebih kecil & elegan */
-            color: #999;
-            font-weight: 700;
-            margin-top: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 14px;
+            color: #777;
+            font-weight: 600;
+            margin-top: 5px;
         }
-        /* -------------------------------------------------------- */
 
-        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        /* MENU NAVIGASI DISAMAKAN BESARNYA (18px) */
+        .nav-menu { padding: 25px 0; flex-grow: 1; }
         .nav-item {
-            display: flex; align-items: center; padding: 15px 25px;
-            color: #444; text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: flex; 
+            align-items: center; 
+            padding: 18px 25px;
+            color: #444; 
+            text-decoration: none; 
+            font-size: 18px; /* Diperbesar dari 15px ke 18px */
+            font-weight: 600; 
+            transition: 0.3s;
         }
-        .nav-item i { margin-right: 15px; width: 20px; text-align: center; }
-        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+        .nav-item i { 
+            margin-right: 18px; 
+            width: 25px; 
+            text-align: center; 
+            font-size: 20px; 
+        }
+        .nav-item:hover, .nav-item.active { 
+            background: #fffcf0; 
+            color: var(--gold); 
+            border-left: 6px solid var(--gold); 
+        }
 
+        /* MAIN CONTENT */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; }
 
         .topbar {
-            background: var(--white); padding: 15px 30px; border-radius: 15px;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+            background: var(--white); 
+            padding: 15px 30px; 
+            border-radius: 15px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 30px;
         }
 
+        /* HEADER SECTION */
         .header-section { text-align: center; margin-bottom: 40px; }
         .header-section h2 { font-size: 32px; color: var(--dark-green); font-weight: 800; }
         .header-section p { color: #888; font-size: 16px; margin-top: 5px; }
 
+        /* SUBJECT GRID */
         .subject-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; max-width: 1100px; margin: 0 auto;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; 
+            max-width: 1100px; 
+            margin: 0 auto;
         }
 
         .subject-card {
-            background: var(--white); padding: 30px 20px; border-radius: 25px;
-            text-decoration: none; color: inherit; text-align: center;
-            border: 1px solid #eee; transition: 0.3s; display: flex;
-            flex-direction: column; align-items: center; gap: 15px;
+            background: var(--white); 
+            padding: 30px 20px; 
+            border-radius: 25px;
+            text-decoration: none; 
+            color: inherit; 
+            text-align: center;
+            border: 1px solid #eee; 
+            transition: 0.3s; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px;
         }
 
         .subject-card:hover {
-            transform: translateY(-10px); border-color: var(--gold);
+            transform: translateY(-10px); 
+            border-color: var(--gold);
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
         }
 
         .icon-circle {
-            width: 70px; height: 70px; background: #f0f4f1; border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 28px; color: var(--primary-green); transition: 0.3s;
+            width: 70px; 
+            height: 70px; 
+            background: #f0f4f1; 
+            border-radius: 20px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 28px; 
+            color: var(--primary-green); 
+            transition: 0.3s;
         }
         .subject-card:hover .icon-circle { background: var(--gold); color: white; transform: rotate(10deg); }
 
@@ -125,6 +170,7 @@
             <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
             <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
             <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="/cbt/index.html" class="nav-item"><i class="fas fa-laptop-code"></i> CBT Ujian</a>
         </div>
     </nav>
 
