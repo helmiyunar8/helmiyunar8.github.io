@@ -31,7 +31,7 @@
             display: none;
             backdrop-filter: blur(3px);
         }
-        .sidebar-overlay.active { display: block; }
+        .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
@@ -42,11 +42,11 @@
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) AKTIF */
+        /* Tombol Close (X) - AKTIF & HIGH Z-INDEX */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; z-index: 1001;
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -127,9 +127,9 @@
 
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; }
+            .close-sidebar { display: block !important; }
             .pagination { flex-direction: column; }
         }
     </style>
@@ -178,82 +178,62 @@
             <div class="card">
                 <span class="question-text">41. Google Sheets berfungsi sebagai?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Spreadsheet Online</div>
-                <div class="explanation">
-                    <b>Google Sheets</b> adalah aplikasi pengolah data berbasis cloud yang memungkinkan kolaborasi secara real-time.
-                </div>
+                <div class="explanation"><b>Google Sheets</b> adalah aplikasi pengolah data berbasis cloud yang memungkinkan kolaborasi secara real-time.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">42. Manfaat VLAN: Cost Reduction?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Menghemat Biaya</div>
-                <div class="explanation">
-                    VLAN dapat <b>mengurangi biaya</b> karena tidak memerlukan banyak kabel fisik dan perangkat switch tambahan untuk memisahkan departemen.
-                </div>
+                <div class="explanation">VLAN dapat <b>mengurangi biaya</b> karena tidak memerlukan banyak kabel fisik dan perangkat switch tambahan untuk memisahkan departemen.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">43. Manfaat VLAN: High Performance?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Broadcast Kecil</div>
-                <div class="explanation">
-                    VLAN membatasi <b>domain broadcast</b>, sehingga lalu lintas data yang tidak perlu tidak akan menyebar ke seluruh jaringan, meningkatkan performa.
-                </div>
+                <div class="explanation">VLAN membatasi <b>domain broadcast</b>, sehingga lalu lintas data yang tidak perlu tidak akan menyebar ke seluruh jaringan.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">44. Apa itu Broadcast Storm Mitigation pada VLAN?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Broadcast Kecil</div>
-                <div class="explanation">
-                    VLAN membagi jaringan besar menjadi beberapa broadcast domain kecil untuk <b>mengurangi risiko badai broadcast</b> (broadcast storm) yang bisa melumpuhkan jaringan.
-                </div>
+                <div class="explanation">VLAN membagi jaringan besar menjadi beberapa broadcast domain kecil untuk <b>mengurangi risiko badai broadcast</b>.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">45. Manfaat VLAN: IT Staff Efficiency?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Manajemen</div>
-                <div class="explanation">
-                    VLAN mempermudah <b>pengelolaan dan pemindahan pengguna</b> secara logis tanpa harus mengubah kabel fisik di lapangan.
-                </div>
+                <div class="explanation">VLAN mempermudah <b>pengelolaan dan pemindahan pengguna</b> secara logis tanpa harus mengubah kabel fisik.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">46. Keuntungan VLAN dari sisi Security?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Keamanan Data</div>
-                <div class="explanation">
-                    VLAN meningkatkan <b>keamanan</b> dengan memisahkan lalu lintas data sensitif dari pengguna umum.
-                </div>
+                <div class="explanation">VLAN meningkatkan <b>keamanan</b> dengan memisahkan lalu lintas data sensitif dari pengguna umum.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">47. Apa itu Range VLAN dalam konfigurasi?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Skala Kecil</div>
-                <div class="explanation">
-                    Range VLAN menentukan <b>skala atau batasan jumlah ID VLAN</b> yang dapat dibuat pada sebuah perangkat switch.
-                </div>
+                <div class="explanation">Range VLAN menentukan <b>skala atau batasan jumlah ID VLAN</b> yang dapat dibuat pada sebuah perangkat switch.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">48. Penentuan VLAN berdasarkan MAC Address?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: MAC Based VLAN</div>
-                <div class="explanation">
-                    <b>MAC-Based VLAN</b> mengelompokkan perangkat ke dalam VLAN tertentu berdasarkan alamat fisik (MAC) perangkat tersebut.
-                </div>
+                <div class="explanation"><b>MAC-Based VLAN</b> mengelompokkan perangkat ke dalam VLAN tertentu berdasarkan alamat fisik (MAC) perangkat tersebut.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">49. Penentuan VLAN berdasarkan jenis protokol?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Protocol Based VLAN</div>
-                <div class="explanation">
-                    <b>Protocol-Based VLAN</b> memungkinkan pengelompokan lalu lintas data berdasarkan jenis protokol yang digunakan (contoh: IP, IPX).
-                </div>
+                <div class="explanation"><b>Protocol-Based VLAN</b> memungkinkan pengelompokan lalu lintas data berdasarkan jenis protokol yang digunakan.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">50. Cara mematikan komputer yang benar sesuai gambar?</span>
                 <img src="../../img/pc.png" alt="Instruksi Mematikan Komputer">
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Shutdown</div>
-                <div class="explanation">
-                    Mematikan komputer melalui menu <b>Shutdown</b> sangat penting untuk memastikan data tersimpan rapi dan hardware terlindungi.
-                </div>
+                <div class="explanation">Mematikan komputer melalui menu <b>Shutdown</b> sangat penting untuk memastikan data tersimpan rapi dan hardware terlindungi.</div>
             </div>
 
             <div class="pagination">
@@ -270,12 +250,18 @@
         function openSidebar() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeSidebar();
+        });
     </script>
 </body>
 </html>
