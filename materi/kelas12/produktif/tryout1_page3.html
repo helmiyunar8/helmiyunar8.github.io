@@ -27,27 +27,27 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: var(--overlay-bg);
-            z-index: 998; /* Lapisan di bawah sidebar */
+            z-index: 998;
             display: none;
             backdrop-filter: blur(3px);
         }
-        .sidebar-overlay.active { display: block; }
+        /* Sync: Overlay muncul hanya saat active */
+        .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
             position: fixed; border-right: 1px solid #eee; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999; /* Lapisan paling depan */
-            display: flex; flex-direction: column;
+            z-index: 999; display: flex; flex-direction: column;
             box-shadow: 4px 0 15px rgba(0,0,0,0.05);
         }
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) - AKTIF SESUAI PENGINGAT */
+        /* Tombol Close (X) - FIXED SYNC & HIGH Z-INDEX */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; z-index: 1001;
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -58,8 +58,7 @@
         .nav-item {
             display: flex; align-items: center; padding: 18px 25px;
             color: #444; text-decoration: none; 
-            font-size: 18px; /* UKURAN 18PX SESUAI PENGINGAT */
-            font-weight: 600; transition: 0.3s;
+            font-size: 18px; font-weight: 600; transition: 0.3s;
         }
         
         .nav-item i { margin-right: 15px; width: 25px; text-align: center; font-size: 20px; }
@@ -116,19 +115,18 @@
         }
         .page-info { font-weight: 700; color: #999; }
         .btn-page {
-            background: var(--primary-green); color: white; padding: 14px 30px;
+            background: var(--primary-green); color: white; padding: 14px 35px;
             border-radius: 50px; text-decoration: none; font-weight: 700;
             transition: 0.3s; display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
-        .btn-prev { background: #6c757d; box-shadow: 0 5px 15px rgba(108, 117, 125, 0.2); }
-        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn-prev { background: #6c757d; }
 
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; }
+            .close-sidebar { display: block !important; }
             .pagination { flex-direction: column; }
         }
     </style>
@@ -177,81 +175,61 @@
             <div class="card">
                 <span class="question-text">21. Data hosting website?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Database HTML</div>
-                <div class="explanation">
-                    Website di internet disimpan dalam bentuk <b>file HTML</b> (untuk struktur) dan <b>Database</b> (untuk data dinamis) pada media penyimpanan server hosting.
-                </div>
+                <div class="explanation">Website di internet disimpan dalam bentuk <b>file HTML</b> (untuk struktur) dan <b>Database</b> (untuk data dinamis) pada media penyimpanan server hosting.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">22. SLD blog bilacilasila.blogspot.com?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: bilacilasila</div>
-                <div class="explanation">
-                    <b>SLD (Second Level Domain)</b> adalah nama unik yang Anda buat sendiri. Dalam contoh ini, 'bilacilasila' adalah SLD-nya.
-                </div>
+                <div class="explanation"><b>SLD (Second Level Domain)</b> adalah nama unik yang Anda buat sendiri. Dalam contoh ini, 'bilacilasila' adalah SLD-nya.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">23. TLD pada blogspot.com?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: .com</div>
-                <div class="explanation">
-                    <b>TLD (Top Level Domain)</b> adalah akhiran dari nama domain. Contoh umum adalah .com, .net, .org, atau .id.
-                </div>
+                <div class="explanation"><b>TLD (Top Level Domain)</b> adalah akhiran dari nama domain. Contoh umum adalah .com, .net, .org, atau .id.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">24. Struktur domain blogspot?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: D</div>
-                <div class="explanation">
-                    Struktur domain yang lengkap biasanya terdiri dari <b>Subdomain</b> (contoh: www), <b>Domain Utama</b> (SLD), dan <b>TLD</b>.
-                </div>
+                <div class="explanation">Struktur domain yang lengkap biasanya terdiri dari <b>Subdomain</b> (contoh: www), <b>Domain Utama</b> (SLD), dan <b>TLD</b>.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">25. Pengertian domain?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Domain</div>
-                <div class="explanation">
-                    <b>Domain</b> adalah nama unik yang diberikan untuk mengidentifikasi alamat IP server komputer (seperti web server atau email server) di jaringan internet.
-                </div>
+                <div class="explanation"><b>Domain</b> adalah nama unik yang diberikan untuk mengidentifikasi alamat IP server komputer di jaringan internet.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">26. Hosting satu server banyak domain?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Shared Hosting</div>
-                <div class="explanation">
-                    <b>Shared Hosting</b> adalah layanan hosting di mana satu server digunakan bersama-sama oleh banyak pengguna/website untuk menekan biaya.
-                </div>
+                <div class="explanation"><b>Shared Hosting</b> adalah layanan hosting di mana satu server digunakan bersama-sama oleh banyak pengguna untuk menekan biaya.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">27. Server dititip di data center?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Colocation</div>
-                <div class="explanation">
-                    <b>Colocation Hosting</b> adalah layanan di mana pelanggan menitipkan server miliknya sendiri di gedung Data Center yang memiliki standar keamanan dan koneksi tinggi.
-                </div>
+                <div class="explanation"><b>Colocation Hosting</b> adalah layanan di mana pelanggan menitipkan server miliknya sendiri di gedung Data Center resmi.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">28. Fungsi Plesk?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, B, D Benar</div>
-                <div class="explanation">
-                    <b>Plesk</b> adalah control panel hosting yang berfungsi untuk: (A) Mengelola hosting, (B) Bisa berjalan di Linux/Windows, dan (D) Mengotomatisasi tugas server.
-                </div>
+                <div class="explanation"><b>Plesk</b> adalah control panel hosting yang berfungsi untuk mengelola hosting, bisa berjalan di Linux/Windows, dan mengotomatisasi tugas server.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">29. Domain .gov digunakan untuk?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Pemerintah</div>
-                <div class="explanation">
-                    Domain <b>.gov</b> (Government) dikhususkan untuk situs-situs resmi milik lembaga pemerintah atau instansi negara.
-                </div>
+                <div class="explanation">Domain <b>.gov</b> (Government) dikhususkan untuk situs-situs resmi milik lembaga pemerintah atau instansi negara.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">30. Domain .edu digunakan untuk?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Pendidikan</div>
-                <div class="explanation">
-                    Domain <b>.edu</b> (Education) digunakan secara eksklusif oleh institusi pendidikan seperti universitas atau lembaga riset.
-                </div>
+                <div class="explanation">Domain <b>.edu</b> (Education) digunakan secara eksklusif oleh institusi pendidikan seperti universitas atau lembaga riset.</div>
             </div>
 
             <div class="pagination">
@@ -269,12 +247,18 @@
         function openSidebar() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeSidebar();
+        });
     </script>
 </body>
 </html>
