@@ -30,7 +30,7 @@
         }
         .sidebar-overlay.active { display: block !important; }
 
-        /* --- SIDEBAR NAVIGATION (MASTER PENGINGAT) --- */
+        /* --- SIDEBAR NAVIGATION --- */
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
             position: fixed; border-right: 1px solid #ddd; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,7 +47,7 @@
         .sidebar-header { 
             padding: 35px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative;
         }
-        /* Logo Fix: Keluar folder produktif-tkj > kelas12 > materi untuk ke root asset */
+        
         .sidebar-header img { width: 75px; margin-bottom: 12px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; text-transform: uppercase; }
         .sidebar-header p { font-size: 14px; color: #777; font-weight: 600; margin-top: 5px; }
@@ -67,6 +67,7 @@
 
         .footer-dev { padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5; }
 
+        /* --- MAIN CONTENT --- */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; transition: 0.3s; }
 
         .topbar {
@@ -81,6 +82,7 @@
         .header-section h2 { font-size: 30px; color: var(--gold); font-weight: 800; }
         .header-section p { color: #888; font-size: 15px; margin-top: 5px; }
 
+        /* --- EXAM GRID --- */
         .exam-grid {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -133,7 +135,7 @@
     <nav class="sidebar" id="sidebar">
         <div class="close-sidebar" onclick="closeSidebar()"><i class="fas fa-times"></i></div>
         <div class="sidebar-header">
-            <img src="../../../asset/logo.png" alt="Logo SMKN 7" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
+            <img src="https://helmiyunar8.github.io/asset/logo.png" alt="Logo SMKN 7" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
             <p>SMKN 7 LUWU</p>
         </div>
