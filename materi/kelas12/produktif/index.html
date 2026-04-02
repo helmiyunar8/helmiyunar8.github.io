@@ -37,7 +37,6 @@
             z-index: 999; display: flex; flex-direction: column;
         }
         
-        /* TOMBOL CLOSE (X) - FIXED SYNC */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
@@ -48,7 +47,7 @@
         .sidebar-header { 
             padding: 35px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative;
         }
-        /* PATH LOGO GITHUB REPOSITORY HELMIYUNAR8 */
+        /* Logo Fix: Keluar folder produktif-tkj > kelas12 > materi untuk ke root asset */
         .sidebar-header img { width: 75px; margin-bottom: 12px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; text-transform: uppercase; }
         .sidebar-header p { font-size: 14px; color: #777; font-weight: 600; margin-top: 5px; }
@@ -57,8 +56,7 @@
         .nav-item {
             display: flex; align-items: center; padding: 18px 25px;
             color: #444; text-decoration: none; 
-            font-size: 18px; /* UKURAN 18PX SESUAI PENGINGAT */
-            font-weight: 600; transition: 0.3s;
+            font-size: 18px; font-weight: 600; transition: 0.3s;
         }
         .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
         .nav-item:hover, .nav-item.active { 
@@ -69,7 +67,6 @@
 
         .footer-dev { padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5; }
 
-        /* --- MAIN CONTENT --- */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; transition: 0.3s; }
 
         .topbar {
@@ -84,7 +81,6 @@
         .header-section h2 { font-size: 30px; color: var(--gold); font-weight: 800; }
         .header-section p { color: #888; font-size: 15px; margin-top: 5px; }
 
-        /* --- EXAM GRID --- */
         .exam-grid {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -106,10 +102,8 @@
 
         .exam-card i { font-size: 28px; color: #ccc; transition: 0.3s; }
         .exam-card.active i { color: var(--gold); }
-        .exam-card:hover i { color: var(--gold); }
-        
         .exam-card h4 { font-size: 16px; color: #444; font-weight: 800; }
-        .status-badge { font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 50px; background: #f5f5f5; color: #bbb; transition: 0.3s; }
+        .status-badge { font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 50px; background: #f5f5f5; color: #bbb; }
         
         .exam-card.active .status-badge {
             background: #fff9e6; color: var(--gold); border: 1px solid #f1e0ac;
@@ -129,7 +123,6 @@
             .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 15px; }
             .exam-grid { grid-template-columns: 1fr 1fr; }
-            .header-section h2 { font-size: 24px; }
         }
     </style>
 </head>
@@ -140,19 +133,19 @@
     <nav class="sidebar" id="sidebar">
         <div class="close-sidebar" onclick="closeSidebar()"><i class="fas fa-times"></i></div>
         <div class="sidebar-header">
-            <img src="https://helmiyunar8.github.io/asset/logo.png" alt="Logo SMKN 7" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
+            <img src="../../../asset/logo.png" alt="Logo SMKN 7" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
             <p>SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
-            <a href="/index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
-            <a href="/materi/index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
-            <a href="/menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
-            <a href="/lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
-            <a href="/absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
-            <a href="/tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
-            <a href="/cbt/index.html" class="nav-item"><i class="fas fa-laptop-code"></i> CBT Ujian</a>
-            <a href="/arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+            <a href="../../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="../../index.html" class="nav-item active"><i class="fas fa-book"></i> Materi</a>
+            <a href="../../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="../../../lkpd/index.html" class="nav-item"><i class="fas fa-file-alt"></i> LKPD</a>
+            <a href="../../../absen/index.html" class="nav-item"><i class="fas fa-camera"></i> Absen</a>
+            <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="../../../cbt/index.html" class="nav-item"><i class="fas fa-laptop-code"></i> CBT Ujian</a>
+            <a href="../../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
         <div class="footer-dev">©2026 Developed by<br><strong>Ibu Helmi Yunar</strong></div>
     </nav>
@@ -195,7 +188,7 @@
         </div>
 
         <div style="text-align: center;">
-            <a href="../" class="back-link">
+            <a href="../../" class="back-link">
                 <i class="fas fa-arrow-left"></i> Kembali ke Mapel Kelas XII
             </a>
         </div>
