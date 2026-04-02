@@ -28,10 +28,9 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: var(--overlay-bg);
             z-index: 998;
-            display: none; /* Default tersembunyi */
+            display: none;
             backdrop-filter: blur(3px);
         }
-        /* Menampilkan overlay saat class active ditambahkan via JS */
         .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
@@ -43,11 +42,11 @@
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) - MASTER PENGINGAT SYNC */
+        /* Tombol Close (X) - FIXED SYNC */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s; z-index: 1001; /* Pastikan di atas header */
+            transition: 0.3s; z-index: 1001;
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -108,6 +107,8 @@
             border: 1px dashed #d1d1d1; margin-top: 15px;
         }
 
+        .card img { max-width: 100%; border-radius: 15px; margin: 20px 0; border: 3px solid #f0f0f0; display: block; }
+
         /* --- PAGINATION --- */
         .pagination {
             display: flex; justify-content: center; align-items: center; gap: 20px; 
@@ -121,12 +122,11 @@
             box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
 
-        /* --- MOBILE RESPONSIVE LOGIC --- */
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
             .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block !important; } /* Paksa tampil di mobile */
+            .close-sidebar { display: block !important; }
         }
     </style>
 </head>
@@ -135,7 +135,7 @@
     <div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
 
     <nav class="sidebar" id="sidebar">
-        <div class="close-sidebar" id="closeBtn" onclick="closeSidebar()">
+        <div class="close-sidebar" onclick="closeSidebar()">
             <i class="fas fa-times"></i>
         </div>
         <div class="sidebar-header">
@@ -186,7 +186,57 @@
                     Switch menghubungkan beberapa komputer dalam jaringan LAN dan mengirimkan data langsung ke perangkat tujuan menggunakan alamat MAC.
                 </div>
             </div>
-            
+
+            <div class="card">
+                <span class="question-text">3. Perangkat PCB untuk koneksi jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: NIC</div>
+                <div class="explanation">NIC (Network Interface Card) adalah kartu jaringan yang dipasang pada komputer agar dapat terhubung ke jaringan.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">4. Perangkat yang bukan hardware jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gateway</div>
+                <div class="explanation">Gateway merupakan konsep penghubung antar jaringan yang menggunakan protokol berbeda. Biasanya berupa software atau konfigurasi router.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">5. Perangkat yang meneruskan paket data?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
+                <div class="explanation">Router bertugas meneruskan paket data dari satu jaringan ke jaringan lain menggunakan tabel routing sebagai panduan.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">6. Perangkat menyalurkan data ke tujuan saja?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
+                <div class="explanation">Berbeda dengan Hub, Switch mengirimkan data hanya ke perangkat tujuan sehingga lalu lintas jaringan lebih efisien.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">7. Cara kerja server melayani client disebut?</span>
+                <img src="../../img/clientserver.png" alt="Arsitektur Client Server">
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Client Server</div>
+                <div class="explanation">Model client-server adalah arsitektur jaringan dimana server menyediakan layanan dan client meminta layanan tersebut.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">8. Perangkat jaringan pada gambar?</span>
+                <img src="../../img/router.png" alt="Router Cisco">
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
+                <div class="explanation">Router digunakan untuk menghubungkan dua jaringan atau lebih dan menentukan jalur pengiriman data tercepat.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">9. Jumlah layer OSI?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: 7 Layer</div>
+                <div class="explanation">Model OSI terdiri dari 7 lapisan: <b>Physical, Data Link, Network, Transport, Session, Presentation, Application</b>.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">10. Urutan warna kabel UTP (Standar T568B)?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: T568B</div>
+                <div class="explanation">Putih Orange – Orange – Putih Hijau – Biru – Putih Biru – Hijau – Putih Coklat – Coklat.</div>
+            </div>
+
             <div class="pagination">
                 <span class="page-info">Halaman 1 / 5</span>
                 <a href="tryout1_page2.html" class="btn-page">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
@@ -195,31 +245,23 @@
     </div>
 
     <script>
-        // Gunakan variable untuk akses elemen agar lebih cepat
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
 
         function openSidebar() {
-            // Tambahkan class active ke sidebar dan overlay
             sidebar.classList.add('active');
             overlay.classList.add('active');
-            // Mencegah scroll body saat menu terbuka (opsional tapi bagus untuk UX)
             document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
-            // Hapus class active
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
-            // Kembalikan scroll body
             document.body.style.overflow = 'auto';
         }
 
-        // Scan & Sync: Pastikan saat layar di-resize ke desktop, overlay hilang
         window.addEventListener('resize', () => {
-            if (window.innerWidth > 992) {
-                closeSidebar();
-            }
+            if (window.innerWidth > 992) closeSidebar();
         });
     </script>
 </body>
