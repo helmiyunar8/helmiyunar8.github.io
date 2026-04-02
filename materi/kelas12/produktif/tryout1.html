@@ -27,26 +27,27 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: var(--overlay-bg);
-            z-index: 998; /* Berada di bawah sidebar */
-            display: none;
+            z-index: 998;
+            display: none; /* Default tersembunyi */
             backdrop-filter: blur(3px);
         }
+        /* Menampilkan overlay saat class active ditambahkan via JS */
+        .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
             position: fixed; border-right: 1px solid #eee; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999; /* Berada paling depan */
-            display: flex; flex-direction: column;
+            z-index: 999; display: flex; flex-direction: column;
             box-shadow: 4px 0 15px rgba(0,0,0,0.05);
         }
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) - AKTIF & TEGAS */
+        /* Tombol Close (X) - MASTER PENGINGAT SYNC */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; z-index: 1001; /* Pastikan di atas header */
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -57,12 +58,10 @@
         .nav-item {
             display: flex; align-items: center; padding: 18px 25px;
             color: #444; text-decoration: none; 
-            font-size: 18px; /* UKURAN 18PX SESUAI PENGINGAT */
-            font-weight: 600; transition: 0.3s;
+            font-size: 18px; font-weight: 600; transition: 0.3s;
         }
         
         .nav-item i { margin-right: 15px; width: 25px; text-align: center; font-size: 20px; }
-        
         .nav-item:hover, .nav-item.active { 
             background: var(--bg-active); 
             color: var(--gold); 
@@ -109,8 +108,6 @@
             border: 1px dashed #d1d1d1; margin-top: 15px;
         }
 
-        .card img { max-width: 100%; border-radius: 15px; margin: 20px 0; border: 3px solid #f0f0f0; }
-
         /* --- PAGINATION --- */
         .pagination {
             display: flex; justify-content: center; align-items: center; gap: 20px; 
@@ -127,10 +124,9 @@
         /* --- MOBILE RESPONSIVE LOGIC --- */
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
-            .sidebar-overlay.active { display: block; }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; } /* Tombol X muncul di HP */
+            .close-sidebar { display: block !important; } /* Paksa tampil di mobile */
         }
     </style>
 </head>
@@ -139,7 +135,7 @@
     <div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
 
     <nav class="sidebar" id="sidebar">
-        <div class="close-sidebar" onclick="closeSidebar()">
+        <div class="close-sidebar" id="closeBtn" onclick="closeSidebar()">
             <i class="fas fa-times"></i>
         </div>
         <div class="sidebar-header">
@@ -199,18 +195,32 @@
     </div>
 
     <script>
+        // Gunakan variable untuk akses elemen agar lebih cepat
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
 
         function openSidebar() {
+            // Tambahkan class active ke sidebar dan overlay
             sidebar.classList.add('active');
             overlay.classList.add('active');
+            // Mencegah scroll body saat menu terbuka (opsional tapi bagus untuk UX)
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
+            // Hapus class active
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            // Kembalikan scroll body
+            document.body.style.overflow = 'auto';
         }
+
+        // Scan & Sync: Pastikan saat layar di-resize ke desktop, overlay hilang
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) {
+                closeSidebar();
+            }
+        });
     </script>
 </body>
 </html>
