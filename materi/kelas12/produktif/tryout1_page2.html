@@ -31,6 +31,7 @@
             display: none;
             backdrop-filter: blur(3px);
         }
+        .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
@@ -41,11 +42,11 @@
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* TOMBOL CLOSE (X) - AKTIF & TEGAS */
+        /* Tombol Close (X) - FIXED & HIGH Z-INDEX */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; z-index: 1001;
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -56,12 +57,10 @@
         .nav-item {
             display: flex; align-items: center; padding: 18px 25px;
             color: #444; text-decoration: none; 
-            font-size: 18px; /* UKURAN 18PX */
-            font-weight: 600; transition: 0.3s;
+            font-size: 18px; font-weight: 600; transition: 0.3s;
         }
         
         .nav-item i { margin-right: 15px; width: 25px; text-align: center; font-size: 20px; }
-        
         .nav-item:hover, .nav-item.active { 
             background: var(--bg-active); 
             color: var(--gold); 
@@ -89,7 +88,6 @@
 
         /* --- DISCUSSION CARDS --- */
         .discussion-container { max-width: 900px; margin: 0 auto; }
-        
         .card {
             background: var(--white); padding: 35px; border-radius: 20px;
             margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
@@ -97,7 +95,6 @@
         }
 
         .question-text { font-size: 19px; font-weight: 700; color: var(--dark-green); margin-bottom: 18px; display: block; line-height: 1.5; }
-        
         .answer-box {
             background: #e8f5e9; padding: 14px 22px; border-radius: 12px;
             color: #2e7d32; font-weight: 700; margin: 15px 0;
@@ -117,20 +114,18 @@
         }
         .page-info { font-weight: 700; color: #999; }
         .btn-page {
-            background: var(--primary-green); color: white; padding: 14px 30px;
+            background: var(--primary-green); color: white; padding: 14px 35px;
             border-radius: 50px; text-decoration: none; font-weight: 700;
             transition: 0.3s; display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
-        .btn-prev { background: #6c757d; box-shadow: 0 5px 15px rgba(108, 117, 125, 0.2); }
-        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn-prev { background: #6c757d; }
 
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
-            .sidebar-overlay.active { display: block; }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; }
+            .close-sidebar { display: block !important; }
             .pagination { flex-direction: column; }
         }
     </style>
@@ -179,17 +174,61 @@
             <div class="card">
                 <span class="question-text">11. Konektor kabel LAN?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: RJ45</div>
-                <div class="explanation">
-                    <b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP (Unshielded Twisted Pair) untuk membangun jaringan komputer lokal (LAN).
-                </div>
+                <div class="explanation"><b>RJ45</b> adalah konektor standar yang digunakan pada kabel UTP untuk membangun jaringan komputer lokal (LAN).</div>
             </div>
 
             <div class="card">
                 <span class="question-text">12. Server pembatas akses internet?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Proxy Server</div>
-                <div class="explanation">
-                    <b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus mengontrol, memfilter, dan membatasi akses internet bagi pengguna di dalam jaringan.
-                </div>
+                <div class="explanation"><b>Proxy server</b> berfungsi sebagai perantara antara pengguna dan internet, sekaligus memfilter akses internet.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">13. Perangkat pada gambar? (Switch)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
+                <div class="explanation"><b>Switch</b> menghubungkan banyak perangkat dalam jaringan LAN dan bekerja berdasarkan alamat MAC.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">14. Perangkat jaringan pada gambar? (Modem)</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Modem</div>
+                <div class="explanation"><b>Modem</b> digunakan untuk mengubah sinyal digital dari komputer menjadi analog untuk dikirim melalui ISP.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">15. Penguat sinyal jaringan?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Repeater</div>
+                <div class="explanation"><b>Repeater</b> bertugas menangkap sinyal lemah dan memancarkannya kembali agar jangkauan jaringan lebih luas.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">16. Internet sebagai media informasi?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Media Informasi</div>
+                <div class="explanation">Internet mempermudah akses informasi secara instan dan global.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">17. Dampak negatif internet?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Konten Negatif</div>
+                <div class="explanation">Kemudahan akses internet juga membawa risiko paparan konten negatif jika tidak digunakan bijak.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">18. Jaringan menggunakan media kabel disebut?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Wireline</div>
+                <div class="explanation"><b>Wireline</b> adalah sistem komunikasi yang menggunakan media fisik berupa kabel.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">19. Perawatan hardware VoIP?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: A, C, dan D Benar</div>
+                <div class="explanation">Meliputi pengecekan berkala, pembersihan debu, dan pemeriksaan kondisi fisik periferal.</div>
+            </div>
+
+            <div class="card">
+                <span class="question-text">20. Layanan penyimpanan website?</span>
+                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Web Hosting</div>
+                <div class="explanation"><b>Web hosting</b> adalah layanan penyewaan ruang di server agar file website dapat diakses melalui internet.</div>
             </div>
 
             <div class="pagination">
@@ -207,12 +246,18 @@
         function openSidebar() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeSidebar();
+        });
     </script>
 </body>
 </html>
