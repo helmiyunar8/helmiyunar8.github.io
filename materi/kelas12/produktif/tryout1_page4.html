@@ -31,7 +31,7 @@
             display: none;
             backdrop-filter: blur(3px);
         }
-        .sidebar-overlay.active { display: block; }
+        .sidebar-overlay.active { display: block !important; }
 
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
@@ -42,11 +42,11 @@
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) AKTIF SESUAI MASTER PENGINGAT */
+        /* Tombol Close (X) - ANTI MOGOK SYNC */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
             font-size: 26px; color: #888; display: none; cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; z-index: 1001;
         }
         .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
@@ -87,7 +87,7 @@
         .header-section h2 { font-size: 30px; color: var(--dark-green); font-weight: 800; }
         .header-section p { color: var(--gold); font-weight: 700; font-size: 14px; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 2px; }
 
-        /* --- DISCUSSION CARDS (BOLD & STRONG) --- */
+        /* --- DISCUSSION CARDS --- */
         .discussion-container { max-width: 900px; margin: 0 auto; }
         .card {
             background: var(--white); padding: 35px; border-radius: 20px;
@@ -120,14 +120,13 @@
             transition: 0.3s; display: flex; align-items: center; gap: 12px;
             box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
         }
-        .btn-prev { background: #6c757d; box-shadow: 0 5px 15px rgba(108, 117, 125, 0.2); }
-        .btn-page:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn-prev { background: #6c757d; }
 
         @media (max-width: 992px) {
             .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
+            .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; }
+            .close-sidebar { display: block !important; }
             .pagination { flex-direction: column; }
         }
     </style>
@@ -176,81 +175,61 @@
             <div class="card">
                 <span class="question-text">31. Apa yang dimaksud dengan VLAN?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Virtual LAN</div>
-                <div class="explanation">
-                    <b>VLAN</b> adalah teknologi yang memungkinkan administrator jaringan untuk membagi satu switch fisik menjadi beberapa jaringan logis yang berbeda, meningkatkan efisiensi dan keamanan.
-                </div>
+                <div class="explanation"><b>VLAN</b> adalah teknologi yang memungkinkan administrator jaringan untuk membagi satu switch fisik menjadi beberapa jaringan logis yang berbeda.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">32. VLAN yang dikonfigurasi untuk membawa lalu lintas data pengguna?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Data VLAN</div>
-                <div class="explanation">
-                    <b>Data VLAN</b> dirancang khusus untuk memisahkan lalu lintas data pengguna (user traffic) dari lalu lintas manajemen atau suara (voice).
-                </div>
+                <div class="explanation"><b>Data VLAN</b> dirancang khusus untuk memisahkan lalu lintas data pengguna (user traffic) dari lalu lintas manajemen atau suara (voice).</div>
             </div>
 
             <div class="card">
                 <span class="question-text">33. VLAN yang digunakan untuk mengelola/manajemen switch?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Management VLAN</div>
-                <div class="explanation">
-                    <b>Management VLAN</b> adalah VLAN yang digunakan oleh administrator untuk mengakses fungsi manajemen perangkat (seperti melalui HTTP, Telnet, atau SSH).
-                </div>
+                <div class="explanation"><b>Management VLAN</b> digunakan oleh administrator untuk mengakses fungsi manajemen perangkat (seperti melalui HTTP, Telnet, atau SSH).</div>
             </div>
 
             <div class="card">
                 <span class="question-text">34. Metode routing yang diinput secara manual?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Manual (Routing Statis)</div>
-                <div class="explanation">
-                    <b>Routing Statis</b> mengharuskan administrator jaringan untuk memasukkan rute ke dalam tabel routing secara manual satu per satu.
-                </div>
+                <div class="explanation"><b>Routing Statis</b> mengharuskan administrator jaringan untuk memasukkan rute ke dalam tabel routing secara manual satu per satu.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">35. Pengertian Dynamic Routing?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router membuat tabel routing otomatis</div>
-                <div class="explanation">
-                    <b>Dynamic Routing</b> menggunakan protokol (seperti RIP, OSPF, EIGRP) yang memungkinkan router saling bertukar informasi dan memperbarui tabel routing secara otomatis jika ada perubahan topologi.
-                </div>
+                <div class="explanation"><b>Dynamic Routing</b> menggunakan protokol (RIP, OSPF, EIGRP) yang memungkinkan router memperbarui tabel routing secara otomatis.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">36. Apa fungsi utama dari Gateway?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gerbang Jaringan</div>
-                <div class="explanation">
-                    <b>Gateway</b> adalah titik keluar masuknya data yang menghubungkan dua jaringan yang seringkali menggunakan protokol komunikasi yang berbeda.
-                </div>
+                <div class="explanation"><b>Gateway</b> adalah titik keluar masuknya data yang menghubungkan dua jaringan yang seringkali menggunakan protokol berbeda.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">37. Perangkat/sistem keamanan jaringan?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Firewall</div>
-                <div class="explanation">
-                    <b>Firewall</b> berfungsi sebagai pelindung jaringan dengan cara memantau dan mengontrol lalu lintas data masuk serta keluar berdasarkan aturan keamanan yang telah ditetapkan.
-                </div>
+                <div class="explanation"><b>Firewall</b> berfungsi sebagai pelindung jaringan dengan cara memantau dan mengontrol lalu lintas data masuk serta keluar.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">38. Apa kepanjangan dari QoS?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Quality of Service</div>
-                <div class="explanation">
-                    <b>QoS</b> digunakan untuk memberikan prioritas pada jenis lalu lintas data tertentu (seperti video call atau VoIP) agar tetap stabil meskipun jaringan sedang padat.
-                </div>
+                <div class="explanation"><b>QoS</b> digunakan untuk memberikan prioritas pada jenis lalu lintas data tertentu (seperti video call) agar tetap stabil.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">39. Apa tujuan dari Load Balancing?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Distribusi Trafik</div>
-                <div class="explanation">
-                    <b>Load Balancing</b> berfungsi membagi beban lalu lintas jaringan secara merata ke beberapa server atau jalur komunikasi agar kinerja sistem tetap optimal dan tidak overload.
-                </div>
+                <div class="explanation"><b>Load Balancing</b> berfungsi membagi beban lalu lintas jaringan secara merata ke beberapa server agar kinerja optimal.</div>
             </div>
 
             <div class="card">
                 <span class="question-text">40. Fungsi utama Firewall dalam menyaring data?</span>
                 <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Filter Trafik</div>
-                <div class="explanation">
-                    Fungsi utama <b>Firewall</b> adalah melakukan penyaringan (filtering) terhadap setiap paket data yang lewat untuk memastikan hanya data yang aman yang diperbolehkan masuk atau keluar.
-                </div>
+                <div class="explanation">Fungsi utama <b>Firewall</b> adalah melakukan penyaringan (filtering) terhadap setiap paket data yang lewat untuk memastikan keamanan.</div>
             </div>
 
             <div class="pagination">
@@ -268,12 +247,18 @@
         function openSidebar() {
             sidebar.classList.add('active');
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeSidebar() {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeSidebar();
+        });
     </script>
 </body>
 </html>
