@@ -27,7 +27,7 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: var(--overlay-bg);
-            z-index: 998;
+            z-index: 998; /* Berada di bawah sidebar */
             display: none;
             backdrop-filter: blur(3px);
         }
@@ -35,17 +35,20 @@
         .sidebar {
             width: var(--sidebar-width); background: var(--white); height: 100vh;
             position: fixed; border-right: 1px solid #eee; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999; display: flex; flex-direction: column;
+            z-index: 999; /* Berada paling depan */
+            display: flex; flex-direction: column;
             box-shadow: 4px 0 15px rgba(0,0,0,0.05);
         }
 
         .sidebar-header { padding: 40px 25px; text-align: center; position: relative; }
         
-        /* Tombol Close (X) - Muncul di Mobile */
+        /* Tombol Close (X) - AKTIF & TEGAS */
         .close-sidebar {
             position: absolute; top: 15px; right: 20px;
-            font-size: 24px; color: #888; display: none; cursor: pointer;
+            font-size: 26px; color: #888; display: none; cursor: pointer;
+            transition: 0.3s;
         }
+        .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
         .sidebar-header img { width: 85px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         .sidebar-header h3 { font-size: 22px; color: var(--primary-green); font-weight: 800; letter-spacing: 1px; }
@@ -54,7 +57,7 @@
         .nav-item {
             display: flex; align-items: center; padding: 18px 25px;
             color: #444; text-decoration: none; 
-            font-size: 18px; /* FONT SIZE UP */
+            font-size: 18px; /* UKURAN 18PX SESUAI PENGINGAT */
             font-weight: 600; transition: 0.3s;
         }
         
@@ -87,7 +90,6 @@
 
         /* --- DISCUSSION CARDS --- */
         .discussion-container { max-width: 900px; margin: 0 auto; }
-        
         .card {
             background: var(--white); padding: 35px; border-radius: 20px;
             margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
@@ -95,7 +97,6 @@
         }
 
         .question-text { font-size: 19px; font-weight: 700; color: var(--dark-green); margin-bottom: 18px; display: block; line-height: 1.5; }
-        
         .answer-box {
             background: #e8f5e9; padding: 14px 22px; border-radius: 12px;
             color: #2e7d32; font-weight: 700; margin: 15px 0;
@@ -122,7 +123,6 @@
             transition: 0.3s; display: flex; align-items: center; gap: 12px;
             box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
         }
-        .btn-page:hover { background: var(--dark-green); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4); }
 
         /* --- MOBILE RESPONSIVE LOGIC --- */
         @media (max-width: 992px) {
@@ -130,16 +130,16 @@
             .sidebar.active { left: 0; }
             .sidebar-overlay.active { display: block; }
             .main-content { margin-left: 0; padding: 20px; }
-            .close-sidebar { display: block; }
+            .close-sidebar { display: block; } /* Tombol X muncul di HP */
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
 
     <nav class="sidebar" id="sidebar">
-        <div class="close-sidebar" onclick="toggleSidebar()">
+        <div class="close-sidebar" onclick="closeSidebar()">
             <i class="fas fa-times"></i>
         </div>
         <div class="sidebar-header">
@@ -161,7 +161,7 @@
 
     <div class="main-content">
         <div class="topbar">
-            <div class="hamburger-btn" onclick="toggleSidebar()">
+            <div class="hamburger-btn" onclick="openSidebar()">
                 <i class="fas fa-bars"></i> <strong>MENU PEMBELAJARAN</strong>
             </div>
             <div style="font-size: 14px; font-weight: 700; color: #666; background: #eee; padding: 5px 15px; border-radius: 20px;">
@@ -190,73 +190,7 @@
                     Switch menghubungkan beberapa komputer dalam jaringan LAN dan mengirimkan data langsung ke perangkat tujuan menggunakan alamat MAC.
                 </div>
             </div>
-
-            <div class="card">
-                <span class="question-text">3. Perangkat PCB untuk koneksi jaringan?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: NIC</div>
-                <div class="explanation">
-                    NIC (Network Interface Card) adalah kartu jaringan yang dipasang pada komputer agar dapat terhubung ke jaringan.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">4. Perangkat yang bukan hardware jaringan?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Gateway</div>
-                <div class="explanation">
-                    Gateway merupakan konsep penghubung antar jaringan yang menggunakan protokol berbeda. Biasanya berupa software atau konfigurasi pada router.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">5. Perangkat yang meneruskan paket data?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
-                <div class="explanation">
-                    Router bertugas meneruskan paket data dari satu jaringan ke jaringan lain menggunakan tabel routing sebagai panduan.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">6. Perangkat menyalurkan data ke tujuan saja?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Switch</div>
-                <div class="explanation">
-                    Berbeda dengan Hub yang membroadcast data, Switch mengirimkan data hanya ke perangkat tujuan sehingga lalu lintas jaringan lebih efisien.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">7. Cara kerja server melayani client disebut?</span>
-                <img src="../../img/clientserver.png" alt="Arsitektur Client Server">
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Client Server</div>
-                <div class="explanation">
-                    Model client-server adalah arsitektur jaringan dimana server menyediakan layanan/sumber daya dan client meminta layanan tersebut.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">8. Perangkat jaringan pada gambar?</span>
-                <img src="../../img/router.png" alt="Router Cisco">
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: Router</div>
-                <div class="explanation">
-                    Router digunakan untuk menghubungkan dua jaringan atau lebih dan menentukan jalur pengiriman data tercepat (routing).
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">9. Jumlah layer OSI?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: 7 Layer</div>
-                <div class="explanation">
-                    Model OSI terdiri dari 7 lapisan: <b>Physical, Data Link, Network, Transport, Session, Presentation, Application</b>.
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="question-text">10. Urutan warna kabel UTP (Standar T568B)?</span>
-                <div class="answer-box"><i class="fas fa-check-circle"></i> Jawaban: T568B</div>
-                <div class="explanation">
-                    Putih Orange – Orange – Putih Hijau – Biru – Putih Biru – Hijau – Putih Coklat – Coklat.
-                </div>
-            </div>
-
+            
             <div class="pagination">
                 <span class="page-info">Halaman 1 / 5</span>
                 <a href="tryout1_page2.html" class="btn-page">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
@@ -265,9 +199,17 @@
     </div>
 
     <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
         }
     </script>
 </body>
