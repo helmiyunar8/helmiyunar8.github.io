@@ -13,66 +13,52 @@
             --white: #ffffff;
             --bg-soft: #f4f7f6;
             --sidebar-width: 280px;
+            --overlay-bg: rgba(0, 0, 0, 0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background-color: var(--bg-soft); display: flex; min-height: 100vh; color: #333; overflow-x: hidden; }
 
-        /* OVERLAY (Standard SMKN 7) */
+        /* --- SIDEBAR OVERLAY --- */
         .sidebar-overlay {
-            display: none;
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay-bg);
+            z-index: 998;
+            display: none;
+            backdrop-filter: blur(3px);
         }
-        .sidebar-overlay.active { display: block; }
+        .sidebar-overlay.active { display: block !important; }
 
-        /* SIDEBAR NAVIGATION */
+        /* --- SIDEBAR NAVIGATION (MASTER PENGINGAT) --- */
         .sidebar {
-            width: var(--sidebar-width); 
-            background: var(--white); 
-            height: 100vh;
-            position: fixed; 
-            border-right: 1px solid #ddd; 
-            transition: 0.3s ease;
-            z-index: 1001; 
-            display: flex; 
-            flex-direction: column;
+            width: var(--sidebar-width); background: var(--white); height: 100vh;
+            position: fixed; border-right: 1px solid #ddd; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999; display: flex; flex-direction: column;
         }
         
-        /* TOMBOL CLOSE (X) */
+        /* TOMBOL CLOSE (X) - FIXED SYNC */
         .close-sidebar {
-            display: none;
-            position: absolute;
-            top: 15px; right: 15px;
-            font-size: 28px;
-            color: var(--gold);
-            cursor: pointer;
-            z-index: 1002;
+            position: absolute; top: 15px; right: 20px;
+            font-size: 26px; color: #888; display: none; cursor: pointer;
+            transition: 0.3s; z-index: 1001;
         }
+        .close-sidebar:hover { color: var(--gold); transform: rotate(90deg); }
 
         .sidebar-header { 
-            padding: 35px 20px; 
-            text-align: center; 
-            border-bottom: 2px solid #f9f9f9; 
-            position: relative;
+            padding: 35px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative;
         }
-        .sidebar-header img { width: 75px; margin-bottom: 12px; }
+        /* PATH LOGO GITHUB REPOSITORY HELMIYUNAR8 */
+        .sidebar-header img { width: 75px; margin-bottom: 12px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; text-transform: uppercase; }
         .sidebar-header p { font-size: 14px; color: #777; font-weight: 600; margin-top: 5px; }
 
         .nav-menu { padding: 25px 0; flex-grow: 1; overflow-y: auto; }
         .nav-item {
-            display: flex; 
-            align-items: center; 
-            padding: 18px 25px;
-            color: #444; 
-            text-decoration: none; 
-            font-size: 18px; 
-            font-weight: 600; 
-            transition: 0.3s;
+            display: flex; align-items: center; padding: 18px 25px;
+            color: #444; text-decoration: none; 
+            font-size: 18px; /* UKURAN 18PX SESUAI PENGINGAT */
+            font-weight: 600; transition: 0.3s;
         }
         .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
         .nav-item:hover, .nav-item.active { 
@@ -83,48 +69,33 @@
 
         .footer-dev { padding: 20px; font-size: 11px; color: #bbb; text-align: center; border-top: 1px solid #f5f5f5; }
 
-        /* MAIN CONTENT */
+        /* --- MAIN CONTENT --- */
         .main-content { flex-grow: 1; margin-left: var(--sidebar-width); padding: 25px; width: 100%; transition: 0.3s; }
 
-        /* TOPBAR HAMBURGER */
         .topbar {
-            background: var(--white); 
-            padding: 20px 30px; 
-            border-radius: 15px;
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            margin-bottom: 30px;
+            background: var(--white); padding: 20px 30px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+            border-bottom: 3px solid var(--gold);
         }
-        .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: var(--gold); margin-right: 15px; }
+        .menu-toggle { display: none; font-size: 24px; cursor: pointer; color: var(--gold); }
 
         .header-section { text-align: center; margin-bottom: 40px; }
         .header-section h2 { font-size: 30px; color: var(--gold); font-weight: 800; }
         .header-section p { color: #888; font-size: 15px; margin-top: 5px; }
 
-        /* EXAM GRID */
+        /* --- EXAM GRID --- */
         .exam-grid {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; 
-            max-width: 1000px; 
-            margin: 0 auto;
+            gap: 15px; max-width: 1000px; margin: 0 auto;
         }
 
         .exam-card {
-            background: var(--white);
-            padding: 30px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: inherit;
-            text-align: center;
-            border: 1px solid #eee;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
+            background: var(--white); padding: 30px 15px; border-radius: 20px;
+            text-decoration: none; color: inherit; text-align: center;
+            border: 1px solid #eee; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
         }
 
         .exam-card:hover {
@@ -141,21 +112,20 @@
         .status-badge { font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 50px; background: #f5f5f5; color: #bbb; transition: 0.3s; }
         
         .exam-card.active .status-badge {
-            background: #fff9e6;
-            color: var(--gold);
-            border: 1px solid #f1e0ac;
+            background: #fff9e6; color: var(--gold); border: 1px solid #f1e0ac;
         }
 
         .back-link {
             display: inline-flex; align-items: center; gap: 10px;
             margin: 40px auto; text-decoration: none; color: #888;
-            font-weight: 700; transition: 0.3s; padding: 12px 25px; border-radius: 10px; border: 1px solid #eee; background: white;
+            font-weight: 700; transition: 0.3s; padding: 12px 25px; 
+            border-radius: 10px; border: 1px solid #eee; background: white;
         }
-        .back-link:hover { color: var(--gold); border-color: var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.05); transform: translateX(-5px); }
+        .back-link:hover { color: var(--gold); border-color: var(--gold); transform: translateX(-5px); }
 
-        @media (max-width: 768px) {
-            .menu-toggle, .close-sidebar { display: block; }
-            .sidebar { left: -100%; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
+        @media (max-width: 992px) {
+            .menu-toggle, .close-sidebar { display: block !important; }
+            .sidebar { left: -100%; }
             .sidebar.active { left: 0 !important; }
             .main-content { margin-left: 0; padding: 15px; }
             .exam-grid { grid-template-columns: 1fr 1fr; }
@@ -165,12 +135,12 @@
 </head>
 <body>
 
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
     <nav class="sidebar" id="sidebar">
-        <div class="close-sidebar" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="close-sidebar" onclick="closeSidebar()"><i class="fas fa-times"></i></div>
         <div class="sidebar-header">
-            <img src="../../../logo.png" alt="Logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
+            <img src="https://helmiyunar8.github.io/asset/logo.png" alt="Logo SMKN 7" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/Logo_SMK.png'">
             <h3>LMS TKJ</h3>
             <p>SMKN 7 LUWU</p>
         </div>
@@ -184,14 +154,14 @@
             <a href="/cbt/index.html" class="nav-item"><i class="fas fa-laptop-code"></i> CBT Ujian</a>
             <a href="/arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
-        <div class="footer-dev">©2025 Developed by<br><strong>Ibu Helmi Yunar</strong></div>
+        <div class="footer-dev">©2026 Developed by<br><strong>Ibu Helmi Yunar</strong></div>
     </nav>
 
     <div class="main-content">
         <div class="topbar">
             <div style="display: flex; align-items: center;">
-                <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
-                <div style="font-weight: 800; color: var(--gold); font-size: 20px;">SMKN 7 LUWU</div>
+                <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
+                <div style="font-weight: 800; color: var(--gold); font-size: 20px; margin-left: 15px;">SMKN 7 LUWU</div>
             </div>
             <div style="font-size: 14px; font-weight: 700; color: #555;">ARSIP PEMBAHASAN</div>
         </div>
@@ -207,7 +177,6 @@
                 <h4>Minggu 2</h4>
                 <div class="status-badge">TERSEDIA</div>
             </a>
-
             <a href="#" class="exam-card">
                 <i class="fas fa-file-circle-minus"></i>
                 <h4>Tryout 1</h4>
@@ -223,21 +192,6 @@
                 <h4>Tryout 3</h4>
                 <div class="status-badge">KOSONG</div>
             </a>
-            <a href="#" class="exam-card">
-                <i class="fas fa-file-circle-minus"></i>
-                <h4>Tryout 4</h4>
-                <div class="status-badge">KOSONG</div>
-            </a>
-            <a href="#" class="exam-card">
-                <i class="fas fa-file-circle-minus"></i>
-                <h4>Tryout 5</h4>
-                <div class="status-badge">KOSONG</div>
-            </a>
-            <a href="#" class="exam-card">
-                <i class="fas fa-file-circle-minus"></i>
-                <h4>Tryout 6</h4>
-                <div class="status-badge">KOSONG</div>
-            </a>
         </div>
 
         <div style="text-align: center;">
@@ -248,12 +202,24 @@
     </div>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeSidebar();
+        });
     </script>
 </body>
 </html>
