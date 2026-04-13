@@ -4,39 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsip SK - SMKN 7 LUWU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 6px solid #b8860b; padding: 20px; }
-        .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
-        h2 { color: #b8860b; margin: 0; font-size: 20px; }
-        .btn-kembali { text-decoration: none; color: #b8860b; font-weight: bold; font-size: 14px; }
+        :root { --gold: #b8860b; --white: #ffffff; --bg: #f4f4f4; }
+        
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; }
+
+        /* --- SIDEBAR NAVIGASI --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1000;
+        }
+        .nav-menu { padding: 20px; margin-top: 50px; }
+        .nav-item { 
+            display: block; padding: 12px 15px; color: #555; text-decoration: none; 
+            border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px;
+        }
+        .nav-item:hover, .nav-item.active { background: var(--gold); color: white; }
+        .nav-item i { width: 25px; }
+
+        /* Tombol Close X di Sidebar */
+        .close-btn { 
+            position: absolute; top: 10px; right: 15px; font-size: 24px; 
+            cursor: pointer; color: var(--gold); display: none; 
+        }
+
+        /* --- KONTEN UTAMA --- */
+        .main-content { flex: 1; margin-left: 250px; padding: 30px; transition: 0.3s; }
+        
+        .container { 
+            max-width: 1000px; margin: auto; background: var(--white); 
+            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-top: 8px solid var(--gold); padding: 25px; 
+        }
+
+        .header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; 
+        }
+        
+        h2 { color: var(--gold); margin: 0; font-size: 22px; text-transform: uppercase; }
+
+        /* --- TAMPILAN LIST SK (RESPONSIVE) --- */
         .list-sk { list-style: none; padding: 0; }
-        .item-sk { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: 0.2s; }
-        .item-sk:hover { background: #fffcf0; }
-        .nama-file { font-size: 15px; color: #333; font-weight: 500; }
-        .btn-buka { background: #b8860b; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-size: 13px; }
-        .btn-buka:hover { background: #8b6508; }
+        .item-sk { 
+            background: #fff; border: 1px solid #eee; border-radius: 10px;
+            padding: 20px; margin-bottom: 15px; transition: 0.3s;
+        }
+        .item-sk:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .nama-grup { 
+            display: block; font-weight: bold; color: #333; 
+            margin-bottom: 15px; font-size: 16px; border-left: 4px solid var(--gold); padding-left: 10px;
+        }
+
+        /* Container Tombol agar tidak mempet */
+        .button-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        
+        .btn-buka { 
+            background: var(--gold); color: white; text-decoration: none; 
+            padding: 10px 18px; border-radius: 6px; font-size: 13px; 
+            font-weight: 500; display: inline-flex; align-items: center; gap: 8px;
+            transition: 0.3s; border: none;
+        }
+        .btn-buka:hover { background: #8b6508; transform: translateY(-2px); }
+
+        /* Tombol Menu untuk Mobile */
+        .menu-toggle { 
+            display: none; position: fixed; top: 15px; left: 15px; 
+            background: var(--gold); color: white; padding: 10px; border-radius: 5px; 
+            cursor: pointer; z-index: 1100; 
+        }
+
+        /* --- RESPONSIVE UNTUK HP --- */
+        @media (max-width: 768px) {
+            .sidebar { left: -250px; } /* Sembunyikan sidebar */
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; margin-top: 50px; }
+            .menu-toggle { display: block; }
+            .close-btn { display: block; }
+            .header h2 { font-size: 18px; }
+            .button-group { flex-direction: column; } /* Tombol jadi berderet ke bawah di HP */
+            .btn-buka { justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h2>ARSIP SK - SMKN 7 LUWU</h2>
-        <a href="arsip.html" class="btn-kembali">← KEMBALI</a>
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i> Menu</div>
+
+    <div class="sidebar" id="mySidebar">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="arsip.html" class="nav-item active"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
     </div>
 
-    <ul class="list-sk">
-        <li class="item-sk">
-            <span class="nama-file">SK UKK & PPDB & PTG Genap 2026</span>
-            <a href="SK Pembagian Tugas SMKN 7 LUWU SEM. GENAP TP. 20252026 DAPODIK (1) (1).pdf" target="_blank" class="btn-buka">SK PTG Genap 20252026</a>
-            <a href="SK PANITIA UKK.pdf" target="_blank" class="btn-buka">SK Panitia UKK</a>
-          <a href="SK PANITIA PPDB 20262027.pdf" target="_blank" class="btn-buka">SK panitia ppdb 2026/2027</a>
-          <a href="SK PENILAIAN SUMATIF AKHIR (PSA) 2026.pdf" target="_blank" class="btn-buka">SK USBN 12 20252026</a>
-        </li>
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <h2><i class="fas fa-folder-open"></i> ARSIP SK DIGITAL</h2>
+                <a href="arsip.html" style="text-decoration:none; color:var(--gold); font-weight:bold;">← KEMBALI</a>
+            </div>
 
-        </ul>
-</div>
+            <div class="list-sk">
+                <div class="item-sk">
+                    <span class="nama-grup">SK UKK, PPDB & PTG GENAP 2026</span>
+                    <div class="button-group">
+                        <a href="SK Pembagian Tugas SMKN 7 LUWU SEM. GENAP TP. 20252026 DAPODIK (1) (1).pdf" target="_blank" class="btn-buka">
+                            <i class="fas fa-file-pdf"></i> SK PTG Genap
+                        </a>
+                        <a href="SK PANITIA UKK.pdf" target="_blank" class="btn-buka">
+                            <i class="fas fa-file-pdf"></i> SK Panitia UKK
+                        </a>
+                        <a href="SK PANITIA PPDB 20262027.pdf" target="_blank" class="btn-buka">
+                            <i class="fas fa-file-pdf"></i> SK Panitia PPDB
+                        </a>
+                        <a href="SK PENILAIAN SUMATIF AKHIR (PSA) 2026.pdf" target="_blank" class="btn-buka">
+                            <i class="fas fa-file-pdf"></i> SK USBN 12
+                        </a>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var sidebar = document.getElementById("mySidebar");
+            sidebar.classList.toggle("active");
+        }
+    </script>
 
 </body>
 </html>
