@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: #b8860b; --white: #ffffff; --bg: #f4f4f4; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* --- SIDEBAR --- */
-        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; }
+        /* --- SIDEBAR EMAS SAMPING --- */
+        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; left: -250px; }
+        .sidebar.active { left: 0; }
         .nav-menu { padding: 20px; margin-top: 50px; }
         .nav-item { display: block; padding: 12px 15px; color: #555; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px; }
         .nav-item:hover, .nav-item.active { background: var(--gold); color: white; }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); }
 
-        /* --- KONTEN --- */
-        .main-content { flex: 1; margin-left: 250px; padding: 30px; transition: 0.3s; }
-        .container { max-width: 1000px; margin: auto; background: var(--white); border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--gold); padding: 25px; }
+        /* --- KONTEN UTAMA --- */
+        .main-content { flex: 1; padding: 30px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 1000px; width: 100%; background: var(--white); border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--gold); padding: 25px; z-index: 1; }
         .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; }
         h2 { color: var(--gold); margin: 0; font-size: 22px; }
 
-        /* --- STYLE ACCORDION (LIPATAN TAHUN) --- */
+        /* --- STYLE ACCORDION --- */
         .tahun-box { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
         .tahun-header { background: #fffdf0; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #444; transition: 0.3s; }
         .tahun-header:hover { background: #fdf5d2; }
@@ -32,17 +33,25 @@
 
         /* --- GRID BULAN --- */
         .grid-bulan { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-        .btn-bulan { background: #f8f9fa; color: #333; text-decoration: none; padding: 10px; border-radius: 6px; text-align: center; font-size: 13px; border: 1px solid #ddd; transition: 0.3s; }
-        .btn-bulan:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .btn-bulan { background: #f8f9fa; color: #333; text-decoration: none; padding: 10px; border-radius: 6px; text-align: center; font-size: 13px; border: 1px solid #ddd; transition: 0.3s; position: relative; }
+        .btn-bulan:hover:not(.empty) { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
 
-        .menu-toggle { display: none; position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1100; }
+        /* STYLE KHUSUS TOMBOL KOSONG */
+        .btn-bulan.empty { background: #f0f0f0; color: #bbb; cursor: not-allowed; border-style: dashed; }
+        .btn-bulan.empty::after { content: " (Kosong)"; font-size: 10px; display: block; }
+
+        /* --- FOOTER COPYRIGHT --- */
+        .footer { margin-top: auto; padding: 20px; color: #888; font-size: 13px; text-align: center; }
+
+        .menu-toggle { position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; z-index: 900; }
+
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .menu-toggle { display: none; }
+            .main-content { margin-left: 250px; }
+        }
 
         @media (max-width: 768px) {
-            .sidebar { left: -250px; }
-            .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; padding: 15px; margin-top: 50px; }
-            .menu-toggle { display: block; }
-            .close-btn { display: block; }
             .grid-bulan { grid-template-columns: 1fr 1fr; }
         }
     </style>
@@ -63,7 +72,6 @@
             <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
             <a href="arsip.html" class="nav-item active"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
-        <div class="footer-dev">©2025 Developed by<br><strong>Helmi Yunar</strong></div>
     </div>
 
     <div class="main-content">
@@ -81,16 +89,16 @@
                     <div class="grid-bulan">
                         <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_01.pdf&embedded=true" target="_blank" class="btn-bulan">Januari</a>
                         <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_02.pdf&embedded=true" target="_blank" class="btn-bulan">Februari</a>
-                        <a href="#" class="btn-bulan">Maret</a>
-                        <a href="#" class="btn-bulan">April</a>
-                        <a href="#" class="btn-bulan">Mei</a>
-                        <a href="#" class="btn-bulan">Juni</a>
-                        <a href="#" class="btn-bulan">Juli</a>
-                        <a href="#" class="btn-bulan">Agustus</a>
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_09.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan">September</a>
-                        <a href="#" class="btn-bulan">Oktober</a>
-                        <a href="#" class="btn-bulan">November</a>
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_12.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan">Desember</a>
+                        <a href="#" class="btn-bulan empty">Maret</a>
+                        <a href="#" class="btn-bulan empty">April</a>
+                        <a href="#" class="btn-bulan empty">Mei</a>
+                        <a href="#" class="btn-bulan empty">Juni</a>
+                        <a href="#" class="btn-bulan empty">Juli</a>
+                        <a href="#" class="btn-bulan empty">Agustus</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_09.pdf&embedded=true" target="_blank" class="btn-bulan">September</a>
+                        <a href="#" class="btn-bulan empty">Oktober</a>
+                        <a href="#" class="btn-bulan empty">November</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_12.pdf&embedded=true" target="_blank" class="btn-bulan">Desember</a>
                     </div>
                 </div>
             </div>
@@ -101,19 +109,19 @@
                 </div>
                 <div class="tahun-content">
                     <div class="grid-bulan">
-                        <a href="#" class="btn-bulan">Januari</a>
-                        <a href="#" class="btn-bulan">Februari</a>
-                      <a href="#" class="btn-bulan">Maret</a>
-                      <a href="#" class="btn-bulan">April</a>
-                      <a href="#" class="btn-bulan">Mei</a>
-                      <a href="#" class="btn-bulan">Juni</a>
-                      <a href="#" class="btn-bulan">Juli</a>
-                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_08.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan">Agustus</a>
-                      <a href="#" class="btn-bulan">September</a>
-                      <a href="#" class="btn-bulan">Oktober</a>
-                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_11.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan">November</a>
-                      <a href="#" class="btn-bulan">Desember</a>
-                        </div>
+                        <a href="#" class="btn-bulan empty">Januari</a>
+                        <a href="#" class="btn-bulan empty">Februari</a>
+                        <a href="#" class="btn-bulan empty">Maret</a>
+                        <a href="#" class="btn-bulan empty">April</a>
+                        <a href="#" class="btn-bulan empty">Mei</a>
+                        <a href="#" class="btn-bulan empty">Juni</a>
+                        <a href="#" class="btn-bulan empty">Juli</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_08.pdf&embedded=true" target="_blank" class="btn-bulan">Agustus</a>
+                        <a href="#" class="btn-bulan empty">September</a>
+                        <a href="#" class="btn-bulan empty">Oktober</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_11.pdf&embedded=true" target="_blank" class="btn-bulan">November</a>
+                        <a href="#" class="btn-bulan empty">Desember</a>
+                    </div>
                 </div>
             </div>
 
@@ -123,22 +131,25 @@
                 </div>
                 <div class="tahun-content">
                     <div class="grid-bulan">
-                        <a href="#" class="btn-bulan">Januari</a>
-                        <a href="#" class="btn-bulan">Februari</a>
-                      <a href="#" class="btn-bulan">Maret</a>
-                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2026_04.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan">April</a>
-                      <a href="#" class="btn-bulan">Mei</a>
-                      <a href="#" class="btn-bulan">Juni</a>
-                      <a href="#" class="btn-bulan">Juli</a>
-                      <a href="#" class="btn-bulan">Agustus</a>
-                      <a href="#" class="btn-bulan">September</a>
-                      <a href="#" class="btn-bulan">Oktober</a>
-                      <a href="#" class="btn-bulan">November</a>
-                      <a href="#" class="btn-bulan">Desember</a>
-                        </div>
+                        <a href="#" class="btn-bulan empty">Januari</a>
+                        <a href="#" class="btn-bulan empty">Februari</a>
+                        <a href="#" class="btn-bulan empty">Maret</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2026_04.pdf&embedded=true" target="_blank" class="btn-bulan">April</a>
+                        <a href="#" class="btn-bulan empty">Mei</a>
+                        <a href="#" class="btn-bulan empty">Juni</a>
+                        <a href="#" class="btn-bulan empty">Juli</a>
+                        <a href="#" class="btn-bulan empty">Agustus</a>
+                        <a href="#" class="btn-bulan empty">September</a>
+                        <a href="#" class="btn-bulan empty">Oktober</a>
+                        <a href="#" class="btn-bulan empty">November</a>
+                        <a href="#" class="btn-bulan empty">Desember</a>
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
         </div>
     </div>
 
