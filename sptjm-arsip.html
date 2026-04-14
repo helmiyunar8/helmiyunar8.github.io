@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsip SPTJM - SMKN 7 LUWU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #b8860b; --white: #ffffff; --bg: #f4f4f4; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; }
+
+        /* --- SIDEBAR --- */
+        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; }
+        .nav-menu { padding: 20px; margin-top: 50px; }
+        .nav-item { display: block; padding: 12px 15px; color: #555; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px; }
+        .nav-item:hover, .nav-item.active { background: var(--gold); color: white; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
+
+        /* --- KONTEN --- */
+        .main-content { flex: 1; margin-left: 250px; padding: 30px; transition: 0.3s; }
+        .container { max-width: 1000px; margin: auto; background: var(--white); border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--gold); padding: 25px; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; }
+        h2 { color: var(--gold); margin: 0; font-size: 22px; }
+
+        /* --- STYLE ACCORDION (LIPATAN TAHUN) --- */
+        .tahun-box { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+        .tahun-header { background: #fffdf0; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #444; transition: 0.3s; }
+        .tahun-header:hover { background: #fdf5d2; }
+        .tahun-content { display: none; padding: 15px; background: white; border-top: 1px solid #eee; }
+        .tahun-box.active .tahun-content { display: block; }
+        .tahun-box.active .tahun-header i { transform: rotate(180deg); }
+
+        /* --- GRID BULAN --- */
+        .grid-bulan { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .btn-bulan { background: #f8f9fa; color: #333; text-decoration: none; padding: 10px; border-radius: 6px; text-align: center; font-size: 13px; border: 1px solid #ddd; transition: 0.3s; }
+        .btn-bulan:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+        .menu-toggle { display: none; position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1100; }
+
+        @media (max-width: 768px) {
+            .sidebar { left: -250px; }
+            .sidebar.active { left: 0; }
+            .main-content { margin-left: 0; padding: 15px; margin-top: 50px; }
+            .menu-toggle { display: block; }
+            .close-btn { display: block; }
+            .grid-bulan { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i> Menu</div>
+
+    <div class="sidebar" id="mySidebar">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="arsip.html" class="nav-item active"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="header">
+                <h2><i class="fas fa-file-invoice"></i> ARSIP SPTJM DAPODIK</h2>
+                <a href="arsip.html" style="text-decoration:none; color:var(--gold); font-weight:bold;">← KEMBALI</a>
+            </div>
+
+            <div class="tahun-box">
+                <div class="tahun-header" onclick="this.parentElement.classList.toggle('active')">
+                    TAHUN 2024 <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="tahun-content">
+                    <div class="grid-bulan">
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_01.pdf&embedded=true" target="_blank" class="btn-bulan">Januari</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_02.pdf&embedded=true" target="_blank" class="btn-bulan">Februari</a>
+                        <a href="#" class="btn-bulan">Maret</a>
+                        <a href="#" class="btn-bulan">April</a>
+                        <a href="#" class="btn-bulan">Mei</a>
+                        <a href="#" class="btn-bulan">Juni</a>
+                        <a href="#" class="btn-bulan">Juli</a>
+                        <a href="#" class="btn-bulan">Agustus</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_09.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan">September</a>
+                        <a href="#" class="btn-bulan">Oktober</a>
+                        <a href="#" class="btn-bulan">November</a>
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2024_12.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan">Desember</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tahun-box">
+                <div class="tahun-header" onclick="this.parentElement.classList.toggle('active')">
+                    TAHUN 2025 <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="tahun-content">
+                    <div class="grid-bulan">
+                        <a href="#" class="btn-bulan">Januari</a>
+                        <a href="#" class="btn-bulan">Februari</a>
+                      <a href="#" class="btn-bulan">Maret</a>
+                      <a href="#" class="btn-bulan">April</a>
+                      <a href="#" class="btn-bulan">Mei</a>
+                      <a href="#" class="btn-bulan">Juni</a>
+                      <a href="#" class="btn-bulan">Juli</a>
+                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_08.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan">Agustus</a>
+                      <a href="#" class="btn-bulan">September</a>
+                      <a href="#" class="btn-bulan">Oktober</a>
+                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2025_11.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan">November</a>
+                      <a href="#" class="btn-bulan">Desember</a>
+                        </div>
+                </div>
+            </div>
+
+            <div class="tahun-box">
+                <div class="tahun-header" onclick="this.parentElement.classList.toggle('active')">
+                    TAHUN 2026 <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="tahun-content">
+                    <div class="grid-bulan">
+                        <a href="#" class="btn-bulan">Januari</a>
+                        <a href="#" class="btn-bulan">Februari</a>
+                      <a href="#" class="btn-bulan">Maret</a>
+                      <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SPTJM_2026_04.pdf&embedded=true" target="_blank" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan" class="btn-bulan">April</a>
+                      <a href="#" class="btn-bulan">Mei</a>
+                      <a href="#" class="btn-bulan">Juni</a>
+                      <a href="#" class="btn-bulan">Juli</a>
+                      <a href="#" class="btn-bulan">Agustus</a>
+                      <a href="#" class="btn-bulan">September</a>
+                      <a href="#" class="btn-bulan">Oktober</a>
+                      <a href="#" class="btn-bulan">November</a>
+                      <a href="#" class="btn-bulan">Desember</a>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("mySidebar").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
