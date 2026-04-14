@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: #b8860b; --white: #ffffff; --bg: #f4f4f4; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
 
         /* --- SIDEBAR --- */
-        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; }
+        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; left: -250px; }
+        .sidebar.active { left: 0; }
         .nav-menu { padding: 20px; margin-top: 50px; }
         .nav-item { display: block; padding: 12px 15px; color: #555; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px; }
         .nav-item:hover, .nav-item.active { background: var(--gold); color: white; }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); }
 
         /* --- KONTEN --- */
-        .main-content { flex: 1; margin-left: 250px; padding: 30px; transition: 0.3s; }
-        .container { max-width: 800px; margin: auto; background: var(--white); border-radius: 12px; border-top: 8px solid var(--gold); padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .main-content { flex: 1; padding: 30px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 800px; width: 100%; background: var(--white); border-radius: 12px; border-top: 8px solid var(--gold); padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); z-index: 1; }
 
         /* --- LOGIN BOX --- */
         #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 2000; }
@@ -26,28 +27,24 @@
         .login-box input { padding: 12px; width: 100%; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 16px; box-sizing: border-box; }
         .btn-login { background: var(--gold); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; }
 
-        /* --- SEARCH & ACCORDION --- */
+        /* --- LIST & ACCORDION --- */
         .search-box { width: 100%; padding: 15px; margin-bottom: 25px; border: 1px solid #ddd; border-radius: 10px; font-size: 16px; box-sizing: border-box; outline-color: var(--gold); }
         .item-guru { margin-bottom: 10px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
         .header-guru { background: #fffdf0; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #444; }
-        .header-guru:hover { background: #fdf5d2; }
+        .item-guru.active .header-guru { background: var(--gold); color: white; }
         .content-guru { display: none; padding: 15px; background: white; border-top: 1px solid #eee; }
         .item-guru.active .content-guru { display: block; }
-        .item-guru.active .header-guru { background: var(--gold); color: white; }
+        .file-link { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px 15px; border-radius: 6px; text-decoration: none; color: #333; font-size: 14px; border: 1px solid #eee; margin-bottom: 5px; }
 
-        /* --- FILE LIST --- */
-        .file-list { display: flex; flex-direction: column; gap: 8px; }
-        .file-link { display: flex; justify-content: space-between; align-items: center; background: #f9f9f9; padding: 10px 15px; border-radius: 6px; text-decoration: none; color: #333; font-size: 14px; border: 1px solid #eee; transition: 0.2s; }
-        .file-link:hover { border-color: var(--gold); color: var(--gold); }
+        /* --- FOOTER --- */
+        .footer { margin-top: auto; padding: 20px; color: #888; font-size: 13px; text-align: center; }
 
-        .menu-toggle { display: none; position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1100; }
+        .menu-toggle { position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; z-index: 900; }
 
-        @media (max-width: 768px) {
-            .sidebar { left: -250px; }
-            .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; padding: 15px; margin-top: 60px; }
-            .menu-toggle { display: block; }
-            .close-btn { display: block; }
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .menu-toggle { display: none; }
+            .main-content { margin-left: 250px; }
         }
     </style>
 </head>
@@ -56,7 +53,7 @@
     <div id="login-overlay">
         <div class="login-box">
             <i class="fas fa-user-shield" style="font-size: 50px; color: var(--gold); margin-bottom: 20px;"></i>
-            <h3 style="margin-top:0;">LOGIN INFO GTK</h3>
+            <h3>LOGIN INFO GTK</h3>
             <input type="password" id="passInput" placeholder="Password Akses">
             <button class="btn-login" onclick="checkPass()">MASUK</button>
             <p id="pesan-salah" style="color: red; display: none; font-size: 13px; margin-top: 15px;">Akses Ditolak!</p>
@@ -69,6 +66,12 @@
         <div class="close-btn" onclick="toggleMenu()">&times;</div>
         <div class="nav-menu">
             <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
             <a href="arsip.html" class="nav-item active"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
     </div>
@@ -81,14 +84,16 @@
             </div>
 
             <input type="text" class="search-box" id="search" placeholder="Ketik Nama Anda..." onkeyup="filterNama()">
-
-            <div id="listGuruContainer">
-                </div>
+            <div id="listGuruContainer"></div>
+        </div>
+        
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
         </div>
     </div>
 
     <script>
-        // --- 1. DATABASE GURU (Cukup edit di sini saja) ---
+        // Data Guru - Pastikan koma (,) selalu ada di setiap akhir baris dalam kurung
         const dataGuru = [
             { 
                 nama: "Helmi Yunar", 
@@ -100,13 +105,12 @@
             { 
                 nama: "Sitti Asliani Agussalim", 
                 berkas: [
-                    { tgl: "Validasi Feb 2026", file: "ani_mar_26.pdf" }
+                    { tgl: "Validasi Feb 2026", file: "ani_feb_26.pdf" },
                     { tgl: "Validasi Maret 2026", file: "ani_mar_26.pdf" }
                 ]
             }
         ];
 
-        // --- 2. LOGIN LOGIC ---
         function checkPass() {
             const pass = document.getElementById("passInput").value;
             if(pass === "punyahyr") {
@@ -117,15 +121,12 @@
             }
         }
 
-        // --- 3. DISPLAY DATA ---
         function tampilkanData() {
             const container = document.getElementById("listGuruContainer");
             container.innerHTML = "";
-
-            dataGuru.forEach((guru, index) => {
+            dataGuru.forEach(guru => {
                 const div = document.createElement("div");
                 div.className = "item-guru";
-                
                 let fileHTML = "";
                 guru.berkas.forEach(b => {
                     const linkViewer = `https://docs.google.com/viewer?url=https://helmiyunar8.github.io/data-gtk/${b.file}&embedded=true`;
@@ -135,27 +136,21 @@
                             <i class="fas fa-external-link-alt" style="font-size:12px;"></i>
                         </a>`;
                 });
-
                 div.innerHTML = `
                     <div class="header-guru" onclick="this.parentElement.classList.toggle('active')">
-                        <span>${guru.nama}</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <span>${guru.nama}</span> <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="content-guru">
-                        <div class="file-list">${fileHTML}</div>
-                    </div>
-                `;
+                    <div class="content-guru"><div class="file-list">${fileHTML}</div></div>`;
                 container.appendChild(div);
             });
         }
 
-        // --- 4. FILTER CARI ---
         function filterNama() {
             const input = document.getElementById("search").value.toUpperCase();
             const items = document.getElementsByClassName("item-guru");
             for (let i = 0; i < items.length; i++) {
                 let txt = items[i].querySelector(".header-guru span").textContent;
-                items[i].style.display = txt.toUpperCase().indexOf(input) > -1 ? "" : "none";
+                items[i].style.display = txt.toUpperCase().includes(input) ? "" : "none";
             }
         }
 
