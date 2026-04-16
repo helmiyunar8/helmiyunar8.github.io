@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* 1) SIDEBAR EMAS SAMPING (Responsif + Tombol X) */
+        /* 1) SIDEBAR EMAS SAMPING */
         .sidebar {
             height: 100vh;
             width: 280px;
@@ -112,7 +112,7 @@
             transition: 0.3s;
         }
 
-        /* 2) CONTAINER CARD (Garis Emas Tebal) */
+        /* 2) CONTAINER CARD */
         .card {
             background: var(--white);
             border-radius: 20px;
@@ -123,7 +123,7 @@
             margin: 20px auto;
         }
 
-        /* 3) TAMPILAN BERSIH (Font & Jarak Paragraf) */
+        /* 3) TAMPILAN BERSIH */
         .card-body { padding: 45px; line-height: 1.8; }
 
         h1.materi-title {
@@ -136,9 +136,8 @@
 
         .materi-subtitle {
             text-align: center;
-            color: #888;
+            color: #666;
             margin-bottom: 40px;
-            font-style: italic;
         }
 
         .os-box {
@@ -149,7 +148,7 @@
             margin-bottom: 30px;
             transition: 0.4s;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 25px;
         }
 
@@ -160,15 +159,17 @@
         }
 
         .os-img {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             border-radius: 12px;
             background: #fdfdfd;
             padding: 10px;
         }
 
-        .os-info h3 { color: var(--gold-dark); margin: 0 0 15px 0; font-size: 1.5rem; }
+        .os-info { flex: 1; }
+        .os-info h3 { color: var(--gold-dark); margin: 0 0 10px 0; font-size: 1.5rem; }
+        .os-info ul { padding-left: 20px; margin: 10px 0; }
 
         /* OVERLAY */
         .overlay {
@@ -228,9 +229,9 @@
                 <p class="materi-subtitle">Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
 
                 <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" alt="Windows" class="os-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" alt="Windows Computer" class="os-img">
                     <div class="os-info">
-                        <h3><i class="fab fa-windows"></i> 1. Windows</h3>
+                        <h3>💻 1. Windows</h3>
                         <p>Windows adalah OS yang paling umum digunakan.</p>
                         <strong>Ciri-ciri:</strong>
                         <ul>
@@ -244,7 +245,7 @@
                 <div class="os-box">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome OS" class="os-img">
                     <div class="os-info">
-                        <h3><i class="fab fa-chrome"></i> 2. Chrome OS</h3>
+                        <h3>💻 2. Chrome OS</h3>
                         <p>Chrome OS adalah OS yang digunakan pada Chromebook di sekolah kalian.</p>
                         <strong>Ciri-ciri:</strong>
                         <ul>
@@ -256,9 +257,9 @@
                 </div>
 
                 <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" class="os-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android OS" class="os-img">
                     <div class="os-info">
-                        <h3><i class="fab fa-android"></i> 3. Android</h3>
+                        <h3>📱 3. Android</h3>
                         <p>Android adalah OS yang ada di HP kalian.</p>
                         <strong>Ciri-ciri:</strong>
                         <ul>
@@ -270,9 +271,9 @@
                 </div>
 
                 <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="macOS" class="os-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="macOS Apple" class="os-img">
                     <div class="os-info">
-                        <h3><i class="fab fa-apple"></i> 4. macOS</h3>
+                        <h3>🍎 4. macOS</h3>
                         <p>Digunakan pada laptop Apple (MacBook)</p>
                         <strong>Ciri-ciri:</strong>
                         <ul>
@@ -284,9 +285,9 @@
                 </div>
 
                 <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux" class="os-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux Penguin" class="os-img">
                     <div class="os-info">
-                        <h3><i class="fab fa-linux"></i> 5. Linux</h3>
+                        <h3>🐧 5. Linux</h3>
                         <p>Linux sering digunakan oleh:</p>
                         <ul>
                             <li>Programmer</li>
