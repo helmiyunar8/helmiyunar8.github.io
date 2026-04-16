@@ -8,148 +8,156 @@
     
     <style>
         :root {
-            --gold: #D4AF37;
-            --dark-gold: #B8860B;
+            --gold: #b8860b;
             --white: #ffffff;
-            --bg-light: #f4f7f6;
-            --text-dark: #222;
-            --sidebar-width: 280px;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--white);
-            height: 100vh;
-            position: fixed;
-            border-right: 1px solid #ddd;
-            transition: all 0.3s;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
+        /* --- SIDEBAR EMAS SAMPING --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1100; left: -250px; 
+            display: flex; flex-direction: column;
         }
-
+        .sidebar.active { left: 0; }
+        
         .sidebar-header {
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 2px solid #f9f9f9;
         }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-        .sidebar-header img { width: 75px; margin-bottom: 12px; }
-        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
-
-        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
-            display: flex;
-            align-items: center;
-            padding: 18px 25px;
-            color: #444;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 18px;
-            font-weight: 500;
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
         }
-        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
-        .nav-item:hover, .nav-item.active {
-            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 15px; font-size: 24px; 
+            cursor: pointer; color: var(--gold); display: none; 
         }
 
-        /* MAIN CONTENT */
+        /* --- MAIN CONTENT --- */
         .main-content {
             flex-grow: 1;
-            margin-left: var(--sidebar-width);
-            padding: 25px;
+            padding: 30px;
+            transition: 0.3s;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container Content dengan Garis Emas di Atas */
+        .content-card {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--gold);
+            padding: 25px;
+            margin-bottom: 20px;
         }
 
         /* TOPBAR */
         .topbar {
-            background: var(--white);
-            padding: 15px 30px;
-            border-radius: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
-        /* CARD MAPEL */
+        /* CARD MAPEL GRID */
         .mapel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
         }
 
         .mapel-card {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 20px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             text-decoration: none;
             color: var(--text-dark);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
             transition: 0.3s;
-            border: 1px solid transparent;
         }
 
         .mapel-card:hover:not(.kosong) {
             transform: translateY(-5px);
-            border: 1px solid var(--gold);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+            background: #fffcf0;
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
         .mapel-card.kosong {
-            opacity: 0.7;
+            opacity: 0.6;
             background: #fafafa;
             cursor: not-allowed;
+            border-style: dashed;
         }
 
         .mapel-card i {
-            font-size: 35px;
+            font-size: 30px;
             color: var(--gold);
-            margin-right: 20px;
-            width: 45px;
+            margin-right: 15px;
+            width: 40px;
             text-align: center;
         }
 
-        .mapel-info h4 {
-            font-size: 19px;
-            font-weight: 800;
-            margin-bottom: 5px;
+        .mapel-info h4 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+        .mapel-info p { font-size: 13px; color: #777; }
+
+        /* FOOTER */
+        .footer { text-align: center; padding: 20px; color: #888; font-size: 13px; margin-top: auto; }
+
+        /* TOGGLE MOBILE */
+        .menu-toggle { 
+            background: var(--gold); color: white; padding: 8px 12px; 
+            border-radius: 5px; cursor: pointer; position: fixed; 
+            top: 15px; left: 15px; z-index: 1000;
         }
 
-        .mapel-info p {
-            font-size: 14px;
-            color: #888;
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .menu-toggle { display: none; }
+            .main-content { margin-left: 250px; }
+            .close-btn { display: none; }
         }
-
-        /* RESPONSIVE */
-        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
 
         @media (max-width: 768px) {
-            .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; padding: 15px; }
-            .menu-toggle { display: block; }
-            .mapel-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 15px; padding-top: 70px; }
+            .close-btn { display: block; }
+            .topbar h2 { font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
     <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">&times;</div>
         <div class="sidebar-header">
             <img src="../../asset/logo.png" alt="Logo">
             <h3>LMS TKJ</h3>
-            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
             <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
@@ -159,68 +167,69 @@
             <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
             <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
             <a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
     </nav>
 
     <div class="main-content">
-        <div class="topbar">
-            <div class="menu-toggle" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
+        <div class="content-card">
+            <div class="topbar">
+                <h2 style="color: var(--gold);"><i class="fas fa-graduation-cap"></i> MATERI KELAS XI</h2>
+                <div style="font-size: 13px; font-weight: 600; color: #777;">
+                    <i class="fas fa-user-circle"></i> Helmi Yunar
+                </div>
             </div>
-            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">MATERI KELAS XI</div>
-            <div class="user-profile">
-                <span style="font-size: 14px;">Helmi Yunar</span>
-                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-size: 22px; margin-bottom: 5px;">Pilih Mata Pelajaran</h3>
+                <p style="color: #666; font-size: 15px;">Kurikulum Teknik Jaringan Komputer & Telekomunikasi</p>
+            </div>
+
+            <div class="mapel-grid">
+                <a href="kik/index.html" class="mapel-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <div class="mapel-info">
+                        <h4>KIK</h4>
+                        <p>Komputer & Jaringan Dasar</p>
+                    </div>
+                </a>
+
+                <a href="#" class="mapel-card kosong">
+                    <i class="fas fa-server"></i>
+                    <div class="mapel-info">
+                        <h4>ASJ</h4>
+                        <p>Administrasi Sistem Jaringan</p>
+                    </div>
+                </a>
+
+                <a href="#" class="mapel-card kosong">
+                    <i class="fas fa-network-wired"></i>
+                    <div class="mapel-info">
+                        <h4>TLJ</h4>
+                        <p>Teknologi Layanan Jaringan</p>
+                    </div>
+                </a>
+
+                <a href="#" class="mapel-card kosong">
+                    <i class="fas fa-tools"></i>
+                    <div class="mapel-info">
+                        <h4>AIJ</h4>
+                        <p>Admin Infrastruktur Jaringan</p>
+                    </div>
+                </a>
+
+                <a href="#" class="mapel-card kosong">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <div class="mapel-info">
+                        <h4>WAN</h4>
+                        <p>Teknologi Jaringan Luas</p>
+                    </div>
+                </a>
             </div>
         </div>
 
-        <div style="text-align: center; margin-bottom: 35px;">
-            <h2 style="font-size: 26px;">Pilih Mata Pelajaran</h2>
-            <p style="color: #666; font-size: 17px;">Kurikulum Teknik Jaringan Komputer & Telekomunikasi</p>
-        </div>
-
-        <div class="mapel-grid">
-            
-            <a href="kik/index.html" class="mapel-card">
-                <i class="fas fa-laptop-code"></i>
-                <div class="mapel-info">
-                    <h4>KIK</h4>
-                    <p>Komputer & Jaringan Dasar</p>
-                </div>
-            </a>
-
-            <a href="#" class="mapel-card kosong">
-                <i class="fas fa-server"></i>
-                <div class="mapel-info">
-                    <h4>ASJ</h4>
-                    <p>Administrasi Sistem Jaringan (Kosong)</p>
-                </div>
-            </a>
-
-            <a href="#" class="mapel-card kosong">
-                <i class="fas fa-network-wired"></i>
-                <div class="mapel-info">
-                    <h4>TLJ</h4>
-                    <p>Teknologi Layanan Jaringan (Kosong)</p>
-                </div>
-            </a>
-
-            <a href="#" class="mapel-card kosong">
-                <i class="fas fa-tools"></i>
-                <div class="mapel-info">
-                    <h4>AIJ</h4>
-                    <p>Admin Infrastruktur Jaringan (Kosong)</p>
-                </div>
-            </a>
-
-            <a href="#" class="mapel-card kosong">
-                <i class="fas fa-broadcast-tower"></i>
-                <div class="mapel-info">
-                    <h4>WAN</h4>
-                    <p>Teknologi Jaringan Luas (Kosong)</p>
-                </div>
-            </a>
-
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
         </div>
     </div>
 
