@@ -7,83 +7,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: #b8860b; --white: #ffffff; --bg: #f4f4f4; }
-        
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* --- SIDEBAR NAVIGASI --- */
-        .sidebar { 
-            width: 250px; background: var(--white); height: 100vh; position: fixed; 
-            border-right: 2px solid #eee; transition: 0.3s; z-index: 1000;
-        }
+        /* --- SIDEBAR EMAS SAMPING --- */
+        .sidebar { width: 250px; background: var(--white); height: 100vh; position: fixed; border-right: 2px solid #eee; transition: 0.3s; z-index: 1000; left: -250px; }
+        .sidebar.active { left: 0; }
         .nav-menu { padding: 20px; margin-top: 50px; }
-        .nav-item { 
-            display: block; padding: 12px 15px; color: #555; text-decoration: none; 
-            border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px;
-        }
+        .nav-item { display: block; padding: 12px 15px; color: #555; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; font-size: 15px; }
         .nav-item:hover, .nav-item.active { background: var(--gold); color: white; }
-        .nav-item i { width: 25px; }
-
-        /* Tombol Close X di Sidebar */
-        .close-btn { 
-            position: absolute; top: 10px; right: 15px; font-size: 24px; 
-            cursor: pointer; color: var(--gold); display: none; 
-        }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); }
 
         /* --- KONTEN UTAMA --- */
-        .main-content { flex: 1; margin-left: 250px; padding: 30px; transition: 0.3s; }
-        
-        .container { 
-            max-width: 1000px; margin: auto; background: var(--white); 
-            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            border-top: 8px solid var(--gold); padding: 25px; 
+        .main-content { flex: 1; padding: 30px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 1000px; width: 100%; background: var(--white); border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--gold); padding: 25px; z-index: 1; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; }
+        h2 { color: var(--gold); margin: 0; font-size: 22px; }
+
+        /* --- STYLE ACCORDION (LIPATAN) --- */
+        .sk-box { margin-bottom: 15px; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+        .sk-header { background: #fffdf0; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #444; transition: 0.3s; }
+        .sk-header:hover { background: #fdf5d2; }
+        .sk-content { display: none; padding: 20px; background: white; border-top: 1px solid #eee; }
+        .sk-box.active .sk-content { display: block; }
+        .sk-box.active .sk-header { background: var(--gold); color: white; }
+        .sk-box.active .sk-header i { transform: rotate(180deg); }
+
+        /* --- GRID TOMBOL --- */
+        .grid-sk { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+        .btn-sk { background: #f8f9fa; color: #333; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; font-size: 13px; border: 1px solid #ddd; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .btn-sk i { font-size: 18px; color: var(--gold); }
+        .btn-sk:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        .btn-sk:hover i { color: white; }
+
+        /* --- FOOTER COPYRIGHT --- */
+        .footer { margin-top: auto; padding: 20px; color: #888; font-size: 13px; text-align: center; }
+
+        .menu-toggle { position: fixed; top: 15px; left: 15px; background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; z-index: 900; }
+
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .menu-toggle { display: none; }
+            .main-content { margin-left: 250px; }
         }
 
-        .header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 25px; 
-        }
-        
-        h2 { color: var(--gold); margin: 0; font-size: 22px; text-transform: uppercase; }
-
-        /* --- TAMPILAN LIST SK --- */
-        .list-sk { list-style: none; padding: 0; }
-        .item-sk { 
-            background: #fff; border: 1px solid #eee; border-radius: 10px;
-            padding: 20px; margin-bottom: 15px; transition: 0.3s;
-        }
-        .item-sk:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .nama-grup { 
-            display: block; font-weight: bold; color: #333; 
-            margin-bottom: 15px; font-size: 16px; border-left: 4px solid var(--gold); padding-left: 10px;
-        }
-
-        .button-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        
-        .btn-buka { 
-            background: var(--gold); color: white; text-decoration: none; 
-            padding: 10px 18px; border-radius: 6px; font-size: 13px; 
-            font-weight: 500; display: inline-flex; align-items: center; gap: 8px;
-            transition: 0.3s; border: none;
-        }
-        .btn-buka:hover { background: #8b6508; transform: translateY(-2px); }
-
-        /* Tombol Menu untuk Mobile */
-        .menu-toggle { 
-            display: none; position: fixed; top: 15px; left: 15px; 
-            background: var(--gold); color: white; padding: 10px; border-radius: 5px; 
-            cursor: pointer; z-index: 1100; 
-        }
-
-        /* --- RESPONSIVE UNTUK HP --- */
         @media (max-width: 768px) {
-            .sidebar { left: -250px; }
-            .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; padding: 15px; margin-top: 50px; }
-            .menu-toggle { display: block; }
-            .close-btn { display: block; }
-            .header h2 { font-size: 18px; }
-            .button-group { flex-direction: column; }
-            .btn-buka { justify-content: center; }
+            .grid-sk { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -112,37 +80,42 @@
                 <a href="arsip.html" style="text-decoration:none; color:var(--gold); font-weight:bold;">← KEMBALI</a>
             </div>
 
-            <div class="list-sk">
-                <div class="item-sk">
-                    <span class="nama-grup">SK UKK, PPDB & PTG GENAP 2026</span>
-                    <div class="button-group">
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/sk ptg genap 2026.pdf&embedded=true" target="_blank" class="btn-buka">
-                            <i class="fas fa-file-pdf"></i> SK PTG Genap
+            <div class="sk-box active"> <div class="sk-header" onclick="this.parentElement.classList.toggle('active')">
+                    SK UKK, PPDB & PTG GENAP 2026 <span><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="sk-content">
+                    <div class="grid-sk">
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/sk ptg genap 2026.pdf&embedded=true" target="_blank" class="btn-sk">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>SK PTG Genap 2026</span>
                         </a>
-
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PANITIA UKK.pdf&embedded=true" target="_blank" class="btn-buka">
-                            <i class="fas fa-file-pdf"></i> SK Panitia UKK
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PANITIA UKK.pdf&embedded=true" target="_blank" class="btn-sk">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>SK Panitia UKK</span>
                         </a>
-
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PANITIA PPDB 20262027.pdf&embedded=true" target="_blank" class="btn-buka">
-                            <i class="fas fa-file-pdf"></i> SK Panitia PPDB
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PANITIA PPDB 20262027.pdf&embedded=true" target="_blank" class="btn-sk">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>SK Panitia PPDB</span>
                         </a>
-
-                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PENILAIAN SUMATIF AKHIR (PSA) 2026.pdf&embedded=true" target="_blank" class="btn-buka">
-                            <i class="fas fa-file-pdf"></i> SK USBN 12
+                        <a href="https://docs.google.com/viewer?url=https://helmiyunar8.github.io/SK PENILAIAN SUMATIF AKHIR (PSA) 2026.pdf&embedded=true" target="_blank" class="btn-sk">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>SK USBN 12</span>
                         </a>
                     </div>
                 </div>
             </div>
+
+            </div>
+
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
         </div>
     </div>
 
     <script>
         function toggleMenu() {
-            var sidebar = document.getElementById("mySidebar");
-            sidebar.classList.toggle("active");
+            document.getElementById("mySidebar").classList.toggle("active");
         }
     </script>
-
 </body>
 </html>
