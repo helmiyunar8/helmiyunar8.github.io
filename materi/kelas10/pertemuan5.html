@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 5 - Halaman 1 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (RESPONSIF) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1100; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* Tombol Close X di Sidebar Mobile */
+        .close-btn { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        /* --- STYLED BOXES --- */
+        .intro-box { background: var(--accent-gold); border: 1px dashed var(--gold); padding: 25px; border-radius: 12px; margin-bottom: 25px; }
+        .analogy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0; }
+        .analogy-box { background: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #eee; text-align: center; }
+        .analogy-box i { font-size: 30px; color: var(--gold); margin-bottom: 10px; }
+
+        .fact-box { background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 20px; border-radius: 10px; margin: 25px 0; color: #b91c1c; }
+
+        /* --- BUTTONS --- */
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+
+        /* --- MENU TOGGLE (MOBILE) --- */
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        /* --- RESPONSIVE LOGIC --- */
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .main-content { margin-left: 250px; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .close-btn { display: block; }
+            .main-content { padding: 15px; padding-top: 70px; }
+            .content-card { padding: 25px; }
+            .analogy-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 1 / 5</div>
+            <div class="bab-title" style="background: none; color: var(--gold); padding: 0; margin-bottom: 5px;">🌍 PERTEMUAN 5</div>
+            <h1>PENGERTIAN OPERATING SYSTEM (OS)</h1>
+
+            <div class="intro-box">
+                <p><strong>👨‍🏫 Pendahuluan</strong></p>
+                <p>Saat kalian menggunakan komputer, laptop, atau Chromebook di sekolah, pernahkah kalian berpikir: <em>👉 “Apa yang sebenarnya membuat komputer ini bisa digunakan?”</em></p>
+                <p>Mengapa saat kita menekan tombol, layar bisa merespon? Mengapa kita bisa membuka YouTube, mengetik tugas, atau terhubung ke internet? Jawabannya adalah: <strong>Operating System (OS)</strong></p>
+            </div>
+
+            <h2>📖 Pengertian OS</h2>
+            <p><strong>Operating System</strong> atau <strong>Sistem Operasi</strong> adalah perangkat lunak utama (software utama) yang berfungsi untuk:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px; line-height: 1.8;">
+                <li><i class="fas fa-check" style="color: var(--gold);"></i> Mengatur seluruh kerja komputer</li>
+                <li><i class="fas fa-check" style="color: var(--gold);"></i> Menghubungkan pengguna dengan perangkat keras (hardware)</li>
+                <li><i class="fas fa-check" style="color: var(--gold);"></i> Menjalankan aplikasi</li>
+            </ul>
+
+            <h2>🧠 Analogi Sederhana</h2>
+            <p>Agar kalian lebih mudah memahaminya, bayangkan komputer itu seperti tubuh manusia:</p>
+            
+            <div class="analogy-container">
+                <div class="analogy-box">
+                    <i class="fas fa-laptop"></i>
+                    <p><strong>Komputer & Hardware</strong><br>(Keyboard, Mouse, Layar)</p>
+                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+                    <p>Sama seperti Tangan, Mata, dan Kaki manusia.</p>
+                </div>
+                <div class="analogy-box" style="border-color: var(--gold); background: var(--accent-gold);">
+                    <i class="fas fa-brain"></i>
+                    <p><strong>Operating System (OS)</strong></p>
+                    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+                    <p>Sama seperti <strong>OTAK</strong> manusia.</p>
+                </div>
+            </div>
+
+            <p>👉 <strong>Tanpa otak:</strong> Tubuh tidak bisa bergerak dan tidak bisa berpikir.</p>
+            <p>👉 <strong>Tanpa OS:</strong> Komputer tidak bisa digunakan dan tidak bisa menjalankan aplikasi apapun.</p>
+
+            <div class="fact-box">
+                <p><strong>⚠️ Fakta Penting</strong></p>
+                <p>Jika sebuah komputer tidak memiliki OS, maka layar hanya akan berwarna hitam, tidak bisa diklik, dan tidak bisa digunakan sama sekali.</p>
+            </div>
+
+            <div class="intro-box" style="border-style: solid; border-color: #eee; background: #fafafa;">
+                <p><strong>📌 Kesimpulan Halaman 1</strong></p>
+                <p>Operating System adalah bagian paling penting dalam komputer karena menjadi pengatur utama semua aktivitas.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-prev" style="background: #eee; color: #444;">Daftar Materi</a>
+                <a href="pertemuan5-2.html" class="btn btn-next">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
