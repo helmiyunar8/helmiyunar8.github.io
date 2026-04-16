@@ -10,235 +10,279 @@
             --gold-primary: #D4AF37;
             --gold-dark: #B8860B;
             --white: #ffffff;
-            --bg-light: #f8f9fa;
-            --sidebar-bg: #1a1a1a;
+            --bg-light: #f4f7f6;
+            --text-main: #444;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-light);
             margin: 0;
             display: flex;
-            overflow-x: hidden;
         }
 
-        /* --- SIDEBAR --- */
+        /* --- SIDEBAR PUTIH (SESUAI GAMBAR 1) --- */
         .sidebar {
+            width: 250px;
             height: 100vh;
-            width: 280px;
+            background: var(--white);
             position: fixed;
-            z-index: 1100;
-            top: 0;
-            left: -280px; /* Sembunyi secara default */
-            background: linear-gradient(135deg, var(--sidebar-bg) 0%, #333 100%);
-            border-right: 4px solid var(--gold-primary);
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            padding-top: 20px;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
         }
 
-        .sidebar.active {
-            left: 0; /* Muncul saat aktif */
-        }
-
-        .sidebar-header {
-            padding: 20px;
+        .sidebar-brand {
             text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
+            padding-bottom: 30px;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: var(--gold-primary);
-            font-size: 28px;
-            cursor: pointer;
+        .sidebar-brand img {
+            width: 80px;
+            margin-bottom: 10px;
         }
 
-        .nav-menu { padding: 20px 10px; }
+        .sidebar-brand h3 {
+            margin: 0;
+            color: var(--gold-dark);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-brand p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0 15px;
+        }
 
         .nav-item {
-            color: white;
             text-decoration: none;
-            padding: 14px 18px;
-            margin-bottom: 5px;
+            color: var(--text-main);
+            padding: 12px 15px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 15px;
+            font-weight: 500;
             transition: 0.3s;
         }
 
-        .nav-item i { color: var(--gold-primary); width: 25px; text-align: center; }
+        .nav-item i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
 
-        .nav-item:hover, .nav-item.active {
-            background: rgba(212, 175, 55, 0.15);
-            border-left: 4px solid var(--gold-primary);
+        /* Menu Aktif (Warna Emas Muda) */
+        .nav-item.active {
+            background-color: #fdf7e6;
+            color: var(--gold-dark);
+        }
+
+        .nav-item:hover {
+            background-color: #f9f9f9;
             color: var(--gold-primary);
         }
 
         /* --- MAIN CONTENT --- */
         .main-content {
+            margin-left: 250px; /* Memberi ruang untuk sidebar */
             flex: 1;
-            padding: 20px;
-            width: 100%;
-            min-height: 100vh;
+            padding: 40px;
         }
 
-        .top-bar {
-            background: var(--white);
-            padding: 15px 25px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border-bottom: 4px solid var(--gold-primary);
-        }
-
-        .menu-toggle {
-            font-size: 26px;
-            cursor: pointer;
-            color: var(--gold-dark);
-            margin-right: 20px;
-        }
-
-        /* --- CARD CONTENT --- */
         .card {
             background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            border-top: 12px solid var(--gold-primary);
-            max-width: 900px;
-            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            max-width: 1000px;
+            margin: 0 auto;
             overflow: hidden;
+            border-top: 5px solid var(--gold-primary);
         }
 
-        .card-body { padding: 40px; line-height: 1.8; }
+        .card-header-info {
+            padding: 30px 40px 10px;
+        }
 
-        .materi-title { color: var(--gold-dark); text-align: center; font-weight: 800; }
-        .materi-subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+        .badge-halaman {
+            background: #fff9e6;
+            color: var(--gold-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid #ffeeba;
+        }
 
-        .os-box {
-            border: 1px solid #eee;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
+        .pertemuan-tag {
+            color: var(--gold-primary);
+            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .materi-title {
+            font-size: 2.2rem;
+            color: #222;
+            margin: 10px 0;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .materi-desc {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- OS BOX STYLE (GAMBAR 1) --- */
+        .content-box {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
             transition: 0.3s;
         }
 
-        .os-box:hover { border-color: var(--gold-primary); background: #fffdfa; }
-
-        .os-img { width: 80px; height: 80px; object-fit: contain; }
-
-        .os-info h3 { margin: 0; color: var(--gold-dark); }
-
-        /* --- OVERLAY --- */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
+        .content-box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .overlay.active { display: block; }
 
-        .footer { text-align: center; padding: 30px; color: #999; }
+        .os-title {
+            color: var(--gold-dark);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .os-list {
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #999;
+            font-size: 0.85rem;
+        }
 
         @media (max-width: 768px) {
-            .os-box { flex-direction: column; text-align: center; }
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay" id="overlay" onclick="toggleNav()"></div>
-
-    <div class="sidebar" id="mySidebar">
-        <div class="sidebar-header">
-            <span class="close-btn" onclick="toggleNav()">&times;</span>
-            <div style="width: 70px; height: 70px; background: var(--gold-primary); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem;">
-                <i class="fas fa-user-tie"></i>
-            </div>
-            <div style="color: var(--gold-primary); font-weight: bold;">LMS TKJ 2026</div>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Logo_Kabupaten_Luwu.png/480px-Logo_Kabupaten_Luwu.png" alt="Logo Luwu">
+            <h3>LMS TKJ</h3>
+            <p>SMKN 7 LUWU</p>
         </div>
+        
         <div class="nav-menu">
             <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
             <a href="materi/index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
             <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
             <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
             <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
     </div>
 
     <div class="main-content">
-        <div class="top-bar">
-            <i class="fas fa-bars menu-toggle" onclick="toggleNav()"></i>
-            <h2 style="margin: 0; font-size: 1rem; color: #444;">SMKN 7 LUWU • Ruang Belajar</h2>
-        </div>
-
         <div class="card">
-            <div class="card-body">
-                <h1 class="materi-title">🖥️ JENIS-JENIS OPERATING SYSTEM</h1>
-                <p class="materi-subtitle">Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
+            <div class="card-header-info">
+                <div class="badge-halaman">Halaman 3 / 5</div>
+                <div class="pertemuan-tag"><i class="fas fa-cog"></i> Pertemuan 5</div>
+                <h1 class="materi-title">JENIS-JENIS OPERATING SYSTEM</h1>
+                <p class="materi-desc">Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
+            </div>
 
-                <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" class="os-img">
-                    <div class="os-info">
-                        <h3>💻 1. Windows</h3>
-                        <p>OS yang paling umum digunakan di sekolah dan kantor.</p>
-                        <strong>Ciri-ciri:</strong> Tampilan GUI mudah, banyak aplikasi pendukung.
-                    </div>
+            <div style="padding: 0 40px 40px;">
+                
+                <div class="content-box">
+                    <div class="os-title">💻 1. Windows</div>
+                    <p>Windows adalah OS yang paling umum digunakan.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul class="os-list">
+                        <li>Tampilan mudah dipahami</li>
+                        <li>Banyak digunakan di sekolah dan kantor</li>
+                        <li>Bisa menjalankan banyak aplikasi</li>
+                    </ul>
                 </div>
 
-                <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" class="os-img">
-                    <div class="os-info">
-                        <h3>💻 2. Chrome OS</h3>
-                        <p>OS yang digunakan pada Chromebook di SMKN 7 LUWU.</p>
-                        <strong>Ciri-ciri:</strong> Ringan, cepat, dan fokus pada layanan Cloud/Internet.
-                    </div>
+                <div class="content-box">
+                    <div class="os-title">💻 2. Chrome OS</div>
+                    <p>Chrome OS adalah OS yang digunakan pada Chromebook di sekolah kalian.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul class="os-list">
+                        <li>Ringan dan cepat</li>
+                        <li>Fokus pada internet</li>
+                        <li>Banyak menggunakan browser</li>
+                    </ul>
                 </div>
 
-                <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" class="os-img">
-                    <div class="os-info">
-                        <h3>📱 3. Android</h3>
-                        <p>OS berbasis Linux untuk perangkat mobile/smartphone.</p>
-                        <strong>Ciri-ciri:</strong> Open source, jutaan aplikasi di Play Store.
-                    </div>
+                <div class="content-box">
+                    <div class="os-title">📱 3. Android</div>
+                    <p>Android adalah OS yang ada di HP kalian.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul class="os-list">
+                        <li>Digunakan di smartphone</li>
+                        <li>Banyak aplikasi</li>
+                        <li>Mudah digunakan</li>
+                    </ul>
                 </div>
 
-                <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="os-img">
-                    <div class="os-info">
-                        <h3>🍎 4. macOS</h3>
-                        <p>Sistem operasi eksklusif milik perangkat Apple.</p>
-                        <strong>Ciri-ciri:</strong> Sangat stabil, tampilan elegan, untuk profesional.
-                    </div>
+                <div class="content-box">
+                    <div class="os-title">🍎 4. macOS</div>
+                    <p>Digunakan pada laptop Apple (MacBook)</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul class="os-list">
+                        <li>Tampilan elegan</li>
+                        <li>Stabil dan cepat</li>
+                        <li>Digunakan di kalangan profesional</li>
+                    </ul>
                 </div>
 
-                <div class="os-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" class="os-img">
-                    <div class="os-info">
-                        <h3>🐧 5. Linux</h3>
-                        <p>OS favorit para teknisi jaringan dan programmer.</p>
-                        <strong>Ciri-ciri:</strong> Gratis, aman dari virus, bisa dimodifikasi (Distro).
-                    </div>
+                <div class="content-box">
+                    <div class="os-title">🐧 5. Linux</div>
+                    <p>Linux sering digunakan oleh Programmer dan Teknisi Jaringan.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul class="os-list">
+                        <li>Gratis & Aman</li>
+                        <li>Bisa dimodifikasi</li>
+                    </ul>
                 </div>
 
-                <div style="background: #fffdf0; padding: 20px; border-left: 5px solid var(--gold-primary); margin-top: 30px;">
+                <div style="margin-top: 30px; border-left: 5px solid var(--gold-primary); padding: 15px 25px; background: #fffcf0;">
                     <h4 style="margin: 0; color: var(--gold-dark);">📌 Kesimpulan Halaman 3</h4>
-                    <p style="margin: 5px 0 0 0;">Meskipun berbeda tampilan, semua OS berfungsi sebagai jembatan antara user dan hardware.</p>
+                    <p style="margin: 5px 0 0; color: #555;">Ada banyak jenis OS, tetapi semuanya memiliki fungsi yang sama yaitu mengatur komputer agar bisa digunakan.</p>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <a href="pertemuan5-2.html" style="text-decoration: none; color: #999;"><i class="fas fa-arrow-left"></i> Kembali</a>
-                    <a href="pertemuan5-4.html" style="background: var(--gold-primary); color: white; padding: 10px 25px; border-radius: 30px; text-decoration: none; font-weight: bold;">Selanjutnya <i class="fas fa-arrow-right"></i></a>
+                <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                    <a href="pertemuan5-2.html" style="text-decoration: none; color: #888; font-weight: bold;"><i class="fas fa-arrow-left"></i> SEBELUMNYA</a>
+                    <a href="pertemuan5-4.html" style="text-decoration: none; color: var(--gold-dark); font-weight: bold;">SELANJUTNYA <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -248,13 +292,5 @@
         </div>
     </div>
 
-    <script>
-        function toggleNav() {
-            const sidebar = document.getElementById("mySidebar");
-            const overlay = document.getElementById("overlay");
-            sidebar.classList.toggle("active");
-            overlay.classList.toggle("active");
-        }
-    </script>
 </body>
 </html>
