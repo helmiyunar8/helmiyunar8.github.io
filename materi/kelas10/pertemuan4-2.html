@@ -38,9 +38,16 @@
         
         .highlight-box { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid var(--gold); }
         
-        /* TIKTOK CONTAINER */
+        /* VIDEO PLAYER CUSTOM */
         .video-wrapper { display: flex; justify-content: center; margin: 30px 0; }
-        .video-container { width: 100%; max-width: 325px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .custom-video { 
+            width: 100%; 
+            max-width: 400px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            border: 4px solid var(--gold);
+            background: #000;
+        }
         
         .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
         .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
@@ -104,8 +111,7 @@
             <p>👉 Itulah kenapa WiFi rumah sekarang bisa 100 Mbps atau lebih.</p>
 
             <h3>📏 2. Jarak Jauh Tanpa Gangguan</h3>
-            <p>UTP: ±100 meter | FO: bisa puluhan kilometer.</p>
-            <p>👉 Makanya FO dipakai untuk: Antar kota, Antar pulau, Bahkan kabel bawah laut!</p>
+            <p>UTP: ±100 meter | FO: bisa puluhan kilometer. Dipakai untuk antar kota, pulau, dan bawah laut!</p>
 
             <h3>🔒 3. Tidak Terpengaruh Gangguan Listrik</h3>
             <p>Kalau kabel biasa bisa terganggu: Petir, Mesin listrik, Tegangan tinggi.</p>
@@ -117,13 +123,14 @@
             <h3>🌱 5. Lebih Tahan Masa Depan</h3>
             <p>Semua perkembangan jaringan sekarang: Internet cepat, Smart city, IoT. 👉 <strong>Semuanya butuh FO.</strong></p>
 
-            <h2>📽️ VIDEO TUTORIAL (TIKTOK)</h2>
+            <h2>📽️ VIDEO TUTORIAL</h2>
             <p>Saksikan video ini agar kalian lebih paham cara kerja kabel masa depan ini:</p>
             
             <div class="video-wrapper">
-                <div class="video-container">
-                    <blockquote class="tiktok-embed" data-video-id="7418292850774658309" style="max-width: 605px;min-width: 325px;" > <section> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-                </div>
+                <video class="custom-video" controls>
+                    <source src="../video/fiber-optic.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung pemutar video.
+                </video>
             </div>
 
             <div class="nav-buttons">
