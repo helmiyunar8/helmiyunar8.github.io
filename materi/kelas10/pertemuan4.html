@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 4 - Kabel Jaringan - Helmi Yunar</title>
+    <title>Pertemuan 4 - Bagian 1 - Helmi Yunar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -16,17 +16,14 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-
         body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
 
-        /* --- SIDEBAR --- */
         .sidebar { 
             width: 250px; background: var(--white); height: 100vh; position: fixed; 
             border-right: 2px solid #eee; transition: 0.3s; z-index: 1100; left: -250px; 
             display: flex; flex-direction: column;
         }
         .sidebar.active { left: 0; }
-        
         .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
         .sidebar-header img { width: 60px; margin-bottom: 10px; }
         .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
@@ -41,75 +38,32 @@
 
         .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
 
-        /* --- MAIN CONTENT --- */
         .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .content-card { max-width: 1000px; width: 100%; background: var(--white); border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold); padding: 40px; margin-bottom: 30px; }
 
-        .content-card {
-            max-width: 1000px; width: 100%; background: var(--white); border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
-            padding: 40px; margin-bottom: 30px;
-        }
-
-        /* --- TYPOGRAPHY --- */
         .bab-title { background: var(--gold); color: white; display: inline-block; padding: 8px 20px; border-radius: 5px; font-weight: 800; margin-bottom: 15px; }
         h1 { font-size: 28px; margin-bottom: 20px; color: #222; }
         h2 { color: var(--gold); margin: 35px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
         h3 { margin: 25px 0 10px 0; color: #444; font-weight: 700; }
         p { line-height: 1.8; margin-bottom: 15px; text-align: justify; }
-        ul { margin-bottom: 15px; padding-left: 20px; list-style-type: none; }
-        ul li { margin-bottom: 8px; position: relative; }
-        ul li::before { content: "•"; color: var(--gold); font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
 
-        /* --- IMAGE GALLERY GRID --- */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .image-gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            cursor: pointer;
-        }
+        .image-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; background: #f9f9f9; padding: 15px; border-radius: 10px; }
+        .image-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; cursor: pointer; }
         .image-gallery img:hover { transform: scale(1.05); border-color: var(--gold); }
 
-        /* --- STYLED BOXES --- */
         .intro-box { background: #fffcf0; border: 1px dashed var(--gold); padding: 20px; border-radius: 10px; margin-bottom: 25px; }
         .highlight-box { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid var(--gold); }
         
-        .tool-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-
-        /* --- BUTTONS --- */
         .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
         .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
         .btn-home { background: #eee; color: #444; }
         .btn-next { background: var(--gold); color: white; }
         .btn:hover { opacity: 0.8; transform: translateY(-2px); }
 
-        /* --- RESPONSIVE --- */
         .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; }
 
-        @media (min-width: 769px) {
-            .sidebar { left: 0; }
-            .menu-toggle { display: none; }
-            .main-content { margin-left: 250px; }
-        }
-
-        @media (max-width: 768px) {
-            .main-content { padding: 15px; padding-top: 70px; }
-            .close-btn { display: block; }
-            .content-card { padding: 20px; }
-            .image-gallery { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (min-width: 769px) { .sidebar { left: 0; } .menu-toggle { display: none; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .main-content { padding: 15px; padding-top: 70px; } .close-btn { display: block; } .content-card { padding: 20px; } .image-gallery { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -134,7 +88,7 @@
 
     <div class="main-content">
         <article class="content-card">
-            <div class="bab-title">BAB: KABEL JARINGAN</div>
+            <div class="bab-title">BAB: KABEL JARINGAN (BAGIAN 1)</div>
             <h1>"Urat Nadi Dunia Digital"</h1>
 
             <div class="intro-box">
@@ -145,119 +99,47 @@
 
             <h2>🔌 1. APA ITU KABEL JARINGAN?</h2>
             <p><strong>📖 Definisi Sederhana:</strong> Kabel jaringan adalah media fisik yang digunakan untuk menghubungkan perangkat komputer agar bisa saling bertukar data.</p>
-            <p><strong>Contoh Penggunaan:</strong> Komputer ke komputer, komputer ke router, router ke internet.</p>
+            <p><strong>Contoh Penggunaan:</strong></p>
+            <ul>
+                <li>Komputer ke komputer</li>
+                <li>Komputer ke router</li>
+                <li>Router ke internet</li>
+            </ul>
 
             <h3>1. Kabel UTP (Unshielded Twisted Pair)</h3>
             <p>Ini adalah kabel yang paling sering kita temui di sekolah. Ciri-ciri: Warna biasanya biru, ujungnya pakai konektor RJ45, murah dan mudah dibuat sendiri.</p>
             <p>✔ Kelebihan: Harga terjangkau, mudah dipasang, cocok untuk praktik siswa.<br>❌ Kekurangan: Jarak terbatas (±100 meter), mudah terganggu sinyal listrik.</p>
             <div class="image-gallery">
-                <img src="../img/p4/utp-1.jpg" alt="Kabel UTP 1">
-                <img src="../img/p4/utp-2.jpg" alt="Kabel UTP 2">
-                <img src="../img/p4/utp-3.jpg" alt="Kabel UTP 3">
-                <img src="../img/p4/utp-4.jpg" alt="Kabel UTP 4">
-                <img src="../img/p4/utp-5.jpg" alt="Kabel UTP 5">
-                <img src="../img/p4/utp-6.jpg" alt="Kabel UTP 6">
+                <img src="../img/p4/utp-1.jpg" alt="UTP 1">
+                <img src="../img/p4/utp-2.jpg" alt="UTP 2">
+                <img src="../img/p4/utp-3.jpg" alt="UTP 3">
+                <img src="../img/p4/utp-4.jpg" alt="UTP 4">
+                <img src="../img/p4/utp-5.jpg" alt="UTP 5">
+                <img src="../img/p4/utp-6.jpg" alt="UTP 6">
             </div>
 
             <h3>2. Kabel Coaxial</h3>
             <p>Digunakan pada jaringan lama dan TV kabel:</p>
             <div class="image-gallery">
-                <img src="../img/p4/coaxial-1.jpg" alt="Kabel Coaxial 1">
-                <img src="../img/p4/coaxial-2.jpg" alt="Kabel Coaxial 2">
-                <img src="../img/p4/coaxial-3.jpg" alt="Kabel Coaxial 3">
-                <img src="../img/p4/coaxial-4.jpg" alt="Kabel Coaxial 4">
-            </div>
-
-            <h3>3. Kabel Fiber Optic (FO)</h3>
-            <p>Nah, ini yang paling menarik dan penting untuk masa depan:</p>
-            <div class="image-gallery">
-                <img src="../img/p4/fo-1.jpg" alt="Fiber Optic 1">
-                <img src="../img/p4/fo-2.jpg" alt="Fiber Optic 2">
-                <img src="../img/p4/fo-3.jpg" alt="Fiber Optic 3">
-                <img src="../img/p4/fo-4.jpg" alt="Fiber Optic 4">
-            </div>
-
-            <h2>💡 2. KABEL FIBER OPTIC – TEKNOLOGI MASA DEPAN</h2>
-            <p><strong>📖 Apa itu Fiber Optic?</strong></p>
-            <p>Fiber Optic adalah kabel jaringan yang menggunakan cahaya untuk mengirim data, bukan listrik.</p>
-            
-            <div class="highlight-box">
-                <p>👉 <strong>Bayangkan:</strong></p>
-                <p>Kabel biasa = kirim data pakai listrik</p>
-                <p>Fiber optic = kirim data pakai cahaya (super cepat)</p>
-            </div>
-
-            <p><strong>⚡ Kenapa Harus Pakai Fiber Optic?</strong></p>
-            <p>Mari kita bahas pelan-pelan, seperti cerita di kelas.</p>
-
-            <p><strong>🚀 1. Kecepatan Sangat Tinggi</strong></p>
-            <p>Fiber optic bisa mencapai: Mbps → Gbps → bahkan Tbps. Itulah kenapa WiFi rumah sekarang bisa 100 Mbps atau lebih.</p>
-
-            <p><strong>📏 2. Jarak Jauh Tanpa Gangguan</strong></p>
-            <p>UTP: ±100 meter | FO: bisa puluhan kilometer. Makanya FO dipakai untuk: Antar kota, Antar pulau, Bahkan kabel bawah laut!</p>
-
-            <p><strong>🔒 3. Tidak Terpengaruh Gangguan Listrik</strong></p>
-            <p>Kalau kabel biasa bisa terganggu: Petir, Mesin listrik, Tegangan tinggi. Fiber optic? 👉 <strong>Aman, karena pakai cahaya.</strong></p>
-
-            <p><strong>🔐 4. Lebih Aman</strong></p>
-            <p>Sulit disadap karena: Tidak memancarkan sinyal listrik, Harus dipotong dulu untuk dibobol.</p>
-
-            <p><strong>🌱 5. Lebih Tahan Masa Depan</strong></p>
-            <p>Semua perkembangan jaringan sekarang: Internet cepat, Smart city, IoT. 👉 <strong>Semuanya butuh FO.</strong></p>
-
-            <h2>🛠️ 3. ALAT-ALAT YANG DIGUNAKAN PADA FIBER OPTIC</h2>
-            <p>Sekarang kita masuk ke dunia teknisi profesional.</p>
-            
-            <div class="tool-section">
-                <h3>1. Fusion Splicer</h3>
-                <p>Alat untuk menyambung kabel FO dengan presisi tinggi. 👉 Cara kerja: Ujung kabel dilelehkan; Disambung dengan cahaya.</p>
-                <div class="image-gallery">
-                    <img src="../img/p4/splicer-1.jpg" alt="Fusion Splicer 1">
-                    <img src="../img/p4/splicer-2.jpg" alt="Fusion Splicer 2">
-                    <img src="../img/p4/splicer-3.jpg" alt="Fusion Splicer 3">
-                    <img src="../img/p4/splicer-4.jpg" alt="Fusion Splicer 4">
-                </div>
-            </div>
-
-            <div class="tool-section">
-                <h3>2. Fiber Cleaver</h3>
-                <p>Untuk memotong kabel FO dengan sangat rapi sebelum disambung.</p>
-                <div class="image-gallery">
-                    <img src="../img/p4/cleaver-1.jpg" alt="Fiber Cleaver 1">
-                    <img src="../img/p4/cleaver-2.jpg" alt="Fiber Cleaver 2">
-                    <img src="../img/p4/cleaver-3.jpg" alt="Fiber Cleaver 3">
-                    <img src="../img/p4/cleaver-4.jpg" alt="Fiber Cleaver 4">
-                    <img src="../img/p4/cleaver-5.jpg" alt="Fiber Cleaver 5">
-                </div>
-            </div>
-
-            <div class="tool-section">
-                <h3>3. Optical Power Meter (OPM) & OTDR</h3>
-                <p><strong>OPM:</strong> Mengukur kekuatan sinyal cahaya. | <strong>OTDR:</strong> Mengetahui titik putus kabel dan mengukur jarak gangguan.</p>
-                <p><strong>🔌 Media Converter / SFP Module:</strong> Digunakan untuk mengubah sinyal FO → LAN (UTP).</p>
-                <div class="image-gallery">
-                    <img src="../img/p4/opm-otdr-1.jpg" alt="OPM OTDR 1">
-                    <img src="../img/p4/opm-otdr-2.jpg" alt="OPM OTDR 2">
-                    <img src="../img/p4/opm-otdr-3.jpg" alt="OPM OTDR 3">
-                    <img src="../img/p4/opm-otdr-4.jpg" alt="OPM OTDR 4">
-                </div>
+                <img src="../img/p4/coaxial-1.jpg" alt="Coaxial 1">
+                <img src="../img/p4/coaxial-2.jpg" alt="Coaxial 2">
+                <img src="../img/p4/coaxial-3.jpg" alt="Coaxial 3">
+                <img src="../img/p4/coaxial-4.jpg" alt="Coaxial 4">
             </div>
 
             <div class="nav-buttons">
-                <a href="index.html" class="btn btn-home"><i class="fas fa-arrow-left"></i> Kembali ke Daftar</a>
-                <a href="pertemuan5.html" class="btn btn-next">Pertemuan Selanjutnya <i class="fas fa-arrow-right"></i></a>
+                <a href="index.html" class="btn btn-home"><i class="fas fa-arrow-left"></i> Kembali</a>
+                <a href="pertemuan4-2.html" class="btn btn-next">Halaman Berikutnya (Fiber Optic) <i class="fas fa-arrow-right"></i></a>
             </div>
         </article>
 
         <footer style="color: #888; font-size: 13px; margin-bottom: 20px;">
-            ©2025 Developed by Helmi Yunar | SMKN 7 LUWU
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
         </footer>
     </div>
 
     <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
     </script>
 </body>
 </html>
