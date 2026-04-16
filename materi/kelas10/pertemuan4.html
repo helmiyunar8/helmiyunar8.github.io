@@ -45,7 +45,7 @@
         .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
 
         .content-card {
-            max-width: 900px; width: 100%; background: var(--white); border-radius: 15px;
+            max-width: 1000px; width: 100%; background: var(--white); border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
             padding: 40px; margin-bottom: 30px;
         }
@@ -53,16 +53,37 @@
         /* --- TYPOGRAPHY --- */
         .bab-title { background: var(--gold); color: white; display: inline-block; padding: 8px 20px; border-radius: 5px; font-weight: 800; margin-bottom: 15px; }
         h1 { font-size: 28px; margin-bottom: 20px; color: #222; }
-        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
-        h3 { margin: 20px 0 10px 0; color: #444; display: flex; align-items: center; gap: 10px; }
+        h2 { color: var(--gold); margin: 35px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
+        h3 { margin: 25px 0 10px 0; color: #444; font-weight: 700; }
         p { line-height: 1.8; margin-bottom: 15px; text-align: justify; }
+
+        /* --- IMAGE GALLERY GRID --- */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .image-gallery img:hover { transform: scale(1.05); border-color: var(--gold); }
 
         /* --- STYLED BOXES --- */
         .intro-box { background: #fffcf0; border: 1px dashed var(--gold); padding: 20px; border-radius: 10px; margin-bottom: 25px; }
         .highlight-box { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid #ddd; }
-        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .tool-card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 10px; transition: 0.3s; }
-        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: var(--gold); }
+        
+        .tool-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
 
         /* --- BUTTONS --- */
         .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
@@ -84,6 +105,7 @@
             .main-content { padding: 15px; padding-top: 70px; }
             .close-btn { display: block; }
             .content-card { padding: 20px; }
+            .image-gallery { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -114,57 +136,74 @@
 
             <div class="intro-box">
                 <p><strong>🌍 Pendahuluan: Kita Tidak Pernah Benar-Benar “Offline”</strong></p>
-                <p>Coba bayangkan satu hari tanpa internet. Tidak ada WhatsApp, YouTube, atau Google. Apa yang sebenarnya menghubungkan semua itu?</p>
-                <p>Jawabannya bukan sekadar “internet”, tetapi <strong>jaringan</strong>. Dan di dalamnya, ada komponen vital: ⚡ <strong>KABEL JARINGAN</strong>.</p>
+                <p>Jawabannya bukan sekadar “internet”, tetapi <strong>jaringan</strong>. Komponen vitalnya adalah ⚡ <strong>KABEL JARINGAN</strong>.</p>
             </div>
 
             <h2>🔌 1. APA ITU KABEL JARINGAN?</h2>
-            <p>Kabel jaringan adalah media fisik yang digunakan untuk menghubungkan perangkat komputer agar bisa saling bertukar data.</p>
+            <p>Media fisik untuk menghubungkan perangkat komputer agar bisa saling bertukar data.</p>
+
+            <h3>1. Kabel UTP (Unshielded Twisted Pair)</h3>
+            <p>Paling sering ditemui di lab komputer sekolah. Berikut adalah visualisasi kabel UTP, susunan warna, dan konektor RJ45:</p>
+            <div class="image-gallery">
+                <img src="img/p4/utp-1.jpg" alt="Kabel UTP 1">
+                <img src="img/p4/utp-2.jpg" alt="Kabel UTP 2">
+                <img src="img/p4/utp-3.jpg" alt="Kabel UTP 3">
+                <img src="img/p4/utp-4.jpg" alt="Kabel UTP 4">
+                <img src="img/p4/utp-5.jpg" alt="Kabel UTP 5">
+                <img src="img/p4/utp-6.jpg" alt="Kabel UTP 6">
+            </div>
+
+            <h3>2. Kabel Coaxial</h3>
+            <p>Digunakan pada jaringan lama dan sistem TV kabel/CCTV:</p>
+            <div class="image-gallery">
+                <img src="img/p4/coaxial-1.jpg" alt="Kabel Coaxial 1">
+                <img src="img/p4/coaxial-2.jpg" alt="Kabel Coaxial 2">
+                <img src="img/p4/coaxial-3.jpg" alt="Kabel Coaxial 3">
+                <img src="img/p4/coaxial-4.jpg" alt="Kabel Coaxial 4">
+            </div>
+
+            <h3>3. Kabel Fiber Optic (FO)</h3>
+            <p>Teknologi inti internet cepat masa kini yang menggunakan serat kaca:</p>
+            <div class="image-gallery">
+                <img src="img/p4/fo-1.jpg" alt="Fiber Optic 1">
+                <img src="img/p4/fo-2.jpg" alt="Fiber Optic 2">
+                <img src="img/p4/fo-3.jpg" alt="Fiber Optic 3">
+                <img src="img/p4/fo-4.jpg" alt="Fiber Optic 4">
+            </div>
+
+            <h2>🛠️ 2. ALAT KERJA FIBER OPTIC</h2>
             
-            <div class="highlight-box">
-                <strong>Contoh Penggunaan:</strong>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:var(--gold)"></i> Komputer ke komputer</li>
-                    <li><i class="fas fa-check-circle" style="color:var(--gold)"></i> Komputer ke router</li>
-                    <li><i class="fas fa-check-circle" style="color:var(--gold)"></i> Router ke internet</li>
-                </ul>
+            <div class="tool-section">
+                <h3>1. Fusion Splicer</h3>
+                <p>Alat canggih untuk menyambung serat kaca dengan cara peleburan.</p>
+                <div class="image-gallery">
+                    <img src="img/p4/splicer-1.jpg" alt="Fusion Splicer 1">
+                    <img src="img/p4/splicer-2.jpg" alt="Fusion Splicer 2">
+                    <img src="img/p4/splicer-3.jpg" alt="Fusion Splicer 3">
+                    <img src="img/p4/splicer-4.jpg" alt="Fusion Splicer 4">
+                </div>
             </div>
 
-            <h3><i class="fas fa-microchip"></i> Jenis-Jenis Kabel Jaringan</h3>
-            <p><strong>1. Kabel UTP (Unshielded Twisted Pair)</strong></p>
-            <p>Kabel yang paling sering kita temui di sekolah. Ciri utamanya menggunakan konektor RJ45 dan warna biasanya biru.</p>
-
-            <p><strong>2. Kabel Coaxial</strong></p>
-            <p>Digunakan pada jaringan lama dan sistem TV kabel.</p>
-
-            <p><strong>3. Kabel Fiber Optic (FO)</strong></p>
-            <p>Teknologi tercanggih saat ini yang menggunakan media cahaya.</p>
-
-            <h2>💡 2. KABEL FIBER OPTIC – TEKNOLOGI MASA DEPAN</h2>
-            <div class="highlight-box" style="border-left-color: var(--gold);">
-                <p>Fiber Optic adalah kabel jaringan yang menggunakan <strong>cahaya</strong> untuk mengirim data, bukan listrik.</p>
-                <p><em>Bayangkan: Kabel biasa = Listrik | Fiber Optic = Cahaya (Super Cepat!)</em></p>
+            <div class="tool-section">
+                <h3>2. Fiber Cleaver</h3>
+                <p>Pemotong presisi agar permukaan kaca rata sempurna sebelum disambung.</p>
+                <div class="image-gallery">
+                    <img src="img/p4/cleaver-1.jpg" alt="Fiber Cleaver 1">
+                    <img src="img/p4/cleaver-2.jpg" alt="Fiber Cleaver 2">
+                    <img src="img/p4/cleaver-3.jpg" alt="Fiber Cleaver 3">
+                    <img src="img/p4/cleaver-4.jpg" alt="Fiber Cleaver 4">
+                    <img src="img/p4/cleaver-5.jpg" alt="Fiber Cleaver 5">
+                </div>
             </div>
 
-            <h3>🚀 Keunggulan Fiber Optic:</h3>
-            <p><strong>1. Kecepatan Sangat Tinggi:</strong> Mencapai satuan Gbps hingga Tbps.</p>
-            <p><strong>2. Jarak Jauh:</strong> UTP hanya ±100m, sedangkan FO bisa mencapai puluhan kilometer.</p>
-            <p><strong>3. Kebal Gangguan Listrik:</strong> Tidak terpengaruh petir atau tegangan tinggi karena menggunakan cahaya.</p>
-            <p><strong>4. Keamanan:</strong> Sangat sulit disadap karena tidak memancarkan sinyal listrik.</p>
-
-            <h2>🛠️ 3. ALAT KERJA FIBER OPTIC</h2>
-            <div class="tool-grid">
-                <div class="tool-card">
-                    <h3><i class="fas fa-plug"></i> Fusion Splicer</h3>
-                    <p>Alat untuk menyambung ujung kabel FO dengan cara melelehkannya menggunakan panas presisi tinggi.</p>
-                </div>
-                <div class="tool-card">
-                    <h3><i class="fas fa-cut"></i> Fiber Cleaver</h3>
-                    <p>Pemotong khusus agar ujung kaca kabel FO terpotong rapi dan rata.</p>
-                </div>
-                <div class="tool-card">
-                    <h3><i class="fas fa-bolt"></i> OPM & OTDR</h3>
-                    <p>OPM mengukur kekuatan cahaya, sedangkan OTDR mendeteksi titik putus kabel pada jarak jauh.</p>
+            <div class="tool-section">
+                <h3>3. OPM & OTDR</h3>
+                <p>Alat ukur daya (OPM) dan alat deteksi gangguan/jarak putus (OTDR).</p>
+                <div class="image-gallery">
+                    <img src="img/p4/opm-otdr-1.jpg" alt="OPM OTDR 1">
+                    <img src="img/p4/opm-otdr-2.jpg" alt="OPM OTDR 2">
+                    <img src="img/p4/opm-otdr-3.jpg" alt="OPM OTDR 3">
+                    <img src="img/p4/opm-otdr-4.jpg" alt="OPM OTDR 4">
                 </div>
             </div>
 
