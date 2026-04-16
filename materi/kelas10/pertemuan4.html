@@ -56,6 +56,9 @@
         h2 { color: var(--gold); margin: 35px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
         h3 { margin: 25px 0 10px 0; color: #444; font-weight: 700; }
         p { line-height: 1.8; margin-bottom: 15px; text-align: justify; }
+        ul { margin-bottom: 15px; padding-left: 20px; list-style-type: none; }
+        ul li { margin-bottom: 8px; position: relative; }
+        ul li::before { content: "•"; color: var(--gold); font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
 
         /* --- IMAGE GALLERY GRID --- */
         .image-gallery {
@@ -81,7 +84,7 @@
 
         /* --- STYLED BOXES --- */
         .intro-box { background: #fffcf0; border: 1px dashed var(--gold); padding: 20px; border-radius: 10px; margin-bottom: 25px; }
-        .highlight-box { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid #ddd; }
+        .highlight-box { background: #f8f9fa; border-radius: 10px; padding: 20px; margin: 15px 0; border-left: 5px solid var(--gold); }
         
         .tool-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
 
@@ -136,14 +139,17 @@
 
             <div class="intro-box">
                 <p><strong>🌍 Pendahuluan: Kita Tidak Pernah Benar-Benar “Offline”</strong></p>
-                <p>Jawabannya bukan sekadar “internet”, tetapi <strong>jaringan</strong>. Komponen vitalnya adalah ⚡ <strong>KABEL JARINGAN</strong>.</p>
+                <p>Coba bayangkan satu hari tanpa internet. Tidak ada WhatsApp, YouTube, atau Google, bahkan tidak bisa login CBT sekolah. Apa yang sebenarnya menghubungkan semua itu?</p>
+                <p>Jawabannya bukan sekadar “internet”, tetapi <strong>jaringan</strong>. Dan di dalam jaringan itu, ada satu komponen vital: ⚡ <strong>KABEL JARINGAN</strong>. Tanpa kabel jaringan, data tidak akan bisa berpindah dengan stabil, cepat, dan aman.</p>
             </div>
 
             <h2>🔌 1. APA ITU KABEL JARINGAN?</h2>
-            <p>Media fisik untuk menghubungkan perangkat komputer agar bisa saling bertukar data.</p>
+            <p><strong>📖 Definisi Sederhana:</strong> Kabel jaringan adalah media fisik yang digunakan untuk menghubungkan perangkat komputer agar bisa saling bertukar data.</p>
+            <p><strong>Contoh Penggunaan:</strong> Komputer ke komputer, komputer ke router, router ke internet.</p>
 
             <h3>1. Kabel UTP (Unshielded Twisted Pair)</h3>
-            <p>Paling sering ditemui di lab komputer sekolah. Berikut adalah visualisasi kabel UTP, susunan warna, dan konektor RJ45:</p>
+            <p>Ini adalah kabel yang paling sering kita temui di sekolah. Ciri-ciri: Warna biasanya biru, ujungnya pakai konektor RJ45, murah dan mudah dibuat sendiri.</p>
+            <p>✔ Kelebihan: Harga terjangkau, mudah dipasang, cocok untuk praktik siswa.<br>❌ Kekurangan: Jarak terbatas (±100 meter), mudah terganggu sinyal listrik.</p>
             <div class="image-gallery">
                 <img src="../img/p4/utp-1.jpg" alt="Kabel UTP 1">
                 <img src="../img/p4/utp-2.jpg" alt="Kabel UTP 2">
@@ -154,7 +160,7 @@
             </div>
 
             <h3>2. Kabel Coaxial</h3>
-            <p>Digunakan pada jaringan lama dan sistem TV kabel/CCTV:</p>
+            <p>Digunakan pada jaringan lama dan TV kabel:</p>
             <div class="image-gallery">
                 <img src="../img/p4/coaxial-1.jpg" alt="Kabel Coaxial 1">
                 <img src="../img/p4/coaxial-2.jpg" alt="Kabel Coaxial 2">
@@ -163,7 +169,7 @@
             </div>
 
             <h3>3. Kabel Fiber Optic (FO)</h3>
-            <p>Teknologi inti internet cepat masa kini yang menggunakan serat kaca:</p>
+            <p>Nah, ini yang paling menarik dan penting untuk masa depan:</p>
             <div class="image-gallery">
                 <img src="../img/p4/fo-1.jpg" alt="Fiber Optic 1">
                 <img src="../img/p4/fo-2.jpg" alt="Fiber Optic 2">
@@ -171,11 +177,40 @@
                 <img src="../img/p4/fo-4.jpg" alt="Fiber Optic 4">
             </div>
 
-            <h2>🛠️ 2. ALAT KERJA FIBER OPTIC</h2>
+            <h2>💡 2. KABEL FIBER OPTIC – TEKNOLOGI MASA DEPAN</h2>
+            <p><strong>📖 Apa itu Fiber Optic?</strong></p>
+            <p>Fiber Optic adalah kabel jaringan yang menggunakan cahaya untuk mengirim data, bukan listrik.</p>
+            
+            <div class="highlight-box">
+                <p>👉 <strong>Bayangkan:</strong></p>
+                <p>Kabel biasa = kirim data pakai listrik</p>
+                <p>Fiber optic = kirim data pakai cahaya (super cepat)</p>
+            </div>
+
+            <p><strong>⚡ Kenapa Harus Pakai Fiber Optic?</strong></p>
+            <p>Mari kita bahas pelan-pelan, seperti cerita di kelas.</p>
+
+            <p><strong>🚀 1. Kecepatan Sangat Tinggi</strong></p>
+            <p>Fiber optic bisa mencapai: Mbps → Gbps → bahkan Tbps. Itulah kenapa WiFi rumah sekarang bisa 100 Mbps atau lebih.</p>
+
+            <p><strong>📏 2. Jarak Jauh Tanpa Gangguan</strong></p>
+            <p>UTP: ±100 meter | FO: bisa puluhan kilometer. Makanya FO dipakai untuk: Antar kota, Antar pulau, Bahkan kabel bawah laut!</p>
+
+            <p><strong>🔒 3. Tidak Terpengaruh Gangguan Listrik</strong></p>
+            <p>Kalau kabel biasa bisa terganggu: Petir, Mesin listrik, Tegangan tinggi. Fiber optic? 👉 <strong>Aman, karena pakai cahaya.</strong></p>
+
+            <p><strong>🔐 4. Lebih Aman</strong></p>
+            <p>Sulit disadap karena: Tidak memancarkan sinyal listrik, Harus dipotong dulu untuk dibobol.</p>
+
+            <p><strong>🌱 5. Lebih Tahan Masa Depan</strong></p>
+            <p>Semua perkembangan jaringan sekarang: Internet cepat, Smart city, IoT. 👉 <strong>Semuanya butuh FO.</strong></p>
+
+            <h2>🛠️ 3. ALAT-ALAT YANG DIGUNAKAN PADA FIBER OPTIC</h2>
+            <p>Sekarang kita masuk ke dunia teknisi profesional.</p>
             
             <div class="tool-section">
                 <h3>1. Fusion Splicer</h3>
-                <p>Alat untuk menyambung kabel FO dengan presisi tinggi.👉 Cara kerja: Ujung kabel dilelehkan; Disambung dengan cahaya.</p>
+                <p>Alat untuk menyambung kabel FO dengan presisi tinggi. 👉 Cara kerja: Ujung kabel dilelehkan; Disambung dengan cahaya.</p>
                 <div class="image-gallery">
                     <img src="../img/p4/splicer-1.jpg" alt="Fusion Splicer 1">
                     <img src="../img/p4/splicer-2.jpg" alt="Fusion Splicer 2">
@@ -186,7 +221,7 @@
 
             <div class="tool-section">
                 <h3>2. Fiber Cleaver</h3>
-                <p>Pemotong presisi agar permukaan kaca rata sempurna sebelum disambung.</p>
+                <p>Untuk memotong kabel FO dengan sangat rapi sebelum disambung.</p>
                 <div class="image-gallery">
                     <img src="../img/p4/cleaver-1.jpg" alt="Fiber Cleaver 1">
                     <img src="../img/p4/cleaver-2.jpg" alt="Fiber Cleaver 2">
@@ -197,8 +232,9 @@
             </div>
 
             <div class="tool-section">
-                <h3>3. OPM & OTDR</h3>
-                <p>Alat ukur daya (OPM) dan alat deteksi gangguan/jarak putus (OTDR).</p>
+                <h3>3. Optical Power Meter (OPM) & OTDR</h3>
+                <p><strong>OPM:</strong> Mengukur kekuatan sinyal cahaya. | <strong>OTDR:</strong> Mengetahui titik putus kabel dan mengukur jarak gangguan.</p>
+                <p><strong>🔌 Media Converter / SFP Module:</strong> Digunakan untuk mengubah sinyal FO → LAN (UTP).</p>
                 <div class="image-gallery">
                     <img src="../img/p4/opm-otdr-1.jpg" alt="OPM OTDR 1">
                     <img src="../img/p4/opm-otdr-2.jpg" alt="OPM OTDR 2">
