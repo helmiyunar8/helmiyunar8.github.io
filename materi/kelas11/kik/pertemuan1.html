@@ -8,176 +8,105 @@
     
     <style>
         :root {
-            --gold: #D4AF37;
-            --dark-gold: #B8860B;
+            --gold: #b8860b;
             --white: #ffffff;
-            --bg-light: #f4f7f6;
-            --text-dark: #222;
-            --sidebar-width: 280px;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); }
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--white);
-            height: 100vh;
-            position: fixed;
-            border-right: 1px solid #ddd;
-            transition: all 0.3s;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
+        /* --- SIDEBAR EMAS SAMPING --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1100; left: -250px; 
+            display: flex; flex-direction: column;
         }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
 
-        .sidebar-header {
-            padding: 35px 20px;
-            text-align: center;
-            border-bottom: 2px solid #f9f9f9;
-        }
-
-        .sidebar-header img { width: 75px; margin-bottom: 12px; }
-        .sidebar-header h3 { font-size: 22px; color: var(--gold); font-weight: 800; }
-
-        .nav-menu { padding: 25px 0; flex-grow: 1; }
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
-            display: flex;
-            align-items: center;
-            padding: 18px 25px;
-            color: #444;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 18px;
-            font-weight: 500;
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
         }
-        .nav-item i { margin-right: 18px; width: 25px; text-align: center; font-size: 20px; }
-        .nav-item:hover, .nav-item.active {
-            background: #fffcf0; color: var(--gold); border-left: 6px solid var(--gold);
-        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: #fffcf0; color: var(--gold); border-left: 5px solid var(--gold); }
 
-        /* MAIN CONTENT */
-        .main-content {
-            flex-grow: 1;
-            margin-left: var(--sidebar-width);
-            padding: 25px;
-            width: 100%;
-        }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--gold); display: none; }
 
-        /* TOPBAR */
-        .topbar {
-            background: var(--white);
-            padding: 15px 30px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
 
-        /* AREA MATERI */
+        /* Area Materi (Container Card) */
         .materi-container {
-            background: var(--white);
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            max-width: 900px; width: 100%; background: var(--white); border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 8px solid var(--gold);
+            padding: 40px; margin-bottom: 20px;
         }
 
-        h1 { color: var(--dark-gold); font-size: 32px; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        h2 { color: var(--text-dark); margin: 35px 0 15px; font-size: 24px; position: relative; padding-left: 15px; }
+        /* Header Materi */
+        .header-materi { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; margin-bottom: 30px; }
+        
+        h1 { color: var(--gold); font-size: 28px; margin-bottom: 5px; }
+        h2 { color: var(--text-dark); margin: 35px 0 15px; font-size: 22px; position: relative; padding-left: 15px; }
         h2::before { content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 5px; background: var(--gold); border-radius: 3px; }
         
-        p { line-height: 1.8; color: #444; font-size: 18px; margin-bottom: 20px; text-align: justify; }
+        p { line-height: 1.8; color: #444; font-size: 17px; margin-bottom: 20px; text-align: justify; }
 
         /* BOX KHUSUS */
-        .box {
-            background: #fffdf5;
-            padding: 25px;
-            border-left: 6px solid var(--gold);
-            margin: 30px 0;
-            border-radius: 10px;
-            font-size: 18px;
-        }
-        .box b { color: var(--dark-gold); display: block; margin-bottom: 10px; }
-        .box ul, .box ol { margin-left: 20px; margin-top: 10px; }
+        .box { background: #fffdf5; padding: 25px; border-left: 6px solid var(--gold); margin: 30px 0; border-radius: 10px; font-size: 17px; }
+        .box b { color: var(--gold); display: block; margin-bottom: 10px; font-size: 18px; }
+        .box ul { margin-left: 20px; margin-top: 10px; }
         .box li { margin-bottom: 10px; }
 
         /* SWOT STYLING */
-        .swot-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .swot-item {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .swot-item b { color: var(--gold); }
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
+        .swot-item { background: #f9f9f9; border: 1px solid #eee; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
+        .swot-item:hover { border-color: var(--gold); background: #fffcf0; }
+        .swot-item i { color: var(--gold); font-size: 20px; width: 30px; text-align: center; }
 
         /* TUGAS AREA */
-        .tugas {
-            background: #f0f4f8;
-            border: 2px dashed #ccc;
-            padding: 30px;
-            margin-top: 50px;
-            border-radius: 20px;
-        }
+        .tugas { background: #f4f7fa; border: 2px dashed #b8860b; padding: 30px; margin-top: 50px; border-radius: 20px; }
         .tugas h2::before { background: #444; }
+        .tugas ol { margin-left: 20px; margin-top: 15px; }
+        .tugas li { margin-bottom: 12px; font-size: 16px; color: #333; line-height: 1.6; }
 
-        /* NAVIGASI BAWAH */
-        .nav-bottom {
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-        .btn-nav {
-            background: var(--gold);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-nav:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); }
+        /* FOOTER */
+        .footer { text-align: center; padding: 20px; color: #888; font-size: 12px; margin-top: auto; }
 
-        /* RESPONSIVE */
-        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--gold); }
+        /* TOGGLE MOBILE */
+        .menu-toggle { background: var(--gold); color: white; padding: 8px 12px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1000; }
+
+        @media (min-width: 769px) {
+            .sidebar { left: 0; }
+            .menu-toggle { display: none; }
+            .main-content { margin-left: 250px; }
+        }
 
         @media (max-width: 768px) {
-            .sidebar { left: -100%; }
-            .sidebar.active { left: 0; }
-            .main-content { margin-left: 0; padding: 15px; }
-            .menu-toggle { display: block; }
-            .materi-container { padding: 20px; }
+            .main-content { padding: 15px; padding-top: 70px; }
+            .close-btn { display: block; }
             .swot-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 24px; }
+            .materi-container { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
     <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">&times;</div>
         <div class="sidebar-header">
             <img src="../../../asset/logo.png" alt="Logo">
             <h3>LMS TKJ</h3>
-            <p style="font-size: 14px; color: #777; font-weight: 600;">SMKN 7 LUWU</p>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
         </div>
         <div class="nav-menu">
             <a href="../../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
@@ -187,24 +116,19 @@
             <a href="../../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
             <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
             <a href="../../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="../../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
     </nav>
 
     <div class="main-content">
-        <div class="topbar">
-            <div class="menu-toggle" onclick="toggleSidebar()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div style="font-weight: 800; color: var(--gold); font-size: 18px;">KIK KELAS XI: PERTEMUAN 1</div>
-            <div class="user-profile">
-                <span style="font-size: 14px;">Helmi Yunar</span>
-                <i class="fas fa-user-circle" style="font-size: 30px; color: var(--gold);"></i>
-            </div>
-        </div>
-
         <div class="materi-container">
-            <h1>📘 Peluang Usaha</h1>
-            <p style="color:var(--gold); font-weight:bold; margin-top:-10px;">Produk Kreatif & Kewirausahaan</p>
+            <div class="header-materi">
+                <div>
+                    <h1>Peluang Usaha</h1>
+                    <p style="color:var(--gold); font-weight:bold; margin-top:0;">Produk Kreatif & Kewirausahaan</p>
+                </div>
+                <a href="index.html" style="text-decoration:none; color:var(--gold); font-weight:bold; font-size:14px;">← KEMBALI</a>
+            </div>
 
             <div class="box">
                 <b><i class="fas fa-bullseye"></i> Tujuan Pembelajaran:</b>
@@ -250,7 +174,7 @@
 
             <div class="tugas">
                 <h2 style="margin-top:0;"><i class="fas fa-tasks" style="margin-right:10px;"></i> Tugas Mandiri</h2>
-                <p style="font-size: 16px; margin-bottom: 10px;">Kerjakan pertanyaan berikut di buku tugas Anda:</p>
+                <p style="font-size: 16px; margin-bottom: 10px; font-weight:bold;">Kerjakan pertanyaan berikut di buku tugas Anda:</p>
                 <ol>
                     <li>Jelaskan apa yang dimaksud dengan peluang usaha!</li>
                     <li>Sebutkan 3 faktor utama keberhasilan sebuah usaha!</li>
@@ -259,9 +183,15 @@
                 </ol>
             </div>
 
-            <div class="nav-bottom">
-                <a href="index.html" class="btn-nav"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Pertemuan</a>
+            <div style="margin-top: 50px; text-align: center;">
+                <a href="index.html" style="background:var(--gold); color:white; padding:12px 25px; border-radius:10px; text-decoration:none; font-weight:bold;">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Pertemuan
+                </a>
             </div>
+        </div>
+
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
         </div>
     </div>
 
