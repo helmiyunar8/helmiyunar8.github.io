@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 5-3: Jenis-Jenis Operating System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --light-gold: #F9F6EE;
+            --text-dark: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Nav Menu Styling */
+        .nav-menu {
+            display: flex;
+            flex-wrap: wrap;
+            background: var(--white);
+            padding: 10px;
+            gap: 10px;
+            justify-content: center;
+            border-bottom: 3px solid var(--primary-gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #555;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid transparent;
+        }
+
+        .nav-item i {
+            color: var(--primary-gold);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--light-gold);
+            border-color: var(--primary-gold);
+            color: var(--dark-gold);
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--primary-gold);
+        }
+
+        .card-header {
+            padding: 25px;
+            background: linear-gradient(to right, #fff, var(--light-gold));
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--dark-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        /* Content Styling */
+        .os-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fafafa;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .os-item h3 {
+            margin-top: 0;
+            color: var(--dark-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .os-item ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .os-item ul li {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .os-item ul li::before {
+            content: "•";
+            color: var(--primary-gold);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .conclusion {
+            background: var(--light-gold);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px dashed var(--primary-gold);
+        }
+
+        .conclusion h3 {
+            margin-top: 0;
+            color: var(--dark-gold);
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn-nav {
+            padding: 10px 25px;
+            background: var(--primary-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: var(--dark-gold);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .nav-menu { gap: 5px; }
+            .nav-item { font-size: 0.75rem; padding: 6px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-menu">
+        <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Beranda</a>
+        <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
+        <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+        <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+        <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+        <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+        <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+        <a href="arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1><i class="fas fa-laptop-code"></i> JENIS-JENIS OPERATING SYSTEM</h1>
+            </div>
+            
+            <div class="card-content">
+                <p>Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
+
+                <div class="os-item">
+                    <h3><i class="fab fa-windows"></i> 1. Windows</h3>
+                    <p>Windows adalah OS yang paling umum digunakan.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul>
+                        <li>Tampilan mudah dipahami</li>
+                        <li>Banyak digunakan di sekolah dan kantor</li>
+                        <li>Bisa menjalankan banyak aplikasi</li>
+                    </ul>
+                </div>
+
+                <div class="os-item">
+                    <h3><i class="fab fa-chrome"></i> 2. Chrome OS</h3>
+                    <p>Chrome OS adalah OS yang digunakan pada Chromebook di sekolah kalian.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul>
+                        <li>Ringan dan cepat</li>
+                        <li>Fokus pada internet</li>
+                        <li>Banyak menggunakan browser</li>
+                    </ul>
+                </div>
+
+                <div class="os-item">
+                    <h3><i class="fab fa-android"></i> 3. Android</h3>
+                    <p>Android adalah OS yang ada di HP kalian.</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul>
+                        <li>Digunakan di smartphone</li>
+                        <li>Banyak aplikasi</li>
+                        <li>Mudah digunakan</li>
+                    </ul>
+                </div>
+
+                <div class="os-item">
+                    <h3><i class="fab fa-apple"></i> 4. macOS</h3>
+                    <p>Digunakan pada laptop Apple (MacBook)</p>
+                    <strong>Ciri-ciri:</strong>
+                    <ul>
+                        <li>Tampilan elegan</li>
+                        <li>Stabil dan cepat</li>
+                        <li>Digunakan di kalangan profesional</li>
+                    </ul>
+                </div>
+
+                <div class="os-item">
+                    <h3><i class="fab fa-linux"></i> 5. Linux</h3>
+                    <p>Linux sering digunakan oleh:</p>
+                    <ul>
+                        <li>Programmer</li>
+                        <li>Teknisi jaringan</li>
+                    </ul>
+                    <strong>Ciri-ciri:</strong>
+                    <ul>
+                        <li>Gratis</li>
+                        <li>Aman</li>
+                        <li>Bisa dimodifikasi</li>
+                    </ul>
+                </div>
+
+                <div class="conclusion">
+                    <h3>📌 Kesimpulan Halaman 3</h3>
+                    <p>Ada banyak jenis OS, tetapi semuanya memiliki fungsi yang sama yaitu mengatur komputer agar bisa digunakan.</p>
+                </div>
+
+                <div class="page-nav">
+                    <a href="pertemuan5-2.html" class="btn-nav"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="quiz5.html" class="btn-nav">Kerjakan Quiz <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Helmi Yunar<br>Dikembangkan untuk kemajuan Digitalisasi Sekolah.</p>
+        </div>
+    </div>
+
+</body>
+</html>
