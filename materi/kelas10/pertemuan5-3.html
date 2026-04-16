@@ -3,281 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 5-3: Jenis-Jenis Operating System</title>
+    <title>Pertemuan 5-3: Jenis-Jenis OS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-gold: #D4AF37;
-            --dark-gold: #B8860B;
-            --light-gold: #F9F6EE;
-            --text-dark: #333;
+            --gold-primary: #D4AF37;
+            --gold-dark: #B8860B;
             --white: #ffffff;
+            --bg-light: #f8f9fa;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-light);
             margin: 0;
-            padding: 0;
-            color: var(--text-dark);
-            line-height: 1.6;
+            display: flex;
         }
 
-        /* Nav Menu Styling */
-        .nav-menu {
-            display: flex;
-            flex-wrap: wrap;
-            background: var(--white);
-            padding: 10px;
-            gap: 10px;
-            justify-content: center;
-            border-bottom: 3px solid var(--primary-gold);
-            position: sticky;
-            top: 0;
+        /* SIDEBAR EMAS */
+        .sidebar {
+            height: 100vh;
+            width: 280px;
+            position: fixed;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            top: 0;
+            left: -280px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            border-right: 4px solid var(--gold-primary);
+            transition: 0.4s;
+            padding-top: 20px;
         }
+
+        .sidebar.active { left: 0; }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: var(--gold-primary);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .nav-menu { display: flex; flex-direction: column; padding: 20px 10px; }
 
         .nav-item {
-            text-decoration: none;
-            color: #555;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid transparent;
-        }
-
-        .nav-item i {
-            color: var(--primary-gold);
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: var(--light-gold);
-            border-color: var(--primary-gold);
-            color: var(--dark-gold);
-            font-weight: bold;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 8px solid var(--primary-gold);
-        }
-
-        .card-header {
-            padding: 25px;
-            background: linear-gradient(to right, #fff, var(--light-gold));
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .card-header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--dark-gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-content {
-            padding: 30px;
-        }
-
-        /* Content Styling */
-        .os-item {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            background: #fafafa;
-            border-left: 4px solid var(--primary-gold);
-        }
-
-        .os-item h3 {
-            margin-top: 0;
-            color: var(--dark-gold);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .os-item ul {
-            padding-left: 20px;
-            list-style-type: none;
-        }
-
-        .os-item ul li {
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .os-item ul li::before {
-            content: "•";
-            color: var(--primary-gold);
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .conclusion {
-            background: var(--light-gold);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 40px;
-            border: 1px dashed var(--primary-gold);
-        }
-
-        .conclusion h3 {
-            margin-top: 0;
-            color: var(--dark-gold);
-            font-size: 1.1rem;
-        }
-
-        /* Navigation Buttons */
-        .page-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
-        .btn-nav {
-            padding: 10px 25px;
-            background: var(--primary-gold);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: background 0.3s;
+            padding: 15px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+            border-left: 3px solid transparent;
         }
 
-        .btn-nav:hover {
-            background: var(--dark-gold);
+        .nav-item i { color: var(--gold-primary); width: 20px; }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--gold-primary);
+            color: var(--gold-primary);
         }
 
-        /* Footer */
-        .footer {
+        /* MAIN CONTENT AREA */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            transition: 0.4s;
+            width: 100%;
+        }
+
+        /* TOP BAR */
+        .top-bar {
+            background: var(--white);
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--gold-primary);
+        }
+
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gold-dark);
+            margin-right: 20px;
+        }
+
+        /* CARD MATERI */
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 10px solid var(--gold-primary);
+            overflow: hidden;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card-body { padding: 40px; }
+
+        h1.materi-title {
+            color: var(--gold-dark);
             text-align: center;
-            padding: 30px;
-            color: #888;
-            font-size: 0.85rem;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 15px;
         }
 
-        @media (max-width: 600px) {
-            .nav-menu { gap: 5px; }
-            .nav-item { font-size: 0.75rem; padding: 6px 10px; }
+        /* STYLING BOX OS DENGAN GAMBAR */
+        .os-box {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .os-box:hover { border-color: var(--gold-primary); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        .os-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #f9f9f9;
+            padding: 10px;
+        }
+
+        .os-info { flex: 1; }
+
+        .os-info h3 { color: var(--gold-dark); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+
+        /* OVERLAY UNTUK HP */
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .overlay.active { display: block; }
+
+        /* FOOTER */
+        .footer { text-align: center; padding: 40px 0; color: #777; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .os-box { flex-direction: column; text-align: center; }
+            .card-body { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="nav-menu">
-        <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Beranda</a>
-        <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
-        <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
-        <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
-        <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
-        <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
-        <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
-        <a href="arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+    <div class="overlay" id="overlay" onclick="toggleNav()"></div>
+
+    <div class="sidebar" id="mySidebar">
+        <div class="sidebar-header">
+            <span class="close-btn" onclick="toggleNav()">&times;</span>
+            <div style="width: 80px; height: 80px; background: var(--gold-primary); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div style="color: var(--gold-primary); font-weight: bold;">LMS TKJ 2026</div>
+        </div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Beranda</a>
+            <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
+            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
+            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
+            <a href="arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
     </div>
 
-    <div class="container">
+    <div class="main-content">
+        <div class="top-bar">
+            <i class="fas fa-bars menu-toggle" onclick="toggleNav()"></i>
+            <h2 style="margin: 0; font-size: 1.2rem; color: #555;">SMKN 7 LUWU</h2>
+        </div>
+
         <div class="card">
-            <div class="card-header">
-                <h1><i class="fas fa-laptop-code"></i> JENIS-JENIS OPERATING SYSTEM</h1>
-            </div>
-            
-            <div class="card-content">
-                <p>Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
+            <div class="card-body">
+                <h1 class="materi-title">🖥️ JENIS-JENIS OPERATING SYSTEM</h1>
+                <p style="text-align: center; color: #666;">Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
 
-                <div class="os-item">
-                    <h3><i class="fab fa-windows"></i> 1. Windows</h3>
-                    <p>Windows adalah OS yang paling umum digunakan.</p>
-                    <strong>Ciri-ciri:</strong>
-                    <ul>
-                        <li>Tampilan mudah dipahami</li>
-                        <li>Banyak digunakan di sekolah dan kantor</li>
-                        <li>Bisa menjalankan banyak aplikasi</li>
-                    </ul>
+                <div class="os-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" alt="Windows" class="os-img">
+                    <div class="os-info">
+                        <h3><i class="fab fa-windows"></i> 1. Windows</h3>
+                        <p>Windows adalah OS yang paling umum digunakan.</p>
+                        <strong>Ciri-ciri:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Tampilan mudah dipahami</li>
+                            <li>Banyak digunakan di sekolah dan kantor</li>
+                            <li>Bisa menjalankan banyak aplikasi</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="os-item">
-                    <h3><i class="fab fa-chrome"></i> 2. Chrome OS</h3>
-                    <p>Chrome OS adalah OS yang digunakan pada Chromebook di sekolah kalian.</p>
-                    <strong>Ciri-ciri:</strong>
-                    <ul>
-                        <li>Ringan dan cepat</li>
-                        <li>Fokus pada internet</li>
-                        <li>Banyak menggunakan browser</li>
-                    </ul>
+                <div class="os-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" alt="Chrome OS" class="os-img">
+                    <div class="os-info">
+                        <h3><i class="fab fa-chrome"></i> 2. Chrome OS</h3>
+                        <p>Chrome OS adalah OS yang digunakan pada Chromebook di sekolah kalian.</p>
+                        <strong>Ciri-ciri:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Ringan dan cepat</li>
+                            <li>Fokus pada internet</li>
+                            <li>Banyak menggunakan browser</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="os-item">
-                    <h3><i class="fab fa-android"></i> 3. Android</h3>
-                    <p>Android adalah OS yang ada di HP kalian.</p>
-                    <strong>Ciri-ciri:</strong>
-                    <ul>
-                        <li>Digunakan di smartphone</li>
-                        <li>Banyak aplikasi</li>
-                        <li>Mudah digunakan</li>
-                    </ul>
+                <div class="os-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android" class="os-img">
+                    <div class="os-info">
+                        <h3><i class="fab fa-android"></i> 3. Android</h3>
+                        <p>Android adalah OS yang ada di HP kalian.</p>
+                        <strong>Ciri-ciri:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Digunakan di smartphone</li>
+                            <li>Banyak aplikasi</li>
+                            <li>Mudah digunakan</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="os-item">
-                    <h3><i class="fab fa-apple"></i> 4. macOS</h3>
-                    <p>Digunakan pada laptop Apple (MacBook)</p>
-                    <strong>Ciri-ciri:</strong>
-                    <ul>
-                        <li>Tampilan elegan</li>
-                        <li>Stabil dan cepat</li>
-                        <li>Digunakan di kalangan profesional</li>
-                    </ul>
+                <div class="os-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="macOS" class="os-img">
+                    <div class="os-info">
+                        <h3><i class="fab fa-apple"></i> 4. macOS</h3>
+                        <p>Digunakan pada laptop Apple (MacBook)</p>
+                        <strong>Ciri-ciri:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Tampilan elegan</li>
+                            <li>Stabil dan cepat</li>
+                            <li>Digunakan di kalangan profesional</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="os-item">
-                    <h3><i class="fab fa-linux"></i> 5. Linux</h3>
-                    <p>Linux sering digunakan oleh:</p>
-                    <ul>
-                        <li>Programmer</li>
-                        <li>Teknisi jaringan</li>
-                    </ul>
-                    <strong>Ciri-ciri:</strong>
-                    <ul>
-                        <li>Gratis</li>
-                        <li>Aman</li>
-                        <li>Bisa dimodifikasi</li>
-                    </ul>
+                <div class="os-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux" class="os-img">
+                    <div class="os-info">
+                        <h3><i class="fab fa-linux"></i> 5. Linux</h3>
+                        <p>Linux sering digunakan oleh:</p>
+                        <ul style="margin: 5px 0;">
+                            <li>Programmer</li>
+                            <li>Teknisi jaringan</li>
+                        </ul>
+                        <strong>Ciri-ciri:</strong>
+                        <ul style="margin: 5px 0;">
+                            <li>Gratis</li>
+                            <li>Aman</li>
+                            <li>Bisa dimodifikasi</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="conclusion">
-                    <h3>📌 Kesimpulan Halaman 3</h3>
+                <div style="background: #fffdf0; padding: 20px; border: 1px dashed var(--gold-primary); border-radius: 10px; margin-top: 30px;">
+                    <h4 style="margin-top: 0; color: var(--gold-dark);"><i class="fas fa-lightbulb"></i> Kesimpulan Halaman 3</h4>
                     <p>Ada banyak jenis OS, tetapi semuanya memiliki fungsi yang sama yaitu mengatur komputer agar bisa digunakan.</p>
                 </div>
 
-                <div class="page-nav">
-                    <a href="pertemuan5-2.html" class="btn-nav"><i class="fas fa-arrow-left"></i> Kembali</a>
-                    <a href="quiz5.html" class="btn-nav">Kerjakan Quiz <i class="fas fa-arrow-right"></i></a>
+                <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+                    <a href="pertemuan5-2.html" style="text-decoration: none; color: #777; font-weight: bold;"><i class="fas fa-chevron-left"></i> Kembali</a>
+                    <a href="pertemuan5-4.html" style="background: var(--gold-primary); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);">Halaman 4 <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 Helmi Yunar<br>Dikembangkan untuk kemajuan Digitalisasi Sekolah.</p>
+            <p>&copy; 2026 Helmi Yunar - SMKN 7 LUWU</p>
         </div>
     </div>
 
+    <script>
+        function toggleNav() {
+            document.getElementById("mySidebar").classList.toggle("active");
+            document.getElementById("overlay").classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
