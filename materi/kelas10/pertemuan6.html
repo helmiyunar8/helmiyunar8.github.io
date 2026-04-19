@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 6 - Halaman 1 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
+        }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        .intro-box { background: var(--accent-gold); border: 1px dashed var(--gold); padding: 25px; border-radius: 12px; margin-bottom: 25px; }
+        
+        /* ANALOGY STYLES */
+        .analogy-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 25px 0; }
+        .analogy-box { background: #f8f9fa; padding: 20px; border-radius: 10px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
+        .analogy-box:hover { border-color: var(--gold); }
+        .analogy-box i { font-size: 35px; color: var(--gold); margin-bottom: 10px; }
+
+        .fact-box { background: #fff5f5; border-left: 5px solid #ff4d4d; padding: 20px; border-radius: 10px; margin: 25px 0; color: #b91c1c; }
+        
+        .example-box { 
+            background: #2c3e50; color: #00ff00; padding: 15px; border-radius: 8px; 
+            font-family: 'Courier New', Courier, monospace; font-weight: bold;
+            margin: 15px 0; text-align: center; font-size: 20px;
+        }
+
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn-prev { background: #eee; color: #444; }
+
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .content-card { padding: 25px; } .analogy-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 1 / 6</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">🌍 PERTEMUAN 6</div>
+            <h1>PENGENALAN IP ADDRESS</h1>
+
+            <div class="intro-box">
+                <p><strong>👨‍🏫 Pendahuluan</strong></p>
+                <p>Saat kalian menggunakan internet di lab sekolah, pernahkah kalian berpikir: <em>"Bagaimana bisa Chromebook saya mengirim data ke Chromebook teman saya tanpa tertukar?"</em> atau <em>"Bagaimana HP bisa memanggil alamat Google dengan tepat?"</em></p>
+                <p>Jawabannya adalah karena setiap perangkat memiliki <strong>alamat identitas</strong> yang unik di dalam jaringan. Alamat inilah yang disebut sebagai <strong>IP ADDRESS</strong>.</p>
+            </div>
+
+            <h2>📖 Apa Itu IP Address?</h2>
+            <p><strong>IP Address</strong> (Internet Protocol Address) adalah deretan angka unik yang diberikan kepada setiap perangkat yang terhubung dalam jaringan komputer.</p>
+            <p>Tanpa IP Address, perangkat kalian ibarat orang yang tersesat di tengah hutan tanpa identitas. Perangkat yang membutuhkan IP Address meliputi:</p>
+            <ul style="margin-left: 20px; margin-bottom: 15px; line-height: 2;">
+                <li><i class="fas fa-desktop" style="color: var(--gold);"></i> Komputer & Laptop</li>
+                <li><i class="fas fa-laptop-code" style="color: var(--gold);"></i> Chromebook Sekolah</li>
+                <li><i class="fas fa-mobile-alt" style="color: var(--gold);"></i> Smartphone (HP)</li>
+                <li><i class="fas fa-print" style="color: var(--gold);"></i> Printer Jaringan & Router</li>
+            </ul>
+
+            <h2>🧠 Analogi Sederhana</h2>
+            <p>Agar lebih mudah, mari kita bayangkan jaringan komputer seperti sebuah komplek perumahan:</p>
+            
+            <div class="analogy-container">
+                <div class="analogy-box">
+                    <i class="fas fa-home"></i>
+                    <p><strong>Rumah Anda</strong><br>Ibarat Perangkat Hardware</p>
+                </div>
+                <div class="analogy-box" style="background: var(--accent-gold); border-color: var(--gold);">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p><strong>Alamat Rumah</strong><br>Ibarat IP Address</p>
+                </div>
+            </div>
+
+            <p>👉 <strong>Jika tidak ada alamat:</strong> Kurir paket tidak akan bisa mengirimkan barang ke rumah Anda. Orang lain pun tidak akan bisa menemukan lokasi rumah Anda.</p>
+            <p>👉 <strong>Sama seperti jaringan:</strong> Tanpa IP Address, data/informasi tidak akan tahu ke mana harus pergi dan perangkat tidak bisa saling berkomunikasi.</p>
+
+            <h2>📌 Contoh Wujud IP Address</h2>
+            <p>Biasanya IP Address terdiri dari empat kelompok angka yang dipisahkan oleh titik. Contohnya:</p>
+            <div class="example-box">192.168.1.1</div>
+            <div class="example-box">192.168.1.10</div>
+            <div class="example-box">8.8.8.8 (Google DNS)</div>
+
+            <div class="fact-box">
+                <p><strong>⚠️ Fakta Penting: IP CONFLICT</strong></p>
+                <p>Dalam satu jaringan, setiap perangkat <strong>WAJIB</strong> memiliki IP Address yang berbeda (Unik). Jika ada dua perangkat memiliki IP yang sama, maka akan terjadi <strong>IP Conflict</strong> (Tabrakan IP), yang menyebabkan keduanya tidak bisa berinternet.</p>
+            </div>
+
+            <div class="intro-box" style="border-style: solid; border-color: #eee; background: #fafafa;">
+                <p><strong>📌 Kesimpulan Halaman 1</strong></p>
+                <p>IP Address adalah identitas atau alamat utama dalam dunia jaringan agar semua perangkat bisa saling mengenali dan mengirim data dengan tepat sasaran.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-prev">Daftar Materi</a>
+                <a href="pertemuan6-2.html" class="btn btn-next">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
