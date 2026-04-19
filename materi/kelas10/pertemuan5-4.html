@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 5 - Halaman 4 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
+        }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        /* PRAKTIK STYLES */
+        .tujuan-box { background: var(--accent-gold); padding: 25px; border-radius: 12px; border: 1px solid #ffeeba; margin: 20px 0; }
+        
+        .step-container { margin-top: 25px; }
+        .step-card { 
+            background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 20px; margin-bottom: 20px;
+            display: flex; gap: 20px; align-items: flex-start;
+        }
+        .step-number { 
+            background: var(--gold); color: #fff; min-width: 40px; height: 40px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;
+        }
+        .step-content h4 { color: var(--gold); margin-bottom: 10px; }
+
+        .input-sim {
+            border: none; border-bottom: 2px dashed var(--gold); background: transparent;
+            width: 200px; padding: 5px; outline: none; font-style: italic; color: var(--gold);
+        }
+
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn-prev { background: #eee; color: #444; }
+        
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .content-card { padding: 25px; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 4 / 5</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">🌍 PERTEMUAN 5</div>
+            <h1>🧪 PENGENALAN OS DI CHROMEBOOK (PRAKTIK)</h1>
+
+            <p>Sekarang saatnya kita belajar langsung menggunakan perangkat yang ada di depan kalian. Kita akan mengeksplorasi Chromebook untuk melihat bagaimana Sistem Operasi bekerja di dalamnya.</p>
+
+            <div class="tujuan-box">
+                <h4 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-bullseye"></i> Tujuan Praktik</h4>
+                <p>Setelah melakukan praktik ini, siswa diharapkan mampu:</p>
+                <ul style="list-style: none; padding-left: 20px;">
+                    <li><i class="fas fa-check-circle" style="color: var(--gold);"></i> Mengetahui jenis OS yang digunakan secara pasti.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--gold);"></i> Mengenal letak menu pengaturan sistem.</li>
+                    <li><i class="fas fa-check-circle" style="color: var(--gold);"></i> Memahami fungsi dasar OS dalam mengelola aplikasi dan jaringan.</li>
+                </ul>
+            </div>
+
+            <h2>⚙️ Langkah-Langkah Praktik</h2>
+            
+            <div class="step-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Buka Pengaturan (Settings)</h4>
+                        <p>Arahkan kursor ke pojok kanan bawah layar (area jam dan baterai), lalu klik satu kali. Pilih ikon roda gigi atau <strong>Settings (⚙️)</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Cari Informasi Sistem</h4>
+                        <p>Pada menu pengaturan di sebelah kiri, scroll ke bawah dan cari menu berjudul <strong>"About ChromeOS"</strong>. Klik menu tersebut untuk melihat detail OS kalian.</p>
+                    </div>
+                </div>
+
+                <div class="step-card" style="border-left: 5px solid var(--gold);">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Catat Data Berikut:</h4>
+                        <p>Lihat pada layar Chromebook kalian, lalu coba identifikasi:</p>
+                        <p>Nama OS: <input type="text" class="input-sim" placeholder="Tulis di sini..."></p>
+                        <p>Versi OS: <input type="text" class="input-sim" placeholder="Contoh: 121.0.x"></p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Cek Status Jaringan</h4>
+                        <p>Masuk ke bagian <strong>Network / WiFi</strong>. Perhatikan apakah statusnya 'Connected' atau 'Disconnected'. Inilah cara OS mengelola koneksi internet kalian.</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Uji Aktivitas Aplikasi</h4>
+                        <p>Cobalah jalankan beberapa aplikasi sekaligus: Buka Browser Google Chrome, lalu buka situs Google dan coba putar satu video di YouTube. Perhatikan bagaimana OS mengatur jalannya aplikasi tersebut.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #fdfdfd; border: 1px solid #eee; padding: 20px; border-radius: 12px; margin: 30px 0;">
+                <h4 style="color: var(--gold);"><i class="fas fa-brain"></i> Mengapa Kita Praktik?</h4>
+                <p>Tujuannya adalah agar kalian tidak hanya memahami teori di atas kertas saja, tetapi mengenal langsung wujud nyata dari sebuah Operating System dalam perangkat yang kalian gunakan sehari-hari untuk belajar di SMKN 7 Luwu.</p>
+            </div>
+
+            <div style="background: var(--accent-gold); border-left: 5px solid var(--gold); padding: 20px; border-radius: 0 12px 12px 0;">
+                <p><strong>📌 Kesimpulan Halaman 4</strong></p>
+                <p>ChromeOS yang ada di Chromebook adalah contoh sistem operasi yang sederhana, ringan, namun tetap memiliki fungsi yang lengkap dan kuat untuk mendukung produktivitas.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="pertemuan5-3.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <a href="pertemuan5-5.html" class="btn btn-next">Halaman Terakhir <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px; text-align: center;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
