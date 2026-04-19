@@ -3,239 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 5-3: Jenis-Jenis OS</title>
+    <title>Pertemuan 5 - Halaman 3 - Helmi Yunar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root {
-            --gold-primary: #D4AF37;
-            --gold-dark: #B8860B;
+            --gold: #b8860b;
             --white: #ffffff;
-            --bg-light: #f4f7f6;
-            --text-main: #444;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
-            margin: 0;
-            display: flex;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
         }
 
-        /* --- SIDEBAR (DESKTOP & MOBILE) --- */
-        .sidebar {
-            width: 260px;
-            height: 100vh;
-            background: var(--white);
-            position: fixed;
-            border-right: 1px solid #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            padding: 20px 0;
-            z-index: 1100;
-            transition: 0.3s;
-        }
-
-        .sidebar-brand {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-brand img { width: 60px; margin-bottom: 10px; }
-        .sidebar-brand h3 { margin: 0; color: var(--gold-dark); font-size: 1.1rem; }
-
-        .nav-menu { display: flex; flex-direction: column; gap: 5px; padding: 0 15px; }
-
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
         .nav-item {
-            text-decoration: none;
-            color: var(--text-main);
-            padding: 12px 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 500;
-            transition: 0.3s;
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
         }
-
-        .nav-item i { width: 25px; text-align: center; color: var(--gold-primary); }
-        .nav-item.active { background-color: #fdf7e6; color: var(--gold-dark); }
-        .nav-item:hover { background-color: #f9f9f9; }
-
-        /* --- MOBILE NAVIGATION --- */
-        .mobile-header {
-            display: none;
-            background: var(--white);
-            padding: 15px;
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 1000;
-            border-bottom: 2px solid var(--gold-primary);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .menu-btn {
-            font-size: 24px;
-            color: var(--gold-dark);
-            cursor: pointer;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3);
-            z-index: 1050;
-        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
 
         /* --- MAIN CONTENT --- */
-        .main-content {
-            margin-left: 260px;
-            flex: 1;
-            padding: 40px;
-            width: 100%;
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
         }
 
-        .card {
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.06);
-            max-width: 900px;
-            margin: 0 auto;
-            border-top: 6px solid var(--gold-primary);
-            overflow: hidden;
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
         }
 
-        .card-header-info { padding: 30px 40px 10px; }
-        .badge-halaman {
-            background: #fff9e6; color: var(--gold-dark);
-            padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;
-            font-weight: bold; border: 1px solid #ffeeba;
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; display: flex; align-items: center; gap: 10px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        /* STYLED LIST */
+        ul.materi-list { list-style: none; margin-bottom: 20px; }
+        ul.materi-list li { margin-bottom: 8px; padding-left: 30px; position: relative; line-height: 1.6; }
+        ul.materi-list li::before { 
+            content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900;
+            position: absolute; left: 0; color: var(--gold);
         }
 
-        .materi-title { font-size: 1.8rem; color: #222; margin: 15px 0 5px; font-weight: 800; }
-
-        .content-box {
-            border: 1px solid #f0f0f0; border-radius: 12px;
-            padding: 20px; margin-bottom: 15px;
+        .os-box {
+            background: #fff; border: 1px solid #eee; border-radius: 12px;
+            padding: 20px; margin-bottom: 25px; transition: 0.3s;
         }
+        .os-box:hover { border-color: var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-        .os-title { color: var(--gold-dark); font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; }
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn-prev { background: #eee; color: #444; }
+        
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
 
-        @media (max-width: 768px) {
-            .sidebar { left: -260px; } /* Sembunyi di HP */
-            .sidebar.active { left: 0; } /* Muncul saat tombol diklik */
-            .mobile-header { display: flex; align-items: center; gap: 15px; }
-            .main-content { margin-left: 0; padding: 80px 15px 30px; }
-            .overlay.active { display: block; }
-            .card-header-info { padding: 20px; }
-        }
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .content-card { padding: 25px; } }
     </style>
 </head>
 <body>
 
-    <div class="mobile-header">
-        <i class="fas fa-bars menu-btn" onclick="toggleSidebar()"></i>
-        <span style="font-weight: bold; color: #444;">LMS TKJ - SMKN 7 LUWU</span>
-    </div>
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
 
-    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Logo_Kabupaten_Luwu.png/480px-Logo_Kabupaten_Luwu.png" alt="Logo Luwu">
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
             <h3>LMS TKJ</h3>
-            <p>SMKN 7 LUWU</p>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
         </div>
-        
         <div class="nav-menu">
-            <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
-            <a href="materi/index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
-            <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
-            <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
-            <a href="absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
-            <a href="tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i> Ranking</a>
-            <a href="cbt/index.html" class="nav-item"><i class="fas fa-vial"></i> CBT Ujian</a>
-            <a href="arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
         </div>
-    </div>
+    </nav>
 
     <div class="main-content">
-        <div class="card">
-            <div class="card-header-info">
-                <div class="badge-halaman">Halaman 3 / 5</div>
-                <div style="color: var(--gold-primary); font-weight: bold; margin-top: 10px; font-size: 0.9rem;">⚙️ PERTEMUAN 5</div>
-                <h1 class="materi-title">JENIS-JENIS OPERATING SYSTEM</h1>
-                <p style="color: #777;">Berikut adalah OS yang sering digunakan dalam kehidupan sehari-hari.</p>
+        <article class="content-card">
+            <div class="page-indicator">Halaman 3 / 5</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">🌍 PERTEMUAN 5</div>
+            <h1>🖥️ JENIS-JENIS OPERATING SYSTEM</h1>
+
+            <p>Setelah memahami apa itu OS, sekarang kita akan mengenal berbagai jenis Operating System yang sering digunakan dalam kehidupan sehari-hari, baik untuk bekerja, belajar, maupun bermain game.</p>
+
+            <div class="os-box">
+                <h2><i class="fab fa-windows"></i> 1. Windows</h2>
+                <p>Windows adalah Sistem Operasi buatan Microsoft yang paling umum digunakan di seluruh dunia. Hampir semua laptop di kantor dan sekolah menggunakan OS ini.</p>
+                <strong>Ciri-ciri Utama:</strong>
+                <ul class="materi-list">
+                    <li><strong>Tampilan mudah dipahami:</strong> Menggunakan konsep ikon dan jendela (windows) yang ramah pengguna.</li>
+                    <li><strong>Sangat Populer:</strong> Banyak digunakan di sekolah dan kantor pemerintahan.</li>
+                    <li><strong>Kompatibilitas Luas:</strong> Bisa menjalankan hampir semua jenis aplikasi mulai dari pengetikan hingga game berat.</li>
+                </ul>
             </div>
 
-            <div style="padding: 10px 20px 30px;">
-                <div class="content-box">
-                    <div class="os-title">💻 1. Windows</div>
-                    <p>Windows adalah OS yang paling umum digunakan.</p>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>Tampilan mudah dipahami</li>
-                        <li>Banyak digunakan di sekolah dan kantor</li>
-                    </ul>
-                </div>
-
-                <div class="content-box">
-                    <div class="os-title">💻 2. Chrome OS</div>
-                    <p>Digunakan pada Chromebook di sekolah kalian.</p>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>Ringan dan sangat cepat</li>
-                        <li>Fokus pada internet/browser</li>
-                    </ul>
-                </div>
-
-                <div class="content-box">
-                    <div class="os-title">📱 3. Android</div>
-                    <p>Android adalah OS yang ada di HP kalian.</p>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>Sangat populer di smartphone</li>
-                        <li>Ribuan aplikasi tersedia</li>
-                    </ul>
-                </div>
-
-                <div class="content-box">
-                    <div class="os-title">🍎 4. macOS</div>
-                    <p>Digunakan pada laptop Apple (MacBook).</p>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>Tampilan mewah dan stabil</li>
-                        <li>Untuk profesional kreatif</li>
-                    </ul>
-                </div>
-
-                <div class="content-box">
-                    <div class="os-title">🐧 5. Linux</div>
-                    <p>Favorit Teknisi Jaringan & Programmer.</p>
-                    <ul style="padding-left: 20px; color: #555;">
-                        <li>Gratis, Aman, dan Open Source</li>
-                    </ul>
-                </div>
-
-                <div style="margin-top: 25px; border-left: 4px solid var(--gold-primary); padding: 15px; background: #fffcf0; border-radius: 0 8px 8px 0;">
-                    <h4 style="margin: 0; color: var(--gold-dark);">📌 Kesimpulan</h4>
-                    <p style="margin: 5px 0 0; font-size: 0.95rem;">Semua OS berfungsi mengatur hardware agar bisa digunakan user.</p>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; margin-top: 30px;">
-                    <a href="pertemuan5-2.html" style="text-decoration: none; color: #999; font-weight: bold; font-size: 0.9rem;">SEBELUMNYA</a>
-                    <a href="pertemuan5-4.html" style="text-decoration: none; color: var(--gold-dark); font-weight: bold; font-size: 0.9rem;">SELANJUTNYA</a>
-                </div>
+            <div class="os-box">
+                <h2><i class="fab fa-chrome"></i> 2. Chrome OS</h2>
+                <p>Chrome OS adalah Sistem Operasi yang dikembangkan oleh Google. Inilah OS yang terpasang pada <strong>Chromebook</strong> yang kalian gunakan di sekolah kita!</p>
+                <strong>Ciri-ciri Utama:</strong>
+                <ul class="materi-list">
+                    <li><strong>Ringan dan Cepat:</strong> Tidak membutuhkan spesifikasi hardware yang sangat tinggi untuk berjalan lancar.</li>
+                    <li><strong>Fokus pada Internet:</strong> Semua tugas disimpan secara otomatis di Google Drive.</li>
+                    <li><strong>Berbasis Browser:</strong> Sebagian besar aktivitas dilakukan melalui browser Google Chrome.</li>
+                </ul>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px; color: #bbb; font-size: 0.8rem;">
-            &copy; 2026 Developed by Helmi Yunar
-        </div>
+
+            <div class="os-box">
+                <h2><i class="fab fa-android" style="color: #3DDC84;"></i> 3. Android</h2>
+                <p>Android adalah OS berbasis Linux yang dirancang khusus untuk perangkat layar sentuh seperti smartphone dan tablet.</p>
+                <strong>Ciri-ciri Utama:</strong>
+                <ul class="materi-list">
+                    <li><strong>Mobile King:</strong> Digunakan oleh mayoritas smartphone di dunia.</li>
+                    <li><strong>Ekosistem Aplikasi:</strong> Memiliki jutaan aplikasi di Google Play Store.</li>
+                    <li><strong>Customizable:</strong> Sangat mudah dimodifikasi tampilannya sesuai keinginan pengguna.</li>
+                </ul>
+            </div>
+
+            <div class="os-box">
+                <h2><i class="fab fa-apple"></i> 4. macOS</h2>
+                <p>macOS adalah Sistem Operasi eksklusif yang hanya ada pada laptop dan komputer buatan Apple (seperti MacBook dan iMac).</p>
+                <strong>Ciri-ciri Utama:</strong>
+                <ul class="materi-list">
+                    <li><strong>Tampilan Elegan:</strong> Dikenal memiliki desain grafis yang sangat cantik dan rapi.</li>
+                    <li><strong>Stabil dan Cepat:</strong> Jarang sekali mengalami "hang" atau macet.</li>
+                    <li><strong>Pilihan Profesional:</strong> Sering digunakan oleh desainer, editor video, dan fotografer.</li>
+                </ul>
+            </div>
+
+            <div class="os-box">
+                <h2><i class="fab fa-linux"></i> 5. Linux</h2>
+                <p>Linux adalah OS bersifat "Open Source", artinya kode pembuatannya bisa dilihat dan diubah oleh siapa saja. Sering digunakan oleh para ahli IT.</p>
+                <strong>Ciri-ciri Utama:</strong>
+                <ul class="materi-list">
+                    <li><strong>Gratis:</strong> Tidak perlu membayar lisensi untuk menggunakannya.</li>
+                    <li><strong>Sangat Aman:</strong> Jauh lebih kebal terhadap serangan virus dibanding OS lain.</li>
+                    <li><strong>Andalan IT:</strong> Digunakan oleh Programmer dan Teknisi Jaringan untuk mengelola Server.</li>
+                </ul>
+            </div>
+
+            <div style="background: var(--accent-gold); border: 2px dashed var(--gold); padding: 20px; border-radius: 12px; margin-top: 30px;">
+                <p><strong>📌 Kesimpulan Halaman 3</strong></p>
+                <p>Meskipun ada banyak jenis OS dengan kelebihan masing-masing, semuanya memiliki satu tujuan yang sama: **Mengatur perangkat keras komputer agar manusia bisa menggunakannya dengan mudah.**</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="pertemuan5-2.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <a href="pertemuan5-4.html" class="btn btn-next">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px; text-align: center;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
     </div>
 
     <script>
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
         }
     </script>
 </body>
