@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 6 - Halaman 6 (Selesai) - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
+        }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        /* SOAL STYLES */
+        .soal-item { margin-bottom: 25px; padding: 15px; border-radius: 10px; transition: 0.3s; }
+        .soal-item:hover { background: #fafafa; }
+        .soal-item label { display: block; font-weight: 600; margin-bottom: 10px; color: #444; }
+        .ans-input { 
+            width: 100%; border: none; border-bottom: 2px solid #eee; padding: 10px 5px; 
+            outline: none; font-size: 15px; transition: 0.3s; background: transparent;
+        }
+        .ans-input:focus { border-bottom-color: var(--gold); background: var(--accent-gold); }
+
+        .quote-box { 
+            background: var(--accent-gold); border: 1px solid var(--gold); border-radius: 15px; 
+            padding: 25px; text-align: center; margin: 40px 0; position: relative;
+        }
+        .quote-box i.fa-quote-left { position: absolute; top: 10px; left: 15px; color: #ffeeba; font-size: 30px; }
+
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-finish { background: #27ae60; color: white; }
+        .btn-prev { background: #eee; color: #444; }
+        
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .content-card { padding: 25px; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-book-open"></i> Materi</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 6 / 6 (Final)</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">🌍 PERTEMUAN 6</div>
+            <h1>🧠 LATIHAN DAN PEMAHAMAN</h1>
+
+            <p style="border-left: 3px solid #eee; padding-left: 15px; margin-bottom: 30px;">Jawablah pertanyaan-pertanyaan berikut berdasarkan materi IP Address yang telah kamu pelajari.</p>
+
+            <h2><i class="fas fa-pencil-alt"></i> A. Teori Jaringan</h2>
+            <div class="soal-item">
+                <label>1. Apa yang dimaksud dengan IP Address?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+            <div class="soal-item">
+                <label>2. Apa fungsi utama IP Address dalam sebuah jaringan?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+            <div class="soal-item">
+                <label>3. Sebutkan contoh penulisan IP Address yang benar!</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+
+            <h2><i class="fas fa-laptop-code"></i> B. Hasil Praktik</h2>
+            <div class="soal-item">
+                <label>1. Berapa nomor IP Address yang terdeteksi di Chromebook kamu?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+            <div class="soal-item">
+                <label>2. Apa alamat Gateway yang muncul pada pengaturan jaringan kamu?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+
+            <h2><i class="fas fa-brain"></i> C. Soal Analisis</h2>
+            <div class="soal-item">
+                <label>1. Apa yang akan terjadi jika ada dua perangkat memiliki IP yang sama (Conflict)?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+            <div class="soal-item">
+                <label>2. Mengapa DNS sangat penting saat kita ingin membuka situs seperti google.com?</label>
+                <input type="text" class="ans-input" placeholder="Jawab di sini...">
+            </div>
+
+            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #eee;">
+
+            <h2 style="border: none; justify-content: center;"><i class="fas fa-flag-checkered"></i> 🏁 PENUTUP</h2>
+            <p style="text-align: center; line-height: 1.8;">
+                IP Address adalah fondasi atau dasar utama dari semua teknologi jaringan komputer. <br>
+                Tanpa memahami konsep IP, mustahil kita bisa memahami cara kerja internet yang lebih luas.
+            </p>
+
+            <div class="quote-box">
+                <i class="fas fa-quote-left"></i>
+                <h4 style="color: var(--gold); margin-bottom: 10px;">💬 PESAN GURU</h4>
+                <p style="font-style: italic; font-size: 18px; text-align: center;">“Jaringan bukan tentang kabel saja, tetapi tentang memahami bagaimana data berjalan.”</p>
+                <p style="margin-top: 10px; font-weight: bold; color: var(--gold);">— Helmi Yunar, S.Pd.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="pertemuan6-5.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <button onclick="alert('Luar biasa! Materi Pertemuan 6 telah selesai.')" class="btn btn-finish">Selesaikan Pertemuan 6 <i class="fas fa-check-double"></i></button>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px; text-align: center;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
