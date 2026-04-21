@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 7 - Halaman 3 - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
+        }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
+        h3 { color: #444; margin: 20px 0 10px 0; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        /* CUSTOM STYLES PAGE 3 */
+        .psychology-box { background: #fdfaf0; border: 1px solid #f1e4bc; padding: 25px; border-radius: 12px; margin-bottom: 30px; }
+        .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .ai-item { background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 10px; border-bottom: 3px solid var(--gold); }
+        
+        .app-card { background: #fff; border: 2px solid var(--accent-gold); border-radius: 12px; padding: 20px; margin-top: 20px; display: flex; align-items: center; gap: 20px; }
+        .app-link { color: var(--gold); text-decoration: none; font-size: 14px; word-break: break-all; }
+        
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-next { background: var(--gold); color: white; }
+        .btn-prev { background: #eee; color: #444; }
+
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .ai-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-briefcase"></i> Kewirausahaan</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 3 / 5</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">💼 PRODUK KREATIF & KEWIRAUSAHAAN</div>
+            <h1>RISIKO PSIKOLOGIS & PELUANG PRODUK</h1>
+
+            <div class="psychology-box">
+                <h2 style="margin: 0 0 15px 0; border: none; padding: 0;"><i class="fas fa-brain"></i> f. Risiko Psikologis</h2>
+                <p>Berbeda dengan risiko riil yang bisa dihitung dengan uang, risiko psikologis adalah risiko "batin" yang tidak terlihat. Meski bisa diantisipasi dengan mental yang kuat, risiko ini belum tentu bisa dihindarkan sepenuhnya dalam dunia bisnis.</p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Kehilangan Reputasi:</strong> Takut "kehilangan muka", citra buruk di mata klien, atau menanggung malu jika proyek gagal.</li>
+                    <li><strong>Hilang Kepercayaan Diri:</strong> Merasa tidak mampu lagi bersaing setelah mengalami kegagalan.</li>
+                    <li><strong>Kehilangan Motivasi:</strong> Menurunnya semangat juang untuk bangkit kembali.</li>
+                    <li><strong>Kehilangan Jati Diri & Perasaan:</strong> Terlalu larut dalam pekerjaan hingga melupakan identitas diri dan hubungan sosial.</li>
+                </ul>
+            </div>
+
+            <hr style="margin: 40px 0; border: 0; border-top: 2px solid #f1f1f1;">
+
+            <h2>B. Contoh Produk Perangkat Lunak & Peluangnya</h2>
+            <p>Setelah memahami manajemen risiko, mari kita lihat peluang nyata di industri perangkat lunak saat ini. Produk-produk ini sedang menjadi tren global dan memiliki nilai ekonomi yang sangat tinggi.</p>
+
+            <h3><i class="fas fa-robot"></i> 1. Perangkat Lunak Teknologi AI</h3>
+            <p><strong>Artificial Intelligence (AI)</strong> adalah cabang ilmu yang memanfaatkan mesin untuk memecahkan persoalan rumit dengan meniru karakter kecerdasan manusia. Di SMK, kalian bisa mulai mengeksplorasi lingkup AI berikut:</p>
+
+            <div class="ai-grid">
+                <div class="ai-item">
+                    <strong>A. Sistem Pakar:</strong> Komputer menyimpan pengetahuan pakar (misal: dokter atau teknisi senior) untuk mendiagnosa masalah secara otomatis.
+                </div>
+                <div class="ai-item">
+                    <strong>B. Pengolah Bahasa Alami:</strong> Kemampuan mesin memahami bahasa manusia (seperti ChatGPT atau Google Assistant).
+                </div>
+                <div class="ai-item">
+                    <strong>C. Pengenalan Ucapan:</strong> Berkomunikasi dengan komputer menggunakan suara (Voice Command).
+                </div>
+                <div class="ai-item">
+                    <strong>D. Computer Vision:</strong> Mesin yang mampu "melihat" dan mengekstrak informasi dari gambar/video.
+                </div>
+            </div>
+
+            <h3><i class="fas fa-wallet"></i> 2. Aplikasi Pengelola Keuangan</h3>
+            <p>Mengatur keuangan pribadi seringkali sulit karena catatan yang tidak sinkron. Inilah peluang usaha! Aplikasi ponsel kini hadir sebagai pengatur keuangan profesional yang sangat dibutuhkan masyarakat agar uang jajan atau gaji mereka lebih awet.</p>
+
+            <div class="app-card">
+                <i class="fas fa-mobile-alt" style="font-size: 40px; color: var(--gold);"></i>
+                <div>
+                    <p style="margin: 0; font-weight: bold;">Rekomendasi Aplikasi Populer:</p>
+                    <ul style="list-style: none; padding-top: 5px;">
+                        <li>✅ <strong>Monefy:</strong> Simpel dan visual.</li>
+                        <li>✅ <strong>Expense Manager:</strong> Lengkap untuk pelacakan anggaran.</li>
+                        <li>✅ <strong>Mint:</strong> Budgeting otomatis tingkat lanjut.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="pertemuan7-2.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <a href="pertemuan7-4.html" class="btn btn-next">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px; text-align: center;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
