@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 7 - Halaman 5 (Final) - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+            --accent-gold: #fffcf0;
+            --strength: #27ae60;
+            --weakness: #e67e22;
+            --opportunity: #2980b9;
+            --threats: #c0392b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body { background-color: var(--bg-light); display: flex; min-height: 100vh; color: var(--text-dark); flex-direction: column; }
+
+        /* --- SIDEBAR NAVIGASI (KONSISTEN) --- */
+        .sidebar { 
+            width: 250px; background: var(--white); height: 100vh; position: fixed; 
+            border-right: 2px solid #eee; transition: 0.3s; z-index: 1500; left: -250px; 
+            display: flex; flex-direction: column;
+        }
+        .sidebar.active { left: 0; }
+        
+        .sidebar-header { padding: 40px 20px 30px 20px; text-align: center; border-bottom: 2px solid #f9f9f9; position: relative; }
+        .sidebar-header img { width: 60px; margin-bottom: 10px; }
+        .sidebar-header h3 { font-size: 20px; color: var(--gold); font-weight: 800; }
+
+        .close-btn { 
+            position: absolute; top: 10px; right: 10px; width: 40px; height: 40px;
+            display: none; align-items: center; justify-content: center;
+            font-size: 26px; cursor: pointer; color: var(--gold); 
+            z-index: 1600; background: var(--accent-gold); border-radius: 50%;
+        }
+
+        .nav-menu { padding: 20px 0; flex-grow: 1; }
+        .nav-item {
+            display: flex; align-items: center; padding: 15px 25px; color: #555;
+            text-decoration: none; transition: 0.3s; font-size: 16px; font-weight: 500;
+        }
+        .nav-item i { width: 25px; margin-right: 15px; text-align: center; font-size: 18px; }
+        .nav-item:hover, .nav-item.active { background: var(--accent-gold); color: var(--gold); border-left: 5px solid var(--gold); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { flex-grow: 1; padding: 30px; transition: 0.3s; width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+        .content-card {
+            max-width: 950px; width: 100%; background: var(--white); border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 10px solid var(--gold);
+            padding: 40px; margin-bottom: 30px; position: relative;
+        }
+
+        .page-indicator {
+            background: var(--accent-gold); display: inline-block; padding: 6px 15px;
+            border-radius: 20px; font-weight: bold; color: var(--gold);
+            margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
+        }
+
+        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; }
+        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
+        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
+
+        /* SWOT GRID STYLES */
+        .swot-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; }
+        .swot-box { padding: 20px; border-radius: 12px; color: white; position: relative; overflow: hidden; }
+        .swot-box h4 { font-size: 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .swot-box ul { list-style: none; font-size: 14px; line-height: 1.6; }
+        .swot-box ul li { margin-bottom: 5px; }
+        .swot-box i.bg-icon { position: absolute; right: -10px; bottom: -10px; font-size: 80px; opacity: 0.2; }
+
+        .st { background: var(--strength); }
+        .wk { background: var(--weakness); }
+        .op { background: var(--opportunity); }
+        .th { background: var(--threats); }
+
+        /* TASK STYLES */
+        .task-box { background: var(--accent-gold); border: 2px solid var(--gold); border-radius: 15px; padding: 30px; margin-top: 40px; }
+        .task-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: var(--gold); }
+        .soal-item { margin-bottom: 20px; }
+        .soal-item label { display: block; font-weight: bold; margin-bottom: 10px; color: #444; }
+        .ans-area { width: 100%; border: 1px solid #ddd; border-radius: 8px; padding: 15px; font-family: inherit; font-size: 15px; min-height: 100px; outline: none; transition: 0.3s; }
+        .ans-area:focus { border-color: var(--gold); box-shadow: 0 0 8px rgba(184, 134, 11, 0.2); }
+
+        .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-finish { background: #27ae60; color: white; }
+        .btn-prev { background: #eee; color: #444; }
+
+        .menu-toggle { background: var(--gold); color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1200; display: none; }
+
+        @media (min-width: 769px) { .sidebar { left: 0; } .main-content { margin-left: 250px; } }
+        @media (max-width: 768px) { .menu-toggle { display: block; } .close-btn { display: flex; } .main-content { padding: 15px; padding-top: 70px; } .content-card { padding: 25px; } .swot-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item"><i class="fas fa-home"></i> Beranda</a>
+            <a href="index.html" class="nav-item active"><i class="fas fa-briefcase"></i> Kewirausahaan</a>
+            <a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
+            <a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i> Absen</a>
+            <a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i> ARSIP</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <article class="content-card">
+            <div class="page-indicator">Halaman 5 / 5 (Final)</div>
+            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">💼 PRODUK KREATIF & KEWIRAUSAHAAN</div>
+            <h1>C. ANALISIS SWOT DALAM BISNIS PERANGKAT LUNAK</h1>
+
+            <p>Setelah kalian memahami produk dan risikonya, sekarang kita akan belajar menggunakan alat analisis paling populer dalam dunia bisnis, yaitu **SWOT**.</p>
+
+            <h2>1. Pengertian Analisis SWOT</h2>
+            <p><strong>SWOT</strong> adalah singkatan dari <em>Strengths</em> (Kekuatan), <em>Weaknesses</em> (Kelemahan), <em>Opportunities</em> (Peluang), dan <em>Threats</em> (Tantangan/Hambatan). Alat ini digunakan untuk membedah isu internal dan eksternal perusahaan agar kita bisa memasarkan produk dengan tepat sasaran.</p>
+
+            <div class="swot-container">
+                <div class="swot-box st">
+                    <h4><i class="fas fa-fist-raised"></i> Strength</h4>
+                    <p>(Kekuatan Internal)</p>
+                    <ul>
+                        <li>• Software mengikuti tren zaman.</li>
+                        <li>• Inovasi fitur terus menerus.</li>
+                        <li>• Harga terjangkau bagi pasar.</li>
+                    </ul>
+                    <i class="fas fa-fist-raised bg-icon"></i>
+                </div>
+                <div class="swot-box wk">
+                    <h4><i class="fas fa-search-minus"></i> Weakness</h4>
+                    <p>(Kelemahan Internal)</p>
+                    <ul>
+                        <li>• Pengalaman manajerial terbatas.</li>
+                        <li>• Tekanan ketat dari internal tim.</li>
+                        <li>• Kurangnya modal di awal.</li>
+                    </ul>
+                    <i class="fas fa-search-minus bg-icon"></i>
+                </div>
+                <div class="swot-box op">
+                    <h4><i class="fas fa-chart-line"></i> Opportunity</h4>
+                    <p>(Peluang Eksternal)</p>
+                    <ul>
+                        <li>• Perkembangan teknologi baru.</li>
+                        <li>• Meningkatnya produktivitas pasar.</li>
+                        <li>• Kebutuhan masyarakat digital.</li>
+                    </ul>
+                    <i class="fas fa-chart-line bg-icon"></i>
+                </div>
+                <div class="swot-box th">
+                    <h4><i class="fas fa-shield-alt"></i> Threats</h4>
+                    <p>(Tantangan Eksternal)</p>
+                    <ul>
+                        <li>• Produk baru pesaing lebih inovatif.</li>
+                        <li>• Krisis finansial/daya beli turun.</li>
+                        <li>• Kenaikan tarif dasar (Listrik/BBM).</li>
+                    </ul>
+                    <i class="fas fa-shield-alt bg-icon"></i>
+                </div>
+            </div>
+
+            <div class="task-box">
+                <div class="task-header">
+                    <i class="fas fa-user-edit" style="font-size: 30px;"></i>
+                    <h2>TUGAS MANDIRI</h2>
+                </div>
+                <p>Ingat kembali Nama Perusahaan/Wirausaha yang telah kalian buat di Halaman 10. Sekarang, lakukan analisis mendalam terhadap calon perusahaan kalian tersebut:</p>
+                <br>
+                <div class="soal-item">
+                    <label>A. Apa Peluang (Opportunities) yang akan kalian dapatkan di masa depan?</label>
+                    <textarea class="ans-area" placeholder="Contoh: Meningkatnya penggunaan aplikasi kasir di UMKM lokal..."></textarea>
+                </div>
+                <div class="soal-item">
+                    <label>B. Apa Hambatan (Threats) yang mungkin akan kalian hadapi nanti?</label>
+                    <textarea class="ans-area" placeholder="Contoh: Banyaknya aplikasi gratis sejenis di Play Store..."></textarea>
+                </div>
+                <div class="soal-item">
+                    <label>C. Apa Kekuatan (Strengths) utama dari produk yang kalian buat?</label>
+                    <textarea class="ans-area" placeholder="Contoh: Fitur keamanan data yang lebih terjamin..."></textarea>
+                </div>
+                <div class="soal-item">
+                    <label>D. Apa Kelemahan (Weaknesses) produk kalian yang perlu diperbaiki?</label>
+                    <textarea class="ans-area" placeholder="Contoh: Tampilan antarmuka (UI) yang masih sederhana..."></textarea>
+                </div>
+                <p style="font-size: 13px; color: #777;">*Ketik jawabanmu pada kolom di atas sebagai draf analisis bisnis kalian.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="pertemuan7-4.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Sebelumnya</a>
+                <button onclick="alert('Luar biasa! Kamu telah menyelesaikan Analisis SWOT Pertemuan 7.')" class="btn btn-finish">Simpan & Selesaikan <i class="fas fa-check-double"></i></button>
+            </div>
+        </article>
+
+        <footer style="color: #888; font-size: 13px; margin-bottom: 20px; text-align: center;">
+            ©2026 Developed by Helmi Yunar | SMKN 7 LUWU
+        </footer>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
