@@ -144,6 +144,12 @@
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
 
+        /* Warna khusus untuk tombol WA agar menonjol */
+        .btn-wa {
+            background: #25D366 !important;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3) !important;
+        }
+
         .banner {
             background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
             padding: 50px 40px;
@@ -185,6 +191,9 @@
         </div>
         <div class="nav-menu">
             <a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Beranda</a>
+            <!-- Penambahan link Grup WA di Sidebar -->
+            <a href="https://chat.whatsapp.com/IT2qPy98zcNCXHzGbq0c6B" target="_blank" class="nav-item" style="color: #25D366;"><i class="fab fa-whatsapp"></i> Grup WA SPMB</a>
+            
             <a href="materi/index.html" class="nav-item"><i class="fas fa-book-open"></i> Materi</a>
             <a href="menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i> Tryout</a>
             <a href="lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i> LKPD</a>
@@ -216,6 +225,15 @@
         </div>
 
         <div class="dashboard-grid">
+            <!-- Penambahan Card Grup WA Baru (Paling Depan agar terlihat siswa baru) -->
+            <div class="card" style="border-bottom: 5px solid #25D366;">
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                <h4>Koordinasi Siswa Baru</h4>
+                <div class="value">Grup WA SPMB</div>
+                <p style="font-size: 14px; color: #777;">Wajib bergabung bagi seluruh calon siswa baru.</p>
+                <a href="https://chat.whatsapp.com/IT2qPy98zcNCXHzGbq0c6B" target="_blank" class="btn-buka btn-wa">Gabung Grup <i class="fab fa-whatsapp" style="font-size: 12px; color: white; margin: 0 0 0 5px;"></i></a>
+            </div>
+
             <div class="card">
                 <i class="fas fa-cubes"></i>
                 <h4>Ringkasan Materi</h4>
