@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertemuan 8 - Hal 1 - Helmi Yunar</title>
+    <title>Pertemuan 8 - Hal 5 - Helmi Yunar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -49,18 +49,53 @@
             width: 100%;
             margin: 15px 0;
             border-radius: 10px;
-            overflow-x: auto; /* Agar kalau di-zoom di HP tidak merusak layout */
+            overflow-x: auto; 
             border: 1px solid #ddd;
             background: #fafafa;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            -webkit-overflow-scrolling: touch; /* Scroll halus di HP Android/iOS */
+            -webkit-overflow-scrolling: touch; 
         }
         
         .img-display img {
             width: 100%;
             height: auto;
             display: block;
-            min-width: 280px; /* Batas minimum ukuran layar HP terkecil */
+            min-width: 280px; 
+        }
+
+        /* --- TOMBOL UNDUH TUGAS (Premium Style) --- */
+        .download-container {
+            margin: 25px 0 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--accent-gold);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed var(--gold);
+        }
+        .download-info {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .btn-download {
+            background: #27ae60; /* Warna hijau indikasi aman/download */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-download:hover {
+            background: #219653;
+            transform: translateY(-2px);
         }
 
         .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; border-top: 1px solid #eee; padding-top: 30px; }
@@ -76,7 +111,7 @@
             .close-btn { display: flex; } 
             .main-content { padding: 15px; padding-top: 70px; } 
             .content-card { padding: 20px; }
-            h1 { font-size: 20px; } /* Mengecilkan judul sedikit agar pas di layar HP */
+            h1 { font-size: 20px; } 
         }
     </style>
 </head>
@@ -110,9 +145,19 @@
                 <img src="../img/web5.png" alt="Materi Pertemuan 8 Halaman 5">
             </div>
 
+            <div class="download-container">
+                <div class="download-info">
+                    <i class="fas fa-file-pdf" style="color: #e74c3c; font-size: 18px;"></i> 
+                    <strong>File Tugas Praktik ditemukan!</strong><br>Silakan buka file di bawah ini untuk melihat lembar kerja.
+                </div>
+                <a href="praktik pertemuan 8 kelas x.pdf" target="_blank" class="btn-download">
+                    <i class="fas fa-external-link-alt"></i> Buka / Unduh PDF
+                </a>
+            </div>
+
             <div class="nav-buttons">
-                <a href="index.html" class="btn btn-prev">Daftar Materi</a>
-                <a href="pertemuan8-4.html" class="btn btn-next">Halaman 5<i class="fas fa-arrow-right"></i></a>
+                <a href="pertemuan8-4.html" class="btn btn-prev"><i class="fas fa-arrow-left"></i> Halaman 4</a>
+                <a href="index.html" class="btn btn-next">Selesai Materi</a>
             </div>
         </article>
 
