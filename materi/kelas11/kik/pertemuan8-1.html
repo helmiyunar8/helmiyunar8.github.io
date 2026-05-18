@@ -61,23 +61,15 @@
             margin-bottom: 20px; font-size: 14px; border: 1px solid #ffeeba;
         }
 
-        h1 { font-size: 26px; margin-bottom: 20px; color: #222; border-bottom: 2px solid #f1f1f1; padding-bottom: 15px; text-transform: uppercase; }
-        h2 { color: var(--gold); margin: 30px 0 15px 0; border-left: 5px solid var(--gold); padding-left: 15px; font-size: 22px; }
-        p { line-height: 1.8; margin-bottom: 15px; text-align: justify; font-size: 16px; }
-
-        .apersepsi-box { background: var(--accent-gold); border: 1px dashed var(--gold); padding: 25px; border-radius: 12px; margin-bottom: 25px; }
-        
-        .list-materi { list-style: none; margin: 20px 0; }
-        .list-materi li { margin-bottom: 12px; padding-left: 35px; position: relative; line-height: 1.6; }
-        .list-materi li i { position: absolute; left: 0; top: 5px; color: var(--gold); }
-
-        /* Responsive Gambar biar ga merusak layout di HP jadul */
-        .img-container {
-            width: 100%; background: #eee; border-radius: 10px; margin: 20px 0;
-            overflow: hidden; border: 1px solid #ddd;
+        /* Responsive Container khusus untuk Materi Full Gambar */
+        .full-materi-image {
+            width: 100%;
+            display: block;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 10px 0;
         }
-        .img-container img { width: 100%; display: block; height: auto; }
-        .img-caption { padding: 10px; font-size: 13px; color: #666; text-align: center; font-style: italic; background: #fafafa; }
 
         .nav-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; }
         .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
@@ -116,40 +108,12 @@
     <div class="main-content">
         <article class="content-card">
             <div class="page-indicator">Halaman 1 / 5</div>
-            <div class="bab-title" style="color: var(--gold); font-weight: bold; margin-bottom: 5px;">🎨 JOBSHEET PRAKTIK PKK (TEKNOPRENEUR)</div>
-            <h1>DESAIN PROMOSI DIGITAL (SPESIALIS DUPLIKAT KUNCI)</h1>
-
-            <div class="apersepsi-box">
-                <h4 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-bullseye"></i> TUJUAN PRAKTIK</h4>
-                <ul class="list-materi" style="margin: 0;">
-                    <li><i class="fas fa-check-circle"></i> Siswa mampu menggunakan aplikasi desain berbasis web (Photopea) untuk membuat konten promosi.</li>
-                    <li><i class="fas fa-check-circle"></i> Siswa mampu menciptakan identitas bisnis digital untuk unit produksi sekolah (TKRO/TKJ).</li>
-                </ul>
-            </div>
-
-            <p><strong>Topik Bisnis:</strong> Menciptakan Produk Jasa Desain Promosi Digital (Spesialis Duplikat Kunci)<br>
-            <strong>Perangkat Praktik:</strong> Chromebook / Smartphone (Full Cloud-Based)<br>
-            <strong>Target Promosi:</strong> Jasa Duplikat Kunci Kendaraan (Spesifik: Motor Honda)</p>
-
-            <h2>TAHAP A: MEMASUKKAN GAMBAR</h2>
-            <p>Langkah pertama dalam membuat desain adalah menyiapkan lembar kerja baru yang sesuai dengan ukuran standar konten media sosial (Instagram Post).</p>
             
-            <ul class="list-materi">
-                <li><i class="fas fa-mouse-pointer"></i> <strong>Akses Web:</strong> Buka website <a href="https://www.photopea.com" target="_blank" style="color: var(--gold); font-weight: bold; text-decoration: underline;">Photopea.com</a> menggunakan browser di HP atau Chromebook kalian.</li>
-                <li><i class="fas fa-plus-square"></i> <strong>Buat Proyek:</strong> Pada halaman utama, ketuk atau klik menu <strong>New Project</strong>.</li>
-                <li><i class="fas fa-expand"></i> <strong>Pilih Ukuran:</strong> Gulir ke bawah, cari dan pilih template ukuran <strong>Instagram Post (1080 x 1080 px)</strong>, kemudian klik tombol <strong>Create</strong>.</li>
-            </ul>
-
-            <div class="img-container">
-                <img src="photopea1.png" alt="Tahap New Project Photopea">
-                <div class="img-caption">Gambar 1.1: Alur membuat lembar kerja New Project di Photopea</div>
-            </div>
-
-            <p>Setelah kanvas kosong siap, langkah berikutnya adalah mengimpor aset gambar utama ke dalam area kerja. Pastikan koneksi internet kalian stabil karena aplikasi ini berjalan sepenuhnya secara online.</p>
+            <img src="img/photopea1.png" alt="Materi Pertemuan 8 Bagian 1" class="full-materi-image">
 
             <div class="nav-buttons">
                 <a href="../../index.html" class="btn btn-prev">Daftar Materi</a>
-                <a href="pertemuan8-2.html" class="btn btn-next">Tahap Berikutnya <i class="fas fa-arrow-right"></i></a>
+                <a href="pertemuan8-2.html" class="btn btn-next">Halaman Berikutnya <i class="fas fa-arrow-right"></i></a>
             </div>
         </article>
 
