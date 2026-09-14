@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 — Merancang Topologi Jaringan Sederhana</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --gold:#b8860b;
+  --dark:#333;
+  --bg:#f4f4f4;
+  --white:#fff;
+  --soft:#faf7ed;
+  --line:#e5e5e5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+}
+.sidebar{
+  position:fixed;
+  left:0;top:0;
+  width:250px;
+  height:100vh;
+  background:#fff;
+  border-right:1px solid #ddd;
+  padding:18px 14px;
+  overflow-y:auto;
+  z-index:1000;
+}
+.logo{
+  width:72px;height:72px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 10px;
+}
+.sidebar h2{
+  text-align:center;
+  font-size:17px;
+  margin:0 0 16px;
+}
+.sidebar a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  padding:10px 12px;
+  border-radius:8px;
+  margin:4px 0;
+  font-size:14px;
+}
+.sidebar a:hover{background:#f1f1f1}
+.sidebar a i{width:20px;color:var(--gold)}
+.menu-btn{
+  display:none;
+  position:fixed;
+  top:12px;left:12px;
+  z-index:1100;
+  border:0;
+  background:var(--gold);
+  color:#fff;
+  width:42px;height:42px;
+  border-radius:9px;
+  font-size:20px;
+}
+.overlay{display:none}
+.main{
+  margin-left:250px;
+  padding:30px 18px 50px;
+}
+.card{
+  max-width:1000px;
+  margin:0 auto 20px;
+  background:var(--white);
+  border-radius:14px;
+  border-top:5px solid var(--gold);
+  padding:28px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+.hero{
+  text-align:center;
+  padding:34px 25px;
+}
+.hero .icon{
+  font-size:46px;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+h1{
+  margin:0;
+  font-size:29px;
+  line-height:1.3;
+}
+.subtitle{
+  margin:10px auto 0;
+  max-width:760px;
+  color:#555;
+  line-height:1.6;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-top:18px;
+}
+.badge{
+  background:#f7f7f7;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:7px 11px;
+  font-size:13px;
+}
+.badge i{color:var(--gold);margin-right:5px}
+h2{
+  font-size:21px;
+  margin:0 0 16px;
+  padding-left:11px;
+  border-left:4px solid var(--gold);
+}
+.intro{
+  background:var(--soft);
+  border:1px solid #eadfbf;
+  border-radius:10px;
+  padding:16px 17px;
+  line-height:1.65;
+}
+.objectives{
+  margin:0;
+  padding-left:22px;
+  line-height:1.7;
+}
+.learning-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.lesson{
+  display:block;
+  text-decoration:none;
+  color:var(--dark);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:16px;
+  background:#fff;
+  transition:.18s ease;
+}
+.lesson:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  border-color:#d8c48d;
+}
+.lesson .num{
+  display:inline-flex;
+  width:32px;height:32px;
+  align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#f8f3e3;
+  color:#765700;
+  font-weight:bold;
+  margin-bottom:9px;
+}
+.lesson h3{
+  margin:0 0 7px;
+  font-size:16px;
+}
+.lesson p{
+  margin:0;
+  font-size:13px;
+  color:#666;
+  line-height:1.5;
+}
+.extra{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.extra a{
+  text-decoration:none;
+  color:#333;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:13px 10px;
+  text-align:center;
+  font-size:13px;
+  background:#fafafa;
+}
+.extra i{
+  display:block;
+  color:var(--gold);
+  font-size:20px;
+  margin-bottom:7px;
+}
+.case{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.case-item{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:14px;
+  line-height:1.55;
+  font-size:13px;
+}
+.case-item strong{
+  display:block;
+  margin-bottom:6px;
+  color:#765700;
+}
+.note{
+  margin-top:16px;
+  font-size:13px;
+  color:#666;
+  line-height:1.6;
+}
+@media(max-width:760px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s ease;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:900;
+  }
+  .overlay.show{display:block}
+  .menu-btn{display:block}
+  .main{
+    margin-left:0;
+    padding:68px 10px 35px;
+  }
+  .card{
+    padding:21px 15px;
+    border-radius:11px;
+  }
+  .hero{padding:28px 15px}
+  h1{font-size:23px}
+  h2{font-size:18px}
+  .learning-grid{grid-template-columns:1fr}
+  .extra{grid-template-columns:repeat(2,1fr)}
+  .case{grid-template-columns:1fr}
+  .subtitle{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+  <i class="fa-solid fa-bars"></i>
+</button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <img src="../../asset/logo.png" class="logo" alt="Logo">
+  <h2>TKJ — Kelas XI</h2>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+
+  <section class="card hero">
+    <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+    <h1>TUJUAN PEMBELAJARAN 3</h1>
+    <div class="subtitle">
+      <strong>Merancang Topologi Jaringan Sederhana Sesuai Kebutuhan Pengguna</strong>
+      <br>
+      Kelas XI TJKT · SMK Negeri 7 Luwu
+    </div>
+    <div class="meta">
+      <span class="badge"><i class="fa-solid fa-layer-group"></i> Fase F / Kelas XI</span>
+      <span class="badge"><i class="fa-solid fa-calendar-days"></i> Semester Ganjil 2026/2027</span>
+      <span class="badge"><i class="fa-solid fa-network-wired"></i> Perencanaan dan Pengalamatan Jaringan</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Kata Pengantar</h2>
+    <div class="intro">
+      TP3 merupakan lanjutan dari TP1 tentang fungsi dan kebutuhan jaringan komputer
+      serta TP2 tentang fungsi, karakteristik, dan pemilihan perangkat jaringan.
+      Pada TP3, kalian mempelajari bagaimana perangkat-perangkat tersebut disusun
+      dan dihubungkan dalam pola yang disebut <strong>topologi jaringan</strong>.
+      Materi dibuat visual melalui diagram topologi agar kalian dapat mengamati,
+      menggambar ulang, membandingkan, memilih, dan akhirnya merancang topologi
+      jaringan sederhana sendiri.
+      <br><br>
+      Contoh dan studi kasus menggunakan kondisi nyata sekolah: <strong>11 Chromebook</strong>
+      yang terhubung ke internet melalui hotspot HP guru, serta perangkat praktik
+      berupa hub, kabel UTP, konektor RJ-45, LAN tester, dan tang crimping.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Tujuan Pembelajaran TP3</h2>
+    <ul class="objectives">
+      <li>Menjelaskan pengertian dan fungsi topologi jaringan.</li>
+      <li>Membedakan enam jenis topologi beserta karakteristik, kelebihan, dan kekurangannya.</li>
+      <li>Memilih topologi yang tepat sesuai kebutuhan pengguna.</li>
+      <li>Membuat rancangan topologi jaringan sederhana.</li>
+      <li>Menyajikan dan mempresentasikan rancangan topologi jaringan di depan kelas.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Materi TP3</h2>
+    <div class="learning-grid">
+
+      <a class="lesson" href="tp3-bab1.html">
+        <span class="num">1</span>
+        <h3>Pengertian dan Fungsi Topologi Jaringan</h3>
+        <p>Memahami pengertian, fungsi topologi, dan cara membaca diagram jaringan.</p>
+      </a>
+
+      <a class="lesson" href="tp3-bab2.html">
+        <span class="num">2</span>
+        <h3>Topologi Bus, Star, dan Ring</h3>
+        <p>Mengenali karakteristik, kelebihan, kekurangan, serta perbandingan ketiganya.</p>
+      </a>
+
+      <a class="lesson" href="tp3-bab3.html">
+        <span class="num">3</span>
+        <h3>Topologi Mesh, Tree, dan Hybrid</h3>
+        <p>Mempelajari tiga topologi lanjutan dan membandingkannya dengan topologi sebelumnya.</p>
+      </a>
+
+      <a class="lesson" href="tp3-bab4.html">
+        <span class="num">4</span>
+        <h3>Membandingkan dan Memilih Topologi</h3>
+        <p>Menganalisis kebutuhan pengguna dan menentukan topologi yang paling sesuai.</p>
+      </a>
+
+      <a class="lesson" href="tp3-bab5.html">
+        <span class="num">5</span>
+        <h3>Merancang Topologi Jaringan Sederhana</h3>
+        <p>Mengikuti delapan langkah perancangan hingga menghasilkan tabel dan diagram topologi.</p>
+      </a>
+
+      <a class="lesson" href="tp3-bab6.html">
+        <span class="num">6</span>
+        <h3>Presentasi, Evaluasi, dan Refleksi</h3>
+        <p>Mempresentasikan rancangan, memberi tanggapan, dan mengevaluasi hasil kerja kelompok.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Alur Belajar</h2>
+    <div class="case">
+      <div class="case-item">
+        <strong>1. Kenali</strong>
+        Pahami pengertian dan fungsi topologi serta cara membaca diagram.
+      </div>
+      <div class="case-item">
+        <strong>2. Bandingkan</strong>
+        Pelajari enam jenis topologi dan lihat perbedaan karakteristiknya.
+      </div>
+      <div class="case-item">
+        <strong>3. Pilih</strong>
+        Tentukan topologi berdasarkan jumlah perangkat, area, biaya, perangkat yang tersedia, dan faktor lainnya.
+      </div>
+      <div class="case-item">
+        <strong>4. Rancang</strong>
+        Buat tabel kebutuhan dan diagram hubungan antarperangkat.
+      </div>
+      <div class="case-item">
+        <strong>5. Presentasikan</strong>
+        Jelaskan alasan pemilihan topologi dan kelebihan serta keterbatasan rancangan.
+      </div>
+      <div class="case-item">
+        <strong>6. Evaluasi</strong>
+        Kerjakan evaluasi akhir dan isi refleksi pembelajaran.
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Bagian Pendukung</h2>
+    <div class="extra">
+      <a href="tp3-evaluasi.html"><i class="fa-solid fa-clipboard-check"></i>Evaluasi Akhir</a>
+      <a href="tp3-refleksi.html"><i class="fa-solid fa-comment-dots"></i>Refleksi Akhir</a>
+      <a href="tp3-glosarium.html"><i class="fa-solid fa-spell-check"></i>Glosarium</a>
+      <a href="tp3-kunci-jawaban.html"><i class="fa-solid fa-key"></i>Kunci Jawaban</a>
+      <a href="tp3-daftar-pustaka.html"><i class="fa-solid fa-book-open"></i>Daftar Pustaka</a>
+    </div>
+    <div class="note">
+      Kerjakan latihan pada setiap bab secara mandiri terlebih dahulu.
+      Kunci jawaban digunakan setelah seluruh latihan selesai dikerjakan.
+    </div>
+  </section>
+
+</main>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
+
+function closeMenu(){
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+}
+btn.addEventListener("click",()=>{
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+overlay.addEventListener("click",closeMenu);
+</script>
+</body>
+</html>
