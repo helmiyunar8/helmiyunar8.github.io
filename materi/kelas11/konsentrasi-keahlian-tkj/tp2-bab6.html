@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8860b">
+<title>TP 2 — Bab 6 | Penyusunan Diagram, Presentasi, Evaluasi, dan Refleksi</title>
+<style>
+:root{--gold:#b8860b;--gold-light:#fff8df;--text:#333;--muted:#666;--bg:#f4f4f4}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg)}
+.main{min-height:100vh;padding:20px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:7px solid var(--gold);border-radius:12px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.head{text-align:center;border-bottom:1px solid #eee;padding-bottom:16px;margin-bottom:15px}
+.head h1{font-size:25px;margin:0 0 5px;color:#333}
+.head p{margin:0;color:var(--muted);font-size:14px}
+.hint{text-align:center;color:#777;font-size:13px;margin:8px 0 12px}
+.carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{display:none}
+.page{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.page img{display:block;width:100%;height:auto;margin:auto;border:1px solid #ddd;border-radius:6px}
+.dots{display:flex;justify-content:center;gap:8px;margin:12px 0}
+.dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);background:#fff;padding:0}
+.dot.active{background:var(--gold)}
+.controls{text-align:center;margin-top:8px}
+button.nav{border:1px solid #d9c98e;background:#fff;color:var(--gold);border-radius:7px;padding:8px 12px;margin:0 4px;font-size:13px}
+.note{margin-top:16px;padding:11px 13px;background:var(--gold-light);border-left:4px solid var(--gold);border-radius:5px;color:#555;font-size:13px}
+.footer{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:15px;border-top:1px solid #eee}
+.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;border-radius:7px;padding:8px 11px;font-size:13px}
+@media(max-width:600px){
+.main{padding:8px}.card{padding:12px;border-top-width:5px}.head h1{font-size:20px}.head p{font-size:12px}.hint{font-size:12px}.note{font-size:12px}.footer a{font-size:12px;padding:7px 9px}
+}
+</style>
+</head>
+<body>
+<main class="main">
+<section class="card">
+<div class="head">
+<h1>Bab 6 — Penyusunan Diagram, Presentasi, Evaluasi, dan Refleksi</h1>
+<p>TP 2 · Pertemuan 6 · Alokasi Waktu 3 JP</p>
+</div>
+
+<div class="hint">Geser ke kiri/kanan untuk berpindah halaman</div>
+
+<div class="carousel" id="carousel">
+<div class="page"><img src="tp2-bab6-halaman-1.jpg" alt="Bab 6 halaman 1"></div>
+<div class="page"><img src="tp2-bab6-halaman-2.jpg" alt="Bab 6 halaman 2" loading="lazy"></div>
+<div class="page"><img src="tp2-bab6-halaman-3.jpg" alt="Bab 6 halaman 3" loading="lazy"></div>
+</div>
+
+<div class="dots">
+<button class="dot active" data-page="0" aria-label="Halaman 1"></button>
+<button class="dot" data-page="1" aria-label="Halaman 2"></button>
+<button class="dot" data-page="2" aria-label="Halaman 3"></button>
+</div>
+
+<div class="controls">
+<button class="nav" id="prev">← Sebelumnya</button>
+<button class="nav" id="next">Berikutnya →</button>
+</div>
+
+<div class="note">Materi Bab 6 disajikan sebagai halaman bergambar agar lebih menarik dibaca. Pada HP, cukup geser halaman ke kiri atau kanan.</div>
+
+<div class="footer">
+<a href="tp2-bab5.html">← Bab 5</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-evaluasi.html">Evaluasi →</a>
+</div>
+</section>
+</main>
+
+<script>
+const c=document.getElementById('carousel'), pages=[...document.querySelectorAll('.page')], dots=[...document.querySelectorAll('.dot')];
+function go(i){i=Math.max(0,Math.min(i,2));c.scrollTo({left:pages[i].offsetLeft,behavior:'smooth'});}
+dots.forEach(d=>d.onclick=()=>go(+d.dataset.page));
+document.getElementById('prev').onclick=()=>go(Math.round(c.scrollLeft/c.clientWidth)-1);
+document.getElementById('next').onclick=()=>go(Math.round(c.scrollLeft/c.clientWidth)+1);
+c.addEventListener('scroll',()=>{let i=Math.round(c.scrollLeft/c.clientWidth);dots.forEach((d,n)=>d.classList.toggle('active',n===i));});
+</script>
+</body>
+</html>
