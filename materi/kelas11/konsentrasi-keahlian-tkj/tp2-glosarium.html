@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8860b">
+<title>Glosarium — TP 2</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--gold-light:#fff8df;--text:#333;--muted:#666;--bg:#f4f4f4;--border:#e5e5e5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid var(--border);z-index:1000}
+.brand{padding:22px 20px;text-align:center;border-bottom:1px solid var(--border)}
+.brand img{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 8px}
+.brand h2{margin:0;color:var(--gold);font-size:21px}.brand p{margin:0;color:#777;font-size:13px}
+.nav{padding:18px 0}.nav a{display:flex;align-items:center;gap:16px;padding:15px 22px;color:#444;text-decoration:none;font-size:16px}
+.nav a:hover,.nav a.active{background:var(--gold-light);color:var(--gold)}.nav i{width:20px;text-align:center;font-size:18px}
+.main{margin-left:250px;padding:28px;min-height:100vh}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:8px solid var(--gold);border-radius:14px;padding:28px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.topbar{display:flex;justify-content:space-between;gap:15px;padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.topbar-title{color:var(--gold);font-size:25px;font-weight:700}.user{color:#777;font-size:14px}
+.title{text-align:center;margin-bottom:22px}.title h1{margin:0;font-size:29px}.title p{margin:7px 0 0;color:var(--muted);font-size:14px}
+.intro{background:var(--gold-light);border-left:5px solid var(--gold);border-radius:7px;padding:13px 16px;margin-bottom:20px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #d9d9d9;padding:12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+th:first-child{width:31%}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid var(--border)}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:1100;width:44px;height:44px;border:0;border-radius:8px;background:var(--gold);color:#fff;font-size:20px}
+.overlay{display:none}
+@media(max-width:768px){
+.menu-toggle{display:block}.sidebar{transform:translateX(-100%);transition:transform .2s ease;width:245px}.sidebar.open{transform:translateX(0)}
+.overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:900}
+.main{margin-left:0;padding:14px;padding-top:68px}.card{padding:17px;border-radius:10px;border-top-width:6px}
+.topbar{flex-direction:column;margin-bottom:20px}.topbar-title{font-size:22px}.user{font-size:13px}
+.title h1{font-size:23px}.title p{font-size:13px}.intro{font-size:14px}
+table{font-size:14px;min-width:620px}
+}
+@media(max-width:420px){
+.main{padding:9px;padding-top:62px}.card{padding:12px}.title h1{font-size:20px}
+table{font-size:13px;min-width:560px}th,td{padding:10px}
+.footer-nav a{font-size:13px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+<div class="brand">
+<img src="../../asset/logo.png" alt="Logo">
+<h2>LMS TKJ</h2><p>SMKN 7 LUWU</p>
+</div>
+<nav class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i><span>Beranda</span></a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i><span>Materi</span></a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i><span>Tryout</span></a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i><span>LKPD</span></a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i><span>Absen</span></a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i><span>Ranking</span></a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i><span>CBT Ujian</span></a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i><span>ARSIP</span></a>
+</nav>
+</aside>
+
+<main class="main">
+<section class="card">
+<div class="topbar">
+<div class="topbar-title"><i class="fas fa-graduation-cap"></i> TP 2</div>
+<div class="user"><i class="fas fa-book"></i> Glosarium</div>
+</div>
+
+<div class="title">
+<h1>Glosarium</h1>
+<p>Istilah penting dalam Tujuan Pembelajaran 2</p>
+</div>
+
+<div class="intro"><i class="fas fa-circle-info"></i> Gunakan glosarium ini untuk mengingat kembali istilah-istilah jaringan yang dipelajari pada TP 2.</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Istilah</th><th>Pengertian</th></tr></thead>
+<tbody><tr><td><strong>Perangkat Jaringan</strong></td><td>Perangkat keras untuk membangun, menghubungkan, mengatur, atau menguji jaringan komputer</td></tr>
+<tr><td><strong>Perangkat Pengguna</strong></td><td>Perangkat yang digunakan langsung oleh manusia untuk mengakses jaringan, misalnya Chromebook</td></tr>
+<tr><td><strong>Modem</strong></td><td>Perangkat pengubah sinyal digital menjadi sinyal jalur komunikasi ISP, dan sebaliknya</td></tr>
+<tr><td><strong>Router</strong></td><td>Perangkat penghubung jaringan berbeda sekaligus pengatur lalu lintas data</td></tr>
+<tr><td><strong>Switch</strong></td><td>Perangkat penghubung beberapa perangkat kabel yang mengirim data hanya ke tujuan</td></tr>
+<tr><td><strong>Hub</strong></td><td>Perangkat penghubung beberapa perangkat kabel yang meneruskan data ke semua port</td></tr>
+<tr><td><strong>Access Point</strong></td><td>Perangkat pemancar jaringan nirkabel (Wi-Fi)</td></tr>
+<tr><td><strong>Kabel UTP</strong></td><td>Media kabel jaringan dengan empat pasang kawat terpilin</td></tr>
+<tr><td><strong>Kategori Kabel (Cat5/Cat5e/Cat6)</strong></td><td>Tingkatan mutu kabel UTP yang memengaruhi kecepatan dan performa transmisi data</td></tr>
+<tr><td><strong>RJ-45</strong></td><td>Konektor delapan pin yang dipasang pada ujung kabel UTP</td></tr>
+<tr><td><strong>LAN Tester</strong></td><td>Alat penguji susunan dan koneksi kabel jaringan</td></tr>
+<tr><td><strong>Tang Crimping</strong></td><td>Alat untuk mengupas, memotong, dan memasang konektor RJ-45 pada kabel UTP</td></tr>
+<tr><td><strong>Chromebook</strong></td><td>Perangkat pengguna berbasis Chrome OS yang sebagian besar aktivitasnya melalui browser</td></tr>
+<tr><td><strong>Alamat MAC</strong></td><td>Alamat unik yang dimiliki setiap perangkat jaringan untuk saling dikenali</td></tr>
+<tr><td><strong>Alamat IP</strong></td><td>Alamat yang digunakan untuk menandai dan menuju suatu perangkat dalam jaringan</td></tr></tbody>
+</table>
+</div>
+
+<div class="footer-nav">
+<a href="tp2-refleksi.html">← Refleksi</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-kunci-jawaban.html">Kunci Jawaban →</a>
+</div>
+</section>
+</main>
+
+<script>
+const toggle=document.getElementById('menuToggle'),side=document.getElementById('sidebar'),overlay=document.getElementById('overlay');
+function closeMenu(){side.classList.remove('open');overlay.classList.remove('show')}
+toggle.addEventListener('click',()=>{side.classList.toggle('open');overlay.classList.toggle('show')});
+overlay.addEventListener('click',closeMenu);
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',closeMenu));
+</script>
+</body>
+</html>
