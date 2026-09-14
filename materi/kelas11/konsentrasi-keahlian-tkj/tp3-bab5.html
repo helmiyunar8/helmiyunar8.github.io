@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 - Bab 5 | Merancang Topologi Jaringan Sederhana</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--green:#2e7d32;--light:#f4f4f4;--text:#333;--muted:#666;--border:#ddd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--light);font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:22px 16px;overflow-y:auto;z-index:20}
+.logo{text-align:center;margin-bottom:18px}
+.logo img{max-width:120px;height:auto}
+.sidebar h3{font-size:15px;margin:14px 8px;color:var(--gold)}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:9px 10px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover{background:#f3ead0;color:#8b6500}
+.main{margin-left:250px;padding:30px 20px}
+.content{max-width:1000px;margin:auto;background:#fff;border-radius:16px;border-top:5px solid var(--gold);padding:28px;box-shadow:0 3px 15px rgba(0,0,0,.06)}
+.menu-btn{display:none;position:fixed;top:12px;right:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:9px;padding:10px 12px;font-size:18px}
+.hero{text-align:center;background:#fffaf0;border:1px solid #ead9a8;border-radius:14px;padding:20px;margin-bottom:28px}
+.hero .icon{font-size:42px;color:var(--gold);margin-bottom:6px}
+h1{font-size:27px;line-height:1.25;margin:6px 0 8px}
+h2{font-size:22px;margin-top:32px;color:#7d5b00;border-bottom:2px solid #ead9a8;padding-bottom:7px}
+h3{font-size:18px;margin-top:24px;color:#555}
+p{margin:10px 0}
+ul,ol{padding-left:25px}
+li{margin:6px 0}
+.info{background:#f7f7f7;border-left:5px solid var(--gold);padding:15px 17px;border-radius:10px;margin:18px 0}
+.case{background:#fffdf5;border:1px solid #ead9a8;border-radius:12px;padding:18px;margin:18px 0}
+.step-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.step{border:1px solid #ddd;border-radius:12px;padding:16px;background:#fff}
+.step strong{display:block;color:#8b6500;margin-bottom:5px}
+.table-wrap{overflow-x:auto;margin:18px 0}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{border:1px solid #ccc;padding:11px;text-align:left;vertical-align:top}
+th{background:#f3ead0;color:#5e4500}
+.lpkd{background:#f7fbf7;border:1px solid #cfe2cf;border-radius:14px;padding:20px;margin:24px 0}
+.lpkd h3{color:var(--green);margin-top:0}
+.diagram{border:2px solid #ddd;border-radius:14px;background:#fafafa;padding:20px;margin:20px 0;text-align:center;overflow:auto}
+.network{min-width:650px;position:relative;height:420px;margin:auto}
+.node{position:absolute;background:#fff;border:3px solid var(--gold);border-radius:12px;padding:9px 12px;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:2}
+.node small{display:block;font-weight:normal;color:#666;font-size:12px}
+.hotspot{left:50%;top:20px;transform:translateX(-50%);background:#fff7dc}
+.cb1{left:7%;top:190px}.cb2{left:24%;top:270px}.cb3{left:41%;top:190px}.cb4{left:58%;top:270px}.cb5{left:75%;top:190px}
+.wifi{position:absolute;left:20%;right:20%;top:105px;height:170px;z-index:1}
+.wifi:before,.wifi:after{content:"";position:absolute;left:50%;top:0;width:2px;height:145px;background:#777;transform-origin:top center}
+.wifi:before{transform:rotate(-48deg);}.wifi:after{transform:rotate(48deg)}
+.wifi-lines{position:absolute;left:50%;top:38px;width:230px;height:115px;transform:translateX(-50%);border-top:2px dashed #777;border-radius:50%}
+.wifi-lines:after{content:"";position:absolute;left:12%;right:12%;top:30px;height:70px;border-top:2px dashed #777;border-radius:50%}
+.legend{font-size:13px;color:#666;margin-top:8px}
+.placeholder{min-height:210px;display:flex;align-items:center;justify-content:center;border:2px dashed #bbb;border-radius:12px;color:#777;background:#fafafa;text-align:center;padding:20px}
+.video-box{background:#f7f7f7;border-radius:12px;padding:14px;margin:18px 0;text-align:center}
+video{width:min(100%,560px);max-height:620px;border-radius:10px;background:#000}
+.reflect{display:grid;gap:10px;margin-top:15px}
+.prompt{border:1px solid #ddd;border-radius:10px;padding:13px;background:#fff}
+.footer{text-align:center;color:#777;font-size:13px;margin-top:30px}
+@media(max-width:800px){
+.sidebar{display:none}.sidebar.open{display:block;width:260px;box-shadow:4px 0 15px rgba(0,0,0,.15)}
+.main{margin-left:0;padding:70px 10px 20px}.menu-btn{display:block}.content{padding:18px;border-radius:12px}
+h1{font-size:22px}h2{font-size:19px}.step-grid{grid-template-columns:1fr}.network{transform:scale(.86);transform-origin:top left;width:760px;margin-bottom:-55px}
+}
+@media(max-width:520px){
+.content{padding:14px}.hero{padding:15px}h1{font-size:20px}.hero .icon{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar">
+  <div class="logo"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"></div>
+  <h3><i class="fa-solid fa-graduation-cap"></i> Navigasi</h3>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="tp3.html"><i class="fa-solid fa-network-wired"></i> TP3</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pencil"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+<section class="content">
+
+<div class="hero">
+  <div class="icon"><i class="fa-solid fa-pen-ruler"></i></div>
+  <h1>BAB 5 — Merancang Topologi Jaringan Sederhana</h1>
+  <p><strong>Pertemuan 5 · Alokasi Waktu 3 JP</strong></p>
+</div>
+
+<div class="info">
+<strong>Tujuan Pembelajaran Bab Ini:</strong>
+<ul>
+<li>Peserta didik mampu membuat rancangan topologi jaringan sederhana.</li>
+<li>Peserta didik mampu menyajikan diagram topologi jaringan.</li>
+</ul>
+</div>
+
+<h2>5.1 Delapan Langkah Merancang Topologi Jaringan</h2>
+<p>Merancang topologi bukan sekadar menggambar kotak dan garis. Ada urutan langkah yang harus diikuti agar rancangan benar-benar sesuai dengan kebutuhan dan dapat diterapkan. Berikut delapan langkah perancangan yang akan kalian gunakan.</p>
+
+<div class="step-grid">
+<div class="step"><strong>Langkah 1 — Mengidentifikasi Kebutuhan Pengguna</strong><p>Tentukan terlebih dahulu siapa yang akan menggunakan jaringan dan untuk keperluan apa. Misalnya: sebelas peserta didik yang membutuhkan akses internet untuk membaca bahan ajar dan mengumpulkan tugas.</p></div>
+<div class="step"><strong>Langkah 2 — Menentukan Jumlah Perangkat</strong><p>Hitung jumlah perangkat pengguna dan perangkat jaringan yang akan terhubung. Jumlah ini akan menentukan berapa banyak port dan kabel yang dibutuhkan.</p></div>
+<div class="step"><strong>Langkah 3 — Menentukan Jenis Koneksi</strong><p>Putuskan apakah jaringan akan menggunakan kabel, nirkabel, atau gabungan keduanya, dengan mempertimbangkan perangkat yang tersedia dan kondisi ruangan.</p></div>
+<div class="step"><strong>Langkah 4 — Memilih Topologi</strong><p>Pilih topologi yang paling sesuai berdasarkan sembilan faktor yang telah dipelajari pada Bab 4. Tuliskan alasan pemilihannya sejak awal agar tidak lupa.</p></div>
+<div class="step"><strong>Langkah 5 — Menentukan Perangkat Jaringan</strong><p>Tentukan perangkat jaringan apa saja yang diperlukan untuk mewujudkan topologi tersebut, misalnya sumber internet, perangkat pusat, media transmisi, dan konektor.</p></div>
+<div class="step"><strong>Langkah 6 — Menggambar Hubungan Antarperangkat</strong><p>Gambarkan diagram topologi yang menunjukkan setiap perangkat dan garis hubungannya. Gunakan kotak untuk perangkat dan garis untuk hubungan. Bedakan garis kabel (garis penuh) dan hubungan nirkabel (garis putus-putus).</p></div>
+<div class="step"><strong>Langkah 7 — Memberikan Keterangan Fungsi</strong><p>Tuliskan keterangan singkat pada setiap perangkat dalam diagram, misalnya "sumber internet", "perangkat pusat", atau "perangkat pengguna", agar diagram mudah dipahami orang lain.</p></div>
+<div class="step"><strong>Langkah 8 — Memeriksa Kesesuaian Rancangan</strong><p>Periksa kembali apakah rancangan sudah sesuai dengan kebutuhan pengguna, apakah semua perangkat yang digambar benar-benar tersedia, dan apakah rancangan masih memungkinkan untuk dikembangkan di kemudian hari.</p></div>
+</div>
+
+<h2>5.2 Studi Kasus: Jaringan Kelas XI TJKT SMKN 7 Luwu</h2>
+<div class="case">
+<h3><i class="fa-solid fa-school"></i> Studi Kasus</h3>
+<p>SMK Negeri 7 Luwu memiliki 11 peserta didik kelas XI TJKT yang menggunakan Chromebook bantuan pemerintah.</p>
+<p>Sekolah memiliki internet dari hotspot HP guru, satu hub, kabel UTP, sekitar 300 konektor RJ-45, LAN tester, dan beberapa tang crimping.</p>
+<p><strong>Tugas kalian:</strong> buatlah rancangan topologi jaringan sederhana yang sesuai dengan kondisi tersebut, lengkap dengan diagram dan alasan pemilihan topologinya.</p>
+</div>
+
+<h2>5.3 Contoh Hasil Rancangan</h2>
+<p>Berikut adalah contoh diagram rancangan untuk kondisi jaringan nirkabel di kelas kita. Gunakan contoh ini sebagai acuan, namun kelompok kalian tetap harus membuat rancangan sendiri, boleh dengan penyempurnaan atau pendekatan yang berbeda.</p>
+
+<div class="diagram">
+  <div class="network">
+    <div class="node hotspot">📱 Hotspot HP Guru<small>sumber internet · titik pusat Wi-Fi</small></div>
+    <div class="wifi-lines"></div>
+    <div class="node cb1">💻 Chromebook 1<small>perangkat pengguna</small></div>
+    <div class="node cb2">💻 Chromebook 2<small>perangkat pengguna</small></div>
+    <div class="node cb3">💻 Chromebook 3<small>perangkat pengguna</small></div>
+    <div class="node cb4">💻 Chromebook 4<small>perangkat pengguna</small></div>
+    <div class="node cb5">💻 Chromebook 5<small>perangkat pengguna</small></div>
+  </div>
+  <div class="legend">Garis putus-putus = hubungan nirkabel. Diagram ini merupakan contoh pola; kelompok tetap membuat rancangan sendiri.</div>
+</div>
+<p><em>Gambar 5.1 Contoh rancangan topologi jaringan nirkabel kelas XI TJKT SMKN 7 Luwu</em></p>
+
+<p>Pada diagram tersebut, hotspot HP guru berperan sebagai titik pusat yang memancarkan sinyal Wi-Fi, sementara seluruh Chromebook terhubung langsung ke titik pusat tersebut tanpa saling terhubung satu sama lain. Pola hubungan seperti ini menyerupai topologi star, dengan media koneksi berupa nirkabel.</p>
+
+<div class="info">
+<strong>Catatan untuk praktik kabel:</strong>
+Apabila kelompok kalian ingin membuat rancangan jaringan kabel untuk keperluan praktik, pola yang terbentuk juga berupa topologi star, namun dengan hub sebagai perangkat pusat dan kabel UTP berkonektor RJ-45 sebagai media transmisinya.
+</div>
+
+<h2>5.4 Kegiatan Kelompok — LKPD 5.1 (Tabel Rancangan)</h2>
+<div class="lpkd">
+<h3><i class="fa-solid fa-clipboard-list"></i> Petunjuk LKPD 5.1</h3>
+<p>Lengkapi tabel rancangan berikut bersama kelompok, berdasarkan studi kasus pada bagian 5.2.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Komponen</th><th>Hasil Rancangan Kelompok Kami</th></tr></thead>
+<tbody>
+<tr><td>Jumlah pengguna</td><td style="height:55px"></td></tr>
+<tr><td>Sumber internet</td><td style="height:55px"></td></tr>
+<tr><td>Jenis koneksi</td><td style="height:55px"></td></tr>
+<tr><td>Topologi yang dipilih</td><td style="height:55px"></td></tr>
+<tr><td>Perangkat jaringan</td><td style="height:55px"></td></tr>
+<tr><td>Media transmisi</td><td style="height:55px"></td></tr>
+<tr><td>Alasan pemilihan</td><td style="height:80px"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<h2>5.5 LKPD 5.2 — Diagram Rancangan</h2>
+<div class="lpkd">
+<p>Gambarkan diagram topologi rancangan kelompok kalian pada kotak berikut, atau buat menggunakan Chromebook (Google Docs, Google Slides, atau Canva) lalu cetak/tempelkan.</p>
+<div class="placeholder">
+<div>
+<i class="fa-solid fa-diagram-project" style="font-size:42px;color:#999"></i>
+<p><strong>Diagram Topologi Rancangan Kelompok</strong></p>
+<p>Area kosong untuk menggambar perangkat, hubungan, nama perangkat, dan fungsi.</p>
+</div>
+</div>
+<p><em>Jangan lupa memberi nama setiap perangkat dan keterangan fungsinya pada diagram, serta membedakan garis kabel dengan garis nirkabel.</em></p>
+</div>
+
+<h2>Rangkuman Bab 5</h2>
+<ul>
+<li>Perancangan topologi dilakukan melalui delapan langkah, mulai dari mengidentifikasi kebutuhan pengguna hingga memeriksa kesesuaian rancangan.</li>
+<li>Rancangan jaringan kelas XI TJKT dengan hotspot HP guru sebagai pusat membentuk pola menyerupai topologi star dengan media nirkabel.</li>
+<li>Produk rancangan terdiri atas tabel rancangan dan diagram topologi yang dilengkapi keterangan fungsi setiap perangkat.</li>
+</ul>
+
+<h2>Latihan Soal Bab 5</h2>
+<ol>
+<li>Sebutkan delapan langkah dalam merancang topologi jaringan!</li>
+<li>Mengapa langkah memeriksa kesesuaian rancangan perlu dilakukan di akhir perancangan?</li>
+<li>Berdasarkan studi kasus pada bab ini, topologi apa yang paling sesuai untuk jaringan kelas XI TJKT? Jelaskan alasannya!</li>
+<li>Mengapa dalam diagram perlu dibedakan antara garis kabel dan garis nirkabel?</li>
+</ol>
+
+<h2>Refleksi Pertemuan 5</h2>
+<div class="reflect">
+<div class="prompt">• Mengapa kelompok saya memilih topologi tersebut?</div>
+<div class="prompt">• Apakah rancangan kami sudah sesuai dengan perangkat yang tersedia di sekolah?</div>
+<div class="prompt">• Apa kelebihan rancangan kelompok saya?</div>
+<div class="prompt">• Apa kekurangan rancangan kelompok saya?</div>
+</div>
+
+<div class="footer">TP3 · Bab 5 · Merancang Topologi Jaringan Sederhana</div>
+</section>
+</main>
+</body>
+</html>
