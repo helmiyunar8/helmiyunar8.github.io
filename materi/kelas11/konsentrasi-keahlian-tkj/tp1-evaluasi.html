@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluasi Akhir TP 1 - LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+    --gold:#b8860b;
+    --gold-light:#fdf8e8;
+    --bg:#f4f4f4;
+    --text:#333;
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+}
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#fff;
+    border-right:1px solid #ddd;
+    padding:18px 14px;
+    overflow-y:auto;
+}
+.logo{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 10px;
+}
+.sidebar h3{
+    text-align:center;
+    margin:4px 0 18px;
+    color:var(--gold);
+}
+.nav a{
+    display:block;
+    text-decoration:none;
+    color:#333;
+    padding:10px 11px;
+    border-radius:8px;
+    margin:4px 0;
+    font-size:14px;
+}
+.nav a:hover,
+.nav a.active{
+    background:#fff9e8;
+    color:var(--gold);
+}
+.nav i{width:22px}
+.main{
+    margin-left:250px;
+    padding:28px 18px;
+}
+.card{
+    max-width:1000px;
+    margin:0 auto;
+    background:#fff;
+    border-top:5px solid var(--gold);
+    border-radius:12px;
+    padding:26px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.header{
+    border-bottom:1px solid #e5e5e5;
+    padding-bottom:15px;
+    margin-bottom:22px;
+}
+.header h1{
+    margin:0;
+    color:var(--gold);
+    font-size:25px;
+}
+.meta{
+    color:#777;
+    font-size:14px;
+    margin-top:4px;
+}
+.instructions{
+    background:var(--gold-light);
+    border-left:4px solid var(--gold);
+    padding:13px 15px;
+    border-radius:6px;
+    margin-bottom:22px;
+}
+.soal{
+    border:1px solid #e5e5e5;
+    border-radius:9px;
+    padding:15px 17px;
+    margin:12px 0;
+    background:#fff;
+}
+.soal strong{
+    color:var(--gold);
+}
+textarea{
+    width:100%;
+    min-height:85px;
+    margin-top:10px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font:inherit;
+    resize:vertical;
+}
+.footer-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:25px;
+    padding-top:18px;
+    border-top:1px solid #e5e5e5;
+}
+.footer-nav a{
+    color:var(--gold);
+    text-decoration:none;
+    border:1px solid #d9c98e;
+    padding:9px 13px;
+    border-radius:8px;
+}
+.hamburger{
+    display:none;
+    position:fixed;
+    right:14px;
+    top:12px;
+    z-index:20;
+    border:0;
+    background:#fff;
+    border-radius:8px;
+    padding:9px;
+    font-size:20px;
+}
+@media(max-width:768px){
+    .sidebar{display:none;width:230px;z-index:15}
+    .sidebar.show{display:block}
+    .hamburger{display:block}
+    .main{
+        margin-left:0;
+        padding:58px 10px 18px;
+    }
+    .card{
+        padding:17px;
+        border-radius:10px;
+    }
+    .header h1{font-size:21px}
+    .soal{
+        padding:13px;
+    }
+    textarea{
+        min-height:75px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+    <img src="../../asset/logo.png" class="logo" alt="Logo">
+    <h3>LMS TKJ</h3>
+    <div class="nav">
+        <a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+        <a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+        <a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+        <a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+        <a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+        <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+        <a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+        <a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+    </div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+    <i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+    <div class="header">
+        <h1><i class="fas fa-clipboard-check"></i> Evaluasi Akhir Tujuan Pembelajaran 1</h1>
+        <div class="meta">TP 1 · Fungsi dan Kebutuhan Jaringan Komputer</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Petunjuk:</strong><br>
+        Kerjakan soal-soal berikut secara mandiri tanpa melihat kunci jawaban
+        terlebih dahulu. Kunci jawaban terdapat di halaman terakhir buku ini.
+    </div>
+
+    <div class="soal"><strong>1.</strong> Jelaskan pengertian jaringan komputer.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>2.</strong> Sebutkan empat fungsi jaringan komputer.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>3.</strong> Jelaskan perbedaan jaringan kabel dan nirkabel.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>4.</strong> Jelaskan perbedaan LAN dan WAN.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>5.</strong> Apa fungsi router?
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>6.</strong> Apa fungsi switch atau hub?
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>7.</strong> Apa fungsi access point?
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>8.</strong> Mengapa jumlah pengguna perlu diketahui sebelum membangun jaringan?
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>9.</strong> Sebutkan lima hal yang perlu diidentifikasi sebelum memasang jaringan.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="soal"><strong>10.</strong> Jelaskan kebutuhan jaringan kelas XI TJKT SMKN 7 Luwu.
+        <textarea placeholder="Tuliskan jawabanmu di sini..."></textarea>
+    </div>
+
+    <div class="footer-nav">
+        <a href="tp1-bab6-4.html">← Refleksi Akhir</a>
+        <a href="index.html">Kembali ke TP 1</a>
+    </div>
+
+</section>
+</main>
+
+</body>
+</html>
