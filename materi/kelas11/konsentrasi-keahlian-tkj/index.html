@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsentrasi Keahlian TKJ Kelas XI - Helmi Yunar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            min-height: 100vh;
+            color: var(--text-dark);
+            flex-direction: column;
+        }
+
+        /* --- SIDEBAR EMAS SAMPING --- */
+        .sidebar { 
+            width: 250px;
+            background: var(--white);
+            height: 100vh;
+            position: fixed; 
+            border-right: 2px solid #eee;
+            transition: 0.3s;
+            z-index: 1100;
+            left: -250px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
+
+        .sidebar-header img {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .nav-menu {
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: #555;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-item i {
+            width: 25px;
+            margin-right: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #fffcf0;
+            color: var(--gold);
+            border-left: 5px solid var(--gold);
+        }
+
+        .close-btn { 
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px; 
+            cursor: pointer;
+            color: var(--gold);
+            display: none; 
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            transition: 0.3s;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container Content dengan Garis Emas di Atas */
+        .content-card {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--gold);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* GRID TUJUAN PEMBELAJARAN */
+        .pertemuan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .pertemuan-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            border: 1px solid #eee;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .pertemuan-card i {
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .pertemuan-card:hover:not(.kosong) {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            background: #fffcf0;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        }
+
+        /* TP YANG BELUM DIISI */
+        .pertemuan-card.kosong {
+            opacity: 0.5;
+            background: #fafafa;
+            cursor: not-allowed;
+            border-style: dashed;
+            font-weight: normal;
+            font-size: 13px;
+        }
+
+        /* TOMBOL AKSI BAWAH */
+        .aksi-bawah {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-aksi {
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-video {
+            background: #d9534f;
+        }
+
+        .btn-download {
+            background: var(--gold);
+        }
+
+        .btn-kembali {
+            background: #555;
+        }
+
+        .btn-aksi:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 13px;
+            margin-top: auto;
+        }
+
+        /* TOGGLE MOBILE */
+        .menu-toggle { 
+            background: var(--gold);
+            color: white;
+            padding: 8px 12px; 
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed; 
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+
+        @media (min-width: 769px) {
+            .sidebar {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 250px;
+            }
+
+            .close-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 15px;
+                padding-top: 70px;
+            }
+
+            .close-btn {
+                display: block;
+            }
+
+            .topbar h2 {
+                font-size: 18px;
+            }
+
+            .pertemuan-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i> Menu
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+
+        <div class="close-btn" onclick="toggleSidebar()">&times;</div>
+
+        <div class="sidebar-header">
+            <img src="../../../asset/logo.png" alt="Logo">
+            <h3>LMS TKJ</h3>
+            <p style="font-size: 12px; color: #777;">SMKN 7 LUWU</p>
+        </div>
+
+        <div class="nav-menu">
+            <a href="../../../index.html" class="nav-item">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+
+            <a href="../../index.html" class="nav-item active">
+                <i class="fas fa-book-open"></i> Materi
+            </a>
+
+            <a href="../../../menu-utama-TKJ/tryout.html" class="nav-item">
+                <i class="fas fa-edit"></i> Tryout
+            </a>
+
+            <a href="../../../lkpd/index.html" class="nav-item">
+                <i class="fas fa-file-signature"></i> LKPD
+            </a>
+
+            <a href="../../../absen/index.html" class="nav-item">
+                <i class="fas fa-camera-retro"></i> Absen
+            </a>
+
+            <a href="../../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item">
+                <i class="fas fa-award"></i> Ranking
+            </a>
+
+            <a href="../../../cbt/index.html" class="nav-item">
+                <i class="fas fa-vial"></i> CBT Ujian
+            </a>
+
+            <a href="../../../arsip.html" class="nav-item">
+                <i class="fas fa-archive"></i> ARSIP
+            </a>
+        </div>
+
+    </nav>
+
+
+    <div class="main-content">
+
+        <div class="content-card">
+
+            <div class="topbar">
+
+                <h2 style="color: var(--gold);">
+                    <i class="fas fa-network-wired"></i>
+                    KONSENTRASI KEAHLIAN TKJ
+                </h2>
+
+                <div style="font-size: 13px; font-weight: 600; color: #777;">
+                    <i class="fas fa-user-circle"></i> Helmi Yunar
+                </div>
+
+            </div>
+
+
+            <div style="text-align: center; margin-bottom: 30px;">
+
+                <h3 style="font-size: 22px; margin-bottom: 5px;">
+                    Tujuan Pembelajaran
+                </h3>
+
+                <p style="color: #666; font-size: 15px;">
+                    Silakan pilih Tujuan Pembelajaran di bawah ini
+                </p>
+
+            </div>
+
+
+            <div class="pertemuan-grid">
+
+                <!-- TP 1 -->
+                <a href="tp1.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 1
+                </a>
+
+                <!-- TP 2 -->
+                <a href="tp2.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 2
+                </a>
+
+                <!-- TP 3 -->
+                <a href="tp3.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 3
+                </a>
+
+                <!-- TP 4 -->
+                <a href="tp4.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 4
+                </a>
+
+                <!-- TP 5 -->
+                <a href="tp5.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 5
+                </a>
+
+                <!-- TP 6 -->
+                <a href="tp6.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 6
+                </a>
+
+                <!-- TP 7 -->
+                <a href="tp7.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 7
+                </a>
+
+                <!-- TP 8 -->
+                <a href="tp8.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 8
+                </a>
+
+                <!-- TP 9 -->
+                <a href="tp9.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 9
+                </a>
+
+                <!-- TP 10 -->
+                <a href="tp10.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 10
+                </a>
+
+                <!-- TP 11 -->
+                <a href="tp11.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 11
+                </a>
+
+                <!-- TP 12 -->
+                <a href="tp12.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 12
+                </a>
+
+                <!-- TP 13 -->
+                <a href="tp13.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 13
+                </a>
+
+                <!-- TP 14 -->
+                <a href="tp14.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 14
+                </a>
+
+                <!-- TP 15 -->
+                <a href="tp15.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 15
+                </a>
+
+                <!-- TP 16 -->
+                <a href="tp16.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 16
+                </a>
+
+                <!-- TP 17 -->
+                <a href="tp17.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 17
+                </a>
+
+                <!-- TP 18 -->
+                <a href="tp18.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 18
+                </a>
+
+                <!-- TP 19 -->
+                <a href="tp19.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 19
+                </a>
+
+                <!-- TP 20 -->
+                <a href="tp20.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 20
+                </a>
+
+                <!-- TP 21 -->
+                <a href="tp21.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 21
+                </a>
+
+                <!-- TP 22 -->
+                <a href="tp22.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 22
+                </a>
+
+                <!-- TP 23 -->
+                <a href="tp23.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 23
+                </a>
+
+                <!-- TP 24 -->
+                <a href="tp24.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 24
+                </a>
+
+                <!-- TP 25 -->
+                <a href="tp25.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 25
+                </a>
+
+                <!-- TP 26 -->
+                <a href="tp26.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 26
+                </a>
+
+                <!-- TP 27 -->
+                <a href="tp27.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 27
+                </a>
+
+                <!-- TP 28 -->
+                <a href="tp28.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 28
+                </a>
+
+                <!-- TP 29 -->
+                <a href="tp29.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 29
+                </a>
+
+                <!-- TP 30 -->
+                <a href="tp30.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 30
+                </a>
+
+                <!-- TP 31 -->
+                <a href="tp31.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 31
+                </a>
+
+                <!-- TP 32 -->
+                <a href="tp32.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 32
+                </a>
+
+                <!-- TP 33 -->
+                <a href="tp33.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 33
+                </a>
+
+                <!-- TP 34 -->
+                <a href="tp34.html" class="pertemuan-card">
+                    <i class="fas fa-folder-open"></i>
+                    TP 34
+                </a>
+
+            </div>
+
+
+            <div class="aksi-bawah">
+
+                <a href="#" class="btn-aksi btn-video">
+                    <i class="fab fa-youtube"></i>
+                    Video Belajar
+                </a>
+
+                <a href="#" class="btn-aksi btn-download">
+                    <i class="fas fa-download"></i>
+                    Download Modul
+                </a>
+
+                <a href="../index.html" class="btn-aksi btn-kembali">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali ke Mapel XI
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+            ©2025 Developed by Helmi Yunar
+        </div>
+
+    </div>
+
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
