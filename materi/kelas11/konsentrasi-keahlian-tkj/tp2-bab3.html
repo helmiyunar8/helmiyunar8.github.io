@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 3 - Access Point, Kabel UTP, RJ-45, LAN Tester, dan Chromebook - TP 2 LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h2{font-size:20px;color:#604800;margin-top:30px}
+h3{font-size:17px;color:#604800}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+.diagram{border:1px solid #e3e3e3;background:#fafafa;border-radius:10px;padding:18px;margin:18px 0;text-align:center}
+.diagram-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.node{border:1px solid #d6c487;background:#fff;padding:11px 14px;border-radius:8px;min-width:125px;font-weight:bold}
+.arrow{font-size:20px;color:var(--gold)}
+.small{font-size:13px;color:#666;margin-top:8px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.reflection{background:#fffdf5;border:1px solid #eadcae;border-radius:9px;padding:15px 17px}
+ol{padding-left:25px}
+ol li{margin-bottom:10px}
+ul{padding-left:24px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:650px}
+.info,.exercise,.reflection{font-size:14px}
+.node{min-width:105px;padding:9px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-ethernet"></i> BAB 3 — Access Point, Kabel UTP, RJ-45, LAN Tester, dan Chromebook</h1>
+<div class="meta">TP 2 · Pertemuan 3 · Alokasi Waktu 3 JP</div>
+</div>
+
+<h2>Tujuan Pembelajaran Bab Ini</h2>
+<ul>
+<li>Peserta didik mampu menjelaskan karakteristik access point, LAN tester, kabel UTP, dan konektor RJ-45.</li>
+<li>Peserta didik mampu menjelaskan fungsi Chromebook sebagai perangkat pengguna.</li>
+</ul>
+
+<h2>3.1 Access Point</h2>
+<p>Access point (AP) adalah perangkat yang berfungsi menyediakan atau memancarkan jaringan nirkabel (Wi-Fi), sehingga perangkat seperti Chromebook, laptop, atau telepon genggam dapat terhubung ke jaringan tanpa menggunakan kabel.</p>
+
+<h3>Karakteristik Access Point</h3>
+<ul>
+<li>Mengubah sinyal data dari jaringan kabel menjadi sinyal radio (gelombang Wi-Fi) yang dapat ditangkap oleh perangkat nirkabel di sekitarnya.</li>
+<li>Memiliki jangkauan (coverage) terbatas, biasanya beberapa meter hingga puluhan meter, tergantung kekuatan sinyal dan penghalang seperti tembok.</li>
+<li>Berbeda dengan router, access point murni hanya berfungsi memancarkan sinyal nirkabel dan tidak selalu memiliki kemampuan mengatur lalu lintas data antarjaringan; namun pada perangkat rumahan, fungsi router dan access point sering digabung dalam satu perangkat.</li>
+<li>Semakin banyak perangkat yang terhubung ke satu access point secara bersamaan, semakin terbagi pula kapasitas dan kecepatan yang diterima setiap perangkat.</li>
+</ul>
+
+<p>Fitur hotspot pada telepon genggam guru menjalankan fungsi seperti access point, karena memancarkan sinyal Wi-Fi yang ditangkap oleh sebelas Chromebook secara bersamaan. Inilah sebabnya semakin banyak Chromebook yang aktif menggunakan internet secara bersamaan (misalnya menonton video), semakin terasa penurunan kecepatan pada Chromebook lainnya.</p>
+
+<div class="diagram">
+<div class="diagram-row">
+<div class="node"><i class="fas fa-mobile-screen"></i><br>HP Guru<br><span class="small">Hotspot / AP</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-wifi"></i><br>Sinyal Wi-Fi</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-laptop"></i><br>11 Chromebook</div>
+</div>
+<div class="small">Ilustrasi ringan hubungan hotspot HP guru dengan Chromebook.</div>
+</div>
+
+<h3>Perbedaan Koneksi Kabel dan Nirkabel (Diperdalam)</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aspek</th><th>Koneksi Kabel</th><th>Koneksi Nirkabel</th></tr></thead>
+<tbody>
+<tr><td>Media</td><td>Kabel UTP/fiber optik</td><td>Gelombang radio (Wi-Fi)</td></tr>
+<tr><td>Kestabilan</td><td>Lebih stabil, tidak mudah terganggu</td><td>Dapat terganggu jarak, tembok, cuaca, dan interferensi sinyal lain</td></tr>
+<tr><td>Mobilitas</td><td>Perangkat tidak dapat berpindah tempat</td><td>Perangkat dapat berpindah selama masih dalam jangkauan sinyal</td></tr>
+<tr><td>Pemasangan</td><td>Membutuhkan kabel fisik ke setiap perangkat</td><td>Tidak membutuhkan kabel ke setiap perangkat</td></tr>
+<tr><td>Kapasitas per pengguna</td><td>Cenderung tetap per kabel</td><td>Terbagi antara semua perangkat yang terhubung ke satu access point</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>3.2 Kabel UTP (Unshielded Twisted Pair)</h2>
+<p>Kabel UTP adalah media kabel yang paling umum digunakan pada jaringan LAN. Nama "Unshielded Twisted Pair" berarti kabel ini tidak memiliki lapisan pelindung logam tambahan (unshielded) dan terdiri dari pasangan kawat yang dipilin (twisted pair) untuk mengurangi gangguan sinyal antarkawat di dalamnya.</p>
+
+<h3>Karakteristik Kabel UTP</h3>
+<ul>
+<li>Terdiri dari empat pasang kawat tembaga kecil (delapan kawat) yang dipilin berpasangan dan dibungkus oleh lapisan pelindung luar (jacket).</li>
+<li>Memiliki beberapa kategori (Cat5, Cat5e, Cat6, dan seterusnya) yang menentukan kecepatan maksimum dan kualitas transmisi data; semakin tinggi kategorinya, umumnya semakin baik performanya.</li>
+<li>Panjang kabel UTP yang efektif untuk jaringan LAN standar biasanya maksimal sekitar 100 meter; lebih dari itu, sinyal data dapat melemah.</li>
+<li>Kualitas lapisan pembungkus luar (jacket) memengaruhi daya tahan fisik kabel terhadap tekukan, gesekan, dan penggunaan berulang, meskipun tidak selalu memengaruhi kecepatan transmisi data selama susunan kawat di dalamnya tetap baik.</li>
+</ul>
+
+<div class="info">
+<strong><i class="fas fa-circle-info"></i> Catatan tentang Kabel UTP di Sekolah Kita</strong>
+<p>Kabel UTP yang dibeli untuk praktik di sekolah kita dipilih dengan harga terjangkau agar mencukupi kebutuhan latihan seluruh peserta didik, dengan lapisan pembungkus luar yang lebih lembut dibandingkan kabel kualitas premium.</p>
+<p>Hal ini wajar untuk keperluan latihan dasar memasang konektor RJ-45, namun perlu diperlakukan dengan hati-hati (tidak ditekuk tajam berulang kali atau ditarik paksa) agar kawat di dalamnya tidak mudah putus atau rusak.</p>
+</div>
+
+<h2>3.3 Konektor RJ-45</h2>
+<p>Konektor RJ-45 (Registered Jack 45) adalah konektor kecil berbentuk kotak transparan yang dipasang pada ujung kabel UTP agar dapat dicolokkan ke port jaringan pada perangkat seperti switch, hub, router, komputer, atau laptop.</p>
+
+<h3>Karakteristik Konektor RJ-45</h3>
+<ul>
+<li>Memiliki delapan pin kecil dari logam yang akan menembus dan mengunci kawat kabel UTP saat dipasang menggunakan tang crimping.</li>
+<li>Bentuknya universal, artinya konektor RJ-45 yang sama dapat digunakan pada berbagai merek dan jenis perangkat jaringan, selama port yang tersedia juga berjenis RJ-45 (port Ethernet).</li>
+<li>Pemasangan yang tidak tepat, misalnya susunan warna kawat yang salah atau pin yang tidak menembus kawat dengan sempurna, dapat menyebabkan koneksi tidak berfungsi meskipun kabel dan konektornya masih baru.</li>
+</ul>
+
+<div class="diagram">
+<div class="diagram-row">
+<div class="node"><i class="fas fa-ethernet"></i><br>Kabel UTP</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-plug"></i><br>RJ-45</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-network-wired"></i><br>Port Ethernet</div>
+</div>
+<div class="small">RJ-45 menjadi penghubung antara kabel UTP dan port Ethernet.</div>
+</div>
+
+<h2>3.4 LAN Tester</h2>
+<p>LAN tester adalah alat yang digunakan untuk menguji apakah susunan kabel UTP yang telah dipasangi konektor RJ-45 sudah benar dan berfungsi dengan baik, sebelum kabel tersebut digunakan pada jaringan sesungguhnya.</p>
+
+<h3>Karakteristik dan Cara Kerja LAN Tester</h3>
+<ul>
+<li>Umumnya terdiri dari dua bagian (unit utama dan unit remote) yang masing-masing memiliki port RJ-45 dan lampu indikator bernomor 1 sampai 8.</li>
+<li>Kedua ujung kabel UTP yang akan diuji dicolokkan ke masing-masing unit, kemudian alat akan menyalakan lampu indikator secara berurutan sesuai jalur kawat yang terhubung.</li>
+<li>Jika lampu menyala berurutan dari 1 sampai 8 pada kedua unit, berarti kabel tersusun dan tersambung dengan benar (kabel straight).</li>
+<li>Jika ada lampu yang tidak menyala, menyala tidak berurutan, atau berkedip tidak normal, berarti terdapat kesalahan pemasangan, misalnya kawat yang tertukar urutannya atau pin yang tidak menembus kawat dengan sempurna.</li>
+</ul>
+
+<p>Mengapa pengujian dengan LAN tester penting dilakukan? Karena secara kasat mata, konektor RJ-45 yang sudah terpasang pada kabel UTP terlihat sama saja baik yang tersambung dengan benar maupun yang salah. Tanpa diuji menggunakan LAN tester, kita berisiko memasang kabel yang ternyata tidak berfungsi ke dalam jaringan sesungguhnya, yang tentu akan menghambat pekerjaan.</p>
+
+<div class="diagram">
+<div class="diagram-row">
+<div class="node"><i class="fas fa-ethernet"></i><br>Ujung Kabel A</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-vial"></i><br>LAN Tester<br><span class="small">1 2 3 4 5 6 7 8</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-ethernet"></i><br>Ujung Kabel B</div>
+</div>
+<div class="small">Kedua ujung kabel diuji untuk memeriksa susunan dan koneksinya.</div>
+</div>
+
+<h2>3.5 Chromebook sebagai Perangkat Pengguna</h2>
+<p>Chromebook adalah salah satu jenis perangkat pengguna (end-user device) yang digunakan langsung oleh peserta didik untuk mengakses dan memanfaatkan jaringan komputer, bukan untuk membangun atau mengatur jaringan itu sendiri.</p>
+
+<h3>Karakteristik Chromebook yang Perlu Dipahami</h3>
+<ul>
+<li>Menjalankan sistem operasi Chrome OS yang dirancang ringan dan sebagian besar aktivitasnya dilakukan melalui peramban (browser), sehingga sangat bergantung pada koneksi internet untuk banyak fungsinya.</li>
+<li>Umumnya tidak dapat memasang aplikasi tambahan secara bebas seperti komputer pada umumnya, sehingga seluruh kegiatan belajar (membaca bahan ajar, mengumpulkan tugas, mencari informasi) dilakukan melalui browser.</li>
+<li>Dapat terhubung ke jaringan secara nirkabel (melalui Wi-Fi/hotspot) maupun secara kabel apabila dilengkapi adaptor tambahan yang sesuai.</li>
+<li>Sebagai perangkat pengguna, Chromebook berperan sebagai "ujung" dari sebuah jaringan — ia menerima dan mengirim data, namun tidak berfungsi mengatur atau meneruskan data untuk perangkat lain sebagaimana router, switch, atau hub.</li>
+</ul>
+
+<h2>3.6 Tabel Ringkasan Perangkat pada Bab Ini</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Perangkat/Alat</th><th>Fungsi</th><th>Digunakan untuk Koneksi</th></tr></thead>
+<tbody>
+<tr><td>Access Point</td><td>Memancarkan jaringan nirkabel (Wi-Fi)</td><td>Nirkabel</td></tr>
+<tr><td>Kabel UTP</td><td>Media penghantar data pada jaringan kabel</td><td>Kabel</td></tr>
+<tr><td>Konektor RJ-45</td><td>Menghubungkan kabel UTP ke port perangkat jaringan</td><td>Kabel</td></tr>
+<tr><td>LAN Tester</td><td>Menguji susunan dan koneksi kabel jaringan</td><td>Pengujian kabel</td></tr>
+<tr><td>Chromebook</td><td>Perangkat pengguna untuk mengakses jaringan</td><td>Kabel / Nirkabel</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>3.7 Kegiatan Peserta Didik — LKPD 3.1</h2>
+<div class="info">
+<strong><i class="fas fa-clipboard-list"></i> Petunjuk LKPD 3.1</strong>
+<p>Amati access point (jika tersedia), kabel UTP, konektor RJ-45, LAN tester, dan Chromebook yang ditunjukkan guru. Isi tabel berikut berdasarkan pengamatan kalian.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Alat/Perangkat</th><th>Ciri Fisik yang Diamati</th><th>Fungsi</th><th>Jenis Koneksi</th></tr></thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Rangkuman Bab 3</h2>
+<ul>
+<li>Access point berfungsi memancarkan jaringan nirkabel (Wi-Fi) dengan jangkauan dan kapasitas yang terbagi antarpengguna.</li>
+<li>Kabel UTP adalah media kabel dengan empat pasang kawat terpilin, memiliki beberapa kategori mutu (Cat5, Cat5e, Cat6, dst).</li>
+<li>Konektor RJ-45 menghubungkan kabel UTP ke port jaringan menggunakan delapan pin logam.</li>
+<li>LAN tester digunakan untuk menguji kebenaran susunan dan koneksi kabel UTP setelah dipasangi konektor RJ-45.</li>
+<li>Chromebook adalah perangkat pengguna yang berperan sebagai ujung jaringan, bukan pengatur lalu lintas data.</li>
+</ul>
+
+<h2>Latihan Soal Bab 3</h2>
+<div class="exercise"><strong>1.</strong> Jelaskan fungsi dan karakteristik access point!</div>
+<div class="exercise"><strong>2.</strong> Mengapa kecepatan internet pada Chromebook dapat menurun ketika banyak Chromebook lain aktif menonton video secara bersamaan?</div>
+<div class="exercise"><strong>3.</strong> Sebutkan tiga karakteristik kabel UTP yang telah kalian pelajari!</div>
+<div class="exercise"><strong>4.</strong> Mengapa kabel UTP harus diuji menggunakan LAN tester setelah dipasangi konektor RJ-45, padahal secara kasat mata sudah terlihat rapi?</div>
+<div class="exercise"><strong>5.</strong> Jelaskan peran Chromebook sebagai perangkat pengguna dalam sebuah jaringan komputer!</div>
+
+<h2>Refleksi Pertemuan 3</h2>
+<div class="reflection">
+<ul>
+<li>Apa fungsi access point menurut pemahaman saya?</li>
+<li>Mengapa kabel UTP membutuhkan konektor RJ-45?</li>
+<li>Mengapa kabel jaringan perlu diuji sebelum digunakan?</li>
+<li>Apa peran Chromebook dalam jaringan yang saya gunakan?</li>
+</ul>
+</div>
+
+<div class="footer-nav">
+<a href="tp2-bab2.html">← Bab 2</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-bab4.html">Bab 4 →</a>
+</div>
+
+</section>
+</main>
+</body>
+</html>
