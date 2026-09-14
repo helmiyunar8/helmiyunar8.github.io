@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP 1 - Bab 2 Jenis-Jenis Jaringan Komputer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--white:#fff;--bg:#f4f4f4;--text:#333}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:var(--bg);color:var(--text);min-height:100vh}
+.sidebar{width:250px;background:#fff;height:100vh;position:fixed;left:0;top:0;border-right:2px solid #eee;z-index:1100;display:flex;flex-direction:column}
+.sidebar-header{padding:30px 20px;text-align:center;border-bottom:2px solid #f9f9f9}.sidebar-header img{width:60px;margin-bottom:10px}.sidebar-header h3{color:var(--gold);font-size:20px}
+.nav-menu{padding:20px 0;flex-grow:1}.nav-item{display:flex;align-items:center;padding:15px 25px;color:#555;text-decoration:none;font-size:16px}.nav-item i{width:25px;margin-right:15px;text-align:center}.nav-item:hover,.nav-item.active{background:#fffcf0;color:var(--gold);border-left:5px solid var(--gold)}
+.close-btn,.menu-toggle{display:none}
+.main{margin-left:250px;padding:30px;display:flex;justify-content:center}.card{width:100%;max-width:1000px;background:#fff;border-radius:12px;border-top:8px solid var(--gold);box-shadow:0 5px 15px rgba(0,0,0,.05);padding:25px}
+.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #f0f0f0;padding-bottom:15px;margin-bottom:25px}.topbar h2{color:var(--gold)}
+.content{font-size:15px;line-height:1.75}.content h3{color:var(--gold);margin:26px 0 10px;font-size:20px}.content h4{margin:18px 0 5px;font-size:17px}
+.info{background:#fffcf0;border-left:5px solid var(--gold);padding:15px;margin:15px 0;border-radius:8px}.goal{background:#f9f9f9;border:1px solid #eee;border-radius:10px;padding:15px}
+ul,ol{padding-left:25px}.content p{margin:8px 0}.nav-bottom{display:flex;justify-content:space-between;gap:10px;margin-top:30px;padding-top:20px;border-top:2px solid #eee}.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--gold);color:#fff;padding:11px 15px;border-radius:8px;font-size:14px}.btn.secondary{background:#f7f7f7;color:#555;border:1px solid #ddd}
+.table-wrap{overflow-x:auto;margin:15px 0}table{width:100%;border-collapse:collapse;min-width:600px}th,td{border:1px solid #ddd;padding:10px;text-align:left}th{background:#fffcf0;color:#7d5d00}
+.footer{text-align:center;color:#888;font-size:13px;padding:20px}
+@media(max-width:768px){
+.sidebar{left:-250px;transition:.3s}.sidebar.active{left:0}.close-btn{display:block;position:absolute;right:15px;top:10px;font-size:24px;color:var(--gold);cursor:pointer}.menu-toggle{display:block;position:fixed;top:15px;left:15px;z-index:1000;background:var(--gold);color:#fff;padding:8px 12px;border-radius:5px;cursor:pointer}.main{margin-left:0;padding:15px;padding-top:70px}.card{padding:18px}.topbar h2{font-size:18px}.topbar div{font-size:12px}.content{font-size:14px}.content h3{font-size:18px}.nav-bottom{flex-direction:column}.btn{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+<nav class="sidebar" id="sidebar">
+<div class="close-btn" onclick="toggleSidebar()">&times;</div>
+<div class="sidebar-header"><img src="../../asset/logo.png" alt="Logo"><h3>LMS TKJ</h3><p style="font-size:12px;color:#777">SMKN 7 LUWU</p></div>
+<div class="nav-menu">
+<a href="../../index.html" class="nav-item"><i class="fas fa-home"></i>Beranda</a>
+<a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i>Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i>Tryout</a>
+<a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i>LKPD</a>
+<a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i>Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i>Ranking</a>
+<a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i>CBT Ujian</a>
+<a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i>ARSIP</a>
+</div></nav>
+<div class="main"><div class="card">
+<div class="topbar"><h2><i class="fas fa-network-wired"></i> BAB 2</h2><div style="font-size:13px;font-weight:600;color:#777"><i class="fas fa-user-circle"></i> Helmi Yunar</div></div>
+<div class="content">
+<h1 style="font-size:25px;margin-bottom:5px">Jenis-Jenis Jaringan Komputer</h1>
+<p><em>Pertemuan 2 · Alokasi Waktu 3 JP</em></p>
+<div class="goal"><strong>Tujuan Pembelajaran Bab Ini:</strong>
+<ul>
+<li>Peserta didik mampu mengidentifikasi jenis jaringan berdasarkan cakupan wilayah.</li>
+<li>Peserta didik mampu membedakan jaringan kabel dan nirkabel.</li>
+</ul></div>
+
+<h3>2.1 Jenis Jaringan Berdasarkan Cakupan Wilayah</h3>
+<p>Jaringan komputer dapat dibedakan berdasarkan luas wilayah atau jangkauan yang dapat dicakupnya. Beberapa jenis jaringan yang umum dikenal adalah PAN, LAN, WLAN, MAN, dan WAN.</p>
+
+<h4>a. PAN (Personal Area Network)</h4>
+<p>PAN adalah jaringan pribadi dengan cakupan sangat kecil (personal area network). PAN digunakan untuk menghubungkan perangkat-perangkat pribadi yang berada dalam jarak dekat.</p>
+<div class="info"><strong><i class="fas fa-lightbulb"></i> Contoh</strong><p>Telepon genggam yang tersambung ke smartwatch merupakan contoh PAN.</p></div>
+
+<h4>b. LAN (Local Area Network)</h4>
+<p>LAN adalah jaringan dalam area terbatas (local area network), misalnya satu ruangan, rumah, laboratorium, atau gedung.</p>
+
+<h4>c. WLAN (Wireless Local Area Network)</h4>
+<p>WLAN adalah jaringan lokal menggunakan media nirkabel (wireless local area network). WLAN menggunakan gelombang radio, misalnya melalui Wi-Fi.</p>
+<div class="info"><strong><i class="fas fa-wifi"></i> Contoh di Kelas</strong><p>Hotspot/Wi-Fi yang digunakan oleh sebelas Chromebook di dalam satu ruang kelas merupakan contoh WLAN karena perangkat terhubung menggunakan media nirkabel dan cakupannya terbatas.</p></div>
+
+<h4>d. MAN (Metropolitan Area Network)</h4>
+<p>MAN adalah jaringan dengan cakupan satu kota (metropolitan area network).</p>
+<div class="info"><strong><i class="fas fa-city"></i> Contoh</strong><p>Jaringan antar-sekolah dalam satu kabupaten/kota yang dikelola dinas pendidikan dapat menjadi contoh jaringan dengan cakupan wilayah metropolitan/kota.</p></div>
+
+<h4>e. WAN (Wide Area Network)</h4>
+<p>WAN adalah jaringan dengan cakupan luas, antarkota/negara (wide area network).</p>
+
+<div class="table-wrap"><table>
+<thead><tr><th>Jenis</th><th>Nama Lengkap</th><th>Cakupan</th></tr></thead>
+<tbody>
+<tr><td>PAN</td><td>Personal Area Network</td><td>Sangat kecil / pribadi</td></tr>
+<tr><td>LAN</td><td>Local Area Network</td><td>Area terbatas</td></tr>
+<tr><td>WLAN</td><td>Wireless Local Area Network</td><td>Area lokal dengan media nirkabel</td></tr>
+<tr><td>MAN</td><td>Metropolitan Area Network</td><td>Satu kota</td></tr>
+<tr><td>WAN</td><td>Wide Area Network</td><td>Antarkota / negara</td></tr>
+</tbody></table></div>
+
+<h3>2.2 Jaringan Kabel dan Nirkabel</h3>
+<p>Selain berdasarkan cakupan wilayah, jaringan dapat dibedakan berdasarkan media yang digunakan untuk menghubungkan perangkat, yaitu jaringan kabel dan jaringan nirkabel.</p>
+
+<h4>a. Jaringan Kabel</h4>
+<p>Jaringan kabel menggunakan media kabel sebagai penghantar data. Kabel dapat digunakan ketika dibutuhkan koneksi yang stabil, misalnya untuk praktik jaringan dan penggunaan jangka panjang.</p>
+<p><strong>Kelebihan:</strong> koneksi lebih stabil dan tidak terganggu banyaknya pengguna nirkabel sekaligus.</p>
+
+<h4>b. Jaringan Nirkabel</h4>
+<p>Jaringan nirkabel menggunakan gelombang radio sebagai media komunikasi. Contohnya adalah Wi-Fi dan hotspot.</p>
+<p><strong>Kelebihan:</strong> fleksibel karena perangkat dapat berpindah tempat.</p>
+<p><strong>Kekurangan:</strong> kestabilan dapat terganggu jarak, penghalang, dan banyaknya pengguna.</p>
+
+<h3>2.3 Kegiatan Peserta Didik — LKPD 2.1</h3>
+<div class="info"><strong>Petunjuk</strong><p>Amatilah jaringan yang ada di sekitar kalian. Tentukan jenis jaringan berdasarkan cakupan wilayah dan media yang digunakan.</p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Contoh Jaringan</th><th>Cakupan Wilayah</th><th>Jenis Jaringan</th><th>Kabel/Nirkabel</th><th>Alasan</th></tr></thead>
+<tbody><tr><td style="height:100px"></td><td></td><td></td><td></td><td></td></tr></tbody>
+</table></div>
+
+<h3>Rangkuman Bab 2</h3>
+<ul>
+<li>PAN memiliki cakupan sangat kecil dan bersifat pribadi.</li>
+<li>LAN mencakup area terbatas, misalnya ruangan atau gedung.</li>
+<li>WLAN merupakan jaringan lokal yang menggunakan media nirkabel.</li>
+<li>MAN mencakup wilayah satu kota.</li>
+<li>WAN mencakup wilayah luas, antarkota atau negara.</li>
+<li>Jaringan kabel menggunakan media kabel, sedangkan jaringan nirkabel menggunakan gelombang radio.</li>
+<li>Jaringan nirkabel lebih fleksibel, tetapi kestabilannya dapat dipengaruhi jarak, penghalang, dan jumlah pengguna.</li>
+</ul>
+
+<h3>Latihan Soal Bab 2</h3>
+<ol>
+<li>Jelaskan perbedaan LAN dan WAN berdasarkan cakupan wilayahnya!</li>
+<li>Mengapa jaringan di kelas kalian dapat disebut WLAN? Jelaskan berdasarkan media dan cakupan wilayahnya!</li>
+<li>Sebutkan satu kelebihan dan satu kekurangan jaringan nirkabel!</li>
+<li>Berikan masing-masing satu contoh PAN dan MAN yang kalian ketahui!</li>
+<li>Mengapa jaringan kabel dapat menjadi pilihan yang baik untuk kegiatan praktik dan penggunaan jangka panjang?</li>
+</ol>
+
+<h3>Refleksi Pertemuan 2</h3>
+<ul>
+<li>Jenis jaringan apa yang paling sering saya gunakan dalam kehidupan sehari-hari?</li>
+<li>Apa perbedaan yang paling mudah saya pahami antara LAN dan WAN?</li>
+<li>Apakah saya sudah dapat membedakan jaringan kabel dan nirkabel?</li>
+</ul>
+
+<div class="nav-bottom">
+<a class="btn secondary" href="tp1-bab1.html"><i class="fas fa-arrow-left"></i> Bab 1</a>
+<a class="btn secondary" href="tp1.html"><i class="fas fa-house"></i> Menu TP 1</a>
+<a class="btn" href="tp1-bab3.html">Bab 3 <i class="fas fa-arrow-right"></i></a>
+</div>
+</div></div></div>
+<div class="footer">©2025 Developed by Helmi Yunar</div>
+<script>function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}</script>
+</body>
+</html>
