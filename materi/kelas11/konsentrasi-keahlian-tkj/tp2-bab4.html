@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 4 - Pengamatan Perangkat Jaringan yang Tersedia di Sekolah - TP 2 LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h2{font-size:20px;color:#604800;margin-top:30px}
+h3{font-size:17px;color:#604800}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+.tip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+.tip{border:1px solid #e5e5e5;border-radius:9px;padding:13px;background:#fafafa}
+.tip i{color:var(--gold);margin-right:7px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.reflection{background:#fffdf5;border:1px solid #eadcae;border-radius:9px;padding:15px 17px}
+ol{padding-left:25px}
+ol li{margin-bottom:10px}
+ul{padding-left:24px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:650px}
+.info,.exercise,.reflection{font-size:14px}
+.tip-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-magnifying-glass"></i> BAB 4 — Pengamatan Perangkat Jaringan yang Tersedia di Sekolah</h1>
+<div class="meta">TP 2 · Pertemuan 4 · Alokasi Waktu 3 JP</div>
+</div>
+
+<h2>Tujuan Pembelajaran Bab Ini</h2>
+<ul>
+<li>Peserta didik mampu mengidentifikasi perangkat jaringan yang tersedia secara langsung di sekolah.</li>
+<li>Peserta didik mampu mencatat karakteristik perangkat berdasarkan pengamatan nyata.</li>
+</ul>
+
+<h2>4.1 Mengapa Pengamatan Langsung Penting Dilakukan?</h2>
+<p>Pada Bab 1 sampai Bab 3, kalian telah mempelajari fungsi dan karakteristik perangkat jaringan melalui penjelasan dan gambar. Namun, pemahaman akan jauh lebih kuat apabila kalian juga mengamati langsung wujud asli perangkat tersebut: bagaimana bentuknya, berapa jumlah port yang dimiliki, bagaimana kondisinya, dan di mana perangkat tersebut berada atau digunakan di sekolah.</p>
+<p>Sebagai calon teknisi jaringan, kemampuan mengamati dan mengenali perangkat secara langsung merupakan keterampilan dasar yang sangat penting, karena di dunia kerja nanti kalian akan lebih sering berhadapan dengan perangkat fisik dibandingkan hanya membaca gambar dari buku.</p>
+
+<div class="tip-grid">
+<div class="tip"><i class="fas fa-eye"></i><strong>Amati bentuk fisik</strong><br>Perhatikan warna, ukuran, bentuk, dan tanda pengenal perangkat.</div>
+<div class="tip"><i class="fas fa-plug"></i><strong>Perhatikan port</strong><br>Catat jumlah port jika terlihat dan amati jenis sambungannya.</div>
+<div class="tip"><i class="fas fa-location-dot"></i><strong>Catat lokasi</strong><br>Perhatikan di mana perangkat berada atau digunakan.</div>
+<div class="tip"><i class="fas fa-clipboard-check"></i><strong>Nilai kondisi</strong><br>Catat apakah perangkat baik, rusak ringan, atau tidak dapat digunakan.</div>
+</div>
+
+<h2>4.2 Aturan Keselamatan dan Ketertiban Saat Pengamatan</h2>
+<div class="info">
+<strong><i class="fas fa-triangle-exclamation"></i> Perhatikan Sebelum Memulai Pengamatan</strong>
+<ul>
+<li>Jangan mencabut, memindahkan, atau mengubah pengaturan perangkat apa pun tanpa izin guru.</li>
+<li>Amati perangkat dengan hati-hati, terutama kabel dan konektor yang mudah rusak jika ditarik paksa.</li>
+<li>Jika ingin menyentuh atau memeriksa lebih dekat suatu perangkat, minta izin terlebih dahulu kepada guru.</li>
+<li>Bekerja samalah dengan kelompok agar pengamatan berjalan tertib dan efisien.</li>
+<li>Segera laporkan kepada guru apabila menemukan kabel atau perangkat dalam kondisi rusak.</li>
+</ul>
+</div>
+
+<h2>4.3 Informasi yang Perlu Dicatat Saat Pengamatan</h2>
+<p>Agar hasil pengamatan lengkap dan bermanfaat, catatlah informasi berikut untuk setiap perangkat yang kalian amati.</p>
+<ul>
+<li><strong>Nama perangkat</strong> — nama umum perangkat yang diamati.</li>
+<li><strong>Ciri atau bentuk perangkat</strong> — warna, ukuran, bentuk fisik, dan tanda pengenal lain yang terlihat.</li>
+<li><strong>Jumlah port (jika terlihat)</strong> — berapa banyak lubang/port yang dimiliki perangkat tersebut.</li>
+<li><strong>Fungsi perangkat</strong> — fungsi utama perangkat tersebut berdasarkan materi yang telah dipelajari.</li>
+<li><strong>Kondisi perangkat</strong> — apakah perangkat dalam kondisi baik, sedikit rusak, atau tidak dapat digunakan.</li>
+<li><strong>Lokasi perangkat</strong> — di mana perangkat tersebut berada atau digunakan di lingkungan sekolah.</li>
+</ul>
+
+<h2>4.4 Objek Pengamatan</h2>
+<p>Berikut adalah perangkat dan alat yang akan kalian amati bersama kelompok pada pertemuan ini, sesuai dengan yang tersedia di sekolah kita.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>No</th><th>Objek Pengamatan</th><th>Kategori</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Hotspot HP guru (sumber internet)</td><td>Perangkat aktif (fungsi modem/router/AP)</td></tr>
+<tr><td>2</td><td>Hub</td><td>Perangkat aktif</td></tr>
+<tr><td>3</td><td>Kabel UTP</td><td>Perangkat pasif</td></tr>
+<tr><td>4</td><td>Konektor RJ-45</td><td>Perangkat pasif</td></tr>
+<tr><td>5</td><td>LAN Tester</td><td>Alat pengujian</td></tr>
+<tr><td>6</td><td>Tang Crimping</td><td>Alat pemasangan</td></tr>
+<tr><td>7</td><td>Chromebook</td><td>Perangkat pengguna</td></tr>
+<tr><td>8</td><td>Perangkat Wi-Fi/Access Point lain (jika tersedia)</td><td>Perangkat aktif</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>4.5 Kegiatan Peserta Didik — LKPD 4.1 (Lembar Pengamatan)</h2>
+<div class="info">
+<strong><i class="fas fa-clipboard-list"></i> Petunjuk LKPD 4.1</strong>
+<p>Amati setiap perangkat pada daftar 4.4 bersama kelompok, lalu catat hasil pengamatan pada tabel berikut. Gunakan Chromebook untuk mencari informasi tambahan jika diperlukan.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Nama Perangkat</th><th>Ciri/Bentuk</th><th>Fungsi</th><th>Kondisi</th><th>Lokasi</th></tr></thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+</tbody>
+</table>
+</div>
+
+<h2>4.6 Menyusun Laporan Singkat Hasil Pengamatan</h2>
+<p>Setelah pengamatan selesai, susunlah laporan singkat bersama kelompok yang memuat hal-hal berikut.</p>
+<ol>
+<li>Daftar perangkat yang berhasil diamati.</li>
+<li>Perangkat yang tersedia dengan kondisi baik.</li>
+<li>Perangkat yang belum tersedia atau kondisinya kurang baik.</li>
+<li>Perangkat yang menurut kelompok kalian paling dibutuhkan untuk membangun jaringan sederhana di kelas.</li>
+<li>Kesulitan yang dialami kelompok selama proses pengamatan.</li>
+</ol>
+
+<h2>Rangkuman Bab 4</h2>
+<ul>
+<li>Pengamatan langsung membantu memperkuat pemahaman tentang bentuk, kondisi, dan fungsi nyata perangkat jaringan.</li>
+<li>Informasi penting yang dicatat saat pengamatan meliputi nama, ciri fisik, jumlah port, fungsi, kondisi, dan lokasi perangkat.</li>
+<li>Keselamatan dan ketertiban harus selalu diperhatikan selama kegiatan pengamatan berlangsung.</li>
+</ul>
+
+<h2>Latihan Soal Bab 4</h2>
+<div class="exercise"><strong>1.</strong> Sebutkan enam informasi yang perlu dicatat saat mengamati sebuah perangkat jaringan!</div>
+<div class="exercise"><strong>2.</strong> Mengapa peserta didik tidak boleh mencabut atau memindahkan kabel tanpa izin guru saat pengamatan?</div>
+<div class="exercise"><strong>3.</strong> Sebutkan tiga perangkat jaringan yang tersedia di sekolah kalian berdasarkan hasil pengamatan!</div>
+<div class="exercise"><strong>4.</strong> Menurut hasil pengamatan kelompok kalian, perangkat apa yang belum tersedia namun dibutuhkan untuk membangun jaringan yang lebih lengkap?</div>
+
+<h2>Refleksi Pertemuan 4</h2>
+<div class="reflection">
+<ul>
+<li>Perangkat apa saja yang tersedia di sekolah berdasarkan pengamatan saya?</li>
+<li>Perangkat apa yang belum tersedia?</li>
+<li>Perangkat apa yang paling dibutuhkan untuk jaringan sederhana?</li>
+<li>Apa kesulitan saya saat melakukan pengamatan?</li>
+</ul>
+</div>
+
+<div class="footer-nav">
+<a href="tp2-bab3.html">← Bab 3</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-bab5.html">Bab 5 →</a>
+</div>
+
+</section>
+</main>
+</body>
+</html>
