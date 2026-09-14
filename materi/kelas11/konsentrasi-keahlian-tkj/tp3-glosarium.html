@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 - Glosarium</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--light:#f4f4f4;--text:#333;--green:#2e7d32}
+*{box-sizing:border-box}
+body{margin:0;background:var(--light);font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:22px 16px;overflow-y:auto;z-index:20}
+.logo{text-align:center;margin-bottom:18px}
+.logo img{max-width:120px;height:auto}
+.sidebar h3{font-size:15px;margin:14px 8px;color:var(--gold)}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:9px 10px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover{background:#f3ead0;color:#8b6500}
+.main{margin-left:250px;padding:30px 20px}
+.content{max-width:1000px;margin:auto;background:#fff;border-radius:16px;border-top:5px solid var(--gold);padding:28px;box-shadow:0 3px 15px rgba(0,0,0,.06)}
+.hero{text-align:center;background:#fffaf0;border:1px solid #ead9a8;border-radius:14px;padding:22px;margin-bottom:24px}
+.hero .icon{font-size:42px;color:var(--gold);margin-bottom:6px}
+h1{font-size:27px;line-height:1.3;margin:5px 0 8px}
+.intro{background:#f7fbf7;border-left:5px solid var(--green);padding:15px 17px;border-radius:10px;margin-bottom:24px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #ccc;padding:13px 15px;text-align:left;vertical-align:top}
+th{background:#f3ead0;color:#5e4500;font-size:16px}
+td:first-child{width:32%;font-weight:700;color:#5e4500;background:#fffdf7}
+tr:nth-child(even) td{background:#fafafa}
+tr:nth-child(even) td:first-child{background:#f8f4e8}
+.term-icon{margin-right:7px;color:var(--gold)}
+.note{margin-top:22px;background:#f7f7f7;border-radius:10px;padding:13px 15px;color:#666;font-size:13px}
+.footer{text-align:center;color:#777;font-size:13px;margin-top:28px}
+.menu-btn{display:none;position:fixed;top:12px;right:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:9px;padding:10px 12px;font-size:18px}
+@media(max-width:800px){
+.sidebar{display:none}.sidebar.open{display:block;width:260px;box-shadow:4px 0 15px rgba(0,0,0,.15)}
+.main{margin-left:0;padding:70px 10px 20px}.menu-btn{display:block}
+.content{padding:18px;border-radius:12px}
+h1{font-size:22px}.hero{padding:17px}.table-wrap{margin-left:-2px;margin-right:-2px}
+th,td{padding:11px 10px;font-size:14px}
+td:first-child{width:35%;min-width:145px}
+}
+@media(max-width:520px){
+.content{padding:14px}.hero{padding:15px}.hero .icon{font-size:34px}h1{font-size:20px}
+th,td{font-size:13px;padding:10px 9px}
+td:first-child{min-width:135px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar">
+  <div class="logo"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"></div>
+  <h3><i class="fa-solid fa-graduation-cap"></i> Navigasi</h3>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="tp3.html"><i class="fa-solid fa-network-wired"></i> TP3</a>
+  <a href="tp3-bab6.html"><i class="fa-solid fa-book-open"></i> Bab 6</a>
+  <a href="tp3-evaluasi.html"><i class="fa-solid fa-clipboard-question"></i> Evaluasi TP3</a>
+  <a href="tp3-refleksi.html"><i class="fa-solid fa-comments"></i> Refleksi TP3</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pencil"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+<section class="content">
+
+<div class="hero">
+  <div class="icon"><i class="fa-solid fa-book"></i></div>
+  <h1>Glosarium</h1>
+</div>
+
+<div class="intro">
+<strong><i class="fa-solid fa-circle-info"></i> Glosarium TP3</strong>
+<p>Gunakan glosarium ini untuk memahami istilah-istilah penting yang digunakan selama mempelajari Tujuan Pembelajaran 3.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Istilah</th><th>Pengertian</th></tr>
+</thead>
+<tbody>
+<tr><td><i class="fa-solid fa-circle-nodes term-icon"></i>Topologi Jaringan</td><td>Pola, bentuk, atau susunan hubungan antarperangkat dalam sebuah jaringan komputer</td></tr>
+<tr><td><i class="fa-solid fa-diagram-project term-icon"></i>Diagram Topologi</td><td>Gambar yang menunjukkan susunan hubungan perangkat dalam jaringan</td></tr>
+<tr><td><i class="fa-solid fa-grip-lines term-icon"></i>Topologi Bus</td><td>Topologi yang menggunakan satu jalur kabel utama sebagai penghubung seluruh perangkat</td></tr>
+<tr><td><i class="fa-solid fa-road term-icon"></i>Backbone</td><td>Jalur kabel utama pada topologi bus yang menjadi tulang punggung jaringan</td></tr>
+<tr><td><i class="fa-solid fa-stop-circle term-icon"></i>Terminator</td><td>Komponen di kedua ujung jalur utama topologi bus yang menyerap sinyal agar tidak memantul</td></tr>
+<tr><td><i class="fa-solid fa-star term-icon"></i>Topologi Star</td><td>Topologi yang menghubungkan seluruh perangkat ke satu perangkat pusat</td></tr>
+<tr><td><i class="fa-solid fa-server term-icon"></i>Perangkat Pusat</td><td>Perangkat (switch/hub) yang menjadi titik pertemuan seluruh perangkat pada topologi star</td></tr>
+<tr><td><i class="fa-solid fa-circle-nodes term-icon"></i>Topologi Ring</td><td>Topologi yang menghubungkan perangkat membentuk lingkaran tertutup</td></tr>
+<tr><td><i class="fa-solid fa-share-nodes term-icon"></i>Topologi Mesh</td><td>Topologi yang menghubungkan setiap perangkat ke banyak perangkat lain secara langsung</td></tr>
+<tr><td><i class="fa-solid fa-network-wired term-icon"></i>Full Mesh</td><td>Bentuk mesh di mana setiap perangkat terhubung ke seluruh perangkat lainnya</td></tr>
+<tr><td><i class="fa-solid fa-route term-icon"></i>Jalur Alternatif</td><td>Jalur cadangan yang dapat digunakan bila jalur utama terputus</td></tr>
+<tr><td><i class="fa-solid fa-sitemap term-icon"></i>Topologi Tree</td><td>Topologi berbentuk bertingkat atau bercabang menyerupai pohon</td></tr>
+<tr><td><i class="fa-solid fa-layer-group term-icon"></i>Topologi Hybrid</td><td>Topologi gabungan dari dua atau lebih jenis topologi</td></tr>
+<tr><td><i class="fa-solid fa-bolt term-icon"></i>Collision</td><td>Tabrakan data yang terjadi ketika dua perangkat mengirim data bersamaan pada jalur yang sama</td></tr>
+<tr><td><i class="fa-solid fa-signal term-icon"></i>Media Transmisi</td><td>Sarana penghantar data, dapat berupa kabel atau gelombang nirkabel</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note">
+<i class="fa-solid fa-lightbulb"></i>
+<strong>Tips:</strong> Jika menemukan istilah yang belum dipahami saat mengerjakan evaluasi atau membuat rancangan topologi, gunakan halaman ini sebagai referensi.
+</div>
+
+<div class="footer">TP3 · Glosarium</div>
+</section>
+</main>
+
+</body>
+</html>
