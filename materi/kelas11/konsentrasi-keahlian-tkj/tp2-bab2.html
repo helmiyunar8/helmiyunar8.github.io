@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 2 - Karakteristik Modem, Router, Switch, dan Hub - TP 2 LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h2{font-size:20px;color:#604800;margin-top:30px}
+h3{font-size:17px;color:#604800}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+.diagram{border:1px solid #e3e3e3;background:#fafafa;border-radius:10px;padding:18px;margin:18px 0;text-align:center}
+.diagram-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.node{border:1px solid #d6c487;background:#fff;padding:11px 14px;border-radius:8px;min-width:125px;font-weight:bold}
+.arrow{font-size:20px;color:var(--gold)}
+.small{font-size:13px;color:#666;margin-top:8px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.reflection{background:#fffdf5;border:1px solid #eadcae;border-radius:9px;padding:15px 17px}
+ol{padding-left:25px}
+ol li{margin-bottom:10px}
+ul{padding-left:24px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:650px}
+.info,.exercise,.reflection{font-size:14px}
+.node{min-width:105px;padding:9px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-server"></i> BAB 2 — Karakteristik Modem, Router, Switch, dan Hub</h1>
+<div class="meta">TP 2 · Pertemuan 2 · Alokasi Waktu 3 JP</div>
+</div>
+
+<h2>Tujuan Pembelajaran Bab Ini</h2>
+<ul>
+<li>Peserta didik mampu menjelaskan karakteristik modem, router, switch, dan hub.</li>
+<li>Peserta didik mampu membedakan fungsi perangkat jaringan berdasarkan penggunaannya.</li>
+</ul>
+
+<h2>2.1 Modem</h2>
+<p>Modem (modulator-demodulator) adalah perangkat yang berfungsi mengubah sinyal digital dari perangkat komputer menjadi sinyal yang dapat dikirim melalui jalur komunikasi milik penyedia layanan internet (Internet Service Provider/ISP), dan sebaliknya, mengubah sinyal dari jalur komunikasi tersebut menjadi sinyal digital yang dapat dibaca oleh komputer.</p>
+
+<h3>Karakteristik Modem</h3>
+<ul>
+<li>Selalu berhubungan langsung dengan jalur/koneksi dari penyedia layanan internet, misalnya jalur telepon, kabel serat optik, atau jaringan seluler.</li>
+<li>Biasanya memiliki satu jenis port khusus untuk tersambung ke jalur ISP, dan satu atau beberapa port untuk disambungkan ke router atau komputer.</li>
+<li>Tanpa modem (atau tanpa fitur modem yang tertanam di suatu perangkat), sebuah jaringan lokal tidak dapat terhubung ke internet, meskipun perangkat di dalamnya sudah saling terhubung satu sama lain.</li>
+</ul>
+
+<p>Di kelas kita, telepon genggam guru sebenarnya memiliki fungsi modem yang tertanam di dalamnya (built-in modem), karena mampu menerima sinyal data seluler dari operator dan mengubahnya menjadi sinyal yang dapat digunakan oleh Chromebook melalui fitur hotspot.</p>
+
+<div class="diagram">
+<div class="diagram-row">
+<div class="node"><i class="fas fa-tower-cell"></i><br>Jaringan Seluler</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-mobile-screen"></i><br>HP Guru<br><span class="small">Modem built-in</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-wifi"></i><br>Hotspot</div>
+</div>
+<div class="small">Ilustrasi sederhana fungsi modem pada HP guru di kelas kita.</div>
+</div>
+
+<h2>2.2 Router</h2>
+<p>Router adalah perangkat yang berfungsi menghubungkan dua jaringan yang berbeda (misalnya jaringan lokal dengan jaringan internet) sekaligus mengatur arah lalu lintas data (routing) agar data dapat sampai ke tujuan yang tepat melalui jalur yang paling efisien.</p>
+
+<h3>Karakteristik Router</h3>
+<ul>
+<li>Mampu membaca alamat tujuan data (alamat IP) dan menentukan jalur terbaik untuk mengirimkan data tersebut.</li>
+<li>Sering dilengkapi kemampuan memancarkan Wi-Fi, sehingga satu perangkat dapat berfungsi sebagai router sekaligus access point.</li>
+<li>Biasanya memiliki beberapa port LAN (untuk kabel ke perangkat lokal) dan satu port WAN (untuk koneksi ke modem/internet).</li>
+<li>Dapat mengatur keamanan jaringan, misalnya kata sandi Wi-Fi dan pembatasan akses.</li>
+</ul>
+
+<p>Fitur hotspot pada telepon genggam guru sebenarnya menjalankan fungsi seperti router sederhana, karena telepon genggam tersebut menghubungkan jaringan internet dari operator seluler dengan jaringan lokal berupa sebelas Chromebook, sekaligus mengatur agar setiap Chromebook dapat mengakses internet secara bersamaan.</p>
+
+<div class="diagram">
+<div class="diagram-row">
+<div class="node"><i class="fas fa-globe"></i><br>Internet</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-mobile-screen"></i><br>HP Guru<br><span class="small">Router sederhana</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-laptop"></i><br>11 Chromebook</div>
+</div>
+<div class="small">Ilustrasi sederhana alur koneksi hotspot di kelas.</div>
+</div>
+
+<h2>2.3 Switch</h2>
+<p>Switch adalah perangkat yang berfungsi menghubungkan beberapa perangkat dalam satu jaringan lokal (LAN) menggunakan kabel, dan mampu mengirimkan data hanya ke perangkat tujuan yang tepat berdasarkan alamat perangkat (alamat MAC).</p>
+
+<h3>Karakteristik Switch</h3>
+<ul>
+<li>Memiliki beberapa port (umumnya 4, 8, 16, 24, atau lebih) untuk menghubungkan banyak perangkat kabel sekaligus.</li>
+<li>"Mengingat" alamat setiap perangkat yang terhubung, sehingga data dikirim langsung ke perangkat tujuan tanpa mengganggu perangkat lain.</li>
+<li>Membuat jaringan lebih cepat dan efisien dibandingkan hub, karena mengurangi terjadinya tabrakan data (collision).</li>
+<li>Umumnya digunakan pada jaringan kabel skala kecil hingga menengah, misalnya laboratorium komputer atau kantor.</li>
+</ul>
+
+<h2>2.4 Hub</h2>
+<p>Hub adalah perangkat yang juga berfungsi menghubungkan beberapa perangkat dalam satu jaringan lokal menggunakan kabel, namun dengan cara kerja yang lebih sederhana dibandingkan switch.</p>
+
+<h3>Karakteristik Hub</h3>
+<ul>
+<li>Meneruskan (broadcast) data yang diterima ke semua port yang terhubung, tanpa mengetahui perangkat mana yang menjadi tujuan sebenarnya.</li>
+<li>Karena data dikirim ke semua port, jaringan yang menggunakan hub cenderung lebih lambat dan lebih rentan terhadap tabrakan data dibandingkan switch, terutama jika banyak perangkat terhubung sekaligus.</li>
+<li>Harganya umumnya lebih murah dibandingkan switch, dan cara kerjanya lebih mudah dipahami, sehingga cocok digunakan untuk keperluan pembelajaran dasar jaringan.</li>
+<li>Hub yang tersedia di sekolah kita akan digunakan untuk praktik dasar menghubungkan beberapa perangkat kabel, sebagai langkah awal sebelum mempelajari perangkat yang lebih kompleks seperti switch.</li>
+</ul>
+
+<div class="diagram">
+<div class="diagram-row">
+<div>
+<div class="node"><i class="fas fa-desktop"></i> PC A</div>
+<div class="node" style="margin-top:8px"><i class="fas fa-desktop"></i> PC B</div>
+</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-network-wired"></i><br>SWITCH<br><span class="small">ke tujuan</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-desktop"></i> PC Tujuan</div>
+</div>
+<p class="small">Switch mengarahkan data ke perangkat tujuan.</p>
+<hr style="border:0;border-top:1px solid #ddd">
+<div class="diagram-row">
+<div>
+<div class="node"><i class="fas fa-desktop"></i> PC A</div>
+<div class="node" style="margin-top:8px"><i class="fas fa-desktop"></i> PC B</div>
+</div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-network-wired"></i><br>HUB<br><span class="small">broadcast</span></div>
+<div class="arrow">→</div>
+<div class="node"><i class="fas fa-share-nodes"></i><br>Semua Port</div>
+</div>
+<p class="small">Hub meneruskan data ke semua port yang terhubung.</p>
+</div>
+
+<h2>2.5 Tabel Perbandingan Modem, Router, Switch, dan Hub</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Perangkat</th><th>Fungsi Utama</th><th>Karakteristik Khas</th></tr></thead>
+<tbody>
+<tr><td>Modem</td><td>Menghubungkan jaringan dengan layanan internet</td><td>Berhubungan langsung dengan jalur ISP; tanpanya jaringan lokal tidak dapat mengakses internet</td></tr>
+<tr><td>Router</td><td>Menghubungkan jaringan yang berbeda</td><td>Mengatur lalu lintas data dan alamat jaringan; sering dilengkapi Wi-Fi</td></tr>
+<tr><td>Switch</td><td>Menghubungkan beberapa perangkat dalam LAN</td><td>Mengirimkan data hanya ke perangkat tujuan; lebih efisien</td></tr>
+<tr><td>Hub</td><td>Menghubungkan beberapa perangkat dalam LAN</td><td>Meneruskan data ke semua port; lebih sederhana dan lebih murah</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>2.6 Menentukan Perangkat yang Tepat Sesuai Situasi</h2>
+<p>Setelah memahami karakteristik keempat perangkat di atas, kalian perlu berlatih menentukan perangkat yang paling tepat untuk suatu situasi. Perhatikan empat situasi berikut sebagai bahan diskusi kelompok.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>No</th><th>Situasi</th><th>Pertanyaan Pemandu</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Sebuah sekolah ingin menghubungkan beberapa komputer menggunakan kabel</td><td>Perangkat manakah yang menghubungkan banyak perangkat kabel dalam satu LAN?</td></tr>
+<tr><td>2</td><td>Sebuah jaringan ingin menghubungkan jaringan lokal dengan jaringan lain</td><td>Perangkat manakah yang mampu menghubungkan dua jaringan berbeda?</td></tr>
+<tr><td>3</td><td>Sebuah perangkat ingin membagikan koneksi internet</td><td>Perangkat manakah yang berhubungan langsung dengan jalur ISP?</td></tr>
+<tr><td>4</td><td>Peserta didik ingin menghubungkan beberapa perangkat dalam satu jaringan lokal secara efisien</td><td>Perangkat manakah yang mengirim data hanya ke perangkat tujuan?</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>2.7 Kegiatan Peserta Didik — LKPD 2.1</h2>
+<div class="info">
+<strong><i class="fas fa-clipboard-list"></i> Petunjuk LKPD 2.1</strong>
+<p>Berdasarkan tabel situasi pada bagian 2.6, tentukan perangkat yang paling sesuai untuk setiap situasi, lalu tuliskan alasannya.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Situasi</th><th>Perangkat yang Dipilih</th><th>Alasan</th></tr></thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Rangkuman Bab 2</h2>
+<ul>
+<li>Modem menghubungkan jaringan dengan layanan internet dari penyedia layanan (ISP).</li>
+<li>Router menghubungkan jaringan yang berbeda dan mengatur arah lalu lintas data.</li>
+<li>Switch menghubungkan beberapa perangkat kabel dalam LAN secara efisien dengan mengirim data hanya ke perangkat tujuan.</li>
+<li>Hub menghubungkan beberapa perangkat kabel dengan cara yang lebih sederhana, yaitu meneruskan data ke semua port.</li>
+</ul>
+
+<h2>Latihan Soal Bab 2</h2>
+<div class="exercise"><strong>1.</strong> Jelaskan fungsi dan karakteristik modem!</div>
+<div class="exercise"><strong>2.</strong> Apa perbedaan utama antara router dan switch?</div>
+<div class="exercise"><strong>3.</strong> Apa kekurangan hub dibandingkan switch?</div>
+<div class="exercise"><strong>4.</strong> Perangkat apa yang paling sesuai untuk menghubungkan beberapa komputer dalam satu LAN secara efisien? Jelaskan alasannya!</div>
+<div class="exercise"><strong>5.</strong> Mengapa telepon genggam guru yang memancarkan hotspot dapat dikatakan menjalankan fungsi seperti modem sekaligus router?</div>
+
+<h2>Refleksi Pertemuan 2</h2>
+<div class="reflection">
+<ul>
+<li>Apa perbedaan utama router dan switch menurut pemahaman saya?</li>
+<li>Apa kekurangan hub dibandingkan switch?</li>
+<li>Perangkat apa yang paling sesuai untuk menghubungkan beberapa komputer dalam satu LAN?</li>
+</ul>
+</div>
+
+<div class="footer-nav">
+<a href="tp2-bab1.html">← Bab 1</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-bab3.html">Bab 3 →</a>
+</div>
+
+</section>
+</main>
+</body>
+</html>
