@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 2 - Fungsi, Karakteristik, dan Pemilihan Perangkat Jaringan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.item{display:block;text-decoration:none;color:#333;border:1px solid #e5e5e5;border-radius:10px;padding:20px 14px;text-align:center;background:#fff;transition:.15s}
+.item:hover{border-color:#d8c58e;background:#fffdf5}
+.item i{font-size:31px;color:var(--gold);margin-bottom:10px}
+.item h3{margin:3px 0 5px;font-size:17px;color:#333}
+.item p{margin:0;font-size:13px;color:#666}
+.info{margin-top:20px;background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px}
+.footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:22px}.header h2{font-size:19px}.grid{grid-template-columns:1fr 1fr;gap:10px}
+.item{padding:16px 9px}.item i{font-size:27px}.item h3{font-size:15px}.item p{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div></div>
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i></button>
+
+<main class="main">
+<section class="card">
+<div class="header">
+<h1>Tujuan Pembelajaran 2</h1>
+<h2>Fungsi, Karakteristik, dan Pemilihan Perangkat Jaringan Komputer</h2>
+<p>Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</p>
+<p>Elemen: Perencanaan dan Pengalamatan Jaringan</p>
+</div>
+
+<div class="grid">
+<a class="item" href="tp2-bab1.html"><i class="fas fa-network-wired"></i><h3>BAB 1</h3><p>Mengenal Perangkat Jaringan dan Fungsi Dasarnya</p></a>
+<a class="item" href="tp2-bab2.html"><i class="fas fa-server"></i><h3>BAB 2</h3><p>Karakteristik Modem, Router, Switch, dan Hub</p></a>
+<a class="item" href="tp2-bab3.html"><i class="fas fa-ethernet"></i><h3>BAB 3</h3><p>Access Point, Kabel UTP, RJ-45, LAN Tester, dan Chromebook</p></a>
+<a class="item" href="tp2-bab4.html"><i class="fas fa-magnifying-glass"></i><h3>BAB 4</h3><p>Pengamatan Perangkat Jaringan yang Tersedia di Sekolah</p></a>
+<a class="item" href="tp2-bab5.html"><i class="fas fa-sitemap"></i><h3>BAB 5</h3><p>Analisis Kebutuhan dan Pemilihan Perangkat Jaringan</p></a>
+<a class="item" href="tp2-bab6.html"><i class="fas fa-person-chalkboard"></i><h3>BAB 6</h3><p>Penyusunan Diagram, Presentasi, Evaluasi, dan Refleksi</p></a>
+<a class="item" href="tp2-evaluasi.html"><i class="fas fa-clipboard-check"></i><h3>Evaluasi</h3><p>Evaluasi Akhir TP 2</p></a>
+<a class="item" href="tp2-refleksi.html"><i class="fas fa-comments"></i><h3>Refleksi</h3><p>Refleksi Akhir Peserta Didik</p></a>
+<a class="item" href="tp2-glosarium.html"><i class="fas fa-book"></i><h3>Glosarium</h3><p>Istilah Penting</p></a>
+<a class="item" href="tp2-kunci-jawaban.html"><i class="fas fa-circle-check"></i><h3>Kunci Jawaban</h3><p>Latihan & Evaluasi</p></a>
+<a class="item" href="tp2-daftar-pustaka.html"><i class="fas fa-bookmark"></i><h3>Daftar Pustaka</h3><p>Sumber Pembelajaran</p></a>
+</div>
+
+<div class="info">
+<i class="fas fa-circle-info"></i>
+<strong> Buku Ajar Siswa TP 2:</strong>
+Materi disusun sebagai lanjutan TP 1 dan membahas perangkat jaringan secara lebih mendalam, mulai dari fungsi dan karakteristik hingga pengamatan, pemilihan perangkat, penyusunan diagram, presentasi, evaluasi, dan refleksi.
+</div>
+
+<div class="footer">
+<a href="tp1.html">← TP 1</a>
+<a href="../index.html">Kembali ke Materi</a>
+</div>
+</section>
+</main>
+</body>
+</html>
