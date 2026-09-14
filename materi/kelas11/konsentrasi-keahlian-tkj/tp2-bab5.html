@@ -5,440 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b8860b">
 <title>TP 2 — Bab 5 | Analisis Kebutuhan dan Pemilihan Perangkat Jaringan</title>
-
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-    :root {
-        --gold: #b8860b;
-        --gold-light: #fff8df;
-        --text: #333;
-        --muted: #666;
-        --bg: #f4f4f4;
-        --white: #fff;
-        --border: #e7e7e7;
-    }
+:root{--gold:#b8860b;--gold-light:#fff8df;--text:#333;--muted:#666;--bg:#f4f4f4;--white:#fff;--border:#e7e7e7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid var(--border);z-index:1000;overflow-y:auto}
+.brand{padding:22px 20px;text-align:center;border-bottom:1px solid var(--border)}
+.brand img{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 8px}
+.brand h2{margin:0;color:var(--gold);font-size:21px}.brand p{margin:0;color:#777;font-size:13px}
+.nav{padding:18px 0}.nav a{display:flex;align-items:center;gap:16px;padding:15px 22px;color:#444;text-decoration:none;font-size:16px}
+.nav a:hover,.nav a.active{background:var(--gold-light);color:var(--gold)}.nav i{width:20px;text-align:center;font-size:18px}
+.main{margin-left:250px;min-height:100vh;padding:28px}
+.content-card{max-width:1000px;margin:0 auto;background:#fff;border-radius:14px;border-top:8px solid var(--gold);padding:28px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:22px}
+.topbar-title{color:var(--gold);font-size:25px;font-weight:700}.topbar-title i{margin-right:8px}.user{color:#777;font-size:14px}
+.intro{text-align:center;margin-bottom:22px}.intro h1{margin:0 0 5px;font-size:28px;line-height:1.25}.intro p{margin:0;color:var(--muted);font-size:15px}
 
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        color: var(--text);
-        background: var(--bg);
-        line-height: 1.6;
-    }
-
-    .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 250px;
-        height: 100vh;
-        background: var(--white);
-        border-right: 1px solid var(--border);
-        z-index: 1000;
-        overflow-y: auto;
-    }
-
-    .brand {
-        padding: 22px 20px;
-        text-align: center;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .brand img {
-        width: 72px;
-        height: 72px;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto 8px;
-    }
-
-    .brand h2 {
-        margin: 0;
-        color: var(--gold);
-        font-size: 21px;
-    }
-
-    .brand p {
-        margin: 0;
-        color: #777;
-        font-size: 13px;
-    }
-
-    .nav {
-        padding: 18px 0;
-    }
-
-    .nav a {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 15px 22px;
-        color: #444;
-        text-decoration: none;
-        font-size: 16px;
-    }
-
-    .nav a:hover,
-    .nav a.active {
-        background: var(--gold-light);
-        color: var(--gold);
-    }
-
-    .nav i {
-        width: 20px;
-        text-align: center;
-        font-size: 18px;
-    }
-
-    .main {
-        margin-left: 250px;
-        min-height: 100vh;
-        padding: 28px;
-    }
-
-    .content-card {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: var(--white);
-        border-radius: 14px;
-        border-top: 8px solid var(--gold);
-        padding: 28px;
-        box-shadow: 0 2px 10px rgba(0,0,0,.04);
-    }
-
-    .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        padding-bottom: 18px;
-        border-bottom: 1px solid var(--border);
-        margin-bottom: 22px;
-    }
-
-    .topbar-title {
-        color: var(--gold);
-        font-size: 25px;
-        font-weight: 700;
-    }
-
-    .topbar-title i {
-        margin-right: 8px;
-    }
-
-    .user {
-        color: #777;
-        font-size: 14px;
-        white-space: nowrap;
-    }
-
-    .intro {
-        text-align: center;
-        margin-bottom: 24px;
-    }
-
-    .intro h1 {
-        margin: 0 0 5px;
-        font-size: 28px;
-        line-height: 1.25;
-    }
-
-    .intro p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 15px;
-    }
-
-    .page {
-        margin: 0 0 28px;
-    }
-
-    .page:last-child {
-        margin-bottom: 0;
-    }
-
-    .page-label {
-        display: inline-block;
-        margin-bottom: 10px;
-        padding: 6px 10px;
-        border-radius: 7px;
-        background: var(--gold-light);
-        color: var(--gold);
-        font-size: 13px;
-        font-weight: 700;
-    }
-
-    .materi-image {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        background: #fff;
-    }
-
-    .note {
-        margin-top: 22px;
-        padding: 14px 16px;
-        border-left: 4px solid var(--gold);
-        background: var(--gold-light);
-        color: #555;
-        font-size: 14px;
-        border-radius: 6px;
-    }
-
-    .menu-toggle {
-        display: none;
-        position: fixed;
-        top: 12px;
-        left: 12px;
-        z-index: 1100;
-        width: 44px;
-        height: 44px;
-        border: 0;
-        border-radius: 8px;
-        background: var(--gold);
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    .overlay {
-        display: none;
-    }
-
-    @media (max-width: 768px) {
-        .menu-toggle {
-            display: block;
-        }
-
-        .sidebar {
-            transform: translateX(-100%);
-            transition: transform .2s ease;
-            width: 245px;
-        }
-
-        .sidebar.open {
-            transform: translateX(0);
-        }
-
-        .overlay.show {
-            display: block;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.25);
-            z-index: 900;
-        }
-
-        .main {
-            margin-left: 0;
-            padding: 14px;
-            padding-top: 68px;
-        }
-
-        .content-card {
-            padding: 17px;
-            border-radius: 10px;
-            border-top-width: 6px;
-        }
-
-        .topbar {
-            align-items: flex-start;
-            flex-direction: column;
-            margin-bottom: 18px;
-        }
-
-        .topbar-title {
-            font-size: 22px;
-        }
-
-        .user {
-            font-size: 13px;
-        }
-
-        .intro h1 {
-            font-size: 23px;
-        }
-
-        .intro p {
-            font-size: 14px;
-        }
-
-        .page {
-            margin-bottom: 20px;
-        }
-
-        .page-label {
-            font-size: 12px;
-        }
-
-        .materi-image {
-            border-radius: 5px;
-        }
-
-        .note {
-            font-size: 13px;
-        }
-    }
-
-    @media (max-width: 420px) {
-        .main {
-            padding: 9px;
-            padding-top: 62px;
-        }
-
-        .content-card {
-            padding: 12px;
-        }
-
-        .topbar-title {
-            font-size: 20px;
-        }
-
-        .intro h1 {
-            font-size: 20px;
-        }
-
-        .intro p {
-            font-size: 13px;
-        }
-    }
+.viewer{position:relative}
+.carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:12px;padding:0 2px 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.page{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.page img{display:block;width:100%;height:auto;max-width:900px;margin:auto;border:1px solid #ddd;border-radius:7px;background:#fff}
+.swipe-hint{text-align:center;color:#777;font-size:13px;margin:8px 0 12px}
+.swipe-hint i{color:var(--gold);margin:0 5px}
+.dots{display:flex;justify-content:center;gap:8px;margin:8px 0 17px}
+.dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold);background:#fff;cursor:pointer;padding:0}
+.dot.active{background:var(--gold)}
+.controls{display:flex;justify-content:center;gap:10px}
+.controls button{border:1px solid #d9c98e;background:#fff;color:var(--gold);border-radius:8px;padding:8px 13px;cursor:pointer;font-size:14px}
+.controls button:hover{background:var(--gold-light)}
+.note{margin-top:22px;padding:13px 15px;border-left:4px solid var(--gold);background:var(--gold-light);color:#555;font-size:14px;border-radius:6px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid var(--border)}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:1100;width:44px;height:44px;border:0;border-radius:8px;background:var(--gold);color:#fff;font-size:20px}
+.overlay{display:none}
+@media(max-width:768px){
+.menu-toggle{display:block}.sidebar{transform:translateX(-100%);transition:transform .2s ease;width:245px}.sidebar.open{transform:translateX(0)}
+.overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:900}
+.main{margin-left:0;padding:14px;padding-top:68px}.content-card{padding:17px;border-radius:10px;border-top-width:6px}
+.topbar{align-items:flex-start;flex-direction:column;margin-bottom:18px}.topbar-title{font-size:22px}.user{font-size:13px}
+.intro h1{font-size:23px}.intro p{font-size:14px}
+.page img{border-radius:5px}.swipe-hint{font-size:12px}.note{font-size:13px}
+}
+@media(max-width:420px){
+.main{padding:9px;padding-top:62px}.content-card{padding:12px}.topbar-title{font-size:20px}.intro h1{font-size:20px}.intro p{font-size:13px}
+.controls button{padding:7px 10px;font-size:13px}.footer-nav a{font-size:13px;padding:8px 10px}
+}
 </style>
 </head>
-
 <body>
 
-<button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
-    <i class="fas fa-bars"></i>
-</button>
-
+<button class="menu-toggle" id="menuToggle" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
 <div class="overlay" id="overlay"></div>
 
 <aside class="sidebar" id="sidebar">
-    <div class="brand">
-        <img src="../../asset/logo.png" alt="Logo">
-        <h2>LMS TKJ</h2>
-        <p>SMKN 7 LUWU</p>
-    </div>
-
-    <nav class="nav">
-        <a href="../../index.html">
-            <i class="fas fa-home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="../index.html" class="active">
-            <i class="fas fa-book-open"></i>
-            <span>Materi</span>
-        </a>
-        <a href="../../menu-utama-TKJ/tryout.html">
-            <i class="fas fa-pen-to-square"></i>
-            <span>Tryout</span>
-        </a>
-        <a href="../../lkpd/index.html">
-            <i class="fas fa-file-signature"></i>
-            <span>LKPD</span>
-        </a>
-        <a href="../../absen/index.html">
-            <i class="fas fa-camera"></i>
-            <span>Absen</span>
-        </a>
-        <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">
-            <i class="fas fa-award"></i>
-            <span>Ranking</span>
-        </a>
-        <a href="../../cbt/index.html">
-            <i class="fas fa-gavel"></i>
-            <span>CBT Ujian</span>
-        </a>
-        <a href="../../arsip.html">
-            <i class="fas fa-box-archive"></i>
-            <span>ARSIP</span>
-        </a>
-    </nav>
+<div class="brand">
+<img src="../../asset/logo.png" alt="Logo">
+<h2>LMS TKJ</h2><p>SMKN 7 LUWU</p>
+</div>
+<nav class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i><span>Beranda</span></a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i><span>Materi</span></a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i><span>Tryout</span></a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i><span>LKPD</span></a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i><span>Absen</span></a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i><span>Ranking</span></a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i><span>CBT Ujian</span></a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i><span>ARSIP</span></a>
+</nav>
 </aside>
 
 <main class="main">
-    <section class="content-card">
+<section class="content-card">
+<div class="topbar">
+<div class="topbar-title"><i class="fas fa-graduation-cap"></i> TP 2</div>
+<div class="user"><i class="fas fa-user-circle"></i> Helmi Yunar</div>
+</div>
 
-        <div class="topbar">
-            <div class="topbar-title">
-                <i class="fas fa-graduation-cap"></i> TP 2
-            </div>
-            <div class="user">
-                <i class="fas fa-user-circle"></i> Helmi Yunar
-            </div>
-        </div>
+<div class="intro">
+<h1>Analisis Kebutuhan dan Pemilihan Perangkat Jaringan</h1>
+<p>Bab 5 · Pertemuan 5 · Alokasi Waktu 3 JP</p>
+</div>
 
-        <div class="intro">
-            <h1>Analisis Kebutuhan dan Pemilihan Perangkat Jaringan</h1>
-            <p>Bab 5 · Pertemuan 5 · Alokasi Waktu 3 JP</p>
-        </div>
+<div class="viewer">
+<div class="swipe-hint"><i class="fas fa-hand-pointer"></i> Geser ke kiri/kanan untuk berpindah halaman</div>
 
-        <div class="page">
-            <div class="page-label">Halaman 1</div>
-            <img class="materi-image"
-                 src="tp2-bab5-halaman-1.jpg"
-                 alt="BAB 5 — Halaman 1">
-        </div>
+<div class="carousel" id="carousel">
+<div class="page"><img src="tp2-bab5-halaman-1.jpg" alt="BAB 5 — Halaman 1"></div>
+<div class="page"><img src="tp2-bab5-halaman-2.jpg" alt="BAB 5 — Halaman 2" loading="lazy"></div>
+<div class="page"><img src="tp2-bab5-halaman-3.jpg" alt="BAB 5 — Halaman 3" loading="lazy"></div>
+</div>
 
-        <div class="page">
-            <div class="page-label">Halaman 2</div>
-            <img class="materi-image"
-                 src="tp2-bab5-halaman-2.jpg"
-                 alt="BAB 5 — Halaman 2"
-                 loading="lazy">
-        </div>
+<div class="dots" aria-label="Pilih halaman">
+<button class="dot active" data-page="0" aria-label="Halaman 1"></button>
+<button class="dot" data-page="1" aria-label="Halaman 2"></button>
+<button class="dot" data-page="2" aria-label="Halaman 3"></button>
+</div>
 
-        <div class="page">
-            <div class="page-label">Halaman 3</div>
-            <img class="materi-image"
-                 src="tp2-bab5-halaman-3.jpg"
-                 alt="BAB 5 — Halaman 3"
-                 loading="lazy">
-        </div>
+<div class="controls">
+<button id="prev"><i class="fas fa-chevron-left"></i> Sebelumnya</button>
+<button id="next">Berikutnya <i class="fas fa-chevron-right"></i></button>
+</div>
+</div>
 
-        <div class="note">
-            <i class="fas fa-mobile-screen-button"></i>
-            Materi disajikan dalam tiga halaman gambar agar lebih nyaman dibaca
-            melalui Chromebook maupun HP.
-        </div>
+<div class="note"><i class="fas fa-mobile-screen-button"></i>
+Materi Bab 5 dibuat dalam format halaman bergambar. Geser halaman untuk membaca materi berikutnya.
+</div>
 
-    </section>
+<div class="footer-nav">
+<a href="tp2-bab4.html">← Bab 4</a>
+<a href="tp2.html">Kembali ke TP 2</a>
+<a href="tp2-bab6.html">Bab 6 →</a>
+</div>
+</section>
 </main>
 
 <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+const carousel=document.getElementById('carousel');
+const dots=[...document.querySelectorAll('.dot')];
+const pages=[...document.querySelectorAll('.page')];
 
-    function closeMenu() {
-        sidebar.classList.remove('open');
-        overlay.classList.remove('show');
-    }
+function goToPage(index){
+  index=Math.max(0,Math.min(index,pages.length-1));
+  carousel.scrollTo({left:pages[index].offsetLeft,behavior:'smooth'});
+}
+dots.forEach(dot=>dot.addEventListener('click',()=>goToPage(Number(dot.dataset.page))));
+document.getElementById('prev').addEventListener('click',()=>{
+  const current=Math.round(carousel.scrollLeft/carousel.clientWidth); goToPage(current-1);
+});
+document.getElementById('next').addEventListener('click',()=>{
+  const current=Math.round(carousel.scrollLeft/carousel.clientWidth); goToPage(current+1);
+});
 
-    menuToggle.addEventListener('click', function () {
-        sidebar.classList.toggle('open');
-        overlay.classList.toggle('show');
+let ticking=false;
+carousel.addEventListener('scroll',()=>{
+  if(!ticking){
+    requestAnimationFrame(()=>{
+      const current=Math.round(carousel.scrollLeft/carousel.clientWidth);
+      dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+      ticking=false;
     });
+    ticking=true;
+  }
+});
 
-    overlay.addEventListener('click', closeMenu);
-
-    document.querySelectorAll('.sidebar a').forEach(function (link) {
-        link.addEventListener('click', closeMenu);
-    });
+const menuToggle=document.getElementById('menuToggle');
+const sidebar=document.getElementById('sidebar');
+const overlay=document.getElementById('overlay');
+function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('show')}
+menuToggle.addEventListener('click',()=>{sidebar.classList.toggle('open');overlay.classList.toggle('show')});
+overlay.addEventListener('click',closeMenu);
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',closeMenu));
 </script>
-
 </body>
 </html>
