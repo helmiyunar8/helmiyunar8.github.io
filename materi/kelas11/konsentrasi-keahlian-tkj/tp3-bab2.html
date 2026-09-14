@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 Bab 2 — Topologi Bus, Star, dan Ring</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --gold:#b8860b;
+  --dark:#333;
+  --bg:#f4f4f4;
+  --white:#fff;
+  --soft:#faf7ed;
+  --line:#e3e3e3;
+  --green:#a5d6a7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.65;
+}
+.sidebar{
+  position:fixed;left:0;top:0;width:250px;height:100vh;
+  background:#fff;border-right:1px solid #ddd;padding:18px 14px;
+  overflow-y:auto;z-index:1000;
+}
+.logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h2{text-align:center;font-size:17px;margin:0 0 16px}
+.sidebar a{
+  display:block;text-decoration:none;color:#333;padding:10px 12px;
+  border-radius:8px;margin:4px 0;font-size:14px
+}
+.sidebar a:hover{background:#f1f1f1}
+.sidebar a i{width:20px;color:var(--gold)}
+.menu-btn{
+  display:none;position:fixed;top:12px;left:12px;z-index:1100;
+  border:0;background:var(--gold);color:#fff;width:42px;height:42px;
+  border-radius:9px;font-size:20px
+}
+.overlay{display:none}
+.main{margin-left:250px;padding:30px 18px 50px}
+.card{
+  max-width:1000px;margin:0 auto 20px;background:var(--white);
+  border-radius:14px;border-top:5px solid var(--gold);padding:28px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07)
+}
+.hero{text-align:center;padding:34px 25px}
+.hero .icon{font-size:46px;color:var(--gold);margin-bottom:10px}
+h1{margin:0;font-size:28px;line-height:1.3}
+.subtitle{margin-top:9px;color:#555}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.badge{
+  background:#f7f7f7;border:1px solid var(--line);border-radius:20px;
+  padding:6px 11px;font-size:13px
+}
+.badge i{color:var(--gold);margin-right:5px}
+h2{
+  font-size:21px;margin:0 0 16px;padding-left:11px;
+  border-left:4px solid var(--gold)
+}
+h3{font-size:17px;margin:22px 0 8px;color:#594500}
+p{margin:0 0 14px}
+ul,ol{padding-left:24px}
+li{margin-bottom:8px}
+.info{
+  background:var(--soft);border:1px solid #eadfbf;border-radius:10px;
+  padding:16px 18px;margin:14px 0
+}
+.highlight{
+  background:#f8f8f8;border-left:4px solid var(--green);
+  padding:13px 16px;border-radius:8px;margin:14px 0
+}
+.video-wrap{max-width:605px;min-width:280px;margin:18px auto 8px;text-align:center}
+.video-wrap video{
+  display:block;width:100%;max-width:605px;height:auto;max-height:720px;
+  margin:0 auto;border-radius:12px;background:#000;
+  box-shadow:0 3px 12px rgba(0,0,0,.10)
+}
+.video-label{
+  font-weight:bold;text-align:left;margin:10px 0 7px;color:#594500
+}
+.small{font-size:13px;color:#666}
+.diagram{
+  border:1px solid var(--line);border-radius:12px;background:#fbfbfb;
+  padding:20px 14px;margin:18px 0 8px;overflow-x:auto
+}
+.diagram-title{text-align:center;font-weight:bold;margin-bottom:16px;color:#555}
+.diagram-caption{text-align:center;font-size:13px;color:#666;margin-top:12px}
+.diagram-inner{min-width:560px;max-width:700px;margin:auto;position:relative}
+.bus-line{
+  position:relative;height:70px;border-top:5px solid #777;
+  margin:55px 35px 20px
+}
+.bus-node{
+  position:absolute;top:-70px;transform:translateX(-50%);
+  width:82px;text-align:center;font-size:12px
+}
+.bus-node i{display:block;font-size:23px;color:#555;margin-bottom:4px}
+.bus-node:after{
+  content:"";position:absolute;left:50%;top:35px;height:35px;
+  border-left:2px solid #999
+}
+.bus-node.n1{left:5%}.bus-node.n2{left:25%}.bus-node.n3{left:50%}
+.bus-node.n4{left:75%}.bus-node.n5{left:95%}
+.terminator{
+  position:absolute;top:-15px;width:8px;height:30px;background:var(--gold);
+}
+.terminator.left{left:-8px}.terminator.right{right:-8px}
+.star-center{
+  width:145px;margin:0 auto 35px;border:2px solid var(--gold);
+  border-radius:10px;background:#fff;padding:11px 8px;text-align:center;font-weight:bold
+}
+.star-center i{display:block;color:var(--gold);font-size:23px;margin-bottom:5px}
+.star-devices{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative
+}
+.star-device{
+  border:1px solid #ccc;border-radius:9px;background:#fff;
+  padding:10px 5px;text-align:center;font-size:12px;position:relative
+}
+.star-device i{display:block;font-size:21px;margin-bottom:5px;color:#555}
+.star-device:before{
+  content:"";position:absolute;height:35px;width:2px;background:#aaa;
+  left:50%;top:-35px
+}
+.star-center:after{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);
+  margin-top:11px;width:500px;height:2px;background:#aaa
+}
+.ring{
+  width:360px;height:210px;margin:20px auto;position:relative;
+  border:5px solid #aaa;border-radius:50%
+}
+.ring-device{
+  position:absolute;width:75px;border:1px solid #ccc;border-radius:9px;
+  background:#fff;padding:7px 4px;text-align:center;font-size:11px
+}
+.ring-device i{display:block;font-size:19px;color:#555;margin-bottom:3px}
+.r1{left:-35px;top:65px}.r2{left:42px;top:-28px}.r3{right:42px;top:-28px}
+.r4{right:-35px;top:65px}
+.table-wrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+th{background:#f7f2e3;color:#594500}
+.function-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.function{border:1px solid var(--line);border-radius:10px;padding:15px;background:#fff}
+.function strong{display:block;margin-bottom:5px}
+.exercise{
+  background:#fafafa;border:1px solid var(--line);border-radius:10px;
+  padding:15px 17px
+}
+.reflection{display:grid;gap:10px}
+.reflection div{
+  border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:#fff
+}
+.back{
+  display:inline-block;text-decoration:none;color:#fff;background:var(--gold);
+  padding:10px 14px;border-radius:8px;font-size:14px
+}
+.back i{margin-right:6px}
+.lks{
+  border:1px solid var(--line);border-radius:10px;padding:15px;
+  background:#fff;margin-top:12px
+}
+@media(max-width:760px){
+  .sidebar{transform:translateX(-100%);transition:.25s ease}
+  .sidebar.open{transform:translateX(0)}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:900}
+  .overlay.show{display:block}
+  .menu-btn{display:block}
+  .main{margin-left:0;padding:68px 10px 35px}
+  .card{padding:21px 15px;border-radius:11px}
+  .hero{padding:28px 15px}
+  h1{font-size:23px} h2{font-size:18px} h3{font-size:16px}
+  .function-grid{grid-template-columns:1fr}
+  .star-devices{grid-template-columns:repeat(2,1fr)}
+  .star-center:after{width:300px}
+  .ring{width:300px;height:180px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <img src="../../asset/logo.png" class="logo" alt="Logo">
+  <h2>TKJ — Kelas XI</h2>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+
+<section class="card hero">
+  <div class="icon"><i class="fa-solid fa-star-of-life"></i></div>
+  <h1>BAB 2 — Topologi Bus, Star, dan Ring</h1>
+  <div class="subtitle"><strong>Pertemuan 2 · Alokasi Waktu 3 JP</strong></div>
+  <div class="meta">
+    <span class="badge"><i class="fa-solid fa-network-wired"></i> TP3</span>
+    <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Kelas XI TJKT</span>
+    <span class="badge"><i class="fa-solid fa-book-open"></i> Topologi Jaringan</span>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Tujuan Pembelajaran Bab Ini</h2>
+  <ul>
+    <li>Peserta didik mampu mengidentifikasi topologi bus, star, dan ring.</li>
+    <li>Peserta didik mampu menjelaskan karakteristik, kelebihan, dan kekurangan ketiga topologi tersebut.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>2.1 Topologi Bus</h2>
+  <p>
+    Topologi bus adalah topologi yang menggunakan satu jalur kabel utama
+    (sering disebut backbone) sebagai tulang punggung jaringan. Seluruh perangkat
+    dalam jaringan terhubung ke jalur utama tersebut melalui kabel sambungan
+    pendek. Pada kedua ujung jalur utama dipasang komponen bernama terminator yang
+    berfungsi menyerap sinyal agar tidak memantul kembali dan mengganggu jaringan.
+  </p>
+
+  <div class="diagram">
+    <div class="diagram-title">Gambar 2.1 — Topologi Bus</div>
+    <div class="diagram-inner">
+      <div class="bus-line">
+        <div class="terminator left"></div>
+        <div class="terminator right"></div>
+        <div class="bus-node n1"><i class="fa-solid fa-desktop"></i>PC 1</div>
+        <div class="bus-node n2"><i class="fa-solid fa-desktop"></i>PC 2</div>
+        <div class="bus-node n3"><i class="fa-solid fa-desktop"></i>PC 3</div>
+        <div class="bus-node n4"><i class="fa-solid fa-desktop"></i>PC 4</div>
+        <div class="bus-node n5"><i class="fa-solid fa-desktop"></i>PC 5</div>
+      </div>
+    </div>
+    <div class="diagram-caption">Semua perangkat terhubung pada satu jalur kabel utama.</div>
+  </div>
+
+  <h3>Berikut video ilustrasi topologi BUS:</h3>
+  <div class="video-wrap">
+    <div class="video-label">Video 1</div>
+    <video controls playsinline preload="metadata">
+      <source src="video/bus-1.mp4" type="video/mp4">
+      Browser kalian belum mendukung pemutar video.
+    </video>
+  </div>
+  <div class="video-wrap">
+    <div class="video-label">Video 2</div>
+    <video controls playsinline preload="metadata">
+      <source src="video/bus-2.mp4" type="video/mp4">
+      Browser kalian belum mendukung pemutar video.
+    </video>
+  </div>
+
+  <h3>Karakteristik Topologi Bus</h3>
+  <ul>
+    <li>Menggunakan satu jalur kabel utama sebagai penghubung seluruh perangkat.</li>
+    <li>Tidak memerlukan perangkat pusat seperti switch atau hub.</li>
+    <li>Data yang dikirim akan melewati jalur utama dan dapat terbaca oleh seluruh perangkat, namun hanya diterima oleh perangkat yang dituju.</li>
+    <li>Memerlukan terminator di kedua ujung jalur utama.</li>
+  </ul>
+
+  <h3>Kelebihan Topologi Bus</h3>
+  <ul>
+    <li>Struktur jaringan sederhana dan mudah dipahami.</li>
+    <li>Penggunaan kabel relatif lebih sedikit dibandingkan topologi lain, sehingga biaya pemasangan lebih murah.</li>
+    <li>Mudah dipasang untuk jaringan berskala kecil.</li>
+  </ul>
+
+  <h3>Kekurangan Topologi Bus</h3>
+  <ul>
+    <li>Jika jalur utama terputus atau bermasalah, seluruh jaringan akan terganggu.</li>
+    <li>Sulit menelusuri letak kerusakan karena semua perangkat berbagi satu jalur yang sama.</li>
+    <li>Semakin banyak perangkat yang terhubung, semakin sering terjadi tabrakan data (collision) dan jaringan menjadi lambat.</li>
+    <li>Sudah jarang digunakan pada jaringan modern.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>2.2 Topologi Star</h2>
+  <p>
+    Topologi star (bintang) adalah topologi yang menggunakan satu perangkat
+    pusat, biasanya berupa switch atau hub, sebagai titik pertemuan seluruh
+    perangkat. Setiap komputer terhubung langsung ke perangkat pusat menggunakan
+    kabelnya masing-masing, sehingga bentuknya menyerupai bintang jika digambarkan.
+  </p>
+
+  <div class="diagram">
+    <div class="diagram-title">Gambar 2.2 — Topologi Star</div>
+    <div class="diagram-inner">
+      <div class="star-center">
+        <i class="fa-solid fa-network-wired"></i>
+        SWITCH / HUB
+        <div class="small">Perangkat pusat</div>
+      </div>
+      <div class="star-devices">
+        <div class="star-device"><i class="fa-solid fa-desktop"></i>PC 1</div>
+        <div class="star-device"><i class="fa-solid fa-desktop"></i>PC 2</div>
+        <div class="star-device"><i class="fa-solid fa-desktop"></i>PC 3</div>
+        <div class="star-device"><i class="fa-solid fa-desktop"></i>PC 4</div>
+      </div>
+    </div>
+    <div class="diagram-caption">Semua perangkat terhubung ke satu perangkat pusat.</div>
+  </div>
+
+  <h3>Berikut video ilustrasi topologi star:</h3>
+  <div class="video-wrap">
+    <video controls playsinline preload="metadata">
+      <source src="video/star.mp4" type="video/mp4">
+      Browser kalian belum mendukung pemutar video.
+    </video>
+  </div>
+
+  <h3>Karakteristik Topologi Star</h3>
+  <ul>
+    <li>Memiliki satu perangkat pusat berupa switch atau hub.</li>
+    <li>Setiap perangkat memiliki kabel sendiri yang terhubung langsung ke perangkat pusat.</li>
+    <li>Seluruh komunikasi antarperangkat harus melewati perangkat pusat terlebih dahulu.</li>
+    <li>Merupakan topologi yang paling banyak digunakan pada jaringan lokal (LAN) saat ini, termasuk di laboratorium komputer dan kantor.</li>
+  </ul>
+
+  <h3>Kelebihan Topologi Star</h3>
+  <ul>
+    <li>Jika satu kabel terputus, hanya perangkat yang bersangkutan yang terganggu; perangkat lain tetap dapat berkomunikasi.</li>
+    <li>Mudah dikembangkan — menambah perangkat baru cukup dengan menghubungkan kabel baru ke port yang masih kosong pada perangkat pusat.</li>
+    <li>Mudah menelusuri letak kerusakan, karena setiap perangkat memiliki jalurnya sendiri.</li>
+    <li>Kinerja jaringan lebih baik, terutama jika perangkat pusat yang digunakan adalah switch.</li>
+  </ul>
+
+  <h3>Kekurangan Topologi Star</h3>
+  <ul>
+    <li>Sangat bergantung pada perangkat pusat: jika switch atau hub rusak, seluruh jaringan berhenti berfungsi.</li>
+    <li>Membutuhkan kabel lebih banyak dibandingkan topologi bus, karena setiap perangkat memerlukan kabelnya sendiri.</li>
+    <li>Memerlukan biaya tambahan untuk pengadaan perangkat pusat.</li>
+  </ul>
+
+  <div class="highlight">
+    <strong>Kaitan dengan Kelas Kita</strong>
+    <p style="margin-top:8px">
+      Jaringan hotspot di kelas XI TJKT sebenarnya memiliki pola yang menyerupai topologi star:
+      hotspot HP guru berperan sebagai titik pusat, dan sebelas Chromebook terhubung langsung ke
+      titik pusat tersebut, hanya saja melalui sinyal Wi-Fi, bukan kabel.
+    </p>
+    <p style="margin-bottom:0">
+      Jika nanti kalian menghubungkan beberapa komputer menggunakan hub, kabel UTP, dan konektor
+      RJ-45 yang tersedia di sekolah, susunan yang terbentuk juga merupakan topologi star.
+    </p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>2.3 Topologi Ring</h2>
+  <p>
+    Topologi ring (cincin) adalah topologi yang menghubungkan perangkat
+    secara berurutan sehingga membentuk lingkaran tertutup. Setiap perangkat
+    terhubung ke dua perangkat di sebelahnya, dan data mengalir melewati perangkat
+    satu per satu secara berurutan hingga sampai ke perangkat tujuan.
+  </p>
+
+  <div class="diagram">
+    <div class="diagram-title">Gambar 2.3 — Topologi Ring</div>
+    <div class="diagram-inner">
+      <div class="ring">
+        <div class="ring-device r1"><i class="fa-solid fa-desktop"></i>PC 1</div>
+        <div class="ring-device r2"><i class="fa-solid fa-desktop"></i>PC 2</div>
+        <div class="ring-device r3"><i class="fa-solid fa-desktop"></i>PC 3</div>
+        <div class="ring-device r4"><i class="fa-solid fa-desktop"></i>PC 4</div>
+      </div>
+    </div>
+    <div class="diagram-caption">Perangkat terhubung membentuk lingkaran tertutup.</div>
+  </div>
+
+  <h3>Berikut video ilustrasi topologi ring:</h3>
+  <div class="video-wrap">
+    <video controls playsinline preload="metadata">
+      <source src="video/ring.mp4" type="video/mp4">
+      Browser kalian belum mendukung pemutar video.
+    </video>
+  </div>
+
+  <h3>Karakteristik Topologi Ring</h3>
+  <ul>
+    <li>Perangkat terhubung membentuk lingkaran tertutup tanpa ujung.</li>
+    <li>Setiap perangkat terhubung tepat ke dua perangkat tetangganya.</li>
+    <li>Data mengalir secara berurutan dari satu perangkat ke perangkat berikutnya, umumnya dalam satu arah.</li>
+    <li>Setiap perangkat berperan meneruskan data yang bukan ditujukan untuknya ke perangkat berikutnya.</li>
+  </ul>
+
+  <h3>Kelebihan Topologi Ring</h3>
+  <ul>
+    <li>Aliran data teratur karena bergerak berurutan, sehingga tabrakan data lebih jarang terjadi dibandingkan topologi bus.</li>
+    <li>Penggunaan kabel relatif hemat, karena setiap perangkat hanya memerlukan dua sambungan.</li>
+    <li>Tidak memerlukan perangkat pusat.</li>
+  </ul>
+
+  <h3>Kekurangan Topologi Ring</h3>
+  <ul>
+    <li>Jika satu perangkat atau satu sambungan mengalami gangguan, seluruh aliran data pada jaringan dapat terhenti.</li>
+    <li>Sulit dikembangkan, karena menambah perangkat baru berarti harus memutus lingkaran terlebih dahulu.</li>
+    <li>Proses penelusuran kerusakan relatif rumit.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>2.4 Tabel Perbandingan Bus, Star, dan Ring</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Aspek</th><th>Bus</th><th>Star</th><th>Ring</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bentuk hubungan</td><td>Satu jalur utama lurus</td><td>Memusat ke satu titik</td><td>Lingkaran tertutup</td></tr>
+        <tr><td>Perangkat pusat</td><td>Tidak ada</td><td>Ada (switch/hub)</td><td>Tidak ada</td></tr>
+        <tr><td>Kebutuhan kabel</td><td>Paling sedikit</td><td>Paling banyak</td><td>Sedang</td></tr>
+        <tr><td>Kemudahan pengembangan</td><td>Cukup mudah</td><td>Sangat mudah</td><td>Sulit</td></tr>
+        <tr><td>Dampak gangguan</td><td>Jalur utama putus = seluruh jaringan mati</td><td>Satu kabel putus = hanya 1 perangkat terganggu</td><td>Satu titik putus = seluruh aliran data terhenti</td></tr>
+        <tr><td>Kelebihan utama</td><td>Hemat kabel &amp; sederhana</td><td>Tahan gangguan &amp; mudah dikembangkan</td><td>Aliran data teratur</td></tr>
+        <tr><td>Kekurangan utama</td><td>Rawan lumpuh total</td><td>Bergantung perangkat pusat</td><td>Sulit dikembangkan</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2>2.5 Kegiatan Peserta Didik — LKPD 2.1</h2>
+
+  <div class="info">
+    <strong>Petunjuk LKPD 2.1</strong>
+    <p style="margin-top:8px">
+      Gambarkan ketiga topologi (bus, star, dan ring) di buku tulis kalian, masing-masing menggunakan 4 perangkat.
+    </p>
+    <p style="margin-bottom:0">
+      Beri nama setiap perangkat pada gambar, lalu lengkapi tabel perbandingan berikut dengan kata-kata kalian sendiri.
+    </p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Aspek</th><th>Bus</th><th>Star</th><th>Ring</th></tr>
+      </thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Rangkuman Bab 2</h2>
+  <ul>
+    <li>Topologi bus menggunakan satu jalur kabel utama; hemat kabel namun rawan lumpuh total jika jalur utama terganggu.</li>
+    <li>Topologi star menggunakan perangkat pusat; paling banyak digunakan saat ini karena tahan gangguan dan mudah dikembangkan.</li>
+    <li>Topologi ring menghubungkan perangkat membentuk lingkaran; aliran data teratur namun sulit dikembangkan.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Latihan Soal Bab 2</h2>
+  <div class="exercise">
+    <ol>
+      <li>Jelaskan ciri utama topologi bus dan fungsi terminator di dalamnya!</li>
+      <li>Mengapa topologi star paling banyak digunakan pada jaringan lokal saat ini?</li>
+      <li>Apa yang terjadi pada topologi ring apabila salah satu perangkat mengalami gangguan? Jelaskan!</li>
+      <li>Topologi mana yang paling hemat kabel dan topologi mana yang paling banyak membutuhkan kabel? Jelaskan alasannya!</li>
+      <li>Sebuah kelas ingin menghubungkan 4 komputer dan menginginkan agar jika satu kabel putus, komputer lain tetap dapat bekerja. Topologi apa yang kalian sarankan? Jelaskan alasannya!</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Refleksi Pertemuan 2</h2>
+  <div class="reflection">
+    <div>• Topologi mana yang menggunakan perangkat pusat?</div>
+    <div>• Topologi mana yang menggunakan satu jalur utama?</div>
+    <div>• Topologi mana yang membentuk lingkaran?</div>
+    <div>• Topologi mana yang menurut saya paling mudah dipahami dan mengapa?</div>
+  </div>
+</section>
+
+<section class="card" style="text-align:center">
+  <a class="back" href="tp3.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke TP3</a>
+</section>
+
+</main>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
+function closeMenu(){
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+}
+btn.addEventListener("click",()=>{
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+overlay.addEventListener("click",closeMenu);
+</script>
+</body>
+</html>
