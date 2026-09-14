@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 3 — Perangkat Jaringan Komputer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333;--green:#A5D6A7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:22px 15px;z-index:20}
+.logo{text-align:center;margin-bottom:18px}
+.logo img{max-width:100px;max-height:100px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:4px 0;font-size:14px}
+.sidebar a:hover{background:#f6f0df}
+.sidebar a i{width:22px;color:var(--gold)}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:10px 12px;font-size:18px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-radius:12px;border-top:5px solid var(--gold);padding:25px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+h1,h2,h3{line-height:1.3}
+h1{margin-top:0;font-size:28px}
+h2{font-size:22px;margin-top:28px;border-left:5px solid var(--gold);padding-left:10px}
+h3{font-size:18px;margin-top:22px}
+.badge{display:inline-block;background:#f7efd8;color:#765600;padding:5px 10px;border-radius:999px;font-size:13px;font-weight:700}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:14px}
+th,td{border:1px solid #ccc;padding:10px;vertical-align:top}
+th{background:#f6f0df}
+ul,ol{padding-left:25px}
+.nav{max-width:1000px;margin:18px auto 0;display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.navbtn{display:inline-block;text-decoration:none;background:var(--gold);color:#fff;padding:9px 13px;border-radius:8px;font-size:14px}
+.small{font-size:14px;color:#666}
+@media(max-width:768px){
+.sidebar{transform:translateX(-100%);transition:.25s;box-shadow:2px 0 12px rgba(0,0,0,.15)}
+.sidebar.show{transform:translateX(0)}
+.menu-toggle{display:block}
+.main{margin-left:0;padding:62px 10px 20px}
+.card{padding:17px;border-radius:10px}
+h1{font-size:23px}
+h2{font-size:19px}
+h3{font-size:17px}
+table{font-size:13px;display:block;overflow-x:auto;white-space:normal}
+.nav{gap:6px}
+.navbtn{font-size:13px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fas fa-bars"></i></button>
+<aside class="sidebar">
+  <div class="logo"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"></div>
+  <a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+  <a href="../index.html"><i class="fas fa-book"></i> Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pencil-alt"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fas fa-file-alt"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fas fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-trophy"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fas fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fas fa-archive"></i> ARSIP</a>
+</aside>
+<main class="main">
+  <section class="card">
+    <h1>BAB 3 — Perangkat Jaringan Komputer</h1>
+    <span class="badge">Pertemuan 3 · Alokasi Waktu 3 JP · Bagian 3.2</span>
+    
+<h2>3.2 Perangkat Pasif Jaringan</h2>
+<p>Perangkat pasif adalah perangkat yang tidak memerlukan daya listrik untuk berfungsi, dan biasanya berperan sebagai media penghantar atau penghubung fisik dalam jaringan kabel. Karena sekolah kita telah memiliki kabel UTP, konektor RJ-45, tang crimping, dan LAN tester, materi ini akan langsung berkaitan dengan alat praktik yang akan kalian gunakan.</p>
+
+<h3>a. Kabel UTP (Unshielded Twisted Pair)</h3>
+<p>Kabel UTP adalah media kabel yang paling umum digunakan dalam jaringan LAN. Kabel ini terdiri dari empat pasang kawat tembaga kecil yang dipilin (twisted pair) dan dibungkus oleh lapisan pelindung luar. Kabel UTP yang digunakan untuk praktik di sekolah kita memang dipilih jenis dengan harga terjangkau agar cukup untuk digunakan berlatih oleh seluruh peserta didik, namun tetap dapat berfungsi dengan baik untuk keperluan pembelajaran dasar.</p>
+
+<h3>b. Konektor RJ-45</h3>
+<p>RJ-45 adalah konektor kecil berbentuk kotak transparan yang dipasang pada ujung kabel UTP agar dapat dicolokkan ke port jaringan pada perangkat seperti switch, hub, router, atau komputer. Di dalam konektor RJ-45 terdapat delapan pin kecil yang harus disusun sesuai urutan warna kabel yang benar.</p>
+
+<h3>c. Tang Crimping</h3>
+<p>Tang crimping adalah alat yang digunakan untuk memasang atau mengunci konektor RJ-45 pada ujung kabel UTP. Tang ini memiliki tiga fungsi dalam satu alat, yaitu untuk mengupas lapisan luar kabel, memotong kabel, dan mengepres (crimping) konektor RJ-45 agar pin-pin di dalamnya menembus dan mengunci kabel dengan kuat.</p>
+
+<h3>d. LAN Tester</h3>
+<p>LAN tester adalah alat yang digunakan untuk menguji apakah susunan kabel UTP yang telah dipasangi konektor RJ-45 sudah benar dan berfungsi dengan baik. Cara kerjanya adalah dengan menghubungkan kedua ujung kabel ke alat ini, kemudian memperhatikan lampu indikator yang menyala secara berurutan sesuai nomor pin.</p>
+
+  </section>
+  <div class="nav"><a class="navbtn" href="tp1-bab3-1.html"><i class="fas fa-arrow-left"></i> Bagian 3.1</a>
+<a class="navbtn" href="tp1.html"><i class="fas fa-list"></i> Menu TP 1</a>
+<a class="navbtn" href="tp1-bab3-3.html">Bagian 3.3 <i class="fas fa-arrow-right"></i></a></div>
+</main>
+</body>
+</html>

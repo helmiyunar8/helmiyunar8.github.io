@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 3 — Perangkat Jaringan Komputer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333;--green:#A5D6A7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:22px 15px;z-index:20}
+.logo{text-align:center;margin-bottom:18px}
+.logo img{max-width:100px;max-height:100px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:4px 0;font-size:14px}
+.sidebar a:hover{background:#f6f0df}
+.sidebar a i{width:22px;color:var(--gold)}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:10px 12px;font-size:18px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-radius:12px;border-top:5px solid var(--gold);padding:25px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+h1,h2,h3{line-height:1.3}
+h1{margin-top:0;font-size:28px}
+h2{font-size:22px;margin-top:28px;border-left:5px solid var(--gold);padding-left:10px}
+h3{font-size:18px;margin-top:22px}
+.badge{display:inline-block;background:#f7efd8;color:#765600;padding:5px 10px;border-radius:999px;font-size:13px;font-weight:700}
+.note{background:#fff8e8;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:14px}
+th,td{border:1px solid #ccc;padding:10px;vertical-align:top}
+th{background:#f6f0df}
+ul,ol{padding-left:25px}
+.nav{max-width:1000px;margin:18px auto 0;display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap}
+.navbtn{display:inline-block;text-decoration:none;background:var(--gold);color:#fff;padding:9px 13px;border-radius:8px;font-size:14px}
+.small{font-size:14px;color:#666}
+@media(max-width:768px){
+.sidebar{transform:translateX(-100%);transition:.25s;box-shadow:2px 0 12px rgba(0,0,0,.15)}
+.sidebar.show{transform:translateX(0)}
+.menu-toggle{display:block}
+.main{margin-left:0;padding:62px 10px 20px}
+.card{padding:17px;border-radius:10px}
+h1{font-size:23px}
+h2{font-size:19px}
+h3{font-size:17px}
+table{font-size:13px;display:block;overflow-x:auto;white-space:normal}
+.nav{gap:6px}
+.navbtn{font-size:13px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fas fa-bars"></i></button>
+<aside class="sidebar">
+  <div class="logo"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"></div>
+  <a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+  <a href="../index.html"><i class="fas fa-book"></i> Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pencil-alt"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fas fa-file-alt"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fas fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-trophy"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fas fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fas fa-archive"></i> ARSIP</a>
+</aside>
+<main class="main">
+  <section class="card">
+    <h1>BAB 3 — Perangkat Jaringan Komputer</h1>
+    <span class="badge">Pertemuan 3 · Alokasi Waktu 3 JP · Bagian 3.1</span>
+    
+<h2>Tujuan Pembelajaran Bab Ini:</h2>
+<ul>
+<li>Peserta didik mampu mengidentifikasi perangkat jaringan komputer.</li>
+<li>Peserta didik mampu menjelaskan fungsi setiap perangkat jaringan komputer.</li>
+</ul>
+
+<h2>3.1 Perangkat Aktif Jaringan</h2>
+<p>Perangkat aktif adalah perangkat jaringan yang memerlukan daya listrik untuk beroperasi dan berfungsi mengatur atau memproses aliran data dalam jaringan. Berikut adalah lima perangkat aktif yang paling umum ditemukan dalam sebuah jaringan komputer.</p>
+
+<h3>a. Router</h3>
+<p>Router berfungsi untuk menghubungkan dua jaringan yang berbeda, misalnya menghubungkan jaringan lokal (LAN) dengan jaringan internet, sekaligus mengatur arah lalu lintas data agar sampai ke tujuan yang tepat. Telepon genggam guru yang membagikan hotspot sebenarnya sedang berfungsi sebagai router sederhana, karena ia menghubungkan jaringan internet dari operator seluler dengan jaringan lokal berupa Chromebook peserta didik.</p>
+
+<h3>b. Switch</h3>
+<p>Switch berfungsi menghubungkan beberapa perangkat dalam satu jaringan kabel (LAN) dan mampu mengirimkan data hanya ke perangkat tujuan yang tepat, sehingga jaringan menjadi lebih efisien dan tidak mudah terjadi tabrakan data (collision).</p>
+
+<h3>c. Hub</h3>
+<p>Hub memiliki fungsi yang mirip dengan switch, yaitu menghubungkan beberapa perangkat dalam satu jaringan kabel. Bedanya, hub akan mengirimkan data ke semua perangkat yang terhubung, bukan hanya ke perangkat tujuan, sehingga jaringan yang menggunakan hub cenderung lebih lambat dan lebih boros lalu lintas data dibandingkan switch. Meskipun demikian, hub tetap dapat digunakan untuk keperluan praktik dasar karena cara kerjanya sederhana dan mudah dipahami.</p>
+
+<h3>d. Access Point</h3>
+<p>Access Point (titik akses) berfungsi menyediakan atau memancarkan jaringan nirkabel (Wi-Fi) sehingga perangkat seperti Chromebook atau telepon genggam dapat terhubung ke jaringan tanpa kabel. Fitur hotspot pada telepon genggam guru sebenarnya menjalankan fungsi seperti access point, meskipun dalam skala kecil.</p>
+
+<h3>e. Modem</h3>
+<p>Modem berfungsi mengubah sinyal digital dari komputer menjadi sinyal yang dapat dikirim melalui jalur komunikasi (misalnya jalur telepon atau kabel serat optik), dan sebaliknya. Modem biasanya digunakan untuk menghubungkan jaringan rumah atau kantor ke penyedia layanan internet (ISP).</p>
+
+<table>
+<tr><th>Perangkat</th><th>Fungsi Utama</th><th>Contoh di Kelas Kita</th></tr>
+<tr><td>Router</td><td>Menghubungkan jaringan lokal dengan internet &amp; mengatur lalu lintas data</td><td>Fitur hotspot pada HP guru</td></tr>
+<tr><td>Switch</td><td>Menghubungkan beberapa perangkat kabel secara efisien</td><td>Digunakan saat praktik jaringan kabel</td></tr>
+<tr><td>Hub</td><td>Menghubungkan beberapa perangkat kabel secara sederhana</td><td>Hub yang tersedia di sekolah</td></tr>
+<tr><td>Access Point</td><td>Memancarkan jaringan nirkabel (Wi-Fi)</td><td>Fitur hotspot pada HP guru</td></tr>
+<tr><td>Modem</td><td>Mengubah sinyal digital menjadi sinyal jalur komunikasi</td><td>Modem milik operator seluler yang digunakan HP guru</td></tr>
+</table>
+
+  </section>
+  <div class="nav"><a class="navbtn" href="tp1-bab2.html"><i class="fas fa-arrow-left"></i> Bab 2</a>
+<a class="navbtn" href="tp1.html"><i class="fas fa-list"></i> Menu TP 1</a>
+<a class="navbtn" href="tp1-bab3-2.html">Bagian 3.2 <i class="fas fa-arrow-right"></i></a></div>
+</main>
+</body>
+</html>
