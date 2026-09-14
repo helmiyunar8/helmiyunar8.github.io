@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosarium TP 1 - LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:15px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:4px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #d5d5d5;padding:12px 14px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:bold;width:28%;color:#5f4a00}
+.note{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin-bottom:20px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}.table-wrap{overflow-x:auto}table{min-width:620px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-book"></i> Glosarium</h1>
+<div class="meta">TP 1 · Fungsi dan Kebutuhan Jaringan Komputer</div>
+</div>
+
+<div class="note">
+<strong>Glosarium TP 1</strong><br>
+Berikut istilah-istilah penting yang digunakan dalam materi Tujuan Pembelajaran 1.
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Pengertian</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Jaringan Komputer</td><td>Hubungan dua perangkat atau lebih untuk bertukar data dan berbagi sumber daya</td></tr>
+<tr><td>PAN</td><td>Jaringan pribadi dengan cakupan sangat kecil (personal area network)</td></tr>
+<tr><td>LAN</td><td>Jaringan dalam area terbatas (local area network)</td></tr>
+<tr><td>WLAN</td><td>Jaringan lokal menggunakan media nirkabel (wireless local area network)</td></tr>
+<tr><td>MAN</td><td>Jaringan dengan cakupan satu kota (metropolitan area network)</td></tr>
+<tr><td>WAN</td><td>Jaringan dengan cakupan luas, antarkota/negara (wide area network)</td></tr>
+<tr><td>Router</td><td>Perangkat penghubung jaringan dan pengatur lalu lintas data</td></tr>
+<tr><td>Switch</td><td>Perangkat penghubung beberapa perangkat kabel secara efisien</td></tr>
+<tr><td>Hub</td><td>Perangkat penghubung jaringan kabel yang sederhana</td></tr>
+<tr><td>Access Point</td><td>Perangkat penyedia atau pemancar jaringan nirkabel</td></tr>
+<tr><td>Modem</td><td>Perangkat pengubah sinyal digital menjadi sinyal jalur komunikasi, dan sebaliknya</td></tr>
+<tr><td>Hotspot</td><td>Fitur atau perangkat penyedia akses internet nirkabel</td></tr>
+<tr><td>Kabel UTP</td><td>Media kabel penghantar data jaringan (Unshielded Twisted Pair)</td></tr>
+<tr><td>RJ-45</td><td>Konektor yang dipasang pada ujung kabel UTP</td></tr>
+<tr><td>Tang Crimping</td><td>Alat untuk mengupas, memotong, dan memasang konektor RJ-45 pada kabel UTP</td></tr>
+<tr><td>LAN Tester</td><td>Alat penguji susunan dan kondisi kabel jaringan</td></tr>
+<tr><td>T568B</td><td>Salah satu standar urutan warna pemasangan kabel UTP pada konektor RJ-45</td></tr>
+<tr><td>Kabel Straight</td><td>Kabel UTP dengan susunan warna sama pada kedua ujungnya</td></tr>
+<tr><td>Kabel Cross</td><td>Kabel UTP dengan susunan warna berbeda pada kedua ujungnya</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer-nav">
+<a href="tp1-refleksi.html">← Refleksi Akhir</a>
+<a href="index.html">Kembali ke TP 1</a>
+</div>
+
+</section>
+</main>
+</body>
+</html>
