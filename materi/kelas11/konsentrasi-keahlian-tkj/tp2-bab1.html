@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 1 - Mengenal Perangkat Jaringan - TP 2 LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h2{font-size:20px;color:#604800;margin-top:30px}
+h3{font-size:17px;color:#604800}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+ol{padding-left:25px}
+ol li{margin-bottom:10px}
+ul{padding-left:24px}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.reflection{background:#fffdf5;border:1px solid #eadcae;border-radius:9px;padding:15px 17px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:600px}
+.table-wrap{overflow-x:auto}
+.info,.exercise,.reflection{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-network-wired"></i> BAB 1 — Mengenal Perangkat Jaringan dan Fungsi Dasarnya</h1>
+<div class="meta">TP 2 · Pertemuan 1 · Alokasi Waktu 3 JP</div>
+</div>
+
+<h2>Tujuan Pembelajaran Bab Ini</h2>
+<ul>
+<li>Peserta didik mampu menjelaskan pengertian perangkat jaringan.</li>
+<li>Peserta didik mampu mengidentifikasi fungsi perangkat jaringan.</li>
+</ul>
+
+<h2>1.1 Mengingat Kembali Materi Sebelumnya</h2>
+<p>Pada Buku Ajar TP 1, kalian telah mempelajari bahwa jaringan komputer adalah kumpulan perangkat yang saling terhubung untuk bertukar data dan berbagi sumber daya, serta mengenal secara singkat beberapa perangkat jaringan seperti router, switch, hub, access point, modem, kabel UTP, dan konektor RJ-45. Pada Tujuan Pembelajaran 2 ini, kita akan mempelajari perangkat-perangkat tersebut jauh lebih dalam: bukan hanya nama dan fungsi singkatnya, tetapi juga karakteristik, ciri fisik, cara kerja, kelebihan, kekurangan, hingga bagaimana cara memilih perangkat yang tepat untuk kebutuhan tertentu.</p>
+
+<h2>1.2 Apa Itu Perangkat Jaringan?</h2>
+<p>Perangkat jaringan (network device) adalah perangkat keras (hardware) yang digunakan untuk membangun, menghubungkan, mengatur lalu lintas data, memperkuat sinyal, atau menguji sebuah jaringan komputer. Perangkat jaringan berbeda dengan perangkat pengguna (end-user device), yaitu perangkat yang digunakan langsung oleh manusia untuk mengakses dan memanfaatkan jaringan, misalnya Chromebook, laptop, komputer, dan telepon genggam.</p>
+
+<p>Perbedaan ini penting untuk dipahami sejak awal. Perangkat jaringan berperan sebagai "jalan" dan "pengatur lalu lintas" data, sedangkan perangkat pengguna berperan sebagai "kendaraan" yang menggunakan jalan tersebut untuk sampai ke tujuan, misalnya mengakses sebuah halaman web atau mengumpulkan tugas daring.</p>
+
+<div class="info">
+<strong><i class="fas fa-circle-info"></i> Contoh di Kelas Kita</strong>
+<p>Perangkat jaringan: hotspot pada HP guru (berperan seperti router/access point), hub yang tersedia di sekolah, kabel UTP, dan konektor RJ-45.</p>
+<p>Perangkat pengguna: sebelas Chromebook milik peserta didik, dan HP guru itu sendiri saat digunakan untuk membuka aplikasi (bukan saat memancarkan hotspot).</p>
+</div>
+
+<h2>1.3 Mengapa Perangkat Jaringan Memiliki Fungsi yang Berbeda-beda?</h2>
+<p>Sebuah jaringan komputer, sesederhana apa pun, sebenarnya terdiri dari beberapa tahap yang berbeda: menyediakan sumber koneksi, menghubungkan antarperangkat, mengatur arah data, memancarkan sinyal, hingga memastikan sambungan berfungsi dengan baik. Setiap tahap ini memerlukan perangkat dengan fungsi khusus. Tidak ada satu perangkat pun yang dapat mengerjakan seluruh tahap tersebut sekaligus dengan baik, sehingga jaringan komputer selalu dibangun dari gabungan beberapa perangkat yang saling melengkapi.</p>
+
+<p>Sebagai gambaran sederhana, bayangkan sebuah jaringan seperti aliran air dari sumber mata air hingga sampai ke keran rumah warga. Diperlukan pipa induk, pompa, pipa cabang, hingga keran di setiap rumah — masing-masing memiliki fungsi berbeda namun saling terhubung membentuk satu sistem penyaluran air. Jaringan komputer bekerja dengan prinsip yang mirip, hanya saja yang dialirkan adalah data, bukan air.</p>
+
+<h2>1.4 Delapan Perangkat yang Akan Kita Pelajari</h2>
+<p>Pada TP 2 ini, terdapat delapan perangkat utama yang akan kita pelajari secara mendalam pada pertemuan-pertemuan berikutnya. Berikut adalah daftar dan gambaran awal fungsi setiap perangkat, sebagai bekal sebelum mempelajari lebih rinci pada Bab 2 dan Bab 3.</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>No</th><th>Perangkat</th><th>Gambaran Fungsi Awal</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Modem</td><td>Menghubungkan jaringan dengan layanan internet dari penyedia layanan</td></tr>
+<tr><td>2</td><td>Router</td><td>Menghubungkan jaringan yang berbeda dan mengatur lalu lintas data</td></tr>
+<tr><td>3</td><td>Switch</td><td>Menghubungkan beberapa perangkat dalam jaringan kabel (LAN) secara efisien</td></tr>
+<tr><td>4</td><td>Hub</td><td>Menghubungkan beberapa perangkat dalam jaringan kabel secara sederhana</td></tr>
+<tr><td>5</td><td>Access Point</td><td>Menyediakan akses jaringan secara nirkabel (Wi-Fi)</td></tr>
+<tr><td>6</td><td>Kabel UTP</td><td>Media penghantar data pada jaringan kabel</td></tr>
+<tr><td>7</td><td>Konektor RJ-45</td><td>Menghubungkan kabel UTP ke port perangkat jaringan</td></tr>
+<tr><td>8</td><td>LAN Tester</td><td>Menguji susunan dan koneksi kabel jaringan</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Selain kedelapan perangkat jaringan tersebut, kita juga akan membahas Chromebook sebagai contoh perangkat pengguna, karena Chromebook adalah perangkat yang paling sering kalian gunakan sehari-hari di sekolah.</p>
+
+<h2>1.5 Kegiatan Peserta Didik — LKPD 1.1</h2>
+
+<div class="info">
+<strong><i class="fas fa-clipboard-list"></i> Petunjuk LKPD 1.1</strong>
+<p>Amati gambar/perangkat yang ditunjukkan guru, lalu cocokkan nama perangkat, fungsi, dan kelompokkan apakah termasuk perangkat jaringan atau perangkat pengguna.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Nama Perangkat</th><th>Fungsi</th><th>Perangkat Jaringan / Perangkat Pengguna</th></tr>
+</thead>
+<tbody>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Rangkuman Bab 1</h2>
+<ul>
+<li>Perangkat jaringan adalah perangkat keras yang digunakan untuk membangun, menghubungkan, mengatur, atau menguji jaringan komputer, berbeda dengan perangkat pengguna yang digunakan langsung oleh manusia untuk mengakses jaringan.</li>
+<li>Jaringan komputer selalu dibangun dari gabungan beberapa perangkat yang saling melengkapi, karena setiap tahap penyaluran data memerlukan perangkat dengan fungsi khusus.</li>
+<li>Delapan perangkat utama yang dipelajari pada TP 2: modem, router, switch, hub, access point, kabel UTP, konektor RJ-45, dan LAN tester.</li>
+</ul>
+
+<h2>Latihan Soal Bab 1</h2>
+<div class="exercise"><strong>1.</strong> Jelaskan dengan bahasa kalian sendiri, apa yang dimaksud dengan perangkat jaringan!</div>
+<div class="exercise"><strong>2.</strong> Apa perbedaan perangkat jaringan dan perangkat pengguna? Berikan masing-masing dua contoh!</div>
+<div class="exercise"><strong>3.</strong> Mengapa sebuah jaringan komputer tidak dapat dibangun hanya menggunakan satu jenis perangkat saja?</div>
+<div class="exercise"><strong>4.</strong> Sebutkan delapan perangkat utama yang akan dipelajari pada TP 2 beserta gambaran fungsinya masing-masing!</div>
+<div class="exercise"><strong>5.</strong> Termasuk perangkat jaringan atau perangkat penggunakah Chromebook yang kalian gunakan? Jelaskan alasannya!</div>
+
+<h2>Refleksi Pertemuan 1</h2>
+<div class="reflection">
+<ul>
+<li>Perangkat apa yang baru saya kenal pada pertemuan ini?</li>
+<li>Perangkat apa yang paling mudah saya pahami?</li>
+<li>Apa perbedaan perangkat jaringan dan perangkat pengguna menurut pemahaman saya?</li>
+</ul>
+</div>
+
+<div class="footer-nav">
+<a href="tp2.html">← Kembali ke TP 2</a>
+<a href="tp2-bab2.html">Bab 2 →</a>
+</div>
+
+</section>
+</main>
+</body>
+</html>
