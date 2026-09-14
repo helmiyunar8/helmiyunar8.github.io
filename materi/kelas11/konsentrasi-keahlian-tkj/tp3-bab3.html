@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 Bab 3 — Topologi Mesh, Tree, dan Hybrid</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--dark:#333;--bg:#f4f4f4;--white:#fff;--soft:#faf7ed;--line:#e3e3e3;--green:#a5d6a7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--dark);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:1000}
+.logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h2{text-align:center;font-size:17px;margin:0 0 16px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:4px 0;font-size:14px}
+.sidebar a:hover{background:#f1f1f1}.sidebar a i{width:20px;color:var(--gold)}
+.menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:1100;border:0;background:var(--gold);color:#fff;width:42px;height:42px;border-radius:9px;font-size:20px}
+.overlay{display:none}.main{margin-left:250px;padding:30px 18px 50px}
+.card{max-width:1000px;margin:0 auto 20px;background:#fff;border-radius:14px;border-top:5px solid var(--gold);padding:28px;box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.hero{text-align:center;padding:34px 25px}.hero .icon{font-size:46px;color:var(--gold);margin-bottom:10px}
+h1{margin:0;font-size:28px;line-height:1.3}.subtitle{margin-top:9px;color:#555}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.badge{background:#f7f7f7;border:1px solid var(--line);border-radius:20px;padding:6px 11px;font-size:13px}
+.badge i{color:var(--gold);margin-right:5px}
+h2{font-size:21px;margin:0 0 16px;padding-left:11px;border-left:4px solid var(--gold)}
+h3{font-size:17px;margin:22px 0 8px;color:#594500}p{margin:0 0 14px}ul,ol{padding-left:24px}li{margin-bottom:8px}
+.info{background:var(--soft);border:1px solid #eadfbf;border-radius:10px;padding:16px 18px;margin:14px 0}
+.highlight{background:#f8f8f8;border-left:4px solid var(--green);padding:13px 16px;border-radius:8px;margin:14px 0}
+.video-wrap{max-width:605px;min-width:280px;margin:18px auto 8px;text-align:center}
+.video-wrap video{display:block;width:100%;max-width:605px;height:auto;max-height:720px;margin:0 auto;border-radius:12px;background:#000;box-shadow:0 3px 12px rgba(0,0,0,.10)}
+.video-label{font-weight:bold;text-align:left;margin:10px 0 7px;color:#594500}
+.small{font-size:13px;color:#666}
+.diagram{border:1px solid var(--line);border-radius:12px;background:#fbfbfb;padding:20px 14px;margin:18px 0 8px;overflow-x:auto}
+.diagram-title{text-align:center;font-weight:bold;margin-bottom:16px;color:#555}.diagram-caption{text-align:center;font-size:13px;color:#666;margin-top:12px}
+.diagram-inner{min-width:560px;max-width:720px;margin:auto;position:relative}
+.mesh{width:470px;height:300px;margin:15px auto;position:relative}
+.mesh svg{width:100%;height:100%}.mesh-node{position:absolute;width:74px;padding:7px 4px;border:1px solid #ccc;border-radius:9px;background:#fff;text-align:center;font-size:11px}
+.mesh-node i{display:block;font-size:20px;color:#555;margin-bottom:3px}
+.mn1{left:198px;top:-2px}.mn2{left:35px;top:100px}.mn3{right:35px;top:100px}.mn4{left:198px;bottom:-2px}
+.tree-top{width:145px;margin:0 auto 42px;border:2px solid var(--gold);border-radius:10px;background:#fff;padding:10px;text-align:center;font-weight:bold}
+.tree-top i{display:block;color:var(--gold);font-size:22px;margin-bottom:4px}
+.tree-branches{display:grid;grid-template-columns:repeat(2,1fr);gap:35px;max-width:520px;margin:auto}
+.tree-branch{border:1px solid #bbb;border-radius:9px;background:#fff;padding:10px;text-align:center}
+.tree-branch i{display:block;font-size:20px;color:#555;margin-bottom:4px}
+.tree-leaves{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.tree-leaves div{border:1px solid #ddd;border-radius:7px;padding:7px;font-size:11px;background:#fafafa}
+.hybrid-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;max-width:650px;margin:auto}
+.mini-star{border:2px solid var(--gold);border-radius:10px;padding:12px;text-align:center;background:#fff}
+.mini-star strong{display:block}.mini-star span{display:inline-block;margin:8px 3px 0;padding:5px;border:1px solid #ccc;border-radius:6px;font-size:11px}
+.mini-ring{width:180px;height:120px;border:4px solid #999;border-radius:50%;margin:auto;position:relative}
+.mini-ring span{position:absolute;background:#fff;border:1px solid #ccc;border-radius:6px;padding:4px;font-size:10px}
+.mr1{left:-20px;top:38px}.mr2{left:65px;top:-16px}.mr3{right:-20px;top:38px}.mr4{left:65px;bottom:-16px}
+.table-wrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;min-width:760px}th,td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}th{background:#f7f2e3;color:#594500}
+.exercise{background:#fafafa;border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.reflection{display:grid;gap:10px}.reflection div{border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:#fff}
+.back{display:inline-block;text-decoration:none;color:#fff;background:var(--gold);padding:10px 14px;border-radius:8px;font-size:14px}.back i{margin-right:6px}
+@media(max-width:760px){
+.sidebar{transform:translateX(-100%);transition:.25s ease}.sidebar.open{transform:translateX(0)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:900}.overlay.show{display:block}.menu-btn{display:block}
+.main{margin-left:0;padding:68px 10px 35px}.card{padding:21px 15px;border-radius:11px}.hero{padding:28px 15px}
+h1{font-size:23px}h2{font-size:18px}h3{font-size:16px}.diagram-inner{min-width:500px}.hybrid-grid{grid-template-columns:1fr;max-width:360px}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo"><h2>TKJ — Kelas XI</h2>
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+<section class="card hero">
+<div class="icon"><i class="fa-solid fa-network-wired"></i></div>
+<h1>BAB 3 — Topologi Mesh, Tree, dan Hybrid</h1>
+<div class="subtitle"><strong>Pertemuan 3 · Alokasi Waktu 3 JP</strong></div>
+<div class="meta"><span class="badge"><i class="fa-solid fa-network-wired"></i> TP3</span><span class="badge"><i class="fa-solid fa-graduation-cap"></i> Kelas XI TJKT</span><span class="badge"><i class="fa-solid fa-book-open"></i> Topologi Jaringan</span></div>
+</section>
+
+<section class="card"><h2>Tujuan Pembelajaran Bab Ini</h2><ul>
+<li>Peserta didik mampu mengidentifikasi topologi mesh, tree, dan hybrid.</li>
+<li>Peserta didik mampu membandingkan seluruh jenis topologi jaringan.</li>
+</ul></section>
+
+<section class="card"><h2>3.1 Topologi Mesh</h2>
+<p>Topologi mesh (jala) adalah topologi yang menghubungkan setiap perangkat ke banyak perangkat lain secara langsung. Pada bentuk yang paling lengkap (full mesh), setiap perangkat terhubung ke seluruh perangkat lainnya, sehingga terbentuk banyak jalur alternatif menuju satu tujuan.</p>
+<div class="diagram"><div class="diagram-title">Gambar 3.1 — Topologi Mesh</div><div class="diagram-inner">
+<div class="mesh">
+<svg viewBox="0 0 470 300" aria-hidden="true">
+<line x1="235" y1="35" x2="72" y2="150" stroke="#aaa" stroke-width="2"/><line x1="235" y1="35" x2="398" y2="150" stroke="#aaa" stroke-width="2"/><line x1="235" y1="35" x2="235" y2="265" stroke="#aaa" stroke-width="2"/><line x1="72" y1="150" x2="398" y2="150" stroke="#aaa" stroke-width="2"/><line x1="72" y1="150" x2="235" y2="265" stroke="#aaa" stroke-width="2"/><line x1="398" y1="150" x2="235" y2="265" stroke="#aaa" stroke-width="2"/>
+</svg>
+<div class="mesh-node mn1"><i class="fa-solid fa-desktop"></i>PC 1</div><div class="mesh-node mn2"><i class="fa-solid fa-desktop"></i>PC 2</div><div class="mesh-node mn3"><i class="fa-solid fa-desktop"></i>PC 3</div><div class="mesh-node mn4"><i class="fa-solid fa-desktop"></i>PC 4</div>
+</div></div><div class="diagram-caption">Setiap perangkat memiliki banyak hubungan langsung dengan perangkat lainnya.</div></div>
+<h3>Video ilustrasi topologi mesh:</h3><div class="video-wrap"><video controls playsinline preload="metadata"><source src="video/mesh.mp4" type="video/mp4">Browser kalian belum mendukung pemutar video.</video></div>
+<h3>Karakteristik Topologi Mesh</h3><ul><li>Setiap perangkat memiliki banyak hubungan langsung dengan perangkat lain.</li><li>Menyediakan jalur alternatif, sehingga jika satu jalur terputus, data dapat dialihkan melalui jalur lain.</li><li>Jumlah kabel yang dibutuhkan sangat banyak dan bertambah dengan cepat seiring bertambahnya perangkat.</li><li>Umumnya digunakan pada jaringan penting berskala besar, misalnya jaringan antarkantor pusat perusahaan atau jaringan tulang punggung internet.</li></ul>
+<h3>Kelebihan Topologi Mesh</h3><ul><li>Sangat tahan terhadap gangguan, karena tersedia banyak jalur alternatif.</li><li>Pengiriman data dapat berlangsung cepat karena dapat dikirim langsung ke tujuan tanpa melewati banyak perantara.</li><li>Masalah pada satu jalur tidak melumpuhkan seluruh jaringan.</li></ul>
+<h3>Kekurangan Topologi Mesh</h3><ul><li>Membutuhkan kabel dan port yang sangat banyak, sehingga biayanya paling mahal di antara semua topologi.</li><li>Pemasangan dan pengaturannya rumit.</li><li>Tidak praktis untuk jaringan kecil seperti jaringan kelas.</li></ul>
+<div class="info"><strong>Menghitung Kebutuhan Kabel pada Mesh</strong><p style="margin-top:8px">Jumlah sambungan pada topologi full mesh dapat dihitung dengan rumus: <strong>n × (n − 1) ÷ 2</strong>, dengan n adalah jumlah perangkat.</p><p>Contoh: untuk 5 perangkat → 5 × 4 ÷ 2 = <strong>10 sambungan kabel</strong>.</p><p style="margin-bottom:0">Contoh: untuk 11 Chromebook di kelas kita → 11 × 10 ÷ 2 = <strong>55 sambungan kabel</strong>. Bandingkan dengan topologi star yang hanya membutuhkan 11 kabel. Inilah alasan mesh tidak cocok untuk jaringan kelas kita.</p></div>
+</section>
+
+<section class="card"><h2>3.2 Topologi Tree</h2>
+<p>Topologi tree (pohon) adalah topologi berbentuk bertingkat atau bercabang, menyerupai struktur pohon atau bagan organisasi. Terdapat satu perangkat utama di tingkat paling atas, kemudian bercabang ke beberapa perangkat penghubung di tingkat bawahnya, dan dari setiap cabang tersebut terhubung lagi ke sejumlah komputer.</p>
+<div class="diagram"><div class="diagram-title">Gambar 3.2 — Topologi Tree</div><div class="diagram-inner">
+<div class="tree-top"><i class="fa-solid fa-network-wired"></i>PERANGKAT UTAMA</div>
+<div class="tree-branches"><div class="tree-branch"><i class="fa-solid fa-code-branch"></i>Cabang / Ruang 1<div class="tree-leaves"><div>PC 1</div><div>PC 2</div></div></div><div class="tree-branch"><i class="fa-solid fa-code-branch"></i>Cabang / Ruang 2<div class="tree-leaves"><div>PC 3</div><div>PC 4</div></div></div></div>
+</div></div><div class="diagram-caption">Bentuk bertingkat dan bercabang, cocok untuk pembagian area atau kelompok.</div></div>
+<h3>Video ilustrasi topologi Tree:</h3><div class="video-wrap"><video controls playsinline preload="metadata"><source src="video/tree.mp4" type="video/mp4">Browser kalian belum mendukung pemutar video.</video></div>
+<h3>Karakteristik Topologi Tree</h3><ul><li>Memiliki struktur bertingkat (hierarki) dengan perangkat pusat utama di tingkat teratas.</li><li>Pada dasarnya merupakan gabungan dari beberapa topologi star yang dihubungkan menjadi satu kesatuan.</li><li>Sangat cocok untuk jaringan yang memiliki pembagian area atau kelompok, misalnya beberapa ruangan atau beberapa gedung.</li><li>Setiap kelompok (cabang) dapat dikelola secara terpisah.</li></ul>
+<h3>Kelebihan Topologi Tree</h3><ul><li>Mudah dikembangkan dengan cara menambah cabang baru tanpa mengubah keseluruhan jaringan.</li><li>Pengelolaan lebih teratur karena jaringan terbagi dalam kelompok-kelompok.</li><li>Gangguan pada satu cabang tidak selalu memengaruhi cabang lainnya.</li></ul>
+<h3>Kekurangan Topologi Tree</h3><ul><li>Jika perangkat pusat utama di tingkat teratas rusak, seluruh jaringan akan terganggu.</li><li>Membutuhkan lebih banyak kabel dan perangkat penghubung dibandingkan topologi star tunggal.</li><li>Perencanaan dan pemasangannya lebih rumit.</li></ul>
+<div class="highlight"><strong>Kapan Sekolah Kita Membutuhkan Topologi Tree?</strong><p style="margin-top:8px">Saat ini kelas XI TJKT hanya memiliki satu rombongan belajar dalam satu ruangan, sehingga topologi star sudah mencukupi.</p><p style="margin-bottom:0">Namun apabila suatu saat seluruh 32 Chromebook bantuan pemerintah digunakan di beberapa ruangan berbeda, topologi tree menjadi pilihan yang lebih tepat: satu perangkat pusat utama, lalu bercabang ke switch/hub di masing-masing ruangan.</p></div>
+</section>
+
+<section class="card"><h2>3.3 Topologi Hybrid</h2>
+<p>Topologi hybrid (gabungan) adalah topologi yang dibentuk dari gabungan dua atau lebih jenis topologi yang berbeda dalam satu jaringan. Topologi ini muncul karena dalam praktik nyata, satu jenis topologi saja sering tidak cukup untuk memenuhi seluruh kebutuhan jaringan.</p>
+<div class="diagram"><div class="diagram-title">Gambar 3.3 — Topologi Hybrid</div><div class="diagram-inner"><div class="hybrid-grid">
+<div class="mini-star"><strong>STAR</strong><span>PC</span><span>SW</span><span>PC</span></div>
+<div class="mini-ring"><span class="mr1">PC</span><span class="mr2">PC</span><span class="mr3">PC</span><span class="mr4">PC</span></div>
+</div></div><div class="diagram-caption">Contoh gabungan topologi star dan ring dalam satu jaringan.</div></div>
+<h3>Video ilustrasi topologi Hybrid:</h3><div class="video-wrap"><video controls playsinline preload="metadata"><source src="video/hybrid.mp4" type="video/mp4">Browser kalian belum mendukung pemutar video.</video></div>
+<h3>Karakteristik Topologi Hybrid</h3><ul><li>Merupakan gabungan dua jenis topologi atau lebih, misalnya star dengan ring, atau star dengan bus.</li><li>Bentuknya sangat bervariasi, tergantung kebutuhan jaringan yang akan dibangun.</li><li>Banyak digunakan pada jaringan nyata berskala menengah dan besar.</li></ul>
+<h3>Kelebihan Topologi Hybrid</h3><ul><li>Sangat fleksibel, karena dapat disesuaikan dengan kondisi dan kebutuhan masing-masing bagian jaringan.</li><li>Dapat menggabungkan kelebihan dari beberapa topologi sekaligus.</li><li>Mudah diperluas sesuai perkembangan kebutuhan.</li></ul>
+<h3>Kekurangan Topologi Hybrid</h3><ul><li>Perencanaannya paling kompleks di antara topologi lainnya.</li><li>Pengelolaan dan penelusuran gangguan lebih sulit karena bentuknya tidak seragam.</li><li>Biaya pemasangan umumnya lebih besar.</li></ul>
+</section>
+
+<section class="card"><h2>3.4 Tabel Perbandingan Seluruh Topologi</h2>
+<p>Tabel berikut merangkum keenam topologi yang telah kalian pelajari. Gunakan tabel ini sebagai acuan saat memilih topologi pada Bab 4 dan Bab 5.</p>
+<div class="table-wrap"><table><thead><tr><th>Topologi</th><th>Ciri Utama</th><th>Kelebihan</th><th>Kekurangan</th><th>Contoh Penggunaan</th></tr></thead><tbody>
+<tr><td>Bus</td><td>Satu jalur kabel utama</td><td>Hemat kabel, sederhana</td><td>Jalur utama putus = jaringan mati</td><td>Jaringan kecil lama</td></tr>
+<tr><td>Star</td><td>Memusat ke satu perangkat pusat</td><td>Tahan gangguan, mudah dikembangkan</td><td>Bergantung perangkat pusat</td><td>Lab komputer, kantor, kelas</td></tr>
+<tr><td>Ring</td><td>Membentuk lingkaran tertutup</td><td>Aliran data teratur</td><td>Satu titik putus = jaringan terhenti</td><td>Jaringan lama tertentu</td></tr>
+<tr><td>Mesh</td><td>Setiap perangkat saling terhubung</td><td>Sangat tahan gangguan, banyak jalur</td><td>Sangat mahal dan rumit</td><td>Jaringan antarkantor besar</td></tr>
+<tr><td>Tree</td><td>Bertingkat / bercabang</td><td>Teratur, mudah diperluas</td><td>Pusat utama rusak = jaringan terganggu</td><td>Sekolah/gedung banyak ruang</td></tr>
+<tr><td>Hybrid</td><td>Gabungan beberapa topologi</td><td>Sangat fleksibel</td><td>Perencanaan paling kompleks</td><td>Jaringan perusahaan besar</td></tr>
+</tbody></table></div></section>
+
+<section class="card"><h2>3.5 Kegiatan Peserta Didik — LKPD 3.1</h2>
+<div class="info"><strong>Petunjuk LKPD 3.1</strong><p style="margin-top:8px">Gambarkan topologi mesh (4 perangkat), tree, dan hybrid di buku tulis kalian.</p><p style="margin-bottom:0">Kemudian lengkapi tabel perbandingan seluruh topologi berikut dengan kata-kata kalian sendiri.</p></div>
+<div class="table-wrap"><table><thead><tr><th>Topologi</th><th>Ciri Utama</th><th>Kelebihan</th><th>Kekurangan</th><th>Contoh Penggunaan</th></tr></thead><tbody>
+<tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div></section>
+
+<section class="card"><h2>Rangkuman Bab 3</h2><ul>
+<li>Topologi mesh menghubungkan setiap perangkat ke banyak perangkat lain; paling tahan gangguan namun paling mahal.</li>
+<li>Topologi tree berbentuk bertingkat/bercabang, cocok untuk jaringan dengan pembagian area atau ruangan.</li>
+<li>Topologi hybrid adalah gabungan dua topologi atau lebih; paling fleksibel namun perencanaannya paling kompleks.</li>
+<li>Tidak ada topologi yang paling baik untuk semua keadaan; pemilihan harus disesuaikan dengan kebutuhan.</li>
+</ul></section>
+
+<section class="card"><h2>Latihan Soal Bab 3</h2><div class="exercise"><ol>
+<li>Apa yang dimaksud dengan topologi mesh dan apa kelebihan utamanya?</li>
+<li>Hitunglah berapa jumlah sambungan kabel yang dibutuhkan untuk topologi full mesh dengan 6 perangkat! Tuliskan cara menghitungnya!</li>
+<li>Jelaskan ciri utama topologi tree dan mengapa topologi ini cocok untuk sekolah dengan beberapa ruangan!</li>
+<li>Apa yang dimaksud dengan topologi hybrid? Berikan satu contoh gabungan topologi!</li>
+<li>Mengapa tidak semua topologi cocok digunakan untuk jaringan sekolah kita? Jelaskan dengan menyebut minimal dua topologi beserta alasannya!</li>
+</ol></div></section>
+
+<section class="card"><h2>Refleksi Pertemuan 3</h2><div class="reflection">
+<div>• Topologi apa yang memiliki banyak jalur hubungan?</div>
+<div>• Topologi apa yang memiliki bentuk bertingkat?</div>
+<div>• Apa yang dimaksud dengan topologi hybrid?</div>
+<div>• Mengapa tidak semua topologi cocok untuk jaringan sekolah?</div>
+</div></section>
+
+<section class="card" style="text-align:center"><a class="back" href="tp3.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke TP3</a></section>
+</main>
+<script>
+const btn=document.getElementById("menuBtn"),sidebar=document.getElementById("sidebar"),overlay=document.getElementById("overlay");
+function closeMenu(){sidebar.classList.remove("open");overlay.classList.remove("show")}
+btn.addEventListener("click",()=>{sidebar.classList.toggle("open");overlay.classList.toggle("show")});
+overlay.addEventListener("click",closeMenu);
+</script>
+</body></html>
