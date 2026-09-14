@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 Bab 1 — Pengertian dan Fungsi Topologi Jaringan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{
+  --gold:#b8860b;
+  --dark:#333;
+  --bg:#f4f4f4;
+  --white:#fff;
+  --soft:#faf7ed;
+  --line:#e3e3e3;
+  --green:#a5d6a7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.65;
+}
+.sidebar{
+  position:fixed;
+  left:0;top:0;
+  width:250px;
+  height:100vh;
+  background:#fff;
+  border-right:1px solid #ddd;
+  padding:18px 14px;
+  overflow-y:auto;
+  z-index:1000;
+}
+.logo{
+  width:72px;height:72px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 10px;
+}
+.sidebar h2{
+  text-align:center;
+  font-size:17px;
+  margin:0 0 16px;
+}
+.sidebar a{
+  display:block;
+  text-decoration:none;
+  color:#333;
+  padding:10px 12px;
+  border-radius:8px;
+  margin:4px 0;
+  font-size:14px;
+}
+.sidebar a:hover{background:#f1f1f1}
+.sidebar a i{width:20px;color:var(--gold)}
+.menu-btn{
+  display:none;
+  position:fixed;
+  top:12px;left:12px;
+  z-index:1100;
+  border:0;
+  background:var(--gold);
+  color:#fff;
+  width:42px;height:42px;
+  border-radius:9px;
+  font-size:20px;
+}
+.overlay{display:none}
+.main{
+  margin-left:250px;
+  padding:30px 18px 50px;
+}
+.card{
+  max-width:1000px;
+  margin:0 auto 20px;
+  background:var(--white);
+  border-radius:14px;
+  border-top:5px solid var(--gold);
+  padding:28px;
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+.hero{
+  text-align:center;
+  padding:34px 25px;
+}
+.hero .icon{
+  font-size:46px;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+h1{
+  margin:0;
+  font-size:28px;
+  line-height:1.3;
+}
+.subtitle{
+  margin-top:9px;
+  color:#555;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-top:16px;
+}
+.badge{
+  background:#f7f7f7;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:6px 11px;
+  font-size:13px;
+}
+.badge i{color:var(--gold);margin-right:5px}
+h2{
+  font-size:21px;
+  margin:0 0 16px;
+  padding-left:11px;
+  border-left:4px solid var(--gold);
+}
+h3{
+  font-size:17px;
+  margin:22px 0 8px;
+  color:#594500;
+}
+p{margin:0 0 14px}
+ul,ol{padding-left:24px}
+li{margin-bottom:8px}
+.info{
+  background:var(--soft);
+  border:1px solid #eadfbf;
+  border-radius:10px;
+  padding:16px 18px;
+  margin:14px 0;
+}
+.highlight{
+  background:#f8f8f8;
+  border-left:4px solid var(--green);
+  padding:13px 16px;
+  border-radius:8px;
+  margin:14px 0;
+}
+.video-wrap{
+  max-width:605px;
+  min-width:280px;
+  margin:18px auto 8px;
+  text-align:center;
+}
+.video-fallback{
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  background:#333;
+  color:#fff;
+  padding:9px 13px;
+  border-radius:8px;
+  font-size:13px;
+}
+.video-fallback i{margin-right:5px}
+.diagram{
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fbfbfb;
+  padding:20px 14px;
+  margin:18px 0 8px;
+  overflow-x:auto;
+}
+.diagram-title{
+  text-align:center;
+  font-weight:bold;
+  margin-bottom:16px;
+  color:#555;
+}
+.network{
+  min-width:560px;
+  max-width:700px;
+  margin:auto;
+  position:relative;
+  padding:5px 0 0;
+}
+.center{
+  width:145px;
+  margin:0 auto 30px;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  background:#fff;
+  padding:11px 8px;
+  text-align:center;
+  font-weight:bold;
+}
+.center i{display:block;color:var(--gold);font-size:23px;margin-bottom:5px}
+.computers{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:9px;
+  position:relative;
+}
+.computer{
+  border:1px solid #ccc;
+  border-radius:9px;
+  background:#fff;
+  padding:10px 5px;
+  text-align:center;
+  font-size:12px;
+  position:relative;
+}
+.computer i{display:block;font-size:21px;margin-bottom:5px;color:#555}
+.computer:before{
+  content:"";
+  position:absolute;
+  height:30px;
+  width:2px;
+  background:#aaa;
+  left:50%;
+  top:-30px;
+}
+.center:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:11px;
+  width:470px;
+  height:2px;
+  background:#aaa;
+}
+.diagram-caption{
+  text-align:center;
+  font-size:13px;
+  color:#666;
+  margin-top:12px;
+}
+.function-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:10px;
+}
+.function{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:15px;
+  background:#fff;
+}
+.function .letter{
+  display:inline-flex;
+  width:30px;height:30px;
+  align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#f8f3e3;
+  color:#765700;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+.function strong{display:block;margin-bottom:5px}
+.table-wrap{
+  overflow-x:auto;
+  margin:14px 0;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:620px;
+}
+th,td{
+  border:1px solid #ddd;
+  padding:10px;
+  text-align:left;
+  vertical-align:top;
+}
+th{
+  background:#f7f2e3;
+  color:#594500;
+}
+.liner{
+  border-top:1px dashed #ccc;
+  margin:20px 0;
+}
+.exercise{
+  background:#fafafa;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:15px 17px;
+}
+.reflection{
+  display:grid;
+  gap:10px;
+}
+.reflection div{
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:12px 14px;
+  background:#fff;
+}
+.back{
+  display:inline-block;
+  text-decoration:none;
+  color:#fff;
+  background:var(--gold);
+  padding:10px 14px;
+  border-radius:8px;
+  font-size:14px;
+}
+.back i{margin-right:6px}
+.small{
+  font-size:13px;
+  color:#666;
+}
+@media(max-width:760px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s ease;
+  }
+  .sidebar.open{transform:translateX(0)}
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:900;
+  }
+  .overlay.show{display:block}
+  .menu-btn{display:block}
+  .main{
+    margin-left:0;
+    padding:68px 10px 35px;
+  }
+  .card{
+    padding:21px 15px;
+    border-radius:11px;
+  }
+  .hero{padding:28px 15px}
+  h1{font-size:23px}
+  h2{font-size:18px}
+  h3{font-size:16px}
+  .function-grid{grid-template-columns:1fr}
+  .computers{grid-template-columns:repeat(3,1fr)}
+  .network{min-width:390px}
+  .center:after{width:300px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+  <i class="fa-solid fa-bars"></i>
+</button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <img src="../../asset/logo.png" class="logo" alt="Logo">
+  <h2>TKJ — Kelas XI</h2>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+
+<section class="card hero">
+  <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+  <h1>BAB 1 — Pengertian dan Fungsi Topologi Jaringan</h1>
+  <div class="subtitle"><strong>Pertemuan 1 · Alokasi Waktu 3 JP</strong></div>
+  <div class="meta">
+    <span class="badge"><i class="fa-solid fa-network-wired"></i> TP3</span>
+    <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Kelas XI TJKT</span>
+    <span class="badge"><i class="fa-solid fa-book-open"></i> Materi Dasar</span>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Tujuan Pembelajaran Bab Ini</h2>
+  <ul>
+    <li>Peserta didik mampu menjelaskan pengertian topologi jaringan.</li>
+    <li>Peserta didik mampu menjelaskan fungsi topologi jaringan.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>1.1 Menghubungkan dengan Materi Sebelumnya</h2>
+  <p>
+    Pada TP 2, kalian telah mengenal berbagai perangkat jaringan seperti
+    router, switch, hub, access point, kabel UTP, dan konektor RJ-45. Kalian juga
+    telah belajar memilih perangkat yang sesuai dengan kebutuhan. Namun, ada satu
+    pertanyaan penting yang belum terjawab: setelah perangkat-perangkat itu
+    tersedia, bagaimana cara menyusun dan menghubungkannya satu sama lain?
+  </p>
+  <p>
+    Perhatikan bahwa tiga buah komputer dan satu switch dapat dihubungkan
+    dengan pola yang berbeda-beda. Bisa saja semua komputer dihubungkan ke switch,
+    atau komputer dihubungkan berurutan satu sama lain, atau setiap komputer
+    dihubungkan ke semua komputer lainnya. Pola hubungan yang berbeda ini akan
+    menghasilkan jaringan dengan sifat yang berbeda pula: ada yang murah namun
+    rapuh, ada yang mahal namun sangat tahan gangguan. Pola hubungan inilah yang
+    disebut topologi jaringan.
+  </p>
+  <div class="highlight">
+    <strong>Inti penghubung TP2 → TP3:</strong> TP2 membantu kalian mengenal
+    <em>perangkat apa</em> yang digunakan. TP3 mulai membahas <em>bagaimana
+    perangkat-perangkat tersebut disusun dan dihubungkan</em>.
+  </div>
+</section>
+
+<section class="card">
+  <h2>1.2 Pengertian Topologi Jaringan</h2>
+  <p>
+    Topologi jaringan adalah pola, bentuk, atau susunan hubungan
+    antarperangkat di dalam sebuah jaringan komputer. Topologi menggambarkan
+    bagaimana komputer, switch, router, access point, dan media transmisi seperti
+    kabel saling terhubung satu sama lain untuk membentuk satu kesatuan jaringan.
+  </p>
+  <p>
+    Kata "topologi" sendiri berasal dari kata yang berarti
+    "bentuk" atau "susunan tempat". Jadi, ketika seseorang
+    bertanya "topologi apa yang digunakan jaringan ini?", sebenarnya ia
+    sedang menanyakan "bagaimana bentuk susunan hubungan perangkat di dalam
+    jaringan ini?"
+  </p>
+
+  <div class="info">
+    <strong>Perumpamaan Sederhana</strong>
+    <p style="margin-top:8px">
+      Bayangkan jalan raya di sebuah kota. Ada kota yang jalannya berbentuk satu
+      jalur panjang dengan rumah-rumah di kiri-kanannya. Ada kota yang semua
+      jalannya mengarah ke satu alun-alun di tengah. Ada pula kota yang jalannya
+      melingkar mengelilingi kota.
+    </p>
+    <p style="margin-bottom:0">
+      Rumah-rumah dan jalan adalah 'perangkat' dan 'kabel'; sedangkan bentuk
+      susunan jalannya itulah yang disebut 'topologi'. Kota dengan bentuk jalan
+      berbeda akan memiliki kelebihan dan kekurangan yang berbeda pula, persis
+      seperti jaringan komputer.
+    </p>
+  </div>
+
+  <h3>Video Ilustrasi</h3>
+  <p>
+    Berikut video ilustrasi penjelasan singkat topologi jaringan:
+  </p>
+
+  <div class="video-wrap">
+    <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@serumpuntech/video/7681650224787377415"
+      data-video-id="7681650224787377415"
+      style="max-width:605px;min-width:325px;">
+      <section>
+        <a target="_blank"
+          title="@serumpuntech"
+          href="https://www.tiktok.com/@serumpuntech?refer=embed">@serumpuntech</a>
+        🖥️ <strong>Apa itu Topologi Jaringan?</strong>
+        Sederhananya, topologi jaringan adalah
+        <strong>pola atau cara perangkat saling terhubung dalam sebuah jaringan</strong>.
+        🌐 Dengan memahami topologi, kita bisa lebih mudah memahami bagaimana
+        perangkat saling terhubung, bagaimana data dapat berkomunikasi, bagaimana
+        jaringan disusun, serta bagaimana jaringan dikelola dan diperbaiki.
+        Ini adalah dasar penting sebelum mempelajari jenis-jenis topologi jaringan.
+      </section>
+    </blockquote>
+    <a class="video-fallback" target="_blank"
+       href="https://www.tiktok.com/@serumpuntech/video/7681650224787377415">
+      <i class="fa-brands fa-tiktok"></i> Buka video TikTok
+    </a>
+  </div>
+</section>
+
+<section class="card">
+  <h2>1.3 Fungsi Topologi Jaringan</h2>
+  <p>
+    Mengapa topologi perlu ditentukan terlebih dahulu sebelum jaringan
+    dibangun? Berikut lima fungsi penting topologi jaringan.
+  </p>
+
+  <div class="function-grid">
+    <div class="function">
+      <span class="letter">A</span>
+      <strong>Merencanakan Hubungan Antarperangkat</strong>
+      <p>
+        Topologi menjadi "peta" yang menunjukkan perangkat mana
+        terhubung ke perangkat mana. Tanpa peta ini, pemasangan jaringan akan
+        dilakukan secara asal dan berpotensi menimbulkan kesalahan.
+      </p>
+    </div>
+
+    <div class="function">
+      <span class="letter">B</span>
+      <strong>Menentukan Kebutuhan Kabel dan Perangkat</strong>
+      <p>
+        Dari topologi yang dipilih, kita dapat menghitung berapa banyak kabel,
+        konektor, dan perangkat pusat yang dibutuhkan. Topologi yang berbeda
+        membutuhkan jumlah kabel yang sangat berbeda meskipun jumlah komputernya sama.
+      </p>
+    </div>
+
+    <div class="function">
+      <span class="letter">C</span>
+      <strong>Memudahkan Pemeliharaan dan Perbaikan</strong>
+      <p>
+        Ketika terjadi gangguan, teknisi dapat melihat diagram topologi untuk
+        menelusuri bagian mana yang bermasalah, tanpa harus memeriksa seluruh jaringan
+        satu per satu.
+      </p>
+    </div>
+
+    <div class="function">
+      <span class="letter">D</span>
+      <strong>Memperkirakan Dampak Gangguan</strong>
+      <p>
+        Setiap topologi memiliki tingkat ketahanan yang berbeda. Dengan
+        mengetahui topologi yang digunakan, kita dapat memperkirakan apa yang akan
+        terjadi jika satu kabel putus atau satu perangkat rusak.
+      </p>
+    </div>
+
+    <div class="function">
+      <span class="letter">E</span>
+      <strong>Merencanakan Pengembangan Jaringan</strong>
+      <p>
+        Topologi membantu kita memperkirakan seberapa mudah jaringan dapat
+        diperbesar di kemudian hari, misalnya ketika jumlah Chromebook di sekolah kita
+        bertambah dari sebelas menjadi lebih banyak.
+      </p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>Ingat:</strong> topologi bukan hanya "gambar jaringan".
+    Topologi adalah dasar perencanaan agar hubungan perangkat, kebutuhan
+    perangkat, pemeliharaan, gangguan, dan pengembangan jaringan dapat dipikirkan
+    sejak awal.
+  </div>
+</section>
+
+<section class="card">
+  <h2>1.4 Membaca Sebuah Diagram Topologi</h2>
+  <p>
+    Diagram topologi adalah gambar yang menunjukkan susunan hubungan
+    perangkat. Dalam membaca diagram topologi, perhatikan tiga hal berikut:
+    (1) perangkat apa saja yang ada, ditandai dengan kotak atau simbol;
+    (2) garis penghubung, yang menunjukkan adanya hubungan antarperangkat; dan
+    (3) arah hubungan, yang menunjukkan ke mana data mengalir.
+  </p>
+
+  <div class="diagram">
+    <div class="diagram-title">Gambar 1.1 — Contoh diagram sederhana</div>
+    <div class="network">
+      <div class="center">
+        <i class="fa-solid fa-network-wired"></i>
+        SWITCH / HUB
+        <div class="small">Perangkat pusat</div>
+      </div>
+      <div class="computers">
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 1</div>
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 2</div>
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 3</div>
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 4</div>
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 5</div>
+        <div class="computer"><i class="fa-solid fa-desktop"></i>PC 6</div>
+      </div>
+    </div>
+    <div class="diagram-caption">
+      Beberapa komputer terhubung langsung ke satu perangkat pusat.
+    </div>
+  </div>
+
+  <p>
+    Dari diagram di atas, kita dapat membaca bahwa terdapat satu perangkat
+    pusat berupa switch atau hub, serta enam komputer yang masing-masing terhubung
+    langsung ke perangkat pusat tersebut menggunakan kabel. Tidak ada komputer yang
+    terhubung langsung ke komputer lain; semua hubungan harus melewati perangkat
+    pusat terlebih dahulu.
+  </p>
+
+  <div class="info">
+    <strong>Latihan membaca diagram:</strong>
+    Jika PC 1 ingin mengirim data ke PC 4, data tidak berjalan langsung dari PC 1
+    ke PC 4. Data melewati perangkat pusat terlebih dahulu.
+    Pola inilah yang nantinya akan kalian kenali sebagai <strong>topologi star</strong>.
+  </div>
+
+  <h3>Tiga Hal yang Perlu Dicari pada Diagram</h3>
+  <ol>
+    <li><strong>Perangkat:</strong> komputer, switch, router, access point, dan perangkat lainnya.</li>
+    <li><strong>Hubungan:</strong> garis yang menunjukkan perangkat mana terhubung dengan perangkat lain.</li>
+    <li><strong>Arah/alur data:</strong> bagaimana data bergerak dari sumber menuju perangkat tujuan.</li>
+  </ol>
+</section>
+
+<section class="card">
+  <h2>1.5 Kegiatan Peserta Didik — LKPD 1.1</h2>
+
+  <div class="info">
+    <strong>Petunjuk LKPD 1.1</strong>
+    <p style="margin-top:8px">
+      Gambarkan hubungan antara satu router, satu switch, dan tiga komputer/Chromebook
+      pada buku tulis kalian.
+    </p>
+    <p style="margin-bottom:0">
+      Kemudian, lengkapi tabel identifikasi di bawah ini berdasarkan gambar yang
+      telah kalian buat.
+    </p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Perangkat</th>
+          <th>Terhubung dengan</th>
+          <th>Fungsi dalam Jaringan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1.</td><td></td><td></td></tr>
+        <tr><td>2.</td><td></td><td></td></tr>
+        <tr><td>3.</td><td></td><td></td></tr>
+        <tr><td>4.</td><td></td><td></td></tr>
+        <tr><td>5.</td><td></td><td></td></tr>
+        <tr><td>6.</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small">
+    Gunakan kata-kata kalian sendiri. Yang penting, hubungan dan fungsi setiap
+    perangkat dapat dijelaskan dengan benar.
+  </p>
+</section>
+
+<section class="card">
+  <h2>Rangkuman Bab 1</h2>
+  <ul>
+    <li>Topologi jaringan adalah pola, bentuk, atau susunan hubungan antarperangkat dalam sebuah jaringan komputer.</li>
+    <li>Lima fungsi topologi: merencanakan hubungan antarperangkat, menentukan kebutuhan kabel dan perangkat, memudahkan pemeliharaan, memperkirakan dampak gangguan, dan merencanakan pengembangan jaringan.</li>
+    <li>Diagram topologi dibaca dengan memperhatikan perangkat yang ada, garis penghubung, dan arah hubungan data.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Latihan Soal Bab 1</h2>
+  <div class="exercise">
+    <ol>
+      <li>Jelaskan dengan bahasa kalian sendiri, apa yang dimaksud dengan topologi jaringan!</li>
+      <li>Mengapa topologi perlu ditentukan sebelum sebuah jaringan dibangun?</li>
+      <li>Sebutkan dan jelaskan lima fungsi topologi jaringan!</li>
+      <li>Sebutkan tiga hal yang perlu diperhatikan saat membaca sebuah diagram topologi!</li>
+      <li>Perhatikan Gambar 1.1. Jika komputer PC 1 ingin mengirim data ke PC 4, melalui perangkat apa data tersebut harus lewat? Jelaskan!</li>
+    </ol>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Refleksi Pertemuan 1</h2>
+  <div class="reflection">
+    <div>• Apa yang dimaksud dengan topologi jaringan menurut pemahaman saya?</div>
+    <div>• Mengapa topologi diperlukan sebelum jaringan dibangun?</div>
+    <div>• Perangkat apa saja yang terdapat dalam diagram jaringan yang saya amati?</div>
+  </div>
+</section>
+
+<section class="card" style="text-align:center">
+  <a class="back" href="tp3.html">
+    <i class="fa-solid fa-arrow-left"></i> Kembali ke TP3
+  </a>
+</section>
+
+</main>
+
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script>
+const btn=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
+
+function closeMenu(){
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+}
+btn.addEventListener("click",()=>{
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+overlay.addEventListener("click",closeMenu);
+</script>
+</body>
+</html>
