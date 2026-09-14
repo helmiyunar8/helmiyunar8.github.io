@@ -149,6 +149,17 @@ li{margin-bottom:8px}
   margin:18px auto 8px;
   text-align:center;
 }
+.video-wrap video{
+  display:block;
+  width:100%;
+  max-width:605px;
+  height:auto;
+  max-height:720px;
+  margin:0 auto;
+  border-radius:12px;
+  background:#000;
+  box-shadow:0 3px 12px rgba(0,0,0,.10);
+}
 .video-fallback{
   display:inline-block;
   margin-top:10px;
@@ -446,27 +457,13 @@ th{
   </p>
 
   <div class="video-wrap">
-    <blockquote class="tiktok-embed"
-      cite="https://www.tiktok.com/@serumpuntech/video/7681650224787377415"
-      data-video-id="7681650224787377415"
-      style="max-width:605px;min-width:325px;">
-      <section>
-        <a target="_blank"
-          title="@serumpuntech"
-          href="https://www.tiktok.com/@serumpuntech?refer=embed">@serumpuntech</a>
-        🖥️ <strong>Apa itu Topologi Jaringan?</strong>
-        Sederhananya, topologi jaringan adalah
-        <strong>pola atau cara perangkat saling terhubung dalam sebuah jaringan</strong>.
-        🌐 Dengan memahami topologi, kita bisa lebih mudah memahami bagaimana
-        perangkat saling terhubung, bagaimana data dapat berkomunikasi, bagaimana
-        jaringan disusun, serta bagaimana jaringan dikelola dan diperbaiki.
-        Ini adalah dasar penting sebelum mempelajari jenis-jenis topologi jaringan.
-      </section>
-    </blockquote>
-    <a class="video-fallback" target="_blank"
-       href="https://www.tiktok.com/@serumpuntech/video/7681650224787377415">
-      <i class="fa-brands fa-tiktok"></i> Buka video TikTok
-    </a>
+    <video controls playsinline preload="metadata">
+      <source src="video/topologi-jaringan.mp4" type="video/mp4">
+      Browser kalian belum mendukung pemutar video.
+    </video>
+    <p class="small" style="margin-top:8px">
+      Video ilustrasi pembelajaran — putar menggunakan tombol ▶ pada pemutar video.
+    </p>
   </div>
 </section>
 
@@ -672,7 +669,6 @@ th{
 
 </main>
 
-<script async src="https://www.tiktok.com/embed.js"></script>
 <script>
 const btn=document.getElementById("menuBtn");
 const sidebar=document.getElementById("sidebar");
