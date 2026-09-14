@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP 1 - Bab 1 Mengenal Jaringan Komputer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--white:#fff;--bg:#f4f4f4;--text:#333}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:var(--bg);color:var(--text);min-height:100vh}
+.sidebar{width:250px;background:#fff;height:100vh;position:fixed;left:0;top:0;border-right:2px solid #eee;z-index:1100;display:flex;flex-direction:column}
+.sidebar-header{padding:30px 20px;text-align:center;border-bottom:2px solid #f9f9f9}.sidebar-header img{width:60px;margin-bottom:10px}.sidebar-header h3{color:var(--gold);font-size:20px}
+.nav-menu{padding:20px 0;flex-grow:1}.nav-item{display:flex;align-items:center;padding:15px 25px;color:#555;text-decoration:none;font-size:16px}.nav-item i{width:25px;margin-right:15px;text-align:center}.nav-item:hover,.nav-item.active{background:#fffcf0;color:var(--gold);border-left:5px solid var(--gold)}
+.close-btn,.menu-toggle{display:none}
+.main{margin-left:250px;padding:30px;display:flex;justify-content:center}.card{width:100%;max-width:1000px;background:#fff;border-radius:12px;border-top:8px solid var(--gold);box-shadow:0 5px 15px rgba(0,0,0,.05);padding:25px}
+.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #f0f0f0;padding-bottom:15px;margin-bottom:25px}.topbar h2{color:var(--gold)}
+.content{font-size:15px;line-height:1.75}.content h3{color:var(--gold);margin:26px 0 10px;font-size:20px}.content h4{margin:18px 0 5px;font-size:17px}
+.info{background:#fffcf0;border-left:5px solid var(--gold);padding:15px;margin:15px 0;border-radius:8px}.goal{background:#f9f9f9;border:1px solid #eee;border-radius:10px;padding:15px}
+ul,ol{padding-left:25px}.content p{margin:8px 0}.nav-bottom{display:flex;justify-content:space-between;gap:10px;margin-top:30px;padding-top:20px;border-top:2px solid #eee}.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--gold);color:#fff;padding:11px 15px;border-radius:8px;font-size:14px}.btn.secondary{background:#f7f7f7;color:#555;border:1px solid #ddd}
+.table-wrap{overflow-x:auto;margin:15px 0}table{width:100%;border-collapse:collapse;min-width:600px}th,td{border:1px solid #ddd;padding:10px;text-align:left}th{background:#fffcf0;color:#7d5d00}
+.footer{text-align:center;color:#888;font-size:13px;padding:20px}
+@media(max-width:768px){
+.sidebar{left:-250px;transition:.3s}.sidebar.active{left:0}.close-btn{display:block;position:absolute;right:15px;top:10px;font-size:24px;color:var(--gold);cursor:pointer}.menu-toggle{display:block;position:fixed;top:15px;left:15px;z-index:1000;background:var(--gold);color:#fff;padding:8px 12px;border-radius:5px;cursor:pointer}.main{margin-left:0;padding:15px;padding-top:70px}.card{padding:18px}.topbar h2{font-size:18px}.topbar div{font-size:12px}.content{font-size:14px}.content h3{font-size:18px}.nav-bottom{flex-direction:column}.btn{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</div>
+<nav class="sidebar" id="sidebar">
+<div class="close-btn" onclick="toggleSidebar()">&times;</div>
+<div class="sidebar-header"><img src="../../asset/logo.png" alt="Logo"><h3>LMS TKJ</h3><p style="font-size:12px;color:#777">SMKN 7 LUWU</p></div>
+<div class="nav-menu">
+<a href="../../index.html" class="nav-item"><i class="fas fa-home"></i>Beranda</a>
+<a href="../index.html" class="nav-item active"><i class="fas fa-book-open"></i>Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html" class="nav-item"><i class="fas fa-edit"></i>Tryout</a>
+<a href="../../lkpd/index.html" class="nav-item"><i class="fas fa-file-signature"></i>LKPD</a>
+<a href="../../absen/index.html" class="nav-item"><i class="fas fa-camera-retro"></i>Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item"><i class="fas fa-award"></i>Ranking</a>
+<a href="../../cbt/index.html" class="nav-item"><i class="fas fa-vial"></i>CBT Ujian</a>
+<a href="../../arsip.html" class="nav-item"><i class="fas fa-archive"></i>ARSIP</a>
+</div></nav>
+
+<div class="main"><div class="card">
+<div class="topbar"><h2><i class="fas fa-book-open"></i> BAB 1</h2><div style="font-size:13px;font-weight:600;color:#777"><i class="fas fa-user-circle"></i> Helmi Yunar</div></div>
+<div class="content">
+<h1 style="font-size:25px;margin-bottom:5px">Mengenal Jaringan Komputer</h1>
+<p><em>Pertemuan 1 · Alokasi Waktu 3 JP</em></p>
+<div class="goal"><strong>Tujuan Pembelajaran Bab Ini:</strong>
+<ul><li>Peserta didik mampu menjelaskan pengertian jaringan komputer.</li><li>Peserta didik mampu menjelaskan fungsi jaringan komputer.</li></ul></div>
+
+<h3>1.1 Apa Itu Jaringan Komputer?</h3>
+<p>Coba perhatikan kegiatan yang kalian lakukan setiap hari di kelas. Kalian membawa Chromebook masing-masing, kemudian menyalakan Wi-Fi, lalu memilih hotspot yang dipancarkan oleh telepon genggam milik guru. Setelah terhubung, kalian bisa membuka internet, mencari materi, atau mengumpulkan tugas secara daring. Tanpa kalian sadari, saat itu kalian sedang menggunakan sebuah jaringan komputer.</p>
+<p>Jaringan komputer adalah kumpulan dua perangkat atau lebih (misalnya komputer, laptop, Chromebook, telepon genggam, atau printer) yang saling dihubungkan satu sama lain sehingga dapat saling bertukar data dan berbagi sumber daya. Sumber daya yang dimaksud dapat berupa data, file, koneksi internet, maupun perangkat keras seperti printer.</p>
+<p>Kata kunci dari pengertian ini ada tiga, yaitu: (1) ada dua perangkat atau lebih, (2) perangkat-perangkat tersebut saling terhubung, dan (3) tujuan dari hubungan tersebut adalah untuk bertukar data atau berbagi sumber daya. Jika salah satu dari tiga hal ini tidak terpenuhi, maka kumpulan perangkat tersebut belum dapat disebut sebagai jaringan komputer.</p>
+<div class="info"><strong><i class="fas fa-lightbulb"></i> Contoh di Kelas Kita</strong>
+<p>Telepon genggam guru berperan sebagai sumber internet (hotspot).</p>
+<p>Sebelas Chromebook peserta didik berperan sebagai perangkat yang terhubung ke hotspot tersebut.</p>
+<p>Karena semua Chromebook dan telepon genggam guru saling terhubung dan dapat bertukar data (misalnya membuka halaman web yang sama, mengumpulkan tugas ke tempat yang sama), maka kumpulan perangkat ini sudah termasuk sebuah jaringan komputer sederhana.</p></div>
+
+<h3>1.2 Mengapa Jaringan Komputer Dibutuhkan?</h3>
+<p>Bayangkan jika setiap Chromebook di kelas tidak saling terhubung dan tidak memiliki akses internet sama sekali. Peserta didik tidak dapat mencari referensi tambahan, tidak dapat mengumpulkan tugas secara daring, dan guru tidak dapat membagikan bahan bacaan secara cepat kepada semua peserta didik sekaligus. Dari sinilah kita bisa memahami mengapa jaringan komputer sangat dibutuhkan. Secara umum, jaringan komputer memiliki empat fungsi utama.</p>
+<h4>a. Berbagi Data (Sharing Data)</h4><p>Jaringan memungkinkan pengguna untuk saling mengirim dan menerima file atau dokumen tanpa harus memindahkannya secara manual menggunakan flashdisk. Contohnya, guru dapat membagikan tautan (link) dokumen tugas kepada seluruh peserta didik hanya dalam hitungan detik.</p>
+<h4>b. Berbagi Akses Internet (Sharing Internet)</h4><p>Ini adalah fungsi yang paling terasa di kelas kita. Satu hotspot dari telepon genggam guru dapat digunakan bersama-sama oleh sebelas Chromebook peserta didik, sehingga tidak perlu menyediakan sebelas sumber internet yang terpisah.</p>
+<h4>c. Berbagi Perangkat Keras (Sharing Hardware)</h4><p>Jaringan memungkinkan beberapa pengguna menggunakan satu perangkat keras yang sama, misalnya satu printer yang dapat digunakan untuk mencetak dokumen dari beberapa komputer sekaligus, tanpa harus membeli printer untuk setiap komputer.</p>
+<h4>d. Sarana Komunikasi</h4><p>Melalui jaringan komputer, pengguna dapat berkomunikasi menggunakan surel (email), pesan instan, maupun aplikasi video conference, sehingga informasi dapat disampaikan dengan cepat meskipun jarak jauh.</p>
+
+<h3>1.3 Contoh Penerapan Jaringan Komputer</h3>
+<p>Jaringan komputer tidak hanya ditemukan di sekolah. Berikut beberapa contoh penerapan jaringan komputer yang mungkin sudah kalian temui dalam kehidupan sehari-hari.</p>
+<div class="table-wrap"><table><thead><tr><th>No</th><th>Tempat</th><th>Contoh Penerapan Jaringan</th></tr></thead><tbody>
+<tr><td>1</td><td>Rumah</td><td>Beberapa telepon genggam dan televisi pintar terhubung ke satu router Wi-Fi dari penyedia layanan internet rumah.</td></tr>
+<tr><td>2</td><td>Warnet / Warung Internet</td><td>Belasan komputer terhubung ke satu jaringan agar semua bisa mengakses internet dan bermain permainan daring bersama.</td></tr>
+<tr><td>3</td><td>Kantor</td><td>Komputer-komputer karyawan terhubung ke satu jaringan agar dapat berbagi dokumen dan menggunakan satu printer bersama.</td></tr>
+<tr><td>4</td><td>Sekolah Kita (SMKN 7 Luwu)</td><td>Sebelas Chromebook kelas XI TJKT terhubung ke hotspot telepon genggam guru untuk mengakses bahan belajar.</td></tr>
+<tr><td>5</td><td>Bank</td><td>Mesin ATM di berbagai kota terhubung ke satu jaringan pusat agar data saldo nasabah selalu sama di mana pun ATM digunakan.</td></tr>
+</tbody></table></div>
+
+<h3>1.4 Kegiatan Peserta Didik — LKPD 1.1</h3>
+<div class="info"><strong>Petunjuk LKPD 1.1</strong><p>Amatilah jaringan yang sedang digunakan di kelas kalian saat ini bersama kelompok, kemudian isi tabel berikut.</p></div>
+<div class="table-wrap"><table><thead><tr><th>Perangkat yang Digunakan</th><th>Sumber Internet</th><th>Jumlah Pengguna</th><th>Jenis Data yang Dibagikan</th></tr></thead><tbody>
+<tr><td style="height:90px"></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<h3>Rangkuman Bab 1</h3>
+<ul><li>Jaringan komputer adalah kumpulan dua perangkat atau lebih yang saling terhubung untuk bertukar data dan berbagi sumber daya.</li>
+<li>Fungsi utama jaringan komputer ada empat: berbagi data, berbagi akses internet, berbagi perangkat keras, dan sarana komunikasi.</li>
+<li>Jaringan komputer di kelas kita adalah contoh nyata jaringan yang menggunakan hotspot telepon genggam guru sebagai sumber internet bersama.</li></ul>
+
+<h3>Latihan Soal Bab 1</h3>
+<ol><li>Jelaskan dengan bahasa kalian sendiri, apa yang dimaksud dengan jaringan komputer!</li>
+<li>Sebutkan dan jelaskan empat fungsi jaringan komputer!</li>
+<li>Mengapa hotspot telepon genggam guru yang digunakan bersama sebelas Chromebook dapat disebut sebagai jaringan komputer? Jelaskan alasannya berdasarkan tiga kata kunci pengertian jaringan komputer!</li>
+<li>Sebutkan satu contoh jaringan komputer yang pernah kalian temui di luar sekolah, lalu jelaskan fungsi jaringan tersebut!</li>
+<li>Apa yang akan terjadi pada kegiatan belajar di kelas kalian apabila hotspot guru tiba-tiba tidak berfungsi? Kaitkan jawaban kalian dengan fungsi jaringan komputer!</li></ol>
+
+<h3>Refleksi Pertemuan 1</h3>
+<ul><li>Apa yang saya pahami tentang pengertian jaringan komputer?</li><li>Fungsi jaringan komputer apa yang paling sering saya rasakan manfaatnya?</li><li>Apakah masih ada bagian yang belum saya pahami dari Bab 1?</li></ul>
+
+<div class="nav-bottom">
+<a class="btn secondary" href="tp1.html"><i class="fas fa-house"></i> Menu TP 1</a>
+<a class="btn" href="tp1-bab2.html">Bab 2 <i class="fas fa-arrow-right"></i></a>
+</div>
+</div></div></div>
+<div class="footer">©2025 Developed by Helmi Yunar</div>
+<script>function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}</script>
+</body>
+</html>
