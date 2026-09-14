@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 Bab 4 — Membandingkan dan Memilih Topologi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--dark:#333;--bg:#f4f4f4;--white:#fff;--soft:#faf7ed;--line:#e3e3e3;--green:#a5d6a7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--dark);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:1000}
+.logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h2{text-align:center;font-size:17px;margin:0 0 16px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:4px 0;font-size:14px}
+.sidebar a:hover{background:#f1f1f1}.sidebar a i{width:20px;color:var(--gold)}
+.menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:1100;border:0;background:var(--gold);color:#fff;width:42px;height:42px;border-radius:9px;font-size:20px}
+.overlay{display:none}.main{margin-left:250px;padding:30px 18px 50px}
+.card{max-width:1000px;margin:0 auto 20px;background:#fff;border-radius:14px;border-top:5px solid var(--gold);padding:28px;box-shadow:0 3px 12px rgba(0,0,0,.07)}
+.hero{text-align:center;padding:34px 25px}.hero .icon{font-size:46px;color:var(--gold);margin-bottom:10px}
+h1{margin:0;font-size:28px;line-height:1.3}.subtitle{margin-top:9px;color:#555}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.badge{background:#f7f7f7;border:1px solid var(--line);border-radius:20px;padding:6px 11px;font-size:13px}
+.badge i{color:var(--gold);margin-right:5px}
+h2{font-size:21px;margin:0 0 16px;padding-left:11px;border-left:4px solid var(--gold)}
+h3{font-size:17px;margin:22px 0 8px;color:#594500}
+p{margin:0 0 14px}ul,ol{padding-left:24px}li{margin-bottom:8px}
+.info{background:var(--soft);border:1px solid #eadfbf;border-radius:10px;padding:16px 18px;margin:14px 0}
+.highlight{background:#f8f8f8;border-left:4px solid var(--green);padding:13px 16px;border-radius:8px;margin:14px 0}
+.video-wrap{max-width:605px;min-width:280px;margin:18px auto 8px;text-align:center}
+.video-wrap video{display:block;width:100%;max-width:605px;height:auto;max-height:720px;margin:0 auto;border-radius:12px;background:#000;box-shadow:0 3px 12px rgba(0,0,0,.10)}
+.video-label{font-weight:bold;text-align:left;margin:10px 0 7px;color:#594500}
+.diagram{border:1px solid var(--line);border-radius:12px;background:#fbfbfb;padding:20px 14px;margin:18px 0 8px;overflow-x:auto}
+.diagram-title{text-align:center;font-weight:bold;margin-bottom:16px;color:#555}
+.diagram-caption{text-align:center;font-size:13px;color:#666;margin-top:12px}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;min-width:650px;max-width:820px;margin:auto}
+.compare{border:1px solid var(--line);border-radius:11px;background:#fff;padding:15px;text-align:center}
+.compare .shape{height:125px;position:relative;margin-bottom:8px}
+.bus{position:absolute;left:10%;right:10%;top:58px;border-top:4px solid #777}.bus span{position:absolute;top:-45px;font-size:11px}
+.bus span:nth-child(1){left:0}.bus span:nth-child(2){left:25%}.bus span:nth-child(3){left:50%}.bus span:nth-child(4){right:0}
+.starbox{width:65px;height:45px;border:2px solid var(--gold);border-radius:8px;position:absolute;left:50%;top:40px;transform:translateX(-50%);font-size:10px;padding-top:12px}
+.starbox:before,.starbox:after{content:"";position:absolute;left:50%;height:35px;border-left:2px solid #aaa}
+.starbox:before{top:-37px}.starbox:after{top:43px}
+.starbox em{position:absolute;white-space:nowrap;font-style:normal;font-size:10px}
+.starbox em:nth-child(1){top:-55px;left:-8px}.starbox em:nth-child(2){top:12px;left:-75px}.starbox em:nth-child(3){top:12px;left:68px}.starbox em:nth-child(4){top:50px;left:-8px}
+.ring-shape{width:150px;height:95px;border:4px solid #999;border-radius:50%;margin:auto;position:relative;top:15px}
+.ring-shape span{position:absolute;background:#fff;border:1px solid #ccc;border-radius:5px;padding:3px 5px;font-size:9px}
+.ring-shape span:nth-child(1){left:-18px;top:33px}.ring-shape span:nth-child(2){left:55px;top:-15px}.ring-shape span:nth-child(3){right:-18px;top:33px}.ring-shape span:nth-child(4){left:55px;bottom:-15px}
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.case{border:1px solid var(--line);border-radius:10px;padding:15px;background:#fff}
+.case-num{display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;background:#f8f3e3;color:#765700;font-weight:bold;margin-bottom:8px}
+.table-wrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+th{background:#f7f2e3;color:#594500}
+.exercise{background:#fafafa;border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.reflection{display:grid;gap:10px}.reflection div{border:1px solid var(--line);border-radius:9px;padding:12px 14px;background:#fff}
+.back{display:inline-block;text-decoration:none;color:#fff;background:var(--gold);padding:10px 14px;border-radius:8px;font-size:14px}.back i{margin-right:6px}
+@media(max-width:760px){
+.sidebar{transform:translateX(-100%);transition:.25s ease}.sidebar.open{transform:translateX(0)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:900}.overlay.show{display:block}.menu-btn{display:block}
+.main{margin-left:0;padding:68px 10px 35px}.card{padding:21px 15px;border-radius:11px}.hero{padding:28px 15px}
+h1{font-size:23px}h2{font-size:18px}h3{font-size:16px}.case-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo"><h2>TKJ — Kelas XI</h2>
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+<section class="card hero">
+<div class="hero .icon"></div>
+<div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+<h1>BAB 4 — Membandingkan dan Memilih Topologi</h1>
+<div class="subtitle"><strong>Pertemuan 4 · Alokasi Waktu 3 JP</strong></div>
+<div class="meta"><span class="badge"><i class="fa-solid fa-network-wired"></i> TP3</span><span class="badge"><i class="fa-solid fa-graduation-cap"></i> Kelas XI TJKT</span><span class="badge"><i class="fa-solid fa-list-check"></i> Analisis Topologi</span></div>
+</section>
+
+<section class="card"><h2>Tujuan Pembelajaran Bab Ini</h2><ul>
+<li>Peserta didik mampu membandingkan topologi jaringan berdasarkan kebutuhan pengguna.</li>
+<li>Peserta didik mampu menentukan topologi yang sesuai untuk jaringan sederhana.</li>
+</ul></section>
+
+<section class="card"><h2>4.1 Tidak Ada Topologi yang Paling Baik</h2>
+<p>Setelah mempelajari enam jenis topologi, mungkin muncul pertanyaan dalam benak kalian: topologi manakah yang paling baik? Jawabannya adalah tidak ada topologi yang paling baik untuk semua keadaan. Topologi mesh memang paling tahan gangguan, tetapi biayanya sangat mahal dan tidak masuk akal untuk menghubungkan tiga komputer dalam satu ruangan. Sebaliknya, topologi bus memang paling murah, tetapi tidak cocok untuk jaringan yang membutuhkan kehandalan tinggi.</p>
+<div class="highlight"><strong>Prinsip calon teknisi jaringan:</strong> topologi yang baik adalah topologi yang paling sesuai dengan kebutuhan, bukan yang paling canggih atau paling mahal.</div>
+<h3>Perbedaan Topologi FISIK dan Topologi LOGIS</h3>
+<p>Perhatikan video ilustrasi berikut untuk membantu membedakan topologi fisik dan topologi logis.</p>
+<div class="video-wrap"><video controls playsinline preload="metadata"><source src="video/topologi-fisik-logis.mp4" type="video/mp4">Browser kalian belum mendukung pemutar video.</video></div>
+</section>
+
+<section class="card"><h2>4.2 Sembilan Faktor dalam Memilih Topologi</h2>
+<p>Berikut sembilan faktor yang harus dipertimbangkan sebelum menentukan topologi sebuah jaringan.</p>
+<h3>a. Jumlah Perangkat</h3><p>Semakin banyak perangkat yang akan dihubungkan, semakin perlu topologi yang teratur dan mudah dikelola. Untuk 3–4 perangkat, topologi sederhana sudah memadai; untuk puluhan perangkat di banyak ruangan, diperlukan topologi bertingkat seperti tree.</p>
+<h3>b. Luas Area</h3><p>Jaringan dalam satu ruangan berbeda kebutuhannya dengan jaringan yang mencakup beberapa ruangan atau beberapa gedung. Area yang luas biasanya memerlukan topologi bercabang.</p>
+<h3>c. Jenis Koneksi</h3><p>Apakah jaringan menggunakan kabel, nirkabel, atau gabungan keduanya. Jaringan nirkabel umumnya membentuk pola menyerupai star dengan access point sebagai pusatnya.</p>
+<h3>d. Ketersediaan Perangkat</h3><p>Topologi yang dipilih harus dapat diwujudkan dengan perangkat yang benar-benar dimiliki. Memilih topologi tree padahal hanya tersedia satu hub tentu tidak dapat diterapkan.</p>
+<h3>e. Jumlah Kabel yang Dibutuhkan</h3><p>Setiap topologi membutuhkan jumlah kabel yang berbeda meskipun jumlah perangkatnya sama. Hal ini berkaitan langsung dengan biaya dan ketersediaan bahan.</p>
+<h3>f. Kemudahan Pemeliharaan</h3><p>Pertimbangkan seberapa mudah jaringan diperiksa dan diperbaiki jika terjadi gangguan. Topologi star relatif paling mudah ditelusuri kerusakannya.</p>
+<h3>g. Biaya</h3><p>Biaya mencakup pengadaan kabel, konektor, perangkat pusat, serta biaya pemasangan. Anggaran sekolah yang terbatas menjadi pertimbangan nyata dalam pemilihan topologi.</p>
+<h3>h. Kemungkinan Pengembangan</h3><p>Pertimbangkan apakah jaringan akan diperbesar di kemudian hari. Topologi star dan tree paling mudah dikembangkan, sedangkan ring paling sulit.</p>
+<h3>i. Dampak Jika Terjadi Gangguan</h3><p>Perkirakan apa yang akan terjadi jika satu kabel putus atau satu perangkat rusak. Untuk jaringan yang sangat penting, dampak gangguan harus ditekan sekecil mungkin.</p>
+</section>
+
+<section class="card"><h2>4.3 Tiga Kasus untuk Dianalisis</h2>
+<p>Berikut tiga kasus yang akan kalian analisis bersama kelompok. Untuk setiap kasus, tentukan topologi yang paling sesuai beserta alasannya, dengan berpedoman pada sembilan faktor di atas.</p>
+<div class="case-grid">
+<div class="case"><div class="case-num">1</div><strong>Kasus 1</strong><p style="margin-top:8px">Tiga komputer ingin dihubungkan dalam satu ruangan menggunakan satu perangkat pusat.</p><div class="info"><strong>Petunjuk:</strong> Topologi apa yang memang menggunakan perangkat pusat?</div></div>
+<div class="case"><div class="case-num">2</div><strong>Kasus 2</strong><p style="margin-top:8px">Sebuah sekolah memiliki beberapa ruang yang masing-masing memiliki beberapa komputer.</p><div class="info"><strong>Petunjuk:</strong> Topologi apa yang berbentuk bercabang dan cocok untuk pembagian area?</div></div>
+<div class="case"><div class="case-num">3</div><strong>Kasus 3</strong><p style="margin-top:8px">Sebuah jaringan membutuhkan banyak jalur alternatif agar tetap dapat berkomunikasi meskipun ada jalur yang terputus.</p><div class="info"><strong>Petunjuk:</strong> Topologi apa yang menyediakan jalur alternatif terbanyak?</div></div>
+</div>
+</section>
+
+<section class="card"><h2>4.4 Kegiatan Peserta Didik — LKPD 4.1</h2>
+<div class="info"><strong>Petunjuk LKPD 4.1</strong><p style="margin-top:8px;margin-bottom:0">Analisislah ketiga kasus pada bagian 4.3 bersama kelompok, lalu isi tabel berikut.</p></div>
+<div class="table-wrap"><table><thead><tr><th>No</th><th>Kasus</th><th>Topologi yang Dipilih</th><th>Alasan</th></tr></thead><tbody>
+<tr><td>1</td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+<h3>Diskusi Kelompok</h3>
+<p>Setelah mengisi tabel, diskusikan bersama kelompok empat pertanyaan berikut:</p>
+<ul>
+<li>Apakah topologi yang dipilih sudah merupakan pilihan yang paling sederhana untuk kasus tersebut?</li>
+<li>Apakah perangkat yang dibutuhkan untuk topologi tersebut tersedia?</li>
+<li>Apakah topologi tersebut mudah dikembangkan jika perangkat bertambah?</li>
+<li>Apa kemungkinan gangguan yang dapat terjadi pada topologi tersebut?</li>
+</ul>
+</section>
+
+<section class="card"><h2>Rangkuman Bab 4</h2><ul>
+<li>Tidak ada topologi yang paling baik untuk semua keadaan; topologi yang baik adalah yang paling sesuai kebutuhan.</li>
+<li>Sembilan faktor pemilihan topologi: jumlah perangkat, luas area, jenis koneksi, ketersediaan perangkat, jumlah kabel, kemudahan pemeliharaan, biaya, kemungkinan pengembangan, dan dampak gangguan.</li>
+<li>Topologi star paling sering dipilih untuk jaringan lokal sederhana karena seimbang antara biaya, ketahanan, dan kemudahan pengembangan.</li>
+</ul></section>
+
+<section class="card"><h2>Latihan Soal Bab 4</h2><div class="exercise"><ol>
+<li>Sebutkan sembilan faktor yang perlu dipertimbangkan dalam memilih topologi jaringan!</li>
+<li>Apakah topologi yang paling rumit selalu merupakan topologi yang paling baik? Jelaskan jawaban kalian!</li>
+<li>Mengapa topologi star sering digunakan dalam jaringan lokal?</li>
+<li>Faktor apa yang menurut kalian paling penting dalam memilih topologi untuk jaringan di sekolah kita? Jelaskan alasannya!</li>
+<li>Sebuah laboratorium memiliki 20 komputer dalam satu ruangan. Topologi apa yang kalian sarankan dan mengapa bukan topologi mesh?</li>
+</ol></div></section>
+
+<section class="card"><h2>Refleksi Pertemuan 4</h2><div class="reflection">
+<div>• Faktor apa yang paling penting dalam memilih topologi menurut saya?</div>
+<div>• Mengapa topologi star sering digunakan dalam jaringan lokal?</div>
+<div>• Apakah topologi yang paling rumit selalu paling baik?</div>
+</div></section>
+
+<section class="card" style="text-align:center"><a class="back" href="tp3.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke TP3</a></section>
+</main>
+<script>
+const btn=document.getElementById("menuBtn"),sidebar=document.getElementById("sidebar"),overlay=document.getElementById("overlay");
+function closeMenu(){sidebar.classList.remove("open");overlay.classList.remove("show")}
+btn.addEventListener("click",()=>{sidebar.classList.toggle("open");overlay.classList.toggle("show")});
+overlay.addEventListener("click",closeMenu);
+</script>
+</body></html>
