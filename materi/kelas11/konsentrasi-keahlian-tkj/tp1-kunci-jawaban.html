@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunci Jawaban TP 1 - LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:15px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:4px}
+.lock{max-width:430px;margin:35px auto;padding:24px;background:#fdf8e8;border-left:4px solid var(--gold);border-radius:8px;text-align:center}
+.lock h2{margin-top:0;color:#6d5000;font-size:20px}
+.lock input{width:100%;padding:11px;border:1px solid #ccc;border-radius:7px;font:inherit;margin:8px 0}
+.lock button{border:0;background:var(--gold);color:#fff;padding:11px 20px;border-radius:7px;font:inherit;font-weight:bold;cursor:pointer}
+.error{display:none;color:#b00020;font-size:14px;margin-top:10px}
+#content{display:none}
+.chapter{margin-top:28px;padding-top:8px;border-top:2px solid #eee}
+.chapter h2{color:#6d5000;font-size:20px}
+.answer{border:1px solid #e5e5e5;border-radius:8px;padding:13px 15px;margin:10px 0;background:#fff}
+.answer strong{color:var(--gold)}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}.answer{padding:12px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div>
+</div>
+
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+<i class="fas fa-bars"></i>
+</button>
+
+<main class="main">
+<section class="card">
+
+<div class="header">
+<h1><i class="fas fa-circle-check"></i> Kunci Jawaban Latihan Soal</h1>
+<div class="meta">TP 1 · Fungsi dan Kebutuhan Jaringan Komputer</div>
+</div>
+
+<div class="lock" id="loginBox">
+<h2><i class="fas fa-lock"></i> Halaman Terlindungi</h2>
+<p>Kunci jawaban hanya dapat dibuka dengan password guru.</p>
+<input type="password" id="password" placeholder="Masukkan password" autocomplete="off">
+<button onclick="unlock()">Buka Kunci Jawaban</button>
+<div class="error" id="error">Password salah. Silakan coba lagi.</div>
+</div>
+
+<div id="content">
+
+<div class="chapter">
+<h2>Kunci Jawaban Latihan Bab 1</h2>
+<div class="answer">Jaringan komputer adalah kumpulan dua perangkat atau lebih yang saling dihubungkan agar dapat bertukar data dan berbagi sumber daya.</div>
+<div class="answer">Empat fungsi jaringan komputer: berbagi data, berbagi akses internet, berbagi perangkat keras, dan sarana komunikasi.</div>
+<div class="answer">Karena memenuhi tiga kata kunci pengertian jaringan: ada lebih dari satu perangkat (HP guru dan 11 Chromebook), perangkat saling terhubung melalui hotspot, dan tujuannya untuk berbagi akses internet.</div>
+<div class="answer">Jawaban bervariasi sesuai pengalaman peserta didik; nilai berdasarkan ketepatan penjelasan fungsi jaringan yang disebutkan.</div>
+<div class="answer">Kegiatan belajar akan terganggu karena fungsi berbagi internet tidak dapat berjalan; peserta didik tidak dapat mengakses bahan belajar daring.</div>
+</div>
+
+<div class="chapter">
+<h2>Kunci Jawaban Latihan Bab 2</h2>
+<div class="answer">LAN mencakup area terbatas (misalnya satu ruangan/gedung), sedangkan WAN mencakup wilayah yang sangat luas (antarkota/negara).</div>
+<div class="answer">Karena jaringan tersebut menggunakan media nirkabel (hotspot/Wi-Fi) dan mencakup area terbatas berupa satu ruang kelas.</div>
+<div class="answer">Kelebihan: fleksibel karena perangkat dapat berpindah tempat. Kekurangan: kestabilan dapat terganggu jarak, penghalang, dan banyaknya pengguna.</div>
+<div class="answer">Contoh PAN: HP tersambung ke smartwatch. Contoh MAN: jaringan antar-sekolah dalam satu kabupaten/kota yang dikelola dinas pendidikan.</div>
+<div class="answer">Kelebihan jaringan kabel: koneksi lebih stabil dan tidak terganggu banyaknya pengguna nirkabel sekaligus, cocok untuk praktik dan penggunaan jangka panjang.</div>
+</div>
+
+<div class="chapter">
+<h2>Kunci Jawaban Latihan Bab 3</h2>
+<div class="answer">Router berfungsi menghubungkan jaringan lokal dengan jaringan internet serta mengatur arah lalu lintas data.</div>
+<div class="answer">Switch mengirim data hanya ke perangkat tujuan (lebih efisien), sedangkan hub mengirim data ke semua perangkat yang terhubung.</div>
+<div class="answer">Access point berfungsi memancarkan jaringan nirkabel (Wi-Fi) agar perangkat dapat terhubung tanpa kabel.</div>
+<div class="answer">Karena RJ-45 adalah konektor yang sesuai dengan bentuk dan jumlah pin kabel UTP agar dapat dicolokkan ke port perangkat jaringan.</div>
+<div class="answer">LAN tester menguji apakah susunan kabel sudah benar dan berfungsi; penting agar tidak terjadi kegagalan koneksi akibat kesalahan pemasangan.</div>
+<div class="answer">Urutan T568B: 1) Putih-Oranye, 2) Oranye, 3) Putih-Hijau, 4) Biru, 5) Putih-Biru, 6) Hijau, 7) Putih-Cokelat, 8) Cokelat.</div>
+<div class="answer">Kabel straight: susunan warna sama di kedua ujung, untuk menghubungkan perangkat berbeda jenis (contoh: komputer ke switch). Kabel cross: susunan warna berbeda di kedua ujung, untuk menghubungkan perangkat sejenis (contoh: komputer ke komputer).</div>
+</div>
+
+<div class="chapter">
+<h2>Kunci Jawaban Latihan Bab 4</h2>
+<div class="answer">Untuk menentukan kapasitas jaringan dan perangkat yang diperlukan agar jaringan mencukupi kebutuhan seluruh pengguna.</div>
+<div class="answer">Lima hal: jumlah pengguna, jumlah perangkat, lokasi, jarak, dan media jaringan (dapat juga layanan, perangkat tersedia, kendala, atau keamanan).</div>
+<div class="answer">Semakin jauh jarak antara sumber sinyal dan perangkat, semakin lemah sinyal yang diterima, apalagi bila terhalang tembok.</div>
+<div class="answer">Agar jaringan tidak digunakan oleh pihak yang tidak berkepentingan dan data pengguna tetap terlindungi.</div>
+<div class="answer">Kendala utama adalah satu hotspot HP guru harus melayani 11 Chromebook sekaligus, sehingga kecepatan dapat terbagi dan koneksi dapat melambat.</div>
+</div>
+
+<div class="chapter">
+<h2>Kunci Jawaban Latihan Bab 5</h2>
+<div class="answer">Kelas XI TJKT memiliki 11 Chromebook yang terhubung ke hotspot HP guru, serta peralatan praktik jaringan kabel yang tersedia di sekolah.</div>
+<div class="answer">Kendala utama: hanya ada satu sumber hotspot untuk melayani seluruh Chromebook secara bersamaan.</div>
+<div class="answer">Solusi bervariasi, misalnya mengatur jadwal penggunaan internet untuk aktivitas yang membutuhkan koneksi besar, atau memanfaatkan jaringan kabel LAN untuk kegiatan yang tidak memerlukan akses internet.</div>
+<div class="answer">Diagram: HP Guru/Hotspot → (jaringan nirkabel) → 11 Chromebook Peserta Didik.</div>
+</div>
+
+<div class="chapter">
+<h2>Kunci Jawaban Evaluasi Akhir</h2>
+<div class="answer">Hubungan dua perangkat atau lebih untuk bertukar data dan berbagi sumber daya.</div>
+<div class="answer">Berbagi data, berbagi internet, berbagi perangkat, dan komunikasi.</div>
+<div class="answer">Jaringan kabel menggunakan media kabel, sedangkan nirkabel menggunakan gelombang radio.</div>
+<div class="answer">LAN mencakup area terbatas, sedangkan WAN mencakup wilayah luas.</div>
+<div class="answer">Menghubungkan jaringan dan mengatur lalu lintas data.</div>
+<div class="answer">Menghubungkan beberapa perangkat dalam jaringan.</div>
+<div class="answer">Menyediakan akses jaringan nirkabel.</div>
+<div class="answer">Untuk menentukan kapasitas dan perangkat yang diperlukan.</div>
+<div class="answer">Jumlah pengguna, perangkat, lokasi, jarak, media, layanan, dan kendala.</div>
+<div class="answer">Jaringan untuk 11 Chromebook dengan akses internet melalui hotspot HP guru dan fasilitas jaringan yang tersedia di sekolah.</div>
+</div>
+
+<div class="footer-nav">
+<a href="tp1-evaluasi.html">← Evaluasi Akhir</a>
+<a href="index.html">Kembali ke TP 1</a>
+</div>
+
+</div>
+</section>
+</main>
+
+<script>
+function unlock(){
+    const input=document.getElementById("password");
+    const error=document.getElementById("error");
+    if(input.value==="bismillah"){
+        document.getElementById("loginBox").style.display="none";
+        document.getElementById("content").style.display="block";
+        window.scrollTo(0,0);
+    }else{
+        error.style.display="block";
+        input.value="";
+        input.focus();
+    }
+}
+document.getElementById("password").addEventListener("keydown",function(e){
+    if(e.key==="Enter") unlock();
+});
+</script>
+
+</body>
+</html>
