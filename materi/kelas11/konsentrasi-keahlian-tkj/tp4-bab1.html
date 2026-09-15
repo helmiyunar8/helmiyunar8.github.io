@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 4 Bab 1 - Mengenal IPv4 dan Fungsinya</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+h3.section{color:var(--gold);border-left:4px solid var(--gold);padding-left:10px;margin-top:28px}
+h4{margin-bottom:6px;color:#444}
+.box{background:#fdf8e8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:6px;margin:16px 0}
+.video{margin:16px 0;padding:14px;background:#f7f7f7;border:1px solid #e5e5e5;border-radius:10px}
+.video strong{display:block;margin-bottom:8px}
+.video video{width:100%;max-height:520px;border-radius:8px;background:#000}
+.ip{font-size:24px;font-weight:bold;letter-spacing:1px;text-align:center;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:10px;margin:8px 0}
+ul,ol{padding-left:25px}
+table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{border:1px solid #ddd;padding:10px;vertical-align:top}
+th{background:#fff9e8;text-align:left}
+.lpkd{background:#fafafa;border:1px solid #ddd;border-radius:10px;padding:16px;margin-top:16px}
+.blank td{height:42px}
+.exercise{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;margin:8px 0}
+.footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:22px}.header h2{font-size:19px}
+.ip{font-size:19px}
+th,td{padding:8px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo">
+<h3>LMS TKJ</h3>
+<div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+<a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div></div>
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
+
+<main class="main">
+<section class="card">
+<div class="header">
+<h1>BAB 1</h1>
+<h2>Mengenal IPv4 dan Fungsinya</h2>
+<p>Pertemuan 1 · Alokasi Waktu 3 JP</p>
+<p>Tujuan Pembelajaran 4 · Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</p>
+</div>
+
+<div class="box">
+<strong>Tujuan Pembelajaran Bab Ini:</strong>
+<ul>
+<li>Peserta didik mampu menjelaskan pengertian dan fungsi IPv4.</li>
+<li>Peserta didik mampu menjelaskan akibat penggunaan alamat IP yang sama.</li>
+</ul>
+</div>
+
+<h3 class="section">1.1 Bagaimana Perangkat Saling Mengenali?</h3>
+<p>Bayangkan kalian sedang belajar di kelas. Sebelas Chromebook menyala bersamaan dan semuanya terhubung ke satu hotspot dari telepon genggam guru. Ketika kalian membuka sebuah halaman web, data dari internet akan dikirim kembali ke Chromebook kalian, bukan ke Chromebook teman di sebelah. Pertanyaannya: bagaimana jaringan tahu bahwa data itu harus dikirim ke Chromebook kalian, dan bukan ke sepuluh Chromebook lainnya?</p>
+<p>Jawabannya adalah karena setiap perangkat dalam jaringan memiliki alamat yang berbeda-beda. Alamat inilah yang disebut alamat IP (IP address). Tanpa alamat, jaringan tidak akan tahu ke mana data harus dikirim, sama seperti tukang pos yang tidak mungkin mengantar surat jika rumah-rumah di sebuah desa tidak memiliki alamat.</p>
+
+<div class="box">
+<strong>Perumpamaan Alamat Rumah</strong>
+<p>Bayangkan sebuah desa dengan banyak rumah. Agar surat sampai ke rumah yang tepat, setiap rumah harus memiliki alamat yang jelas dan tidak boleh sama dengan rumah lain.</p>
+<p>Dalam jaringan komputer: 'desa' adalah jaringannya, 'rumah' adalah perangkatnya (Chromebook, HP, router), dan 'alamat rumah' adalah alamat IP-nya.</p>
+<p>Jika dua rumah memiliki alamat yang persis sama, tukang pos akan bingung dan surat bisa salah antar. Hal yang sama terjadi pada jaringan komputer.</p>
+</div>
+
+<div class="video">
+<strong><i class="fas fa-video"></i> VIDEO ILUSTRASI IP ADDRESS — VIDEO 1</strong>
+<video controls preload="metadata">
+<source src="ip address_1.mp4" type="video/mp4">
+Browser kalian tidak mendukung pemutaran video.
+</video>
+</div>
+
+<h3 class="section">1.2 Pengertian IPv4</h3>
+<p>IPv4 adalah singkatan dari Internet Protocol version 4, yaitu sistem pengalamatan jaringan yang digunakan untuk memberikan alamat unik kepada setiap perangkat yang terhubung dalam sebuah jaringan komputer. Disebut "versi 4" karena inilah versi keempat dari protokol Internet Protocol, dan hingga saat ini masih menjadi sistem pengalamatan yang paling banyak digunakan di dunia, termasuk pada jaringan di sekolah kita.</p>
+<p>Alamat IPv4 ditulis dalam bentuk empat kelompok angka yang dipisahkan oleh tanda titik. Contoh alamat IPv4 yang sering kita jumpai antara lain:</p>
+<div class="ip">192.168.1.1</div>
+<div class="ip">192.168.1.25</div>
+<div class="ip">10.10.1.15</div>
+<div class="ip">172.16.2.30</div>
+<p>Perhatikan bahwa setiap alamat terdiri atas empat kelompok angka. Aturan penulisan ini akan kita pelajari secara mendalam pada Bab 2.</p>
+
+<div class="video">
+<strong><i class="fas fa-video"></i> VIDEO ILUSTRASI IP ADDRESS — VIDEO 2</strong>
+<video controls preload="metadata">
+<source src="ip address_2.mp4" type="video/mp4">
+Browser kalian tidak mendukung pemutaran video.
+</video>
+</div>
+
+<h3 class="section">1.3 Empat Fungsi IPv4</h3>
+<h4>a. Sebagai Identitas Perangkat</h4>
+<p>Alamat IP berfungsi sebagai identitas atau tanda pengenal setiap perangkat dalam jaringan. Melalui alamat ini, sebuah perangkat dapat dikenali dan dibedakan dari perangkat lainnya, sama seperti nomor induk siswa yang membedakan kalian satu sama lain.</p>
+<h4>b. Sebagai Alamat Tujuan Pengiriman Data</h4>
+<p>Ketika sebuah perangkat mengirim data, data tersebut selalu disertai keterangan alamat tujuan. Router atau perangkat jaringan lain akan membaca alamat tujuan tersebut untuk menentukan ke mana data harus diteruskan.</p>
+<h4>c. Menunjukkan Perangkat Berada di Jaringan Mana</h4>
+<p>Alamat IP tidak hanya menunjukkan perangkatnya, tetapi juga menunjukkan jaringan tempat perangkat itu berada. Inilah yang akan kalian pelajari lebih dalam pada Bab 3 dan Bab 4 tentang alamat jaringan.</p>
+<h4>d. Memungkinkan Pengaturan dan Pengelolaan Jaringan</h4>
+<p>Dengan sistem pengalamatan yang teratur, seorang teknisi dapat mengatur jaringan dengan lebih mudah, misalnya membatasi akses perangkat tertentu atau menelusuri sumber gangguan.</p>
+
+<h3 class="section">1.4 Mengapa Alamat IP Tidak Boleh Sama?</h3>
+<p>Setiap perangkat dalam satu jaringan wajib memiliki alamat IP yang berbeda. Apabila dua perangkat menggunakan alamat IP yang sama persis dalam satu jaringan, akan terjadi keadaan yang disebut IP conflict (konflik alamat IP).</p>
+<p>Akibat yang terjadi bila konflik IP muncul antara lain:</p>
+<ul>
+<li>Salah satu atau kedua perangkat tidak dapat terhubung ke jaringan.</li>
+<li>Koneksi menjadi putus-nyambung karena jaringan bingung menentukan tujuan data.</li>
+<li>Data dapat terkirim ke perangkat yang salah.</li>
+<li>Muncul pesan peringatan konflik alamat IP pada perangkat.</li>
+</ul>
+
+<div class="box">
+<strong>Contoh Nyata di Kelas Kita</strong>
+<p>Andaikan Chromebook milik Andi dan Chromebook milik Budi sama-sama diberi alamat 192.168.1.5.</p>
+<p>Ketika ada data dari internet yang ditujukan ke alamat tersebut, jaringan menjadi bingung: harus dikirim ke Chromebook Andi atau Budi?</p>
+<p>Akibatnya, salah satu atau keduanya akan mengalami gangguan koneksi. Inilah sebabnya pada jaringan modern, pemberian alamat IP umumnya dilakukan secara otomatis oleh router (fitur DHCP) agar tidak terjadi alamat yang kembar.</p>
+</div>
+
+<h3 class="section">1.5 Kegiatan Peserta Didik — LKPD 1.1</h3>
+<div class="lpkd">
+<strong>Petunjuk LKPD 1.1</strong>
+<p><strong>Bagian A:</strong> Tuliskan lima contoh alamat IPv4 yang menurut kalian benar penulisannya.</p>
+<p><strong>Bagian B:</strong> Diskusikan bersama kelompok, apa yang akan terjadi jika dua Chromebook di kelas menggunakan alamat IP yang sama, dan tuliskan minimal tiga akibatnya.</p>
+
+<table>
+<thead><tr><th>No</th><th>Contoh Alamat IPv4</th><th>Akibat Jika Alamat IP Sama</th></tr></thead>
+<tbody>
+<tr class="blank"><td>1</td><td></td><td></td></tr>
+<tr class="blank"><td>2</td><td></td><td></td></tr>
+<tr class="blank"><td>3</td><td></td><td></td></tr>
+<tr class="blank"><td>4</td><td></td><td></td></tr>
+<tr class="blank"><td>5</td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="section">Rangkuman Bab 1</h3>
+<ul>
+<li>IPv4 adalah sistem pengalamatan jaringan yang memberikan alamat unik kepada setiap perangkat dalam jaringan komputer.</li>
+<li>Empat fungsi IPv4: sebagai identitas perangkat, alamat tujuan pengiriman data, penunjuk jaringan tempat perangkat berada, dan sarana pengelolaan jaringan.</li>
+<li>Alamat IP dalam satu jaringan tidak boleh sama, karena akan menyebabkan konflik IP yang mengakibatkan gangguan koneksi.</li>
+</ul>
+
+<h3 class="section">Latihan Soal Bab 1</h3>
+<div class="exercise">1. Jelaskan dengan bahasa kalian sendiri, apa yang dimaksud dengan IPv4!</div>
+<div class="exercise">2. Sebutkan dan jelaskan empat fungsi IPv4!</div>
+<div class="exercise">3. Mengapa setiap perangkat dalam satu jaringan harus memiliki alamat IP yang berbeda?</div>
+<div class="exercise">4. Sebutkan tiga akibat yang terjadi apabila dua perangkat menggunakan alamat IP yang sama!</div>
+<div class="exercise">5. Jelaskan perumpamaan alamat IP dengan alamat rumah menggunakan kalimat kalian sendiri!</div>
+
+<h3 class="section">Refleksi Pertemuan 1</h3>
+<ul>
+<li>Apa fungsi IPv4 menurut pemahaman saya?</li>
+<li>Mengapa alamat IP harus berbeda antarperangkat?</li>
+<li>Bagian mana dari materi ini yang masih membingungkan bagi saya?</li>
+</ul>
+
+<div class="footer">
+<a href="tp4.html">← TP 4</a>
+<a href="tp4-bab2.html">Bab 2 →</a>
+</div>
+</section>
+</main>
+</body>
+</html>
