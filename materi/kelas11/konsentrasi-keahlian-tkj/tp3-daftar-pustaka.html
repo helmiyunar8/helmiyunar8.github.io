@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP3 - Daftar Pustaka</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--light:#f4f4f4;--text:#333;--green:#2e7d32}
+*{box-sizing:border-box}
+body{margin:0;background:var(--light);font-family:Arial,Helvetica,sans-serif;color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:22px 16px;overflow-y:auto;z-index:20}
+.logo{text-align:center;margin-bottom:18px}
+.logo img{max-width:120px;height:auto}
+.sidebar h3{font-size:15px;margin:14px 8px;color:var(--gold)}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:9px 10px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover{background:#f3ead0;color:#8b6500}
+.main{margin-left:250px;padding:30px 20px}
+.content{max-width:1000px;margin:auto;background:#fff;border-radius:16px;border-top:5px solid var(--gold);padding:28px;box-shadow:0 3px 15px rgba(0,0,0,.06)}
+.hero{text-align:center;background:#fffaf0;border:1px solid #ead9a8;border-radius:14px;padding:22px;margin-bottom:24px}
+.hero .icon{font-size:42px;color:var(--gold);margin-bottom:6px}
+h1{font-size:27px;line-height:1.3;margin:5px 0 8px}
+.intro{background:#f7fbf7;border-left:5px solid var(--green);padding:15px 17px;border-radius:10px;margin-bottom:24px}
+.references{display:grid;gap:14px}
+.reference{display:flex;gap:14px;align-items:flex-start;border:1px solid #ddd;border-radius:12px;padding:17px;background:#fff}
+.ref-icon{flex:0 0 38px;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff8df;color:var(--gold);font-size:17px}
+.reference p{margin:0;font-size:15px}
+.reference a{color:#806000;word-break:break-all}
+.note{margin-top:22px;background:#f7f7f7;border-radius:10px;padding:13px 15px;color:#666;font-size:13px}
+.footer{text-align:center;color:#777;font-size:13px;margin-top:28px}
+.menu-btn{display:none;position:fixed;top:12px;right:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:9px;padding:10px 12px;font-size:18px}
+@media(max-width:800px){
+.sidebar{display:none}.sidebar.open{display:block;width:260px;box-shadow:4px 0 15px rgba(0,0,0,.15)}
+.main{margin-left:0;padding:70px 10px 20px}.menu-btn{display:block}
+.content{padding:18px;border-radius:12px}h1{font-size:22px}
+.reference{padding:14px}.reference p{font-size:14px}
+}
+@media(max-width:520px){
+.content{padding:14px}.hero{padding:16px}.hero .icon{font-size:34px}h1{font-size:20px}
+.reference{gap:10px}.ref-icon{flex-basis:34px;width:34px;height:34px;font-size:15px}
+.reference p{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar">
+  <div class="logo"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"></div>
+  <h3><i class="fa-solid fa-graduation-cap"></i> Navigasi</h3>
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+  <a href="tp3.html"><i class="fa-solid fa-network-wired"></i> TP3</a>
+  <a href="tp3-bab6.html"><i class="fa-solid fa-book-open"></i> Bab 6</a>
+  <a href="tp3-evaluasi.html"><i class="fa-solid fa-clipboard-question"></i> Evaluasi TP3</a>
+  <a href="tp3-refleksi.html"><i class="fa-solid fa-comments"></i> Refleksi TP3</a>
+  <a href="tp3-glosarium.html"><i class="fa-solid fa-book"></i> Glosarium</a>
+  <a href="tp3-kunci-jawaban.html"><i class="fa-solid fa-key"></i> Kunci Jawaban</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pencil"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</aside>
+
+<main class="main">
+<section class="content">
+
+<div class="hero">
+  <div class="icon"><i class="fa-solid fa-book-bookmark"></i></div>
+  <h1>Daftar Pustaka</h1>
+</div>
+
+<div class="intro">
+<strong><i class="fa-solid fa-circle-info"></i> Sumber Pembelajaran</strong>
+<p>Berikut sumber yang digunakan sebagai bahan penyusunan dan pendukung pembelajaran Tujuan Pembelajaran 3.</p>
+</div>
+
+<div class="references">
+
+<div class="reference">
+  <div class="ref-icon"><i class="fa-solid fa-book"></i></div>
+  <p>Modul Ajar 3 – Merancang Topologi Jaringan Sederhana Sesuai Kebutuhan Pengguna, SMK Negeri 7 Luwu, Tahun Pelajaran 2026/2027.</p>
+</div>
+
+<div class="reference">
+  <div class="ref-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+  <p>Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan, Fase F, Kurikulum yang berlaku di satuan pendidikan.</p>
+</div>
+
+<div class="reference">
+  <div class="ref-icon"><i class="fa-solid fa-network-wired"></i></div>
+  <p>Pengamatan dan praktik langsung menggunakan perangkat jaringan yang tersedia di SMK Negeri 7 Luwu.</p>
+</div>
+
+<div class="reference">
+  <div class="ref-icon"><i class="fa-brands fa-tiktok"></i></div>
+  <p>Serumpuntech, <a href="https://www.tiktok.com/@serumpuntech/video/7681650224787377415?is_from_webapp=1&amp;sender_device=pc&amp;web_id=7685509522505352711" target="_blank" rel="noopener noreferrer">https://www.tiktok.com/@serumpuntech/video/7681650224787377415?is_from_webapp=1&amp;sender_device=pc&amp;web_id=7685509522505352711</a></p>
+</div>
+
+</div>
+
+<div class="note">
+<i class="fa-solid fa-link"></i>
+<strong>Catatan:</strong> Tautan Serumpuntech dicantumkan sebagai sumber pustaka sesuai daftar yang diberikan.
+</div>
+
+<div class="footer">TP3 · Daftar Pustaka</div>
+</section>
+</main>
+
+</body>
+</html>
