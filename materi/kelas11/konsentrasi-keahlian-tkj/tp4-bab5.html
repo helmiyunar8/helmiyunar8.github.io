@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 5 — Menentukan Alamat Host dan Broadcast — LMS TKJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h1,h2,h3,h4{color:#604800}
+h2{font-size:20px;margin-top:30px}
+h3{font-size:17px}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+code,pre{font-family:Consolas,monospace}
+pre{overflow-x:auto;background:#f7f7f7;padding:14px;border-radius:8px}
+blockquote{border-left:4px solid #d9c98e;margin:18px 0;padding:8px 16px;background:#fffdf5}
+img{max-width:100%;height:auto}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+.lms-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lms-item{display:block;text-decoration:none;color:#333;background:#fafafa;border:1px solid #e5e5e5;border-radius:10px;padding:14px}
+.lms-item strong{display:block;color:#604800;margin-bottom:3px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:650px}
+.info,.exercise{font-size:14px}
+.lms-list{grid-template-columns:1fr}
+}
+</style></head><body>
+    <div class="sidebar" id="sidebar">
+      <img src="../../asset/logo.png" class="logo" alt="Logo">
+      <h3>LMS TKJ</h3>
+      <div class="nav">
+        <a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+        <a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+        <a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+        <a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+        <a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+        <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+        <a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+        <a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+      </div>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+<main class="main"><section class="card">
+<h1 id="bab-5-menentukan-alamat-host-dan-broadcast">BAB 5 — Menentukan Alamat Host dan Broadcast</h1>
+<p><em>Pertemuan 5 · Alokasi Waktu 3 JP</em></p>
+<p><strong>Tujuan Pembelajaran Bab Ini:</strong></p>
+<p>•     Peserta didik mampu menentukan rentang alamat host dan alamat broadcast.</p>
+<p>•     Peserta didik mampu membedakan alamat jaringan, alamat host, dan alamat broadcast.</p>
+<h2 id="tiga-jenis-alamat-dalam-satu-jaringan">5.1  Tiga Jenis Alamat dalam Satu Jaringan</h2>
+<p>Di dalam sebuah jaringan dengan subnet mask 255.255.255.0, terdapat 256 alamat yang tersedia, yaitu dari angka 0 sampai 255 pada oktet terakhir. Namun, tidak semua alamat tersebut boleh dipakai oleh perangkat. Dari 256 alamat itu, dua di antaranya memiliki tugas khusus dan tidak boleh dipasang pada perangkat mana pun.</p>
+<p>image</p>
+<p><em>Gambar 5.1  Pembagian alamat dalam jaringan 192.168.1.0/24</em></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Jenis Alamat</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Contoh</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Boleh Dipakai Perangkat?</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Keterangan</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat Jaringan</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>192.168.1.0</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>TIDAK</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat pertama; menandai   jaringan secara keseluruhan</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat Host</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>192.168.1.1 s.d. 192.168.1.254</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>BOLEH</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat yang dipasang pada perangkat</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat Broadcast</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>192.168.1.255</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>TIDAK</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p>Alamat terakhir; untuk   mengirim data ke semua perangkat sekaligus</p>
+<h2 id="alamat-broadcast">5.2  Alamat Broadcast</h2>
+<p>Alamat broadcast adalah alamat khusus yang digunakan untuk mengirim data ke seluruh perangkat dalam satu jaringan secara bersamaan, dalam satu kali pengiriman. Alamat broadcast selalu merupakan alamat terakhir dalam sebuah jaringan, yaitu ketika seluruh bagian host bernilai maksimum.</p>
+<p>Pada subnet mask 255.255.255.0, nilai maksimum oktet terakhir adalah 255. Oleh karena itu, cara menentukan alamat broadcast sangat sederhana.</p>
+<p>Alamat jaringan  :  192.168.1.0</p>
+<p>Host portion diisi nilai maksimum (255):</p>
+<p>Alamat broadcast :  192.168.1.255</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Perumpamaan   Alamat Broadcast</strong></p>
+<p>Alamat broadcast ibarat pengeras suara   di masjid atau balai desa. Ketika pengumuman disampaikan melalui pengeras   suara, seluruh warga desa mendengarnya sekaligus tanpa perlu dipanggil satu   per satu.</p>
+<p>Dalam jaringan, ketika data dikirim ke   alamat broadcast, seluruh perangkat dalam jaringan itu akan menerimanya   sekaligus.</p>
+<p>Karena tugasnya khusus seperti itu,   alamat broadcast tidak boleh dipasang pada satu perangkat tertentu.</p>
+<h2 id="rentang-alamat-host">5.3  Rentang Alamat Host</h2>
+<p>Alamat host adalah alamat yang boleh dipasang pada perangkat seperti router, Chromebook, atau telepon genggam. Rentang alamat host adalah seluruh alamat yang berada di antara alamat jaringan dan alamat broadcast.</p>
+<p>Alamat jaringan   :  192.168.1.0     ← tidak boleh dipakai</p>
+<p>Alamat host pertama:  192.168.1.1     ← boleh dipakai</p>
+<p>        …</p>
+<p>Alamat host terakhir: 192.168.1.254   ← boleh dipakai</p>
+<p>Alamat broadcast  :  192.168.1.255   ← tidak boleh dipakai</p>
+<p><strong>Rumus sederhana yang perlu diingat:</strong></p>
+<p>Alamat host pertama  =  alamat jaringan + 1</p>
+<p>Alamat host terakhir  =  alamat broadcast − 1</p>
+<h2 id="menghitung-jumlah-alamat-host">5.4  Menghitung Jumlah Alamat Host</h2>
+<p>Selain menentukan rentangnya, kalian juga perlu dapat menghitung berapa banyak perangkat yang dapat ditampung sebuah jaringan. Pada subnet mask 255.255.255.0, perhitungannya adalah sebagai berikut.</p>
+<p>Jumlah seluruh alamat        =  256</p>
+<p>Dikurangi alamat jaringan    =  −1</p>
+<p>Dikurangi alamat broadcast   =  −1</p>
+<p>─────────────────────────────────</p>
+<p>Jumlah alamat host yang dapat dipakai  =  254</p>
+<p>Dengan kata lain, sebuah jaringan dengan subnet mask 255.255.255.0 dapat menampung sampai 254 perangkat. Angka ini jauh lebih dari cukup untuk kelas kita yang hanya memiliki sebelas Chromebook, bahkan masih sangat cukup apabila seluruh 32 Chromebook bantuan pemerintah digunakan sekaligus.</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Rumus   Umum (Pengayaan)</strong></p>
+<p>Jumlah host = 2ⁿ − 2, dengan n adalah   jumlah bit pada bagian host.</p>
+<p>Pada subnet mask 255.255.255.0 (/24),   bagian host memiliki 8 bit, sehingga:</p>
+<p>2⁸ − 2    =  256 − 2  =    254 alamat host.</p>
+<p>Angka 2 dikurangkan karena alamat   jaringan dan alamat broadcast tidak boleh dipakai perangkat.</p>
+<h2 id="contoh-terbimbing-lengkap">5.5  Contoh Terbimbing Lengkap</h2>
+<p><strong>Contoh 1:</strong></p>
+<p>Sebuah jaringan menggunakan alamat 192.168.10.0 dengan subnet mask 255.255.255.0. Tentukan alamat jaringan, rentang alamat host, alamat broadcast, dan jumlah host.</p>
+<p>Alamat jaringan   :  192.168.10.0</p>
+<p>Alamat host       :  192.168.10.1  sampai  192.168.10.254</p>
+<p>Alamat broadcast  :  192.168.10.255</p>
+<p>Jumlah host       :  254 perangkat</p>
+<p><strong>Contoh 2:</strong></p>
+<p>Sebuah Chromebook memiliki alamat 172.16.2.30 dengan subnet mask 255.255.255.0. Tentukan alamat jaringan, rentang host, dan broadcast-nya.</p>
+<p>Langkah 1 — Tentukan alamat jaringan:</p>
+<p>   Network portion = 172.16.2 , host diubah jadi 0</p>
+<p>   Alamat jaringan = 172.16.2.0</p>
+<p>Langkah 2 — Tentukan alamat broadcast:</p>
+<p>   Host diisi nilai maksimum (255)</p>
+<p>   Alamat broadcast = 172.16.2.255</p>
+<p>Langkah 3 — Tentukan rentang host:</p>
+<p>   Dari 172.16.2.1  sampai  172.16.2.254</p>
+<p>Catatan: alamat 172.16.2.30 termasuk alamat host yang sah,</p>
+<p>karena berada di antara .1 dan .254</p>
+<h2 id="kegiatan-peserta-didik-lkpd-5.1">5.6  Kegiatan Peserta Didik — LKPD 5.1</h2>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Petunjuk   LKPD 5.1</strong></p>
+<p>Lengkapi tabel berikut untuk setiap   jaringan (semua menggunakan subnet mask 255.255.255.0):</p>
+<ol type="a">
+<li>192.168.1.0   (b) 192.168.50.0   (c) 10.10.10.0   (d) 172.16.100.0</li>
+</ol>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Alamat Jaringan</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Host Pertama</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Host Terakhir</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Broadcast</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Jumlah Host</strong></p>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<table>
+<tbody>
+</tbody>
+</table>
+<h2 id="rangkuman-bab-5">Rangkuman Bab 5</h2>
+<p>•     Dalam satu jaringan /24 terdapat 256 alamat: 1 alamat jaringan, 254 alamat host, dan 1 alamat broadcast.</p>
+<p>•     Alamat jaringan adalah alamat pertama (host = 0) dan alamat broadcast adalah alamat terakhir (host = 255).</p>
+<p>•     Rentang alamat host adalah dari alamat jaringan + 1 sampai alamat broadcast − 1.</p>
+<p>•     Jumlah host yang dapat dipakai pada jaringan /24 adalah 254 perangkat.</p>
+<h2 id="latihan-soal-bab-5">Latihan Soal Bab 5</h2>
+<p>1.     Apa perbedaan alamat jaringan, alamat host, dan alamat broadcast?</p>
+<p>2.     Mengapa alamat jaringan tidak boleh diberikan kepada komputer?</p>
+<p>3.     Mengapa alamat broadcast tidak boleh digunakan sebagai alamat host biasa?</p>
+<p>4.     Tentukan alamat jaringan, rentang host, dan broadcast dari jaringan 192.168.25.0 dengan subnet mask 255.255.255.0!</p>
+<p>5.     Sebuah perangkat memiliki alamat 10.0.0.150 dengan subnet mask 255.255.255.0. Tentukan alamat jaringan, broadcast, dan rentang host-nya!</p>
+<p>6.     Berapa jumlah perangkat maksimal yang dapat ditampung jaringan dengan subnet mask 255.255.255.0? Tunjukkan cara perhitungannya!</p>
+<p>7.     Apakah alamat 192.168.1.255 boleh dipasang pada Chromebook? Jelaskan alasannya!</p>
+<h2 id="refleksi-pertemuan-5">Refleksi Pertemuan 5</h2>
+<p>•     Apa perbedaan alamat jaringan dan alamat host?</p>
+<p>•     Mengapa alamat jaringan tidak diberikan kepada komputer?</p>
+<p>•     Mengapa alamat broadcast tidak digunakan sebagai alamat host biasa?</p>
+
+<div class="footer-nav"><a href="tp4-bab4.html">← Bab 4</a><a href="tp4.html">Kembali ke TP 4</a><a href="tp4-bab6.html">Bab 6 →</a></div>
+</section></main></body></html>

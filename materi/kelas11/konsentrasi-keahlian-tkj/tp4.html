@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP 4 — IPv4 dan Subnet Mask</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{border-bottom:1px solid #e5e5e5;padding-bottom:18px;margin-bottom:22px}
+.header h1{margin:0;color:var(--gold);font-size:25px}
+.meta{color:#777;font-size:14px;margin-top:5px}
+h1,h2,h3,h4{color:#604800}
+h2{font-size:20px;margin-top:30px}
+h3{font-size:17px}
+.info{background:#fdf8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:6px;margin:18px 0}
+.exercise{background:#fafafa;border:1px solid #e5e5e5;border-radius:9px;padding:15px 17px;margin:10px 0}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{border:1px solid #d8d8d8;padding:11px 12px;vertical-align:top}
+th{background:#f5ecd0;color:#604800;text-align:left}
+td:first-child{font-weight:600}
+code,pre{font-family:Consolas,monospace}
+pre{overflow-x:auto;background:#f7f7f7;padding:14px;border-radius:8px}
+blockquote{border-left:4px solid #d9c98e;margin:18px 0;padding:8px 16px;background:#fffdf5}
+img{max-width:100%;height:auto}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:18px;border-top:1px solid #e5e5e5}
+.footer-nav a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+.lms-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lms-item{display:block;text-decoration:none;color:#333;background:#fafafa;border:1px solid #e5e5e5;border-radius:10px;padding:14px}
+.lms-item strong{display:block;color:#604800;margin-bottom:3px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}
+.header h1{font-size:21px}h2{font-size:18px}
+table{font-size:13px;min-width:650px}
+.info,.exercise{font-size:14px}
+.lms-list{grid-template-columns:1fr}
+}
+</style></head><body>
+    <div class="sidebar" id="sidebar">
+      <img src="../../asset/logo.png" class="logo" alt="Logo">
+      <h3>LMS TKJ</h3>
+      <div class="nav">
+        <a href="../../index.html"><i class="fas fa-home"></i> Beranda</a>
+        <a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a>
+        <a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a>
+        <a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a>
+        <a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a>
+        <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a>
+        <a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a>
+        <a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+      </div>
+    </div>
+    <button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+<main class="main"><section class="card">
+
+<div class="header">
+<h1><i class="fas fa-network-wired"></i> TUJUAN PEMBELAJARAN 4 — IPv4, Subnet Mask, Alamat Jaringan, dan Alamat Host</h1>
+<div class="meta">Fase F · Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027 · 18 JP · 6 Pertemuan</div>
+</div>
+<div class="info"><strong><i class="fas fa-circle-info"></i> TP 4</strong><p>Materi ini melanjutkan TP 1, TP 2, dan TP 3. Fokus pembelajaran mulai masuk ke pengalamatan jaringan, perhitungan IPv4, subnet mask, alamat jaringan, alamat host, dan broadcast.</p></div>
+<p><strong>BUKU AJAR SISWA</strong></p>
+<p>Teknik Jaringan Komputer dan Telekomunikasi</p>
+<p><strong>TUJUAN PEMBELAJARAN 4</strong></p>
+<p><strong>IPv4, SUBNET MASK, ALAMAT JARINGAN, DAN ALAMAT HOST</strong></p>
+<p><em>Disusun untuk Peserta Didik Kelas XI TJKT</em></p>
+<p><strong>SMK NEGERI 7 LUWU</strong></p>
+<p>Fase F / Kelas XI — Semester Ganjil — Tahun Pelajaran 2026/2027</p>
+<p>Elemen: Perencanaan dan Pengalamatan Jaringan</p>
+<h1 id="kata-pengantar">Kata Pengantar</h1>
+<p>Buku ajar ini merupakan lanjutan dari Buku Ajar Siswa TP 1, TP 2, dan TP 3 yang telah kalian pelajari. Pada TP 1 kalian mempelajari fungsi dan kebutuhan jaringan, TP 2 tentang perangkat jaringan, dan TP 3 tentang topologi jaringan. Kini pada TP 4, kalian akan mempelajari hal yang menjadi “jantung” dari komunikasi data, yaitu pengalamatan jaringan: bagaimana setiap perangkat dalam jaringan diberi alamat agar dapat saling mengenali dan berkirim data.</p>
+<p>Perlu kalian ketahui sejak awal, materi TP 4 ini sedikit berbeda sifatnya dari materi sebelumnya. Jika TP 1 sampai TP 3 lebih banyak berisi pemahaman konsep dan pengamatan, maka TP 4 banyak melibatkan perhitungan dan ketelitian angka. Kalian akan berlatih menguraikan alamat IP, menentukan bagian jaringan dan bagian host, serta menghitung alamat jaringan, rentang alamat host, dan alamat broadcast.</p>
+<p>Karena sifatnya berupa perhitungan, buku ini disusun dengan urutan yang sangat bertahap. Setiap konsep dijelaskan terlebih dahulu, lalu diberi contoh yang dikerjakan langkah demi langkah, kemudian diikuti latihan yang tingkat kesulitannya meningkat sedikit demi sedikit. Kunci jawaban di bagian akhir buku tidak hanya berisi hasil akhir, tetapi juga langkah pengerjaannya, agar kalian dapat memeriksa di bagian mana kalian keliru.</p>
+<p>Sebagaimana buku-buku sebelumnya, seluruh contoh tetap menggunakan kondisi nyata kelas kita: sebelas Chromebook yang terhubung ke hotspot telepon genggam guru. Dengan demikian, ketika kalian menghitung alamat IP, yang kalian bayangkan bukan jaringan milik orang lain, melainkan jaringan yang kalian gunakan sendiri setiap hari.</p>
+<p>Satu pesan penting: jangan terburu-buru. Kerjakan setiap latihan secara berurutan dan jangan melompat ke bab berikutnya sebelum bab sebelumnya benar-benar dipahami, karena setiap bab dalam buku ini menjadi dasar bagi bab sesudahnya. Selamat belajar dan selamat berlatih.</p>
+<p>Luwu, Tahun Pelajaran 2026/2027</p>
+<p>Guru Mata Pelajaran Teknik Komputer dan Jaringan</p>
+<h1 id="petunjuk-penggunaan-buku">Petunjuk Penggunaan Buku</h1>
+<p>Materi TP 4 banyak berisi perhitungan. Agar belajar kalian berhasil, ikuti petunjuk berikut dengan disiplin.</p>
+<p>1.     Bacalah setiap bab secara berurutan. Jangan melompat, karena Bab 4 dan Bab 5 tidak akan dapat dipahami tanpa menguasai Bab 2 dan Bab 3 terlebih dahulu.</p>
+<p>2.     Setiap kali menemukan contoh soal yang dikerjakan langkah demi langkah, tutuplah jawabannya terlebih dahulu, coba kerjakan sendiri, baru bandingkan.</p>
+<p>3.     Sediakan buku tulis khusus untuk latihan hitung. Tulis ulang langkah pengerjaannya, jangan hanya membaca.</p>
+<p>4.     Jika hasil hitungan kalian salah, jangan langsung melihat kunci jawaban. Periksa dulu langkah mana yang keliru.</p>
+<p>5.     Kerjakan seluruh latihan di setiap bab sebelum berpindah ke bab berikutnya.</p>
+<p>6.     Kunci jawaban di akhir buku memuat langkah pengerjaan, bukan hanya hasil akhir. Gunakan untuk memeriksa cara kerja kalian, bukan untuk menyalin.</p>
+<p>7.     Jika ada istilah yang belum dipahami, lihat Glosarium di bagian akhir buku.</p>
+<table>
+<tbody>
+</tbody>
+</table>
+<p><strong>Bekal   yang Harus Kalian Kuasai</strong></p>
+<p>Materi ini membutuhkan kemampuan   berhitung dasar: penjumlahan, pengurangan, perkalian, dan pembagian   sederhana.</p>
+<p>Kalian juga perlu ketelitian membaca   angka. Kesalahan satu angka saja pada alamat IP dapat membuat perangkat tidak   dapat terhubung ke jaringan.</p>
+<p>Tidak diperlukan kalkulator khusus.   Seluruh perhitungan dalam buku ini dapat dikerjakan secara manual di buku   tulis.</p>
+<h1 id="daftar-isi">Daftar Isi</h1>
+<p>Kata Pengantar…………………………………………………………………………………………………. 2</p>
+<p>Petunjuk Penggunaan Buku………………………………………………………………………………… 3</p>
+<p>BAB 1 — Mengenal IPv4 dan Fungsinya………………………………………………………………… 5</p>
+<p>BAB 2 — Struktur dan Penulisan IPv4…………………………………………………………………… 8</p>
+<p>BAB 3 — Mengenal Subnet Mask……………………………………………………………………….. 12</p>
+<p>BAB 4 — Menentukan Alamat Jaringan……………………………………………………………….. 16</p>
+<p>BAB 5 — Menentukan Alamat Host dan Broadcast……………………………………………….. 20</p>
+<p>BAB 6 — Analisis Jaringan, Presentasi, dan Refleksi………………………………………………. 24</p>
+<p>Evaluasi Akhir Tujuan Pembelajaran 4………………………………………………………………… 27</p>
+<p>Refleksi Akhir Peserta Didik………………………………………………………………………………. 28</p>
+<p>Glosarium………………………………………………………………………………………………………. 29</p>
+<p>Kunci Jawaban Latihan Soal………………………………………………………………………………. 30</p>
+<p>Daftar Pustaka………………………………………………………………………………………………… 33</p>
+
+<h2>Materi TP 4</h2>
+<div class="lms-list">
+<a class="lms-item" href="tp4-bab1.html"><strong>Bab 1 — Mengenal IPv4 dan Fungsinya</strong>Pertemuan 1 · 3 JP</a>
+<a class="lms-item" href="tp4-bab2.html"><strong>Bab 2 — Struktur dan Penulisan IPv4</strong>Pertemuan 2 · 3 JP</a>
+<a class="lms-item" href="tp4-bab3.html"><strong>Bab 3 — Mengenal Subnet Mask</strong>Pertemuan 3 · 3 JP</a>
+<a class="lms-item" href="tp4-bab4.html"><strong>Bab 4 — Menentukan Alamat Jaringan</strong>Pertemuan 4 · 3 JP</a>
+<a class="lms-item" href="tp4-bab5.html"><strong>Bab 5 — Menentukan Alamat Host dan Broadcast</strong>Pertemuan 5 · 3 JP</a>
+<a class="lms-item" href="tp4-bab6.html"><strong>Bab 6 — Analisis Jaringan, Presentasi, dan Refleksi</strong>Pertemuan 6 · 3 JP</a>
+<a class="lms-item" href="tp4-evaluasi.html"><strong>Evaluasi Akhir TP 4</strong>Kerjakan mandiri dan tuliskan langkah hitungan.</a>
+<a class="lms-item" href="tp4-refleksi.html"><strong>Refleksi Akhir Peserta Didik</strong>Refleksi pembelajaran TP 4.</a>
+<a class="lms-item" href="tp4-glosarium.html"><strong>Glosarium</strong>Istilah penting TP 4.</a>
+<a class="lms-item" href="tp4-kunci-jawaban.html"><strong>Kunci Jawaban</strong>Gunakan setelah mengerjakan latihan.</a>
+<a class="lms-item" href="tp4-daftar-pustaka.html"><strong>Daftar Pustaka</strong>Sumber pembelajaran TP 4.</a>
+</div>
+
+<div class="footer-nav"><span></span><a href="tp4.html">Kembali ke TP 4</a><a href="tp4-bab1.html">Bab 1 →</a></div>
+</section></main></body></html>
