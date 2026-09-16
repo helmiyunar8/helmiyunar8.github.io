@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 4 Bab 3 - Mengenal Subnet Mask</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}.nav i{width:22px}.main{margin-left:250px;padding:28px 18px}.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}.header h1{margin:0;color:#333;font-size:27px}.header h2{margin:7px 0;color:var(--gold);font-size:22px}.header p{margin:4px 0;color:#777}h3.section{color:var(--gold);border-left:4px solid var(--gold);padding-left:10px;margin-top:28px}h4{margin-bottom:6px;color:#444}.box{background:#fdf8e8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:6px;margin:16px 0}.video{margin:16px 0;padding:14px;background:#f7f7f7;border:1px solid #e5e5e5;border-radius:10px}.video strong{display:block;margin-bottom:8px}.video video{width:100%;max-height:520px;border-radius:8px;background:#000}ul,ol{padding-left:25px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border:1px solid #ddd;padding:10px;vertical-align:top}th{background:#fff9e8;text-align:left}.formula{text-align:center;font-size:21px;font-weight:bold;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}.ip{text-align:center;font-size:23px;font-weight:bold;letter-spacing:1px;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:10px;margin:10px 0}.exercise{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;margin:8px 0}.lpkd{background:#fafafa;border:1px solid #ddd;border-radius:10px;padding:16px;margin-top:16px}.blank td{height:48px}.footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}.header h1{font-size:22px}.header h2{font-size:19px}.ip{font-size:18px}.formula{font-size:18px}th,td{padding:8px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar"><img src="../../asset/logo.png" class="logo" alt="Logo"><h3>LMS TKJ</h3><div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a><a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a><a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a><a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a><a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a><a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a><a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div></div>
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
+<main class="main"><section class="card">
+<div class="header"><h1>BAB 3</h1><h2>Mengenal Subnet Mask</h2><p>Pertemuan 3 · Alokasi Waktu 3 JP</p><p>Tujuan Pembelajaran 4 · Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</p></div>
+<div class="box"><strong>Tujuan Pembelajaran Bab Ini:</strong><ul><li>Peserta didik mampu menjelaskan pengertian dan fungsi subnet mask.</li><li>Peserta didik mampu menentukan network portion dan host portion dari sebuah alamat IP.</li></ul></div>
+
+<h3 class="section">3.1 Masalah yang Diselesaikan oleh Subnet Mask</h3>
+<p>Pada Bab 2, kalian telah mempelajari bahwa alamat IPv4 terdiri dari empat oktet, misalnya 192.168.1.10. Namun ada satu hal penting yang belum terjawab: dari keempat oktet tersebut, bagian mana yang menunjukkan jaringannya, dan bagian mana yang menunjukkan perangkatnya?</p>
+<p>Ingat kembali perumpamaan alamat rumah pada Bab 1. Alamat lengkap sebuah rumah biasanya terdiri dari nama desa dan nomor rumah, misalnya "Desa Sejahtera nomor 10". Bagian "Desa Sejahtera" menunjukkan wilayahnya, sedangkan "nomor 10" menunjukkan rumah tertentu di dalam desa itu. Alamat IP juga bekerja seperti ini: ada bagian yang menunjukkan "desa" (jaringan) dan bagian yang menunjukkan "nomor rumah" (perangkat).</p>
+<p>Masalahnya, dengan hanya melihat angka 192.168.1.10, kita tidak dapat mengetahui sampai oktet ke berapa yang merupakan bagian jaringan. Di sinilah subnet mask berperan.</p>
+<div class="box"><strong>Inti Gagasan:</strong> Subnet mask menjadi petunjuk untuk mengetahui batas antara bagian jaringan dan bagian perangkat dari sebuah alamat IPv4.</div>
+
+<h3 class="section">3.2 Pengertian dan Fungsi Subnet Mask</h3>
+<p>Subnet mask adalah deretan angka yang berfungsi memisahkan atau menandai bagian mana dari sebuah alamat IP yang merupakan bagian jaringan (network portion), dan bagian mana yang merupakan bagian perangkat (host portion). Subnet mask ditulis dengan format yang sama seperti alamat IP, yaitu empat oktet yang dipisahkan titik. Subnet mask yang paling sering digunakan pada jaringan kecil, termasuk yang akan kita gunakan dalam seluruh latihan di buku ini, adalah:</p>
+<div class="formula">255.255.255.0</div>
+<p><strong>Cara membaca subnet mask sangat sederhana:</strong></p>
+<ul><li>Oktet yang bernilai 255 → menandai bagian NETWORK (bagian jaringan).</li><li>Oktet yang bernilai 0 → menandai bagian HOST (bagian perangkat).</li></ul>
+<div class="box"><strong>Gambar 3.1 — Subnet mask 255.255.255.0 memisahkan network portion dan host portion</strong><div class="ip">255 . 255 . 255 . 0<br><small>NETWORK &nbsp;&nbsp; NETWORK &nbsp;&nbsp; NETWORK &nbsp;&nbsp; HOST</small></div></div>
+<div class="video"><strong>Video ilustrasi subnet mask:</strong><video controls preload="metadata"><source src="subnet mask.mp4" type="video/mp4">Browser kalian tidak mendukung pemutaran video.</video></div>
+
+<h3 class="section">3.3 Network Portion dan Host Portion</h3>
+<p>Mari kita terapkan pada contoh nyata. Perhatikan pasangan alamat IP dan subnet mask berikut.</p>
+<div class="box"><strong>IP Address:</strong><div class="ip">192 . 168 . 1 . 10</div><strong>Subnet Mask:</strong><div class="ip">255 . 255 . 255 . 0</div><p style="text-align:center">&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ↑<br>NET &nbsp;&nbsp; NET &nbsp;&nbsp; NET &nbsp;&nbsp; HOST</p><p><strong>Network portion:</strong> 192.168.1</p><p><strong>Host portion:</strong> 10</p></div>
+<p>Dari hasil di atas, kita dapat menyimpulkan bahwa perangkat dengan alamat 192.168.1.10 berada di jaringan 192.168.1, dan nomor perangkatnya di dalam jaringan tersebut adalah 10.</p>
+<div class="box"><strong>Cara Cepat Mengingat</strong><p>Angka 255 pada subnet mask berarti: "oktet ini milik JARINGAN, tidak boleh diubah-ubah antar perangkat dalam satu jaringan."</p><p>Angka 0 pada subnet mask berarti: "oktet ini milik PERANGKAT, boleh berbeda-beda untuk setiap perangkat."</p><p>Karena itu, pada jaringan dengan subnet mask 255.255.255.0, seluruh perangkat harus memiliki tiga oktet pertama yang <strong>SAMA</strong>, dan oktet keempat yang <strong>BERBEDA</strong>.</p></div>
+
+<h3 class="section">3.4 Contoh Terbimbing</h3>
+<p>Berikut beberapa contoh penentuan network portion dan host portion. Pelajari polanya dengan saksama.</p>
+<table><thead><tr><th>No</th><th>Alamat IP</th><th>Subnet Mask</th><th>Network Portion</th><th>Host Portion</th></tr></thead><tbody>
+<tr><td>1</td><td>192.168.1.10</td><td>255.255.255.0</td><td>192.168.1</td><td>10</td></tr>
+<tr><td>2</td><td>192.168.5.20</td><td>255.255.255.0</td><td>192.168.5</td><td>20</td></tr>
+<tr><td>3</td><td>10.10.1.15</td><td>255.255.255.0</td><td>10.10.1</td><td>15</td></tr>
+<tr><td>4</td><td>172.16.2.30</td><td>255.255.255.0</td><td>172.16.2</td><td>30</td></tr>
+<tr><td>5</td><td>192.168.1.200</td><td>255.255.255.0</td><td>192.168.1</td><td>200</td></tr>
+</tbody></table>
+<p>Perhatikan contoh nomor 1 dan nomor 5. Keduanya memiliki network portion yang sama, yaitu 192.168.1, meskipun host portion-nya berbeda (10 dan 200). Artinya, kedua perangkat tersebut berada dalam satu jaringan yang sama dan dapat saling berkomunikasi secara langsung.</p>
+<p>Sebaliknya, bandingkan contoh nomor 1 dan nomor 2. Network portion keduanya berbeda (192.168.1 dan 192.168.5), sehingga kedua perangkat berada di jaringan yang berbeda dan tidak dapat berkomunikasi secara langsung tanpa bantuan router.</p>
+
+<h3 class="section">3.5 Penulisan Singkat Subnet Mask (Notasi Garis Miring)</h3>
+<p>Selain ditulis lengkap sebagai 255.255.255.0, subnet mask juga sering ditulis secara singkat menggunakan tanda garis miring diikuti sebuah angka, misalnya /24. Angka tersebut menunjukkan jumlah bit yang bernilai 255 (bagian network).</p>
+<div class="box"><div class="ip">255 . 255 . 255 . 0</div><p style="text-align:center">↓ &nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp; ↓ &nbsp;&nbsp;&nbsp; ↓<br>8 bit &nbsp;&nbsp; 8 bit &nbsp;&nbsp; 8 bit &nbsp;&nbsp; 0 bit</p><div class="formula">8 + 8 + 8 = 24 bit untuk bagian network</div></div>
+<p>Maka 255.255.255.0 ditulis singkat sebagai /24.</p>
+<div class="formula">192.168.1.10/24 = 192.168.1.10 + subnet mask 255.255.255.0</div>
+<p>Jadi, penulisan 192.168.1.10/24 memiliki arti yang sama dengan menulis alamat IP 192.168.1.10 dengan subnet mask 255.255.255.0. Penulisan singkat ini akan sering kalian temui, termasuk pada Bab 5 nanti.</p>
+
+<h3 class="section">3.6 Kegiatan Peserta Didik — LKPD 3.1</h3>
+<div class="lpkd"><strong>Petunjuk LKPD 3.1</strong><p>Tentukan network portion dan host portion dari setiap alamat berikut, semuanya menggunakan subnet mask 255.255.255.0:</p><p>(a) 192.168.2.45 &nbsp;&nbsp; (b) 10.10.10.99 &nbsp;&nbsp; (c) 172.16.8.1 &nbsp;&nbsp; (d) 192.168.100.254 &nbsp;&nbsp; (e) 10.0.0.7</p></div>
+<table class="blank"><thead><tr><th>Alamat IP</th><th>Subnet Mask</th><th>Network Portion</th><th>Host Portion</th></tr></thead><tbody>
+<tr><td>192.168.2.45</td><td>255.255.255.0</td><td></td><td></td></tr>
+<tr><td>10.10.10.99</td><td>255.255.255.0</td><td></td><td></td></tr>
+<tr><td>172.16.8.1</td><td>255.255.255.0</td><td></td><td></td></tr>
+<tr><td>192.168.100.254</td><td>255.255.255.0</td><td></td><td></td></tr>
+<tr><td>10.0.0.7</td><td>255.255.255.0</td><td></td><td></td></tr>
+</tbody></table>
+
+<h3 class="section">Rangkuman Bab 3</h3><ul><li>Subnet mask berfungsi memisahkan bagian jaringan (network portion) dan bagian perangkat (host portion) pada sebuah alamat IP.</li><li>Pada subnet mask, oktet bernilai 255 menandai bagian network, dan oktet bernilai 0 menandai bagian host.</li><li>Dengan subnet mask 255.255.255.0, tiga oktet pertama adalah network portion dan oktet keempat adalah host portion.</li><li>Subnet mask 255.255.255.0 dapat ditulis singkat sebagai /24.</li></ul>
+
+<h3 class="section">Latihan Soal Bab 3</h3>
+<div class="exercise">1. Jelaskan pengertian dan fungsi subnet mask!</div>
+<div class="exercise">2. Apa perbedaan network portion dan host portion?</div>
+<div class="exercise">3. Tentukan network portion dan host portion dari alamat 192.168.7.88 dengan subnet mask 255.255.255.0!</div>
+<div class="exercise">4. Apakah perangkat dengan alamat 192.168.1.20 dan 192.168.1.150 berada dalam jaringan yang sama? Jelaskan alasannya!</div>
+<div class="exercise">5. Apakah perangkat dengan alamat 192.168.1.20 dan 192.168.9.20 berada dalam jaringan yang sama? Jelaskan alasannya!</div>
+<div class="exercise">6. Apa arti penulisan 192.168.10.5/24?</div>
+
+<h3 class="section">Refleksi Pertemuan 3</h3><div class="box"><ul><li>Apa fungsi subnet mask menurut pemahaman saya?</li><li>Apa perbedaan network portion dan host portion?</li><li>Mengapa subnet mask diperlukan dalam sebuah jaringan?</li></ul></div>
+<div class="footer"><a href="tp4-bab2.html">← BAB 2</a><a href="tp4.html">Kembali ke TP 4</a></div>
+</section></main>
+</body></html>
