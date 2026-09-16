@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP5 — Bab 6 | Proyek Pembagian Jaringan Sekolah</title>
+<style>
+:root{
+  --gold:#b8860b;
+  --gold2:#d6aa35;
+  --bg:#f4f4f4;
+  --text:#333;
+  --muted:#666;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{
+ position:fixed;left:0;top:0;bottom:0;width:250px;background:#fff;border-right:1px solid #ddd;
+ z-index:1000;overflow-y:auto;padding:18px 14px
+}
+.logo{display:block;width:82px;height:82px;object-fit:contain;margin:4px auto 8px}
+.school{text-align:center;font-weight:700;color:var(--gold);font-size:14px;line-height:1.35}
+.subschool{text-align:center;color:#666;font-size:12px;margin:3px 0 18px}
+.menu-title{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;margin:16px 8px 7px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:9px 10px;border-radius:8px;font-size:13px;margin:2px 0}
+.sidebar a:hover,.sidebar a.active{background:#f7eed1;color:#8a6500;font-weight:700}
+.main{margin-left:250px;min-height:100vh;padding:26px}
+.container{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:28px}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px;color:#222}
+h2{font-size:22px;color:#7a5700;border-bottom:2px solid #ead9a8;padding-bottom:8px;margin-top:34px}
+h3{font-size:18px;color:#8a6500;margin-top:26px}
+.meta{color:#777;font-size:13px;margin-bottom:22px}
+.intro{background:#fff9e9;border-left:5px solid var(--gold);padding:16px 18px;border-radius:8px;margin:18px 0 24px}
+.note{background:#f6f6f6;border-left:4px solid #aaa;padding:12px 15px;border-radius:7px;margin:15px 0}
+table{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:14px}
+th,td{border:1px solid #d9d9d9;padding:10px 11px;text-align:left;vertical-align:top}
+th{background:#f5e9c4;color:#654900}
+tr:nth-child(even) td{background:#fcfcfc}
+.acuan th{background:#f1df9f;text-align:center}
+.acuan td{text-align:center}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.flow div{background:#faf6e8;border:1px solid #e4d6a9;border-radius:9px;padding:13px;text-align:center}
+.flow b{display:block;color:#7a5700;margin-bottom:4px}
+.example{border:1px solid #ddd;border-radius:10px;padding:17px 18px;margin:18px 0;background:#fff}
+.calc{font-family:"Courier New",monospace;background:#f7f7f7;padding:12px;border-radius:7px;overflow-x:auto;white-space:pre-wrap}
+.network-card{border:1px solid #ddd;border-radius:10px;margin:18px 0;overflow:hidden}
+.network-head{background:#f4e8c5;padding:12px 15px;font-weight:700;color:#654900}
+.network-body{padding:15px}
+.network-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.network-box{background:#fafafa;border:1px solid #ddd;border-radius:8px;padding:11px}
+.network-box b{display:block;color:#765500;margin-bottom:3px}
+.project{background:#fffdf5;border:2px solid #e2c96d;border-radius:10px;padding:18px;margin:18px 0}
+ol,ul{padding-left:25px}
+li{margin:6px 0}
+.lined td{height:48px}
+.small-table{font-size:13px}
+.footer-nav{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:20px;border-top:1px solid #ddd}
+.footer-nav a{text-decoration:none;background:#f5e9c4;color:#6b4e00;padding:10px 14px;border-radius:8px;font-weight:700;font-size:13px}
+.mobile-top{display:none}
+.hamb{display:none}
+.overlay{display:none}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:.25s}
+ .sidebar.open{transform:translateX(0)}
+ .main{margin-left:0;padding:12px}
+ .container{padding:18px 14px;border-radius:10px}
+ h1{font-size:22px}
+ h2{font-size:19px}
+ h3{font-size:17px}
+ .mobile-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+ .hamb{display:block;border:0;background:#fff;border-radius:8px;padding:9px 12px;box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:20px;cursor:pointer}
+ .mobile-title{font-weight:700;color:#765500;font-size:14px}
+ .overlay{position:fixed;inset:0;background:rgba(0,0,0,.28);z-index:900}
+ .overlay.show{display:block}
+ table{display:block;overflow-x:auto;white-space:nowrap}
+ th,td{white-space:normal;min-width:100px}
+ .acuan th,.acuan td{min-width:105px}
+ .network-grid{grid-template-columns:1fr}
+ .flow{grid-template-columns:1fr}
+ .footer-nav{position:sticky;bottom:0;background:rgba(255,255,255,.96);padding:10px 0;border-top:1px solid #ddd;z-index:20}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+ <img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+ <div class="school">SMKN 7 LUWU</div>
+ <div class="subschool">Kelas XI TJKT · TP 5</div>
+
+ <div class="menu-title">Navigasi TP5</div>
+ <a href="tp5.html">TP5 — Beranda</a>
+ <a href="tp5-bab1.html">Bab 1 — Acuan Subnetting</a>
+ <a href="tp5-bab2.html">Bab 2 — Prefix & Subnet Mask</a>
+ <a href="tp5-bab3.html">Bab 3 — Jumlah Host & Subnet</a>
+ <a href="tp5-bab4.html">Bab 4 — Block Size</a>
+ <a href="tp5-bab5.html">Bab 5 — Memilih Subnet</a>
+ <a href="tp5-bab6.html" class="active">Bab 6 — Proyek Pembagian Jaringan</a>
+
+ <div class="menu-title">LMS</div>
+ <a href="../../index.html">Beranda</a>
+ <a href="../index.html">Materi</a>
+ <a href="../../menu-utama-TKJ/tryout.html">Tryout</a>
+ <a href="../../lkpd/index.html">LKPD</a>
+ <a href="../../absen/index.html">Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">Ranking</a>
+ <a href="../../cbt/index.html">CBT Ujian</a>
+ <a href="../../arsip.html">ARSIP</a>
+</aside>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<main class="main">
+ <div class="mobile-top">
+  <button class="hamb" onclick="openMenu()" aria-label="Buka menu">☰</button>
+  <div class="mobile-title">TP5 · Bab 6 — Proyek Pembagian Jaringan</div>
+ </div>
+
+ <section class="container">
+  <h1>TUJUAN PEMBELAJARAN 5 — SUBNETTING</h1>
+  <div class="meta">BAB 6 — Proyek Pembagian Jaringan Sekolah · Kelas XI TJKT · SMKN 7 Luwu · Fase F · Semester Ganjil 2026/2027</div>
+
+  <div class="intro">
+   <strong>Tabel Acuan Subnetting</strong><br>
+   <b>Halaman ini adalah halaman terpenting dalam buku ini.</b> Salinlah tabel di bawah ini ke buku tulis atau selembar kertas terpisah, karena kalian akan menggunakannya terus-menerus mulai dari Bab 2 sampai Bab 6, termasuk saat mengerjakan proyek akhir.
+  </div>
+
+  <table class="acuan">
+   <thead><tr><th>Prefix</th><th>Subnet Mask</th><th>Bit Host</th><th>Block Size</th><th>Jumlah Alamat</th><th>Host Terpakai</th></tr></thead>
+   <tbody>
+    <tr><td>/24</td><td>255.255.255.0</td><td>8</td><td>256</td><td>256</td><td>254</td></tr>
+    <tr><td>/25</td><td>255.255.255.128</td><td>7</td><td>128</td><td>128</td><td>126</td></tr>
+    <tr><td>/26</td><td>255.255.255.192</td><td>6</td><td>64</td><td>64</td><td>62</td></tr>
+    <tr><td>/27</td><td>255.255.255.224</td><td>5</td><td>32</td><td>32</td><td>30</td></tr>
+    <tr><td>/28</td><td>255.255.255.240</td><td>4</td><td>16</td><td>16</td><td>14</td></tr>
+    <tr><td>/29</td><td>255.255.255.248</td><td>3</td><td>8</td><td>8</td><td>6</td></tr>
+    <tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>4</td><td>4</td><td>2</td></tr>
+   </tbody>
+  </table>
+
+  <h3>Cara Membaca Tabel Acuan</h3>
+  <table>
+   <tbody>
+    <tr><th>Prefix</th><td>penulisan singkat subnet mask, misalnya /26.</td></tr>
+    <tr><th>Subnet Mask</th><td>bentuk lengkap prefix dalam empat oktet.</td></tr>
+    <tr><th>Bit Host</th><td>banyaknya bit yang tersisa untuk alamat perangkat.</td></tr>
+    <tr><th>Block Size</th><td>jarak lompatan antar alamat jaringan; dihitung dari 256 dikurangi oktet terakhir subnet mask.</td></tr>
+    <tr><th>Jumlah Alamat</th><td>total alamat dalam satu subnet (termasuk alamat jaringan dan broadcast).</td></tr>
+    <tr><th>Host Terpakai</th><td>jumlah alamat yang benar-benar boleh dipasang pada perangkat (jumlah alamat dikurangi 2).</td></tr>
+   </tbody>
+  </table>
+
+  <div class="note">
+   <b>Perhatikan pola menarik pada tabel tersebut:</b> setiap kali angka prefix bertambah satu, jumlah host yang tersedia menjadi setengahnya. Dari /24 (254 host) menjadi /25 (126 host), lalu /26 (62 host), dan seterusnya. Pola ini dapat membantu kalian mengingat tabel tanpa harus menghafal seluruh angkanya.
+  </div>
+
+  <h2>BAB 6 — Proyek Pembagian Jaringan Sekolah</h2>
+  <div class="meta"><i>Pertemuan 6 · Alokasi Waktu 3 JP</i></div>
+
+  <h3>Tujuan Pembelajaran Bab Ini</h3>
+  <ul>
+   <li>Peserta didik mampu menerapkan seluruh langkah subnetting pada kasus jaringan sekolah.</li>
+   <li>Peserta didik mampu menyajikan dan menjelaskan hasil rancangan pembagian jaringan.</li>
+  </ul>
+
+  <h2>6.1 Mengingat Kembali Seluruh Langkah</h2>
+  <p>Sebelum mengerjakan proyek, mari kita rangkum seluruh perjalanan belajar TP 5 dalam satu alur kerja yang utuh.</p>
+
+  <table>
+   <thead><tr><th>Tahap</th><th>Yang Dikerjakan</th><th>Rumus / Acuan</th></tr></thead>
+   <tbody>
+    <tr><td>1</td><td>Mendata kebutuhan host setiap ruangan</td><td>Dari studi kasus</td></tr>
+    <tr><td>2</td><td>Memilih prefix yang sesuai</td><td>Paling kecil namun mencukupi</td></tr>
+    <tr><td>3</td><td>Menentukan subnet mask</td><td>Tabel acuan</td></tr>
+    <tr><td>4</td><td>Menghitung jumlah host</td><td>2^h − 2</td></tr>
+    <tr><td>5</td><td>Menghitung block size</td><td>256 − oktet terakhir mask</td></tr>
+    <tr><td>6</td><td>Menentukan alamat jaringan</td><td>Kelipatan block size mulai dari 0</td></tr>
+    <tr><td>7</td><td>Menentukan broadcast</td><td>Satu angka sebelum jaringan berikutnya</td></tr>
+    <tr><td>8</td><td>Menentukan rentang host</td><td>Jaringan + 1 s.d. broadcast − 1</td></tr>
+    <tr><td>9</td><td>Memeriksa kembali hasil</td><td>Selisih, kesinambungan, jumlah host</td></tr>
+   </tbody>
+  </table>
+
+  <h2>6.2 Contoh Rancangan Lengkap</h2>
+  <p>Berikut contoh rancangan pembagian jaringan sekolah dengan jaringan awal <b>192.168.10.0/24</b> untuk tiga kelompok pengguna.</p>
+
+  <div class="network-card">
+   <div class="network-head">Gambar 6.1 — Contoh rancangan pembagian jaringan SMK Negeri 7 Luwu</div>
+   <div class="network-body">
+    <div class="network-grid">
+     <div class="network-box"><b>Jaringan Awal</b>192.168.10.0/24</div>
+     <div class="network-box"><b>Ruang Guru</b>10 host → /28</div>
+     <div class="network-box"><b>Tata Usaha</b>20 host → /27</div>
+     <div class="network-box"><b>Ruang Kelas</b>25 host → /27</div>
+     <div class="network-box"><b>Subnet Ruang Guru</b>192.168.10.0/28</div>
+     <div class="network-box"><b>Subnet Tata Usaha</b>192.168.10.32/27</div>
+     <div class="network-box"><b>Subnet Ruang Kelas</b>192.168.10.64/27</div>
+     <div class="network-box"><b>Rentang Guru</b>.1 – .14</div>
+     <div class="network-box"><b>Rentang Tata Usaha</b>.33 – .62</div>
+     <div class="network-box"><b>Rentang Kelas</b>.65 – .94</div>
+    </div>
+   </div>
+  </div>
+
+  <p><i>Gambar 6.1 Contoh rancangan pembagian jaringan SMK Negeri 7 Luwu</i></p>
+
+  <h3>Langkah pengerjaannya:</h3>
+
+  <div class="example">
+   <b>RUANG GURU — kebutuhan 10 host</b>
+   <div class="calc">Prefix dipilih : /28  (14 host, cukup untuk 10)
+Subnet mask    : 255.255.255.240
+Block size     : 256 − 240 = 16
+Alamat jaringan: 192.168.10.0
+Host           : 192.168.10.1 s.d. 192.168.10.14
+Broadcast      : 192.168.10.15</div>
+  </div>
+
+  <div class="example">
+   <b>TATA USAHA — kebutuhan 20 host</b>
+   <div class="calc">Prefix dipilih : /27  (30 host, cukup untuk 20)
+Subnet mask    : 255.255.255.224
+Block size     : 256 − 224 = 32
+Alamat jaringan: 192.168.10.32
+Host           : 192.168.10.33 s.d. 192.168.10.62
+Broadcast      : 192.168.10.63</div>
+  </div>
+
+  <div class="example">
+   <b>RUANG KELAS — kebutuhan 25 host</b>
+   <div class="calc">Prefix dipilih : /27  (30 host, cukup untuk 25)
+Subnet mask    : 255.255.255.224
+Block size     : 256 − 224 = 32
+Alamat jaringan: 192.168.10.64
+Host           : 192.168.10.65 s.d. 192.168.10.94
+Broadcast      : 192.168.10.95</div>
+  </div>
+
+  <h3>Hasil akhir dalam bentuk tabel:</h3>
+  <table class="small-table">
+   <thead><tr><th>Ruangan</th><th>Kebutuhan Host</th><th>Prefix</th><th>Alamat Jaringan</th><th>Rentang Host</th><th>Broadcast</th></tr></thead>
+   <tbody>
+    <tr><td>Ruang Guru</td><td>10</td><td>/28</td><td>192.168.10.0</td><td>192.168.10.1 – .14</td><td>192.168.10.15</td></tr>
+    <tr><td>Tata Usaha</td><td>20</td><td>/27</td><td>192.168.10.32</td><td>192.168.10.33 – .62</td><td>192.168.10.63</td></tr>
+    <tr><td>Ruang Kelas</td><td>25</td><td>/27</td><td>192.168.10.64</td><td>192.168.10.65 – .94</td><td>192.168.10.95</td></tr>
+   </tbody>
+  </table>
+
+  <h3>Mengapa Ruang Guru Ditempatkan Paling Awal?</h3>
+  <p>Ruang guru menggunakan /28 dengan block size 16, sehingga hanya memakai alamat 0 sampai 15.</p>
+  <p>Tata usaha kemudian dimulai dari alamat 32, bukan 16, karena subnet /27 harus dimulai dari kelipatan 32 (0, 32, 64, 96, ...).</p>
+  <p>Akibatnya alamat 16 sampai 31 tidak terpakai. Hal ini wajar dan masih dapat digunakan nanti apabila ada ruangan baru yang membutuhkan subnet kecil.</p>
+  <p>Penempatan subnet besar lebih dahulu, lalu subnet kecil setelahnya, akan mengurangi alamat yang terbuang. Cara ini dipelajari lebih lanjut pada materi VLSM di tingkat lanjut.</p>
+
+  <h2>6.3 Tugas Proyek Kelompok</h2>
+
+  <div class="project">
+   <h3 style="margin-top:0">Instruksi Proyek Akhir TP 5</h3>
+   <p><b>Jaringan awal:</b> 192.168.10.0/24</p>
+   <p><b>Kebutuhan:</b> Ruang Guru 10 host · Tata Usaha 20 host · Ruang Kelas 25 host</p>
+   <p>Untuk setiap ruangan, tentukan: prefix, subnet mask, jumlah host tersedia, block size, alamat jaringan, host pertama, host terakhir, dan alamat broadcast.</p>
+   <p>Tuliskan pula alasan pemilihan prefix setiap ruangan.</p>
+   <p>Sajikan hasilnya dalam bentuk tabel, periksa kembali, lalu siapkan presentasi kelompok.</p>
+  </div>
+
+  <table class="lined small-table">
+   <thead><tr><th>Ruangan</th><th>Prefix</th><th>Subnet Mask</th><th>Alamat Jaringan</th><th>Host Pertama</th><th>Host Terakhir</th><th>Broadcast</th></tr></thead>
+   <tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+   </tbody>
+  </table>
+
+  <p><b>Tuliskan alasan pemilihan prefix untuk setiap ruangan pada tabel berikut:</b></p>
+  <table class="lined">
+   <thead><tr><th>Ruangan</th><th>Kebutuhan Host</th><th>Host Tersedia</th><th>Alasan Pemilihan Prefix</th></tr></thead>
+   <tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+   </tbody>
+  </table>
+
+  <h2>6.4 Panduan Presentasi</h2>
+  <ol>
+   <li>Tampilkan tabel hasil pembagian jaringan kelompok kalian.</li>
+   <li>Jelaskan alasan pemilihan prefix untuk setiap ruangan.</li>
+   <li>Tunjukkan cara menghitung block size pada salah satu ruangan.</li>
+   <li>Jelaskan cara menentukan alamat broadcast dan rentang host.</li>
+   <li>Jelaskan bagaimana kelompok kalian memeriksa kebenaran hasil perhitungan.</li>
+   <li>Jawablah pertanyaan atau tanggapan dari kelompok lain.</li>
+  </ol>
+
+  <h2>6.5 Rubrik Penilaian Keterampilan</h2>
+  <table class="small-table">
+   <thead><tr><th>Aspek</th><th>Skor 1</th><th>Skor 2</th><th>Skor 3</th><th>Skor 4</th></tr></thead>
+   <tbody>
+    <tr><td>Menentukan prefix</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+    <tr><td>Menentukan subnet mask</td><td>Belum mampu</td><td>Banyak bantuan</td><td>Sedikit bantuan</td><td>Mandiri dan benar</td></tr>
+    <tr><td>Menghitung block size</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+    <tr><td>Alamat jaringan &amp; broadcast</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+    <tr><td>Menyajikan hasil</td><td>Tidak runtut</td><td>Kurang runtut</td><td>Cukup runtut</td><td>Sangat runtut dan jelas</td></tr>
+   </tbody>
+  </table>
+
+  <h2>6.6 Rangkuman Akhir Tujuan Pembelajaran 5</h2>
+  <ul>
+   <li>Subnetting adalah proses membagi satu jaringan menjadi beberapa subjaringan yang lebih kecil sesuai kebutuhan.</li>
+   <li>Prefix menunjukkan jumlah bit network; bit host dihitung dengan 32 dikurangi angka prefix.</li>
+   <li>Jumlah host dihitung dengan 2^h − 2, dan jumlah subnet dihitung dengan 2^n.</li>
+   <li>Block size dihitung dengan 256 dikurangi oktet terakhir subnet mask, dan digunakan untuk menentukan seluruh alamat jaringan.</li>
+   <li>Pemilihan prefix mengikuti prinsip: paling kecil namun masih mencukupi kebutuhan host.</li>
+   <li>Setiap hasil perhitungan harus diperiksa melalui selisih, kesinambungan, dan jumlah host.</li>
+  </ul>
+
+  <div class="footer-nav">
+   <a href="tp5-bab5.html">← Bab 5 — Memilih Subnet</a>
+   <a href="tp5.html">TP5 — Beranda</a>
+  </div>
+ </section>
+</main>
+
+<script>
+function openMenu(){
+ document.getElementById('sidebar').classList.add('open');
+ document.getElementById('overlay').classList.add('show');
+}
+function closeMenu(){
+ document.getElementById('sidebar').classList.remove('open');
+ document.getElementById('overlay').classList.remove('show');
+}
+document.querySelectorAll('.sidebar a').forEach(function(a){
+ a.addEventListener('click',closeMenu);
+});
+</script>
+</body>
+</html>
