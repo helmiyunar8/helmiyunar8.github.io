@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosarium TP 4 — Kelas XI TJKT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--green:#A5D6A7;--green-dark:#087f5b;--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#f0fff4;color:var(--green-dark)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--green);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--green-dark);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.intro{background:#f0fff4;border-left:5px solid var(--green);padding:16px 18px;border-radius:10px;margin-bottom:22px}
+.illustration{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;background:#f8fffa;border:1px solid #d7efda;border-radius:12px;padding:18px;margin:22px 0}
+.device{width:125px;text-align:center;color:var(--green-dark);font-size:13px}
+.device i{font-size:48px;margin-bottom:7px}
+.ip-box{font-family:monospace;font-weight:bold;font-size:18px;letter-spacing:1px;color:#176b4d;background:#fff;border:2px solid var(--green);border-radius:10px;padding:12px 16px;text-align:center}
+.arrow{font-size:24px;color:#6a9f72}
+.section-title{color:var(--green-dark);font-size:20px;margin:26px 0 12px;border-left:5px solid var(--green);padding-left:10px}
+table{width:100%;border-collapse:collapse;margin:12px 0 24px}
+th{background:var(--green);color:#173d2b;text-align:left;padding:12px}
+td{padding:12px;border:1px solid #dfe9e0;vertical-align:top}
+td:first-child{font-weight:bold;width:25%;color:#176b4d}
+tr:nth-child(even) td{background:#fbfffc}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 22px}
+.quick div{border:1px solid #d7efda;border-radius:10px;padding:14px;background:#f8fffa}
+.quick strong{display:block;color:var(--green-dark);margin-bottom:5px}
+.note{background:#f0fff4;border-left:5px solid var(--green);padding:15px 17px;border-radius:9px;margin-top:22px}
+.hamburger{display:none;position:fixed;top:10px;left:10px;z-index:30;border:0;background:#fff;color:var(--gold);font-size:22px;padding:8px 11px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
+@media(max-width:768px){
+ .sidebar{display:none;width:230px}.sidebar.show{display:block}.hamburger{display:block}
+ .main{margin-left:0;padding:58px 10px 18px}.card{padding:14px;border-radius:10px}
+ .header h1{font-size:21px}.header h2{font-size:18px}.header p{font-size:13px}
+ .intro,.note{font-size:13px}.illustration{gap:10px;padding:13px}
+ .device{width:90px;font-size:11px}.device i{font-size:35px}.ip-box{font-size:13px;padding:9px}
+ .arrow{font-size:18px} .section-title{font-size:18px}
+ table{font-size:12px;display:block;overflow-x:auto;white-space:normal}
+ th,td{padding:9px;min-width:150px}
+ td:first-child{min-width:120px}
+ .quick{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+
+<main class="main">
+<section class="card">
+<header class="header">
+<h1>GLOSARIUM</h1>
+<h2>Tujuan Pembelajaran 4</h2>
+<p>Kelas XI TJKT · Pertemuan 6</p>
+</header>
+
+<div class="intro">
+<strong>Glosarium TP 4</strong><br>
+Glosarium membantu kalian memahami istilah-istilah penting yang digunakan selama mempelajari <strong>IPv4, subnet mask, network address, host address, dan broadcast address</strong>. Gunakan halaman ini sebagai kamus kecil ketika mengerjakan LKPD, latihan soal, maupun praktik jaringan.
+</div>
+
+<div class="illustration" aria-label="Ilustrasi hubungan perangkat, IPv4, dan subnet mask">
+<div class="device"><i class="fa-solid fa-router"></i><br><strong>Router</strong><br>Pemberi alamat jaringan</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="ip-box">192.168.1.25</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="device"><i class="fa-solid fa-laptop"></i><br><strong>Perangkat</strong><br>Host dalam jaringan</div>
+</div>
+
+<h3 class="section-title">Peta Konsep Istilah IPv4</h3>
+<div class="quick">
+<div><strong>IPv4</strong>32 bit · 4 oktet · nilai setiap oktet 0–255</div>
+<div><strong>Subnet Mask</strong>Memisahkan network portion dan host portion</div>
+<div><strong>Alamat Jaringan</strong>Bagian host bernilai 0</div>
+</div>
+
+<table>
+<thead><tr><th>Istilah</th><th>Pengertian</th></tr></thead>
+<tbody>
+<tr><td>IPv4</td><td>Internet Protocol version 4; sistem pengalamatan jaringan sepanjang 32 bit</td></tr>
+<tr><td>Alamat IP</td><td>Alamat unik yang dimiliki setiap perangkat dalam sebuah jaringan</td></tr>
+<tr><td>Bit</td><td>Satuan terkecil data dalam komputer, bernilai 0 atau 1</td></tr>
+<tr><td>Oktet</td><td>Kelompok 8 bit; alamat IPv4 terdiri dari empat oktet</td></tr>
+<tr><td>Biner</td><td>Sistem bilangan yang hanya menggunakan angka 0 dan 1</td></tr>
+<tr><td>Desimal</td><td>Sistem bilangan yang menggunakan angka 0 sampai 9</td></tr>
+<tr><td>Subnet Mask</td><td>Deretan angka yang memisahkan bagian network dan bagian host pada alamat IP</td></tr>
+<tr><td>Network Portion</td><td>Bagian alamat IP yang menunjukkan jaringan; ditandai mask 255</td></tr>
+<tr><td>Host Portion</td><td>Bagian alamat IP yang menunjukkan perangkat; ditandai mask 0</td></tr>
+<tr><td>Alamat Jaringan</td><td>Alamat yang mewakili keseluruhan jaringan; bagian host bernilai 0</td></tr>
+<tr><td>Alamat Host</td><td>Alamat yang boleh dipasang pada perangkat dalam jaringan</td></tr>
+<tr><td>Alamat Broadcast</td><td>Alamat untuk mengirim data ke seluruh perangkat sekaligus; host bernilai maksimum</td></tr>
+<tr><td>Notasi /24</td><td>Penulisan singkat subnet mask 255.255.255.0</td></tr>
+<tr><td>IP Conflict</td><td>Keadaan ketika dua perangkat memiliki alamat IP yang sama dalam satu jaringan</td></tr>
+<tr><td>DHCP</td><td>Fitur pada router yang memberikan alamat IP secara otomatis kepada perangkat</td></tr>
+</tbody>
+</table>
+
+<div class="illustration" aria-label="Ilustrasi network host broadcast">
+<div class="device"><i class="fa-solid fa-network-wired"></i><br><strong>Network</strong><br>192.168.1.0</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="device"><i class="fa-solid fa-computer"></i><br><strong>Host</strong><br>192.168.1.1–254</div>
+<div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="device"><i class="fa-solid fa-tower-broadcast"></i><br><strong>Broadcast</strong><br>192.168.1.255</div>
+</div>
+
+<div class="note">
+<strong>Ingat:</strong> Pada jaringan <strong>/24</strong>, alamat jaringan adalah <strong>192.168.1.0</strong>, alamat host yang dapat digunakan adalah <strong>192.168.1.1–192.168.1.254</strong>, dan alamat broadcast adalah <strong>192.168.1.255</strong>.
+</div>
+
+</section>
+</main>
+
+<script>
+function toggleMenu(){
+ document.getElementById('sidebar').classList.toggle('show');
+}
+</script>
+</body>
+</html>
