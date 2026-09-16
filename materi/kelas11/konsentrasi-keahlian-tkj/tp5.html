@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP5 — Subnetting dan Pembagian Jaringan Sederhana | SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold);font-size:17px}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.intro{background:#fff9e8;border-left:4px solid var(--gold);padding:15px 17px;border-radius:8px;margin-bottom:22px}
+.section-title{font-size:19px;color:var(--gold);margin:25px 0 13px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.item{display:block;text-decoration:none;color:#333;background:#fafafa;border:1px solid #e2e2e2;border-radius:10px;padding:16px;transition:.2s}
+.item:hover{background:#fff9e8;border-color:#d8b24a;transform:translateY(-1px)}
+.item .icon{width:40px;height:40px;border-radius:9px;background:#fff9e8;color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:9px}
+.item h3{margin:0 0 5px;font-size:16px;color:#333}
+.item p{margin:0;font-size:13px;color:#666}
+.info{margin-top:22px;padding:15px 17px;background:#f8f8f8;border-radius:9px;border:1px solid #e5e5e5}
+.info strong{color:var(--gold)}
+.footer{text-align:center;color:#888;font-size:12px;margin-top:25px}
+.hamburger{display:none;position:fixed;top:12px;left:12px;z-index:20;background:var(--gold);color:#fff;border:0;border-radius:8px;width:40px;height:40px;font-size:18px}
+@media(max-width:768px){
+.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}
+.hamburger{display:block}
+.main{margin-left:0;padding:58px 10px 18px}
+.card{padding:17px;border-radius:10px}
+.header h1{font-size:22px}.header h2{font-size:19px}
+.grid{grid-template-columns:1fr;gap:10px}
+.item{padding:13px}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="tp5.html" class="active"><i class="fa-solid fa-network-wired"></i> TP5</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+
+<main class="main">
+<div class="card">
+
+<header class="header">
+<h1>TUJUAN PEMBELAJARAN 5</h1>
+<h2>Subnetting dan Pembagian Jaringan Sederhana</h2>
+<p><strong>Teknik Jaringan Komputer dan Telekomunikasi</strong></p>
+<p>Kelas XI TJKT · Fase F · Semester Ganjil · Tahun Pelajaran 2026/2027</p>
+<p>SMK Negeri 7 Luwu</p>
+</header>
+
+<div class="intro">
+<strong>Selamat belajar di TP5!</strong><br>
+Pada TP5 kalian akan mempelajari bagaimana satu jaringan dapat dibagi menjadi beberapa jaringan yang lebih kecil sesuai kebutuhan. Materi menggunakan metode <strong>block size</strong> agar perhitungan subnetting dapat dilakukan secara bertahap dan mudah diikuti.
+</div>
+
+<h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Materi Pembelajaran</h2>
+<div class="grid">
+
+<a class="item" href="tp5-bab1.html">
+<div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+<h3>BAB 1 — Pengertian, Tujuan, dan Manfaat Subnetting</h3>
+<p>Memahami alasan jaringan perlu dibagi dan manfaat subnetting.</p>
+</a>
+
+<a class="item" href="tp5-bab2.html">
+<div class="icon"><i class="fa-solid fa-code"></i></div>
+<h3>BAB 2 — Prefix dan Subnet Mask</h3>
+<p>Menghubungkan prefix dengan subnet mask dan bit host.</p>
+</a>
+
+<a class="item" href="tp5-bab3.html">
+<div class="icon"><i class="fa-solid fa-calculator"></i></div>
+<h3>BAB 3 — Menentukan Jumlah Subnet dan Jumlah Host</h3>
+<p>Berlatih menghitung jumlah subnet, jumlah alamat, dan host terpakai.</p>
+</a>
+
+<a class="item" href="tp5-bab4.html">
+<div class="icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+<h3>BAB 4 — Block Size: Menentukan Alamat Jaringan, Host, dan Broadcast</h3>
+<p>Menentukan jaringan, rentang host, dan broadcast menggunakan block size.</p>
+</a>
+
+<a class="item" href="tp5-bab5.html">
+<div class="icon"><i class="fa-solid fa-filter"></i></div>
+<h3>BAB 5 — Memilih Subnet Sesuai Kebutuhan Host</h3>
+<p>Memilih prefix yang paling kecil tetapi tetap mencukupi kebutuhan perangkat.</p>
+</a>
+
+<a class="item" href="tp5-bab6.html">
+<div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+<h3>BAB 6 — Proyek Pembagian Jaringan Sekolah</h3>
+<p>Menerapkan seluruh langkah subnetting pada studi kasus jaringan sekolah.</p>
+</a>
+
+</div>
+
+<h2 class="section-title"><i class="fa-solid fa-folder-open"></i> Bagian Pendukung</h2>
+<div class="grid">
+
+<a class="item" href="tp5-evaluasi.html">
+<div class="icon"><i class="fa-solid fa-circle-question"></i></div>
+<h3>Evaluasi Akhir TP5</h3>
+<p>Soal pemahaman konsep dan soal hitungan subnetting.</p>
+</a>
+
+<a class="item" href="tp5-refleksi.html">
+<div class="icon"><i class="fa-solid fa-comment-dots"></i></div>
+<h3>Refleksi Akhir Peserta Didik</h3>
+<p>Refleksi pemahaman, kesulitan, kerja sama, dan manfaat subnetting.</p>
+</a>
+
+<a class="item" href="tp5-glosarium.html">
+<div class="icon"><i class="fa-solid fa-spell-check"></i></div>
+<h3>Glosarium</h3>
+<p>Kumpulan istilah penting dalam materi subnetting.</p>
+</a>
+
+<a class="item" href="tp5-kunci-jawaban.html">
+<div class="icon"><i class="fa-solid fa-key"></i></div>
+<h3>Kunci Jawaban Latihan Soal</h3>
+<p>Gunakan setelah mengerjakan latihan untuk memeriksa langkah pengerjaan.</p>
+</a>
+
+<a class="item" href="tp5-daftar-pustaka.html">
+<div class="icon"><i class="fa-solid fa-book-open"></i></div>
+<h3>Daftar Pustaka</h3>
+<p>Sumber rujukan pembelajaran TP5.</p>
+</a>
+
+</div>
+
+<div class="info">
+<strong><i class="fa-solid fa-lightbulb"></i> Catatan belajar:</strong><br>
+TP5 membutuhkan ketelitian dalam berhitung. Selalu tuliskan langkah pengerjaan, gunakan Tabel Acuan Subnetting, dan periksa kembali hasil sebelum melanjutkan ke soal berikutnya.
+</div>
+
+<div class="footer">
+SMK Negeri 7 Luwu · Teknik Jaringan Komputer dan Telekomunikasi
+</div>
+
+</div>
+</main>
+
+<script>
+function toggleMenu(){
+document.getElementById('sidebar').classList.toggle('show');
+}
+</script>
+</body>
+</html>
