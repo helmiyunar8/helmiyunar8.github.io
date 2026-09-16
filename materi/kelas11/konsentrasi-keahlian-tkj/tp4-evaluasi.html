@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluasi Akhir TP 4 — Kelas XI TJKT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.page-image{display:block;width:100%;height:auto;max-width:1054px;margin:0 auto;border:1px solid #e5e5e5;border-radius:8px}
+.note{margin-top:16px;padding:12px 14px;background:#fff9e8;border-left:4px solid var(--gold);border-radius:6px;font-size:14px}
+.hamburger{display:none;position:fixed;top:10px;left:10px;z-index:30;border:0;background:#fff;color:var(--gold);font-size:22px;padding:8px 11px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
+@media(max-width:768px){
+ .sidebar{display:none;width:230px}
+ .sidebar.show{display:block}
+ .hamburger{display:block}
+ .main{margin-left:0;padding:58px 10px 18px}
+ .card{padding:12px;border-radius:10px}
+ .header{padding-bottom:14px;margin-bottom:15px}
+ .header h1{font-size:21px}
+ .header h2{font-size:18px}
+ .header p{font-size:13px}
+ .page-image{border-radius:6px}
+ .note{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+
+<main class="main">
+<section class="card">
+<header class="header">
+<h1>EVALUASI AKHIR TUJUAN PEMBELAJARAN 4</h1>
+<h2>Teknik Jaringan Komputer dan Telekomunikasi</h2>
+<p>Kelas XI TJKT · Pertemuan 6 · Alokasi Waktu 3 JP</p>
+</header>
+
+<img src="uptp4 evaluasi.png" class="page-image" alt="Evaluasi Akhir Tujuan Pembelajaran 4">
+
+<div class="note">
+<strong>Petunjuk:</strong> Kerjakan soal secara mandiri. Untuk soal hitungan, tuliskan langkah pengerjaannya, bukan hanya jawaban akhir.
+</div>
+</section>
+</main>
+
+<script>
+function toggleMenu(){
+ const sidebar=document.getElementById('sidebar');
+ sidebar.classList.toggle('show');
+}
+</script>
+</body>
+</html>
