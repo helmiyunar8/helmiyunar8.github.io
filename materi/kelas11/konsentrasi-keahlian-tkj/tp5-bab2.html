@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tabel Acuan Subnetting · Bab 2 | SMKN 7 Luwu</title>
+<style>
+:root{--gold:#b8860b;--green:#A5D6A7;--green-dark:#4f8f57;--ink:#333;--muted:#666;--bg:#f4f4f4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:#fff;border-right:1px solid #ddd;z-index:1000;overflow-y:auto;padding:18px 14px;transition:transform .25s ease}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 6px 18px;border-bottom:1px solid #eee;margin-bottom:12px}
+.brand img{width:42px;height:42px;object-fit:contain}.brand b{font-size:14px;line-height:1.25}
+.nav-title{font-size:11px;color:#888;text-transform:uppercase;margin:15px 7px 6px;font-weight:700}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:9px;margin:3px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#f7efd5;color:#7a5a00}.nav a.active{font-weight:700}
+.main{margin-left:250px;padding:24px;min-height:100vh}.wrap{max-width:1050px;margin:auto}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.mobile-btn{display:none;border:0;background:#fff;border-radius:10px;width:44px;height:44px;box-shadow:0 4px 18px rgba(0,0,0,.08);cursor:pointer}
+.card{background:#fff;border-radius:14px;border-top:5px solid var(--gold);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:24px}
+h1{font-size:27px;line-height:1.25;margin:0 0 8px}h2{font-size:21px;line-height:1.3;margin:28px 0 12px;color:#654b00}h3{font-size:17px;margin:20px 0 8px;color:#444}
+.subtitle{color:var(--muted);margin:0 0 18px}
+.notice{background:#fff9e8;border-left:5px solid var(--gold);padding:14px 16px;border-radius:8px;margin:16px 0}
+.goal{background:#f4fbf4;border-left:5px solid var(--green-dark);padding:14px 16px;border-radius:8px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:14px}
+th,td{border:1px solid #ddd;padding:10px 9px;text-align:left;vertical-align:top}th{background:#f7efd5;color:#5f4700}
+tr:nth-child(even) td{background:#fcfcfc}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{background:#f8f8f8;border:1px solid #e4e4e4;border-radius:10px;padding:15px;margin:15px 0}
+.step{border-left:4px solid var(--green);background:#f8fbf8;border-radius:9px;padding:13px 15px;margin:12px 0}
+.formula{display:block;background:#333;color:#fff;padding:13px;border-radius:9px;text-align:center;font-size:18px;font-weight:700;margin:12px 0}
+.diagram{margin:18px 0;padding:16px;border:1px solid #e5e5e5;border-radius:12px;background:#fafafa}
+.bitbar{display:grid;grid-template-columns:3fr 1fr;gap:5px;max-width:650px;margin:12px auto}
+.bitbar div{padding:10px;text-align:center;border-radius:8px;font-weight:700}
+.net{background:#e7f5e8;border:1px solid #9ccc9f}.host{background:#fff3cf;border:1px solid #d9bc65}
+.caption{text-align:center;font-size:12px;color:#666;margin-top:8px}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid #eee}
+.nav-btn{display:inline-block;text-decoration:none;background:#fff;color:#654b00;border:1px solid #d7bf72;padding:10px 14px;border-radius:9px;font-weight:700}
+.nav-btn.next{background:var(--gold);border-color:var(--gold);color:#fff}
+.footer-note{text-align:center;color:#888;font-size:12px;margin:18px 0 4px}
+.overlay{display:none}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-105%);box-shadow:4px 0 20px rgba(0,0,0,.15)}.sidebar.open{transform:translateX(0)}
+ .main{margin-left:0;padding:12px}.mobile-btn{display:inline-flex;align-items:center;justify-content:center}
+ .topbar{position:sticky;top:0;z-index:900;padding:3px 0}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:950}
+ .overlay.show{display:block}.card{padding:17px 14px;border-radius:11px}h1{font-size:22px}h2{font-size:19px}h3{font-size:16px}
+ table{font-size:13px;min-width:560px}.bitbar{grid-template-columns:1fr}
+ .nav-buttons{position:sticky;bottom:0;background:rgba(255,255,255,.97);padding:10px 14px;margin-left:-14px;margin-right:-14px;box-shadow:0 -3px 12px rgba(0,0,0,.06)}
+}
+</style></head><body>
+<aside class="sidebar" id="sidebar">
+<div class="brand"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"><b>SMKN 7 LUWU<br>Konsentrasi Keahlian TKJ</b></div>
+<div class="nav-title">Navigasi TP 5</div><nav class="nav">
+<a href="../../index.html">🏠 Beranda</a><a href="../index.html">📚 Materi</a><a href="tp5.html">🎯 TP 5</a>
+<a href="tp5-bab1.html">📋 Bab 1 · Tabel Acuan</a><a href="tp5-bab2.html" class="active">📋 Bab 2 · Acuan</a>
+<a href="tp5-bab2-materi.html" class="">📖 Bab 2 · Materi</a>
+<a href="tp5-bab2-lkpd.html" class="">✍️ Bab 2 · LKPD</a>
+<a href="../../menu-utama-TKJ/tryout.html">📝 Tryout</a><a href="../../lkpd/index.html">📄 LKPD</a>
+<a href="../../absen/index.html">📷 Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+<a href="../../cbt/index.html">💻 CBT Ujian</a><a href="../../arsip.html">🗂️ ARSIP</a>
+</nav></aside>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<main class="main"><div class="wrap"><div class="topbar">
+<button class="mobile-btn" onclick="toggleMenu()" aria-label="Buka menu">☰</button>
+<div style="font-size:13px;color:#777">TP 5 · Subnetting dan Pembagian Jaringan Sederhana</div></div>
+<section class="card">
+<h1>📋 Tabel Acuan Subnetting</h1>
+<p class="subtitle">Acuan utama untuk Bab 2 sampai Bab 6.</p>
+<div class="notice"><strong>Halaman ini adalah halaman terpenting dalam buku ini.</strong>
+Salinlah tabel di bawah ini ke buku tulis atau selembar kertas terpisah, karena kalian akan
+menggunakannya terus-menerus mulai dari Bab 2 sampai Bab 6, termasuk saat mengerjakan proyek akhir.</div>
+<div class="table-scroll"><table><thead><tr>
+<th>Prefix</th><th>Subnet Mask</th><th>Bit Host</th><th>Block Size</th><th>Jumlah Alamat</th><th>Host Terpakai</th>
+</tr></thead><tbody>
+<tr><td>/24</td><td>255.255.255.0</td><td>8</td><td>256</td><td>256</td><td>254</td></tr>
+<tr><td>/25</td><td>255.255.255.128</td><td>7</td><td>128</td><td>128</td><td>126</td></tr>
+<tr><td>/26</td><td>255.255.255.192</td><td>6</td><td>64</td><td>64</td><td>62</td></tr>
+<tr><td>/27</td><td>255.255.255.224</td><td>5</td><td>32</td><td>32</td><td>30</td></tr>
+<tr><td>/28</td><td>255.255.255.240</td><td>4</td><td>16</td><td>16</td><td>14</td></tr>
+<tr><td>/29</td><td>255.255.255.248</td><td>3</td><td>8</td><td>8</td><td>6</td></tr>
+<tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>4</td><td>4</td><td>2</td></tr>
+</tbody></table></div>
+<div class="nav-buttons"><a class="nav-btn" href="tp5-bab1-lkpd.html">← Bab 1 LKPD</a><a class="nav-btn next" href="tp5-bab2-materi.html">Materi Bab 2 →</a></div></section>
+<div class="footer-note">SMKN 7 Luwu · Kelas XI TJKT · Fase F · Semester Ganjil 2026/2027</div>
+</div></main>
+<script>
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('show')}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',closeMenu));
+</script></body></html>
