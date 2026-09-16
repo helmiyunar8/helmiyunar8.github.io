@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunci Jawaban TP 4 — Kelas XI TJKT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333;--green:#A5D6A7;--green-dark:#176b4d}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.intro{background:#fff9e8;border-left:5px solid var(--gold);padding:15px 17px;border-radius:8px;margin-bottom:24px}
+.section{margin:28px 0}
+.section h3{font-size:20px;color:var(--green-dark);border-left:5px solid var(--green);padding-left:10px;margin-bottom:15px}
+.answer{background:#fbfffc;border:1px solid #d9eadb;border-radius:9px;padding:13px 16px;margin:10px 0}
+.answer b{color:var(--green-dark)}
+.answer ul{margin:7px 0 0 20px;padding:0}
+.step{background:#f0fff4;border-left:4px solid var(--green);padding:10px 13px;margin-top:9px;border-radius:6px}
+.formula{font-family:monospace;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:8px 10px;margin:8px 0;display:inline-block}
+.lock{max-width:480px;margin:0 auto 25px;background:#fff;border:1px solid #ddd;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 7px rgba(0,0,0,.04)}
+.lock i{font-size:34px;color:var(--gold);margin-bottom:8px}
+.lock input{width:100%;padding:11px;border:1px solid #ccc;border-radius:7px;font-size:16px;margin:10px 0}
+.lock button{border:0;background:var(--gold);color:#fff;padding:10px 18px;border-radius:7px;font-size:15px;cursor:pointer}
+#content{display:none}
+.error{color:#b3261e;font-size:13px;display:none;margin-top:7px}
+.hamburger{display:none;position:fixed;top:10px;left:10px;z-index:30;border:0;background:#fff;color:var(--gold);font-size:22px;padding:8px 11px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
+@media(max-width:768px){
+ .sidebar{display:none;width:230px}.sidebar.show{display:block}.hamburger{display:block}
+ .main{margin-left:0;padding:58px 10px 18px}.card{padding:15px;border-radius:10px}
+ .header h1{font-size:21px}.header h2{font-size:18px}.header p{font-size:13px}
+ .intro,.answer,.step{font-size:13px}.section h3{font-size:18px}
+ .lock{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+
+<main class="main">
+<section class="card">
+<header class="header">
+<h1>KUNCI JAWABAN LATIHAN SOAL</h1>
+<h2>Tujuan Pembelajaran 4</h2>
+<p>Kelas XI TJKT · Pertemuan 6</p>
+</header>
+
+<div class="lock" id="lockBox">
+<i class="fa-solid fa-lock"></i>
+<h3>Materi Terkunci</h3>
+<p>Kunci jawaban dapat dibuka setelah kalian menyelesaikan latihan secara mandiri.</p>
+<input type="password" id="password" placeholder="Masukkan password">
+<button onclick="unlock()">Buka Kunci Jawaban</button>
+<div class="error" id="error">Password salah. Silakan coba lagi.</div>
+</div>
+
+<div id="content">
+<div class="intro">
+<strong>Catatan:</strong> Kunci jawaban ini memuat langkah pengerjaan, bukan hanya hasil akhir.
+Gunakan untuk memeriksa cara kerja kalian setelah selesai mengerjakan sendiri.
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Latihan Bab 1</h3>
+<div class="answer">IPv4 adalah sistem pengalamatan jaringan yang memberikan alamat unik kepada setiap perangkat agar dapat saling mengenali dan berkirim data.</div>
+<div class="answer">Empat fungsi: identitas perangkat, alamat tujuan pengiriman data, penunjuk jaringan tempat perangkat berada, dan sarana pengaturan/pengelolaan jaringan.</div>
+<div class="answer">Agar jaringan dapat mengenali setiap perangkat secara pasti dan data terkirim ke tujuan yang tepat; jika sama akan terjadi konflik IP.</div>
+<div class="answer">Tiga akibat: perangkat tidak dapat terhubung, koneksi putus-nyambung, dan data dapat terkirim ke perangkat yang salah.</div>
+<div class="answer">Jawaban bervariasi; inti jawaban: alamat IP seperti alamat rumah yang membuat 'surat' (data) sampai ke tujuan yang benar dan tidak boleh kembar.</div>
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Latihan Bab 2</h3>
+<div class="answer">Panjang 32 bit, terdiri dari 4 oktet (masing-masing 8 bit).</div>
+<div class="answer">Karena setiap oktet 8 bit, jumlah kombinasi = 2⁸ = 256, dihitung mulai dari 0, sehingga nilainya 0 sampai 255.</div>
+<div class="answer">(a) <b>BENAR.</b> (b) <b>SALAH</b> — oktet ke-4 bernilai 256, melebihi 255. (c) <b>SALAH</b> — hanya 3 oktet. (d) <b>BENAR.</b> (e) <b>SALAH</b> — terdapat 5 oktet.</div>
+<div class="answer">Contoh perbaikan: (b) 192.168.1.255 atau 192.168.1.25; (c) 172.16.10.1; (e) 192.168.1.10.</div>
+<div class="answer">Contoh jawaban: 192.168.1.2 · 192.168.1.3 · 192.168.1.4 · 192.168.1.5 (tiga oktet pertama sama, oktet keempat berbeda).</div>
+<div class="answer">10101000 → 128 + 32 + 8 = 168. (bit bernilai 1 berada pada posisi nilai 128, 32, dan 8)</div>
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Latihan Bab 3</h3>
+<div class="answer">Subnet mask adalah deretan angka yang memisahkan bagian jaringan (network portion) dan bagian perangkat (host portion) pada sebuah alamat IP.</div>
+<div class="answer">Network portion menunjukkan jaringan tempat perangkat berada (ditandai mask 255); host portion menunjukkan perangkat tertentu di dalam jaringan itu (ditandai mask 0).</div>
+<div class="answer">Network portion = 192.168.7 ; Host portion = 88.</div>
+<div class="answer">Ya, satu jaringan. Karena tiga oktet pertama keduanya sama, yaitu 192.168.1; hanya host-nya yang berbeda (20 dan 150).</div>
+<div class="answer">Tidak. Karena network portion-nya berbeda: 192.168.1 dan 192.168.9, sehingga keduanya berada pada jaringan yang berbeda.</div>
+<div class="answer">Artinya alamat IP 192.168.10.5 dengan subnet mask 255.255.255.0 (24 bit pertama adalah bagian network).</div>
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Latihan Bab 4</h3>
+<div class="answer">Alamat jaringan adalah alamat yang mewakili keseluruhan jaringan, bukan satu perangkat tertentu, dan ditandai dengan bagian host bernilai 0.</div>
+<div class="answer">Langkah: (1) tulis alamat IP, (2) tandai network portion dan host portion, (3) salin network portion lalu ubah host portion menjadi 0.</div>
+<div class="answer">(a) 192.168.3.0 — network 192.168.3, host 77 → 0.<br>(b) 10.5.5.0 — network 10.5.5, host 101 → 0.<br>(c) 172.16.9.0 — network 172.16.9, host 254 → 0.<br>(d) 192.168.250.0 — network 192.168.250, host 2 → 0.</div>
+<div class="answer">Karena alamat jaringan harus mewakili seluruh perangkat; jika host tetap diisi angka, alamat itu sudah menunjuk satu perangkat tertentu.</div>
+<div class="answer">Karena alamat jaringan memiliki tugas khusus sebagai penanda jaringan; jika dipasang pada perangkat akan menimbulkan kekacauan pengalamatan.</div>
+<div class="answer">Kesalahannya: yang diubah menjadi 0 adalah oktet ketiga, padahal seharusnya oktet keempat. Jawaban benar: 192.168.4.0.</div>
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Latihan Bab 5</h3>
+<div class="answer">Alamat jaringan mewakili keseluruhan jaringan (host = 0); alamat host dipakai perangkat; alamat broadcast untuk mengirim data ke semua perangkat sekaligus (host = 255).</div>
+<div class="answer">Karena alamat jaringan mewakili keseluruhan jaringan, bukan satu perangkat tertentu.</div>
+<div class="answer">Karena alamat broadcast bertugas khusus mengirim data ke seluruh perangkat sekaligus; jika dipakai satu perangkat, fungsi tersebut terganggu.</div>
+<div class="answer">Alamat jaringan 192.168.25.0 · Host 192.168.25.1 s.d. 192.168.25.254 · Broadcast 192.168.25.255.</div>
+<div class="answer">Alamat jaringan 10.0.0.0 · Broadcast 10.0.0.255 · Host 10.0.0.1 s.d. 10.0.0.254 (alamat 10.0.0.150 termasuk host yang sah).</div>
+<div class="answer">254 perangkat. Perhitungan: 256 alamat − 1 alamat jaringan − 1 alamat broadcast = 254. Atau dengan rumus 2⁸ − 2 = 254.</div>
+<div class="answer">Tidak boleh, karena 192.168.1.255 adalah alamat broadcast yang memiliki tugas khusus dan tidak boleh dipasang pada perangkat.</div>
+</div>
+
+<div class="section">
+<h3>Kunci Jawaban Evaluasi Akhir</h3>
+<h4>A. Pemahaman Konsep</h4>
+<div class="answer">IPv4 adalah sistem pengalamatan jaringan sepanjang 32 bit yang memberi alamat unik pada setiap perangkat.</div>
+<div class="answer">Empat oktet; setiap oktet bernilai 0 sampai 255.</div>
+<div class="answer">Memisahkan bagian network dan bagian host pada sebuah alamat IP.</div>
+<div class="answer">Network portion menunjukkan jaringan (mask 255); host portion menunjukkan perangkat (mask 0).</div>
+<div class="answer">Karena akan terjadi konflik IP yang menyebabkan gangguan koneksi dan data salah kirim.</div>
+
+<h4>B. Hitungan</h4>
+<div class="answer">192.168.8.44 → network portion 192.168.8, host 44 diubah menjadi 0 → <b>Alamat jaringan = 192.168.8.0</b></div>
+<div class="answer">192.168.8.0/24 → host diisi nilai maksimum 255 → <b>Broadcast = 192.168.8.255</b></div>
+<div class="answer">10.10.5.0 → Host pertama 10.10.5.1, host terakhir 10.10.5.254 → <b>Rentang = 10.10.5.1 s.d. 10.10.5.254</b></div>
+<div class="answer">254 host. Perhitungan: 256 − 1 (alamat jaringan) − 1 (broadcast) = 254, atau 2⁸ − 2 = 254.</div>
+<div class="answer">(a) <b>SALAH</b>, 260 &gt; 255 → perbaikan 192.168.1.26 (atau angka lain 0–255). (b) <b>SALAH</b>, hanya 3 oktet → perbaikan 10.0.0.1. (c) <b>BENAR</b>, tidak perlu diperbaiki.</div>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+function toggleMenu(){
+ document.getElementById('sidebar').classList.toggle('show');
+}
+function unlock(){
+ const value=document.getElementById('password').value;
+ const error=document.getElementById('error');
+ if(value === 'bismillah'){
+   document.getElementById('lockBox').style.display='none';
+   document.getElementById('content').style.display='block';
+ }else{
+   error.style.display='block';
+ }
+}
+document.getElementById('password').addEventListener('keydown',function(e){
+ if(e.key==='Enter') unlock();
+});
+</script>
+</body>
+</html>
