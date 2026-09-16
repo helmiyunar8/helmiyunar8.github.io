@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 4 Bab 2 - Struktur dan Penulisan IPv4</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}.nav i{width:22px}.main{margin-left:250px;padding:28px 18px}.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}.header h1{margin:0;color:#333;font-size:27px}.header h2{margin:7px 0;color:var(--gold);font-size:22px}.header p{margin:4px 0;color:#777}h3.section{color:var(--gold);border-left:4px solid var(--gold);padding-left:10px;margin-top:28px}h4{margin-bottom:6px;color:#444}.box{background:#fdf8e8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:6px;margin:16px 0}.video{margin:16px 0;padding:14px;background:#f7f7f7;border:1px solid #e5e5e5;border-radius:10px}.video strong{display:block;margin-bottom:8px}.video video{width:100%;max-height:520px;border-radius:8px;background:#000}ul,ol{padding-left:25px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border:1px solid #ddd;padding:10px;vertical-align:top}th{background:#fff9e8;text-align:left}.formula{text-align:center;font-size:21px;font-weight:bold;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}.ip{text-align:center;font-size:23px;font-weight:bold;letter-spacing:1px;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:10px;margin:10px 0}.exercise{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;margin:8px 0}.lpkd{background:#fafafa;border:1px solid #ddd;border-radius:10px;padding:16px;margin-top:16px}.blank td{height:48px}.footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}.header h1{font-size:22px}.header h2{font-size:19px}.ip{font-size:18px}.formula{font-size:18px}th,td{padding:8px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar"><img src="../../asset/logo.png" class="logo" alt="Logo"><h3>LMS TKJ</h3><div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a><a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a><a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a><a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a><a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a><a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a><a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div></div>
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
+<main class="main"><section class="card">
+<div class="header"><h1>BAB 2</h1><h2>Struktur dan Penulisan IPv4</h2><p>Pertemuan 2 · Alokasi Waktu 3 JP</p><p>Tujuan Pembelajaran 4 · Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</p></div>
+<div class="box"><strong>Tujuan Pembelajaran Bab Ini:</strong><ul><li>Peserta didik mampu menjelaskan struktur IPv4 (32 bit, empat oktet).</li><li>Peserta didik mampu memeriksa dan memperbaiki penulisan alamat IPv4.</li></ul></div>
+
+<h3 class="section">2.1 Struktur IPv4: 32 Bit dan Empat Oktet</h3>
+<p>Sebuah alamat IPv4 memiliki panjang 32 bit. Angka 32 bit ini dibagi menjadi empat kelompok yang sama besar, masing-masing berisi 8 bit. Setiap kelompok 8 bit inilah yang disebut oktet (dari kata "okta" yang berarti delapan). Keempat oktet dipisahkan dengan tanda titik saat dituliskan.</p>
+<div class="box"><strong>Gambar 2.1 — Struktur alamat IPv4: 32 bit yang terbagi menjadi empat oktet</strong><div class="formula">32 bit ÷ 4 oktet = 8 bit setiap oktet</div><div class="ip">192 . 168 . 1 . 25</div><p style="text-align:center">↑ &nbsp;&nbsp;&nbsp;&nbsp; ↑ &nbsp;&nbsp;&nbsp;&nbsp; ↑ &nbsp;&nbsp;&nbsp;&nbsp; ↑<br>Oktet 1 &nbsp;&nbsp; Oktet 2 &nbsp;&nbsp; Oktet 3 &nbsp;&nbsp; Oktet 4</p></div>
+<div class="video"><strong>Video ilustrasi IPv4:</strong><video controls preload="metadata"><source src="ipv4.mp4" type="video/mp4">Browser kalian tidak mendukung pemutaran video.</video></div>
+
+<h3 class="section">2.2 Rentang Nilai Setiap Oktet: 0 sampai 255</h3>
+<p>Setiap oktet hanya boleh bernilai antara 0 sampai 255. Mengapa batasnya 255 dan bukan angka lain? Karena setiap oktet terdiri dari 8 bit, dan dengan 8 bit, jumlah kombinasi angka yang dapat dibentuk adalah:</p>
+<div class="formula">2⁸ = 2×2×2×2×2×2×2×2 = 256 kombinasi</div>
+<p>Kombinasi dihitung mulai dari 0, sehingga:</p><div class="formula">nilai terkecil = 0 &nbsp;&nbsp; dan &nbsp;&nbsp; nilai terbesar = 255</div>
+<p>Inilah alasan mengapa angka seperti 256, 300, atau 999 tidak pernah boleh muncul dalam sebuah alamat IPv4. Angka tersebut berada di luar kemampuan 8 bit.</p>
+<div class="box"><strong>Aturan Penulisan IPv4 yang Harus Diingat</strong><ol><li>Harus terdiri dari tepat empat oktet (empat kelompok angka).</li><li>Setiap oktet bernilai 0 sampai 255.</li><li>Antaroktet dipisahkan oleh tanda titik ( . ), bukan koma atau tanda lain.</li><li>Tidak boleh ada huruf, spasi, atau tanda baca lain di dalamnya.</li></ol></div>
+
+<h3 class="section">2.3 Memeriksa Kebenaran Penulisan Alamat IPv4</h3>
+<p>Untuk memeriksa apakah sebuah alamat IPv4 benar atau salah, gunakan tiga langkah berikut secara berurutan.</p>
+<ol><li>Hitung jumlah oktetnya — harus tepat empat.</li><li>Periksa nilai setiap oktet — semuanya harus berada dalam rentang 0 sampai 255.</li><li>Periksa pemisahnya — harus menggunakan tanda titik.</li></ol>
+<h4>Contoh Pemeriksaan (dikerjakan langkah demi langkah):</h4>
+<table><thead><tr><th>Alamat</th><th>Jumlah Oktet</th><th>Nilai Oktet</th><th>Pemisah</th><th>Kesimpulan</th></tr></thead><tbody>
+<tr><td>192.168.1.25</td><td>4 ✓</td><td>semua 0–255 ✓</td><td>titik ✓</td><td><strong>BENAR</strong></td></tr>
+<tr><td>192.168.1.300</td><td>4 ✓</td><td>300 &gt; 255 ✗</td><td>titik ✓</td><td><strong>SALAH</strong></td></tr>
+<tr><td>192.168.1</td><td>3 ✗</td><td>0–255 ✓</td><td>titik ✓</td><td><strong>SALAH</strong></td></tr>
+<tr><td>192.168.1.5.9</td><td>5 ✗</td><td>0–255 ✓</td><td>titik ✓</td><td><strong>SALAH</strong></td></tr>
+<tr><td>192,168,1,25</td><td>4 ✓</td><td>0–255 ✓</td><td>koma ✗</td><td><strong>SALAH</strong></td></tr>
+<tr><td>10.0.0.1</td><td>4 ✓</td><td>semua 0–255 ✓</td><td>titik ✓</td><td><strong>BENAR</strong></td></tr>
+<tr><td>256.100.50.1</td><td>4 ✓</td><td>256 &gt; 255 ✗</td><td>titik ✓</td><td><strong>SALAH</strong></td></tr>
+</tbody></table>
+
+<h3 class="section">2.4 Cara Memperbaiki Alamat IPv4 yang Salah</h3>
+<p>Apabila menemukan alamat IPv4 yang salah, kalian dapat memperbaikinya dengan menyesuaikan bagian yang melanggar aturan, tanpa mengubah bagian yang sudah benar.</p>
+<table><thead><tr><th>Alamat Salah</th><th>Letak Kesalahan</th><th>Contoh Perbaikan</th></tr></thead><tbody>
+<tr><td>192.168.1.300</td><td>Oktet ke-4 melebihi 255</td><td>192.168.1.30</td></tr>
+<tr><td>192.168.1</td><td>Hanya ada 3 oktet</td><td>192.168.1.1</td></tr>
+<tr><td>192,168,1,25</td><td>Pemisah menggunakan koma</td><td>192.168.1.25</td></tr>
+<tr><td>300.168.1.25</td><td>Oktet ke-1 melebihi 255</td><td>200.168.1.25</td></tr>
+<tr><td>192.168.1.5.9</td><td>Terdapat 5 oktet</td><td>192.168.1.5</td></tr>
+</tbody></table>
+
+<h3 class="section">2.5 Pengayaan: Mengenal Bentuk Biner (Tambahan)</h3>
+<p>Bagian ini bersifat pengayaan. Kalian tidak wajib menghafalnya, tetapi memahaminya akan sangat membantu ketika nanti mempelajari subnetting pada tingkat yang lebih lanjut.</p>
+<p>Komputer sebenarnya tidak membaca angka 192 atau 168 seperti yang kita tulis. Komputer hanya mengenal angka 0 dan 1, yang disebut bilangan biner. Setiap oktet yang kita tulis dalam bentuk desimal sesungguhnya adalah 8 digit biner. Setiap posisi bit memiliki nilai tetap sebagai berikut:</p>
+<table><thead><tr><th>Posisi bit</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead><tbody><tr><th>Nilai</th><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr></tbody></table>
+<p>Untuk mengubah biner menjadi desimal, jumlahkan nilai posisi yang bernilai 1. Contoh untuk oktet 11000000:</p>
+<table><tbody><tr><th>Biner</th><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>Nilai</th><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr></tbody></table>
+<p><strong>Diambil:</strong> 128 + 64 = 192</p><div class="formula">11000000 (biner) = 192 (desimal)</div>
+<p>Perhatikan pula bahwa nilai maksimum sebuah oktet adalah ketika seluruh bitnya bernilai 1:</p><div class="formula">128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255</div><p>Inilah alasan nilai tertinggi setiap oktet adalah 255.</p>
+
+<h3 class="section">2.6 Kegiatan Peserta Didik — LKPD 2.1</h3>
+<div class="lpkd"><strong>Petunjuk LKPD 2.1</strong><p>Uraikan setiap alamat berikut menjadi empat oktet, lalu periksa kebenarannya menggunakan tiga langkah pada bagian 2.3.</p><p>Alamat yang diperiksa: (a) 192.168.10.50 · (b) 10.0.0.256 · (c) 172.16.5 · (d) 192.168.0.1 · (e) 10,20,30,40</p></div>
+<table class="blank"><thead><tr><th>Alamat</th><th>Okt 1</th><th>Okt 2</th><th>Okt 3</th><th>Okt 4</th><th>Benar/Salah</th><th>Perbaikan</th></tr></thead><tbody>
+<tr><td>192.168.10.50</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10.0.0.256</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>172.16.5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>192.168.0.1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10,20,30,40</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+
+<h3 class="section">Rangkuman Bab 2</h3><ul><li>Alamat IPv4 memiliki panjang 32 bit yang terbagi menjadi empat oktet, masing-masing 8 bit.</li><li>Setiap oktet bernilai 0 sampai 255, karena 8 bit menghasilkan 256 kombinasi yang dihitung mulai dari 0.</li><li>Keempat oktet dipisahkan dengan tanda titik, tanpa huruf, spasi, atau tanda baca lain.</li><li>Pemeriksaan alamat IPv4 dilakukan dengan memeriksa jumlah oktet, nilai setiap oktet, dan tanda pemisahnya.</li></ul>
+
+<h3 class="section">Latihan Soal Bab 2</h3>
+<div class="exercise">1. Berapa panjang alamat IPv4 dalam satuan bit, dan terdiri dari berapa oktet?</div><div class="exercise">2. Mengapa nilai setiap oktet hanya boleh 0 sampai 255? Jelaskan dengan perhitungan!</div><div class="exercise">3. Periksa alamat berikut, tuliskan benar atau salah beserta alasannya: (a) 192.168.1.10 &nbsp; (b) 192.168.1.256 &nbsp; (c) 172.16.10 &nbsp; (d) 10.0.0.1 &nbsp; (e) 192.168.1.10.5</div><div class="exercise">4. Perbaikilah alamat IPv4 yang salah pada soal nomor 3!</div><div class="exercise">5. Tuliskan alamat IPv4 yang benar untuk empat perangkat berbeda dalam satu jaringan yang sama!</div><div class="exercise">6. (Pengayaan) Ubahlah biner 10101000 menjadi desimal dengan menunjukkan cara perhitungannya!</div>
+
+<h3 class="section">Refleksi Pertemuan 2</h3><div class="box"><ul><li>Berapa jumlah oktet pada alamat IPv4?</li><li>Berapa rentang nilai setiap oktet?</li><li>Kesalahan apa yang sering saya lakukan saat menulis alamat IPv4?</li></ul></div>
+<div class="footer"><a href="tp4-bab1.html">← BAB 1</a><a href="tp4.html">Kembali ke TP 4</a></div>
+</section></main>
+</body></html>
