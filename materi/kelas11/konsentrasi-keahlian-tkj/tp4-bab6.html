@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 4 Bab 6 - Analisis Jaringan, Presentasi, dan Refleksi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto}.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}.nav i{width:22px}.main{margin-left:250px;padding:28px 18px}.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}.header h1{margin:0;color:#333;font-size:27px}.header h2{margin:7px 0;color:var(--gold);font-size:22px}.header p{margin:4px 0;color:#777}h3.section{color:var(--gold);border-left:4px solid var(--gold);padding-left:10px;margin-top:28px}h4{margin-bottom:6px;color:#444}.box{background:#fdf8e8;border-left:4px solid var(--gold);padding:14px 16px;border-radius:6px;margin:16px 0}.diagram{background:#fafafa;border:1px solid #e5e5e5;border-radius:10px;padding:16px;margin:16px 0;text-align:center}.router{display:inline-block;background:#fff9e8;border:2px solid var(--gold);border-radius:10px;padding:12px 18px;font-weight:bold;margin-bottom:12px}.devices{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.device{background:#fff;border:1px solid #ddd;border-radius:8px;padding:8px 10px;font-size:13px;min-width:120px}.line{height:16px;width:2px;background:#bbb;margin:0 auto}.ip{text-align:center;font-size:23px;font-weight:bold;letter-spacing:1px;background:#f7f7f7;border:1px solid #ddd;border-radius:8px;padding:10px;margin:10px 0}.analysis-step{background:#fafafa;border-left:4px solid #ddd;padding:12px 16px;margin:8px 0;border-radius:4px}ul,ol{padding-left:25px}table{width:100%;border-collapse:collapse;margin:14px 0}th,td{border:1px solid #ddd;padding:10px;vertical-align:top}th{background:#fff9e8;text-align:left}.blank td{height:48px}.score td,.score th{text-align:center}.score td:first-child,.score th:first-child{text-align:left}.footer{display:flex;justify-content:space-between;gap:10px;margin-top:25px;padding-top:18px;border-top:1px solid #e5e5e5}.footer a{color:var(--gold);text-decoration:none;border:1px solid #d9c98e;padding:9px 13px;border-radius:8px}.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:20;border:0;background:#fff;border-radius:8px;padding:9px;font-size:20px}
+@media(max-width:768px){.sidebar{display:none;width:230px;z-index:15}.sidebar.show{display:block}.hamburger{display:block}.main{margin-left:0;padding:58px 10px 18px}.card{padding:17px;border-radius:10px}.header h1{font-size:22px}.header h2{font-size:19px}.ip{font-size:18px}.device{min-width:105px;font-size:12px}th,td{padding:8px;font-size:13px}.score{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="sidebar" id="sidebar"><img src="../../asset/logo.png" class="logo" alt="Logo"><h3>LMS TKJ</h3><div class="nav">
+<a href="../../index.html"><i class="fas fa-home"></i> Beranda</a><a href="../index.html" class="active"><i class="fas fa-book-open"></i> Materi</a><a href="../../menu-utama-TKJ/tryout.html"><i class="fas fa-pen-to-square"></i> Tryout</a><a href="../../lkpd/index.html"><i class="fas fa-file-signature"></i> LKPD</a><a href="../../absen/index.html"><i class="fas fa-camera"></i> Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fas fa-award"></i> Ranking</a><a href="../../cbt/index.html"><i class="fas fa-gavel"></i> CBT Ujian</a><a href="../../arsip.html"><i class="fas fa-box-archive"></i> ARSIP</a>
+</div></div>
+<button class="hamburger" onclick="document.getElementById('sidebar').classList.toggle('show')" aria-label="Buka menu"><i class="fas fa-bars"></i></button>
+<main class="main"><section class="card">
+<div class="header"><h1>BAB 6</h1><h2>Analisis Jaringan, Presentasi, dan Refleksi</h2><p>Pertemuan 6 · Alokasi Waktu 3 JP</p><p>Tujuan Pembelajaran 4 · Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</p></div>
+<div class="box"><strong>Tujuan Pembelajaran Bab Ini:</strong><ul><li>Peserta didik mampu menganalisis pengalamatan sebuah jaringan sederhana.</li><li>Peserta didik mampu menyajikan dan menjelaskan hasil analisis pengalamatan jaringan.</li></ul></div>
+
+<h3 class="section">6.1 Mengingat Kembali Seluruh Konsep</h3>
+<p>Sebelum mengerjakan tugas akhir, mari kita ingat kembali seluruh konsep TP 4 dalam satu tabel ringkas.</p>
+<table><thead><tr><th>Konsep</th><th>Penjelasan Singkat</th><th>Contoh</th></tr></thead><tbody>
+<tr><td><strong>IPv4</strong></td><td>Sistem pengalamatan 32 bit untuk perangkat jaringan</td><td>192.168.1.10</td></tr>
+<tr><td><strong>Oktet</strong></td><td>Kelompok 8 bit; ada 4 oktet, nilai 0–255</td><td>192 | 168 | 1 | 10</td></tr>
+<tr><td><strong>Subnet Mask</strong></td><td>Pemisah bagian network dan host</td><td>255.255.255.0</td></tr>
+<tr><td><strong>Network Portion</strong></td><td>Bagian alamat yang menunjukkan jaringan</td><td>192.168.1</td></tr>
+<tr><td><strong>Host Portion</strong></td><td>Bagian alamat yang menunjukkan perangkat</td><td>10</td></tr>
+<tr><td><strong>Alamat Jaringan</strong></td><td>Host diubah menjadi 0</td><td>192.168.1.0</td></tr>
+<tr><td><strong>Alamat Host</strong></td><td>Alamat yang boleh dipakai perangkat</td><td>192.168.1.1 – .254</td></tr>
+<tr><td><strong>Alamat Broadcast</strong></td><td>Host diisi nilai maksimum (255)</td><td>192.168.1.255</td></tr>
+</tbody></table>
+
+<h3 class="section">6.2 Contoh Analisis Jaringan Kelas XI TJKT</h3>
+<p>Berikut adalah contoh penerapan seluruh konsep TP 4 pada jaringan kelas kita. Perhatikan bahwa hotspot HP guru berperan sebagai router dan diberi alamat pertama, sedangkan setiap Chromebook diberi alamat berikutnya secara berurutan.</p>
+<div class="diagram">
+<div class="router"><i class="fas fa-wifi"></i> Hotspot HP Guru (Router)<br><small>192.168.1.1</small></div>
+<div class="line"></div>
+<div class="devices">
+<div class="device">Chromebook 1<br><strong>192.168.1.2</strong></div><div class="device">Chromebook 2<br><strong>192.168.1.3</strong></div><div class="device">Chromebook 3<br><strong>192.168.1.4</strong></div><div class="device">Chromebook 4<br><strong>192.168.1.5</strong></div><div class="device">Chromebook 5<br><strong>192.168.1.6</strong></div>
+</div>
+<p><strong>Gambar 6.1 — Contoh pengalamatan jaringan kelas XI TJKT SMKN 7 Luwu</strong></p>
+</div>
+<table><thead><tr><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Alamat Jaringan</th><th>Keterangan</th></tr></thead><tbody>
+<tr><td>Hotspot HP Guru (Router)</td><td>192.168.1.1</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+<tr><td>Chromebook 1</td><td>192.168.1.2</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+<tr><td>Chromebook 2</td><td>192.168.1.3</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+<tr><td>Chromebook 3</td><td>192.168.1.4</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+<tr><td>Chromebook 4</td><td>192.168.1.5</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+<tr><td>Chromebook 5</td><td>192.168.1.6</td><td>255.255.255.0</td><td>192.168.1.0</td><td>Host</td></tr>
+</tbody></table>
+<p>Perhatikan tiga hal penting dari tabel di atas. Pertama, seluruh perangkat memiliki alamat jaringan yang sama, yaitu 192.168.1.0, sehingga semuanya berada dalam satu jaringan dan dapat saling berkomunikasi. Kedua, seluruh alamat IP berbeda satu sama lain pada oktet keempatnya sehingga tidak terjadi konflik IP. Ketiga, tidak ada perangkat yang menggunakan alamat 192.168.1.0 maupun 192.168.1.255 karena kedua alamat tersebut memiliki tugas khusus.</p>
+
+<div class="box"><strong>Langkah Analisis yang Dapat Digunakan</strong>
+<div class="analysis-step"><strong>1. Tentukan alamat IP setiap perangkat.</strong> Pastikan setiap perangkat memiliki alamat IP yang berbeda.</div>
+<div class="analysis-step"><strong>2. Tentukan subnet mask.</strong> Pada latihan TP 4 ini, jaringan menggunakan 255.255.255.0 atau /24.</div>
+<div class="analysis-step"><strong>3. Tentukan alamat jaringan.</strong> Pada /24, oktet host diubah menjadi 0.</div>
+<div class="analysis-step"><strong>4. Tentukan alamat broadcast.</strong> Pada /24, oktet host diisi nilai maksimum, yaitu 255.</div>
+<div class="analysis-step"><strong>5. Tentukan rentang alamat host.</strong> Host yang dapat digunakan berada di antara alamat jaringan + 1 dan alamat broadcast − 1.</div>
+</div>
+
+<h3 class="section">6.3 Tugas Kelompok</h3>
+<div class="box"><strong>Tugas Akhir TP 4</strong>
+<p>Buatlah analisis sebuah jaringan sederhana yang terdiri atas satu router dan sejumlah perangkat pengguna (boleh menggunakan kondisi kelas kalian sendiri, yaitu 11 Chromebook).</p>
+<p>Tentukan alamat IP, subnet mask, alamat jaringan, alamat broadcast, dan rentang alamat host untuk jaringan tersebut.</p>
+<p>Sajikan hasilnya dalam bentuk tabel, lalu siapkan penjelasan langkah pengerjaannya untuk dipresentasikan.</p>
+</div>
+<table class="blank"><thead><tr><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Alamat Jaringan</th><th>Keterangan</th></tr></thead><tbody>
+<tr><td>Router</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 1</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 2</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 3</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 4</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 5</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 6</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 7</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 8</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 9</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 10</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Chromebook 11</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Tambahan</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Tambahan</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Tambahan</td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="box"><strong>Hasil Perhitungan Jaringan</strong><table><tbody>
+<tr><th>Alamat Jaringan</th><td></td></tr><tr><th>Alamat Broadcast</th><td></td></tr><tr><th>Rentang Alamat Host</th><td></td></tr><tr><th>Jumlah Host yang Dibutuhkan</th><td></td></tr>
+</tbody></table></div>
+
+<h3 class="section">6.4 Panduan Presentasi</h3>
+<ol><li>Tampilkan tabel hasil analisis kelompok kalian.</li><li>Jelaskan langkah menentukan alamat jaringan pada salah satu perangkat.</li><li>Jelaskan cara menentukan rentang alamat host dan alamat broadcast.</li><li>Jelaskan mengapa alamat setiap perangkat harus berbeda.</li><li>Jawablah pertanyaan dari kelompok lain berdasarkan hasil perhitungan kalian.</li></ol>
+
+<h3 class="section">6.5 Rubrik Penilaian Keterampilan</h3>
+<table class="score"><thead><tr><th>Aspek</th><th>Skor 1</th><th>Skor 2</th><th>Skor 3</th><th>Skor 4</th></tr></thead><tbody>
+<tr><td>Menulis IPv4</td><td>Banyak salah</td><td>Beberapa salah</td><td>Hampir benar</td><td>Benar seluruhnya</td></tr>
+<tr><td>Menentukan subnet mask</td><td>Belum mampu</td><td>Banyak bantuan</td><td>Sedikit bantuan</td><td>Mandiri dan benar</td></tr>
+<tr><td>Menentukan alamat jaringan</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+<tr><td>Menentukan alamat host</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+<tr><td>Menyajikan hasil</td><td>Tidak runtut</td><td>Kurang runtut</td><td>Cukup runtut</td><td>Sangat runtut dan jelas</td></tr>
+</tbody></table>
+
+<h3 class="section">6.6 Rangkuman Akhir Tujuan Pembelajaran 4</h3>
+<ul><li>IPv4 adalah sistem pengalamatan 32 bit yang memberikan alamat unik kepada setiap perangkat dalam jaringan.</li><li>Alamat IPv4 terdiri atas empat oktet, masing-masing bernilai 0 sampai 255, dipisahkan oleh tanda titik.</li><li>Subnet mask memisahkan network portion (mask 255) dan host portion (mask 0).</li><li>Alamat jaringan diperoleh dengan mengubah bagian host menjadi 0, dan alamat broadcast dengan mengisi bagian host nilai maksimum 255.</li><li>Pada jaringan /24, tersedia 254 alamat host yang dapat dipakai perangkat, dari alamat jaringan + 1 sampai alamat broadcast − 1.</li></ul>
+
+<div class="box"><strong>Refleksi Akhir Bab 6</strong><p>Setelah menyelesaikan tugas akhir TP 4, periksa kembali apakah kalian sudah mampu:</p><ul><li>Menentukan alamat IP setiap perangkat tanpa terjadi duplikasi.</li><li>Menentukan subnet mask yang digunakan.</li><li>Menentukan alamat jaringan.</li><li>Menentukan alamat broadcast.</li><li>Menentukan rentang alamat host.</li><li>Menjelaskan hasil analisis jaringan kepada orang lain.</li></ul></div>
+
+<div class="footer"><a href="tp4-bab5.html">← BAB 5</a><a href="tp4.html">Kembali ke TP 4</a></div>
+</section></main>
+</body></html>
