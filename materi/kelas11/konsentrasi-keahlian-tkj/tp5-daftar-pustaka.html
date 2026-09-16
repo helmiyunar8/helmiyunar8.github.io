@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP5 — Daftar Pustaka</title>
+<style>
+:root{
+  --gold:#b8860b;
+  --gold-light:#f7efd2;
+  --green:#6f9f78;
+  --text:#333;
+  --muted:#666;
+  --bg:#f4f4f4;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+.sidebar{
+  position:fixed;
+  left:0;top:0;bottom:0;
+  width:250px;
+  background:#fff;
+  border-right:1px solid #ddd;
+  padding:22px 16px;
+  z-index:1000;
+  overflow-y:auto;
+}
+.logo{
+  display:block;
+  width:92px;
+  margin:0 auto 12px;
+}
+.school{
+  text-align:center;
+  font-weight:700;
+  color:var(--gold);
+  font-size:15px;
+  margin-bottom:18px;
+}
+.nav a{
+  display:block;
+  text-decoration:none;
+  color:#444;
+  padding:10px 12px;
+  border-radius:9px;
+  margin:4px 0;
+  font-size:14px;
+}
+.nav a:hover{background:#f6f0df;color:#8a6500}
+.menu-btn{
+  display:none;
+  position:fixed;
+  top:12px;left:12px;
+  z-index:1100;
+  border:0;
+  background:var(--gold);
+  color:#fff;
+  width:42px;height:42px;
+  border-radius:10px;
+  font-size:20px;
+}
+.overlay{display:none}
+main{
+  margin-left:250px;
+  padding:28px 20px 90px;
+}
+.card{
+  max-width:1050px;
+  margin:0 auto;
+  background:var(--white);
+  border-radius:16px;
+  border-top:6px solid var(--gold);
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  overflow:hidden;
+}
+.hero{
+  padding:30px 28px 24px;
+  background:linear-gradient(135deg,#fff,#faf7ed);
+  border-bottom:1px solid #eee;
+}
+.badge{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.5px;
+  color:#806000;
+  background:var(--gold-light);
+  border:1px solid #eadba9;
+  padding:6px 10px;
+  border-radius:20px;
+}
+h1{
+  margin:12px 0 4px;
+  font-size:30px;
+  line-height:1.2;
+  color:#333;
+}
+.subtitle{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+}
+.content{padding:28px}
+.intro{
+  margin:0 0 22px;
+  padding:14px 16px;
+  border-left:4px solid var(--green);
+  background:#f7faf7;
+  color:#4d5a50;
+}
+.refs{
+  display:grid;
+  gap:15px;
+}
+.ref{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  padding:18px;
+  border:1px solid #e5e5e5;
+  border-radius:13px;
+  background:#fff;
+}
+.num{
+  flex:0 0 38px;
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--gold-light);
+  color:#806000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.ref p{
+  margin:2px 0 0;
+  font-size:15px;
+}
+.footer{
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  padding:20px 0 0;
+}
+.bottom{
+  display:none;
+}
+@media(max-width:760px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s ease;
+    box-shadow:4px 0 18px rgba(0,0,0,.12);
+  }
+  .sidebar.open{transform:translateX(0)}
+  .menu-btn{display:block}
+  .overlay.show{
+    display:block;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:900;
+  }
+  main{
+    margin-left:0;
+    padding:68px 10px 76px;
+  }
+  .card{border-radius:13px}
+  .hero{padding:24px 18px 20px}
+  h1{font-size:25px}
+  .content{padding:18px}
+  .ref{
+    padding:15px;
+    gap:12px;
+  }
+  .num{
+    flex-basis:34px;
+    width:34px;height:34px;
+    font-size:14px;
+  }
+  .ref p{font-size:14px}
+  .bottom{
+    display:flex;
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:800;
+    background:#fff;
+    border-top:1px solid #ddd;
+    justify-content:space-around;
+    padding:8px 4px;
+  }
+  .bottom a{
+    text-decoration:none;
+    color:#666;
+    font-size:11px;
+    text-align:center;
+  }
+  .bottom span{
+    display:block;
+    font-size:17px;
+    line-height:20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+  <div class="school">SMKN 7 LUWU<br>Konsentrasi Keahlian TKJ</div>
+  <nav class="nav">
+    <a href="../../index.html">🏠 Beranda</a>
+    <a href="../index.html">📚 Materi</a>
+    <a href="../../menu-utama-TKJ/tryout.html">📝 Tryout</a>
+    <a href="../../lkpd/index.html">📄 LKPD</a>
+    <a href="../../absen/index.html">📸 Absen</a>
+    <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+    <a href="../../cbt/index.html">💻 CBT Ujian</a>
+    <a href="../../arsip.html">🗂️ ARSIP</a>
+  </nav>
+</aside>
+
+<main>
+  <section class="card">
+    <header class="hero">
+      <span class="badge">REFERENSI · TP5</span>
+      <h1>Daftar Pustaka</h1>
+      <p class="subtitle">Subnetting dan Pembagian Jaringan Sederhana · Kelas XI TJKT</p>
+    </header>
+
+    <div class="content">
+      <p class="intro">
+        Sumber yang digunakan sebagai acuan dalam penyusunan materi dan pembelajaran TP5.
+      </p>
+
+      <div class="refs">
+        <article class="ref">
+          <div class="num">1</div>
+          <p><strong>Modul Ajar 5 – Subnetting dan Pembagian Jaringan Sederhana</strong>, SMK Negeri 7 Luwu, Tahun Pelajaran 2026/2027.</p>
+        </article>
+
+        <article class="ref">
+          <div class="num">2</div>
+          <p><strong>Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan</strong>, Fase F, Kurikulum yang berlaku di satuan pendidikan.</p>
+        </article>
+
+        <article class="ref">
+          <div class="num">3</div>
+          <p><strong>Tabel prefix, subnet mask, dan block size</strong> yang disusun guru mata pelajaran.</p>
+        </article>
+
+        <article class="ref">
+          <div class="num">4</div>
+          <p><strong>Studi kasus perencanaan jaringan di lingkungan SMK Negeri 7 Luwu.</strong></p>
+        </article>
+      </div>
+
+      <div class="footer">TP5 · Subnetting dan Pembagian Jaringan Sederhana</div>
+    </div>
+  </section>
+</main>
+
+<div class="bottom">
+  <a href="../index.html"><span>📚</span>Materi</a>
+  <a href="../../lkpd/index.html"><span>📄</span>LKPD</a>
+  <a href="../../absen/index.html"><span>📸</span>Absen</a>
+  <a href="../../cbt/index.html"><span>💻</span>CBT</a>
+</div>
+
+<script>
+const btn=document.getElementById('menuBtn');
+const side=document.getElementById('sidebar');
+const overlay=document.getElementById('overlay');
+
+function closeMenu(){
+  side.classList.remove('open');
+  overlay.classList.remove('show');
+}
+btn.addEventListener('click',()=>{side.classList.add('open');overlay.classList.add('show');});
+overlay.addEventListener('click',closeMenu);
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',closeMenu));
+</script>
+</body>
+</html>
