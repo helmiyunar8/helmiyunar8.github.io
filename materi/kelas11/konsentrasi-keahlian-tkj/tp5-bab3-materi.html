@@ -1,0 +1,94 @@
+<!doctype html><html lang="id"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bab 3 · Menentukan Jumlah Host | SMKN 7 Luwu</title><style>
+:root{--gold:#b8860b;--green:#A5D6A7;--green-dark:#4f8f57;--ink:#333;--muted:#666;--bg:#f4f4f4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:250px;background:#fff;border-right:1px solid #ddd;z-index:1000;overflow-y:auto;padding:18px 14px;transition:transform .25s ease}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 6px 18px;border-bottom:1px solid #eee;margin-bottom:12px}
+.brand img{width:42px;height:42px;object-fit:contain}.brand b{font-size:14px;line-height:1.25}
+.nav-title{font-size:11px;color:#888;text-transform:uppercase;margin:15px 7px 6px;font-weight:700}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:9px;margin:3px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#f7efd5;color:#7a5a00}.nav a.active{font-weight:700}
+.main{margin-left:250px;padding:24px;min-height:100vh}.wrap{max-width:1050px;margin:auto}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.mobile-btn{display:none;border:0;background:#fff;border-radius:10px;width:44px;height:44px;box-shadow:0 4px 18px rgba(0,0,0,.08);cursor:pointer}
+.card{background:#fff;border-radius:14px;border-top:5px solid var(--gold);box-shadow:0 4px 18px rgba(0,0,0,.08);padding:24px}
+h1{font-size:27px;line-height:1.25;margin:0 0 8px}h2{font-size:21px;line-height:1.3;margin:28px 0 12px;color:#654b00}h3{font-size:17px;margin:20px 0 8px;color:#444}
+.subtitle{color:var(--muted);margin:0 0 18px}
+.notice{background:#fff9e8;border-left:5px solid var(--gold);padding:14px 16px;border-radius:8px;margin:16px 0}
+.goal{background:#f4fbf4;border-left:5px solid var(--green-dark);padding:14px 16px;border-radius:8px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:14px}
+th,td{border:1px solid #ddd;padding:10px 9px;text-align:left;vertical-align:top}th{background:#f7efd5;color:#5f4700}
+tr:nth-child(even) td{background:#fcfcfc}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.callout{background:#f8f8f8;border:1px solid #e4e4e4;border-radius:10px;padding:15px;margin:15px 0}
+.step{border-left:4px solid var(--green);background:#f8fbf8;border-radius:9px;padding:13px 15px;margin:12px 0}
+.formula{display:block;background:#333;color:#fff;padding:13px;border-radius:9px;text-align:center;font-size:18px;font-weight:700;margin:12px 0}
+.activity{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0;background:#fff}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid #eee}
+.nav-btn{display:inline-block;text-decoration:none;background:#fff;color:#654b00;border:1px solid #d7bf72;padding:10px 14px;border-radius:9px;font-weight:700}
+.nav-btn.next{background:var(--gold);border-color:var(--gold);color:#fff}
+.footer-note{text-align:center;color:#888;font-size:12px;margin:18px 0 4px}.overlay{display:none}
+@media(max-width:800px){
+.sidebar{transform:translateX(-105%);box-shadow:4px 0 20px rgba(0,0,0,.15)}.sidebar.open{transform:translateX(0)}
+.main{margin-left:0;padding:12px}.mobile-btn{display:inline-flex;align-items:center;justify-content:center}
+.topbar{position:sticky;top:0;z-index:900;padding:3px 0}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:950}
+.overlay.show{display:block}.card{padding:17px 14px;border-radius:11px}h1{font-size:22px}h2{font-size:19px}h3{font-size:16px}
+table{font-size:13px;min-width:560px}
+.nav-buttons{position:sticky;bottom:0;background:rgba(255,255,255,.97);padding:10px 14px;margin-left:-14px;margin-right:-14px;box-shadow:0 -3px 12px rgba(0,0,0,.06)}
+}
+</style></head><body>
+<aside class="sidebar" id="sidebar"><div class="brand"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"><b>SMKN 7 LUWU<br>Konsentrasi Keahlian TKJ</b></div>
+<div class="nav-title">Navigasi TP 5</div><nav class="nav">
+<a href="../../index.html">🏠 Beranda</a><a href="../index.html">📚 Materi</a><a href="tp5.html">🎯 TP 5</a>
+<a href="tp5-bab1.html">📋 Bab 1 · Tabel Acuan</a><a href="tp5-bab2.html">📋 Bab 2</a>
+<a href="tp5-bab3.html" class="">📋 Bab 3 · Acuan</a>
+<a href="tp5-bab3-materi.html" class="active">📖 Bab 3 · Materi</a>
+<a href="tp5-bab3-subnet.html" class="">🔢 Bab 3 · Jumlah Subnet</a>
+<a href="tp5-bab3-lkpd.html" class="">✍️ Bab 3 · LKPD</a>
+<a href="../../menu-utama-TKJ/tryout.html">📝 Tryout</a><a href="../../lkpd/index.html">📄 LKPD</a>
+<a href="../../absen/index.html">📷 Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a>
+<a href="../../cbt/index.html">💻 CBT Ujian</a><a href="../../arsip.html">🗂️ ARSIP</a>
+</nav></aside><div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<main class="main"><div class="wrap"><div class="topbar"><button class="mobile-btn" onclick="toggleMenu()" aria-label="Buka menu">☰</button>
+<div style="font-size:13px;color:#777">TP 5 · Subnetting dan Pembagian Jaringan Sederhana</div></div>
+<section class="card">
+<h1>BAB 3 — Menentukan Jumlah Subnet dan Jumlah Host</h1><p class="subtitle"><strong>Pertemuan 3 · Alokasi Waktu 3 JP</strong></p>
+<div class="goal"><h3 style="margin-top:0">Tujuan Pembelajaran Bab Ini:</h3><ul>
+<li>Peserta didik mampu menentukan jumlah host yang tersedia pada suatu prefix.</li>
+<li>Peserta didik mampu menentukan jumlah subnet yang terbentuk dari suatu pembagian.</li></ul></div>
+<h2>3.1 Bit Host Menentukan Kapasitas Jaringan</h2>
+<p>Pada Bab 2, kalian telah mempelajari cara menghitung jumlah bit host dari sebuah prefix. Sekarang kita akan menggunakan angka bit host tersebut untuk menghitung berapa banyak perangkat yang dapat ditampung sebuah jaringan.</p>
+<p>Kuncinya sederhana: setiap bit dapat bernilai 0 atau 1, yaitu dua kemungkinan. Apabila terdapat h buah bit host, maka banyaknya kombinasi alamat yang dapat dibentuk adalah 2 dipangkatkan h.</p>
+<div class="formula">Jumlah seluruh alamat = 2<sup>h</sup></div><p>dengan <strong>h = jumlah bit host</strong></p>
+<h3>Contoh perhitungan bertahap:</h3>
+<table><tbody>
+<tr><td><strong>h = 8</strong></td><td>2<sup>8</sup> = 2×2×2×2×2×2×2×2 = 256 alamat</td></tr>
+<tr><td><strong>h = 7</strong></td><td>2<sup>7</sup> = 128 alamat</td></tr>
+<tr><td><strong>h = 6</strong></td><td>2<sup>6</sup> = 64 alamat</td></tr>
+<tr><td><strong>h = 5</strong></td><td>2<sup>5</sup> = 32 alamat</td></tr>
+<tr><td><strong>h = 4</strong></td><td>2<sup>4</sup> = 16 alamat</td></tr>
+<tr><td><strong>h = 3</strong></td><td>2<sup>3</sup> = 8 alamat</td></tr>
+<tr><td><strong>h = 2</strong></td><td>2<sup>2</sup> = 4 alamat</td></tr>
+</tbody></table>
+<div class="callout"><strong>Cara Mudah Menghitung Pangkat Dua</strong>
+<p>Kalian tidak perlu menghafal seluruhnya. Cukup ingat bahwa setiap kenaikan satu pangkat berarti dikalikan dua:</p>
+<p style="font-size:18px;text-align:center;font-weight:700">2 → 4 → 8 → 16 → 32 → 64 → 128 → 256</p>
+<p>Urutan angka inilah yang akan terus kalian pakai dalam subnetting.</p></div>
+<h2>3.2 Menghitung Jumlah Host yang Dapat Dipakai</h2>
+<p>Dari TP 4, kalian sudah mengetahui bahwa dalam setiap jaringan terdapat dua alamat yang tidak boleh dipasang pada perangkat, yaitu alamat jaringan dan alamat broadcast. Hal ini juga berlaku pada setiap subnet. Oleh karena itu, jumlah host yang benar-benar dapat dipakai adalah:</p>
+<div class="formula">Jumlah host terpakai = 2<sup>h</sup> − 2</div>
+<p>Angka 2 dikurangkan karena:</p><ul><li>−1 untuk alamat jaringan</li><li>−1 untuk alamat broadcast</li></ul>
+<div class="step"><strong>Contoh 1:</strong><p>Sebuah jaringan menggunakan prefix /26. Berapa jumlah host yang dapat dipakai?</p>
+<p><strong>Langkah 1 —</strong> Hitung bit host: h = 32 − 26 = 6</p><p><strong>Langkah 2 —</strong> Hitung jumlah alamat: 2<sup>6</sup> = 64 alamat</p><p><strong>Langkah 3 —</strong> Kurangi 2: 64 − 2 = 62 host</p><p><strong>Jawaban:</strong> 62 host dapat dipakai</p></div>
+<div class="step"><strong>Contoh 2:</strong><p>Sebuah jaringan menggunakan prefix /28. Berapa jumlah host yang dapat dipakai?</p>
+<p>h = 32 − 28 = 4</p><p>2<sup>4</sup> = 16 alamat</p><p>16 − 2 = 14 host</p><p><strong>Jawaban:</strong> 14 host dapat dipakai</p></div>
+<div class="nav-buttons">
+<a class="nav-btn" href="tp5-bab3.html">← Tabel Acuan</a>
+<a class="nav-btn next" href="tp5-bab3-subnet.html">Jumlah Subnet →</a></div></section>
+<div class="footer-note">SMKN 7 Luwu · Kelas XI TJKT · Fase F · Semester Ganjil 2026/2027</div></div></main>
+<script>
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('show')}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',closeMenu));
+</script></body></html>
