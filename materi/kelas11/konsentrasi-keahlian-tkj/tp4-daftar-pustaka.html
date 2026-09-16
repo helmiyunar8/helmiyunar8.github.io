@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Pustaka TP 4 — Kelas XI TJKT</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333;--green:#A5D6A7;--green-dark:#176b4d}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 10px}
+.sidebar h3{text-align:center;margin:4px 0 18px;color:var(--gold)}
+.nav a{display:block;text-decoration:none;color:#333;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px}
+.nav a:hover,.nav a.active{background:#fff9e8;color:var(--gold)}
+.nav i{width:22px}
+.main{margin-left:250px;padding:28px 18px}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.header{text-align:center;border-bottom:1px solid #e5e5e5;padding-bottom:20px;margin-bottom:22px}
+.header h1{margin:0;color:#333;font-size:27px}
+.header h2{margin:7px 0;color:var(--gold);font-size:22px}
+.header p{margin:4px 0;color:#777}
+.intro{background:#f0fff4;border-left:5px solid var(--green);padding:16px 18px;border-radius:10px;margin-bottom:24px}
+.sources{margin:0;padding:0;list-style:none}
+.sources li{display:flex;gap:14px;align-items:flex-start;background:#fbfffc;border:1px solid #d9eadb;border-radius:10px;padding:17px 18px;margin:12px 0}
+.num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:#176b4d;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.source-text{flex:1}
+.source-title{font-weight:bold;color:var(--green-dark);margin-bottom:4px}
+.info{margin-top:25px;background:#fff9e8;border-left:5px solid var(--gold);padding:14px 17px;border-radius:8px;font-size:14px}
+.illustration{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;background:#f8fffa;border:1px solid #d9eadb;border-radius:12px;padding:18px;margin:24px 0}
+.ill-item{text-align:center;min-width:125px;color:var(--green-dark);font-size:13px}
+.ill-item i{font-size:42px;margin-bottom:6px}
+.hamburger{display:none;position:fixed;top:10px;left:10px;z-index:30;border:0;background:#fff;color:var(--gold);font-size:22px;padding:8px 11px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
+@media(max-width:768px){
+ .sidebar{display:none;width:230px}.sidebar.show{display:block}.hamburger{display:block}
+ .main{margin-left:0;padding:58px 10px 18px}.card{padding:15px;border-radius:10px}
+ .header h1{font-size:21px}.header h2{font-size:18px}.header p{font-size:13px}
+ .intro,.info{font-size:13px}.sources li{font-size:13px;padding:13px}
+ .num{flex-basis:30px;height:30px}.illustration{padding:13px;gap:10px}
+ .ill-item{min-width:90px;font-size:11px}.ill-item i{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="toggleMenu()" aria-label="Buka menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<aside class="sidebar" id="sidebar">
+<img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book"></i> Materi</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-pen-to-square"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-camera"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+
+<main class="main">
+<section class="card">
+<header class="header">
+<h1>DAFTAR PUSTAKA</h1>
+<h2>Tujuan Pembelajaran 4</h2>
+<p>Kelas XI TJKT · Fase F · Semester Ganjil 2026/2027</p>
+</header>
+
+<div class="intro">
+Daftar pustaka dan sumber yang digunakan sebagai dasar penyusunan materi <strong>IPv4, Subnet Mask, Alamat Jaringan, dan Alamat Host</strong> pada Tujuan Pembelajaran 4.
+</div>
+
+<div class="illustration" aria-label="Ilustrasi sumber pembelajaran jaringan">
+<div class="ill-item"><i class="fa-solid fa-book-open"></i><br><strong>Modul Ajar</strong><br>Sumber pembelajaran</div>
+<div class="ill-item"><i class="fa-solid fa-graduation-cap"></i><br><strong>Capaian Pembelajaran</strong><br>Acuan pembelajaran</div>
+<div class="ill-item"><i class="fa-solid fa-network-wired"></i><br><strong>Pengamatan</strong><br>Praktik jaringan</div>
+</div>
+
+<ol class="sources">
+<li>
+<div class="num">1</div>
+<div class="source-text">
+<div class="source-title">Modul Ajar 4</div>
+Modul Ajar 4 – IPv4, Subnet Mask, Alamat Jaringan, dan Alamat Host, SMK Negeri 7 Luwu, Tahun Pelajaran 2026/2027.
+</div>
+</li>
+
+<li>
+<div class="num">2</div>
+<div class="source-text">
+<div class="source-title">Capaian Pembelajaran</div>
+Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan, Fase F, Kurikulum yang berlaku di satuan pendidikan.
+</div>
+</li>
+
+<li>
+<div class="num">3</div>
+<div class="source-text">
+<div class="source-title">Pengamatan Langsung</div>
+Pengamatan langsung terhadap pengaturan jaringan pada perangkat Chromebook dan hotspot yang tersedia di SMK Negeri 7 Luwu.
+</div>
+</li>
+</ol>
+
+<div class="info">
+<strong>Sumber pembelajaran TP 4:</strong> Materi disusun berdasarkan Modul Ajar 4, Capaian Pembelajaran yang berlaku di satuan pendidikan, serta pengamatan langsung terhadap jaringan Chromebook dan hotspot yang tersedia di SMK Negeri 7 Luwu.
+</div>
+
+</section>
+</main>
+
+<script>
+function toggleMenu(){
+ document.getElementById('sidebar').classList.toggle('show');
+}
+</script>
+</body>
+</html>
