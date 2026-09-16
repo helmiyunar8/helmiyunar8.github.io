@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refleksi Akhir TP 5 — Subnetting</title>
+<style>
+:root{
+ --gold:#b8860b;--bg:#f4f4f4;--text:#333;--muted:#666;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{
+ position:fixed;left:0;top:0;bottom:0;width:250px;background:#fff;border-right:1px solid #ddd;
+ z-index:1000;overflow-y:auto;padding:18px 14px
+}
+.logo{display:block;width:82px;height:82px;object-fit:contain;margin:4px auto 8px}
+.school{text-align:center;font-weight:700;color:var(--gold);font-size:14px;line-height:1.35}
+.subschool{text-align:center;color:#666;font-size:12px;margin:3px 0 18px}
+.menu-title{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;margin:16px 8px 7px}
+.sidebar a{
+ display:block;text-decoration:none;color:#333;padding:9px 10px;border-radius:8px;
+ font-size:13px;margin:2px 0
+}
+.sidebar a:hover,.sidebar a.active{background:#f7eed1;color:#8a6500;font-weight:700}
+.main{margin-left:250px;min-height:100vh;padding:26px}
+.container{
+ max-width:1000px;margin:auto;background:#fff;border-top:5px solid var(--gold);
+ border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:28px
+}
+h1{font-size:26px;line-height:1.25;margin:0 0 6px;color:#222}
+h2{font-size:21px;color:#7a5700;border-bottom:2px solid #ead9a8;padding-bottom:8px;margin-top:30px}
+.meta{color:#777;font-size:13px;margin-bottom:20px}
+.cover{
+ background:linear-gradient(135deg,#fffaf0,#fff);border:1px solid #ead9a8;
+ border-radius:10px;padding:18px;margin-bottom:20px
+}
+.cover-title{font-size:15px;color:#8a6500;font-weight:700}
+.intro{
+ background:#fff9e9;border-left:5px solid var(--gold);padding:16px 18px;
+ border-radius:8px;margin:18px 0 24px
+}
+.reflection-card{
+ border:1px solid #ddd;border-radius:10px;padding:16px 18px;margin:14px 0;background:#fff
+}
+.reflection-card:nth-child(even){background:#fdfcf8}
+.number{
+ display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
+ border-radius:50%;background:#f1df9f;color:#654900;font-weight:700;margin-right:8px;
+ vertical-align:middle
+}
+.question{font-weight:700;display:inline}
+.answer{
+ margin-top:13px;min-height:88px;border:1px dashed #bbb;border-radius:8px;
+ background:repeating-linear-gradient(to bottom,#fafafa 0,#fafafa 27px,#e4e4e4 28px)
+}
+.answer.tall{min-height:125px}
+.badge{
+ display:inline-block;padding:5px 9px;border-radius:999px;background:#f5e9c4;
+ color:#765500;font-size:11px;font-weight:700;margin-bottom:10px
+}
+.tip{
+ background:#f6f6f6;border-left:4px solid #aaa;padding:12px 15px;border-radius:7px;
+ margin:18px 0
+}
+.footer-nav{
+ display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:18px;border-top:1px solid #ddd
+}
+.footer-nav a{
+ text-decoration:none;background:#f5e9c4;color:#6b4e00;padding:10px 14px;
+ border-radius:8px;font-weight:700;font-size:13px
+}
+.mobile-top{display:none}.hamb{display:none}.overlay{display:none}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}
+ .main{margin-left:0;padding:12px}.container{padding:18px 14px;border-radius:10px}
+ h1{font-size:22px}h2{font-size:19px}
+ .mobile-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+ .hamb{
+  display:block;border:0;background:#fff;border-radius:8px;padding:9px 12px;
+  box-shadow:0 1px 6px rgba(0,0,0,.12);font-size:20px;cursor:pointer
+ }
+ .mobile-title{font-weight:700;color:#765500;font-size:14px}
+ .overlay{position:fixed;inset:0;background:rgba(0,0,0,.28);z-index:900}
+ .overlay.show{display:block}
+ .reflection-card{padding:14px}.answer{min-height:105px}.answer.tall{min-height:145px}
+ .footer-nav{
+  position:sticky;bottom:0;background:rgba(255,255,255,.96);
+  padding:10px 0;border-top:1px solid #ddd;z-index:20
+ }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+ <img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+ <div class="school">SMKN 7 LUWU</div>
+ <div class="subschool">Kelas XI TJKT · TP 5</div>
+
+ <div class="menu-title">Navigasi TP5</div>
+ <a href="tp5.html">TP5 — Beranda</a>
+ <a href="tp5-bab1.html">Bab 1 — Acuan Subnetting</a>
+ <a href="tp5-bab2.html">Bab 2 — Prefix & Subnet Mask</a>
+ <a href="tp5-bab3.html">Bab 3 — Jumlah Host & Subnet</a>
+ <a href="tp5-bab4.html">Bab 4 — Block Size</a>
+ <a href="tp5-bab5.html">Bab 5 — Memilih Subnet</a>
+ <a href="tp5-bab6.html">Bab 6 — Proyek Pembagian Jaringan</a>
+
+ <div class="menu-title">Evaluasi</div>
+ <a href="tp5-evaluasi.html">Evaluasi Akhir TP 5</a>
+ <a href="tp5-refleksi.html" class="active">Refleksi Akhir</a>
+ <a href="tp5-glosarium.html">Glosarium</a>
+ <a href="tp5-kunci-jawaban.html">Kunci Jawaban</a>
+ <a href="tp5-daftar-pustaka.html">Daftar Pustaka</a>
+
+ <div class="menu-title">LMS</div>
+ <a href="../../index.html">Beranda</a>
+ <a href="../index.html">Materi</a>
+ <a href="../../menu-utama-TKJ/tryout.html">Tryout</a>
+ <a href="../../lkpd/index.html">LKPD</a>
+ <a href="../../absen/index.html">Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">Ranking</a>
+ <a href="../../cbt/index.html">CBT Ujian</a>
+ <a href="../../arsip.html">ARSIP</a>
+</aside>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<main class="main">
+ <div class="mobile-top">
+  <button class="hamb" onclick="openMenu()" aria-label="Buka menu">☰</button>
+  <div class="mobile-title">Refleksi Akhir TP 5</div>
+ </div>
+
+ <section class="container">
+  <div class="cover">
+   <div class="cover-title">REFLEKSI PEMBELAJARAN · TP 5</div>
+   <h1>Refleksi Akhir Peserta Didik</h1>
+   <div class="meta">Kelas XI TJKT · SMKN 7 Luwu · Subnetting</div>
+  </div>
+
+  <div class="intro">
+   <span class="badge">REFLEKSI DIRI</span><br>
+   Jawablah pertanyaan berikut dengan jujur berdasarkan pengalaman kalian selama mempelajari TP 5 dan mengerjakan proyek pembagian jaringan. Tidak ada jawaban yang harus sama antara satu peserta didik dengan peserta didik lainnya.
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">1</span><span class="question">Apa yang saya pahami tentang subnetting?</span>
+   <div class="answer"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">2</span><span class="question">Apa fungsi prefix?</span>
+   <div class="answer"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">3</span><span class="question">Bagaimana cara menentukan jumlah host?</span>
+   <div class="answer"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">4</span><span class="question">Bagaimana cara menentukan alamat jaringan setiap subnet?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">5</span><span class="question">Bagaimana cara menentukan alamat broadcast?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">6</span><span class="question">Apa kesulitan terbesar saya pada materi ini?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">7</span><span class="question">Bagaimana saya akan memperbaiki kesulitan tersebut?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">8</span><span class="question">Bagaimana kerja sama kelompok saya selama proyek?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="reflection-card">
+   <span class="number">9</span><span class="question">Apa manfaat subnetting bagi jaringan sekolah saya?</span>
+   <div class="answer tall"></div>
+  </div>
+
+  <div class="tip">
+   <b>Catatan:</b> Tuliskan pengalaman dan pemahaman kalian dengan kalimat sendiri. Refleksi ini digunakan untuk melihat bagian yang sudah dipahami dan bagian yang masih perlu dipelajari kembali.
+  </div>
+
+  <div class="footer-nav">
+   <a href="tp5-evaluasi.html">← Evaluasi</a>
+   <a href="tp5.html">TP5 — Beranda</a>
+   <a href="tp5-glosarium.html">Glosarium →</a>
+  </div>
+ </section>
+</main>
+
+<script>
+function openMenu(){
+ document.getElementById('sidebar').classList.add('open');
+ document.getElementById('overlay').classList.add('show');
+}
+function closeMenu(){
+ document.getElementById('sidebar').classList.remove('open');
+ document.getElementById('overlay').classList.remove('show');
+}
+document.querySelectorAll('.sidebar a').forEach(function(a){
+ a.addEventListener('click',closeMenu);
+});
+</script>
+</body>
+</html>
