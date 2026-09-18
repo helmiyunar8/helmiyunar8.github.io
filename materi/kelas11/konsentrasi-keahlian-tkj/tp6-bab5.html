@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TP6 Bab 5 — Studi Kasus Rencana Pengalamatan IP</title><style><style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--ink:#333}
+*{box-sizing:border-box}
+html{width:100%;max-width:100%;overflow-x:hidden}
+body{margin:0;width:100%;max-width:100%;overflow-x:hidden;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:20px 14px;overflow-y:auto;overflow-x:hidden;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;padding:5px 8px 18px;border-bottom:2px solid var(--gold);margin-bottom:14px}
+.brand img{width:44px;height:44px;object-fit:contain;flex:0 0 auto}
+.brand strong{font-size:14px;line-height:1.3}
+.sidebar a{display:block;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#f6edcf;color:#765500;font-weight:bold}
+main{margin-left:250px;padding:26px;width:calc(100% - 250px);max-width:1550px;min-width:0}
+.card{background:#fff;border-radius:14px;padding:24px;margin:0 0 20px;box-shadow:0 2px 8px #0000000a;min-width:0;max-width:100%}
+.hero{background:linear-gradient(120deg,#fff,#fbf5df);border-left:6px solid var(--gold)}
+h1{font-size:clamp(23px,3vw,34px);line-height:1.25;margin:0 0 8px;overflow-wrap:anywhere}
+h2{font-size:23px;color:#795900;border-bottom:2px solid #eadba7;padding-bottom:8px;margin-top:0;overflow-wrap:anywhere}
+h3{font-size:18px;color:#725500}
+.meta{color:#666;margin:0}
+.goal{background:#fff9e8;padding:14px 18px;border-radius:10px}
+.callout{background:#f8f4e7;border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;margin:14px 0;min-width:0;overflow-wrap:anywhere}
+.step{display:flex;gap:12px;margin:12px 0;align-items:flex-start;min-width:0}
+.step>div{min-width:0;flex:1}
+.num{background:var(--gold);color:#fff;border-radius:50%;min-width:30px;height:30px;display:grid;place-items:center;font-weight:bold;flex:0 0 30px}
+.table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:12px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{border:1px solid #d7d7d7;padding:9px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:#f5e9bd;color:#594300}
+tr:nth-child(even) td{background:#fffdf7}
+.figure{margin:16px 0;text-align:center;max-width:100%;min-width:0}
+.figure img{display:block;width:100%;max-width:100%;height:auto;border:1px solid #ddd;border-radius:10px;margin-inline:auto;object-fit:contain}
+.figure figcaption{font-size:13px;color:#666;margin-top:7px;overflow-wrap:anywhere}
+.worksheet td{height:34px}
+.pill{display:inline-block;background:#f4e6b5;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:bold;max-width:100%;overflow-wrap:anywhere}
+.mobilebar{display:none}.menu-overlay{display:none}
+.bottomnav{display:none}
+.small{font-size:14px;color:#555}
+ul,ol{padding-left:24px}
+.formula{font-weight:bold;background:#fff4cd;padding:10px 14px;border-radius:8px;display:inline-block;max-width:100%;overflow-wrap:anywhere}
+.footer{text-align:center;color:#777;font-size:13px;padding:8px}
+code{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:850px){
+  .sidebar{transform:translateX(-105%);transition:transform .25s ease;width:min(270px,85vw);box-shadow:2px 0 16px #0002}
+  .sidebar.open{transform:translateX(0)}.menu-overlay.show{display:block;position:fixed;inset:56px 0 0;background:#0005;z-index:19}
+  main{margin:0;padding:70px 12px 84px;width:100%;max-width:100%;min-width:0}
+  .card{padding:17px;border-radius:12px}
+  .mobilebar{display:flex;position:fixed;top:0;left:0;right:0;height:56px;background:#fff;z-index:30;align-items:center;padding:0 14px;box-shadow:0 2px 8px #0002;gap:12px}
+  .mobilebar button{border:0;background:#f6edcf;border-radius:8px;padding:8px 12px;font-size:18px;flex:0 0 auto}
+  .bottomnav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;z-index:25;justify-content:space-around;padding:8px 3px calc(8px + env(safe-area-inset-bottom))}
+  .bottomnav a{font-size:11px;text-decoration:none;color:#65500b;text-align:center;min-width:0}
+  h1{font-size:clamp(22px,6vw,29px)}
+  h2{font-size:clamp(20px,5.2vw,23px)}
+  .step{gap:9px}
+  .figure{margin:12px 0}
+  .figure img{border-radius:6px}
+  .table-wrap{margin-right:0}
+}
+@media(max-width:480px){
+  main{padding:66px 9px 82px}
+  .card{padding:13px}
+  .hero{padding:15px 13px}
+  h1{font-size:22px;line-height:1.25}
+  h2{font-size:20px;line-height:1.3}
+  h3{font-size:17px}
+  .meta{font-size:13px;line-height:1.5}
+  .goal,.callout{padding:12px}
+  ul,ol{padding-left:21px}
+  .step{gap:8px}
+  .num{min-width:26px;height:26px;flex-basis:26px;font-size:13px}
+  .figure figcaption{font-size:12px}
+}
+</style></head><body><div class="mobilebar"><button id="menuToggle" aria-label="Buka atau tutup menu" aria-expanded="false">☰</button><strong>TP6 · Bab 5</strong></div><div class="menu-overlay" id="menuOverlay"></div><aside class="sidebar" id="sidebar"><div class="brand"><img src="../../asset/logo.png" onerror="this.style.display='none'" alt="Logo sekolah"><strong>SMKN 7 LUWU<br>Learning Management System</strong></div><a href="../../index.html">⌂ Beranda</a><a href="../index.html">▤ Materi</a><a href="../../menu-utama-TKJ/tryout.html">✓ Tryout</a><a href="../../lkpd/index.html">▧ LKPD</a><a href="../../absen/index.html">◷ Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">★ Ranking</a><a href="../../cbt/index.html">▣ CBT Ujian</a><a href="../../arsip.html">▤ ARSIP</a><hr><a href="tp6.html">TP6 — Beranda</a><a href="tp6-bab1.html">Bab 1</a><a href="tp6-bab2.html">Bab 2</a><a href="tp6-bab3.html">Bab 3</a><a href="tp6-bab4.html">Bab 4</a><a class="active" href="tp6-bab5.html">Bab 5</a></aside><main>
+<section class="card hero"><span class="pill">TP 6 · Fase F · Semester Ganjil 2026/2027</span><h1>BAB 5 — Studi Kasus: Rencana Pengalamatan IP Jaringan Sekolah</h1><p class="meta"><b>Pertemuan 5 · Alokasi Waktu 3 JP</b><br>Konsentrasi Keahlian Teknik Jaringan Komputer dan Telekomunikasi · Kelas XI TJKT</p></section>
+<section class="card"><h2>Tujuan Pembelajaran Bab Ini</h2><div class="goal"><ul><li>Peserta didik mampu menyusun rencana pengalamatan IP yang lengkap untuk sebuah studi kasus jaringan sekolah.</li><li>Peserta didik mampu menjelaskan setiap bagian dari rencana pengalamatan yang disusun.</li></ul></div></section>
+<section class="card"><h2>5.1 Menggabungkan Seluruh Materi TP 6</h2><p>Bab ini adalah tempat kalian menggabungkan seluruh materi yang telah dipelajari: menghitung kebutuhan alamat (Bab 2), menyusun tabel network ID dan host ID (Bab 3), serta menentukan gateway dan broadcast (Bab 4), menjadi satu rencana pengalamatan IP yang utuh dan siap digunakan.</p><figure class="figure"><img src="tp6-bab5-ilustrasi.png" alt="Infografik studi kasus rencana pengalamatan IP jaringan kelas XI TJKT"><figcaption><b>Gambar 5.1</b> Gambaran rencana pengalamatan IP jaringan kelas XI TJKT SMKN 7 Luwu.</figcaption></figure><div class="callout"><b>Inti bab:</b> rencana yang baik bukan sekadar daftar alamat. Rencana harus menunjukkan subnet yang digunakan, alamat khusus, alamat tiap perangkat, dan ruang cadangan agar pemasangan serta pemeliharaan jaringan lebih terarah.</div></section>
+<section class="card"><h2>5.2 Studi Kasus Lengkap</h2><div class="callout"><h3>Studi Kasus</h3><p>SMK Negeri 7 Luwu kelas XI TJKT akan menyusun rencana pengalamatan IP untuk jaringan kelas dengan rincian berikut:</p><ul><li>11 Chromebook peserta didik</li><li>1 router (berfungsi sebagai hotspot HP guru)</li><li>1 access point tambahan (rencana pengembangan)</li><li>1 printer jaringan (rencana pengembangan)</li><li>Perkiraan cadangan untuk pengembangan: 5 alamat</li></ul><p><b>Jaringan awal yang tersedia:</b> <code>192.168.1.0/24</code></p><p><b>Tugas kalian:</b> susunlah rencana pengalamatan IP yang lengkap untuk studi kasus ini.</p></div><p>Perangkat yang direncanakan perlu berada dalam subnet yang sama pada contoh ini. Router ditetapkan sebagai gateway; access point, printer, dan Chromebook memperoleh alamat host yang berbeda.</p></section>
+<section class="card"><h2>5.3 Langkah Pengerjaan</h2><ol><li>Hitung kebutuhan dasar: 11 Chromebook + 1 router + 1 access point + 1 printer = 14 alamat.</li><li>Tambahkan cadangan: 14 + 5 = 19 alamat, dibulatkan menjadi kebutuhan 20 alamat agar ada sedikit ruang lebih.</li><li>Pilih prefix yang sesuai menggunakan Tabel Acuan Subnetting TP 5: /27 menyediakan 30 host, mencukupi 20 kebutuhan.</li><li>Tentukan network ID, gateway, dan broadcast untuk /27 pertama dari 192.168.1.0/24, yaitu 192.168.1.0/27.</li><li>Susun tabel pengalamatan lengkap dan berurutan sesuai aturan pada Bab 3.</li></ol><h3>Pengerjaan langkah demi langkah</h3><div class="step"><span class="num">1</span><div><b>LANGKAH 1 — Kebutuhan dasar</b><br>11 (Chromebook) + 1 (router) + 1 (access point) + 1 (printer) = <b>14 alamat</b>.</div></div><div class="step"><span class="num">2</span><div><b>LANGKAH 2 — Tambah cadangan</b><br>14 + 5 = 19 → dibulatkan menjadi kebutuhan <b>20 alamat</b>.</div></div><div class="step"><span class="num">3</span><div><b>LANGKAH 3 — Pilih prefix</b><div class="table-wrap"><table><thead><tr><th>Prefix</th><th>Jumlah host yang dapat digunakan</th><th>Perbandingan dengan kebutuhan 20</th><th>Keputusan</th></tr></thead><tbody><tr><td>/28</td><td>14 host</td><td>14 &lt; 20</td><td><b>TIDAK CUKUP</b></td></tr><tr><td>/27</td><td>30 host</td><td>30 ≥ 20</td><td><b>CUKUP — dipilih</b></td></tr></tbody></table></div><b>Prefix dipilih: /27</b></div></div><div class="step"><span class="num">4</span><div><b>LANGKAH 4 — Tentukan network ID, gateway, broadcast</b><ul><li>Subnet mask /27: <code>255.255.255.224</code></li><li>Network ID: <code>192.168.1.0</code></li><li>Gateway: <code>192.168.1.1</code> (network ID + 1)</li><li>Broadcast: <code>192.168.1.31</code> (block size 32, jadi 0–31)</li></ul></div></div><div class="step"><span class="num">5</span><div><b>LANGKAH 5 — Susun tabel</b><br>Masukkan alamat khusus dan alamat perangkat secara berurutan, lalu sisakan rentang alamat untuk pengembangan.</div></div><div class="callout"><b>Contoh pemahaman block size:</b> pada /27, ukuran blok 32. Subnet pertama pada oktet terakhir dimulai dari 0 dan berakhir pada 31. Jadi network ID adalah .0, host yang dapat digunakan .1 sampai .30, dan broadcast .31.</div></section>
+<section class="card"><h2>5.4 Tabel Rencana Pengalamatan IP Lengkap</h2><div class="table-wrap"><table><thead><tr><th>No</th><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Gateway</th><th>Keterangan</th></tr></thead><tbody><tr><td>—</td><td><b>Network ID</b></td><td>192.168.1.0</td><td>255.255.255.224</td><td>—</td><td>Identitas jaringan</td></tr><tr><td>1</td><td>Router</td><td>192.168.1.1</td><td>255.255.255.224</td><td>—</td><td>Berfungsi sebagai gateway</td></tr><tr><td>2</td><td>Access Point</td><td>192.168.1.2</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Perangkat jaringan</td></tr><tr><td>3</td><td>Printer Jaringan</td><td>192.168.1.3</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Perangkat pengguna</td></tr><tr><td>4</td><td>Chromebook 1</td><td>192.168.1.4</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Perangkat pengguna</td></tr><tr><td>5</td><td>Chromebook 2</td><td>192.168.1.5</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Perangkat pengguna</td></tr><tr><td>…</td><td>Chromebook 3–11</td><td>192.168.1.6–.14</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Perangkat pengguna</td></tr><tr><td>—</td><td><b>Cadangan</b></td><td>192.168.1.15–.30</td><td>255.255.255.224</td><td>192.168.1.1</td><td>Disiapkan untuk masa depan</td></tr><tr><td>—</td><td><b>Broadcast</b></td><td>192.168.1.31</td><td>255.255.255.224</td><td>—</td><td>Penanda batas akhir subnet</td></tr></tbody></table></div><p>Perhatikan bahwa tabel ini memuat seluruh unsur yang telah kalian pelajari sepanjang TP 6: network ID di baris pertama, router yang berfungsi sebagai gateway, perangkat jaringan lain, perangkat pengguna secara berurutan, alamat cadangan, dan ditutup dengan alamat broadcast. Inilah bentuk rencana pengalamatan IP yang lengkap dan siap digunakan sebagai acuan pemasangan jaringan sesungguhnya.</p><div class="callout"><b>Catatan teknis tambahan:</b> jumlah alamat cadangan pada tabel (.15–.30) adalah 16 alamat host yang belum ditetapkan, karena kapasitas /27 menyediakan 30 alamat host yang dapat digunakan. Lima alamat cadangan merupakan kebutuhan minimum yang disebutkan dalam studi kasus; sisa ruang dapat tetap dibiarkan belum dialokasikan. Saat jaringan benar-benar dipasang, pastikan pengaturan DHCP tidak membagikan alamat yang sudah ditetapkan secara manual.</div></section>
+<section class="card"><h2>5.5 Kegiatan Kelompok — LKPD 5.1</h2><div class="callout"><h3>Studi Kasus LKPD 5.1</h3><p>Ruang tata usaha akan dipasangi jaringan dengan rincian: 8 komputer, 1 printer jaringan, dan 1 access point, dengan cadangan diperkirakan 5 alamat.</p><p><b>Jaringan awal yang tersedia:</b> <code>192.168.2.0/24</code></p><p>Susunlah rencana pengalamatan IP yang lengkap mengikuti kelima langkah pada bagian 5.3.</p></div><h3>Ruang kerja kelompok</h3><p class="small">Tuliskan perhitungan kebutuhan, pilihan prefix, network ID, gateway, broadcast, lalu lengkapi tabel.</p><div class="table-wrap"><table class="worksheet"><thead><tr><th>No</th><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Gateway</th><th>Keterangan</th></tr></thead><tbody><tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div><h3>Periksa hasil kelompok</h3><ul><li>Apakah prefix yang dipilih menyediakan alamat host yang cukup?</li><li>Apakah network ID dan broadcast tidak diberikan kepada perangkat?</li><li>Apakah gateway berada dalam subnet yang sama?</li><li>Apakah setiap perangkat memperoleh alamat IP unik?</li><li>Apakah alamat cadangan dicatat?</li></ul></section>
+<section class="card"><h2>Rangkuman Bab 5</h2><ul><li>Rencana pengalamatan IP disusun melalui lima langkah: menghitung kebutuhan dasar, menambah cadangan, memilih prefix, menentukan network ID/gateway/broadcast, dan menyusun tabel lengkap.</li><li>Seluruh materi TP 4, TP 5, dan TP 6 digabungkan menjadi satu dokumen kerja yang utuh dan siap digunakan.</li></ul></section>
+<section class="card"><h2>Latihan Soal Bab 5</h2><ol><li>Sebutkan lima langkah menyusun rencana pengalamatan IP yang lengkap!</li><li>Berdasarkan studi kasus pada bab ini, mengapa dipilih prefix /27 dan bukan /28?</li><li>Mengapa router pada tabel rencana pengalamatan tidak memiliki alamat gateway?</li><li>Susunlah rencana pengalamatan IP untuk ruang laboratorium dengan 15 komputer, 1 access point, cadangan 3 alamat, dari jaringan awal 192.168.3.0/24!</li></ol><div class="callout"><b>Petunjuk soal nomor 4:</b> hitung kebutuhan perangkat terlebih dahulu, tambahkan cadangan, pilih prefix yang cukup, kemudian tentukan network ID, gateway, broadcast, dan rentang host. Nyatakan asumsi jika ada perangkat tambahan yang diperlukan.</div></section>
+<section class="card"><h2>Refleksi Pertemuan 5</h2><ul><li>Apakah rencana pengalamatan yang saya susun sudah lengkap?</li><li>Apakah saya sudah mencantumkan network ID, gateway, dan broadcast dengan benar?</li><li>Bagian mana yang masih saya rasa sulit dalam menyusun rencana pengalamatan?</li></ul></section><div class="footer">SMKN 7 Luwu · TP6 Konsentrasi Keahlian TJKT · 2026/2027</div></main><nav class="bottomnav"><a href="../../index.html">⌂<br>Beranda</a><a href="../index.html">▤<br>Materi</a><a href="../../lkpd/index.html">▧<br>LKPD</a><a href="../../absen/index.html">◷<br>Absen</a></nav><script>document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.sidebar').classList.remove('open')));const menuToggle=document.getElementById('menuToggle');
+const sidebar=document.getElementById('sidebar');
+const menuOverlay=document.getElementById('menuOverlay');
+function closeMenu(){sidebar.classList.remove('open');menuOverlay.classList.remove('show');menuToggle.setAttribute('aria-expanded','false')}
+menuToggle.addEventListener('click',()=>{const opened=sidebar.classList.toggle('open');menuOverlay.classList.toggle('show',opened);menuToggle.setAttribute('aria-expanded',String(opened))});
+menuOverlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',closeMenu));
+</script></body></html>
