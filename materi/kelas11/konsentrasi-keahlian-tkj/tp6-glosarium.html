@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8860b">
+<title>TP 6 — Glosarium</title>
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--ink:#333;--line:#eadba7}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:18px 13px;overflow-y:auto;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;padding:7px 8px 17px;border-bottom:2px solid var(--gold);margin-bottom:14px}
+.brand-mark{width:43px;height:43px;border-radius:10px;background:#f6edcf;color:#795900;display:grid;place-items:center;font-weight:bold;font-size:20px;flex:0 0 auto}
+.brand strong{display:block;font-size:15px;line-height:1.25}.brand small{color:#777}
+.sidebar a{display:block;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#f6edcf;color:#765500;font-weight:bold}
+main{margin-left:250px;padding:24px;width:calc(100% - 250px);max-width:1600px;min-width:0}
+.card{background:#fff;border-radius:14px;padding:24px;margin:0 0 20px;box-shadow:0 2px 8px #0000000a;min-width:0;max-width:100%}
+.hero{background:linear-gradient(120deg,#fff,#fbf5df);border-left:6px solid var(--gold)}
+.pill{display:inline-block;background:#f4e6b5;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:bold;max-width:100%}
+h1{font-size:clamp(23px,3vw,35px);line-height:1.25;margin:9px 0;overflow-wrap:anywhere}
+h2{font-size:23px;color:#795900;border-bottom:2px solid var(--line);padding-bottom:8px;margin:0 0 15px;line-height:1.3}
+.meta{color:#666;margin:0;font-size:14px}
+.callout{background:#fff9e8;border-left:4px solid var(--gold);padding:14px 17px;border-radius:8px;margin:14px 0}
+.table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:12px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:15px;table-layout:fixed}
+th,td{border:1px solid #dedede;padding:13px 14px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:#f5e9bd;color:#594300}
+tbody tr:nth-child(even) td{background:#fffdf7}
+th:first-child,td:first-child{width:34%}
+.term{font-weight:bold;color:#654b00}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:24px}
+.footer-nav a{color:#735500;text-decoration:none;background:#f6edcf;padding:9px 13px;border-radius:8px;font-weight:bold}
+.mobilebar{display:none}.menu-overlay{display:none}
+@media(max-width:850px){
+ .sidebar{transform:translateX(-105%);transition:transform .25s ease;width:min(270px,85vw);box-shadow:2px 0 16px #0002}
+ .sidebar.open{transform:translateX(0)}
+ .menu-overlay.show{display:block;position:fixed;inset:56px 0 0;background:#0005;z-index:19}
+ main{margin:0;padding:69px 12px 30px;width:100%;max-width:100%;min-width:0}
+ .card{padding:17px;border-radius:12px}
+ .mobilebar{display:flex;position:fixed;top:0;left:0;right:0;height:56px;background:#fff;z-index:30;align-items:center;padding:0 14px;box-shadow:0 2px 8px #0002;gap:12px}
+ .mobilebar button{border:0;background:#f6edcf;border-radius:8px;padding:8px 12px;font-size:18px}
+ .mobilebar strong{font-size:14px}
+ h1{font-size:clamp(22px,6vw,29px)}h2{font-size:clamp(20px,5.2vw,23px)}
+}
+@media(max-width:560px){
+ main{padding:66px 9px 25px}.card{padding:13px}.hero{padding:15px 13px}
+ h1{font-size:22px}h2{font-size:20px}.meta{font-size:13px}
+ .callout{padding:12px}
+ .table-wrap{overflow:visible}
+ table,tbody,tr,td{display:block;width:100%}
+ thead{display:none}
+ tbody tr{border:1px solid #e5d9b2;border-radius:9px;margin:0 0 12px;overflow:hidden;background:#fff}
+ td{border:0;border-bottom:1px solid #eee;padding:9px 11px}
+ td:last-child{border-bottom:0}
+ td:first-child{width:100%;background:#f5e9bd!important;font-weight:bold;color:#654b00}
+ td:first-child::before{content:"Istilah: ";font-weight:normal;color:#6b6250}
+ td:nth-child(2)::before{content:"Pengertian: ";font-weight:bold;color:#654b00}
+}
+@media print{
+ body{background:#fff}.sidebar,.mobilebar,.menu-overlay,.footer-nav{display:none!important}
+ main{margin:0;padding:0;width:100%;max-width:none}
+ .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid;padding:16px}
+ table{display:table!important;width:100%}thead{display:table-header-group!important}
+ tbody{display:table-row-group!important}tr{display:table-row!important}
+ td,th{display:table-cell!important;border:1px solid #aaa!important}
+ td:first-child::before,td:nth-child(2)::before{content:none!important}
+}
+</style>
+</head>
+<body>
+<div class="mobilebar"><button id="menuToggle" aria-label="Buka atau tutup menu" aria-expanded="false">☰</button><strong>TP 6 · Glosarium</strong></div>
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brand-mark">7</div><div><strong>LMS TKJ</strong><small>SMKN 7 LUWU</small></div></div>
+ <nav>
+  <a href="../../index.html">⌂ &nbsp; Beranda</a><a href="../index.html" class="active">▤ &nbsp; Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html">✎ &nbsp; Tryout</a><a href="../../lkpd/index.html">▧ &nbsp; LKPD</a>
+  <a href="../../absen/index.html">◉ &nbsp; Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">★ &nbsp; Ranking</a>
+  <a href="../../cbt/index.html">▣ &nbsp; CBT Ujian</a><a href="../../arsip.html">▤ &nbsp; ARSIP</a>
+ </nav>
+ <hr style="border:0;border-top:1px solid #eee;margin:17px 4px">
+ <nav>
+  <a href="tp6.html">← Induk TP 6</a><a href="tp6-bab1.html">Bab 1</a><a href="tp6-bab2.html">Bab 2</a>
+  <a href="tp6-bab3.html">Bab 3</a><a href="tp6-bab4.html">Bab 4</a><a href="tp6-bab5.html">Bab 5</a>
+  <a href="tp6-bab6.html">Bab 6</a><a href="tp6-evaluasi.html">Evaluasi Akhir</a>
+  <a href="tp6-refleksi.html">Refleksi</a><a class="active" href="tp6-glosarium.html">Glosarium</a>
+ </nav>
+</aside>
+<main>
+<section class="card hero">
+ <span class="pill">TP 6 · Fase F · Semester Ganjil 2026/2027</span>
+ <h1>Glosarium</h1>
+ <p class="meta">Konsentrasi Keahlian Teknik Jaringan Komputer dan Telekomunikasi · Kelas XI TJKT</p>
+</section>
+<section class="card">
+ <div class="callout">Daftar istilah penting yang digunakan dalam materi Tujuan Pembelajaran 6 tentang rencana pengalamatan IP.</div>
+ <div class="table-wrap">
+ <table aria-label="Glosarium TP 6">
+  <thead><tr><th>Istilah</th><th>Pengertian</th></tr></thead>
+  <tbody>
+   <tr><td class="term">Rencana Pengalamatan IP</td><td>Dokumen berisi daftar alamat IP setiap perangkat sebelum jaringan dipasang.</td></tr>
+   <tr><td class="term">Network ID</td><td>Istilah lain untuk alamat jaringan; identitas keseluruhan subnet.</td></tr>
+   <tr><td class="term">Host ID</td><td>Istilah lain untuk alamat host; identitas perangkat dalam subnet.</td></tr>
+   <tr><td class="term">Gateway</td><td>Alamat pintu keluar sebuah jaringan menuju jaringan lain atau internet.</td></tr>
+   <tr><td class="term">Alamat Cadangan</td><td>Alamat yang belum digunakan, disiapkan untuk kebutuhan di masa depan.</td></tr>
+   <tr><td class="term">Konflik IP</td><td>Keadaan ketika dua perangkat memiliki alamat IP yang sama.</td></tr>
+   <tr><td class="term">Daftar Periksa (Checklist)</td><td>Kumpulan pertanyaan yang digunakan untuk memeriksa kebenaran sebuah rencana.</td></tr>
+   <tr><td class="term">IP Addressing Plan</td><td>Istilah bahasa Inggris untuk rencana pengalamatan IP.</td></tr>
+  </tbody>
+ </table>
+ </div>
+ <div class="footer-nav"><a href="tp6-refleksi.html">← Refleksi</a><a href="tp6.html">Kembali ke TP 6</a></div>
+</section>
+<div class="meta" style="text-align:center;padding:4px 0 15px">LMS TJKT · SMKN 7 Luwu · Glosarium TP 6</div>
+</main>
+<script>
+const toggle=document.getElementById('menuToggle'),sidebar=document.getElementById('sidebar'),overlay=document.getElementById('menuOverlay');
+function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('show');toggle.setAttribute('aria-expanded','false')}
+toggle.addEventListener('click',()=>{const opened=sidebar.classList.toggle('open');overlay.classList.toggle('show',opened);toggle.setAttribute('aria-expanded',String(opened))});
+overlay.addEventListener('click',closeMenu);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',closeMenu));
+</script>
+</body></html>
