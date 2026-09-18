@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP6 — Kunci Jawaban</title>
+<style>
+:root{--gold:#b8860b;--gold-light:#fff6d8;--ink:#242424;--muted:#666;--bg:#f4f5f7;--line:#e4e4e4}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid var(--line);padding:20px 16px;overflow-y:auto;z-index:30}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:24px;font-weight:700;color:var(--gold)}
+.brandmark{width:38px;height:38px;border-radius:10px;background:var(--gold);color:#fff;display:grid;place-items:center;font-size:20px}
+.nav a{display:block;padding:11px 12px;margin:4px 0;border-radius:9px;color:#333;text-decoration:none;font-size:14px}
+.nav a:hover,.nav a.active{background:var(--gold-light);color:#805c00;font-weight:700}
+main{margin-left:250px;padding:28px;min-width:0;width:calc(100% - 250px)}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.menu-btn{display:none;border:0;background:var(--gold);color:white;border-radius:8px;padding:10px 13px;font-size:18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:clamp(25px,4vw,36px);margin:6px 0 8px}
+.intro{color:var(--muted);line-height:1.65;margin:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,26px);margin:18px 0;box-shadow:0 3px 12px #00000008;min-width:0}
+.notice{background:var(--gold-light);border-left:4px solid var(--gold);padding:14px 16px;border-radius:8px;line-height:1.6}
+h2{font-size:21px;margin:0 0 14px;color:#6d5000}
+ol{padding-left:25px;margin:0}
+li{padding-left:5px;margin:0 0 13px;line-height:1.65}
+.section-label{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin:18px 0 8px}
+.lock{max-width:430px;margin:35px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 8px 28px #0000000c}
+.lock h2{margin-bottom:8px}
+.lock p{color:var(--muted);line-height:1.5}
+.lock input{width:100%;padding:13px;border:1px solid #ccc;border-radius:8px;font-size:16px;margin:8px 0}
+.lock button,.action{border:0;border-radius:8px;background:var(--gold);color:#fff;font-weight:700;padding:12px 16px;cursor:pointer}
+.error{color:#b42318;min-height:20px;font-size:14px}
+#answerContent{display:none}
+footer{text-align:center;color:#777;font-size:12px;padding:20px}
+.overlay{display:none}
+@media(max-width:760px){
+ .sidebar{transform:translateX(-100%);transition:transform .2s ease;width:270px;box-shadow:8px 0 24px #00000018}
+ .sidebar.open{transform:translateX(0)}
+ .overlay.show{display:block;position:fixed;inset:0;background:#0006;z-index:20}
+ main{margin:0;width:100%;padding:16px;max-width:100%}
+ .menu-btn{display:block}
+ .topbar{align-items:flex-start}
+ .lock{margin:22px auto;padding:20px}
+ h2{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brandmark">7</div><div>SMKN 7 LUWU<br><small style="font-weight:400;color:#777">LMS TJKT</small></div></div>
+ <nav class="nav">
+  <a href="../../index.html">Beranda</a>
+  <a href="../index.html">Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html">Tryout</a>
+  <a href="../../lkpd/index.html">LKPD</a>
+  <a href="../../absen/index.html">Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">Ranking</a>
+  <a href="../../cbt/index.html">CBT Ujian</a>
+  <a href="../../arsip.html">ARSIP</a>
+  <a class="active" href="tp6-kunci-jawaban.html">TP6 — Kunci Jawaban</a>
+ </nav>
+</aside>
+<main>
+ <div class="topbar"><button class="menu-btn" onclick="toggleMenu()" aria-label="Buka menu">☰</button><div><div class="eyebrow">Konsentrasi Keahlian TJKT · TP6</div><h1>Kunci Jawaban Latihan Soal</h1><p class="intro">Halaman khusus guru untuk memeriksa langkah pengerjaan latihan dan evaluasi.</p></div></div>
+ <section class="lock" id="lockPanel">
+  <h2>🔒 Halaman Terproteksi</h2>
+  <p>Masukkan password untuk membuka kunci jawaban.</p>
+  <form id="passwordForm">
+   <input type="password" id="passwordInput" placeholder="Masukkan password" autocomplete="current-password" required>
+   <button type="submit">Buka Kunci Jawaban</button>
+   <div class="error" id="errorMsg" role="alert"></div>
+  </form>
+ </section>
+ <div id="answerContent">
+  <div class="card"><div class="notice"><strong>Catatan:</strong> Kunci jawaban ini memuat langkah pengerjaan. Gunakan untuk memeriksa cara kerja kalian setelah selesai mengerjakan sendiri.</div></div>
+  <section class="card"><h2>Kunci Jawaban Latihan Bab 1</h2><ol>
+   <li>Rencana pengalamatan IP adalah dokumen yang mencatat alamat IP, subnet mask, dan gateway setiap perangkat sebelum jaringan dipasang dan dikonfigurasi.</li>
+   <li>Agar kesalahan seperti konflik IP dapat ditemukan dan diperbaiki di atas kertas, sebelum perangkat sungguhan dipasang.</li>
+   <li>Nama perangkat (identitas), alamat IP (identitas unik), subnet mask (penentu network/host), gateway (pintu keluar jaringan), dan keterangan (catatan tambahan).</li>
+   <li>Karena gateway mewakili pintu keluar jaringan yang sama, sehingga seluruh perangkat dalam satu jaringan menuju pintu keluar yang sama pula.</li>
+   <li>Jawaban bervariasi; inti jawaban: rencana pengalamatan seperti denah rumah yang menunjukkan letak setiap alamat sebelum jaringan benar-benar dibangun.</li>
+  </ol></section>
+  <section class="card"><h2>Kunci Jawaban Latihan Bab 2</h2><ol>
+   <li>Karena router dan access point juga merupakan perangkat dalam jaringan yang memerlukan identitas berupa alamat IP agar dapat diatur dan berfungsi.</li>
+   <li>Alamat cadangan adalah alamat yang belum dipakai namun disiapkan untuk pertambahan perangkat di masa depan, agar rencana tidak perlu disusun ulang.</li>
+   <li>25 Chromebook + 1 access point = 26. Ditambah cadangan 5 → 26 + 5 = 31 alamat.</li>
+   <li>Prefix /26 (62 host), karena /27 hanya menyediakan 30 host yang tidak mencukupi 31 kebutuhan.</li>
+   <li>Ketika ada penambahan perangkat baru, seluruh rencana harus disusun ulang dan berisiko mengganggu perangkat yang sudah berjalan.</li>
+  </ol></section>
+  <section class="card"><h2>Kunci Jawaban Latihan Bab 3</h2><ol>
+   <li>Network ID (untuk alamat jaringan) dan Host ID (untuk alamat host).</li>
+   <li>Network ID, router (gateway), perangkat jaringan lain, perangkat pengguna, cadangan, lalu broadcast.</li>
+   <li>Karena router berfungsi sebagai gateway, sehingga secara kebiasaan ditempatkan pada alamat host pertama agar mudah diingat dan dikenali.</li>
+   <li>Karena keduanya memiliki fungsi khusus (identitas jaringan dan penanda batas akhir) dan tidak boleh dipasang pada perangkat mana pun.</li>
+   <li>Contoh: Network ID 192.168.9.0, Router 192.168.9.1, Chromebook 1–5 pada 192.168.9.2–.6, sisanya cadangan, broadcast di alamat terakhir subnet.</li>
+  </ol></section>
+  <section class="card"><h2>Kunci Jawaban Latihan Bab 4</h2><ol>
+   <li>Gateway adalah alamat IP yang menjadi pintu keluar sebuah jaringan menuju jaringan lain atau internet; fungsinya meneruskan data yang ditujukan ke luar jaringan.</li>
+   <li>Alamat gateway umumnya sama dengan network ID ditambah 1.</li>
+   <li>(a) 192.168.3.1<br>(b) 192.168.3.97<br>(c) 172.16.5.1</li>
+   <li>Karena setiap subnet adalah jaringan yang terpisah, sehingga pintu keluarnya (gateway) juga harus berasal dari subnet itu sendiri agar dapat dikenali oleh perangkat di dalamnya.</li>
+   <li>Jawaban bervariasi; inti jawaban: gerbang kompleks adalah satu-satunya jalan keluar-masuk bagi seluruh warga, sama seperti gateway bagi seluruh perangkat dalam jaringan.</li>
+   <li>Agar teknisi tidak secara tidak sengaja memberikan alamat broadcast tersebut kepada sebuah perangkat, yang dapat menimbulkan gangguan jaringan.</li>
+  </ol></section>
+  <section class="card"><h2>Kunci Jawaban Latihan Bab 5</h2><ol>
+   <li>Menghitung kebutuhan dasar, menambah cadangan, memilih prefix, menentukan network ID/gateway/broadcast, dan menyusun tabel lengkap.</li>
+   <li>Karena total kebutuhan (20 alamat) melebihi kapasitas /28 (14 host), sehingga harus menggunakan /27 yang menyediakan 30 host.</li>
+   <li>Karena router itu sendiri adalah gateway, sehingga tidak memerlukan gateway lain di atasnya untuk perangkat dalam subnet yang sama.</li>
+   <li>Kebutuhan: 15 + 1 (AP) = 16, + cadangan 3 = 19 → prefix /27 (30 host). Network ID 192.168.3.0, gateway 192.168.3.1, broadcast 192.168.3.31, host untuk 16 perangkat dari .2 sampai .17, sisanya cadangan.</li>
+  </ol></section>
+  <section class="card"><h2>Kunci Jawaban Evaluasi Akhir</h2>
+   <div class="section-label">A. Pemahaman Konsep</div><ol>
+    <li>Dokumen yang mencatat alamat IP, subnet mask, dan gateway setiap perangkat sebelum jaringan dipasang.</li>
+    <li>Nama perangkat, alamat IP, subnet mask, gateway, dan keterangan.</li>
+    <li>Network ID adalah alamat jaringan; host ID adalah alamat perangkat dalam jaringan tersebut.</li>
+    <li>Sebagai pintu keluar jaringan menuju jaringan lain atau internet.</li>
+    <li>Untuk mengantisipasi pertambahan perangkat di masa depan tanpa perlu menyusun ulang seluruh rencana.</li>
+   </ol>
+   <div class="section-label">B. Hitungan dan Penerapan</div><ol>
+    <li>18 + 4 = 22 alamat. Prefix /27 (30 host) mencukupi, karena /28 (14 host) tidak cukup.</li>
+    <li>192.168.6.65 (network ID + 1).</li>
+    <li>Network ID 192.168.7.0, Router 192.168.7.1 (gateway), Chromebook 1–8 pada 192.168.7.2 – .9, sisanya cadangan (.10–.14), Broadcast 192.168.7.15.</li>
+    <li>Kesalahan: 192.168.8.0 adalah network ID, tidak boleh dipakai perangkat. Perbaikan: berikan alamat host yang sah, misalnya 192.168.8.2.</li>
+    <li>Akibatnya terjadi konflik IP dan salah satu atau kedua Chromebook tidak dapat terhubung ke jaringan. Perbaikan: ubah salah satu alamat menjadi alamat host lain yang belum terpakai.</li>
+   </ol>
+  </section>
+  <div class="card"><button class="action" onclick="lockAnswers()">Kunci Kembali</button></div>
+ </div>
+ <footer>SMKN 7 LUWU · LMS TJKT</footer>
+</main>
+<script>
+const CORRECT_PASSWORD = "bismillah";
+const form = document.getElementById("passwordForm");
+form.addEventListener("submit", function(e){
+ e.preventDefault();
+ const entered = document.getElementById("passwordInput").value;
+ if(entered === CORRECT_PASSWORD){
+  document.getElementById("lockPanel").style.display = "none";
+  document.getElementById("answerContent").style.display = "block";
+  document.getElementById("errorMsg").textContent = "";
+ } else {
+  document.getElementById("errorMsg").textContent = "Password salah. Silakan coba lagi.";
+ }
+});
+function lockAnswers(){
+ document.getElementById("answerContent").style.display="none";
+ document.getElementById("lockPanel").style.display="block";
+ document.getElementById("passwordInput").value="";
+}
+function toggleMenu(){
+ document.getElementById("sidebar").classList.toggle("open");
+ document.getElementById("overlay").classList.toggle("show");
+}
+function closeMenu(){
+ document.getElementById("sidebar").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+}
+</script>
+</body>
+</html>
