@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP6 — Daftar Pustaka</title>
+<style>
+:root{--gold:#b8860b;--pale:#fff6d8;--ink:#242424;--muted:#666;--bg:#f4f5f7;--line:#e4e4e4}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);overflow-x:hidden}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid var(--line);padding:20px 16px;overflow-y:auto;z-index:30}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:24px;font-weight:700;color:var(--gold)}
+.brandmark{width:38px;height:38px;border-radius:10px;background:var(--gold);color:white;display:grid;place-items:center;font-size:20px}
+.nav a{display:block;padding:11px 12px;margin:4px 0;border-radius:9px;color:#333;text-decoration:none;font-size:14px}
+.nav a:hover,.nav a.active{background:var(--pale);color:#805c00;font-weight:700}
+main{margin-left:250px;padding:28px;min-width:0;width:calc(100% - 250px)}
+.topbar{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}
+.menu-btn{display:none;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:10px 13px;font-size:18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-size:clamp(25px,4vw,36px);margin:6px 0 8px}
+.intro{color:var(--muted);line-height:1.65;margin:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,26px);margin:18px 0;box-shadow:0 3px 12px #00000008;min-width:0}
+h2{font-size:21px;margin:0 0 14px;color:#6d5000}
+ol{padding-left:26px;margin:0}
+li{padding-left:7px;margin:0 0 18px;line-height:1.75}
+li:last-child{margin-bottom:0}
+footer{text-align:center;color:#777;font-size:12px;padding:20px}
+.overlay{display:none}
+@media(max-width:760px){
+ .sidebar{transform:translateX(-100%);transition:transform .2s ease;width:270px;box-shadow:8px 0 24px #00000018}
+ .sidebar.open{transform:translateX(0)}
+ .overlay.show{display:block;position:fixed;inset:0;background:#0006;z-index:20}
+ main{margin:0;width:100%;max-width:100%;padding:16px}
+ .menu-btn{display:block}
+ .topbar{align-items:flex-start}
+ h2{font-size:19px}
+}
+</style>
+</head>
+<body>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brandmark">7</div><div>SMKN 7 LUWU<br><small style="font-weight:400;color:#777">LMS TJKT</small></div></div>
+ <nav class="nav">
+  <a href="../../index.html">Beranda</a>
+  <a href="../index.html">Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html">Tryout</a>
+  <a href="../../lkpd/index.html">LKPD</a>
+  <a href="../../absen/index.html">Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">Ranking</a>
+  <a href="../../cbt/index.html">CBT Ujian</a>
+  <a href="../../arsip.html">ARSIP</a>
+  <a class="active" href="tp6-daftar-pustaka.html">TP6 — Daftar Pustaka</a>
+ </nav>
+</aside>
+<main>
+ <div class="topbar"><button class="menu-btn" onclick="toggleMenu()" aria-label="Buka menu">☰</button><div><div class="eyebrow">Konsentrasi Keahlian TJKT · TP6</div><h1>Daftar Pustaka</h1><p class="intro">Sumber rujukan yang digunakan dalam penyusunan materi TP6.</p></div></div>
+ <section class="card">
+  <h2>Daftar Pustaka</h2>
+  <ol>
+   <li>Modul Ajar 6 – Rencana Pengalamatan IPv4 pada Jaringan Sederhana, SMK Negeri 7 Luwu, Tahun Pelajaran 2026/2027.</li>
+   <li>Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan, Fase F, Kurikulum yang berlaku di satuan pendidikan.</li>
+   <li>Buku Ajar Siswa TP 4 dan TP 5, SMK Negeri 7 Luwu, sebagai rujukan konsep dasar IPv4 dan subnetting.</li>
+   <li>Studi kasus perencanaan jaringan di lingkungan SMK Negeri 7 Luwu.</li>
+  </ol>
+ </section>
+ <footer>SMKN 7 LUWU · LMS TJKT</footer>
+</main>
+<script>
+function toggleMenu(){document.getElementById("sidebar").classList.toggle("open");document.getElementById("overlay").classList.toggle("show")}
+function closeMenu(){document.getElementById("sidebar").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+</script>
+</body>
+</html>
