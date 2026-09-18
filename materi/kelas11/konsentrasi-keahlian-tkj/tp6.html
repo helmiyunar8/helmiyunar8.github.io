@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TP6 — Rencana Pengalamatan IPv4</title>
+<style>
+:root{--gold:#b8860b;--pale:#f7efd2;--bg:#f4f4f4;--green:#6f9f78;--text:#333}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+aside{position:fixed;inset:0 auto 0 0;width:250px;background:white;border-right:1px solid #ddd;padding:22px 16px;overflow:auto;z-index:5}
+.logo{display:block;width:92px;margin:0 auto 12px}.school{text-align:center;color:var(--gold);font-weight:bold;margin-bottom:18px}
+nav a{display:block;text-decoration:none;color:#444;padding:10px 12px;border-radius:9px;margin:4px 0;font-size:14px}nav a:hover{background:#f6f0df}
+main{margin-left:250px;padding:28px 20px 80px}.card{max-width:1050px;margin:auto;background:#fff;border-radius:16px;border-top:6px solid var(--gold);box-shadow:0 4px 18px #00000012;overflow:hidden}
+.hero{padding:30px 28px 25px;background:linear-gradient(135deg,#fff,#faf7ed);border-bottom:1px solid #eee}.badge{display:inline-block;background:var(--pale);color:#806000;border:1px solid #eadba9;border-radius:20px;padding:6px 10px;font-size:12px;font-weight:bold}
+h1{font-size:30px;line-height:1.25;margin:12px 0 8px}.sub{color:#666;margin:0}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.meta span{font-size:12px;background:white;border:1px solid #e7dfc8;border-radius:8px;padding:7px 10px}
+.content{padding:26px 28px}.intro{padding:16px 18px;border-left:4px solid var(--green);background:#f5faf5;border-radius:8px;margin-bottom:24px}
+h2{font-size:20px;margin:28px 0 14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tile{display:flex;gap:14px;padding:17px;border:1px solid #e5e5e5;border-radius:13px;text-decoration:none;color:inherit;background:white}.tile:hover{border-color:#d7c17b;box-shadow:0 5px 14px #0000000d}
+.num{flex:0 0 42px;height:42px;border-radius:12px;background:var(--pale);color:#806000;display:grid;place-items:center;font-weight:bold}.tile h3{font-size:15px;line-height:1.35;margin:1px 0 6px}.tile p{font-size:13px;color:#666;margin:0}
+.support{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.support a{padding:15px;border-radius:11px;background:#fafafa;border:1px solid #e8e8e8;color:#444;text-decoration:none;font-weight:bold;font-size:14px}.support a:hover{background:#f8f2df}
+footer{text-align:center;color:#777;font-size:12px;padding:22px 0 0}.menu,.overlay,.bottom{display:none}
+@media(max-width:760px){aside{transform:translateX(-100%);transition:.25s;box-shadow:4px 0 18px #0002}aside.open{transform:translateX(0)}.menu{display:block;position:fixed;top:12px;left:12px;z-index:8;background:var(--gold);color:white;border:0;border-radius:10px;width:42px;height:42px;font-size:20px}.overlay.show{display:block;position:fixed;inset:0;background:#0006;z-index:4}main{margin:0;padding:68px 10px 76px}.hero{padding:24px 18px 20px}h1{font-size:24px}.content{padding:18px}.grid,.support{grid-template-columns:1fr}.tile{padding:14px}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;justify-content:space-around;padding:8px 4px;z-index:3}.bottom a{text-decoration:none;color:#666;font-size:11px;text-align:center}.bottom span{display:block;font-size:17px;line-height:20px}}
+</style></head><body>
+<button class="menu" id="menuBtn" aria-label="Buka menu">☰</button><div class="overlay" id="overlay"></div>
+<aside id="sidebar"><img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu"><div class="school">SMKN 7 LUWU<br>Konsentrasi Keahlian TKJ</div>
+<nav><a href="../../index.html">🏠 Beranda</a><a href="../index.html">📚 Materi</a><a href="../../menu-utama-TKJ/tryout.html">📝 Tryout</a><a href="../../lkpd/index.html">📄 LKPD</a><a href="../../absen/index.html">📸 Absen</a><a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">🏆 Ranking</a><a href="../../cbt/index.html">💻 CBT Ujian</a><a href="../../arsip.html">🗂️ ARSIP</a></nav></aside>
+<main><section class="card"><header class="hero"><span class="badge">BUKU AJAR SISWA · TUJUAN PEMBELAJARAN 6</span>
+<h1>Rencana Pengalamatan IPv4 pada Jaringan Sederhana</h1><p class="sub">Konsentrasi Keahlian Teknik Jaringan Komputer dan Telekomunikasi</p>
+<div class="meta"><span>Fase F · Kelas XI</span><span>Semester Ganjil</span><span>Tahun Pelajaran 2026/2027</span><span>Elemen: Perencanaan dan Pengalamatan Jaringan</span></div></header>
+<div class="content"><div class="intro"><b>Selamat datang di TP6!</b><br>Di sini kalian menerapkan pemahaman IPv4, subnet mask, network ID, host ID, dan subnetting untuk menyusun rencana pengalamatan IP. Kalian juga mempelajari gateway serta cara memeriksa dan memperbaiki kesalahan rencana.</div>
+<h2>Materi Pembelajaran</h2><div class="grid">
+<a class="tile" href="tp6-bab1.html"><div class="num">01</div><div><h3>Mengenal Rencana Pengalamatan IP</h3><p>Pengertian, fungsi, komponen, dan contoh rencana pengalamatan.</p></div></a>
+<a class="tile" href="tp6-bab2.html"><div class="num">02</div><div><h3>Menentukan Kebutuhan Jumlah Alamat IP</h3><p>Mendata perangkat, menghitung kebutuhan, dan menyiapkan alamat cadangan.</p></div></a>
+<a class="tile" href="tp6-bab3.html"><div class="num">03</div><div><h3>Menyusun Tabel Pengalamatan: Network ID dan Host ID</h3><p>Menyusun alamat secara berurutan dan sistematis.</p></div></a>
+<a class="tile" href="tp6-bab4.html"><div class="num">04</div><div><h3>Gateway dan Alamat Broadcast dalam Rencana Pengalamatan</h3><p>Menentukan gateway tiap subnet dan mencatat broadcast.</p></div></a>
+<a class="tile" href="tp6-bab5.html"><div class="num">05</div><div><h3>Studi Kasus: Rencana Pengalamatan IP Jaringan Sekolah</h3><p>Menggabungkan konsep menjadi rencana pengalamatan lengkap.</p></div></a>
+<a class="tile" href="tp6-bab6.html"><div class="num">06</div><div><h3>Memeriksa dan Memperbaiki Rencana Pengalamatan IP</h3><p>Menggunakan checklist untuk menemukan dan memperbaiki kesalahan.</p></div></a>
+</div><h2>Evaluasi dan Referensi</h2><div class="support">
+<a href="tp6-evaluasi.html">📝 Evaluasi Akhir TP6</a><a href="tp6-refleksi.html">💭 Refleksi Akhir Peserta Didik</a><a href="tp6-glosarium.html">📖 Glosarium</a><a href="tp6-kunci-jawaban.html">🔐 Kunci Jawaban Latihan Soal</a><a href="tp6-daftar-pustaka.html">📚 Daftar Pustaka</a>
+</div><footer>SMK Negeri 7 Luwu · Kelas XI TJKT · TP6</footer></div></section></main>
+<div class="bottom"><a href="../index.html"><span>📚</span>Materi</a><a href="../../lkpd/index.html"><span>📄</span>LKPD</a><a href="../../absen/index.html"><span>📸</span>Absen</a><a href="../../cbt/index.html"><span>💻</span>CBT</a></div>
+<script>const b=document.getElementById('menuBtn'),s=document.getElementById('sidebar'),o=document.getElementById('overlay');function closeM(){s.classList.remove('open');o.classList.remove('show')}b.addEventListener('click',()=>{s.classList.add('open');o.classList.add('show')});o.addEventListener('click',closeM);document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',closeM));</script>
+</body></html>
