@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8860b">
+<title>TP 6 — Bab 6: Memeriksa dan Memperbaiki Rencana Pengalamatan IP</title>
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--ink:#333;--pale:#fff9e8;--line:#eadba7}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:18px 13px;overflow-y:auto;z-index:20;transform:translateX(0)}
+.brand{display:flex;align-items:center;gap:10px;padding:7px 8px 17px;border-bottom:2px solid var(--gold);margin-bottom:14px}
+.brand-mark{width:43px;height:43px;border-radius:10px;background:#f6edcf;color:#795900;display:grid;place-items:center;font-weight:bold;font-size:20px;flex:0 0 auto}
+.brand strong{display:block;font-size:15px;line-height:1.25}.brand small{color:#777}
+.sidebar a{display:block;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#f6edcf;color:#765500;font-weight:bold}
+main{margin-left:250px;padding:24px;width:calc(100% - 250px);max-width:1600px;min-width:0}
+.card{background:#fff;border-radius:14px;padding:24px;margin:0 0 20px;box-shadow:0 2px 8px #0000000a;min-width:0;max-width:100%}
+.hero{background:linear-gradient(120deg,#fff,#fbf5df);border-left:6px solid var(--gold)}
+.pill{display:inline-block;background:#f4e6b5;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:bold;max-width:100%;overflow-wrap:anywhere}
+h1{font-size:clamp(23px,3vw,35px);line-height:1.25;margin:9px 0;overflow-wrap:anywhere}
+h2{font-size:23px;color:#795900;border-bottom:2px solid var(--line);padding-bottom:8px;margin:0 0 15px;line-height:1.3;overflow-wrap:anywhere}
+h3{font-size:18px;color:#765700;margin:20px 0 8px;line-height:1.35}
+h4{margin:8px 0;color:#765700}
+p{margin:9px 0}
+.meta{color:#666;margin:0;font-size:14px}
+.goal{background:#eef6ff;border-left:4px solid #397bb8;padding:15px 18px;border-radius:9px}
+.callout{background:#fff9e8;border-left:4px solid var(--gold);padding:14px 17px;border-radius:8px;margin:14px 0;overflow-wrap:anywhere}
+.tip{background:#eef8f0;border-left:4px solid #31845a;padding:13px 16px;border-radius:8px;margin:13px 0;overflow-wrap:anywhere}
+.warning{background:#fff1ed;border-left:4px solid #c65b3b;padding:13px 16px;border-radius:8px;margin:13px 0;overflow-wrap:anywhere}
+.step{display:flex;gap:11px;margin:13px 0;align-items:flex-start;min-width:0}
+.step>div:last-child{flex:1;min-width:0}
+.num{background:var(--gold);color:#fff;border-radius:50%;min-width:29px;height:29px;display:grid;place-items:center;font-weight:bold;flex:0 0 29px}
+.table-wrap{width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;margin:12px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+th,td{border:1px solid #d8d8d8;padding:9px 10px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:#f5e9bd;color:#594300}
+tr:nth-child(even) td{background:#fffdf7}
+code,.ip{font-family:Consolas,Monaco,monospace;background:#f4f4f4;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}
+.chip{display:inline-block;background:#f6edcf;border-radius:6px;padding:2px 7px;font-size:12px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.mini{background:#fbfaf5;border:1px solid #eee3bf;border-radius:10px;padding:14px;min-width:0}
+.answer-lines{height:31px;border-bottom:1px solid #aaa}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:24px}
+.footer-nav a{color:#735500;text-decoration:none;background:#f6edcf;padding:9px 13px;border-radius:8px;font-weight:bold}
+.mobilebar{display:none}.menu-overlay{display:none}
+@media(max-width:850px){
+ .sidebar{transform:translateX(-105%);transition:transform .25s ease;width:min(270px,85vw);box-shadow:2px 0 16px #0002}
+ .sidebar.open{transform:translateX(0)}
+ .menu-overlay.show{display:block;position:fixed;inset:56px 0 0;background:#0005;z-index:19}
+ main{margin:0;padding:69px 12px 85px;width:100%;max-width:100%;min-width:0}
+ .card{padding:17px;border-radius:12px}
+ .mobilebar{display:flex;position:fixed;top:0;left:0;right:0;height:56px;background:#fff;z-index:30;align-items:center;padding:0 14px;box-shadow:0 2px 8px #0002;gap:12px}
+ .mobilebar button{border:0;background:#f6edcf;border-radius:8px;padding:8px 12px;font-size:18px;flex:0 0 auto}
+ .mobilebar strong{font-size:14px}
+ .grid{grid-template-columns:minmax(0,1fr)}
+ h1{font-size:clamp(22px,6vw,29px)}h2{font-size:clamp(20px,5.2vw,23px)}
+}
+@media(max-width:480px){
+ main{padding:66px 9px 82px}.card{padding:13px}.hero{padding:15px 13px}
+ h1{font-size:22px}h2{font-size:20px}h3{font-size:17px}
+ .meta{font-size:13px}.goal,.callout,.tip,.warning{padding:12px}
+ .step{gap:8px}.num{min-width:26px;height:26px;flex-basis:26px;font-size:13px}
+ th,td{padding:8px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="mobilebar"><button id="menuToggle" aria-label="Buka atau tutup menu" aria-expanded="false">☰</button><strong>TP 6 · Bab 6</strong></div>
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brand-mark">7</div><div><strong>LMS TKJ</strong><small>SMKN 7 LUWU</small></div></div>
+ <nav>
+  <a href="../../index.html">⌂ &nbsp; Beranda</a>
+  <a href="../index.html" class="active">▤ &nbsp; Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html">✎ &nbsp; Tryout</a>
+  <a href="../../lkpd/index.html">▧ &nbsp; LKPD</a>
+  <a href="../../absen/index.html">◉ &nbsp; Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">★ &nbsp; Ranking</a>
+  <a href="../../cbt/index.html">▣ &nbsp; CBT Ujian</a>
+  <a href="../../arsip.html">▤ &nbsp; ARSIP</a>
+ </nav>
+ <hr style="border:0;border-top:1px solid #eee;margin:17px 4px">
+ <nav>
+  <a href="tp6.html">← Induk TP 6</a>
+  <a href="tp6-bab1.html">Bab 1</a><a href="tp6-bab2.html">Bab 2</a>
+  <a href="tp6-bab3.html">Bab 3</a><a href="tp6-bab4.html">Bab 4</a>
+  <a href="tp6-bab5.html">Bab 5</a><a class="active" href="tp6-bab6.html">Bab 6</a>
+ </nav>
+</aside>
+<main>
+<section class="card hero">
+ <span class="pill">TP 6 · Fase F · Semester Ganjil 2026/2027</span>
+ <h1>BAB 6 — Memeriksa dan Memperbaiki Rencana Pengalamatan IP</h1>
+ <p><strong>Pertemuan 6 · Alokasi Waktu 3 JP</strong></p>
+ <p class="meta">Konsentrasi Keahlian Teknik Jaringan Komputer dan Telekomunikasi · Kelas XI TJKT</p>
+</section>
+
+<section class="card">
+ <h2>Tujuan Pembelajaran Bab Ini</h2>
+ <div class="goal">
+  <ul>
+   <li>Peserta didik mampu memeriksa kebenaran sebuah rencana pengalamatan IP.</li>
+   <li>Peserta didik mampu menemukan dan memperbaiki kesalahan pada rencana pengalamatan IP.</li>
+  </ul>
+ </div>
+</section>
+
+<section class="card">
+ <h2>6.1 Mengapa Kemampuan Memeriksa Itu Penting?</h2>
+ <p>Seorang teknisi jaringan yang baik tidak hanya mampu membuat rencana pengalamatan, tetapi juga mampu memeriksa kembali rencana tersebut sebelum benar-benar diterapkan pada perangkat sungguhan. Kesalahan yang tidak ditemukan sejak dini dapat menyebabkan jaringan tidak berfungsi setelah seluruh perangkat dipasang, yang tentu lebih merepotkan untuk diperbaiki.</p>
+ <p>Pada bab ini, kalian akan berlatih menjadi <strong>“pemeriksa” (reviewer)</strong> terhadap rencana pengalamatan IP, baik milik sendiri maupun milik kelompok lain.</p>
+ <div class="tip"><strong>Contoh sederhana:</strong> jika dua Chromebook memakai alamat IP yang sama, keduanya dapat mengalami gangguan komunikasi. Pemeriksaan sebelum konfigurasi membantu menemukan masalah saat masih berupa tabel, sehingga perbaikannya lebih mudah.</div>
+ <h3>Alur kerja pemeriksa</h3>
+ <div class="grid">
+  <div class="mini"><span class="chip">1 · Baca</span><p>Periksa kebutuhan jaringan dan subnet yang direncanakan.</p></div>
+  <div class="mini"><span class="chip">2 · Cocokkan</span><p>Bandingkan IP, subnet mask, dan gateway setiap perangkat.</p></div>
+  <div class="mini"><span class="chip">3 · Temukan</span><p>Tandai alamat yang ganda, tidak sah, atau tidak sesuai subnet.</p></div>
+  <div class="mini"><span class="chip">4 · Perbaiki</span><p>Tuliskan perubahan dan alasan teknisnya.</p></div>
+ </div>
+</section>
+
+<section class="card">
+ <h2>6.2 Daftar Periksa (Checklist) Rencana Pengalamatan IP</h2>
+ <p>Gunakan sepuluh pertanyaan berikut setiap kali memeriksa sebuah rencana pengalamatan IP.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th style="width:60px">No</th><th>Pertanyaan Pemeriksaan</th><th style="width:90px">Cek</th></tr></thead>
+  <tbody>
+   <tr><td>1</td><td>Apakah setiap alamat IP ditulis dengan format yang benar (empat oktet, nilai 0–255)?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>2</td><td>Apakah ada dua perangkat yang memiliki alamat IP yang sama (konflik IP)?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>3</td><td>Apakah network ID digunakan sebagai alamat perangkat? (seharusnya tidak boleh)</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>4</td><td>Apakah alamat broadcast digunakan sebagai alamat perangkat? (seharusnya tidak boleh)</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>5</td><td>Apakah subnet mask pada setiap perangkat dalam satu subnet sudah sama?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>6</td><td>Apakah gateway pada setiap perangkat dalam satu subnet sudah sama?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>7</td><td>Apakah alamat gateway berasal dari subnet yang sama dengan perangkatnya?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>8</td><td>Apakah seluruh alamat IP yang digunakan berada dalam rentang host yang sah (bukan network ID atau broadcast)?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>9</td><td>Apakah jumlah alamat yang tersedia mencukupi seluruh perangkat, termasuk cadangan?</td><td>☐ Ya ☐ Tidak</td></tr>
+   <tr><td>10</td><td>Apakah tabel disusun secara berurutan dan mudah dibaca (network ID, router, perangkat lain, cadangan, broadcast)?</td><td>☐ Ya ☐ Tidak</td></tr>
+  </tbody>
+ </table></div>
+ <div class="callout"><strong>Cara menggunakan checklist:</strong> beri tanda pada kolom yang sesuai, lalu catat nomor pertanyaan yang bermasalah. Jika menjawab “Tidak” pada pemeriksaan yang seharusnya terpenuhi, jelaskan masalah dan perbaikannya.</div>
+ <div class="tip"><strong>Catatan teknis:</strong> gateway pada perangkat dalam satu subnet biasanya sama dan harus merupakan alamat host yang dapat dijangkau pada subnet tersebut. Alamat gateway tidak selalu wajib “network ID + 1”; itu hanya salah satu pola penomoran yang sering dipilih.</div>
+</section>
+
+<section class="card">
+ <h2>6.3 Contoh Kesalahan dan Cara Memperbaikinya</h2>
+ <p>Berikut beberapa contoh kesalahan yang sering ditemukan pada rencana pengalamatan IP yang disusun secara tergesa-gesa, beserta cara memperbaikinya.</p>
+ <h3>Kesalahan 1 — Konflik IP</h3>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Perangkat</th><th>Alamat IP (Salah)</th><th>Masalah</th><th>Perbaikan</th></tr></thead>
+  <tbody>
+   <tr><td>Chromebook 3</td><td><code>192.168.1.5</code></td><td>Sama dengan Chromebook 5</td><td>Diubah menjadi <code>192.168.1.6</code></td></tr>
+   <tr><td>Chromebook 5</td><td><code>192.168.1.5</code></td><td>Sama dengan Chromebook 3</td><td>Tetap <code>192.168.1.5</code></td></tr>
+  </tbody>
+ </table></div>
+ <div class="tip"><strong>Mengapa diperbaiki begitu?</strong> Alamat IP harus unik di dalam jaringan yang sama. Salah satu perangkat dipindahkan ke alamat host lain yang masih kosong dan sah. Dalam contoh ini Chromebook 5 tetap memakai alamat awal, sedangkan Chromebook 3 dipindahkan.</div>
+
+ <h3>Kesalahan 2 — Network ID Dipakai sebagai Alamat Perangkat</h3>
+ <div class="warning"><strong>Kondisi salah:</strong> Printer diberi alamat <code>192.168.1.0</code>.</div>
+ <p><strong>Masalah:</strong> <code>192.168.1.0</code> adalah network ID, bukan alamat perangkat.</p>
+ <p><strong>Perbaikan:</strong> Printer diberi alamat host yang sah, misalnya <code>192.168.1.5</code>.</p>
+
+ <h3>Kesalahan 3 — Gateway Tidak Sesuai Subnet</h3>
+ <div class="warning"><strong>Kondisi salah:</strong> Chromebook di subnet <code>192.168.1.32/27</code> diberi gateway <code>192.168.1.1</code>.</div>
+ <p><strong>Masalah:</strong> <code>192.168.1.1</code> berasal dari subnet <code>192.168.1.0/27</code>, bukan dari subnet Chromebook tersebut.</p>
+ <p><strong>Perbaikan:</strong> Gateway diubah menjadi <code>192.168.1.33</code> (network ID subnet tersebut + 1).</p>
+ <div class="tip"><strong>Penjelasan tambahan:</strong> untuk <code>192.168.1.32/27</code>, rentang host yang dapat digunakan adalah <code>192.168.1.33–192.168.1.62</code> dan broadcast-nya <code>192.168.1.63</code>. Karena itu <code>192.168.1.33</code> merupakan pilihan gateway yang sah jika memang ditetapkan untuk router pada subnet tersebut.</div>
+
+ <h3>Kesalahan 4 — Alamat Broadcast Dipakai sebagai Alamat Perangkat</h3>
+ <div class="warning"><strong>Kondisi salah:</strong> Access point diberi alamat <code>192.168.1.31</code> pada subnet <code>/27</code> (broadcast subnet tersebut).</div>
+ <p><strong>Masalah:</strong> <code>192.168.1.31</code> adalah alamat broadcast, tidak boleh dipakai.</p>
+ <p><strong>Perbaikan:</strong> Access point diberi alamat host yang sah, misalnya <code>192.168.1.2</code>.</p>
+
+ <h3>Kesalahan 5 — Subnet Mask Tidak Konsisten</h3>
+ <div class="warning"><strong>Kondisi salah:</strong> Router menggunakan mask <code>255.255.255.0</code>, sedangkan Chromebook menggunakan <code>255.255.255.224</code>.</div>
+ <p><strong>Masalah:</strong> Kedua perangkat seharusnya berada di subnet yang sama sehingga mask harus sama persis.</p>
+ <p><strong>Perbaikan:</strong> Samakan seluruh subnet mask, misalnya menjadi <code>255.255.255.224</code> untuk semua perangkat.</p>
+ <div class="callout"><strong>Ingat:</strong> contoh-contoh di atas mengasumsikan perangkat memang dirancang berada pada satu subnet yang sama. Jika jaringan sengaja dibagi menjadi beberapa subnet, masing-masing subnet dapat memiliki network ID, rentang host, broadcast, dan gateway yang berbeda.</div>
+</section>
+
+<section class="card">
+ <h2>6.4 Kegiatan Peserta Didik — LKPD 6.1</h2>
+ <div class="goal"><strong>Petunjuk LKPD 6.1</strong><br>Perhatikan rencana pengalamatan IP berikut. Gunakan daftar periksa pada bagian 6.2 untuk menemukan kesalahannya, lalu tuliskan perbaikannya.</div>
+ <div class="table-wrap"><table>
+  <thead><tr><th>No</th><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Gateway</th></tr></thead>
+  <tbody>
+   <tr><td>1</td><td>Router</td><td><code>192.168.4.1</code></td><td><code>255.255.255.224</code></td><td>—</td></tr>
+   <tr><td>2</td><td>Access Point</td><td><code>192.168.4.31</code></td><td><code>255.255.255.224</code></td><td><code>192.168.4.1</code></td></tr>
+   <tr><td>3</td><td>Chromebook 1</td><td><code>192.168.4.2</code></td><td><code>255.255.255.0</code></td><td><code>192.168.4.1</code></td></tr>
+   <tr><td>4</td><td>Chromebook 2</td><td><code>192.168.4.2</code></td><td><code>255.255.255.224</code></td><td><code>192.168.4.1</code></td></tr>
+   <tr><td>5</td><td>Printer</td><td><code>192.168.4.0</code></td><td><code>255.255.255.224</code></td><td><code>192.168.4.1</code></td></tr>
+  </tbody>
+ </table></div>
+ <h3>Lembar Temuan dan Perbaikan</h3>
+ <p>Isi tabel berikut berdasarkan hasil pemeriksaan kelompok. Tambahkan baris jika diperlukan.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th style="width:60px">No</th><th>No Perangkat</th><th>Kesalahan yang Ditemukan</th><th>Perbaikan yang Disarankan</th></tr></thead>
+  <tbody>
+   <tr><td>1</td><td><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td></tr>
+   <tr><td>2</td><td><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td></tr>
+   <tr><td>3</td><td><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td></tr>
+   <tr><td>4</td><td><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td></tr>
+   <tr><td>5</td><td><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td><td><div class="answer-lines"></div><div class="answer-lines"></div></td></tr>
+  </tbody>
+ </table></div>
+ <h3>Panduan awal untuk memeriksa LKPD</h3>
+ <p>Subnet <code>192.168.4.0/27</code> memiliki network ID <code>192.168.4.0</code>, host yang dapat digunakan <code>192.168.4.1–192.168.4.30</code>, dan broadcast <code>192.168.4.31</code>. Gunakan informasi ini untuk memeriksa tabel, tetapi tuliskan temuan dan alasan kalian sendiri.</p>
+ <div class="tip"><strong>Diskusi kelompok:</strong> setelah mengisi tabel, bandingkan hasil dengan kelompok lain. Jika ada perbedaan, tunjukkan nomor checklist dan alasan teknis yang mendukung jawaban kalian.</div>
+</section>
+
+<section class="card">
+ <h2>6.5 Rubrik Penilaian Proyek Akhir TP 6</h2>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Aspek</th><th>Skor 1</th><th>Skor 2</th><th>Skor 3</th><th>Skor 4</th></tr></thead>
+  <tbody>
+   <tr><td>Menghitung kebutuhan alamat</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+   <tr><td>Menentukan network ID &amp; gateway</td><td>Belum mampu</td><td>Banyak kesalahan</td><td>Sebagian besar benar</td><td>Benar seluruhnya</td></tr>
+   <tr><td>Menyusun tabel pengalamatan</td><td>Tidak runtut</td><td>Kurang runtut</td><td>Cukup runtut</td><td>Sangat runtut dan lengkap</td></tr>
+   <tr><td>Memeriksa &amp; memperbaiki kesalahan</td><td>Belum mampu</td><td>Sebagian ditemukan</td><td>Sebagian besar ditemukan</td><td>Seluruh kesalahan ditemukan</td></tr>
+   <tr><td>Presentasi</td><td>Tidak jelas</td><td>Kurang jelas</td><td>Cukup jelas</td><td>Jelas dan percaya diri</td></tr>
+  </tbody>
+ </table></div>
+ <div class="callout"><strong>Penggunaan rubrik:</strong> guru memberi skor 1–4 pada setiap aspek berdasarkan hasil kerja dan presentasi kelompok. Catat bukti singkat yang mendasari skor agar peserta didik mengetahui bagian yang sudah dikuasai dan yang perlu diperbaiki.</div>
+</section>
+
+<section class="card">
+ <h2>6.6 Rangkuman Akhir Tujuan Pembelajaran 6</h2>
+ <ul>
+  <li>Rencana pengalamatan IP adalah dokumen kerja yang mencatat alamat setiap perangkat sebelum jaringan dipasang, terdiri atas nama perangkat, alamat IP, subnet mask, gateway, dan keterangan.</li>
+  <li>Kebutuhan alamat IP dihitung dari seluruh perangkat jaringan dan pengguna, ditambah alamat cadangan untuk pengembangan di masa depan.</li>
+  <li>Network ID dan Host ID adalah istilah lain untuk alamat jaringan dan alamat host.</li>
+  <li>Gateway adalah alamat pintu keluar sebuah subnet, umumnya network ID ditambah 1, dan setiap subnet memiliki gateway sendiri.</li>
+  <li>Rencana pengalamatan yang baik disusun berurutan: network ID, router/gateway, perangkat jaringan, perangkat pengguna, cadangan, dan broadcast.</li>
+  <li>Sebuah rencana pengalamatan harus selalu diperiksa menggunakan daftar periksa untuk menemukan kesalahan seperti konflik IP, network ID/broadcast yang salah pakai, gateway tidak sesuai subnet, dan subnet mask yang tidak konsisten.</li>
+ </ul>
+ <div class="tip"><strong>Kesimpulan praktik:</strong> sebelum rencana diterapkan, periksa keunikan IP, rentang host, network ID, broadcast, konsistensi subnet mask, gateway, kecukupan alamat, serta kerapian tabel.</div>
+ <div class="footer-nav"><a href="tp6-bab5.html">← Bab 5</a><a href="tp6.html">Kembali ke TP 6</a></div>
+</section>
+<div class="meta" style="text-align:center;padding:4px 0 15px">LMS TJKT · SMKN 7 Luwu · TP 6 Bab 6</div>
+</main>
+<script>
+const toggle=document.getElementById('menuToggle');
+const sidebar=document.getElementById('sidebar');
+const overlay=document.getElementById('menuOverlay');
+function closeMenu(){sidebar.classList.remove('open');overlay.classList.remove('show');toggle.setAttribute('aria-expanded','false')}
+toggle.addEventListener('click',()=>{const opened=sidebar.classList.toggle('open');overlay.classList.toggle('show',opened);toggle.setAttribute('aria-expanded',String(opened))});
+overlay.addEventListener('click',closeMenu);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+document.querySelectorAll('.sidebar a').forEach(a=>a.addEventListener('click',closeMenu));
+</script>
+</body></html>
