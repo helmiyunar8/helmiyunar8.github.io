@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP6 Bab 1 — Mengenal Rencana Pengalamatan IP</title>
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--ink:#333;--green:#eaf4e7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:20px 14px;overflow:auto;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;padding:5px 8px 18px;border-bottom:2px solid var(--gold);margin-bottom:14px}
+.brand img{width:44px;height:44px;object-fit:contain}.brand strong{font-size:14px;line-height:1.3}
+.sidebar a{display:block;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#f6edcf;color:#765500;font-weight:bold}
+main{margin-left:250px;padding:26px;max-width:1250px}
+.card{background:#fff;border-radius:14px;border-top:5px solid var(--gold);padding:clamp(18px,3vw,34px);box-shadow:0 3px 14px #0000000b}
+h1{font-size:clamp(24px,3vw,34px);line-height:1.25;margin:0 0 8px;color:#4c3a00}
+h2{font-size:23px;margin-top:32px;padding-bottom:7px;border-bottom:2px solid #eadcae}
+h3{font-size:18px;margin-top:22px;color:#604900}
+.meta{color:#666;font-size:14px;margin-bottom:22px}
+.callout{background:#fff8df;border-left:5px solid var(--gold);padding:14px 17px;border-radius:8px;margin:18px 0}
+.learning{background:#edf6eb;border-left:5px solid #8bbf84;padding:14px 18px;border-radius:8px}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14px}
+th,td{border:1px solid #d8d8d8;padding:10px;text-align:left;vertical-align:top}
+th{background:#f5edcf;color:#493800}
+.table-wrap{overflow-x:auto}
+ol,ul{padding-left:24px}
+li{margin:6px 0}
+.wide{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:18px 0}
+.component{border:1px solid #d9e6d5;background:#f7fbf6;border-radius:10px;padding:13px 10px;text-align:center}
+.component b{display:block;color:#486b3f;margin-bottom:5px}
+.diagram{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px 0}
+.diagram span{background:#f6edcf;border:1px solid #d9c47b;padding:10px 13px;border-radius:8px;font-weight:bold}
+.diagram em{font-style:normal;color:#8a6a00;font-size:22px}
+footer{margin-top:28px;padding-top:14px;border-top:1px solid #ddd;color:#777;font-size:13px}
+.menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:30;background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 12px;font-size:20px}
+.overlay{display:none}
+.mobile-nav{display:none}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:transform .2s;width:270px}
+ body.nav-open .sidebar{transform:translateX(0)}
+ .menu-btn{display:block}
+ .overlay{position:fixed;inset:0;background:#0007;z-index:15}
+ body.nav-open .overlay{display:block}
+ main{margin:0;padding:68px 12px 82px}
+ .card{padding:19px 16px}
+ .wide{grid-template-columns:1fr 1fr}
+ h2{font-size:21px}
+ .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;background:#fff;border-top:1px solid #ddd;justify-content:space-around;padding:9px 4px;box-shadow:0 -2px 10px #0000000a}
+ .mobile-nav a{font-size:11px;text-decoration:none;color:#5a4700;text-align:center}
+}
+@media(max-width:430px){.wide{grid-template-columns:1fr}.table-wrap table{min-width:650px}}
+</style>
+</head>
+<body>
+<button class="menu-btn" aria-label="Buka menu" onclick="document.body.classList.toggle('nav-open')">☰</button>
+<div class="overlay" onclick="document.body.classList.remove('nav-open')"></div>
+<aside class="sidebar">
+ <div class="brand"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'"><strong>SMKN 7 LUWU<br><small>Konsentrasi Keahlian TJKT</small></strong></div>
+ <a href="../../index.html">⌂ Beranda</a>
+ <a href="../index.html">▤ Materi</a>
+ <a href="index.html" class="active">⌘ Konsentrasi Keahlian TKJ</a>
+ <a href="../../menu-utama-TKJ/tryout.html">✎ Tryout</a>
+ <a href="../../lkpd/index.html">▣ LKPD</a>
+ <a href="../../absen/index.html">✓ Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">★ Ranking</a>
+ <a href="../../cbt/index.html">▤ CBT Ujian</a>
+ <a href="../../arsip.html">▧ ARSIP</a>
+ <hr>
+ <a href="tp6.html">TP6 — Rencana Pengalamatan IPv4</a>
+ <a href="tp6-bab1.html" class="active">Bab 1 — Mengenal Rencana Pengalamatan IP</a>
+ <a href="tp6-bab2.html">Bab 2 — Kebutuhan Alamat IP</a>
+ <a href="tp6-bab3.html">Bab 3 — Tabel Pengalamatan</a>
+ <a href="tp6-bab4.html">Bab 4 — Gateway dan Broadcast</a>
+ <a href="tp6-bab5.html">Bab 5 — Studi Kasus Sekolah</a>
+ <a href="tp6-bab6.html">Bab 6 — Memeriksa Rencana</a>
+</aside>
+<main><article class="card">
+<h1>BAB 1 — Mengenal Rencana Pengalamatan IP</h1>
+<div class="meta">Pertemuan 1 · Alokasi Waktu 3 JP · Kelas XI TJKT · Fase F</div>
+<div class="learning"><b>Tujuan Pembelajaran Bab Ini</b><ul>
+<li>Peserta didik mampu menjelaskan pengertian rencana pengalamatan IP.</li>
+<li>Peserta didik mampu menjelaskan fungsi setiap komponen dalam rencana pengalamatan IP.</li>
+</ul></div>
+
+<h2>1.1 Mengapa Perlu Ada Rencana Sebelum Memasang Jaringan?</h2>
+<p>Bayangkan seorang tukang bangunan yang akan membangun rumah tanpa gambar rencana (denah) terlebih dahulu. Ia mungkin akan bingung menentukan di mana pintu diletakkan, berapa banyak kamar yang dibutuhkan, atau ke mana pipa air harus disambungkan. Akibatnya, pekerjaan menjadi tidak teratur dan sering terjadi kesalahan yang baru diketahui setelah bangunan setengah jadi.</p>
+<p>Hal yang sama berlaku pada jaringan komputer. Sebelum seorang teknisi memasang dan mengatur (mengonfigurasi) alamat IP pada setiap perangkat, ia perlu membuat rencana terlebih dahulu di atas kertas atau dokumen digital. Rencana inilah yang disebut <b>rencana pengalamatan IP</b>.</p>
+<div class="diagram" aria-label="Tahapan merencanakan jaringan"><span>Daftar perangkat</span><em>→</em><span>Rencana alamat</span><em>→</em><span>Konfigurasi</span><em>→</em><span>Pemeriksaan</span></div>
+<p>Rencana membantu teknisi bekerja teratur, memastikan setiap perangkat mendapat alamat yang sesuai, dan menemukan potensi kesalahan sebelum konfigurasi dilakukan.</p>
+
+<h2>1.2 Pengertian Rencana Pengalamatan IP</h2>
+<p><b>Rencana pengalamatan IP (IP addressing plan)</b> adalah dokumen yang berisi daftar lengkap perangkat dalam sebuah jaringan beserta alamat IP, subnet mask, dan gateway yang akan diberikan kepada setiap perangkat tersebut, disusun sebelum perangkat benar-benar dipasang dan dikonfigurasi.</p>
+<p>Dengan kata lain, rencana pengalamatan IP adalah “denah alamat” dari sebuah jaringan. Sama seperti denah rumah yang menunjukkan letak setiap ruangan sebelum rumah dibangun, rencana pengalamatan IP menunjukkan alamat setiap perangkat sebelum jaringan benar-benar dipasang.</p>
+<div class="callout"><b>Ingat!</b> Rencana pengalamatan IP merupakan rancangan tertulis. Alamat yang tercantum di dalamnya belum tentu sudah diterapkan pada perangkat; konfigurasi dilakukan setelah rencana diperiksa.</div>
+
+<h2>1.3 Lima Komponen dalam Rencana Pengalamatan IP</h2>
+<p>Sebuah rencana pengalamatan IP yang lengkap memuat lima komponen berikut untuk setiap perangkat.</p>
+<div class="wide">
+ <div class="component"><b>1. Nama perangkat</b><span>Identitas yang mudah dikenali</span></div>
+ <div class="component"><b>2. Alamat IP</b><span>Alamat unik perangkat</span></div>
+ <div class="component"><b>3. Subnet mask</b><span>Penanda bagian network dan host</span></div>
+ <div class="component"><b>4. Gateway</b><span>Pintu keluar ke jaringan lain</span></div>
+ <div class="component"><b>5. Keterangan</b><span>Catatan fungsi atau lokasi</span></div>
+</div>
+<p><i>Gambar 1.1 Lima komponen dalam rencana pengalamatan IP setiap perangkat.</i></p>
+<h3>a. Nama Perangkat</h3>
+<p>Nama atau sebutan yang memudahkan mengenali perangkat, misalnya “Chromebook 1”, “Router Utama”, atau “Printer Ruang Guru”. Nama yang jelas membantu teknisi mengetahui perangkat mana yang sedang diperiksa atau dikonfigurasi.</p>
+<h3>b. Alamat IP</h3>
+<p>Alamat unik yang akan dipasang pada perangkat tersebut, sebagaimana telah kalian pelajari pada TP 4. Dalam satu jaringan, perangkat yang membutuhkan alamat IP masing-masing harus menggunakan alamat yang tidak bertabrakan.</p>
+<h3>c. Subnet Mask</h3>
+<p>Angka yang menentukan bagian network dan bagian host dari alamat IP tersebut, juga telah kalian pelajari pada TP 4 dan TP 5. Subnet mask membantu menentukan apakah alamat berada pada jaringan yang sama.</p>
+<h3>d. Gateway</h3>
+<p>Alamat pintu keluar yang digunakan perangkat untuk berkomunikasi dengan jaringan lain atau mengakses internet. Materi ini akan dibahas secara khusus pada Bab 4.</p>
+<h3>e. Keterangan</h3>
+<p>Catatan tambahan mengenai perangkat tersebut, misalnya fungsinya, lokasinya, atau jenis perangkatnya (perangkat jaringan atau perangkat pengguna). Keterangan membuat tabel lebih mudah dipahami dan dirawat.</p>
+
+<h2>1.4 Contoh Sederhana Rencana Pengalamatan IP</h2>
+<p>Berikut contoh rencana pengalamatan IP untuk tiga buah Chromebook dalam satu jaringan.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>No</th><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Gateway</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Chromebook 1</td><td>192.168.1.10</td><td>255.255.255.0</td><td>192.168.1.1</td></tr>
+<tr><td>2</td><td>Chromebook 2</td><td>192.168.1.11</td><td>255.255.255.0</td><td>192.168.1.1</td></tr>
+<tr><td>3</td><td>Chromebook 3</td><td>192.168.1.12</td><td>255.255.255.0</td><td>192.168.1.1</td></tr>
+</tbody></table></div>
+<p>Perhatikan tiga pola penting dari tabel di atas. Pertama, seluruh perangkat memiliki subnet mask yang sama karena berada dalam jaringan yang sama. Kedua, seluruh perangkat memiliki gateway yang sama, yaitu 192.168.1.1, karena gateway mewakili pintu keluar jaringan yang juga sama untuk semua perangkat. Ketiga, hanya alamat IP saja yang berbeda-beda pada oktet terakhirnya, karena setiap perangkat harus memiliki identitas yang unik.</p>
+<div class="callout"><b>Rencana dibuat sebelum konfigurasi</b><p>Rencana pengalamatan IP dibuat di atas kertas atau dokumen terlebih dahulu, sebelum teknisi benar-benar memasukkan alamat tersebut ke pengaturan setiap perangkat.</p><p>Manfaatnya: kesalahan seperti alamat kembar (<i>IP conflict</i>) dapat ditemukan dan diperbaiki di atas kertas, jauh lebih mudah dan cepat dibandingkan menemukannya setelah seluruh perangkat terpasang.</p></div>
+<h3>Contoh tambahan: mengapa nama dan keterangan penting?</h3>
+<p>Misalnya tabel hanya mencantumkan “192.168.1.10” tanpa nama perangkat. Teknisi akan kesulitan mengetahui perangkat mana yang memakai alamat tersebut. Jika dicatat sebagai “Chromebook 1 — ruang kelas — perangkat peserta didik”, informasi menjadi lebih mudah ditelusuri saat ada gangguan.</p>
+
+<h2>1.5 Kegiatan Peserta Didik — LKPD 1.1</h2>
+<div class="learning"><b>Petunjuk LKPD 1.1</b>
+<p><b>Bagian A:</b> Jelaskan dengan kalimat kalian sendiri fungsi dari setiap komponen berikut: nama perangkat, alamat IP, subnet mask, gateway, dan keterangan.</p>
+<p><b>Bagian B:</b> Buatlah contoh rencana pengalamatan IP sederhana untuk lima perangkat rekaan kalian sendiri (boleh nama perangkat apa saja), lengkap dengan kelima komponennya.</p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>No</th><th>Perangkat</th><th>Alamat IP</th><th>Subnet Mask</th><th>Gateway</th><th>Keterangan</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>5</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody></table></div>
+<p><b>Catatan pengerjaan:</b> Gunakan satu jaringan contoh yang sama untuk seluruh perangkat. Pastikan alamat IP tiap perangkat berbeda, subnet mask konsisten, dan gateway sesuai dengan jaringan yang kalian rancang.</p>
+
+<h2>Rangkuman Bab 1</h2>
+<ul>
+<li>Rencana pengalamatan IP adalah dokumen yang mencatat alamat setiap perangkat dalam jaringan sebelum jaringan tersebut dipasang dan dikonfigurasi.</li>
+<li>Lima komponen rencana pengalamatan IP: nama perangkat, alamat IP, subnet mask, gateway, dan keterangan.</li>
+<li>Perangkat dalam satu jaringan yang sama akan memiliki subnet mask dan gateway yang sama, namun alamat IP yang berbeda.</li>
+</ul>
+
+<h2>Latihan Soal Bab 1</h2>
+<ol>
+<li>Jelaskan dengan bahasa kalian sendiri, apa yang dimaksud dengan rencana pengalamatan IP!</li>
+<li>Mengapa rencana pengalamatan IP perlu dibuat sebelum perangkat dikonfigurasi?</li>
+<li>Sebutkan dan jelaskan lima komponen dalam rencana pengalamatan IP!</li>
+<li>Mengapa seluruh perangkat dalam satu jaringan memiliki gateway yang sama?</li>
+<li>Jelaskan perumpamaan rencana pengalamatan IP dengan denah rumah menggunakan kalimat kalian sendiri!</li>
+</ol>
+
+<h2>Refleksi Pertemuan 1</h2>
+<ul>
+<li>Apa fungsi alamat IP menurut pemahaman saya?</li>
+<li>Mengapa alamat IP tidak boleh sama antarperangkat?</li>
+<li>Apa fungsi gateway yang sudah saya pahami sejauh ini?</li>
+</ul>
+<footer>SMKN 7 Luwu · Konsentrasi Keahlian TJKT · TP6 — Rencana Pengalamatan IPv4</footer>
+</article></main>
+<nav class="mobile-nav"><a href="../../index.html">⌂<br>Beranda</a><a href="../index.html">▤<br>Materi</a><a href="tp6.html">TP6<br>Induk</a><a href="tp6-bab2.html">Bab 2<br>Berikutnya</a></nav>
+</body></html>
