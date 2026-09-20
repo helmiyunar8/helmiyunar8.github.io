@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP7 BAB 6 — Identifikasi Alat, Bahan, dan Presentasi | LMS SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--green:#a5d6a7;--deep:#075b3c;--ink:#222}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.7}
+.menu-toggle{display:none;position:fixed;z-index:1002;top:12px;left:12px;background:var(--gold);color:#fff;border:0;border-radius:8px;padding:11px 14px;font-size:18px;box-shadow:0 2px 8px #0002}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:18px 14px;overflow-y:auto;z-index:1001}
+.brand{text-align:center;padding:8px 4px 18px;border-bottom:1px solid #eee;margin-bottom:12px}
+.brand img{width:76px;height:76px;object-fit:contain}
+.brand strong{display:block;color:var(--gold);font-size:17px}
+.brand small{color:#666}
+.sidebar a{display:flex;gap:10px;align-items:center;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#fff3cd;color:#795900;font-weight:bold}
+.sidebar .section{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#999;padding:14px 12px 4px}
+.main{margin-left:250px;padding:28px;min-width:0}
+.wrap{max-width:1100px;margin:0 auto}
+.topline{background:var(--green);border-top:5px solid var(--gold);border-radius:12px;padding:20px 24px;margin-bottom:22px}
+.kicker{font-size:13px;text-transform:uppercase;letter-spacing:1.4px;color:var(--deep);font-weight:bold}
+h1{font-size:clamp(25px,3vw,36px);line-height:1.25;margin:5px 0;color:#164b35}
+.meta{color:#4d6257;font-weight:bold}
+.card{background:#fff;border-top:4px solid var(--gold);border-radius:12px;padding:24px;margin:20px 0;box-shadow:0 3px 14px #0000000a}
+h2{font-size:25px;color:#8a6500;border-bottom:1px solid #eadba8;padding-bottom:8px;margin-top:0}
+h3{font-size:20px;color:#17613f;margin-bottom:8px}
+h4{font-size:17px;color:#755600;margin-bottom:6px}
+ul,ol{padding-left:26px}
+li{margin:7px 0}
+.figure{margin:20px auto;text-align:center;background:#fffdf7;border:1px solid #eadba8;border-radius:12px;padding:12px;max-width:100%}
+.figure img{display:block;width:100%;height:auto;max-height:650px;object-fit:contain;border-radius:8px}
+figcaption{font-size:14px;color:#555;padding:10px 4px 2px}
+.callout{background:#edf8ee;border-left:5px solid #5ca66b;border-radius:8px;padding:16px 18px;margin:18px 0}
+.warning{background:#fff0f0;border-left:5px solid #d84a4a;border-radius:8px;padding:16px 18px;margin:18px 0}
+.table-wrap{width:100%;overflow-x:auto;margin:14px 0;border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:620px;background:white}
+th,td{border:1px solid #d9dfd9;padding:11px 12px;text-align:left;vertical-align:top}
+th{background:#e4f3e5;color:#164b35}
+tr:nth-child(even) td{background:#fbfdfb}
+.blank td{height:58px}
+.steps{counter-reset:step;list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 14px 12px 54px;background:#f5faf5;border-radius:9px;margin:10px 0}
+.steps li:before{content:counter(step);position:absolute;left:12px;top:11px;width:30px;height:30px;border-radius:50%;background:var(--deep);color:white;font-weight:bold;text-align:center;line-height:30px}
+footer{text-align:center;color:#777;font-size:13px;padding:25px}
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:20px 0}
+.pager a{background:var(--gold);color:white;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold}
+.image-placeholder{padding:35px 15px;border:2px dashed #9bbd9e;color:#376d48;border-radius:10px;background:#f5fbf5}
+@media(max-width:800px){
+ .menu-toggle{display:block}
+ .sidebar{transform:translateX(-105%);transition:transform .25s ease;width:min(290px,86vw);box-shadow:5px 0 18px #0002}
+ .sidebar.show{transform:translateX(0)}
+ .main{margin-left:0;padding:68px 13px 20px}
+ .topline{padding:18px 16px}
+ .card{padding:17px 14px;margin:15px 0}
+ h2{font-size:22px}
+ h3{font-size:19px}
+ table{min-width:580px}
+}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Buka atau tutup menu"><i class="fa-solid fa-bars"></i> Menu</button>
+<aside class="sidebar" id="sidebar">
+ <div class="brand">
+  <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+  <strong>SMKN 7 LUWU</strong><small>LMS Konsentrasi Keahlian TJKT</small>
+ </div>
+ <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+ <a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+ <div class="section">Pembelajaran</div>
+ <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i> Tryout</a>
+ <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+ <a href="../../absen/index.html"><i class="fa-solid fa-calendar-check"></i> Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+ <a href="../../cbt/index.html"><i class="fa-solid fa-laptop-file"></i> CBT Ujian</a>
+ <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+ <div class="section">TP7 — Kabel Jaringan</div>
+ <a href="tp7.html"><i class="fa-solid fa-list"></i> Induk TP7</a>
+ <a href="tp7-bab1.html">BAB 1 — Jenis Kabel</a>
+ <a href="tp7-bab2.html">BAB 2 — Konektor RJ-45</a>
+ <a href="tp7-bab3.html">BAB 3 — Standar Kabel</a>
+ <a href="tp7-bab4.html">BAB 4 — Alat Kerja</a>
+ <a class="active" href="tp7-bab5.html">BAB 5 — K3</a>
+ <a href="tp7-bab6.html">BAB 6 — Praktik</a>
+</aside>
+<main class="main"><div class="wrap">
+<header class="topline">
+ <div class="kicker">TP7 · Kabel UTP, Konektor, Alat Kerja, dan Keselamatan</div>
+ <h1>BAB 6 — Identifikasi Alat, Bahan, dan Presentasi Hasil Pengamatan</h1>
+ <div class="meta"><i class="fa-regular fa-clock"></i> Pertemuan 6 · Alokasi Waktu 3 JP</div>
+</header>
+
+<section class="card">
+ <h2>Tujuan Pembelajaran Bab Ini</h2>
+ <ul>
+  <li>Peserta didik mampu mengidentifikasi seluruh alat dan bahan praktik jaringan secara menyeluruh.</li>
+  <li>Peserta didik mampu mempresentasikan hasil pengamatan secara runtut dan bertanggung jawab.</li>
+ </ul>
+</section>
+
+<section class="card" id="bagian-61">
+ <h2>6.1 Mengulang Kembali Seluruh Materi</h2>
+ <p>Sebelum melakukan identifikasi akhir, mari kita rangkum seluruh pengetahuan yang telah kalian pelajari sepanjang TP 7 dalam satu tabel menyeluruh.</p>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Topik</th><th>Inti Materi</th></tr></thead>
+  <tbody>
+   <tr><td>Jenis kabel jaringan</td><td>Twisted pair (UTP), coaxial, dan fiber optic, masing-masing berbeda media penghantar, jarak, dan harga.</td></tr>
+   <tr><td>Struktur kabel UTP</td><td>8 kawat (4 pasang terpilin) dibungkus jacket; ada kategori Cat5, Cat5e, Cat6, Cat6a.</td></tr>
+   <tr><td>Straight vs Crossover</td><td>Straight untuk perangkat berbeda jenis; crossover untuk perangkat sejenis.</td></tr>
+   <tr><td>Konektor RJ-45</td><td>Menghubungkan kabel UTP ke port jaringan; terdiri dari rumah, 8 pin, lubang kabel, pengunci.</td></tr>
+   <tr><td>Susunan warna</td><td>Standar T568A dan T568B; berbeda pada pin 1, 2, 3, dan 6.</td></tr>
+   <tr><td>Tang crimping</td><td>Tiga fungsi: memotong, mengupas, mengepres konektor.</td></tr>
+   <tr><td>LAN tester</td><td>Menguji susunan dan kesinambungan kabel melalui lampu indikator berurutan.</td></tr>
+   <tr><td>K3</td><td>Sepuluh prosedur keselamatan kerja untuk mencegah kecelakaan dan menjaga alat/bahan.</td></tr>
+  </tbody>
+ </table></div>
+</section>
+
+<section class="card" id="bagian-62">
+ <h2>6.2 Objek Identifikasi Akhir</h2>
+ <p>Pada pertemuan ini, setiap kelompok akan melakukan identifikasi menyeluruh terhadap seluruh alat dan bahan yang telah dipelajari, dengan mengisi tabel yang lebih lengkap dibandingkan LKPD pada bab-bab sebelumnya.</p>
+ <ul>
+  <li>Kabel UTP</li><li>Konektor RJ-45</li><li>Tang Crimping</li><li>LAN Tester</li>
+ </ul>
+</section>
+
+<section class="card" id="bagian-63">
+ <h2>6.3 Kegiatan Peserta Didik — LKPD 6.1 (Identifikasi Menyeluruh)</h2>
+ <div class="callout"><strong>Petunjuk LKPD 6.1</strong><br>Amati keempat alat/bahan pada bagian 6.2 bersama kelompok. Isi tabel berikut selengkap mungkin berdasarkan seluruh materi Bab 1 sampai Bab 5.</div>
+ <div class="table-wrap"><table class="blank">
+  <thead><tr><th>Nama Alat/Bahan</th><th>Fungsi</th><th>Ciri-Ciri</th><th>Cara Penggunaan</th><th>Risiko Penggunaan</th><th>Cara Menjaga</th></tr></thead>
+  <tbody>
+   <tr><td>Kabel UTP</td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td>Konektor RJ-45</td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td>Tang crimping</td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td>LAN tester</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+ </table></div>
+</section>
+
+<section class="card" id="bagian-64">
+ <h2>6.4 Menyusun Hasil Menjadi Presentasi</h2>
+ <p>Setelah tabel identifikasi selesai diisi, setiap kelompok perlu menyusun hasil kerja menjadi bentuk yang siap dipresentasikan, baik berupa poster sederhana di atas kertas maupun presentasi lisan dengan menunjukkan tabel yang telah dibuat.</p>
+ <h3>Panduan menyusun presentasi</h3>
+ <ol>
+  <li>Sampaikan nama dan fungsi setiap alat/bahan secara berurutan.</li>
+  <li>Jelaskan ciri-ciri yang membedakan setiap alat/bahan dari yang lain.</li>
+  <li>Jelaskan cara penggunaan yang benar sesuai prosedur K3 yang telah dipelajari.</li>
+  <li>Sampaikan risiko penggunaan yang salah dan cara menjaga alat/bahan tersebut.</li>
+  <li>Jawablah pertanyaan atau tanggapan dari kelompok lain dengan percaya diri.</li>
+ </ol>
+</section>
+
+<section class="card" id="bagian-65">
+ <h2>6.5 Rubrik Penilaian</h2>
+ <div class="table-wrap"><table>
+  <thead><tr><th>Aspek</th><th>Skor 1</th><th>Skor 2</th><th>Skor 3</th><th>Skor 4</th></tr></thead>
+  <tbody>
+   <tr><td>Identifikasi alat</td><td>Banyak salah</td><td>Sebagian benar</td><td>Hampir semua benar</td><td>Semua benar</td></tr>
+   <tr><td>Menjelaskan fungsi</td><td>Tidak tepat</td><td>Kurang lengkap</td><td>Tepat</td><td>Sangat tepat dan lengkap</td></tr>
+   <tr><td>Ketelitian</td><td>Tidak teliti</td><td>Kurang teliti</td><td>Teliti</td><td>Sangat teliti</td></tr>
+   <tr><td>Penerapan K3</td><td>Tidak mengikuti</td><td>Mengikuti sebagian</td><td>Mengikuti sebagian besar</td><td>Mengikuti seluruhnya</td></tr>
+   <tr><td>Presentasi</td><td>Tidak mampu</td><td>Kurang jelas</td><td>Cukup jelas</td><td>Jelas dan percaya diri</td></tr>
+  </tbody>
+ </table></div>
+</section>
+
+<section class="card" id="bagian-66">
+ <h2>6.6 Rangkuman Akhir Tujuan Pembelajaran 7</h2>
+ <ul>
+  <li>Terdapat tiga jenis kabel jaringan: twisted pair (UTP), coaxial, dan fiber optic, dengan karakteristik dan penggunaan yang berbeda-beda.</li>
+  <li>Kabel UTP tersusun dari empat pasang kawat terpilin, memiliki beberapa kategori mutu, dan dibedakan menjadi kabel straight-through dan crossover.</li>
+  <li>Konektor RJ-45 menghubungkan kabel UTP ke port jaringan, dengan susunan warna mengikuti standar T568A atau T568B.</li>
+  <li>Tang crimping berfungsi memotong, mengupas, dan mengepres konektor; LAN tester berfungsi menguji hasil pemasangan kabel.</li>
+  <li>K3 adalah bagian penting dari keterampilan teknisi jaringan, mencakup sepuluh prosedur keselamatan yang harus selalu diterapkan.</li>
+ </ul>
+</section>
+<nav class="pager"><a href="tp7-bab5.html"><i class="fa-solid fa-arrow-left"></i> BAB 5</a><a href="tp7-evaluasi.html">Evaluasi TP7 <i class="fa-solid fa-arrow-right"></i></a></nav>
+<footer>© SMKN 7 Luwu · LMS Konsentrasi Keahlian TJKT</footer>
+</div></main>
+<script>
+const toggle=document.getElementById('menuToggle');
+const sidebar=document.getElementById('sidebar');
+toggle.addEventListener('click',()=>sidebar.classList.toggle('show'));
+document.addEventListener('click',e=>{if(window.innerWidth<=800&&!sidebar.contains(e.target)&&!toggle.contains(e.target))sidebar.classList.remove('show')});
+</script>
+</body></html>
