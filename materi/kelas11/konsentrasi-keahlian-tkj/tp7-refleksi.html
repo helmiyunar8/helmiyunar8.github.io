@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refleksi Akhir Peserta Didik - TP 7 | SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--gold-dark:#8a6500;--gold-pale:#fff4cf;--paper:#fff;--bg:#f4f4f4;--ink:#292929;--muted:#666;--line:#e5e5e5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:22px 14px;overflow-y:auto;z-index:20}
+.brand{text-align:center;padding:8px 4px 20px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.brand img{width:78px;height:78px;object-fit:contain}
+.brand h2{font-size:18px;margin:6px 0 0}
+.brand p{font-size:13px;color:var(--muted);margin:2px 0}
+.nav-title{font-size:12px;color:#888;font-weight:bold;letter-spacing:.7px;margin:18px 8px 8px}
+.sidebar a{display:flex;align-items:center;gap:12px;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0;font-size:14px}
+.sidebar a i{width:18px;color:#555}
+.sidebar a:hover,.sidebar a.active{background:var(--gold-pale);color:var(--gold-dark)}
+.sidebar a.active i{color:var(--gold-dark)}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:30;border:0;background:var(--gold);color:white;border-radius:8px;padding:11px 13px;font-size:18px}
+.main{margin-left:250px;padding:24px;min-height:100vh}
+.page{max-width:1100px;margin:0 auto;background:#fff;border:1px solid #e4e4e4;border-top:8px solid var(--gold);border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #00000008}
+.header{padding:28px 32px 22px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--gold-dark);font-weight:bold;text-transform:uppercase;font-size:13px;letter-spacing:1px}
+h1{font-size:clamp(27px,3.3vw,38px);line-height:1.2;margin:8px 0;color:#292929}
+h1 span{color:var(--gold-dark)}
+.meta{display:flex;flex-wrap:wrap;gap:18px;color:#666;font-size:14px;margin-top:12px}
+.meta i{color:var(--gold);margin-right:6px}
+.content{padding:28px 32px}
+.instruction{display:flex;gap:18px;align-items:flex-start;background:#fff9e8;border:1px solid #f0dfae;border-radius:12px;padding:20px;margin-bottom:24px}
+.instruction .bigicon{font-size:30px;color:var(--gold);padding:4px 8px}
+.instruction h2{font-size:20px;margin:0 0 5px;color:var(--gold-dark)}
+.instruction p{margin:0}
+.prompt-list{border:1px solid #e1e1e1;border-radius:12px;overflow:hidden}
+.prompt{display:grid;grid-template-columns:54px 1fr;gap:0;border-bottom:1px solid var(--line);padding:18px 20px}
+.prompt:last-child{border-bottom:0}
+.num{width:36px;height:36px;border-radius:50%;background:var(--gold-pale);color:var(--gold-dark);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:17px}
+.question{font-size:17px;font-weight:600;padding-top:3px}
+.answer-line{height:28px;border-bottom:1px dashed #cfcfcf;margin-top:8px}
+.illustration{margin:26px 0 8px;border:1px solid #eee;border-radius:12px;padding:18px;background:#fffdf7;text-align:center}
+.illustration svg{width:min(100%,600px);height:auto;display:block;margin:auto}
+.illustration figcaption{color:#666;font-size:13px;margin-top:10px}
+.note{display:flex;gap:14px;align-items:center;background:#fff4cf;border-radius:10px;padding:16px 18px;margin-top:20px;color:#654b00}
+.note i{font-size:24px;color:var(--gold)}
+.footer-nav{display:flex;justify-content:space-between;gap:12px;padding:0 32px 30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:8px;text-decoration:none;font-weight:bold;border:1px solid var(--gold);color:var(--gold-dark);background:#fff}
+.btn.primary{background:var(--gold);color:white}
+footer{text-align:center;padding:20px;color:#777;font-size:13px}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:transform .25s ease;box-shadow:4px 0 18px #0002}
+ .sidebar.show{transform:translateX(0)}
+ .menu-toggle{display:block}
+ .main{margin-left:0;padding:68px 10px 18px}
+ .header{padding:24px 18px 18px}
+ .content{padding:20px 14px}
+ .footer-nav{padding:0 14px 22px}
+ .prompt{grid-template-columns:42px 1fr;padding:15px 12px}
+ .question{font-size:16px}
+ .instruction{padding:15px;gap:10px}
+ .instruction .bigicon{font-size:24px;padding:4px}
+ .meta{gap:9px 14px}
+}
+@media(max-width:420px){h1{font-size:26px}.prompt{grid-template-columns:36px 1fr}.num{width:29px;height:29px;font-size:14px}.question{font-size:15px}.illustration{padding:10px}}
+</style>
+</head>
+<body>
+<button class="menu-toggle" aria-label="Buka menu" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar">
+ <div class="brand">
+  <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+  <h2>SMKN 7 LUWU</h2><p>Kelas XI TJKT</p><p>TP 7</p>
+ </div>
+ <div class="nav-title">MENU UTAMA</div>
+ <a href="../../index.html"><i class="fa-solid fa-house"></i>Beranda</a>
+ <a href="../index.html"><i class="fa-solid fa-book-open"></i>Materi</a>
+ <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-list"></i>Tryout</a>
+ <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i>LKPD</a>
+ <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i>Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-chart-column"></i>Ranking</a>
+ <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i>CBT Ujian</a>
+ <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i>ARSIP</a>
+ <div class="nav-title">MATERI TP 7</div>
+ <a href="index.html"><i class="fa-regular fa-file-lines"></i>TP7 — Beranda</a>
+ <a href="tp7-bab1.html"><i class="fa-regular fa-file-lines"></i>Bab 1</a>
+ <a href="tp7-bab2.html"><i class="fa-regular fa-file-lines"></i>Bab 2</a>
+ <a href="tp7-bab3.html"><i class="fa-regular fa-file-lines"></i>Bab 3</a>
+ <a href="tp7-bab4.html"><i class="fa-regular fa-file-lines"></i>Bab 4</a>
+ <a href="tp7-bab5.html"><i class="fa-regular fa-file-lines"></i>Bab 5</a>
+ <a href="tp7-bab6.html"><i class="fa-regular fa-file-lines"></i>Bab 6</a>
+ <a class="active" href="tp7-evaluasi.html"><i class="fa-regular fa-file-lines"></i>Evaluasi</a>
+ <a href="tp7-refleksi.html"><i class="fa-regular fa-file-lines"></i>Refleksi</a>
+ <a href="tp7-glosarium.html"><i class="fa-regular fa-file-lines"></i>Glosarium</a>
+ <a href="tp7-kunci-jawaban.html"><i class="fa-regular fa-file-lines"></i>Kunci Jawaban</a>
+ <a href="tp7-daftar-pustaka.html"><i class="fa-regular fa-file-lines"></i>Daftar Pustaka</a>
+</aside>
+<main class="main">
+ <article class="page">
+  <header class="header">
+   <div class="eyebrow">Kelas XI TJKT · Tujuan Pembelajaran 7</div>
+   <h1>Refleksi Akhir <span>Peserta Didik</span></h1>
+   <div class="meta"><span><i class="fa-regular fa-calendar"></i>TP 7</span><span><i class="fa-solid fa-book-open"></i>Refleksi</span><span><i class="fa-solid fa-pen"></i>Refleksi mandiri</span></div>
+  </header>
+  <section class="content">
+   <div class="instruction">
+    <div class="bigicon"><i class="fa-solid fa-lightbulb"></i></div>
+    <div><h2>Petunjuk Refleksi</h2><p>Jawablah pertanyaan berikut dengan jujur berdasarkan pengalaman dan pemahaman kalian setelah mempelajari TP 7. Tidak ada jawaban benar atau salah; tuliskan pemikiran kalian sendiri.</p></div>
+   </div>
+   <div class="prompt-list">
+    <div class="prompt"><div class="num">1</div><div><div class="question">Apa fungsi kabel UTP?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">2</div><div><div class="question">Apa fungsi RJ-45?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">3</div><div><div class="question">Apa fungsi tang crimping?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">4</div><div><div class="question">Apa fungsi LAN tester?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">5</div><div><div class="question">Apa hal terpenting dalam K3 menurut saya?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">6</div><div><div class="question">Bagian materi apa yang masih sulit?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+    <div class="prompt"><div class="num">7</div><div><div class="question">Apa keterampilan yang ingin saya latih lebih lanjut?</div><div class="answer-line"></div><div class="answer-line"></div></div></div>
+   </div>
+   <figure class="illustration">
+    <svg viewBox="0 0 720 210" role="img" aria-label="Ilustrasi kabel UTP, konektor RJ-45, tang crimping, dan LAN tester">
+     <rect x="0" y="0" width="720" height="210" rx="14" fill="#fffaf0"/>
+     <path d="M40 120 C10 55 170 35 190 95 C212 158 60 175 52 116 C45 70 150 70 155 112" fill="none" stroke="#1769aa" stroke-width="16" stroke-linecap="round"/>
+     <path d="M40 120 C10 55 170 35 190 95 C212 158 60 175 52 116 C45 70 150 70 155 112" fill="none" stroke="#3193df" stroke-width="7" stroke-linecap="round"/>
+     <g transform="translate(225 58) rotate(-8)">
+      <path d="M0 20 L85 0 L135 30 L110 62 L25 58 Z" fill="#30343b" stroke="#17191d" stroke-width="5"/>
+      <path d="M20 58 L-4 125 L24 138 L62 76 M110 62 L138 132 L165 122 L135 30" fill="#1674c8" stroke="#0d4f92" stroke-width="5"/>
+      <circle cx="28" cy="33" r="8" fill="#bbc3cb" stroke="#111" stroke-width="4"/>
+      <circle cx="111" cy="42" r="8" fill="#bbc3cb" stroke="#111" stroke-width="4"/>
+     </g>
+     <g transform="translate(430 44)">
+      <rect x="0" y="0" width="90" height="142" rx="15" fill="#e8e8e5" stroke="#aaa" stroke-width="3"/>
+      <rect x="14" y="30" width="62" height="92" rx="8" fill="#075b43"/>
+      <rect x="29" y="13" width="32" height="20" rx="4" fill="#24282d"/>
+      <text x="45" y="54" font-size="12" fill="white" text-anchor="middle" font-weight="bold">MASTER</text>
+      {''.join(f'<circle cx="32" cy="{70+i*10}" r="3.5" fill="#b8ec77"/><circle cx="58" cy="{70+i*10}" r="3.5" fill="#b8ec77"/>' for i in range(5))}
+     </g>
+     <g transform="translate(550 65)">
+      <rect x="0" y="0" width="72" height="121" rx="13" fill="#e8e8e5" stroke="#aaa" stroke-width="3"/>
+      <rect x="12" y="30" width="48" height="75" rx="7" fill="#075b43"/>
+      <rect x="23" y="13" width="26" height="20" rx="4" fill="#24282d"/>
+      <text x="36" y="53" font-size="10" fill="white" text-anchor="middle" font-weight="bold">REMOTE</text>
+      {''.join(f'<circle cx="26" cy="{67+i*8}" r="3" fill="#b8ec77"/><circle cx="46" cy="{67+i*8}" r="3" fill="#b8ec77"/>' for i in range(4))}
+     </g>
+     <g transform="translate(340 152)"><path d="M0 0 l34 0 l-4 18 l-26 0z" fill="#d9e1e8" stroke="#777"/><path d="M6 0v-10h22v10" fill="#f6f6f6" stroke="#777"/><path d="M10 -8v7m5-7v7m5-7v7m5-7v7" stroke="#c79b39" stroke-width="2"/></g>
+    </svg>
+    <figcaption>Ilustrasi perangkat dan bahan yang dipelajari dalam TP 7.</figcaption>
+   </figure>
+   <div class="note"><i class="fa-solid fa-pen-to-square"></i><div><strong>Ingat:</strong> Refleksi membantu kalian mengenali hal yang sudah dipahami dan menentukan keterampilan yang perlu dilatih kembali.</div></div>
+  </section>
+  <div class="footer-nav">
+   <a class="btn" href="tp7-evaluasi.html"><i class="fa-solid fa-arrow-left"></i> Evaluasi</a>
+   <a class="btn primary" href="tp7-glosarium.html">Glosarium <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+ </article>
+ <footer>SMKN 7 Luwu · Kelas XI TJKT · TP 7</footer>
+</main>
+</body>
+</html>
