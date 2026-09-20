@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glosarium TP 7 | SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--gold-light:#f3e5b5;--bg:#f4f4f4;--ink:#252525;--muted:#666}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:20px 15px;overflow-y:auto;z-index:1000}
+.brand{text-align:center;padding:5px 0 18px;border-bottom:1px solid #eee}
+.brand img{width:72px;height:72px;object-fit:contain}
+.brand h2{font-size:17px;margin:8px 0 0;color:#7b5b00}
+.nav{display:block;margin-top:16px}
+.nav a{display:flex;align-items:center;gap:11px;text-decoration:none;color:#333;padding:11px 12px;border-radius:8px;margin:4px 0}
+.nav a:hover,.nav a.active{background:var(--gold-light);color:#6d5000;font-weight:bold}
+.nav i{width:20px;text-align:center;color:var(--gold)}
+main{margin-left:250px;padding:28px;min-height:100vh}
+.mobilebar{display:none}
+.card{max-width:1100px;margin:auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:30px;box-shadow:0 3px 14px #0000000a}
+h1{margin:0 0 8px;color:#795900;font-size:clamp(25px,3vw,34px)}
+.subtitle{color:var(--muted);margin:0 0 24px}
+.intro{background:#fffaf0;border-left:4px solid var(--gold);padding:14px 17px;border-radius:6px;margin:20px 0}
+.table-wrap{width:100%;overflow-x:auto;margin:18px 0;border:1px solid #e7dfc9;border-radius:8px}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th{background:var(--gold);color:#fff;text-align:left}
+th,td{padding:13px 15px;border-bottom:1px solid #e9e4d8;vertical-align:top}
+tbody tr:nth-child(even){background:#fffaf0}
+tbody tr:last-child td{border-bottom:0}
+.term{font-weight:bold;color:#755600;white-space:nowrap}
+.footer{margin-top:28px;padding-top:18px;border-top:1px solid #eee;display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
+.footer a{color:#765800;text-decoration:none;font-weight:bold}
+@media(max-width:800px){
+ .sidebar{display:none;width:min(85vw,290px);box-shadow:4px 0 18px #0002}
+ .sidebar.show{display:block}
+ main{margin-left:0;padding:12px}
+ .mobilebar{display:flex;align-items:center;gap:12px;background:#fff;border-bottom:2px solid var(--gold);padding:12px 15px;margin:-12px -12px 14px;position:sticky;top:0;z-index:900}
+ .mobilebar button{border:0;background:var(--gold);color:white;border-radius:7px;padding:9px 12px;font-size:18px}
+ .mobilebar strong{color:#765800;font-size:15px}
+ .card{padding:20px 16px;border-radius:10px}
+ th,td{padding:11px 12px;font-size:14px}
+ .term{white-space:normal}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+ <div class="brand">
+  <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+  <h2>SMKN 7 LUWU<br>Materi TJKT</h2>
+ </div>
+ <nav class="nav">
+  <a href="../../index.html"><i class="fa-solid fa-house"></i>Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book-open"></i>Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i>Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i>LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i>Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i>Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i>CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i>ARSIP</a>
+ </nav>
+</aside>
+<main>
+ <div class="mobilebar"><button type="button" aria-label="Buka menu" onclick="document.getElementById('sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button><strong>SMKN 7 LUWU · TP 7</strong></div>
+ <article class="card">
+  <h1><i class="fa-solid fa-book-atlas"></i> Glosarium</h1>
+  <p class="subtitle">TP 7 — Kabel Jaringan, Konektor, Alat Kerja, dan K3</p>
+  <div class="intro">Gunakan glosarium ini untuk memahami istilah penting yang muncul sepanjang pembelajaran Tujuan Pembelajaran 7.</div>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th style="width:32%">Istilah</th><th>Pengertian</th></tr></thead>
+    <tbody>
+     <tr><td class="term">Twisted Pair</td><td>Kabel jaringan dengan kawat tembaga yang dipilin berpasangan.</td></tr>
+     <tr><td class="term">Coaxial</td><td>Kabel jaringan dengan satu kawat inti dikelilingi anyaman logam pelindung.</td></tr>
+     <tr><td class="term">Fiber Optic</td><td>Kabel jaringan yang menghantarkan data berupa cahaya melalui serat kaca/plastik.</td></tr>
+     <tr><td class="term">UTP</td><td>Unshielded Twisted Pair; twisted pair tanpa lapisan pelindung logam tambahan.</td></tr>
+     <tr><td class="term">STP</td><td>Shielded Twisted Pair; twisted pair dengan lapisan pelindung logam tambahan.</td></tr>
+     <tr><td class="term">Interferensi Elektromagnetik</td><td>Gangguan sinyal akibat medan elektromagnetik antarkawat.</td></tr>
+     <tr><td class="term">Kategori Kabel (Cat5/5e/6)</td><td>Tingkatan mutu kabel UTP yang menentukan kecepatan maksimum.</td></tr>
+     <tr><td class="term">Kabel Straight-Through</td><td>Kabel dengan susunan warna sama pada kedua ujung; untuk perangkat berbeda jenis.</td></tr>
+     <tr><td class="term">Kabel Crossover</td><td>Kabel dengan susunan warna berbeda pada kedua ujung; untuk perangkat sejenis.</td></tr>
+     <tr><td class="term">RJ-45</td><td>Registered Jack 45; konektor standar untuk kabel UTP pada jaringan Ethernet.</td></tr>
+     <tr><td class="term">T568A / T568B</td><td>Dua standar susunan warna kawat pada konektor RJ-45.</td></tr>
+     <tr><td class="term">Tang Crimping</td><td>Alat untuk memotong, mengupas, dan mengepres konektor RJ-45 pada kabel UTP.</td></tr>
+     <tr><td class="term">LAN Tester</td><td>Alat untuk menguji susunan dan kesinambungan kabel jaringan.</td></tr>
+     <tr><td class="term">K3</td><td>Keselamatan dan Kesehatan Kerja; upaya melindungi pekerja dan menjaga alat/bahan kerja.</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="footer">
+   <a href="tp7-refleksi.html"><i class="fa-solid fa-arrow-left"></i> Refleksi Akhir</a>
+   <a href="tp7-kunci-jawaban.html">Kunci Jawaban <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+ </article>
+</main>
+</body>
+</html>
