@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b8860b">
+<title>TP7 Bab 4 — Alat Kerja Jaringan</title>
+<style>
+:root{--gold:#b8860b;--gold-dark:#765500;--bg:#f4f4f4;--ink:#252525;--line:#e7d7a8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 Arial,Helvetica,sans-serif}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:1px solid #ddd;padding:20px 15px;overflow-y:auto;z-index:1000}
+.logo{display:block;width:88px;height:88px;object-fit:contain;margin:0 auto 8px}
+.school{text-align:center;font-weight:800;color:var(--gold-dark);letter-spacing:.6px}
+.subschool{text-align:center;font-size:13px;color:#666;margin:2px 0 20px}
+.menu-title{font-size:12px;text-transform:uppercase;font-weight:700;color:#92701b;margin:18px 8px 7px;letter-spacing:.8px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:9px 11px;border-radius:7px;margin:3px 0;font-size:14px}
+.sidebar a:hover,.sidebar a.active{background:#f8edc9;color:#604600;font-weight:700}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:900}
+.main{margin-left:250px;min-height:100vh;padding:26px}
+.mobile-top{display:none}
+.container{max-width:1050px;margin:0 auto;background:#fff;border-top:5px solid var(--gold);border-radius:9px;padding:30px 34px;box-shadow:0 2px 12px #0000000b}
+h1{font-size:clamp(23px,3vw,32px);line-height:1.25;color:#4f3b00;margin:0 0 8px}
+.meta{font-size:13px;color:#777;border-bottom:1px solid #eee;padding-bottom:17px;margin-bottom:20px}
+h2{font-size:22px;color:var(--gold-dark);margin:32px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:18px;color:#6e5307;margin:22px 0 8px}
+p{margin:10px 0}
+ul,ol{padding-left:25px}
+li{margin:7px 0}
+.intro,.case,.note,.exercise{border-radius:8px;margin:18px 0;padding:15px 17px}
+.intro{background:#fff8e5;border-left:4px solid var(--gold)}
+.case{border:1px solid #e6d49a;background:#fffdf6;padding:0;overflow:hidden}
+.case-head{background:#f5e6b5;color:#5d4700;font-weight:700;padding:10px 15px}
+.case-body{padding:13px 15px}
+.note{background:#fff8e5;border:1px solid #ead9a4}
+.exercise{background:#fafafa;border:1px solid #e6e6e6}
+figure{margin:22px 0;padding:12px;background:#fff;border:1px solid #eee;border-radius:8px;text-align:center}
+figure svg{display:block;width:100%;height:auto;max-width:900px;margin:auto}
+figcaption{font-size:14px;color:#666;margin-top:10px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+th,td{border:1px solid #d9d9d9;padding:10px 12px;text-align:left;vertical-align:top}
+th{background:#f5e8bd;color:#574200}
+tbody tr:nth-child(even){background:#fafafa}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.blank td{height:44px}
+.footer-nav{display:flex;justify-content:space-between;gap:10px;margin-top:32px;padding-top:17px;border-top:1px solid #ddd;flex-wrap:wrap}
+.footer-nav a{color:#765500;text-decoration:none;font-weight:700;padding:9px 12px;background:#fff8e5;border-radius:7px}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-105%);transition:transform .22s ease;width:min(280px,84vw);box-shadow:3px 0 18px #0002}
+ .sidebar.open{transform:translateX(0)}
+ .overlay.show{display:block}
+ .main{margin-left:0;padding:0 10px 18px}
+ .mobile-top{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:800;background:#fff;border-bottom:2px solid var(--gold);padding:10px;margin:0 -10px 12px}
+ .hamb{border:0;border-radius:7px;background:var(--gold);color:#fff;font-size:23px;line-height:1;padding:8px 12px;cursor:pointer}
+ .mobile-title{font-size:14px;font-weight:700;color:var(--gold-dark)}
+ .container{padding:20px 15px;border-radius:7px}
+ h1{font-size:23px}
+ h2{font-size:20px;margin-top:27px}
+ h3{font-size:17px}
+ body{font-size:15px;line-height:1.65}
+ table{font-size:13px;min-width:520px}
+ .footer-nav{position:static}
+ figure{padding:7px;margin:16px 0}
+ figcaption{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sidebar{transition:none}}
+</style>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <img src="../../asset/logo.png" class="logo" alt="Logo SMKN 7 Luwu">
+  <div class="school">SMKN 7 LUWU</div>
+  <div class="subschool">Kelas XI TJKT · TP 7</div>
+  <div class="menu-title">Navigasi TP7</div>
+  <a href="tp7.html">TP7 — Beranda</a>
+  <a href="tp7-bab1.html">Bab 1 — Jenis Kabel Jaringan</a>
+  <a href="tp7-bab2.html">Bab 2 — Karakteristik Kabel UTP</a>
+  <a href="tp7-bab3.html">Bab 3 — Konektor RJ-45</a>
+  <a href="tp7-bab4.html" class="active">Bab 4 — Alat Kerja Jaringan</a>
+  <a href="tp7-bab5.html">Bab 5 — Keselamatan Kerja</a>
+  <a href="tp7-bab6.html">Bab 6 — Praktik Pemasangan</a>
+  <div class="menu-title">LMS</div>
+  <a href="../../index.html">Beranda</a>
+  <a href="../index.html">Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html">Tryout</a>
+  <a href="../../lkpd/index.html">LKPD</a>
+  <a href="../../absen/index.html">Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html">Ranking</a>
+  <a href="../../cbt/index.html">CBT Ujian</a>
+  <a href="../../arsip.html">ARSIP</a>
+</aside>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<main class="main">
+  <div class="mobile-top">
+    <button class="hamb" onclick="openMenu()" aria-label="Buka menu" aria-controls="sidebar">☰</button>
+    <div class="mobile-title">TP7 · Bab 4 — Alat Kerja Jaringan</div>
+  </div>
+  <section class="container">
+    <h1>TUJUAN PEMBELAJARAN 7 — KABEL JARINGAN</h1>
+    <div class="meta">BAB 4 — Alat Kerja Jaringan: Tang Crimping dan LAN Tester · Kelas XI TJKT · SMKN 7 Luwu · Fase F · Semester Ganjil 2026/2027</div>
+
+    <div class="intro"><strong>Pertemuan 4 · Alokasi Waktu 3 JP</strong><br><strong>Tujuan Pembelajaran Bab Ini:</strong>
+      <ul>
+        <li>Peserta didik mampu menjelaskan fungsi dan bagian-bagian tang crimping.</li>
+        <li>Peserta didik mampu menjelaskan fungsi dan cara kerja LAN tester.</li>
+      </ul>
+    </div>
+
+    <h2>4.1 Dua Alat Wajib untuk Memasang Kabel Jaringan</h2>
+    <p>Setelah mengenal kabel UTP dan konektor RJ-45, sekarang kita akan mempelajari dua alat yang wajib digunakan untuk memasang keduanya menjadi satu kesatuan kabel jaringan yang siap pakai: tang crimping dan LAN tester. Kedua alat ini sudah tersedia di sekolah kita, masing-masing beberapa buah, untuk digunakan secara bergantian oleh seluruh peserta didik kelas XI TJKT.</p>
+
+    <figure>
+      <svg viewBox="0 0 900 330" role="img" aria-labelledby="toolsTitle toolsDesc">
+        <title id="toolsTitle">Ilustrasi tang crimping dan LAN tester</title>
+        <desc id="toolsDesc">Gambar vektor sederhana tang crimping dengan pegangan biru dan LAN tester dengan unit utama serta unit remote.</desc>
+        <rect x="10" y="10" width="880" height="310" rx="18" fill="#fffdf7" stroke="#e8d9ad"/>
+        <g transform="translate(45 42)">
+          <text x="185" y="20" font-size="24" font-weight="bold" text-anchor="middle" fill="#5b4500">TANG CRIMPING</text>
+          <path d="M125 115 L230 140 L305 205 L278 232 L188 175 L105 154 Z" fill="#252a31" stroke="#101318" stroke-width="5"/>
+          <path d="M120 145 L65 265 Q55 285 78 290 L105 294 Q120 295 128 278 L188 175Z" fill="#1976d2" stroke="#0e4d91" stroke-width="5"/>
+          <path d="M235 150 L285 116 L340 258 Q347 280 326 287 L299 295 Q282 298 274 278 L220 185Z" fill="#1976d2" stroke="#0e4d91" stroke-width="5"/>
+          <path d="M95 105 L115 70 L210 87 L255 128 L228 165 L135 143Z" fill="#343b45" stroke="#101318" stroke-width="5"/>
+          <path d="M115 70 L145 42 L248 58 L282 100 L255 128 L210 87Z" fill="#4b535d" stroke="#101318" stroke-width="5"/>
+          <rect x="166" y="102" width="57" height="30" rx="5" fill="#d8dce0" stroke="#161a20" stroke-width="4"/>
+          <rect x="180" y="108" width="30" height="18" rx="2" fill="#fff"/>
+          <circle cx="122" cy="95" r="8" fill="#bfc5cc" stroke="#101318" stroke-width="4"/>
+          <circle cx="250" cy="118" r="8" fill="#bfc5cc" stroke="#101318" stroke-width="4"/>
+          <text x="180" y="310" text-anchor="middle" font-size="17" fill="#444">Pemotong · Pengupas · Pencetak</text>
+        </g>
+        <g transform="translate(490 40)">
+          <text x="190" y="22" font-size="24" font-weight="bold" text-anchor="middle" fill="#5b4500">LAN TESTER</text>
+          <g transform="translate(40 45)">
+            <rect x="0" y="0" width="135" height="220" rx="18" fill="#e5e5e1" stroke="#999" stroke-width="3"/>
+            <rect x="20" y="35" width="95" height="150" rx="10" fill="#075b3e"/>
+            <rect x="43" y="10" width="50" height="28" rx="4" fill="#24282c"/>
+            <text x="67" y="70" font-size="15" text-anchor="middle" fill="#fff">MASTER</text>
+            <g fill="#b8e986"><circle cx="42" cy="100" r="5"/><circle cx="42" cy="118" r="5"/><circle cx="42" cy="136" r="5"/><circle cx="42" cy="154" r="5"/><circle cx="86" cy="100" r="5"/><circle cx="86" cy="118" r="5"/><circle cx="86" cy="136" r="5"/><circle cx="86" cy="154" r="5"/></g>
+            <text x="67" y="173" font-size="13" text-anchor="middle" fill="#fff">1–8</text>
+            <rect x="48" y="193" width="38" height="12" rx="4" fill="#bbb" stroke="#777"/>
+          </g>
+          <g transform="translate(225 70)">
+            <rect x="0" y="0" width="105" height="195" rx="17" fill="#e5e5e1" stroke="#999" stroke-width="3"/>
+            <rect x="15" y="35" width="75" height="130" rx="9" fill="#075b3e"/>
+            <rect x="29" y="10" width="48" height="28" rx="4" fill="#24282c"/>
+            <text x="52" y="68" font-size="13" text-anchor="middle" fill="#fff">REMOTE</text>
+            <g fill="#b8e986"><circle cx="35" cy="95" r="4"/><circle cx="35" cy="112" r="4"/><circle cx="35" cy="129" r="4"/><circle cx="70" cy="95" r="4"/><circle cx="70" cy="112" r="4"/><circle cx="70" cy="129" r="4"/></g>
+            <text x="52" y="153" font-size="12" text-anchor="middle" fill="#fff">1–8</text>
+          </g>
+          <path d="M108 25 C108 -2 280 -2 280 45" fill="none" stroke="#1477cc" stroke-width="14" stroke-linecap="round"/>
+          <path d="M108 25 C108 -2 280 -2 280 45" fill="none" stroke="#72b8f2" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <figcaption>Gambar 4.1 Tang crimping dan LAN tester, dua alat utama praktik kabel jaringan.</figcaption>
+    </figure>
+
+    <h2>4.2 Tang Crimping</h2>
+    <p>Tang crimping adalah alat berbentuk seperti tang pada umumnya, namun dirancang khusus dengan tiga fungsi sekaligus dalam satu alat untuk keperluan pemasangan konektor RJ-45 pada kabel UTP.</p>
+    <h3>Tiga Fungsi Utama Tang Crimping</h3>
+    <h3>a. Fungsi Pemotong (Cutter)</h3>
+    <p>Bagian ini digunakan untuk memotong kabel UTP sesuai panjang yang dibutuhkan, serta untuk meratakan ujung kawat sebelum dimasukkan ke dalam konektor RJ-45.</p>
+    <h3>b. Fungsi Pengupas (Stripper)</h3>
+    <p>Bagian ini digunakan untuk mengupas lapisan jacket luar kabel UTP, agar kedelapan kawat kecil di dalamnya dapat diuraikan dan disusun sesuai standar warna yang telah dipelajari pada Bab 3, tanpa merusak atau memutus kawat tembaga di dalamnya.</p>
+    <h3>c. Fungsi Pencetak/Pengepres (Crimper)</h3>
+    <p>Bagian inilah yang menjadi ciri khas tang crimping. Fungsi ini digunakan untuk menekan konektor RJ-45 yang telah dimasukkan kawat kabel UTP, sehingga kedelapan pin logam di dalam konektor menembus dan mengunci kawat dengan kuat, membentuk sambungan listrik yang stabil.</p>
+    <h3>Bagian-Bagian Tang Crimping</h3>
+    <ul>
+      <li>Pegangan (handle) — bagian yang digenggam tangan saat menggunakan alat.</li>
+      <li>Bagian pemotong (cutter) — biasanya berupa mata pisau kecil di salah satu sisi tang.</li>
+      <li>Bagian pengupas (stripper) — berupa celah kecil dengan mata pisau tumpul yang hanya mengupas lapisan luar tanpa memutus kawat di dalamnya.</li>
+      <li>Bagian pencetak (crimper) — berupa slot atau lubang berbentuk konektor RJ-45, tempat konektor dimasukkan sebelum ditekan.</li>
+    </ul>
+
+    <h2>4.3 LAN Tester</h2>
+    <p>LAN tester adalah alat yang digunakan untuk menguji apakah kabel UTP yang telah dipasangi konektor RJ-45 sudah tersusun dan tersambung dengan benar, sebelum kabel tersebut digunakan pada jaringan yang sesungguhnya.</p>
+    <figure>
+      <svg viewBox="0 0 900 350" role="img" aria-labelledby="testTitle testDesc">
+        <title id="testTitle">Cara kerja LAN tester</title>
+        <desc id="testDesc">Unit master dan remote terhubung oleh kabel UTP; lampu indikator 1 sampai 8 menyala berurutan.</desc>
+        <rect x="10" y="10" width="880" height="330" rx="18" fill="#fffdf7" stroke="#e8d9ad"/>
+        <text x="450" y="42" text-anchor="middle" font-size="25" font-weight="bold" fill="#5b4500">CARA KERJA LAN TESTER</text>
+        <path d="M175 145 C175 65 725 65 725 145" fill="none" stroke="#1976d2" stroke-width="20" stroke-linecap="round"/>
+        <path d="M175 145 C175 65 725 65 725 145" fill="none" stroke="#82c3fa" stroke-width="8" stroke-linecap="round"/>
+        <g transform="translate(95 125)">
+          <rect width="160" height="180" rx="18" fill="#e5e5e1" stroke="#999" stroke-width="3"/>
+          <rect x="25" y="35" width="110" height="125" rx="10" fill="#075b3e"/>
+          <rect x="55" y="12" width="50" height="28" rx="4" fill="#24282c"/>
+          <text x="80" y="67" text-anchor="middle" font-size="17" fill="#fff">MASTER</text>
+          {''.join(f'<text x="43" y="{90+i*13}" font-size="12" fill="#fff">{i+1}</text><circle cx="85" cy="{86+i*13}" r="4.5" fill="#c8f59a"/>' for i in range(8))}
+        </g>
+        <g transform="translate(645 125)">
+          <rect width="160" height="180" rx="18" fill="#e5e5e1" stroke="#999" stroke-width="3"/>
+          <rect x="25" y="35" width="110" height="125" rx="10" fill="#075b3e"/>
+          <rect x="55" y="12" width="50" height="28" rx="4" fill="#24282c"/>
+          <text x="80" y="67" text-anchor="middle" font-size="17" fill="#fff">REMOTE</text>
+          {''.join(f'<text x="43" y="{90+i*13}" font-size="12" fill="#fff">{i+1}</text><circle cx="85" cy="{86+i*13}" r="4.5" fill="#c8f59a"/>' for i in range(8))}
+        </g>
+        <g fill="#146b43" font-size="18" font-weight="bold">
+          <text x="450" y="185" text-anchor="middle">Sinyal diuji satu per satu</text>
+          <text x="450" y="216" text-anchor="middle">Pin 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8</text>
+        </g>
+        <path d="M300 255 H600" stroke="#b8860b" stroke-width="5" stroke-linecap="round"/>
+        <path d="M585 242 L605 255 L585 268" fill="none" stroke="#b8860b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="450" y="292" text-anchor="middle" font-size="16" fill="#444">Jika urutan sesuai pada kedua unit, kabel lolos pemeriksaan dasar.</text>
+      </svg>
+      <figcaption>Gambar 4.2 Cara kerja LAN tester dalam menguji kabel UTP.</figcaption>
+    </figure>
+
+    <h3>Bagian-Bagian LAN Tester</h3>
+    <p>LAN tester pada umumnya terdiri dari dua unit terpisah: unit utama (master) dan unit remote. Kedua unit ini masing-masing memiliki port RJ-45 dan delapan lampu indikator kecil bernomor 1 sampai 8.</p>
+    <h3>Cara Kerja LAN Tester</h3>
+    <ol>
+      <li>Kedua ujung kabel UTP yang akan diuji dicolokkan masing-masing ke unit utama dan unit remote.</li>
+      <li>Alat akan mengalirkan sinyal kecil secara berurutan melalui setiap kawat, mulai dari pin 1 sampai pin 8.</li>
+      <li>Lampu indikator pada kedua unit akan menyala secara berurutan mengikuti aliran sinyal tersebut.</li>
+      <li>Jika kabel tersusun dengan benar, lampu akan menyala berurutan 1 sampai 8 pada kedua unit secara bersamaan.</li>
+      <li>Jika ada kesalahan susunan atau sambungan yang tidak sempurna, lampu tidak akan menyala berurutan, ada yang tidak menyala, atau menyala tidak sesuai nomor pasangannya.</li>
+    </ol>
+    <div class="case">
+      <div class="case-head">Mengapa Pengujian Ini Sangat Penting?</div>
+      <div class="case-body">
+        <p>Secara kasat mata, konektor RJ-45 yang telah dipasang pada kabel UTP akan terlihat sama saja, baik yang tersusun benar maupun yang keliru.</p>
+        <p>Kesalahan kecil seperti tertukarnya dua kawat yang berdekatan, atau pin yang tidak sepenuhnya menembus kawat, tidak dapat dideteksi hanya dengan melihatnya.</p>
+        <p>Tanpa diuji menggunakan LAN tester, kita berisiko memasang kabel yang ternyata tidak berfungsi ke dalam jaringan sesungguhnya, yang akan menghambat pekerjaan dan menyulitkan pencarian sumber masalah di kemudian hari.</p>
+      </div>
+    </div>
+
+    <h2>4.4 Tabel Perbandingan Fungsi Kedua Alat</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Alat</th><th>Fungsi Utama</th><th>Digunakan Pada Tahap</th></tr></thead>
+      <tbody>
+        <tr><td>Tang Crimping</td><td>Memotong, mengupas, dan memasang konektor RJ-45 pada kabel UTP</td><td>Saat memasang kabel</td></tr>
+        <tr><td>LAN Tester</td><td>Menguji susunan dan kesinambungan kabel yang telah dipasangi konektor</td><td>Setelah kabel selesai dipasang</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>4.5 Kegiatan Peserta Didik — LKPD 4.1</h2>
+    <div class="case">
+      <div class="case-head">Petunjuk LKPD 4.1</div>
+      <div class="case-body">Amati tang crimping dan LAN tester yang ditunjukkan guru (tanpa menggunakannya terlebih dahulu). Lengkapi tabel identifikasi berikut.</div>
+    </div>
+    <div class="table-wrap"><table class="blank">
+      <thead><tr><th>Nama Alat</th><th>Bagian-Bagian yang Terlihat</th><th>Fungsi Setiap Bagian</th><th>Kapan Digunakan</th></tr></thead>
+      <tbody>
+        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+        <tr><td>&nbsp;</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Rangkuman Bab 4</h2>
+    <ul>
+      <li>Tang crimping memiliki tiga fungsi dalam satu alat: memotong (cutter), mengupas (stripper), dan mengepres konektor (crimper).</li>
+      <li>LAN tester digunakan untuk menguji susunan dan kesinambungan kabel UTP yang telah dipasangi konektor RJ-45, melalui lampu indikator yang menyala berurutan.</li>
+      <li>Tang crimping digunakan saat proses pemasangan kabel, sedangkan LAN tester digunakan setelah kabel selesai dipasang, sebagai tahap pengujian.</li>
+    </ul>
+
+    <h2>Latihan Soal Bab 4</h2>
+    <div class="exercise"><ol>
+      <li>Sebutkan tiga fungsi utama tang crimping dalam satu alat!</li>
+      <li>Jelaskan fungsi bagian pengupas (stripper) pada tang crimping!</li>
+      <li>Apa fungsi LAN tester dan mengapa alat ini penting digunakan setelah pemasangan konektor?</li>
+      <li>Jelaskan cara kerja LAN tester secara berurutan, dari kabel dicolokkan hingga hasil pengujian diketahui!</li>
+      <li>Apa yang dapat kalian simpulkan jika lampu pada LAN tester menyala tidak berurutan?</li>
+    </ol></div>
+
+    <h2>Refleksi Pertemuan 4</h2>
+    <div class="exercise"><ul>
+      <li>Alat apa yang paling penting untuk pemasangan kabel menurut saya?</li>
+      <li>Apa akibat penggunaan alat secara sembarangan?</li>
+      <li>Bagian alat mana yang masih ingin saya pelajari lebih lanjut?</li>
+    </ul></div>
+
+    <div class="footer-nav">
+      <a href="tp7-bab3.html">← Bab 3 — Konektor RJ-45</a>
+      <a href="tp7.html">TP7 — Beranda</a>
+      <a href="tp7-bab5.html">Bab 5 — Keselamatan Kerja →</a>
+    </div>
+  </section>
+</main>
+<script>
+function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show')}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+document.querySelectorAll('.sidebar a').forEach(function(a){a.addEventListener('click',closeMenu)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+</script>
+</body>
+</html>
