@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB 1 — Mengenal Jenis-Jenis Kabel Jaringan | TP7</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333;--soft:#fff8e6;--line:#e7dfcc}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 8px}
+.sidebar h3{text-align:center;color:var(--gold);margin:4px 0 18px;font-size:18px}
+.nav a{display:block;color:#333;text-decoration:none;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px;overflow-wrap:anywhere}
+.nav a i{width:22px;color:var(--gold)}
+.nav a:hover,.nav a.active{background:#fff6dc;color:#795900}
+.main{margin-left:250px;padding:28px 18px;min-width:0}
+.card{max-width:1100px;margin:0 auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 3px 14px #0000000d;min-width:0}
+.topline{color:var(--gold);font-weight:bold;font-size:13px;letter-spacing:.4px;text-align:center}
+h1{font-size:28px;line-height:1.25;text-align:center;color:#2c3e50;margin:8px 0 4px}
+.subtitle{text-align:center;color:#666;margin:0 0 20px;font-size:14px}
+.goal,.callout{background:var(--soft);border-left:4px solid var(--gold);border-radius:8px;padding:14px 17px;margin:18px 0}
+.goal h2,.callout h3{margin:0 0 8px;color:#765600;font-size:18px}
+.goal ul{margin:6px 0 0;padding-left:22px}
+h2.section{font-size:22px;line-height:1.3;color:#2c3e50;border-bottom:2px solid #f0e2b9;padding-bottom:7px;margin:28px 0 12px}
+h3{font-size:18px;color:#765600;margin:18px 0 8px}
+p{margin:9px 0}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+.figure{border:1px dashed #d5c28e;background:#fffdf7;border-radius:9px;padding:16px;text-align:center;margin:16px 0;color:#6d5a2a}
+.figure i{font-size:30px;color:var(--gold);display:block;margin-bottom:8px}
+.figure small{display:block;color:#777;margin-top:4px}
+.table-wrap{width:100%;overflow-x:auto;margin:14px 0;border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:590px;font-size:14px}
+th,td{border:1px solid #dedede;padding:10px;vertical-align:top;text-align:left}
+th{background:#fff3cd;color:#5e4800}
+tbody tr:nth-child(even){background:#fffdf7}
+.table-note{font-size:13px;color:#666}
+.worktable{min-width:700px}
+.worktable td{height:54px}
+.numbered{counter-reset:item}
+.summary{background:#f8f8f8;border-radius:8px;padding:12px 16px}
+.question{padding:8px 0}
+.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:26px;padding-top:16px;border-top:1px solid #eee}
+.footer a{color:#8b6500;text-decoration:none;font-weight:bold}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:10px 13px;font-size:18px;cursor:pointer}
+@media(max-width:900px){.main{padding:22px 14px}.card{padding:22px}}
+@media(max-width:768px){
+ .sidebar{display:none;width:min(250px,84vw);box-shadow:3px 0 16px #00000018}
+ .sidebar.show{display:block}
+ .hamburger{display:block}
+ .main{margin:0;padding:58px 10px 18px}
+ .card{padding:16px;border-radius:10px}
+ h1{font-size:23px}
+ h2.section{font-size:20px;margin-top:24px}
+ h3{font-size:17px}
+ .subtitle{font-size:13px}
+ .goal,.callout{padding:12px}
+ body{font-size:15px}
+}
+@media(max-width:380px){h1{font-size:21px}.card{padding:13px}}
+</style>
+</head>
+<body>
+<button class="hamburger" aria-label="Buka atau tutup menu" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar">
+<img class="logo" src="../../asset/logo.png" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+<a class="active" href="tp7.html"><i class="fa-solid fa-network-wired"></i> TP 7 — Kabel UTP & K3</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-calendar-check"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+<main class="main">
+<article class="card">
+<div class="topline">TP 7 · BAB 1</div>
+<h1>Mengenal Jenis-Jenis Kabel Jaringan</h1>
+<p class="subtitle">Pertemuan 1 · Alokasi Waktu 3 JP · Kelas XI TJKT · Fase F</p>
+
+<section class="goal">
+<h2>Tujuan Pembelajaran Bab Ini</h2>
+<ul>
+<li>Peserta didik mampu mengidentifikasi jenis-jenis kabel jaringan.</li>
+<li>Peserta didik mampu menjelaskan karakteristik dan perbedaan setiap jenis kabel jaringan.</li>
+</ul>
+</section>
+
+<h2 class="section">1.1 Apakah Kabel Jaringan Hanya Satu Jenis?</h2>
+<p>Selama ini, ketika mendengar kata "kabel jaringan", mungkin kalian langsung membayangkan satu bentuk kabel tertentu. Padahal, dalam dunia teknik jaringan komputer, terdapat beberapa jenis kabel yang berbeda-beda, masing-masing dengan bentuk, bahan, dan kegunaan yang khas. Pemilihan jenis kabel yang tepat sangat memengaruhi kecepatan, jarak jangkauan, dan biaya sebuah jaringan.</p>
+<p>Pada bab ini, kalian akan mengenal tiga jenis kabel jaringan yang paling umum digunakan: kabel <em>twisted pair</em> (termasuk di dalamnya kabel UTP yang akan kalian gunakan untuk praktik), kabel <em>coaxial</em>, dan kabel <em>fiber optic</em>. Ketiganya memiliki cara kerja yang berbeda dalam menghantarkan data, sehingga masing-masing cocok digunakan pada situasi yang berbeda pula.</p>
+<div class="figure"><i class="fa-solid fa-ethernet"></i><strong>Ilustrasi Gambar 1.1</strong><br>Penampang tiga jenis kabel jaringan: twisted pair (UTP), coaxial, dan fiber optic.<small>Tempatkan gambar penampang kabel pada area ini jika gambar sumber tersedia.</small></div>
+
+<h2 class="section">1.2 Kabel Twisted Pair</h2>
+<p><em>Twisted pair</em> adalah jenis kabel yang terdiri dari beberapa pasang kawat tembaga yang saling dipilin (<em>twisted</em>) satu sama lain. Kabel UTP yang akan kalian gunakan untuk praktik pada bab-bab berikutnya termasuk dalam kelompok kabel ini.</p>
+<h3>Mengapa Kawatnya Harus Dipilin?</h3>
+<p>Ini adalah pertanyaan penting yang sering luput dari perhatian. Kawat tembaga yang dialiri listrik akan menghasilkan medan elektromagnetik kecil di sekelilingnya. Apabila banyak kawat diletakkan berdekatan tanpa dipilin, medan elektromagnetik dari satu kawat dapat mengganggu sinyal pada kawat di sebelahnya. Gangguan ini disebut interferensi elektromagnetik atau <em>crosstalk</em>.</p>
+<p>Dengan memilin sepasang kawat, gangguan elektromagnetik dari kedua kawat tersebut akan saling meniadakan satu sama lain (saling membatalkan), sehingga sinyal data yang dikirim menjadi lebih bersih dan lebih tahan terhadap gangguan. Inilah alasan ilmiah mengapa kabel twisted pair dirancang dengan cara dipilin, bukan dibiarkan lurus sejajar.</p>
+<h3>Karakteristik Kabel Twisted Pair</h3>
+<ul>
+<li>Terdiri dari beberapa pasang kawat tembaga kecil yang dipilin berpasangan.</li>
+<li>Harganya relatif murah dibandingkan jenis kabel jaringan lainnya.</li>
+<li>Mudah dipasang dan tidak memerlukan alat khusus yang rumit.</li>
+<li>Jarak efektif penggunaannya sekitar 100 meter; lebih dari itu, sinyal dapat melemah.</li>
+<li>Terbagi menjadi dua jenis utama: UTP (<em>Unshielded Twisted Pair</em>) dan STP (<em>Shielded Twisted Pair</em>), yang akan dibahas lebih dalam pada Bab 2.</li>
+</ul>
+
+<h2 class="section">1.3 Kabel Coaxial</h2>
+<p>Kabel <em>coaxial</em> (sering disebut kabel koaksial) adalah jenis kabel yang terdiri dari satu kawat tembaga inti di bagian tengah, dikelilingi oleh lapisan isolator, kemudian dibungkus oleh anyaman logam sebagai pelindung, dan terakhir dilapisi oleh jaket luar. Struktur berlapis inilah yang membuat kabel ini disebut "coaxial", yang berarti memiliki satu sumbu pusat yang sama.</p>
+<h3>Karakteristik Kabel Coaxial</h3>
+<ul>
+<li>Memiliki satu kawat inti tembaga yang dikelilingi oleh anyaman logam pelindung.</li>
+<li>Lebih tahan terhadap gangguan elektromagnetik dibandingkan twisted pair, berkat lapisan anyaman logam yang berfungsi sebagai perisai (<em>shield</em>).</li>
+<li>Dapat digunakan untuk jarak yang lebih jauh, sekitar 500 meter, dibandingkan twisted pair.</li>
+<li>Harganya lebih mahal dan pemasangannya lebih rumit dibandingkan twisted pair.</li>
+<li>Pada masa lalu banyak digunakan untuk jaringan LAN dan juga untuk kabel antena televisi, namun saat ini penggunaannya untuk jaringan komputer sudah jarang ditemui, tergantikan oleh twisted pair dan fiber optic.</li>
+</ul>
+
+<h2 class="section">1.4 Kabel Fiber Optic</h2>
+<p><em>Fiber optic</em> (serat optik) adalah jenis kabel yang sama sekali berbeda cara kerjanya dari dua jenis kabel sebelumnya. Jika twisted pair dan coaxial menghantarkan data dalam bentuk sinyal listrik melalui kawat tembaga, kabel fiber optic menghantarkan data dalam bentuk cahaya yang merambat melalui serat kaca atau plastik yang sangat tipis, bahkan lebih tipis dari sehelai rambut manusia.</p>
+<h3>Karakteristik Kabel Fiber Optic</h3>
+<ul>
+<li>Menghantarkan data berupa sinyal cahaya, bukan sinyal listrik, sehingga sama sekali tidak terganggu oleh interferensi elektromagnetik.</li>
+<li>Mampu menghantarkan data dengan kecepatan sangat tinggi pada jarak yang sangat jauh, bahkan hingga puluhan kilometer tanpa penguat sinyal.</li>
+<li>Harganya jauh lebih mahal dibandingkan twisted pair maupun coaxial, dan memerlukan alat khusus serta keahlian tersendiri untuk memasangnya.</li>
+<li>Digunakan pada jaringan berskala besar, seperti jaringan antarkota, antarnegara, dan jaringan tulang punggung (<em>backbone</em>) internet.</li>
+</ul>
+
+<h2 class="section">1.5 Tabel Perbandingan Ketiga Jenis Kabel</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspek</th><th>Twisted Pair (UTP)</th><th>Coaxial</th><th>Fiber Optic</th></tr></thead>
+<tbody>
+<tr><th>Media penghantar</th><td>Sinyal listrik (kawat tembaga)</td><td>Sinyal listrik (kawat tembaga)</td><td>Sinyal cahaya (serat kaca/plastik)</td></tr>
+<tr><th>Jarak efektif</th><td>± 100 meter</td><td>± 500 meter</td><td>Puluhan kilometer</td></tr>
+<tr><th>Ketahanan gangguan</th><td>Cukup baik (dengan pilinan)</td><td>Baik (dengan anyaman logam)</td><td>Sangat baik (tidak terpengaruh listrik)</td></tr>
+<tr><th>Harga</th><td>Murah</td><td>Sedang – mahal</td><td>Sangat mahal</td></tr>
+<tr><th>Kemudahan pemasangan</th><td>Mudah</td><td>Sedang</td><td>Sulit, perlu keahlian khusus</td></tr>
+<tr><th>Contoh penggunaan</th><td>Jaringan LAN sekolah/kantor</td><td>Jaringan lama, kabel antena TV</td><td>Jaringan antarkota, backbone internet</td></tr>
+</tbody></table></div>
+
+<h2 class="section">1.6 Mengapa Sekolah Kita Menggunakan Kabel UTP?</h2>
+<p>Setelah mempelajari ketiga jenis kabel di atas, mari kita hubungkan dengan kondisi nyata sekolah kita. SMK Negeri 7 Luwu menyediakan kabel UTP untuk kegiatan praktik jaringan kelas XI TJKT, bukan kabel coaxial atau fiber optic. Ada alasan yang sangat masuk akal di balik pilihan ini.</p>
+<div class="callout">
+<h3>Alasan Pemilihan Kabel UTP untuk Praktik</h3>
+<ul>
+<li><strong>Harga terjangkau</strong> — memungkinkan pembelian dalam jumlah cukup untuk latihan seluruh peserta didik tanpa membebani anggaran sekolah.</li>
+<li><strong>Mudah dipasang</strong> — cocok untuk peserta didik yang baru belajar dasar-dasar pemasangan kabel jaringan, tanpa memerlukan alat yang rumit dan mahal.</li>
+<li><strong>Jarak sudah mencukupi</strong> — jarak efektif 100 meter lebih dari cukup untuk kebutuhan jaringan dalam satu ruang kelas atau satu gedung sekolah.</li>
+<li><strong>Paling umum digunakan di dunia kerja</strong> — sebagian besar jaringan LAN di kantor, sekolah, dan rumah menggunakan kabel UTP, sehingga keterampilan ini akan sangat berguna bagi kalian sebagai calon teknisi jaringan.</li>
+</ul>
+</div>
+
+<h2 class="section">1.7 Kegiatan Peserta Didik — LKPD 1.1</h2>
+<div class="callout"><strong>Petunjuk LKPD 1.1</strong><p>Amati gambar atau benda kabel jaringan yang ditunjukkan guru, lalu lengkapi tabel perbandingan berikut menggunakan kata-kata kalian sendiri.</p></div>
+<div class="table-wrap"><table class="worktable">
+<thead><tr><th>Nama Kabel</th><th>Bentuk</th><th>Fungsi</th><th>Kelebihan</th><th>Kekurangan</th><th>Contoh Penggunaan</th></tr></thead>
+<tbody>
+<tr><td>Twisted pair (UTP)</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Coaxial</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Fiber optic</td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+<p class="table-note">Catatan: Pada handphone, geser tabel ke samping untuk melihat seluruh kolom. Jika mengerjakan di buku, salin judul kolom dan isi jawabannya.</p>
+
+<h2 class="section">Rangkuman Bab 1</h2>
+<div class="summary"><ul>
+<li>Terdapat tiga jenis kabel jaringan yang umum digunakan: twisted pair (UTP), coaxial, dan fiber optic.</li>
+<li>Kawat pada kabel twisted pair dipilin untuk mengurangi interferensi elektromagnetik antarkawat.</li>
+<li>Kabel coaxial memiliki satu kawat inti yang dilindungi anyaman logam, tahan gangguan, namun sudah jarang digunakan untuk jaringan komputer modern.</li>
+<li>Kabel fiber optic menghantarkan data berupa cahaya, sangat cepat dan tahan jarak jauh, namun mahal dan sulit dipasang.</li>
+<li>Sekolah kita memilih kabel UTP untuk praktik karena harganya terjangkau, mudah dipasang, dan paling umum digunakan di dunia kerja.</li>
+</ul></div>
+
+<h2 class="section">Latihan Soal Bab 1</h2>
+<ol class="question">
+<li>Sebutkan tiga jenis kabel jaringan yang telah kalian pelajari!</li>
+<li>Mengapa kawat pada kabel twisted pair perlu dipilin? Jelaskan secara ilmiah!</li>
+<li>Jelaskan struktur kabel coaxial dari bagian dalam ke bagian luar!</li>
+<li>Mengapa kabel fiber optic dapat menghantarkan data lebih cepat dan lebih jauh dibandingkan dua jenis kabel lainnya?</li>
+<li>Mengapa sekolah kita memilih kabel UTP untuk kegiatan praktik, bukan coaxial atau fiber optic? Sebutkan minimal tiga alasan!</li>
+</ol>
+
+<h2 class="section">Refleksi Pertemuan 1</h2>
+<ul>
+<li>Mengapa kabel UTP sesuai untuk latihan jaringan dasar?</li>
+<li>Apa perbedaan utama UTP dan fiber optic?</li>
+<li>Jenis kabel apa yang paling saya pahami sejauh ini?</li>
+</ul>
+
+<footer class="footer">
+<a href="tp7.html"><i class="fa-solid fa-arrow-left"></i> Kembali ke Induk TP 7</a>
+<a href="tp7-bab2.html">Lanjut BAB 2 <i class="fa-solid fa-arrow-right"></i></a>
+</footer>
+</article>
+</main>
+</body>
+</html>
