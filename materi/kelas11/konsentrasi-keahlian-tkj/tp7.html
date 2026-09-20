@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP7 — Kabel UTP, Konektor RJ-45, Alat Kerja Jaringan, dan K3</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#333}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#fff;border-right:1px solid #ddd;padding:18px 14px;overflow-y:auto;z-index:20}
+.logo{width:58px;height:58px;object-fit:contain;display:block;margin:0 auto 8px}
+.sidebar h3{text-align:center;color:var(--gold);margin:4px 0 18px;font-size:18px}
+.nav a{display:block;color:#333;text-decoration:none;padding:10px 11px;border-radius:8px;margin:4px 0;font-size:14px;overflow-wrap:anywhere}
+.nav a i{width:22px;color:var(--gold)}
+.nav a:hover,.nav a.active{background:#fff6dc;color:#795900}
+.main{margin-left:250px;padding:28px 18px;min-width:0}
+.card{max-width:1100px;margin:0 auto;background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:26px;box-shadow:0 3px 14px #0000000d;min-width:0}
+.header{text-align:center;border-bottom:1px solid #e5d7ad;padding-bottom:20px;margin-bottom:22px}
+.header h1{font-size:27px;line-height:1.25;margin:8px 0;color:#2c3e50}
+.header h2{font-size:19px;color:var(--gold);margin:8px 0}
+.header p{margin:5px 0;font-size:14px}
+.eyebrow{font-weight:bold;color:var(--gold);letter-spacing:.5px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.item{display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:var(--text);background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:15px;min-width:0;transition:.15s}
+.item:hover{border-color:var(--gold);background:#fffdf6;transform:translateY(-1px)}
+.item i{font-size:22px;color:var(--gold);width:27px;flex:0 0 27px;text-align:center;margin-top:3px}
+.item strong{display:block;color:#2c3e50;margin-bottom:3px}
+.item span{display:block;font-size:13px;color:#666;overflow-wrap:anywhere}
+.info{margin-top:22px;padding:15px 17px;background:#fff8e6;border-left:4px solid var(--gold);border-radius:7px;font-size:14px}
+.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:1px solid #eee}
+.footer a{color:#8b6500;text-decoration:none;font-weight:bold}
+.hamburger{display:none;position:fixed;right:14px;top:12px;z-index:30;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:10px 13px;font-size:18px;cursor:pointer}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:768px){
+ .sidebar{display:none;width:230px;box-shadow:3px 0 16px #00000018}
+ .sidebar.show{display:block}
+ .hamburger{display:block}
+ .main{margin:0;padding:58px 10px 18px}
+ .card{padding:17px;border-radius:10px}
+ .header h1{font-size:23px}
+ .header h2{font-size:17px}
+ .header p{font-size:13px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .item{padding:12px 10px;gap:8px}
+ .item i{font-size:19px;width:22px;flex-basis:22px}
+ .item strong{font-size:14px;line-height:1.35}
+ .item span{font-size:12px;line-height:1.4}
+}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.header h1{font-size:21px}}
+</style>
+</head>
+<body>
+<button class="hamburger" aria-label="Buka menu" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar">
+<img class="logo" src="../../asset/logo.png" alt="Logo SMKN 7 Luwu">
+<h3>SMKN 7 LUWU</h3>
+<nav class="nav">
+<a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+<a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+<a class="active" href="tp7.html"><i class="fa-solid fa-network-wired"></i> TP 7 — Kabel UTP & K3</a>
+<a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i> Tryout</a>
+<a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+<a href="../../absen/index.html"><i class="fa-solid fa-calendar-check"></i> Absen</a>
+<a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+<a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+<a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+</nav>
+</aside>
+<main class="main">
+<section class="card">
+<header class="header">
+<div class="eyebrow">TUJUAN PEMBELAJARAN 7</div>
+<h1>Kabel UTP, Konektor RJ-45, Alat Kerja Jaringan, dan K3</h1>
+<h2>Teknik Jaringan Komputer dan Telekomunikasi</h2>
+<p><strong>Fase F / Kelas XI · Semester Ganjil · Tahun Pelajaran 2026/2027</strong></p>
+<p>Elemen: Teknologi Jaringan Kabel dan Nirkabel</p>
+<p>SMK Negeri 7 Luwu</p>
+</header>
+<div class="grid">
+<a class="item" href="tp7-bab1.html"><i class="fa-solid fa-ethernet"></i><div><strong>BAB 1 — Mengenal Jenis-Jenis Kabel Jaringan</strong><span>Mengenali twisted pair, coaxial, dan fiber optic serta kegunaannya.</span></div></a>
+<a class="item" href="tp7-bab2.html"><i class="fa-solid fa-cable-car"></i><div><strong>BAB 2 — Struktur dan Karakteristik Kabel UTP</strong><span>Struktur kabel, kategori, serta kabel straight-through dan crossover.</span></div></a>
+<a class="item" href="tp7-bab3.html"><i class="fa-solid fa-plug"></i><div><strong>BAB 3 — Konektor RJ-45 dan Standar Susunan Warna</strong><span>Bagian konektor, delapan warna kawat, T568A dan T568B.</span></div></a>
+<a class="item" href="tp7-bab4.html"><i class="fa-solid fa-toolbox"></i><div><strong>BAB 4 — Alat Kerja Jaringan</strong><span>Mengenal tang crimping dan LAN tester.</span></div></a>
+<a class="item" href="tp7-bab5.html"><i class="fa-solid fa-shield-halved"></i><div><strong>BAB 5 — Keselamatan dan Kesehatan Kerja (K3)</strong><span>Keselamatan kerja saat praktik jaringan dan penggunaan alat.</span></div></a>
+<a class="item" href="tp7-bab6.html"><i class="fa-solid fa-people-group"></i><div><strong>BAB 6 — Identifikasi Alat, Bahan, dan Presentasi</strong><span>Mengamati, mengidentifikasi, dan mempresentasikan hasil pengamatan.</span></div></a>
+<a class="item" href="tp7-evaluasi.html"><i class="fa-solid fa-clipboard-check"></i><div><strong>Evaluasi Akhir TP 7</strong><span>Uji pemahaman materi kabel, konektor, alat, dan K3.</span></div></a>
+<a class="item" href="tp7-refleksi.html"><i class="fa-solid fa-lightbulb"></i><div><strong>Refleksi Akhir Peserta Didik</strong><span>Meninjau pemahaman, pengalaman, dan kesiapan praktik.</span></div></a>
+<a class="item" href="tp7-glosarium.html"><i class="fa-solid fa-book"></i><div><strong>Glosarium</strong><span>Daftar istilah penting dalam TP 7.</span></div></a>
+<a class="item" href="tp7-kunci-jawaban.html"><i class="fa-solid fa-key"></i><div><strong>Kunci Jawaban</strong><span>Pembahasan jawaban latihan dan evaluasi.</span></div></a>
+<a class="item" href="tp7-daftar-pustaka.html"><i class="fa-solid fa-book-bookmark"></i><div><strong>Daftar Pustaka</strong><span>Sumber rujukan buku ajar TP 7.</span></div></a>
+</div>
+<div class="info"><strong>Buku Ajar Siswa TP 7:</strong> Materi mengenalkan jenis dan struktur kabel jaringan, kabel UTP, konektor RJ-45, standar susunan warna, alat kerja jaringan, serta Keselamatan dan Kesehatan Kerja (K3). Pembelajaran dilanjutkan dengan identifikasi alat dan bahan serta presentasi hasil pengamatan.</div>
+<footer class="footer">
+<a href="tp6.html"><i class="fa-solid fa-arrow-left"></i> TP 6</a>
+<a href="../index.html">Kembali ke Materi <i class="fa-solid fa-arrow-right"></i></a>
+</footer>
+</section>
+</main>
+</body>
+</html>
