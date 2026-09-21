@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP 8 — BAB 4 | Teknik Memasukkan Kabel ke Konektor RJ-45</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--green:#a5d6a7;--dark:#14532d;--bg:#f4f4f4;--ink:#222}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:20px 14px;overflow-y:auto;z-index:10}
+.brand{text-align:center;padding:10px 6px 18px;border-bottom:1px solid #ddd}
+.brand img{width:76px;max-width:100%;height:auto}
+.brand h2{font-size:17px;margin:8px 0 0;color:var(--dark)}
+.nav a{display:flex;align-items:center;gap:11px;padding:11px 12px;margin:5px 0;border-radius:8px;text-decoration:none;color:#333;font-weight:600}
+.nav a:hover,.nav a.active{background:#e8f5e9;color:var(--dark)}
+main{margin-left:250px;padding:24px;max-width:1400px}
+.menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:20;border:0;border-radius:8px;background:var(--dark);color:white;padding:11px 14px;font-size:18px}
+.card{background:#fff;border-top:5px solid var(--gold);border-radius:12px;padding:clamp(16px,3vw,32px);box-shadow:0 2px 10px #0000000c;margin:0 auto 22px;max-width:1100px}
+h1,h2,h3{color:var(--dark);line-height:1.25}
+h1{font-size:clamp(25px,4vw,36px);margin:0 0 8px}
+h2{font-size:clamp(21px,3vw,27px);margin-top:30px}
+h3{font-size:19px}
+.kicker{font-weight:700;color:#666;margin:0 0 22px}
+.goals{background:#e8f5e9;border-left:5px solid var(--green);padding:14px 18px;border-radius:8px}
+figure{margin:22px 0;text-align:center}
+figure img{display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
+figcaption{font-size:.95rem;color:#555;margin-top:8px;font-style:italic}
+.note{background:#f1f8e9;border-left:5px solid #66bb6a;padding:15px 18px;border-radius:8px;margin:18px 0}
+.table-wrap{width:100%;overflow-x:auto;margin:14px 0;border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:580px;background:white}
+th,td{border:1px solid #c9d8c9;padding:11px 12px;text-align:left;vertical-align:top}
+th{background:#e8f5e9;color:#164e2b}
+ol,ul{padding-left:25px}
+li{margin:7px 0}
+.likert td{height:42px}
+.footer{text-align:center;color:#666;font-size:13px;padding:10px}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-105%);transition:transform .2s;width:270px;box-shadow:4px 0 16px #0002}
+ .sidebar.show{transform:translateX(0)}
+ .menu-btn{display:block}
+ main{margin-left:0;padding:68px 12px 20px}
+ .card{padding:18px 15px}
+}
+@media print{
+ .sidebar,.menu-btn{display:none!important} main{margin:0;padding:0}.card{box-shadow:none;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu"><h2>SMKN 7 LUWU<br>Konsentrasi Keahlian TJKT</h2></div>
+ <nav class="nav" aria-label="Navigasi utama">
+  <a href="../../index.html"><i class="fa-solid fa-house"></i>Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book-open"></i>Materi</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i>Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i>LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-calendar-check"></i>Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i>Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i>CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i>ARSIP</a>
+ </nav>
+</aside>
+<main>
+<article class="card">
+<h1>BAB 4 — Teknik Memasukkan Kabel ke Konektor RJ-45</h1>
+<p class="kicker"><i class="fa-regular fa-clock"></i> Pertemuan 4 · Alokasi Waktu 3 JP</p>
+<div class="goals"><strong>Tujuan Pembelajaran Bab Ini:</strong>
+<ul>
+<li>Peserta didik mampu memasukkan delapan kawat ke dalam konektor RJ-45 dengan posisi yang benar.</li>
+<li>Peserta didik mampu memeriksa posisi kawat sebelum melakukan crimping.</li>
+</ul></div>
+
+<h2>4.1 Pertanyaan Pemantik: Susunan Benar, Tapi Posisi Salah?</h2>
+<p>Pernahkah kalian membayangkan keadaan berikut: susunan warna kawat sudah benar-benar sesuai standar T568B, namun kabel tersebut ternyata tetap tidak berfungsi setelah di-crimp? Hal ini bisa terjadi apabila susunan warnanya sudah tepat, tetapi posisi kawat saat dimasukkan ke dalam konektor tidak sampai ke ujung, atau jaket kabel tidak ikut masuk dengan benar.</p>
+<p>Inilah sebabnya Bab 4 ini dibuat secara khusus, terpisah dari Bab 3. Menyusun warna dengan benar hanyalah setengah dari pekerjaan; memasukkannya ke konektor dengan posisi yang tepat adalah setengah bagian lainnya yang sama pentingnya.</p>
+
+<h2>4.2 Tujuh Langkah Memasukkan Kabel ke Konektor RJ-45</h2>
+<ol>
+<li>Pastikan kedelapan kawat sudah tersusun sesuai standar T568B dan telah dipotong rata di ujungnya, sebagaimana telah dipelajari pada Bab 3.</li>
+<li>Pegang konektor RJ-45 dengan posisi pengunci (locking clip) menghadap ke bawah, dan lubang pin menghadap ke atas serta ke arah kalian.</li>
+<li>Perhatikan urutan pin dari kiri ke kanan sesuai posisi konektor tersebut, pastikan urutan warna yang akan dimasukkan sesuai dengan urutan pin 1 sampai 8.</li>
+<li>Dorong kedelapan kawat secara bersamaan ke dalam lubang konektor, dengan gerakan lurus dan mantap, tidak miring.</li>
+<li>Pastikan seluruh kawat terdorong sampai mentok di bagian ujung dalam konektor, sehingga ujung tembaga setiap kawat terlihat menyentuh bagian dalam ujung konektor.</li>
+<li>Pastikan jaket kabel (bagian yang tidak dikupas) ikut masuk sedikit ke dalam konektor, tepat pada bagian belakang yang telah dirancang khusus untuk menjepit jaket tersebut.</li>
+<li>Sebelum melangkah ke proses crimping, tahan kabel pada posisinya dan lakukan pemeriksaan visual sekali lagi mengikuti panduan pada bagian 4.3.</li>
+</ol>
+
+<figure>
+<img src="tp8-bab4-perbandingan-posisi-kawat.png" alt="Perbandingan posisi kawat yang benar dan salah saat dimasukkan ke konektor RJ-45">
+<figcaption>Gambar 4.1 Perbandingan posisi kawat yang benar dan yang salah saat dimasukkan ke konektor.</figcaption>
+</figure>
+
+<h2>4.3 Empat Pemeriksaan Sebelum Crimping</h2>
+<p>Sebelum menekan tang crimping, yang tidak dapat dibatalkan setelah dilakukan, periksa empat hal berikut dengan sangat teliti.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>No</th><th>Yang Diperiksa</th><th>Ciri yang Benar</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Urutan warna</td><td>Sesuai standar T568B dari pin 1 sampai 8, tidak ada yang tertukar.</td></tr>
+<tr><td>2</td><td>Posisi ujung kawat</td><td>Seluruh kawat terlihat menyentuh bagian dalam ujung konektor, sejajar.</td></tr>
+<tr><td>3</td><td>Posisi jaket kabel</td><td>Bagian jaket yang tidak dikupas ikut masuk ke bagian belakang konektor.</td></tr>
+<tr><td>4</td><td>Kerapian susunan</td><td>Tidak ada kawat yang menyilang, terlipat, atau keluar dari jalurnya.</td></tr>
+</tbody></table></div>
+<div class="note"><h3>Mengapa Pemeriksaan Ini Tidak Boleh Dilewatkan?</h3>
+<p>Proses crimping bersifat permanen. Setelah pin konektor menembus dan mengunci kawat, konektor tersebut tidak dapat dibuka kembali untuk diperbaiki.</p>
+<p>Jika ternyata ada kesalahan setelah crimping, satu-satunya cara adalah memotong konektor tersebut dan mengulang dari awal menggunakan konektor yang baru.</p>
+<p>Karena konektor RJ-45 jumlahnya terbatas di sekolah kita, memeriksa dengan teliti sebelum crimping akan menghemat bahan latihan bagi kalian sendiri dan teman-teman lainnya.</p></div>
+
+<h2>4.4 Kegiatan Peserta Didik — LKPD 4.1</h2>
+<div class="note"><strong>Petunjuk LKPD 4.1</strong><p>Berlatihlah memasukkan kawat ke dalam konektor RJ-45 (belum melakukan crimping) sebanyak tiga kali percobaan.</p><p>Untuk setiap percobaan, mintalah teman pasangan kalian memeriksa menggunakan tabel pada bagian 4.3, lalu catat hasilnya.</p></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Percobaan ke-</th><th>Urutan Warna</th><th>Ujung Kawat</th><th>Posisi Jaket</th><th>Kerapian</th><th>Lolos Periksa?</th></tr></thead>
+<tbody>
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+
+<h2>Rangkuman Bab 4</h2>
+<ul>
+<li>Memasukkan kawat ke konektor memiliki tujuh langkah, dimulai dari memastikan susunan warna benar hingga memeriksa posisi sebelum crimping.</li>
+<li>Empat hal yang wajib diperiksa sebelum crimping: urutan warna, posisi ujung kawat, posisi jaket kabel, dan kerapian susunan.</li>
+<li>Proses crimping bersifat permanen, sehingga pemeriksaan sebelum crimping sangat penting untuk menghindari pemborosan konektor.</li>
+</ul>
+
+<h2>Latihan Soal Bab 4</h2>
+<ol>
+<li>Mengapa susunan warna yang benar saja tidak cukup untuk menghasilkan kabel yang berfungsi?</li>
+<li>Sebutkan tujuh langkah memasukkan kawat ke dalam konektor RJ-45!</li>
+<li>Sebutkan empat hal yang harus diperiksa sebelum melakukan crimping!</li>
+<li>Mengapa jaket kabel yang tidak dikupas juga harus ikut masuk ke dalam konektor?</li>
+<li>Mengapa proses crimping tidak boleh dilakukan secara tergesa-gesa tanpa pemeriksaan terlebih dahulu?</li>
+</ol>
+
+<h2>Refleksi Pertemuan 4</h2>
+<ul>
+<li>Kesalahan apa yang paling mudah terjadi saat memasukkan kawat ke konektor?</li>
+<li>Apakah saya sudah terbiasa memeriksa keempat hal sebelum crimping?</li>
+<li>Apa yang perlu saya latih lebih lanjut?</li>
+</ul>
+</article>
+<div class="footer">SMKN 7 Luwu · Konsentrasi Keahlian TJKT</div>
+</main>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const sidebar=document.getElementById('sidebar');
+menuBtn.addEventListener('click',()=>sidebar.classList.toggle('show'));
+document.addEventListener('click',(event)=>{
+ if(window.innerWidth<=800&&!sidebar.contains(event.target)&&!menuBtn.contains(event.target))sidebar.classList.remove('show');
+});
+</script>
+</body>
+</html>
