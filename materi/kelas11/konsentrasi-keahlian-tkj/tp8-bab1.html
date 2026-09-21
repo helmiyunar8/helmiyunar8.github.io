@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP 8 - BAB 1 | LMS TKJ SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+    --gold: #b8860b;
+    --white: #ffffff;
+    --bg-light: #f4f4f4;
+    --text-dark: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-light);
+    display: flex;
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background: var(--white);
+    height: 100vh;
+    position: fixed;
+    border-right: 2px solid #eeeeee;
+    transition: .3s;
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid #f9f9f9;
+}
+
+.sidebar-header img {
+    width: 60px;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.sidebar-header h3 {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.sidebar-header p {
+    font-size: 12px;
+    color: #777;
+}
+
+.nav-menu {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    color: #555;
+    text-decoration: none;
+    transition: .3s;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav-item i {
+    width: 25px;
+    margin-right: 15px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: #fffcf0;
+    color: var(--gold);
+    border-left: 5px solid var(--gold);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--gold);
+    display: none;
+    background: none;
+    border: none;
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--gold);
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    font-size: 15px;
+}
+
+/* KONTEN */
+.main-content {
+    flex-grow: 1;
+    margin-left: 250px;
+    padding: 30px;
+    width: calc(100% - 250px);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-card {
+    max-width: 1000px;
+    width: 100%;
+    min-width: 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.05);
+    border-top: 8px solid var(--gold);
+    padding: 28px;
+    margin-bottom: 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.topbar h2 {
+    color: var(--gold);
+    font-size: 21px;
+}
+
+.guru {
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 16px;
+}
+
+.chapter-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.chapter-heading .label {
+    display: inline-block;
+    background: #fffcf0;
+    color: var(--gold);
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.chapter-heading h1 {
+    color: var(--gold);
+    font-size: 27px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.chapter-heading p {
+    color: #666;
+}
+
+.objectives {
+    background: #fffcf0;
+    border-left: 5px solid var(--gold);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 22px 0 30px;
+}
+
+.objectives h2 {
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+h2.section-title {
+    color: var(--gold);
+    font-size: 22px;
+    margin: 30px 0 12px;
+    line-height: 1.4;
+}
+
+p {
+    margin: 10px 0;
+}
+
+ul, ol {
+    padding-left: 25px;
+    margin: 10px 0 18px;
+}
+
+li {
+    margin: 7px 0;
+}
+
+/* GAMBAR RESPONSIF */
+figure {
+    margin: 22px auto 28px;
+    text-align: center;
+    max-width: 100%;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+figcaption {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.callout {
+    background: #f8f8f8;
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin: 18px 0;
+}
+
+/* LKPD */
+.activity {
+    background: #fbfbfb;
+    border: 1px solid #e7e7e7;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 18px 0;
+}
+
+.activity h3 {
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 18px 0;
+    border-radius: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 650px;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #fffcf0;
+    color: #795900;
+}
+
+.answer-space {
+    height: 46px;
+    border-bottom: 1px solid #bbb;
+}
+
+/* NAVIGASI BAWAH */
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: var(--gold);
+    font-weight: 700;
+}
+
+.btn.secondary {
+    background: #555;
+}
+
+.btn:hover {
+    opacity: .9;
+    transform: translateY(-2px);
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 13px;
+    margin-top: auto;
+}
+
+/* RESPONSIVE HP */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .close-btn {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+        padding-top: 75px;
+    }
+
+    .content-card {
+        padding: 18px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar h2 {
+        font-size: 18px;
+    }
+
+    .chapter-heading h1 {
+        font-size: 22px;
+    }
+
+    h2.section-title {
+        font-size: 20px;
+    }
+
+    .objectives,
+    .activity {
+        padding: 15px;
+    }
+
+    .bottom-nav .btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .close-btn {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<button class="menu-toggle" onclick="toggleSidebar()" aria-label="Buka menu">
+    <i class="fas fa-bars"></i> Menu
+</button>
+
+<nav class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="toggleSidebar()" aria-label="Tutup menu">&times;</button>
+
+    <div class="sidebar-header">
+        <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu">
+        <h3>LMS TKJ</h3>
+        <p>SMKN 7 LUWU</p>
+    </div>
+
+    <div class="nav-menu">
+        <a href="../../index.html" class="nav-item">
+            <i class="fas fa-home"></i> Beranda
+        </a>
+        <a href="../index.html" class="nav-item active">
+            <i class="fas fa-book-open"></i> Materi
+        </a>
+        <a href="../../menu-utama-TKJ/tryout.html" class="nav-item">
+            <i class="fas fa-edit"></i> Tryout
+        </a>
+        <a href="../../lkpd/index.html" class="nav-item">
+            <i class="fas fa-file-signature"></i> LKPD
+        </a>
+        <a href="../../absen/index.html" class="nav-item">
+            <i class="fas fa-camera-retro"></i> Absen
+        </a>
+        <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item">
+            <i class="fas fa-award"></i> Ranking
+        </a>
+        <a href="../../cbt/index.html" class="nav-item">
+            <i class="fas fa-vial"></i> CBT Ujian
+        </a>
+        <a href="../../arsip.html" class="nav-item">
+            <i class="fas fa-archive"></i> ARSIP
+        </a>
+    </div>
+</nav>
+
+<main class="main-content">
+<article class="content-card">
+
+    <div class="topbar">
+        <h2><i class="fas fa-laptop-code"></i> MAPEL: TJKT KELAS XI</h2>
+        <div class="guru"><i class="fas fa-user-circle"></i> Helmi Yunar</div>
+    </div>
+
+    <div class="breadcrumb">Materi / TP 8 / BAB 1</div>
+
+    <header class="chapter-heading">
+        <div class="label">TUJUAN PEMBELAJARAN 8 · BAB 1</div>
+        <h1>Mengingat Kembali RJ-45, Kabel UTP, Alat, dan K3</h1>
+        <p>Pertemuan 1 · Alokasi Waktu 3 JP</p>
+    </header>
+
+    <section class="objectives">
+        <h2><i class="fas fa-bullseye"></i> Tujuan Pembelajaran Bab Ini</h2>
+        <ul>
+            <li>Peserta didik mampu mengenali kembali kabel UTP, konektor RJ-45, dan tang crimping beserta fungsinya.</li>
+            <li>Peserta didik mampu menerapkan prosedur K3 sebelum melakukan praktik pemasangan.</li>
+        </ul>
+    </section>
+
+    <h2 class="section-title">1.1 Dari Teori Menuju Praktik</h2>
+
+    <p>Pada Buku Ajar TP 7, kalian telah mempelajari secara mendalam tentang kabel UTP (struktur, kategori, jenis straight dan crossover), konektor RJ-45 (bagian-bagian dan standar susunan warna), tang crimping dan LAN tester (fungsi dan cara kerja), serta prosedur Keselamatan dan Kesehatan Kerja (K3). Bab pertama TP 8 ini akan mengajak kalian mengingat kembali seluruh pengetahuan tersebut secara ringkas, sebagai bekal sebelum benar-benar memegang alat dan bahan untuk praktik.</p>
+
+    <p>Mengapa perlu mengingat kembali? Karena pada praktik pemasangan konektor, kalian tidak lagi hanya membaca dan memahami, tetapi harus benar-benar mengingat dengan cepat dan tepat setiap kali tangan kalian bekerja. Seorang teknisi yang baik tidak perlu membuka buku catatan setiap kali ingin memasang satu kabel; ia sudah menghafal dan memahami setiap langkahnya di luar kepala.</p>
+
+    <h2 class="section-title">1.2 Ringkasan Kabel UTP</h2>
+
+    <p>Kabel UTP (Unshielded Twisted Pair) adalah kabel yang tersusun dari delapan kawat tembaga kecil, membentuk empat pasang yang saling dipilin, dan seluruhnya dibungkus oleh satu lapisan jaket pelindung luar. Empat pasang tersebut adalah pasangan oranye, hijau, biru, dan cokelat, masing-masing memiliki versi warna solid dan versi "putih-"-nya.</p>
+
+    <figure>
+        <img src="struktur-kabel-utp.png"
+             alt="Struktur kabel UTP: empat pasang kawat terpilin dalam satu jaket">
+        <figcaption>
+            Gambar 1.1 Mengingat kembali struktur kabel UTP:
+            empat pasang kawat terpilin dalam satu jaket.
+        </figcaption>
+    </figure>
+
+    <h2 class="section-title">1.3 Ringkasan Konektor RJ-45</h2>
+
+    <p>RJ-45 (Registered Jack 45) adalah konektor standar yang menghubungkan kabel UTP ke port jaringan Ethernet. Konektor ini memiliki empat bagian utama: rumah konektor (housing) yang transparan, delapan pin kontak logam di bagian atas, lubang masuk kabel di bagian belakang, dan pengunci (locking clip) di bagian bawah.</p>
+
+    <figure>
+        <img src="bagian-konektor-rj45.png"
+             alt="Ilustrasi bagian-bagian konektor RJ-45">
+        <figcaption>
+            Gambar 1.2 Mengingat kembali bagian-bagian konektor RJ-45.
+        </figcaption>
+    </figure>
+
+    <h2 class="section-title">1.4 Ringkasan Tang Crimping</h2>
+
+    <p>Tang crimping adalah alat dengan tiga fungsi dalam satu alat: memotong (cutter) untuk memotong dan meratakan kabel, mengupas (stripper) untuk membuka jaket luar kabel, dan mengepres (crimper) untuk menekan konektor RJ-45 agar pin-pinnya menembus dan mengunci kawat di dalamnya. Ketiga fungsi ini akan kalian gunakan secara berurutan sepanjang praktik TP 8.</p>
+
+    <h2 class="section-title">1.5 Mengingat Kembali Prosedur K3</h2>
+
+    <p>Sebelum praktik dimulai, seluruh peserta didik wajib mengingat dan menerapkan prosedur K3 yang telah dipelajari pada TP 7. Berikut adalah lima prosedur yang paling penting untuk diterapkan khusus selama praktik pemasangan konektor RJ-45.</p>
+
+    <ul>
+        <li>Gunakan tang crimping hanya untuk memotong, mengupas, dan mengepres, tidak untuk keperluan lain.</li>
+        <li>Jangan bercanda atau bermain-main saat memegang tang crimping, karena bagian pemotongnya tajam.</li>
+        <li>Arahkan bagian pemotong menjauh dari tubuh sendiri maupun teman saat digunakan.</li>
+        <li>Kerjakan setiap langkah dengan tenang, tidak tergesa-gesa, terutama saat proses crimping yang tidak dapat diulang.</li>
+        <li>Kembalikan alat ke tempatnya dan bersihkan sisa potongan kabel setelah selesai berlatih.</li>
+    </ul>
+
+    <h2 class="section-title">1.6 Kegiatan Peserta Didik — LKPD 1.1</h2>
+
+    <section class="activity">
+        <h3><i class="fas fa-clipboard-list"></i> Petunjuk LKPD 1.1</h3>
+
+        <p>Bekerja berpasangan dengan teman sebangku. Amati kabel UTP, konektor RJ-45, dan tang crimping yang ditunjukkan guru (tanpa melakukan crimping terlebih dahulu).</p>
+
+        <p>Lengkapi tabel berikut, kemudian praktikkan cara memegang tang crimping dengan benar secara bergantian.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Alat/Bahan</th>
+                        <th>Fungsi</th>
+                        <th>Kondisi (Baik/Rusak)</th>
+                        <th>Cara Penggunaan yang Aman</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Kabel UTP</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Konektor RJ-45</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Tang crimping</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>LAN tester</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Catatan hasil pengamatan:</strong></p>
+        <div class="answer-space"></div>
+        <div class="answer-space"></div>
+    </section>
+
+    <h2 class="section-title">Rangkuman Bab 1</h2>
+
+    <ul>
+        <li>Kabel UTP tersusun dari delapan kawat (empat pasang terpilin) dalam satu jaket pelindung.</li>
+        <li>Konektor RJ-45 memiliki empat bagian: rumah konektor, delapan pin kontak, lubang masuk kabel, dan pengunci.</li>
+        <li>Tang crimping memiliki tiga fungsi: memotong, mengupas, dan mengepres konektor.</li>
+        <li>Prosedur K3 wajib diterapkan sejak awal hingga akhir praktik, terutama saat menggunakan tang crimping.</li>
+    </ul>
+
+    <h2 class="section-title">Latihan Soal Bab 1</h2>
+
+    <ol>
+        <li>Sebutkan empat pasang warna kawat pada kabel UTP!</li>
+        <li>Sebutkan empat bagian utama konektor RJ-45!</li>
+        <li>Sebutkan tiga fungsi tang crimping dalam satu alat!</li>
+        <li>Mengapa K3 harus diingat kembali sebelum memulai praktik, meskipun sudah dipelajari pada TP 7?</li>
+        <li>Sebutkan tiga prosedur K3 yang paling penting saat menggunakan tang crimping!</li>
+    </ol>
+
+    <h2 class="section-title">Refleksi Pertemuan 1</h2>
+
+    <ul>
+        <li>Apa fungsi RJ-45 yang saya ingat?</li>
+        <li>Apa fungsi tang crimping yang saya ingat?</li>
+        <li>Mengapa K3 penting sebelum praktik dimulai?</li>
+        <li>Bagian mana yang masih belum saya pahami?</li>
+    </ul>
+
+    <div class="bottom-nav">
+        <a href="tp8.html" class="btn secondary">
+            <i class="fas fa-arrow-left"></i> Kembali ke Induk TP 8
+        </a>
+
+        <a href="tp8-bab2.html" class="btn">
+            Lanjut ke BAB 2 <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+</article>
+
+<footer class="footer">
+    ©2026 Developed by Helmi Yunar
+</footer>
+</main>
+
+<script>
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
