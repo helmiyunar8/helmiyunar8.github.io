@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP8 – Daftar Pustaka | SMKN 7 Luwu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--text:#252525;--sidebar:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:var(--sidebar);padding:22px 16px;box-shadow:2px 0 8px #00000012;overflow-y:auto;z-index:10}
+.brand{text-align:center;padding:8px 6px 22px;border-bottom:1px solid #eee}
+.brand img{width:76px;height:auto;object-fit:contain}
+.brand h2{font-size:17px;margin:8px 0 0;color:var(--gold)}
+.brand p{font-size:12px;margin:2px 0;color:#666}
+nav{margin-top:18px}
+nav a{display:flex;align-items:center;gap:12px;padding:11px 12px;margin:4px 0;border-radius:8px;text-decoration:none;color:#333;font-size:14px}
+nav a:hover,nav a.active{background:#f7efd9;color:#805d00;font-weight:bold}
+main{margin-left:250px;padding:32px;min-height:100vh}
+.mobilebar{display:none}
+.content{max-width:1000px;margin:0 auto;background:#fff;border-top:5px solid var(--gold);border-radius:10px;padding:30px;box-shadow:0 3px 14px #0000000b}
+.eyebrow{color:var(--gold);font-size:13px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(24px,3vw,34px);line-height:1.25;margin:8px 0 6px}
+.subtitle{color:#666;margin:0 0 25px}
+h2{font-size:20px;margin-top:28px}
+.references{padding-left:24px}
+.references li{margin:0 0 18px;padding-left:5px}
+.footer{margin-top:30px;padding-top:15px;border-top:1px solid #eee;color:#777;font-size:12px}
+@media(max-width:760px){
+.sidebar{display:none;width:min(82vw,280px)}
+.sidebar.show{display:block}
+main{margin-left:0;padding:12px}
+.mobilebar{display:flex;align-items:center;gap:12px;margin-bottom:12px;background:#fff;border-radius:9px;padding:12px 14px;box-shadow:0 2px 8px #0000000a}
+.mobilebar button{border:0;background:#f7efd9;color:#805d00;border-radius:7px;padding:9px 12px;font-size:18px}
+.mobilebar strong{font-size:14px}
+.content{padding:21px 17px}
+.references{padding-left:21px}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+    <h2>SMKN 7 LUWU</h2><p>LMS Konsentrasi Keahlian TKJ</p>
+  </div>
+  <nav aria-label="Navigasi utama">
+    <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+    <a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+    <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i> Tryout</a>
+    <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+    <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+    <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+    <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+    <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+  </nav>
+</aside>
+<main>
+  <div class="mobilebar"><button type="button" aria-label="Buka menu" onclick="document.getElementById('sidebar').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button><strong>SMKN 7 LUWU · TP8</strong></div>
+  <article class="content">
+    <div class="eyebrow">Konsentrasi Keahlian TJKT · Kelas XI</div>
+    <h1>Daftar Pustaka</h1>
+    <p class="subtitle">Modul Ajar 8 — Pemasangan Konektor RJ-45 pada Kabel UTP</p>
+    <h2>Sumber Referensi</h2>
+    <ol class="references">
+      <li>Modul Ajar 8 – Kabel UTP, Konektor RJ-45, Alat Kerja Jaringan, dan K3 (Pemasangan Konektor RJ-45 pada Kabel UTP), SMK Negeri 7 Luwu, Tahun Pelajaran 2026/2027.</li>
+      <li>Capaian Pembelajaran Konsentrasi Keahlian Teknik Komputer dan Jaringan, Fase F, Kurikulum yang berlaku di satuan pendidikan.</li>
+      <li>Buku Ajar Siswa TP 7 – Kabel UTP, Konektor RJ-45, Alat Kerja Jaringan, dan K3, SMK Negeri 7 Luwu.</li>
+      <li>Praktik langsung pemasangan konektor RJ-45 menggunakan kabel UTP, tang crimping, dan bahan yang tersedia di SMK Negeri 7 Luwu.</li>
+    </ol>
+    <div class="footer">SMK Negeri 7 Luwu · Tahun Pelajaran 2026/2027</div>
+  </article>
+</main>
+</body>
+</html>
