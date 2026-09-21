@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TP 8 - Pemasangan Konektor RJ-45 | LMS TKJ</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --gold: #b8860b;
+            --white: #ffffff;
+            --bg-light: #f4f4f4;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px;
+            background: var(--white);
+            height: 100vh;
+            position: fixed;
+            border-right: 2px solid #eeeeee;
+            transition: 0.3s;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid #f9f9f9;
+        }
+
+        .sidebar-header img {
+            width: 60px;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            color: #777777;
+        }
+
+        .nav-menu {
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: #555555;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-item i {
+            width: 25px;
+            margin-right: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #fffcf0;
+            color: var(--gold);
+            border-left: 5px solid var(--gold);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gold);
+            display: none;
+            background: none;
+            border: none;
+        }
+
+        /* TOMBOL MENU MOBILE */
+        .menu-toggle {
+            display: none;
+            background: var(--gold);
+            color: white;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            font-size: 15px;
+        }
+
+        /* KONTEN UTAMA */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 250px;
+            padding: 30px;
+            width: calc(100% - 250px);
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-card {
+            max-width: 1000px;
+            width: 100%;
+            min-width: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 8px solid var(--gold);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .topbar h2 {
+            color: var(--gold);
+            font-size: 21px;
+        }
+
+        .guru {
+            font-size: 13px;
+            font-weight: 600;
+            color: #777777;
+        }
+
+        /* KEPALA MATERI */
+        .materi-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .materi-header .label {
+            display: inline-block;
+            background: #fffcf0;
+            color: var(--gold);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .materi-header h1 {
+            color: var(--gold);
+            font-size: 27px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .materi-header p {
+            color: #666666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* INFORMASI TP */
+        .info-tp {
+            background: #fffcf0;
+            border-left: 5px solid var(--gold);
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .info-tp h3 {
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        /* DAFTAR BAB */
+        .section-title {
+            color: var(--gold);
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .bab-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .bab-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: 0.3s;
+            min-width: 0;
+        }
+
+        .bab-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+            background: #fffcf0;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .bab-icon {
+            min-width: 42px;
+            height: 42px;
+            background: var(--gold);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .bab-card h3 {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 7px;
+            line-height: 1.5;
+        }
+
+        .bab-card p {
+            color: #666666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777777;
+            background: #eeeeee;
+            padding: 4px 9px;
+            border-radius: 5px;
+        }
+
+        /* TOMBOL BAGIAN BAWAH */
+        .aksi-bawah {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .btn-aksi {
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-download {
+            background: var(--gold);
+        }
+
+        .btn-kembali {
+            background: #555555;
+        }
+
+        .btn-aksi:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #888888;
+            font-size: 13px;
+            margin-top: auto;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar {
+                left: -250px;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .close-btn {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 15px;
+                padding-top: 75px;
+            }
+
+            .content-card {
+                padding: 18px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+
+            .topbar h2 {
+                font-size: 18px;
+            }
+
+            .materi-header h1 {
+                font-size: 22px;
+            }
+
+            .bab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bab-card {
+                padding: 16px;
+            }
+
+            .btn-aksi {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .close-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOMBOL MENU MOBILE -->
+    <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Buka menu">
+        <i class="fas fa-bars"></i> Menu
+    </button>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+
+        <button class="close-btn" onclick="toggleSidebar()" aria-label="Tutup menu">
+            &times;
+        </button>
+
+        <div class="sidebar-header">
+            <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu">
+            <h3>LMS TKJ</h3>
+            <p>SMKN 7 LUWU</p>
+        </div>
+
+        <div class="nav-menu">
+            <a href="../../index.html" class="nav-item">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+
+            <a href="../index.html" class="nav-item active">
+                <i class="fas fa-book-open"></i> Materi
+            </a>
+
+            <a href="../../menu-utama-TKJ/tryout.html" class="nav-item">
+                <i class="fas fa-edit"></i> Tryout
+            </a>
+
+            <a href="../../lkpd/index.html" class="nav-item">
+                <i class="fas fa-file-signature"></i> LKPD
+            </a>
+
+            <a href="../../absen/index.html" class="nav-item">
+                <i class="fas fa-camera-retro"></i> Absen
+            </a>
+
+            <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html" class="nav-item">
+                <i class="fas fa-award"></i> Ranking
+            </a>
+
+            <a href="../../cbt/index.html" class="nav-item">
+                <i class="fas fa-vial"></i> CBT Ujian
+            </a>
+
+            <a href="../../arsip.html" class="nav-item">
+                <i class="fas fa-archive"></i> ARSIP
+            </a>
+        </div>
+    </nav>
+
+    <!-- KONTEN UTAMA -->
+    <main class="main-content">
+
+        <div class="content-card">
+
+            <!-- TOPBAR -->
+            <div class="topbar">
+                <h2>
+                    <i class="fas fa-laptop-code"></i>
+                    MAPEL: TJKT KELAS XI
+                </h2>
+
+                <div class="guru">
+                    <i class="fas fa-user-circle"></i>
+                    Helmi Yunar
+                </div>
+            </div>
+
+            <!-- JUDUL TP -->
+            <div class="materi-header">
+
+                <div class="label">
+                    TUJUAN PEMBELAJARAN 8
+                </div>
+
+                <h1>
+                    PEMASANGAN KONEKTOR RJ-45<br>
+                    PADA KABEL UTP
+                </h1>
+
+                <p>
+                    Buku Ajar Siswa Kelas XI TJKT<br>
+                    Fase F / Semester Ganjil / Tahun Pelajaran 2026/2027
+                </p>
+            </div>
+
+            <!-- INFORMASI TP -->
+            <div class="info-tp">
+                <h3>
+                    <i class="fas fa-bullseye"></i>
+                    Fokus Pembelajaran
+                </h3>
+
+                <p>
+                    Mempelajari dan mempraktikkan teknik pemasangan konektor
+                    RJ-45 pada kabel UTP secara benar, rapi, dan aman,
+                    mulai dari mengingat kembali alat dan bahan, menyusun
+                    warna kabel sesuai standar T568B, mengupas kabel,
+                    memasukkan kabel ke konektor, hingga melakukan crimping
+                    dan memeriksa hasil pemasangan secara visual.
+                </p>
+            </div>
+
+            <!-- DAFTAR BAB -->
+            <h2 class="section-title">
+                <i class="fas fa-book-open"></i>
+                Daftar Materi TP 8
+            </h2>
+
+            <div class="bab-grid">
+
+                <a href="tp8-bab1.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 1 — Mengingat Kembali RJ-45, Kabel UTP, Alat, dan K3</h3>
+                        <p>
+                            Mengingat kembali komponen, fungsi alat,
+                            bahan, dan prosedur keselamatan kerja.
+                        </p>
+                        <span class="status">Materi BAB 1</span>
+                    </div>
+                </a>
+
+                <a href="tp8-bab2.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 2 — Menyusun Delapan Warna Kabel Sesuai Standar T568B</h3>
+                        <p>
+                            Melatih urutan warna kabel UTP sesuai
+                            standar T568B.
+                        </p>
+                        <span class="status">Materi BAB 2</span>
+                    </div>
+                </a>
+
+                <a href="tp8-bab3.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 3 — Teknik Mengupas dan Merapikan Kabel UTP</h3>
+                        <p>
+                            Mempelajari cara mengupas jaket kabel,
+                            memisahkan, dan meluruskan kawat.
+                        </p>
+                        <span class="status">Materi BAB 3</span>
+                    </div>
+                </a>
+
+                <a href="tp8-bab4.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-ethernet"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 4 — Teknik Memasukkan Kabel ke Konektor RJ-45</h3>
+                        <p>
+                            Mempelajari posisi dan cara memasukkan
+                            delapan kawat ke konektor RJ-45.
+                        </p>
+                        <span class="status">Materi BAB 4</span>
+                    </div>
+                </a>
+
+                <a href="tp8-bab5.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 5 — Teknik Crimping Menggunakan Tang Crimping</h3>
+                        <p>
+                            Mempelajari tahapan mengepres konektor
+                            RJ-45 menggunakan tang crimping.
+                        </p>
+                        <span class="status">Materi BAB 5</span>
+                    </div>
+                </a>
+
+                <a href="tp8-bab6.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>BAB 6 — Kriteria Hasil, Kesalahan Umum, dan Evaluasi Akhir</h3>
+                        <p>
+                            Memeriksa hasil pemasangan secara visual
+                            dan mengenali kesalahan yang umum terjadi.
+                        </p>
+                        <span class="status">Materi BAB 6</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- EVALUASI DAN BAGIAN AKHIR -->
+            <h2 class="section-title">
+                <i class="fas fa-tasks"></i>
+                Evaluasi dan Bagian Akhir
+            </h2>
+
+            <div class="bab-grid">
+
+                <a href="tp8-evaluasi.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+
+                    <div>
+                        <h3>Evaluasi Akhir Tujuan Pembelajaran 8</h3>
+                        <p>Latihan dan evaluasi pemahaman TP 8.</p>
+                        <span class="status">Evaluasi</span>
+                    </div>
+                </a>
+
+                <a href="tp8-refleksi.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+
+                    <div>
+                        <h3>Refleksi Akhir Peserta Didik</h3>
+                        <p>Refleksi terhadap proses dan hasil belajar.</p>
+                        <span class="status">Refleksi</span>
+                    </div>
+                </a>
+
+                <a href="tp8-glosarium.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+
+                    <div>
+                        <h3>Glosarium</h3>
+                        <p>Daftar istilah penting dalam TP 8.</p>
+                        <span class="status">Glosarium</span>
+                    </div>
+                </a>
+
+                <a href="tp8-kunci-jawaban.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+
+                    <div>
+                        <h3>Kunci Jawaban Latihan Soal</h3>
+                        <p>Kunci jawaban untuk latihan soal TP 8.</p>
+                        <span class="status">Kunci Jawaban</span>
+                    </div>
+                </a>
+
+                <a href="tp8-daftar-pustaka.html" class="bab-card">
+                    <div class="bab-icon">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+
+                    <div>
+                        <h3>Daftar Pustaka</h3>
+                        <p>Referensi yang digunakan dalam buku ajar.</p>
+                        <span class="status">Referensi</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- TOMBOL BAWAH -->
+            <div class="aksi-bawah">
+
+                <a href="../index.html" class="btn-aksi btn-kembali">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali ke Mapel XI
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            ©2026 Developed by Helmi Yunar
+        </footer>
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
