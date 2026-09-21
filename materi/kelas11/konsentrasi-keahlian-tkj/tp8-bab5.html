@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP 8 — Bab 5 | Teknik Crimping Menggunakan Tang Crimping</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--green:#166534;--pale:#e8f5e9;--text:#222}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:18px 14px;overflow-y:auto;z-index:1000}
+.brand{text-align:center;padding:10px 5px 18px;border-bottom:1px solid #ddd}
+.brand img{width:82px;max-width:100%;height:auto}
+.brand h2{font-size:18px;color:var(--gold);margin:8px 0 0}
+.nav a{display:flex;gap:11px;align-items:center;text-decoration:none;color:#333;padding:11px 12px;margin:5px 0;border-radius:8px}
+.nav a:hover,.nav a.active{background:#fff4d6;color:#805b00;font-weight:bold}
+main{margin-left:250px;padding:28px;min-width:0}
+.menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:1100;background:var(--gold);color:#fff;border:0;border-radius:8px;padding:10px 13px;font-size:18px}
+.card{max-width:1100px;margin:0 auto;background:#fff;border-top:6px solid var(--gold);border-radius:12px;padding:clamp(18px,3vw,34px);box-shadow:0 3px 14px #00000012}
+h1,h2,h3{line-height:1.3}
+h1{color:#805b00;font-size:clamp(1.55rem,3vw,2.2rem);margin:0 0 8px}
+h2{color:#805b00;font-size:1.45rem;margin-top:32px}
+h3{color:var(--green)}
+.meta{font-style:italic;color:#666;margin:0 0 20px}
+.objectives,.callout,.summary{background:#f8f3e5;border-left:5px solid var(--gold);padding:15px 18px;border-radius:8px;margin:18px 0}
+.callout h3,.objectives h3{margin-top:0}
+ol,ul{padding-left:1.5rem}
+li{margin:.5rem 0}
+.figure{margin:22px 0;text-align:center}
+.figure img{display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
+figcaption{font-size:.95rem;color:#555;margin-top:8px;font-style:italic}
+table{border-collapse:collapse;width:100%;min-width:600px}
+.table-wrap{overflow-x:auto;max-width:100%;margin:18px 0;border:1px solid #ddd;border-radius:8px}
+th,td{padding:11px 12px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}
+th{background:#f8f0d8;color:#5e4500}
+tbody tr:nth-child(even){background:#fafafa}
+.practice{background:#edf7ee;border-left:5px solid #4b9b5b;padding:16px 18px;border-radius:8px}
+.practice table{min-width:650px}
+.reflection li{margin-bottom:8px}
+footer{max-width:1100px;margin:18px auto 0;text-align:center;color:#777;font-size:.9rem}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-105%);transition:transform .25s ease;width:260px;box-shadow:4px 0 18px #0002}
+ .sidebar.show{transform:translateX(0)}
+ main{margin-left:0;padding:70px 12px 20px}
+ .menu-btn{display:block}
+ .card{padding:18px 15px;border-radius:10px}
+ h2{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar" id="sidebar">
+ <div class="brand">
+  <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+  <h2>SMKN 7 LUWU</h2>
+  <div>Konsentrasi Keahlian TJKT</div>
+ </div>
+ <nav class="nav" aria-label="Navigasi utama">
+  <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+  <a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+  <a class="active" href="index.html"><i class="fa-solid fa-network-wired"></i> Konsentrasi Keahlian TKJ</a>
+  <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-clipboard-question"></i> Tryout</a>
+  <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+  <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+  <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+  <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+  <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+ </nav>
+</aside>
+<main>
+<article class="card">
+<header>
+<h1>BAB 5 — Teknik Crimping Menggunakan Tang Crimping</h1>
+<p class="meta">Pertemuan 5 · Alokasi Waktu 3 JP</p>
+</header>
+
+<section class="objectives">
+<h3><i class="fa-solid fa-bullseye"></i> Tujuan Pembelajaran Bab Ini</h3>
+<ul>
+<li>Peserta didik mampu melakukan crimping konektor RJ-45 pada kabel UTP dengan benar.</li>
+<li>Peserta didik mampu menghasilkan satu kabel jaringan yang telah ter-crimp dengan menerapkan K3.</li>
+</ul>
+</section>
+
+<h2>5.1 Inilah Praktik Utama TP 8</h2>
+<p>Setelah mempelajari dan berlatih teknik mengupas, meluruskan, menyusun warna, dan memasukkan kawat ke konektor pada bab-bab sebelumnya, kini tibalah saatnya kalian melakukan tahap yang paling dinanti: <strong>crimping</strong>, yaitu proses mengunci konektor RJ-45 pada kabel UTP menggunakan tang crimping, sehingga menghasilkan satu kabel jaringan yang telah selesai dipasangi konektor.</p>
+<p>Bab ini adalah puncak dari seluruh rangkaian latihan TP 8. Namun ingatlah pesan penting dari bab-bab sebelumnya: <strong>JANGAN PERNAH melakukan crimping sebelum memeriksa susunan warna dan posisi kawat menggunakan panduan pada Bab 4.</strong></p>
+
+<h2>5.2 Enam Langkah Melakukan Crimping</h2>
+<ol>
+<li>Pegang konektor RJ-45 yang telah dimasukkan kawat sesuai panduan Bab 4, pastikan posisinya tidak berubah atau bergeser.</li>
+<li>Pastikan sekali lagi (pemeriksaan terakhir) menggunakan tabel empat pemeriksaan pada Bab 4 bagian 4.3.</li>
+<li>Masukkan konektor tersebut ke dalam slot crimper pada tang crimping, yaitu lubang khusus berbentuk RJ-45 pada tang.</li>
+<li>Pastikan konektor masuk sepenuhnya ke dalam slot, tidak miring, dan posisi kawat tidak bergeser saat dimasukkan.</li>
+<li>Genggam kedua pegangan tang crimping dengan mantap, lalu tekan dengan tenaga penuh dan merata sampai terasa atau terdengar bunyi "klik", yang menandakan pin telah menembus dan mengunci kawat.</li>
+<li>Lepaskan tekanan secara perlahan, keluarkan konektor dari slot tang, lalu lanjutkan ke pemeriksaan hasil pada Bab 6.</li>
+</ol>
+
+<figure class="figure">
+<img src="tp8-bab5-crimping.png" alt="Ilustrasi tiga tahap menggunakan tang crimping: memasukkan konektor, memasukkan kabel yang telah disusun, dan menekan tang hingga selesai">
+<figcaption>Gambar 5.1 Tiga tahap teknik menggunakan tang crimping untuk proses crimping.</figcaption>
+</figure>
+
+<h2>5.3 Menerapkan K3 Selama Proses Crimping</h2>
+<div class="callout">
+<h3><i class="fa-solid fa-shield-halved"></i> K3 Khusus Saat Crimping</h3>
+<ul>
+<li>Pastikan tangan yang tidak memegang tang berada pada posisi aman, tidak berada di jalur pemotong atau di dekat konektor.</li>
+<li>Tekan tang dengan gerakan yang stabil, jangan menyentak atau menekan secara tiba-tiba dengan kekuatan berlebihan.</li>
+<li>Jangan meletakkan tang crimping dalam keadaan terbuka menghadap ke atas di tepi meja, karena berisiko terjatuh.</li>
+<li>Jika tang terasa sulit ditekan atau ada hambatan, jangan dipaksakan; periksa kembali posisi konektor, mungkin belum masuk dengan benar ke slot.</li>
+</ul>
+</div>
+
+<h2>5.4 Mengapa Crimping Membutuhkan Tenaga yang Cukup?</h2>
+<p>Salah satu kesalahan pemula yang sering terjadi adalah menekan tang crimping dengan tenaga yang terlalu ringan, karena takut merusak konektor. Padahal, tang crimping dirancang khusus dengan mekanisme yang membutuhkan tekanan penuh agar pin dapat menembus lapisan pelindung kawat dan benar-benar mengunci dengan kuat.</p>
+<p>Jika tekanan yang diberikan tidak cukup, pin mungkin hanya menyentuh permukaan kawat tanpa benar-benar menembusnya, sehingga sambungan listrik menjadi tidak stabil atau bahkan tidak terhubung sama sekali, meskipun secara kasat mata konektor terlihat sudah terpasang. Oleh karena itu, tekanlah dengan mantap dan penuh, bukan ragu-ragu, namun tetap dalam gerakan yang terkendali dan tidak menyentak.</p>
+
+<h2>5.5 Latihan Bertahap: dari Percobaan Menuju Produk Jadi</h2>
+<p>Karena tang crimping yang tersedia berjumlah 10 buah untuk 11 peserta didik, kalian akan bekerja secara berpasangan dan bergiliran. Gunakan kesempatan menunggu giliran untuk mengamati dan belajar dari cara kerja teman kalian, termasuk kesalahan yang mungkin terjadi, agar kalian dapat menghindarinya saat giliran kalian tiba.</p>
+<ul>
+<li><strong>Percobaan pertama:</strong> fokus pada keberanian menekan tang dengan tenaga yang cukup, tanpa terlalu khawatir hasilnya sempurna.</li>
+<li><strong>Percobaan kedua dan seterusnya:</strong> mulai perhatikan kerapian dan ketepatan posisi kawat sebelum crimping.</li>
+<li><strong>Target akhir pertemuan ini:</strong> setiap peserta didik menghasilkan minimal satu kabel yang telah ter-crimp dengan baik, sesuai kriteria yang akan dipelajari pada Bab 6.</li>
+</ul>
+
+<h2>5.6 Kegiatan Peserta Didik — LKPD 5.1</h2>
+<section class="practice">
+<h3><i class="fa-solid fa-clipboard-check"></i> Petunjuk LKPD 5.1</h3>
+<p>Lakukan proses crimping pada kabel latihan kalian, dari persiapan sampai selesai. Bandingkan kondisi kabel sebelum dan sesudah crimping.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Kondisi Sebelum Crimping</th><th>Kondisi Sesudah Crimping</th><th>Apa yang Berhasil</th><th>Apa yang Perlu Diperbaiki</th></tr></thead>
+<tbody>
+<tr><td style="height:70px"></td><td></td><td></td><td></td></tr>
+<tr><td style="height:70px"></td><td></td><td></td><td></td></tr>
+<tr><td style="height:70px"></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<h2>Rangkuman Bab 5</h2>
+<div class="summary">
+<ul>
+<li>Crimping adalah proses mengunci konektor RJ-45 pada kabel UTP menggunakan tang crimping, terdiri dari enam langkah.</li>
+<li>Sebelum crimping, wajib dilakukan pemeriksaan terakhir menggunakan tabel empat pemeriksaan dari Bab 4.</li>
+<li>Proses crimping membutuhkan tekanan yang mantap dan penuh, bukan ragu-ragu, agar pin benar-benar menembus dan mengunci kawat.</li>
+<li>K3 tetap harus diterapkan selama proses crimping, termasuk posisi tangan dan cara menekan tang.</li>
+</ul>
+</div>
+
+<h2>Latihan Soal Bab 5</h2>
+<ol>
+<li>Sebutkan enam langkah melakukan crimping menggunakan tang crimping!</li>
+<li>Mengapa pemeriksaan terakhir harus dilakukan sebelum crimping, padahal sudah diperiksa pada Bab 4?</li>
+<li>Mengapa crimping membutuhkan tenaga yang cukup dan tidak boleh dilakukan dengan ragu-ragu?</li>
+<li>Sebutkan tiga penerapan K3 khusus selama proses crimping!</li>
+<li>Apa yang sebaiknya dilakukan apabila tang crimping terasa sulit ditekan atau ada hambatan?</li>
+</ol>
+
+<h2>Refleksi Pertemuan 5</h2>
+<ul class="reflection">
+<li>Bagaimana perasaan saya saat pertama kali berhasil melakukan crimping?</li>
+<li>Apa yang berhasil dari hasil crimping saya?</li>
+<li>Apa yang masih perlu saya perbaiki?</li>
+</ul>
+</article>
+<footer>TP 8 · Konsentrasi Keahlian TJKT · SMKN 7 Luwu</footer>
+</main>
+<script>
+const btn=document.getElementById('menuBtn');
+const sidebar=document.getElementById('sidebar');
+btn.addEventListener('click',()=>sidebar.classList.toggle('show'));
+document.addEventListener('click',e=>{
+ if(window.innerWidth<=800 && sidebar.classList.contains('show') && !sidebar.contains(e.target) && !btn.contains(e.target)) sidebar.classList.remove('show');
+});
+</script>
+</body>
+</html>
