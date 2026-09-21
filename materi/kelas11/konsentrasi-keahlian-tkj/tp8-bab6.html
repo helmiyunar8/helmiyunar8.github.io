@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP 8 — Bab 6 | Kriteria Hasil, Kesalahan Umum, dan Evaluasi Akhir</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--green:#087b43;--pale:#e3f3e8;--bg:#f4f4f4;--ink:#20252a;--red:#d92732}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Arial,Helvetica,sans-serif}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:18px 14px;overflow-y:auto;z-index:20}
+.brand{text-align:center;padding:8px 4px 18px;color:var(--gold);font-weight:800;font-size:1.2rem}.brand img{width:72px;height:auto;display:block;margin:0 auto 8px}
+.sidebar a{display:block;text-decoration:none;color:#333;padding:10px 12px;border-radius:8px;margin:3px 0}.sidebar a:hover,.sidebar a.active{background:#fff2c8;color:#6c4e00}
+main{margin-left:250px;padding:28px;max-width:1200px}.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:30;border:0;border-radius:8px;background:var(--gold);color:white;padding:11px 14px;font-size:18px}
+.card{background:white;border-top:5px solid var(--gold);border-radius:12px;padding:clamp(18px,3vw,34px);box-shadow:0 3px 14px #0000000c;margin:0 auto 22px}
+h1,h2,h3{line-height:1.25;color:#684b00}h1{font-size:clamp(1.6rem,3vw,2.25rem);margin:.2em 0 .5em}h2{font-size:1.45rem;margin-top:1.7em;border-bottom:2px solid #f0dfaa;padding-bottom:8px}h3{font-size:1.12rem;margin-top:1.25em}
+.meta{color:#666;font-style:italic}.goals{background:#fff8df;border-left:5px solid var(--gold);padding:14px 18px;border-radius:8px}
+.table-wrap{max-width:100%;overflow-x:auto;margin:16px 0;border:1px solid #ddd;border-radius:8px}table{border-collapse:collapse;width:100%;min-width:640px;background:#fff}th,td{padding:12px;border:1px solid #ddd;text-align:left;vertical-align:top}th{background:#fff0bd;color:#5c4300}
+figure{margin:20px 0;text-align:center}figure img{display:block;width:100%;height:auto;max-width:100%;border-radius:10px}figcaption{font-size:.92rem;color:#555;margin-top:8px}
+.callout{background:#e8f5ec;border-left:5px solid var(--green);padding:15px 18px;border-radius:8px;margin:16px 0}
+.error{border:1px solid #f2b6b9;border-radius:10px;margin:14px 0;overflow:hidden}.error h3{margin:0;padding:12px 16px;background:#fff0f0;color:#a10f1b}.error p{padding:0 16px;margin:12px 0}
+.checklist{padding-left:0;list-style:none}.checklist li{padding:10px 12px;border-bottom:1px solid #e5e5e5}.checklist input{width:18px;height:18px;vertical-align:middle;margin-right:10px;accent-color:var(--green)}
+.practice-table td{height:56px}.practice-table input{width:100%;border:0;border-bottom:1px solid #aaa;padding:7px;font:inherit;background:transparent}
+footer{text-align:center;color:#777;font-size:.9rem;padding:20px}
+@media(max-width:800px){.sidebar{transform:translateX(-105%);transition:transform .2s;box-shadow:3px 0 14px #0002}.sidebar.show{transform:translateX(0)}.menu-toggle{display:block}main{margin:0;padding:68px 12px 20px}.card{padding:18px}body{font-size:15px}h2{font-size:1.3rem}}
+@media print{.sidebar,.menu-toggle{display:none}main{margin:0;padding:0}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><img src="../../asset/logo.png" alt="Logo sekolah" onerror="this.style.display='none'">SMKN 7 LUWU<br><small>Materi TJKT Kelas XI</small></div>
+ <a href="../../index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+ <a href="../index.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+ <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-list-check"></i> Tryout</a>
+ <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i> LKPD</a>
+ <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i> Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+ <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i> CBT Ujian</a>
+ <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i> ARSIP</a>
+ <hr>
+ <a href="tp8-bab5.html"><i class="fa-solid fa-arrow-left"></i> TP8 Bab 5</a>
+</aside>
+<main>
+<article class="card">
+ <h1>BAB 6 — Kriteria Hasil, Kesalahan Umum, dan Evaluasi Akhir</h1>
+ <p class="meta">Pertemuan 6 · Alokasi Waktu 3 JP</p>
+ <div class="goals"><strong>Tujuan Pembelajaran Bab Ini:</strong>
+ <ul><li>Peserta didik mampu memeriksa hasil pemasangan konektor RJ-45 secara visual.</li>
+ <li>Peserta didik mampu mengidentifikasi dan memperbaiki kesalahan umum dalam pemasangan konektor.</li></ul></div>
+
+ <h2>6.1 Delapan Kriteria Hasil Pemasangan yang Baik</h2>
+ <p>Setelah kalian menghasilkan kabel yang telah ter-crimp pada pertemuan sebelumnya, saatnya mempelajari cara menilai sendiri apakah hasil pekerjaan kalian sudah baik. Berikut delapan kriteria yang digunakan untuk menilai hasil pemasangan konektor RJ-45.</p>
+ <div class="table-wrap"><table><thead><tr><th>No</th><th>Kriteria</th><th>Cara Memeriksa</th></tr></thead><tbody>
+ <tr><td>1</td><td>Susunan warna sesuai standar</td><td>Bandingkan urutan pin 1–8 dengan tabel T568B.</td></tr>
+ <tr><td>2</td><td>Urutan tidak tertukar</td><td>Periksa satu per satu, terutama pasangan hijau dan oranye.</td></tr>
+ <tr><td>3</td><td>Inti kabel masuk dengan benar</td><td>Lihat dari samping, pastikan semua ujung kawat menyentuh ujung konektor.</td></tr>
+ <tr><td>4</td><td>Konektor terpasang kuat</td><td>Tarik perlahan; konektor tidak boleh goyang atau bergeser.</td></tr>
+ <tr><td>5</td><td>Jaket kabel tertahan dengan baik</td><td>Pastikan bagian jaket ikut terjepit oleh bagian penjepit konektor.</td></tr>
+ <tr><td>6</td><td>Tidak ada bagian kabel yang rusak</td><td>Periksa tidak ada kawat yang terpotong, tergores, atau putus.</td></tr>
+ <tr><td>7</td><td>Hasil pekerjaan rapi</td><td>Tidak ada kawat yang menyilang, terlipat, atau keluar jalur.</td></tr>
+ <tr><td>8</td><td>K3 diterapkan selama proses</td><td>Refleksikan apakah seluruh prosedur keselamatan telah diikuti.</td></tr>
+ </tbody></table></div>
+ <figure><img src="tp8-bab6-perbandingan-benar-salah.png" alt="Perbandingan ciri hasil pemasangan konektor RJ-45 yang benar dan yang salah"><figcaption>Gambar 6.1 Perbandingan ciri hasil pemasangan yang benar dan yang salah</figcaption></figure>
+
+ <h2>6.2 Sepuluh Kesalahan Umum dan Cara Memperbaikinya</h2>
+ <p>Berikut adalah kesalahan-kesalahan yang paling sering dialami peserta didik saat pertama kali belajar memasang konektor RJ-45, beserta penjelasan penyebab dan cara memperbaikinya pada kesempatan berikutnya.</p>
+ <section class="error"><h3>Kesalahan 1 — Urutan Warna Tertukar</h3><p><strong>Kondisi:</strong> dua kawat bertukar posisi, misalnya hijau dan oranye tertukar.</p><p><strong>Penyebab:</strong> tergesa-gesa atau rancu dengan standar T568A.</p><p><strong>Cara memperbaiki:</strong> selalu ucapkan urutan warna dengan lantang sambil menyusun, dan bandingkan dengan tabel sebelum memasukkan ke konektor.</p></section>
+ <section class="error"><h3>Kesalahan 2 — Ada Kawat yang Tidak Sampai Ujung</h3><p><strong>Kondisi:</strong> satu atau lebih kawat lebih pendek dari yang lain sehingga tidak menyentuh bagian dalam ujung konektor.</p><p><strong>Penyebab:</strong> ujung kawat tidak dipotong rata sebelum dimasukkan.</p><p><strong>Cara memperbaiki:</strong> selalu potong ujung kawat rata menggunakan tang crimping sebelum memasukkannya ke konektor.</p></section>
+ <section class="error"><h3>Kesalahan 3 — Jaket Kabel Tidak Ikut Masuk</h3><p><strong>Kondisi:</strong> bagian jaket yang tidak dikupas tertinggal di luar konektor, tidak ikut terjepit.</p><p><strong>Penyebab:</strong> kabel tidak didorong cukup dalam saat dimasukkan ke konektor.</p><p><strong>Cara memperbaiki:</strong> pastikan mendorong kabel sampai jaketnya juga masuk ke bagian belakang konektor sebelum crimping.</p></section>
+ <section class="error"><h3>Kesalahan 4 — Pin Tidak Menembus Kawat dengan Sempurna</h3><p><strong>Kondisi:</strong> setelah di-crimp, salah satu pin terlihat tidak menembus kawat dengan rata dibandingkan pin lainnya.</p><p><strong>Penyebab:</strong> tekanan crimping tidak merata atau kurang kuat.</p><p><strong>Cara memperbaiki:</strong> pastikan menekan kedua pegangan tang dengan tenaga yang merata dan penuh, bukan hanya salah satu sisi.</p></section>
+ <section class="error"><h3>Kesalahan 5 — Kawat Rusak Saat Dikupas</h3><p><strong>Kondisi:</strong> salah satu kawat putus atau tergores saat proses pengupasan jaket.</p><p><strong>Penyebab:</strong> menekan stripper terlalu dalam.</p><p><strong>Cara memperbaiki:</strong> kupas dengan tekanan ringan, cukup untuk memotong jaket luar saja, tidak menyentuh kawat tembaga di dalamnya.</p></section>
+ <section class="error"><h3>Kesalahan 6 — Susunan Kawat Tidak Rapi</h3><p><strong>Kondisi:</strong> ada kawat yang menyilang atau terlipat sebelum masuk konektor.</p><p><strong>Penyebab:</strong> kurang teliti saat meluruskan dan menyusun kawat.</p><p><strong>Cara memperbaiki:</strong> luruskan setiap kawat satu per satu dengan sabar sebelum menyusunnya berurutan.</p></section>
+ <section class="error"><h3>Kesalahan 7 — Konektor Terasa Goyang</h3><p><strong>Kondisi:</strong> setelah di-crimp, konektor dapat digoyangkan atau ditarik keluar dengan mudah.</p><p><strong>Penyebab:</strong> konektor tidak masuk sepenuhnya ke slot tang crimping saat ditekan.</p><p><strong>Cara memperbaiki:</strong> pastikan konektor benar-benar masuk sepenuhnya ke dalam slot crimper sebelum ditekan.</p></section>
+ <section class="error"><h3>Kesalahan 8 — Terburu-buru Sebelum Memeriksa</h3><p><strong>Kondisi:</strong> langsung melakukan crimping tanpa memeriksa susunan warna dan posisi kawat terlebih dahulu.</p><p><strong>Penyebab:</strong> tidak sabar atau ingin cepat selesai.</p><p><strong>Cara memperbaiki:</strong> biasakan selalu melakukan pemeriksaan menggunakan tabel pada Bab 4 sebelum crimping, tanpa terkecuali.</p></section>
+ <section class="error"><h3>Kesalahan 9 — Salah Memegang Arah Konektor</h3><p><strong>Kondisi:</strong> susunan warna sebenarnya benar, namun terbalik arah karena posisi konektor salah saat menyusun.</p><p><strong>Penyebab:</strong> tidak konsisten menjadikan posisi pengunci sebagai patokan arah.</p><p><strong>Cara memperbaiki:</strong> selalu pastikan posisi pengunci menghadap ke bawah sebagai acuan arah setiap kali menyusun kawat.</p></section>
+ <section class="error"><h3>Kesalahan 10 — Tidak Menerapkan K3</h3><p><strong>Kondisi:</strong> bekerja sambil bercanda, tidak fokus, atau tidak berhati-hati saat memegang alat tajam.</p><p><strong>Penyebab:</strong> kurang kesadaran akan pentingnya keselamatan kerja.</p><p><strong>Cara memperbaiki:</strong> selalu ingat bahwa K3 adalah bagian dari keterampilan teknisi yang profesional, bukan aturan tambahan yang boleh diabaikan.</p></section>
+
+ <h2>6.3 Kegiatan Peserta Didik — LKPD 6.1 (Checklist Akhir)</h2>
+ <div class="callout"><strong>Petunjuk LKPD 6.1</strong><br>Periksa hasil kabel yang telah kalian pasangi konektor menggunakan checklist berikut. Beri tanda centang pada kolom yang sesuai untuk setiap kriteria.</div>
+ <div class="table-wrap"><table class="practice-table"><thead><tr><th>Kriteria (dari bagian 6.1)</th><th>Terpenuhi</th><th>Belum Terpenuhi</th><th>Rencana Perbaikan</th></tr></thead><tbody>
+ <tr><td>Susunan warna sesuai standar</td><td><input aria-label="Susunan warna terpenuhi" type="checkbox"></td><td><input aria-label="Susunan warna belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan susunan warna"></td></tr>
+ <tr><td>Urutan tidak tertukar</td><td><input aria-label="Urutan tidak tertukar terpenuhi" type="checkbox"></td><td><input aria-label="Urutan tidak tertukar belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan urutan"></td></tr>
+ <tr><td>Inti kabel masuk dengan benar</td><td><input aria-label="Inti kabel terpenuhi" type="checkbox"></td><td><input aria-label="Inti kabel belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan inti kabel"></td></tr>
+ <tr><td>Konektor terpasang kuat</td><td><input aria-label="Konektor kuat terpenuhi" type="checkbox"></td><td><input aria-label="Konektor kuat belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan konektor"></td></tr>
+ <tr><td>Jaket kabel tertahan dengan baik</td><td><input aria-label="Jaket kabel terpenuhi" type="checkbox"></td><td><input aria-label="Jaket kabel belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan jaket"></td></tr>
+ <tr><td>Tidak ada bagian kabel yang rusak</td><td><input aria-label="Kabel tidak rusak terpenuhi" type="checkbox"></td><td><input aria-label="Kabel tidak rusak belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan kabel rusak"></td></tr>
+ <tr><td>Hasil pekerjaan rapi</td><td><input aria-label="Kerapian terpenuhi" type="checkbox"></td><td><input aria-label="Kerapian belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan kerapian"></td></tr>
+ <tr><td>K3 diterapkan selama proses</td><td><input aria-label="K3 terpenuhi" type="checkbox"></td><td><input aria-label="K3 belum terpenuhi" type="checkbox"></td><td><input aria-label="Rencana perbaikan K3"></td></tr>
+ </tbody></table></div>
+ <p><em>Setelah mengisi checklist, jawablah refleksi berikut: Saya sudah mampu — mengenali RJ-45 <input type="checkbox">, menyusun warna T568B <input type="checkbox">, mengupas kabel <input type="checkbox">, merapikan inti kabel <input type="checkbox">, memasukkan kabel ke RJ-45 <input type="checkbox">, melakukan crimping <input type="checkbox">, menerapkan K3 <input type="checkbox">.</em></p>
+
+ <h2>6.4 Rangkuman Akhir Tujuan Pembelajaran 8</h2>
+ <ul>
+ <li>Pemasangan konektor RJ-45 pada kabel UTP terdiri dari enam tahap besar: menyiapkan bahan, mengupas jaket, meluruskan dan menyusun kawat, memasukkan ke konektor, crimping, dan memeriksa hasil.</li>
+ <li>Ukuran kupasan yang ideal sekitar 2–3 cm; ujung kawat harus dipotong rata sebelum dimasukkan ke konektor.</li>
+ <li>Sebelum crimping, wajib diperiksa empat hal: urutan warna, posisi ujung kawat, posisi jaket kabel, dan kerapian susunan.</li>
+ <li>Proses crimping membutuhkan tekanan yang mantap dan merata agar pin benar-benar menembus dan mengunci kawat.</li>
+ <li>Delapan kriteria menilai hasil yang baik dan sepuluh kesalahan umum menjadi acuan untuk memeriksa dan memperbaiki hasil kerja.</li>
+ <li>Pengujian menggunakan LAN tester akan dipelajari lebih lanjut pada TP 9.</li>
+ </ul>
+</article>
+<footer>SMKN 7 LUWU · Materi TJKT Kelas XI · TP 8 Bab 6</footer>
+</main>
+<script>
+const toggle=document.getElementById('menuToggle'), sidebar=document.getElementById('sidebar');
+toggle.addEventListener('click',()=>sidebar.classList.toggle('show'));
+document.addEventListener('click',e=>{if(window.innerWidth<=800&&!sidebar.contains(e.target)&&!toggle.contains(e.target))sidebar.classList.remove('show')});
+</script>
+</body></html>
