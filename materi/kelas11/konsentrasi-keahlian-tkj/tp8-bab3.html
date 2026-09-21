@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TP 8 — BAB 3: Teknik Mengupas dan Merapikan Kabel UTP</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--gold:#b8860b;--bg:#f4f4f4;--green:#176b3a;--pale:#e4f3e8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:#222;line-height:1.65}
+.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#fff;border-right:3px solid var(--gold);padding:18px 14px;overflow-y:auto;z-index:1000}
+.brand{text-align:center;padding:8px 4px 18px;border-bottom:1px solid #ddd;margin-bottom:12px}
+.brand img{width:76px;height:auto;max-width:100%}
+.brand strong{display:block;color:var(--gold);font-size:17px}
+.sidebar a{display:block;color:#333;text-decoration:none;padding:10px 12px;border-radius:8px;margin:3px 0}
+.sidebar a:hover,.sidebar a.active{background:#f7edcf;color:#765500}
+.sidebar a i{width:23px;color:var(--gold)}
+main{margin-left:250px;padding:28px;min-width:0}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.menu-btn{display:none;border:0;background:var(--gold);color:white;border-radius:8px;padding:10px 13px;font-size:18px}
+.crumb{color:#666;font-size:14px}
+.card{max-width:1100px;margin:0 auto;background:#fff;border-top:6px solid var(--gold);border-radius:12px;padding:clamp(18px,3vw,36px);box-shadow:0 3px 12px #0000000c}
+h1{color:#165b34;line-height:1.25;font-size:clamp(25px,3vw,36px);margin:0 0 8px}
+h2{color:#176b3a;font-size:clamp(20px,2.4vw,27px);margin-top:30px;border-bottom:2px solid #e2efdf;padding-bottom:6px}
+h3{color:#176b3a}
+.meta{color:#666;font-style:italic;margin:0 0 20px}
+.objectives,.callout{background:#edf7ef;border-left:5px solid #70ad7b;padding:14px 18px;border-radius:8px;margin:16px 0}
+.figure{margin:20px 0;text-align:center}
+.figure img{display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
+figcaption{font-size:14px;color:#555;margin-top:8px}
+ol,ul{padding-left:26px}
+li{margin:7px 0}
+table{border-collapse:collapse;width:100%;min-width:640px}
+.table-wrap{overflow-x:auto;max-width:100%;margin:16px 0;border:1px solid #ddd;border-radius:8px}
+th,td{border:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}
+th{background:#e7f3e9;color:#145b32}
+.blank{height:36px}
+footer{margin-top:30px;padding-top:15px;border-top:1px solid #ddd;color:#666;font-size:13px}
+@media(max-width:800px){
+ .sidebar{transform:translateX(-100%);transition:transform .2s}
+ .sidebar.show{transform:translateX(0);box-shadow:4px 0 16px #0002}
+ main{margin-left:0;padding:14px}
+ .menu-btn{display:inline-block}
+ .card{padding:18px 15px}
+}
+</style>
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+ <div class="brand">
+  <img src="../../asset/logo.png" alt="Logo SMKN 7 Luwu" onerror="this.style.display='none'">
+  <strong>SMKN 7 LUWU</strong><span>Konsentrasi Keahlian TJKT</span>
+ </div>
+ <a href="../../index.html"><i class="fa-solid fa-house"></i>Beranda</a>
+ <a href="../index.html"><i class="fa-solid fa-book-open"></i>Materi</a>
+ <a href="../../menu-utama-TKJ/tryout.html"><i class="fa-solid fa-list-check"></i>Tryout</a>
+ <a href="../../lkpd/index.html"><i class="fa-solid fa-file-lines"></i>LKPD</a>
+ <a href="../../absen/index.html"><i class="fa-solid fa-user-check"></i>Absen</a>
+ <a href="../../tryout-tkj-XII-2026/ranking_minggu2.html"><i class="fa-solid fa-ranking-star"></i>Ranking</a>
+ <a href="../../cbt/index.html"><i class="fa-solid fa-laptop"></i>CBT Ujian</a>
+ <a href="../../arsip.html"><i class="fa-solid fa-box-archive"></i>ARSIP</a>
+ <hr>
+ <a href="tp8.html"><i class="fa-solid fa-arrow-left"></i>Induk TP 8</a>
+ <a class="active" href="tp8-bab3.html"><i class="fa-solid fa-file-code"></i>TP 8 — BAB 3</a>
+</aside>
+<main>
+ <div class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+  <span class="crumb">Materi / Kelas XI / Konsentrasi Keahlian TJKT / TP 8 / BAB 3</span>
+ </div>
+ <article class="card">
+  <h1>BAB 3 — Teknik Mengupas dan Merapikan Kabel UTP</h1>
+  <p class="meta">Pertemuan 3 · Alokasi Waktu 3 JP</p>
+  <section class="objectives">
+   <h3>Tujuan Pembelajaran Bab Ini:</h3>
+   <ul>
+    <li>Peserta didik mampu mengupas jaket kabel UTP dengan ukuran yang tepat.</li>
+    <li>Peserta didik mampu memisahkan, meluruskan, dan merapikan delapan kawat kabel UTP.</li>
+   </ul>
+  </section>
+
+  <h2>3.1&nbsp; Urutan Besar Proses Pemasangan Konektor</h2>
+  <p>Sebelum mempelajari teknik mengupas secara rinci, penting bagi kalian untuk memahami gambaran besar seluruh proses pemasangan konektor RJ-45, agar kalian tahu sedang berada di tahap mana dan apa yang akan dikerjakan setelahnya.</p>
+  <div class="callout">
+   <strong>Enam Tahap Besar Pemasangan Konektor RJ-45</strong>
+   <ol>
+    <li>Menyiapkan kabel dan konektor (memilih panjang kabel yang dibutuhkan)</li>
+    <li>Mengupas jaket luar kabel (Bab 3)</li>
+    <li>Memisahkan, meluruskan, dan menyusun delapan kawat sesuai T568B (Bab 3)</li>
+    <li>Memotong ujung kawat rata dan memasukkannya ke konektor RJ-45 (Bab 4)</li>
+    <li>Melakukan crimping menggunakan tang crimping (Bab 5)</li>
+    <li>Memeriksa hasil pemasangan secara visual (Bab 6)</li>
+   </ol>
+  </div>
+  <p>Bab 3 ini akan membahas tahap kedua dan ketiga secara mendalam, yaitu mengupas dan merapikan kabel, sebagai fondasi bagi tahap-tahap selanjutnya.</p>
+
+  <h2>3.2&nbsp; Teknik Mengupas Jaket Kabel UTP</h2>
+  <p>Mengupas jaket kabel adalah proses membuka lapisan pelindung luar kabel UTP menggunakan bagian pengupas (stripper) pada tang crimping, agar kedelapan kawat kecil di dalamnya dapat diakses tanpa merusak kawat tembaga tersebut.</p>
+  <h3>Langkah-langkah mengupas jaket kabel:</h3>
+  <ol>
+   <li>Ukur kira-kira 2 sampai 3 sentimeter dari ujung kabel yang akan dikupas. Jangan mengupas terlalu panjang (karena kawat akan terlalu longgar dan mudah kacau) maupun terlalu pendek (karena akan menyulitkan penyusunan warna).</li>
+   <li>Letakkan kabel pada bagian stripper di tang crimping, tepat pada jarak yang telah diukur.</li>
+   <li>Genggam tang dengan mantap, lalu putar tang mengelilingi kabel sambil ditekan perlahan, tanpa menekan terlalu dalam.</li>
+   <li>Tarik bagian jaket yang telah terpotong tersebut menjauh dari kabel, hingga terlepas dan menyisakan delapan kawat kecil yang terlihat jelas.</li>
+   <li>Periksa kedelapan kawat tersebut: pastikan tidak ada yang tergores, terpotong, atau putus akibat tekanan stripper yang terlalu dalam.</li>
+  </ol>
+  <figure class="figure">
+   <img src="Ukuran kupasan yang tepat sekitar 2–3 cm dari ujung kabel.png" alt="Ilustrasi ukuran kupasan kabel UTP sekitar 2–3 cm">
+   <figcaption><strong>Gambar 3.1</strong> Ukuran kupasan yang tepat: sekitar 2–3 cm dari ujung kabel.</figcaption>
+  </figure>
+  <div class="callout">
+   <strong>Kesalahan yang Sering Terjadi Saat Mengupas</strong>
+   <ul>
+    <li>Menekan stripper terlalu dalam sehingga kawat tembaga ikut tergores atau putus — perhatikan bahwa fungsi stripper hanya untuk memotong jaket luar, bukan kawat di dalamnya.</li>
+    <li>Mengupas terlalu panjang sehingga kawat menjadi longgar dan sulit dirapikan sebelum masuk ke konektor.</li>
+    <li>Mengupas terlalu pendek sehingga tidak cukup ruang untuk menyusun dan meluruskan kedelapan kawat.</li>
+   </ul>
+  </div>
+
+  <h2>3.3&nbsp; Teknik Memisahkan dan Meluruskan Kawat</h2>
+  <p>Setelah jaket terbuka, kalian akan melihat delapan kawat kecil yang masih membentuk empat pasang terpilin, sebagaimana telah kalian pelajari strukturnya pada TP 7. Langkah selanjutnya adalah memisahkan setiap pasangan, membuka pilinannya, dan meluruskan seluruh kawat.</p>
+  <h3>Langkah-langkah memisahkan dan meluruskan kawat:</h3>
+  <ol>
+   <li>Pisahkan keempat pasang kawat satu sama lain menggunakan jari, sehingga kalian dapat melihat dengan jelas pasangan oranye, hijau, biru, dan cokelat secara terpisah.</li>
+   <li>Buka pilinan setiap pasang dengan hati-hati menggunakan jari, jangan menariknya dengan kasar agar kawat tidak putus atau rusak.</li>
+   <li>Luruskan setiap kawat satu per satu menggunakan jari, sehingga tidak ada lagi bagian yang melengkung atau bergelombang.</li>
+   <li>Susun kedelapan kawat yang telah lurus tersebut sesuai urutan standar T568B yang telah kalian kuasai pada Bab 2, sejajar berdampingan.</li>
+   <li>Ratakan seluruh ujung kawat menggunakan bagian pemotong pada tang crimping, sehingga seluruh ujung memiliki panjang yang sama persis.</li>
+  </ol>
+  <figure class="figure">
+   <img src="Delapan kawat yang telah diluruskan disusun sesuai urutan dan dipotong rata.png" alt="Delapan kawat kabel UTP diluruskan, disusun sesuai urutan, dan dipotong rata">
+   <figcaption><strong>Gambar 3.2</strong> Delapan kawat yang telah diluruskan, disusun sesuai urutan, dan dipotong rata.</figcaption>
+  </figure>
+
+  <h2>3.4&nbsp; Mengapa Ujung Kawat Harus Rata?</h2>
+  <p>Ketepatan meratakan ujung kawat sebelum dimasukkan ke konektor adalah hal yang sangat penting namun sering diabaikan pemula. Jika ujung kawat tidak rata, ada kawat yang lebih pendek dari yang lain, kawat tersebut berisiko tidak mencapai bagian pin konektor saat proses crimping, sehingga sambungan listriknya tidak terjadi meskipun secara kasat mata konektor terlihat terpasang.</p>
+  <blockquote>Bayangkan delapan orang berbaris untuk memasuki delapan pintu yang sejajar. Jika salah satu orang berdiri terlalu jauh di belakang barisan, ia tidak akan sampai ke pintunya ketika barisan itu bergerak maju bersama-sama. Hal serupa terjadi pada kawat yang tidak rata: kawat yang lebih pendek tidak akan mencapai pin konektor.</blockquote>
+
+  <h2>3.5&nbsp; Kegiatan Peserta Didik — LKPD 3.1</h2>
+  <div class="callout">
+   <strong>Petunjuk LKPD 3.1</strong>
+   <p>Menggunakan potongan kabel latihan, praktikkan langkah mengupas dan meluruskan kawat sebanyak tiga kali percobaan.</p>
+   <p>Untuk setiap percobaan, periksa dan catat hasilnya pada tabel berikut.</p>
+  </div>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>Percobaan ke-</th><th>Ukuran Kupasan (cm)</th><th>Kawat Rusak? (Ya/Tidak)</th><th>Ujung Rata? (Ya/Tidak)</th><th>Catatan Perbaikan</th></tr></thead>
+    <tbody>
+     <tr><td>1</td><td class="blank"></td><td></td><td></td><td></td></tr>
+     <tr><td>2</td><td class="blank"></td><td></td><td></td><td></td></tr>
+     <tr><td>3</td><td class="blank"></td><td></td><td></td><td></td></tr>
+    </tbody>
+   </table>
+  </div>
+
+  <h2>Rangkuman Bab 3</h2>
+  <ul>
+   <li>Proses pemasangan konektor RJ-45 terdiri dari enam tahap besar, dimulai dari menyiapkan bahan hingga memeriksa hasil.</li>
+   <li>Mengupas jaket dilakukan pada jarak sekitar 2–3 cm dari ujung kabel, menggunakan bagian stripper pada tang crimping.</li>
+   <li>Setelah dikupas, kawat dipisahkan, diluruskan, disusun sesuai urutan T568B, dan dipotong rata di ujungnya.</li>
+   <li>Ujung kawat yang tidak rata berisiko menyebabkan sambungan tidak sempurna karena kawat yang pendek tidak mencapai pin konektor.</li>
+  </ul>
+
+  <h2>Latihan Soal Bab 3</h2>
+  <ol>
+   <li>Sebutkan enam tahap besar proses pemasangan konektor RJ-45!</li>
+   <li>Berapa ukuran ideal jaket kabel yang dikupas? Mengapa tidak boleh terlalu panjang atau terlalu pendek?</li>
+   <li>Sebutkan langkah-langkah mengupas jaket kabel menggunakan tang crimping!</li>
+   <li>Mengapa ujung kawat harus dipotong rata sebelum dimasukkan ke konektor? Jelaskan menggunakan perumpamaan kalian sendiri!</li>
+   <li>Sebutkan tiga kesalahan yang sering terjadi saat mengupas kabel!</li>
+  </ol>
+
+  <h2>Refleksi Pertemuan 3</h2>
+  <ul>
+   <li>Bagian mana yang paling sulit: mengupas, memisahkan, atau meluruskan kawat?</li>
+   <li>Kesalahan apa yang saya alami saat berlatih?</li>
+   <li>Bagaimana cara saya memperbaiki kesalahan tersebut?</li>
+  </ul>
+  <footer>SMKN 7 Luwu · Konsentrasi Keahlian Teknik Jaringan Komputer dan Telekomunikasi</footer>
+ </article>
+</main>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const sidebar=document.getElementById('sidebar');
+menuBtn.addEventListener('click',()=>sidebar.classList.toggle('show'));
+document.addEventListener('click',e=>{
+ if(window.innerWidth<=800 && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) sidebar.classList.remove('show');
+});
+</script>
+</body>
+</html>
